@@ -1,0 +1,309 @@
+export const translations = {
+  en: {
+    role: 'Senior Frontend Engineer • UI/UX Enthusiast',
+    subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
+    about: 'About Me',
+    aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
+My journey is a bridge between computing eras. It began with the structured programming with <strong>Pascal</strong>, <strong>C++</strong> and <strong>Borland <abbr title="Visual Component Library">VCL</abbr></strong>, where I learned the core principles of memory management and algorithms. I then built powerful desktop and early web applications for the enterprise world using <strong>Java</strong>, <strong>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></strong> and <strong><abbr title="Standard Widget Toolkit">SWT</abbr></strong>, and gained a critical eye for quality and process through test automation with <strong>Selenium RC</strong> and later <strong>WebDriver</strong>, <strong>Cypress</strong> and <strong>Playwright</strong>.<br/><br/>
+I was on the front lines of the web's transformation, crafting dynamic applications with its first-generation tools: <strong><abbr title="Asynchronous Javascript and XML ">AJAX</abbr></strong>, <strong>jQuery</strong>, <strong>ExtJS</strong>, <strong>Angular.js</strong>, and <strong>Ember.js</strong>. This deep historical context is my greatest asset. It allows me to architect modern <strong>React</strong> and <strong>TypeScript</strong> applications with a profound understanding of the problems they solve, ensuring they are not just trendy but truly well-engineered, scalable, and built to last.<br/><br/>
+Today, I focus on creating accessible, user-centric, offline and mobile-first <strong>Progressive Web Apps (<abbr>PWA</abbr>)</strong> and robust frontend architectures.<br/>
+I've been trusted to deliver solutions for industry giants like Daimler and SAP, retailers like X5 Group ans Kohl's, tech innovators like Croc, startups like TrueImpact, Lition, Tispr/Indy and chemical leaders like Sibur and Evonik.<br/><br/>
+Now, I've come full circle: I'm passing on the logic and joy of creation to the next generation by teaching my children to code in <strong>Scratch</strong> and <strong>Blockly</strong>.`,
+    cleanCode: 'Clean Code',
+    cleanCodeDesc:
+      'Writing maintainable and scalable code based on <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr> and <abbr title="Don\'t Repeat Yourself">DRY</abbr> principles',
+    components: 'Components',
+    componentsDesc: 'Building reusable, accessible, responsive and user-friendly UI components',
+    bestPractices: 'Best Practices',
+    bestPracticesDesc: 'Following industry standards with modern frontend frameworks and tools',
+    learning: 'Learning',
+    learningDesc: 'Continuous improvement and learning through practice and MOOC platforms',
+    skills: 'Skills',
+    experience: 'Experience',
+    experiences: [
+      {
+        role: 'Senior Software Engineer',
+        company: 'IntexSoft',
+        period: '2022 - Present',
+        listDescription: [
+          'Led the development of a hybrid mobile application using React.js, PWA, and Fugu API for one of the largest grocery retail groups globally, operating 21,000+ convenience stores with MAU ~22 million',
+          'Integrated advanced web technologies to deliver a seamless cross-platform experience for both iOS and Android, ensuring high performance and scalability',
+          'Participated in AI/LLM integration for moderation and fraud detection',
+          'Collaborated closely with cross-functional teams to align the application with business goals, resulting in improved user engagement and operational efficiency',
+          'Developed side  projects like admin/moderator application based on React-Admin with Bun server, and a bunch of landings based on Next.js',
+        ],
+      },
+      {
+        role: 'Software Engineering Manager',
+        company: 'Godel Technologies',
+        period: '2021 - 2022',
+        listDescription: [
+          "Managed the company's 4th largest division, overseeing operations across Grodno, Belarus, and Vilnius, Lithuania",
+          'Acted as the primary point of contact for medium to large UK clients, processing their requests and ensuring alignment with internal workforce capabilities',
+          'Optimized resource allocation by matching client needs with the most suitable engineers from the internal talent pool, ensuring high-quality project delivery',
+          "As a Talent Manager, provided mentorship and career guidance to the division's top senior engineers, helping them formulate and achieve their professional goals",
+          'Successfully introduced and implemented OKRs (Objectives and Key Results) across the division',
+        ],
+      },
+      {
+        role: 'Senior Web Engineer',
+        company: 'Indy (ex-Tispr)',
+        period: '2019 - 2021',
+        listDescription: [
+          'Enhanced the existing functionality of the web platform and played a pivotal role in the design and implementation of major new features, including WYSIWYG rich editors, calendars, task boards, and white-labeling solutions',
+          "Developed and maintained the company's custom Design System/UI Kit (Tispr Design Library - TDL), ensuring consistency and scalability across all projects",
+          'Migrated the UI Kit to a sharable npm package hosted on the Nexus registry, enabling seamless integration and reuse across multiple projects',
+          'Introduced and implemented unit and integration testing for the frontend codebase, transitioning from Enzyme to React Testing Library (RTL). Increased test coverage from zero to over 50%, significantly improving code quality and reliability',
+          'Designed and implemented a modern architecture for the website and content blog using headless CMS (Strapi) and server-side rendering (SSR, Next.js), resulting in enhanced SEO, performance, and user engagement',
+          'Played a key role in interviewing and forming a strong onsite frontend team, replacing all outstaff personnel with senior software engineers',
+        ],
+      },
+      {
+        role: 'Senior Software Engineer',
+        company: 'instinctools EE Labs',
+        period: '2010 - 2019',
+        listDescription: [
+          'Over 9 years, contributed to 20+ projects across a diverse range of clients, including enterprise-level companies (SAP, Daimler, Evonik), mid-sized businesses (Florence Healthcare, NextGate, Kanda Software, Westernacher), and startups (TrueImpact, Lition Energy)',
+          'Primarily worked through outsourcing and outstaffing models, delivering high-quality Web UI and Frontend solutions tailored to client needs',
+          'Joined the company as a QA Engineer/SDET when it had 20+ employees and played a key role in its transformation into a thriving organization with 300+ employees',
+          'Advanced to the position of Lead Software Engineer, where I managed one of the engineering groups within the Web Department, overseeing a team of 9 engineers',
+          'Provided technical leadership, mentorship, and guidance to the team, ensuring the successful delivery of projects and fostering a culture of collaboration and innovation',
+          'Delivered scalable and user-friendly Web UI/Frontend solutions for clients across various industries',
+          "Supported the company's growth by contributing to process improvements, team development, and the establishment of best practices in software engineering",
+        ],
+      },
+      {
+        role: 'Web Fundamentals Trainer',
+        company: 'IT Academy',
+        period: '2018',
+        listDescription: ['Led the course "Website development using HTML, CSS and JavaScript"'],
+      },
+    ],
+    funActivities: 'Fun Activities',
+    artTitle: 'Art & Illustration',
+    artDesc: 'Creating digital art and illustrations in my free time',
+    kidsTitle: 'Kids Programming',
+    kidsDesc: 'Teaching children programming basics with Scratch',
+    certificates: 'Education & Certificates',
+    diploma: 'Diploma in Computer Science',
+    college: 'Technological College Educational Institution GRSU • 2011',
+    contact: 'Get In Touch',
+    contactText:
+      "I'm always open to new opportunities and interesting projects. <br>Feel free to reach out if you'd like to collaborate!<br> Let's build something remarkable together.",
+    contactButton: 'Contact Me',
+    testimonialsTitle: 'Testimonials',
+    testimonials: [
+      {
+        name: 'Aleksej Morskoj',
+        role: 'Service Delivery Director at instinctools EE Labs',
+        content:
+          "Artur is a customer-oriented and charismatic tech leader. Always tries to be a perfectionist in each area. Be sure that everything will be completed successfully under Artur's control.",
+      },
+      {
+        name: 'Dmitry Poluyan',
+        role: 'Senior Frontend Engineer',
+        content:
+          'Artur is a highly qualified developer with great leadership skills. He is an ace in his sphere. He has flexible thinking and he never stops to step up his professional skills.',
+      },
+      {
+        name: 'Paul Beck',
+        role: 'Senior IT Consultant',
+        content:
+          'As Lead Developer Artur showed his deep knowledge of the field by suggesting, designing and implementing the architecture of our system. He proved his ability to lead and develop the group of developers by giving constructive feedback directly or through code reviews.',
+      },
+      {
+        name: 'Dr. Kyung-Hun Ha',
+        role: 'CEO at enneo.AI, ex-Lition Energy, ex-GASAG, ex-Daimler',
+        content:
+          'Artur is the ultimate code-head. A developer any tech-company wants to work with. Artur is a highly competent developer with a systematic test-driven and agile mindset always eager to grow.',
+      },
+      {
+        name: 'Peter van de Put',
+        role: 'Senior Software Engineer / Architect',
+        content:
+          'Artur is a great developer with whom I’ve worked for a longer time on multiple projects. Always delivers never complain',
+      },
+      {
+        name: 'Richard Lohwasser',
+        role: 'CTO at enneo.AI, ex-Lition Energy, ex-McKinsey',
+        content:
+          'Artur proved at multiple occasions that he is able to deliver high-quality, robust code quickly and consistently. He further used modern architecture and coding concepts that significanly boosted our project. I can highly recommended Artur.',
+      },
+      {
+        name: 'Dmitry Poluyan',
+        role: 'Senior Frontend Engineer',
+        content:
+          'Artur is hooked on everything that is connected with web technologies and not only. He provides high quality and secure code, always using modern approaches and state-of-art technologies, he is open for working with new tools.',
+      },
+      {
+        name: 'Paul Beck',
+        role: 'Senior IT Consultant',
+        content:
+          'Next to his ability to lead Artur has excellent coding skills, ranging from in-depth knowledge of frontend technology to backend technologies.',
+      },
+      {
+        name: 'Sebastian Egner',
+        role: 'Head Of Technology at Saselon, ex-Lition Energy, ex-Philips Research',
+        content:
+          'It was a pleasure working with Artur and his JavaScript development team. Artur translated complicated requirements into excellent solutions, pointed out alternative designs and implemented features himself or with the team quickly and reliably.',
+      },
+    ],
+    copyright: `© ${new Date().getFullYear()} Artur Basak. All rights reserved.`,
+  },
+  ru: {
+    role: 'Senior Frontend Engineer • UI/UX Enthusiast',
+    subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
+    about: 'Обо мне',
+    aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
+Мой путь — это мост между эпохами вычислительной техники. Он начался со структурно-процедурного программирования на <strong>Pascal</strong>, <strong>C++</strong> и <strong>Borland <abbr title="Visual Component Library">VCL</abbr></strong>, где я изучил основные принципы управления памятью и базовые алгоритмы. Затем я создавал мощные десктопные и ранние веб-приложения для корпоративного мира, используя <strong>Java</strong>, <strong>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></strong> и <strong><abbr title="Standard Widget Toolkit">SWT</abbr></strong>, а также развил критический взгляд на качество и процессы тестирования через автоматизацию тестов с <strong>Selenium RC</strong>, а позже с <strong>WebDriver</strong>, <strong>Cypress</strong> и <strong>Playwright</strong>.<br/><br/>
+Я был на передовой трансформации веб-технологий, создавая динамические приложения с помощью инструментов первого поколения: <strong><abbr title="Asynchronous Javascript and XML">AJAX</abbr></strong>, <strong>jQuery</strong>, <strong>ExtJS</strong>, <strong>Angular.js</strong> и <strong>Ember.js</strong>. Этот глубокий исторический контекст — мое наибольшее преимущество. Он позволяет мне проектировать современные приложения на <strong>React</strong> и <strong>TypeScript</strong> с глубоким пониманием проблем, которые они решают, гарантируя, что они не просто модные, а действительно хорошо спроектированные, масштабируемые и созданные на долгий срок.<br/><br/>
+Сегодня я сосредоточен на создании доступных, ориентированных на пользователя, офлайн- и mobile-first <strong>Progressive Web Apps (<abbr>PWA</abbr>)</strong> и надежных фронтенд-архитектурах.
+Мне доверяли создание решений для таких отраслевых гигантов, как Daimler и SAP, ритейлеров, таких как X5 Group и Kohl's, технологических новаторов, как КРОК, стартапов, таких как TrueImpact, Lition, Tispr/Indy, и лидеров химической промышленности, таких как СИБУР и Evonik.<br/><br/>
+Теперь я замкнул круг: передаю опыт и радость творчества следующему поколению, обучая своих детей программированию на <strong>Scratch</strong> и <strong>Blockly</strong>.`,
+    cleanCode: 'Чистый код',
+    cleanCodeDesc:
+      'Написание поддерживаемого и масштабируемого кода на основе принципов <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr> и <abbr title="Don\'t Repeat Yourself">DRY</abbr>',
+    components: 'Компоненты',
+    componentsDesc: 'Создание переиспользуемых, доступных и адаптивных UI компонентов',
+    bestPractices: 'Лучшие практики',
+    bestPracticesDesc:
+      'Следование отраслевым стандартам вместе с современными фреймворками и инструментами',
+    learning: 'Обучение',
+    learningDesc: 'Непрерывное совершенствование и обучение через практику и MOOC платформы',
+    skills: 'Навыки',
+    experience: 'Опыт работы',
+    experiences: [
+      {
+        role: 'Senior Software Engineer',
+        company: 'IntexSoft',
+        period: '2022 - Настоящее время',
+        listDescription: [
+          'Руководил разработкой гибридного мобильного приложения с использованием React.js, PWA и Fugu API для одной из крупнейших розничных сетей продуктовых магазинов в мире, включающей более 21 000 магазинов и с ежемесячной аудиторией около 22 миллионов пользователей',
+          'Интегрировал передовые веб-технологии для создания бесшовного кросс-платформенного опыта на iOS и Android, обеспечивая высокую производительность и масштабируемость',
+          'Участвовал в интеграции AI/LLM для модерации и обнаружения мошенничества',
+          'Тесно сотрудничал с кросс-функциональными командами для согласования разработки приложения с бизнес-целями, что привело к повышению вовлеченности пользователей и операционной эффективности',
+          'Разрабатывал сторонние проекты, такие как приложение администратора/модератора на основе React-Admin с сервером Bun и ряд лендингов на основе Next.js',
+        ],
+      },
+      {
+        role: 'Software Engineering Manager',
+        company: 'Godel Technologies',
+        period: '2021 - 2022',
+        listDescription: [
+          'Принимал участие в управлении 4-м по величине подразделением компании, курируя операции в нескольких локациях',
+          'Выступал в качестве основного контактного лица для средних и крупных клиентов, обрабатывая их запросы и обеспечивая соответствие возможностям внутренних ресурсов компании',
+          'Оптимизировал распределение ресурсов, сопоставляя потребности клиентов с наиболее подходящими инженерами из внутреннего пула талантов, что обеспечивало высокое качество реализации проектов',
+          'В качестве Talent Manager оказывал наставничество и карьерное сопровождение ведущим senior-инженерам подразделения, помогая им формулировать и достигать профессиональных целей',
+          'Успешно внедрил систему OKR (Objectives and Key Results) в подразделении',
+        ],
+      },
+      {
+        role: 'Senior Web Engineer',
+        company: 'Indy (ex-Tispr)',
+        period: '2019 - 2021',
+        listDescription: [
+          'Улучшил существующую функциональность веб-платформы и сыграл ключевую роль в проектировании и реализации основных новых функций, включая WYSIWYG-редакторы, календарь, доски задач и кастомизацию white-labeling',
+          'Участвовал в разработке и поддержке собственной дизайн-системы компании (Tispr Design Library - TDL), обеспечивая согласованность и масштабируемость во всех проектах',
+          'Мигрировал UI компоненты в npm-пакет, размещенный в реестре Nexus, что позволило легко интегрировать и повторно использовать его в различных проектах',
+          'Внедрил модульное и интеграционное тестирование для кодовой базы фронтенда, попутно перейдя с Enzyme на React Testing Library (RTL). Увеличил покрытие тестами с нуля до более чем 50%, значительно повысив качество и надежность кода',
+          'Разработал и внедрил современную архитектуру для веб-сайта и контентного блога с использованием headless CMS (Strapi) и серверного рендеринга (SSR, Next.js), что улучшило SEO, производительность и вовлеченность пользователей',
+          'Сыграл ключевую роль в проведении собеседований и формировании сильной локальной фронтенд-команды, заменив всех аутстафф-специалистов на senior-инженеров',
+        ],
+      },
+      {
+        role: 'Senior Software Engineer',
+        company: 'instinctools EE Labs',
+        period: '2010 - 2019',
+        listDescription: [
+          'За 9 лет внес вклад в более чем 20 проектов для разнообразных клиентов, включая компании уровня enterprise (SAP, Daimler, Evonik), средний бизнес (Florence Healthcare, NextGate, Kanda Software, Westernacher) и стартапы (TrueImpact, Lition Energy)',
+          'В основном работал по моделям аутсорсинга и аутстаффинга, предоставляя высококачественные решения в области Web UI и фронтенда, адаптированные под потребности клиентов',
+          'Присоединился к компании на позиции QA Engineer/SDET, когда в ней работало 20+ сотрудников, и сыграл ключевую роль в ее преобразовании в успешную организацию с более чем 300 сотрудниками',
+          'Вырос до позиции Lead Software Engineer, где управлял одной из инженерных групп в рамках веб-департамента, курируя команду из 9 инженеров',
+          'Обеспечивал техническое лидерство, наставничество и руководство для команды, гарантируя успешную реализацию проектов и способствуя развитию культуры сотрудничества и инноваций',
+          'Разрабатывал масштабируемые и удобные Web UI/фронтенд-решения для клиентов из различных отраслей',
+          'Поддерживал рост компании, внося вклад в улучшение процессов, развитие команды и внедрение лучших практик в области разработки программного обеспечения',
+        ],
+      },
+      {
+        role: 'Преподаватель',
+        company: 'IT Academy',
+        period: '2018',
+        listDescription: [
+          'Вел курс "Разработка веб-сайтов с использованием HTML, CSS и JavaScript"',
+        ],
+      },
+    ],
+    funActivities: 'Увлечения',
+    artTitle: 'Арт и Иллюстрация',
+    artDesc: 'Создание цифрового искусства и иллюстраций в свободное время',
+    kidsTitle: 'Обучение Детей',
+    kidsDesc: 'Обучение детей основам программирования в Scratch',
+    certificates: 'Образование & Сертификаты',
+    diploma: 'Диплом в области Информатики',
+    college: 'Технологический колледж ГрГУ им. Янки Купалы • 2011',
+    contact: 'Связаться',
+    contactText:
+      'Я всегда открыт для новых возможностей и интересных проектов. <br>Свяжитесь со мной, если хотите сотрудничать! <br/> Давайте создадим что-то выдающееся вместе.',
+    contactButton: 'Написать',
+    testimonialsTitle: 'Отзывы',
+    testimonials: [
+      {
+        name: 'Алексей Морской',
+        role: 'Сервис Деливери Директор в instinctools EE Labs',
+        content:
+          'Артур — клиентоориентированный и харизматичный технический руководитель. Он всегда стремится быть перфекционистом в каждой области. Будьте уверены, что под его контролем всё будет выполнено успешно.',
+      },
+      {
+        name: 'Дмитрий Полуян',
+        role: 'Старщий Фронтенд Инженер',
+        content:
+          'Артур — высококвалифицированный разработчик с отличными лидерскими качествами. Он настоящий мастер своего дела. Он обладает гибким мышлением и постоянно совершенствует свои профессиональные навыки.',
+      },
+      {
+        name: 'Пол Бэк',
+        role: 'Старший IT Консультант',
+        content:
+          'В качестве ведущего разработчика Артур продемонстрировал глубокие познания в этой области, предложив, спроектировав и реализовав архитектуру нашей системы. Он доказал свою способность руководить и развивать группу разработчиков, предоставляя конструктивную обратную связь напрямую или посредством ревью кода.',
+      },
+      {
+        name: 'Доктор Кён-Хун Ха',
+        role: 'CEO в enneo.AI, экс-Lition Energy, экс-GASAG, экс-Daimler',
+        content:
+          'Артур — настоящий программист. Разработчик, с которым мечтает работать любая технологическая компания. Артур — высококомпетентный инженер с системным и гибким подходом к тестированию, всегда готовый к развитию.',
+      },
+      {
+        name: 'Питер ван де Пут',
+        role: 'Старший Инженер ПО / Архитектор',
+        content:
+          'Артур — отличный разработчик, с которым я работал долгое время над несколькими проектами. Всегда выполняет работу, никогда не жалуется.',
+      },
+      {
+        name: 'Ричард Лохвассер',
+        role: 'CTO в enneo.AI, экс-Lition Energy, экс-McKinsey',
+        content:
+          'Артур неоднократно доказал свою способность быстро и стабильно создавать качественный, надёжный код. Он также использовал современные архитектурные и программные концепции, что значительно ускорило наш проект. Я настоятельно рекомендую Артура.',
+      },
+      {
+        name: 'Дмитрий Полуян',
+        role: 'Старщий Фронтенд Инженер',
+        content:
+          'Артур увлечен всем, что связано с веб-технологиями и не только. Он пишет качественный и безопасный код, всегда использует современные подходы и передовые технологии, открыт для работы с новыми инструментами.',
+      },
+      {
+        name: 'Пол Бэк',
+        role: 'Старший IT Консультант',
+        content:
+          'Помимо лидерских качеств, Артур обладает прекрасными навыками программирования, начиная от глубоких знаний frontend-технологий и заканчивая backend-технологиями.',
+      },
+      {
+        name: 'Себастьян Эгнер',
+        role: 'Руководитель по технологиям в Saselon, экс-Lition Energy, экс-Philips Research',
+        content:
+          'Было приятно работать с Артуром и его командой разработчиков JavaScript. Артур быстро и надёжно воплощал сложные требования в превосходные решения, предлагал альтернативные решения и реализовывал функции самостоятельно или вместе с командой.',
+      },
+    ],
+    copyright: `© ${new Date().getFullYear()} Artur Basak. Все права защищены.`,
+  },
+} as const;
+
+export type Language = keyof typeof translations;

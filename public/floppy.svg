@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Floppy Disk">
+  <!-- Outer body -->
+  <rect x="6" y="6" width="52" height="52" rx="6" ry="6" fill="#374151"/>
+
+  <!-- Main blue casing -->
+  <rect x="8" y="14" width="48" height="42" rx="4" ry="4" fill="#3B82F6"/>
+
+  <!-- Metal shutter (top) -->
+  <rect x="8" y="8" width="48" height="14" rx="3" ry="3" fill="#CBD5E1"/>
+  <rect x="44" y="8" width="12" height="14" rx="2" ry="2" fill="#94A3B8"/>
+  <rect x="12" y="11" width="10" height="8" rx="1" ry="1" fill="#9CA3AF"/>
+
+  <!-- Label area -->
+  <rect x="16" y="24" width="32" height="18" rx="2" ry="2" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <!-- Label lines -->
+  <rect x="20" y="28" width="24" height="2.5" rx="1.25" fill="#E5E7EB"/>
+  <rect x="20" y="33" width="20" height="2.5" rx="1.25" fill="#E5E7EB"/>
+  <rect x="20" y="38" width="16" height="2.5" rx="1.25" fill="#E5E7EB"/>
+
+  <!-- Bottom slot area -->
+  <rect x="12" y="46" width="40" height="10" rx="2" ry="2" fill="#1F2937"/>
+  <rect x="24" y="49" width="16" height="4" rx="2" ry="2" fill="#111827"/>
+
+  <!-- Accent screw (red) -->
+  <circle cx="52" cy="22" r="2" fill="#EF4444"/>
+</svg>
+
