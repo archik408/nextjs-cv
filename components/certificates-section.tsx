@@ -7,11 +7,11 @@ export function CertificatesSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 px-4 md:px-8">
+    <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold mb-8">{t.certificates}</h2>
         <div className="grid gap-6">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm dark:shadow-none">
+          <div className="bg-white dark:bg-gray-900/40 p-6 rounded-lg shadow-sm dark:shadow-none">
             <div className="flex items-center gap-4">
               <Award className="w-8 h-8 text-yellow-400" />
               <div>
@@ -20,7 +20,7 @@ export function CertificatesSection() {
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm dark:shadow-none">
+          <div className="bg-white dark:bg-gray-900/40 p-6 rounded-lg shadow-sm dark:shadow-none">
             <div className="flex items-center gap-4">
               <Award className="w-8 h-8 text-blue-400" />
               <div>
@@ -29,7 +29,7 @@ export function CertificatesSection() {
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm dark:shadow-none">
+          <div className="bg-white dark:bg-gray-900/40 p-6 rounded-lg shadow-sm dark:shadow-none">
             <div className="flex items-center gap-4">
               <Award className="w-8 h-8 text-green-400" />
               <div>

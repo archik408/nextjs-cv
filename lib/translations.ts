@@ -86,6 +86,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     artDesc: 'Creating digital art and illustrations in my free time',
     kidsTitle: 'Kids Programming',
     kidsDesc: 'Teaching children programming basics with Scratch',
+    cycleTitle: 'Cycling',
+    cycleDesc:
+      'I enjoy long-distance cycling and city rides — it helps me reset my mind and find elegant solutions to complex engineering problems.',
     certificates: 'Education & Certificates',
     diploma: 'Diploma in Computer Science',
     college: 'Technological College Educational Institution GRSU • 2011',
@@ -240,6 +243,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     artDesc: 'Создание цифрового искусства и иллюстраций в свободное время',
     kidsTitle: 'Обучение Детей',
     kidsDesc: 'Обучение детей основам программирования в Scratch',
+    cycleTitle: 'Велосипед',
+    cycleDesc:
+      'Дальние и городские велопоездки — это помогает перезагрузиться и находить изящные решения сложных задач',
     certificates: 'Образование & Сертификаты',
     diploma: 'Диплом в области Информатики',
     college: 'Технологический колледж ГрГУ им. Янки Купалы • 2011',

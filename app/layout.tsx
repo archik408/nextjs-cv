@@ -3,7 +3,7 @@ import { Rubik } from 'next/font/google';
 import { LanguageProvider } from '@/lib/use-language';
 import { ThemeProvider } from '@/lib/use-theme';
 import './globals.css';
-import { CursorFollower } from '@/components/cursor-follower';
+import { CursorMount } from '@/components/cursor-mount';
 
 const rubikFont = Rubik({
   subsets: ['latin'],
@@ -126,7 +126,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LanguageProvider>
             {children}
-            <CursorFollower />
+            <CursorMount />
           </LanguageProvider>
         </ThemeProvider>
         <script
