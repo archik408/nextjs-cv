@@ -16,7 +16,7 @@ const skills = [
   'Web Performance',
   'Accessibility (WCAG)',
   'PWA / Service Workers',
-  'REST / GraphQL',
+  'HTTP / REST',
   'Node.js / Express',
   'Python / Django',
   'SQL / NoSQL',
