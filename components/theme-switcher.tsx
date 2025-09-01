@@ -1,4 +1,5 @@
 'use client';
+import { ETheme } from '@/constants/enums';
 
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/lib/use-theme';
@@ -10,14 +11,14 @@ export function ThemeSwitcher() {
     <button
       onClick={toggleTheme}
       className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors text-gray-900 dark:text-white"
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+      aria-label={`Switch to ${theme === ETheme.dark ? ETheme.light : ETheme.dark} theme`}
     >
       {theme === 'dark' ? (
         <Sun className="w-4 h-4 text-yellow-400" />
       ) : (
         <Moon className="w-4 h-4 text-blue-600" />
       )}
-      <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+      <span>{theme === ETheme.dark ? 'Light' : 'Dark'}</span>
     </button>
   );
 }

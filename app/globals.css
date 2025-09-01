@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  cursor: none;
 }
 
 body {
@@ -65,6 +66,16 @@ body {
 }
 
 /* Smooth transitions for interactive elements */
+/* Ensure native cursor is always hidden across interactive elements */
+a,
+button,
+input,
+textarea,
+select,
+[role='button'] {
+  cursor: none;
+}
+
 a,
 button {
   transition: all 0.2s ease-in-out;

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MacBook">
+  <!-- MacBook Base -->
+  <ellipse cx="32" cy="54" rx="28" ry="8" fill="#E5E7EB" opacity="0.3"/>
+  
+  <!-- Screen Back -->
+  <rect x="14" y="12" width="36" height="24" rx="2" ry="2" fill="#374151"/>
+  
+  <!-- Screen Bezel -->
+  <rect x="16" y="14" width="32" height="20" rx="1" ry="1" fill="#1F2937"/>
+  
+  <!-- Screen Display -->
+  <rect x="17" y="15" width="30" height="18" rx="0.5" ry="0.5" fill="#000000"/>
+  
+  <!-- Logo removed by request -->
+  
+  <!-- Keyboard Base -->
+  <rect x="10" y="36" width="44" height="16" rx="3" ry="3" fill="#D1D5DB"/>
+  
+  <!-- Keyboard Top -->
+  <rect x="12" y="38" width="40" height="12" rx="2" ry="2" fill="#F3F4F6"/>
+  
+  <!-- Keyboard Keys (simplified grid) -->
+  <g fill="#E5E7EB">
+    <!-- Top row -->
+    <rect x="14" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="17" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="20" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="23" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="26" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="29" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="32" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="35" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="38" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="41" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="44" y="40" width="2" height="1.5" rx="0.2"/>
+    <rect x="47" y="40" width="3" height="1.5" rx="0.2"/>
+    
+    <!-- Middle row -->
+    <rect x="14" y="42" width="3" height="1.5" rx="0.2"/>
+    <rect x="18" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="21" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="24" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="27" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="30" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="33" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="36" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="39" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="42" y="42" width="2" height="1.5" rx="0.2"/>
+    <rect x="45" y="42" width="5" height="1.5" rx="0.2"/>
+    
+    <!-- Bottom row -->
+    <rect x="14" y="44" width="4" height="1.5" rx="0.2"/>
+    <rect x="19" y="44" width="2" height="1.5" rx="0.2"/>
+    <rect x="22" y="44" width="2" height="1.5" rx="0.2"/>
+    <rect x="25" y="44" width="2" height="1.5" rx="0.2"/>
+    <rect x="28" y="44" width="2" height="1.5" rx="0.2"/>
+    <rect x="31" y="44" width="2" height="1.5" rx="0.2"/>
+    <rect x="34" y="44" width="2" height="1.5" rx="0.2"/>
+    <rect x="37" y="44" width="2" height="1.5" rx="0.2"/>
+    <rect x="40" y="44" width="2" height="1.5" rx="0.2"/>
+    <rect x="43" y="44" width="7" height="1.5" rx="0.2"/>
+    
+    <!-- Space bar -->
+    <rect x="20" y="46" width="24" height="1.5" rx="0.2"/>
+  </g>
+  
+  <!-- Trackpad -->
+  <rect x="28" y="46" width="8" height="5" rx="1" ry="1" fill="#E5E7EB" stroke="#D1D5DB"/>
+  
+  <!-- MacBook hinge -->
+  <rect x="14" y="35" width="36" height="2" rx="1" ry="1" fill="#9CA3AF"/>
+  
+  <!-- Screen reflection -->
+  <rect x="17" y="15" width="15" height="9" rx="0.5" ry="0.5" fill="url(#screenGradient)" opacity="0.1"/>
+  
+  <defs>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+</svg>
+

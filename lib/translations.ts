@@ -1,5 +1,7 @@
+import { ELanguage } from '@/constants/enums';
+
 export const translations = {
-  en: {
+  [ELanguage.en]: {
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
@@ -150,7 +152,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     copyright: `© ${new Date().getFullYear()} Artur Basak. All rights reserved.`,
   },
-  ru: {
+  [ELanguage.ru]: {
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',

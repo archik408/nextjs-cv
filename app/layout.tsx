@@ -3,6 +3,7 @@ import { Rubik } from 'next/font/google';
 import { LanguageProvider } from '@/lib/use-language';
 import { ThemeProvider } from '@/lib/use-theme';
 import './globals.css';
+import { CursorFollower } from '@/components/cursor-follower';
 
 const rubikFont = Rubik({
   subsets: ['latin'],
@@ -18,9 +19,9 @@ export const metadata: Metadata = {
   creator: 'Artur Basak',
   metadataBase: new URL('https://arturbasak.dev'),
   icons: {
-    icon: '/floppy.svg',
-    shortcut: '/floppy.svg',
-    apple: '/floppy.svg',
+    icon: '/macbook.svg',
+    shortcut: '/macbook.svg',
+    apple: '/macbook.svg',
   },
   alternates: {
     canonical: '/',
@@ -92,6 +93,8 @@ export default function RootLayout({
     },
     knowsAbout: [
       'React',
+      'Svelte',
+      'Web Components',
       'Next.js',
       'TypeScript',
       'JavaScript',
@@ -101,12 +104,13 @@ export default function RootLayout({
       'PWA',
       'Node.js',
       'GraphQL',
-      'Testing',
+      'Automated Testing',
       'CI/CD',
+      'UI/UX',
     ],
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'PL',
+      addressCountry: 'BY',
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',
@@ -114,13 +118,16 @@ export default function RootLayout({
     },
     nationality: 'Belarus',
     gender: 'Male',
-    speaksLanguage: ['English', 'Russian'],
+    speaksLanguage: ['English', 'Belarusian', 'Russian'],
   };
   return (
     <html lang="en">
-      <body className={`${rubikFont.className} antialiased`}>
+      <body style={{ background: '#0f172a' }} className={`${rubikFont.className} antialiased`}>
         <ThemeProvider>
-          <LanguageProvider>{children}</LanguageProvider>
+          <LanguageProvider>
+            {children}
+            <CursorFollower />
+          </LanguageProvider>
         </ThemeProvider>
         <script
           type="application/ld+json"

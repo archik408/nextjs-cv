@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { translations, Language } from './translations';
-
+import { ELanguage } from '@/constants/enums';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
@@ -12,7 +12,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(ELanguage.en);
 
   const contextValue: LanguageContextType = {
     language,
