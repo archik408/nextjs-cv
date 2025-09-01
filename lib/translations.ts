@@ -88,7 +88,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     kidsDesc: 'Teaching children programming basics with Scratch',
     cycleTitle: 'Cycling',
     cycleDesc:
-      'I enjoy long-distance cycling and city rides — it helps me reset my mind and find elegant solutions to complex engineering problems.',
+      'Enjoying long-distance cycling and city rides — it helps me reset my mind and find elegant solutions to complex engineering problems.',
     certificates: 'Education & Certificates',
     diploma: 'Diploma in Computer Science',
     college: 'Technological College Educational Institution GRSU • 2011',

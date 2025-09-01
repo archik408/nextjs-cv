@@ -25,7 +25,7 @@ export function FunActivitiesSection() {
             <p className="text-gray-700 dark:text-gray-300 mb-4">{t.artDesc}</p>
             <div className="grid grid-cols-2 gap-4">
               <Image
-                src="/book1.jpg"
+                src="/book1.png"
                 alt="Cover of book with author illustrations"
                 width={200}
                 height={300}
@@ -33,7 +33,7 @@ export function FunActivitiesSection() {
                 className="rounded-lg object-cover"
               />
               <Image
-                src="/book2.jpg"
+                src="/book2.png"
                 alt="Cover of book with author illustrations"
                 width={200}
                 height={300}
