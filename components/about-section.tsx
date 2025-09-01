@@ -1,8 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { Code2, Boxes, Trophy, BookOpen } from 'lucide-react';
-import { Player } from '@lottiefiles/react-lottie-player';
 import { useLanguage } from '@/lib/use-language';
+
+const Player = dynamic(() => import('@/components/lottie-player'), {
+  ssr: false,
+});
 
 export function AboutSection() {
   const { t } = useLanguage();
