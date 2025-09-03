@@ -13,7 +13,7 @@ export function ThemeSwitcher() {
       className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors text-gray-900 dark:text-white"
       aria-label={`Switch to ${theme === ETheme.dark ? ETheme.light : ETheme.dark} theme`}
     >
-      {theme === 'dark' ? (
+      {theme === ETheme.dark ? (
         <Sun className="w-4 h-4 text-yellow-400" />
       ) : (
         <Moon className="w-4 h-4 text-blue-600" />

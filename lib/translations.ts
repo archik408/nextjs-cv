@@ -96,6 +96,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     contactText:
       "I'm always open to new opportunities and interesting projects. <br>Feel free to reach out if you'd like to collaborate!<br> Let's build something remarkable together.",
     contactButton: 'Contact Me',
+    resumeButton: 'Download Resume',
     testimonialsTitle: 'Testimonials',
     testimonials: [
       {
@@ -253,6 +254,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     contactText:
       'Я всегда открыт для новых возможностей и интересных проектов. <br>Свяжитесь со мной, если хотите сотрудничать! <br/> Давайте создадим что-то выдающееся вместе.',
     contactButton: 'Написать',
+    resumeButton: 'Скачать резюме',
     testimonialsTitle: 'Отзывы',
     testimonials: [
       {
