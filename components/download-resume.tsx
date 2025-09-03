@@ -9,11 +9,12 @@ export function DownloadResume() {
   const href = `/api/resume?lang=${language || ELanguage.en}`;
   return (
     <a
+      aria-label={t.resumeButton}
       href={href}
       className="fixed top-4 left-4 z-[9000] inline-flex items-center gap-2 px-3 py-2 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white shadow-lg transition-colors"
     >
       <Download className="w-4 h-4" />
-      <span>{t.resumeButton}</span>
+      <span className="hidden md:block">{t.resumeButton}</span>
     </a>
   );
 }

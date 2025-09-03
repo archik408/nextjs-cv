@@ -154,6 +154,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
           'It was a pleasure working with Artur and his JavaScript development team. Artur translated complicated requirements into excellent solutions, pointed out alternative designs and implemented features himself or with the team quickly and reliably.',
       },
     ],
+    showLess: 'Show less',
+    showMore: 'Show more',
     copyright: `© ${new Date().getFullYear()} Artur Basak. All rights reserved.`,
   },
   [ELanguage.ru]: {
@@ -312,6 +314,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
           'Было приятно работать с Артуром и его командой разработчиков JavaScript. Артур быстро и надёжно воплощал сложные требования в превосходные решения, предлагал альтернативные решения и реализовывал функции самостоятельно или вместе с командой.',
       },
     ],
+    showLess: 'Свернуть',
+    showMore: 'Показать больше',
     copyright: `© ${new Date().getFullYear()} Artur Basak. Все права защищены.`,
   },
 } as const;

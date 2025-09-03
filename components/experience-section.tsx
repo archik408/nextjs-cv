@@ -3,10 +3,9 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
-import { ELanguage } from '@/constants/enums';
 
 export function ExperienceSection() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const [open, setOpen] = useState<Record<number, boolean>>({});
   const previewCount = 2;
 
@@ -26,7 +25,7 @@ export function ExperienceSection() {
         <h2 className="text-3xl font-bold mb-8">{t.experience}</h2>
         <div className="space-y-6 md:space-y-8">
           {t.experiences.map((experience, index) => {
-            const expanded = !!open[index];
+            const expanded = Boolean(open[index]);
             const total = experience.listDescription.length;
             const visible = expanded
               ? experience.listDescription
@@ -36,7 +35,6 @@ export function ExperienceSection() {
               <article
                 key={index}
                 className="bg-white dark:bg-gray-800 p-5 md:p-6 rounded-lg shadow-sm dark:shadow-none"
-                aria-expanded={expanded}
               >
                 <header className="flex justify-between items-start gap-4 mb-3 md:mb-4">
                   <div>
@@ -46,7 +44,7 @@ export function ExperienceSection() {
                         href={companyUrlMap[experience.company]}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-700 dark:text-blue-400 hover:underline"
+                        className="text-pink-900 dark:text-purple-400 hover:underline"
                       >
                         {experience.company}
                       </a>
@@ -59,7 +57,7 @@ export function ExperienceSection() {
                   </span>
                 </header>
 
-                <div className="relative">
+                <div aria-controls={`exp-panel-${index}`} className="relative">
                   <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
                     {visible.map((description: string, descIndex: number) => (
                       <li key={descIndex}>{description}</li>
@@ -80,13 +78,7 @@ export function ExperienceSection() {
                       aria-controls={`exp-panel-${index}`}
                       aria-expanded={expanded}
                     >
-                      {expanded
-                        ? language === ELanguage.ru
-                          ? 'Свернуть'
-                          : 'Show less'
-                        : language === ELanguage.ru
-                          ? 'Показать больше'
-                          : 'Show more'}
+                      {expanded ? t.showLess : t.showMore}
                       <ChevronDown
                         className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`}
                         aria-hidden
