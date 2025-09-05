@@ -181,7 +181,6 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Avoid too small or blurry text',
     ],
     ocrError: 'Error recognizing text. Please try again.',
-    home: 'Home',
     // Tools Page
     toolsAndExperiments: 'Tools & Experiments',
     toolsDescription:
@@ -387,7 +386,6 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Избегайте слишком мелкого или размытого текста',
     ],
     ocrError: 'Ошибка при распознавании текста. Попробуйте еще раз.',
-    home: 'Главная',
     // Tools Page
     toolsAndExperiments: 'Инструменты и Эксперименты',
     toolsDescription:
