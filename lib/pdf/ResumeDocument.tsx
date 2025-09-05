@@ -129,7 +129,7 @@ export function ResumeDocument({ lang }: Props) {
           {t.diploma} — {t.college}
         </Text>
         <Text style={styles.paragraph}>Professional Front-End Web Developer — W3Cx 2019</Text>
-        <Text style={styles.paragraph}>UX Design — Google 2021 - 2025</Text>
+        <Text style={styles.paragraph}>UX Design — Google 2021-2025</Text>
       </Page>
     </Document>
   );

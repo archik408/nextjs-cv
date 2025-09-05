@@ -4,6 +4,7 @@ import { LanguageProvider } from '@/lib/use-language';
 import { ThemeProvider } from '@/lib/use-theme';
 import './globals.css';
 import { CursorMount } from '@/components/cursor-mount';
+import { SidebarMenu } from '@/components/sidebar-menu';
 
 const rubikFont = Rubik({
   subsets: ['latin'],
@@ -125,6 +126,7 @@ export default function RootLayout({
       <body style={{ background: '#0f172a' }} className={`${rubikFont.className} antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
+            <SidebarMenu />
             {children}
             <CursorMount />
           </LanguageProvider>

@@ -98,6 +98,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     contactButton: 'Contact Me',
     resumeButton: 'Download Resume',
     testimonialsTitle: 'Testimonials',
+    blog: 'Blog',
+    readArticle: 'Read article',
+    viewAll: 'View all',
+    allArticles: 'All articles',
     testimonials: [
       {
         name: 'Aleksej Morskoj',
@@ -157,6 +161,27 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     showLess: 'Show less',
     showMore: 'Show more',
     copyright: `© ${new Date().getFullYear()} Artur Basak. All rights reserved.`,
+    // OCR Page
+    ocrTitle: 'Image Text Recognition',
+    ocrSubtitle: 'Upload an image and extract text with support for Russian, English, and digits',
+    ocrUploadText: 'Drag and drop an image here or click to select a file',
+    ocrSelectImage: 'Select Image',
+    ocrRecognizeText: 'Recognize Text',
+    ocrClear: 'Clear',
+    ocrProcessing: 'Processing',
+    ocrProgress: 'Recognition Progress',
+    ocrResult: 'Recognized Text:',
+    ocrCopyText: 'Copy Text',
+    ocrDownloadFile: 'Download as File',
+    ocrSupportedFormats: 'Supported formats and languages:',
+    ocrFormatsList: [
+      'Image formats: JPG, PNG, GIF, BMP, TIFF',
+      'Languages: Russian, English, Digits',
+      'For best results, use clear images with contrasting text',
+      'Avoid too small or blurry text',
+    ],
+    ocrError: 'Error recognizing text. Please try again.',
+    home: 'Home',
   },
   [ELanguage.ru]: {
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
@@ -258,6 +283,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     contactButton: 'Написать',
     resumeButton: 'Скачать резюме',
     testimonialsTitle: 'Отзывы',
+    blog: 'Блог',
+    readArticle: 'Читать статью',
+    viewAll: 'Смотреть все',
+    allArticles: 'Все статьи',
     testimonials: [
       {
         name: 'Алексей Морской',
@@ -317,6 +346,28 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     showLess: 'Свернуть',
     showMore: 'Показать больше',
     copyright: `© ${new Date().getFullYear()} Artur Basak. Все права защищены.`,
+    // OCR Page
+    ocrTitle: 'Распознавание текста на изображениях',
+    ocrSubtitle:
+      'Загрузите изображение и получите текст с поддержкой русского, английского языков и цифр',
+    ocrUploadText: 'Перетащите изображение сюда или нажмите для выбора файла',
+    ocrSelectImage: 'Выбрать изображение',
+    ocrRecognizeText: 'Распознать текст',
+    ocrClear: 'Очистить',
+    ocrProcessing: 'Обработка',
+    ocrProgress: 'Прогресс распознавания',
+    ocrResult: 'Распознанный текст:',
+    ocrCopyText: 'Скопировать текст',
+    ocrDownloadFile: 'Скачать как файл',
+    ocrSupportedFormats: 'Поддерживаемые форматы и языки:',
+    ocrFormatsList: [
+      'Форматы изображений: JPG, PNG, GIF, BMP, TIFF',
+      'Языки: Русский, Английский, Цифры',
+      'Для лучших результатов используйте четкие изображения с контрастным текстом',
+      'Избегайте слишком мелкого или размытого текста',
+    ],
+    ocrError: 'Ошибка при распознавании текста. Попробуйте еще раз.',
+    home: 'Главная',
   },
 } as const;
 
