@@ -18,7 +18,7 @@ export function ThemeSwitcher() {
       ) : (
         <Moon className="w-4 h-4 text-blue-600" />
       )}
-      <span>{theme === ETheme.dark ? 'Light' : 'Dark'}</span>
+      <span className="hidden sm:inline">{theme === ETheme.dark ? 'Light' : 'Dark'}</span>
     </button>
   );
 }

@@ -182,6 +182,26 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     ocrError: 'Error recognizing text. Please try again.',
     home: 'Home',
+    // Tools Page
+    toolsAndExperiments: 'Tools & Experiments',
+    toolsDescription:
+      "A collection of useful tools and experimental features I've built for various purposes. Some are ready to use, others are still in development.",
+    tools: 'Tools',
+    experiments: 'Experiments',
+    home: 'Home',
+    // Algorithms Page
+    algorithmsTitle: 'Algorithms & Data Structures',
+    algorithmsDescription:
+      'Collection of algorithm implementations and data structure solutions from competitive programming practice.',
+    algorithmCategories: {
+      sorting: 'Sorting Algorithms',
+      trees: 'Tree Algorithms',
+      graphs: 'Graph Algorithms',
+      linkedList: 'Linked List',
+      eulerProject: 'Project Euler Solutions',
+    },
+    viewOnGitHub: 'View on GitHub',
+    algorithmsRepository: 'Algorithms Repository',
   },
   [ELanguage.ru]: {
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
@@ -368,6 +388,26 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     ocrError: 'Ошибка при распознавании текста. Попробуйте еще раз.',
     home: 'Главная',
+    // Tools Page
+    toolsAndExperiments: 'Инструменты и Эксперименты',
+    toolsDescription:
+      'Коллекция полезных инструментов и экспериментальных функций, которые я создал для различных целей. Некоторые готовы к использованию, другие все еще в разработке.',
+    tools: 'Инструменты',
+    experiments: 'Эксперименты',
+    home: 'Главная',
+    // Algorithms Page
+    algorithmsTitle: 'Алгоритмы и Структуры Данных',
+    algorithmsDescription:
+      'Коллекция реализаций алгоритмов и решений структур данных из практики соревновательного программирования.',
+    algorithmCategories: {
+      sorting: 'Алгоритмы Сортировки',
+      trees: 'Алгоритмы Деревьев',
+      graphs: 'Алгоритмы Графов',
+      linkedList: 'Связанные Списки',
+      eulerProject: 'Решения Project Euler',
+    },
+    viewOnGitHub: 'Посмотреть на GitHub',
+    algorithmsRepository: 'Репозиторий Алгоритмов',
   },
 } as const;
 
