@@ -123,7 +123,30 @@ export default function RootLayout({
   };
   return (
     <html lang="en">
-      <body style={{ background: '#0f172a' }} className={`${rubikFont.className} antialiased`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'dark' || !theme) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.backgroundColor = '#0f172a';
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.style.backgroundColor = '#ffffff';
+                  }
+                } catch (e) {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.style.backgroundColor = '#0f172a';
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className={`${rubikFont.className} antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
             <SidebarMenu />
