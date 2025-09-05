@@ -35,6 +35,13 @@ export default function ArticleWorkboxBackgroundSync() {
 
         <ArticleTitle text="Настройка Workbox Background Sync для совместимости с iOS и Android WebView" />
 
+        {/* Article metadata */}
+        <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
+          <span>5 июня 2025</span>
+          <span>•</span>
+          <span>Artur Basak</span>
+        </div>
+
         <p className="text-gray-700 dark:text-gray-300 mb-4">
           Важность надежной обработки запросов в оффлайн-режиме невозможно переоценить, особенно для
           приложений, которые должны функционировать и в отсутствии интернет-соединения.{' '}

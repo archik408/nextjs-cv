@@ -5,6 +5,7 @@ type Post = {
   image: string;
   source: string;
   date: string; // ISO or readable
+  author?: string; // Optional author field
 };
 
 export const posts: Post[] = [
@@ -16,6 +17,7 @@ export const posts: Post[] = [
     image: '/macbook.svg',
     source: 'On-site',
     date: '2025-06-05',
+    author: 'Artur Basak',
   },
   {
     title: 'Реальная эффективность Brotli',
