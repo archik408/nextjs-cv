@@ -105,9 +105,13 @@ export function ResumeDocument({ lang }: Props) {
         <Text style={styles.sectionTitle}>{t.skills}</Text>
         <Text style={styles.paragraph}>
           {/* Summarized skills – keep concise for one-page */}
-          JavaScript, TypeScript, Node.js, React, Next.js, Design Systems, UX, Web Accessibility
-          (WCAG), Performance, PWA, HTTPS/REST, QA & Automated Testing
-          (Jest/RTL/Cypress/Playwright), Webpack, Vite, CI/CD
+          HTML5, CSS, JavaScript, TypeScript, Node.js, React, MobX, Next.js (SSR/SSG/ISR), Design
+          Systems, UI/UX Design, Web Accessibility (WCAG), Web Performance, Web Security (OWASP),
+          PWA, HTTPS/REST, QA & Automated Testing, Web Components, Lit,
+          (Jest/RTL/Cypress/Playwright), FrontOps (Webpack, Vite, Turbopack, npm, yarn), CI/CD,
+          Rust/WebAssembly, Workbox, Tailwind CSS, Headless CMS (Strapi, Contentful, WordPress,
+          Prismic), Micro-frontends, Material UI, Mobile-First, Offline-First, Bun, Python/Django,
+          IndexedDB, MongoDB, PostgreSQL, MySQL, SQL/NoSQL
         </Text>
 
         <Text style={styles.sectionTitle}>{t.experience}</Text>
@@ -130,6 +134,12 @@ export function ResumeDocument({ lang }: Props) {
         </Text>
         <Text style={styles.paragraph}>Professional Front-End Web Developer — W3Cx 2019</Text>
         <Text style={styles.paragraph}>UX Design — Google 2021-2025</Text>
+        <Text style={styles.role}>
+          CV was generated automatically by{' '}
+          <Link src="https://arturbasak.dev" style={styles.link}>
+            https://arturbasak.dev
+          </Link>
+        </Text>
       </Page>
     </Document>
   );
