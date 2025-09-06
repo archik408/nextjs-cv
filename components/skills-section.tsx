@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/use-language';
+import { TechIcon } from './tech-icon';
 
 const skills = [
   'JavaScript',
@@ -58,7 +59,10 @@ export function SkillsSection() {
               className="bg-blue-100 dark:bg-blue-800 p-4 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors transform hover:scale-105 duration-200 text-left"
               aria-label={`Search for ${skill} on Google`}
             >
-              <span className="font-medium text-blue-900 dark:text-white">{skill}</span>
+              <div className="flex items-center gap-3">
+                <TechIcon name={skill} size={20} />
+                <span className="font-medium text-blue-900 dark:text-white">{skill}</span>
+              </div>
             </button>
           ))}
         </div>

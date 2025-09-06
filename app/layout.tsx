@@ -4,7 +4,6 @@ import { LanguageProvider } from '@/lib/use-language';
 import { ThemeProvider } from '@/lib/use-theme';
 import './globals.css';
 import { CursorMount } from '@/components/cursor-mount';
-import { SidebarMenu } from '@/components/sidebar-menu';
 import { ViewTransitions } from '@/components/view-transitions';
 
 const rubikFont = Rubik({
@@ -40,10 +39,10 @@ export const metadata: Metadata = {
     siteName: 'Artur Basak Portfolio',
     images: [
       {
-        url: '/avatar.jpeg',
-        width: 800,
-        height: 600,
-        alt: 'Artur Basak Profile Picture',
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Artur Basak - Senior Frontend Engineer & UI/UX Enthusiast',
       },
     ],
     locale: 'en_US',
@@ -55,7 +54,7 @@ export const metadata: Metadata = {
     title: 'Artur Basak - Frontend Engineer & UI/UX Enthusiast',
     description:
       'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development.',
-    images: ['/avatar.jpeg'],
+    images: ['/og-image.png'],
     site: '@archik408',
   },
   robots: {
@@ -151,7 +150,6 @@ export default function RootLayout({
         <ThemeProvider>
           <LanguageProvider>
             <ViewTransitions>
-              <SidebarMenu />
               {children}
               <CursorMount />
             </ViewTransitions>

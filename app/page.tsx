@@ -11,46 +11,55 @@ import { FunActivitiesSection } from '@/components/fun-activities-section';
 import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
 import { DownloadResume } from '@/components/download-resume';
+import {
+  StructuredData,
+  createPersonSchema,
+  createWebsiteSchema,
+} from '@/components/structured-data';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <DownloadResume />
-      {/* Theme and Language Switchers */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <ThemeSwitcher />
-        <LanguageSwitcher />
+    <>
+      <StructuredData data={createPersonSchema()} />
+      <StructuredData data={createWebsiteSchema()} />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+        <DownloadResume />
+        {/* Theme and Language Switchers */}
+        <div className="fixed top-4 right-4 z-50 flex gap-2">
+          <ThemeSwitcher />
+          <LanguageSwitcher />
+        </div>
+
+        {/* Hero Section */}
+        <HeroSection />
+
+        {/* About Section */}
+        <AboutSection />
+
+        {/* Skills Section */}
+        <SkillsSection />
+
+        {/* Experience Section */}
+        <ExperienceSection />
+
+        {/* Testimonials Section */}
+        <TestimonialsSection />
+
+        {/* Certificates Section */}
+        <CertificatesSection />
+
+        {/* Blog Section (after Education) */}
+        <BlogSection />
+
+        {/* Fun Activities Section */}
+        <FunActivitiesSection />
+
+        {/* Contact Section */}
+        <ContactSection />
+
+        {/* Footer */}
+        <Footer />
       </div>
-
-      {/* Hero Section */}
-      <HeroSection />
-
-      {/* About Section */}
-      <AboutSection />
-
-      {/* Skills Section */}
-      <SkillsSection />
-
-      {/* Experience Section */}
-      <ExperienceSection />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
-
-      {/* Certificates Section */}
-      <CertificatesSection />
-
-      {/* Blog Section (after Education) */}
-      <BlogSection />
-
-      {/* Fun Activities Section */}
-      <FunActivitiesSection />
-
-      {/* Contact Section */}
-      <ContactSection />
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </>
   );
 }

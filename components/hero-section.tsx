@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Github, Linkedin, NotebookText, Mail, Send } from 'lucide-react';
+import { Github, Linkedin, NotebookText, Mail, Send, Wrench } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import ArticleTitle from '@/components/article-title';
 
@@ -58,6 +58,13 @@ export function HeroSection() {
             aria-label={t.blog}
           >
             <NotebookText className="w-6 h-6" />
+          </a>
+          <a
+            href="/tools"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+            aria-label={t.toolsAndExperiments || 'Tools & Experiments'}
+          >
+            <Wrench className="w-6 h-6" />
           </a>
           <a
             href="mailto:artur.basak.devingrodno@gmail.com"

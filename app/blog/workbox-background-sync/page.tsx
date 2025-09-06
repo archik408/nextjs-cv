@@ -1,142 +1,167 @@
+import type { Metadata } from 'next';
+import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import CodeBlock from '@/components/code-block';
 import ArticleTitle from '@/components/article-title';
+import { StructuredData, createArticleSchema } from '@/components/structured-data';
 
-export const metadata = {
-  title: 'Workbox Background Sync для iOS и Android WebView — практическое руководство',
+export const metadata: Metadata = generateSEOMetadata({
+  title: 'Настройка Workbox Background Sync для совместимости с iOS и Android WebView',
   description:
-    'Как расширить возможности Workbox Background Sync, чтобы оффлайн‑запросы надёжно доотправлялись на iOS/Safari и Android WebView без нативного SyncEvent.',
-};
+    'Практический гайд: как доотправлять запросы оффлайн надёжно на iOS/Safari и Android WebView. Решение проблем с Service Worker и IndexedDB.',
+  keywords:
+    'Workbox, Background Sync, Service Worker, PWA, iOS Safari, Android WebView, IndexedDB, Offline',
+  path: '/blog/workbox-background-sync',
+  type: 'article',
+  publishedTime: '2025-06-05T00:00:00.000Z',
+  author: 'Artur Basak',
+  locale: 'ru',
+});
 
 export default function ArticleWorkboxBackgroundSync() {
+  const articleSchema = createArticleSchema({
+    title: 'Настройка Workbox Background Sync для совместимости с iOS и Android WebView',
+    description:
+      'Практический гайд: как доотправлять запросы оффлайн надёжно на iOS/Safari и Android WebView. Решение проблем с Service Worker и IndexedDB.',
+    url: 'https://arturbasak.dev/blog/workbox-background-sync',
+    publishedTime: '2025-06-05T00:00:00.000Z',
+    author: 'Artur Basak',
+  });
+
   return (
-    <article className="py-10 md:py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <div className="max-w-3xl mx-auto">
-        <nav className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-3 text-sm">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-            >
-              <span>На главную</span>
-            </Link>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-            >
-              <span>К списку статей</span>
-            </Link>
+    <>
+      <StructuredData data={articleSchema} />
+      <article className="py-10 md:py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+        <div className="max-w-3xl mx-auto">
+          <nav className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3 text-sm">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+              >
+                <span>На главную</span>
+              </Link>
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+              >
+                <span>К списку статей</span>
+              </Link>
+            </div>
+            <div className="flex items-center gap-2">
+              <ThemeSwitcher />
+            </div>
+          </nav>
+
+          <ArticleTitle text="Настройка Workbox Background Sync для совместимости с iOS и Android WebView" />
+
+          {/* Article metadata */}
+          <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
+            <span>5 июня 2025</span>
+            <span>•</span>
+            <span>Artur Basak</span>
           </div>
-          <div className="flex items-center gap-2">
-            <ThemeSwitcher />
-          </div>
-        </nav>
 
-        <ArticleTitle text="Настройка Workbox Background Sync для совместимости с iOS и Android WebView" />
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            Важность надежной обработки запросов в оффлайн-режиме невозможно переоценить, особенно
+            для приложений, которые должны функционировать и в отсутствии интернет-соединения.{' '}
+            <a
+              href="https://developer.chrome.com/docs/workbox?hl=ru"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Workbox
+            </a>{' '}
+            - это мощный инструмент для управления{' '}
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Service Worker
+            </a>{' '}
+            в браузерах, он как раз призван решать подобную задачу при помощи соответствующего
+            плагина, но поддержка{' '}
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Background Sync API
+            </a>{' '}
+            не универсальна. В этой статье я покажу, как расширить Workbox, чтобы Background Sync
+            корректно работал даже на платформе iOS/Safari, которая не поддерживает Sync Manager, и
+            на старых версиях Android WebView (Chromium).
+          </p>
 
-        {/* Article metadata */}
-        <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
-          <span>5 июня 2025</span>
-          <span>•</span>
-          <span>Artur Basak</span>
-        </div>
+          <h2 className="text-2xl font-semibold mt-8 mb-3">
+            Понимание ограничений нативного Background Sync API
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            Background Sync API позволяет приложениям завершать сетевые задачи, которые были
+            прерваны в оффлайне, как только устройство восстанавливает подключение, при помощи
+            события
+            <a
+              className="underline"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://caniuse.com/mdn-api_syncevent"
+            >
+              SyncEvent
+            </a>
+            . Тем не менее, существуют два ключевых ограничения: API не поддерживается в браузере
+            Safari и может быть отключен в Android WebView (к примеру, на уровне настроек браузера,
+            в этом случае клиент получает ошибку <i>UnknownError: Background Sync is disabled)</i>.
+            Таким образом, нам необходимо обеспечить альтернативный способ обработки подобных задач.
+          </p>
 
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
-          Важность надежной обработки запросов в оффлайн-режиме невозможно переоценить, особенно для
-          приложений, которые должны функционировать и в отсутствии интернет-соединения.{' '}
-          <a
-            href="https://developer.chrome.com/docs/workbox?hl=ru"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Workbox
-          </a>{' '}
-          - это мощный инструмент для управления{' '}
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Service Worker
-          </a>{' '}
-          в браузерах, он как раз призван решать подобную задачу при помощи соответствующего
-          плагина, но поддержка{' '}
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Background Sync API
-          </a>{' '}
-          не универсальна. В этой статье я покажу, как расширить Workbox, чтобы Background Sync
-          корректно работал даже на платформе iOS/Safari, которая не поддерживает Sync Manager, и на
-          старых версиях Android WebView (Chromium).
-        </p>
+          <h2 className="text-2xl font-semibold mt-8 mb-3">
+            Использование Workbox Background Sync
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            Workbox предоставляет плагин Background Sync, который можно настроить для различных
+            сценариев обработки запросов. Мое решение значительно расширяет функционал Workbox
+            Background Sync и делает его кроссбраузерным. Не хочется писать велосипед с нуля,
+            гораздо удобнее переиспользовать все то, что уже есть в коробке плагина Workbox в части
+            готовых интерфейсов и его работы с IndexedDB для сохранения копий запросов.
+          </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-3">
-          Понимание ограничений нативного Background Sync API
-        </h2>
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
-          Background Sync API позволяет приложениям завершать сетевые задачи, которые были прерваны
-          в оффлайне, как только устройство восстанавливает подключение, при помощи события
-          <a
-            className="underline"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://caniuse.com/mdn-api_syncevent"
-          >
-            SyncEvent
-          </a>
-          . Тем не менее, существуют два ключевых ограничения: API не поддерживается в браузере
-          Safari и может быть отключен в Android WebView (к примеру, на уровне настроек браузера, в
-          этом случае клиент получает ошибку <i>UnknownError: Background Sync is disabled)</i>.
-          Таким образом, нам необходимо обеспечить альтернативный способ обработки подобных задач.
-        </p>
+          <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400 mb-6">
+            &quot;Болтовня ничего не стоит. Покажите мне код.&ldquo; Линус Торвальдс
+          </blockquote>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-3">Использование Workbox Background Sync</h2>
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
-          Workbox предоставляет плагин Background Sync, который можно настроить для различных
-          сценариев обработки запросов. Мое решение значительно расширяет функционал Workbox
-          Background Sync и делает его кроссбраузерным. Не хочется писать велосипед с нуля, гораздо
-          удобнее переиспользовать все то, что уже есть в коробке плагина Workbox в части готовых
-          интерфейсов и его работы с IndexedDB для сохранения копий запросов.
-        </p>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            Ниже инициализация фонового синхронизатора с заданными параметрами в файле
+            ServiceWorker, а также сам код расширения плагина Workbox Background Sync, который
+            повторяет запросы с интервалом и растит его экспоненциально в случае отката (так
+            называемая{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://advancedweb.hu/how-to-implement-an-exponential-backoff-retry-strategy-in-javascript/"
+            >
+              стратегия Exponential Backoff Retry
+            </a>
+            ):
+          </p>
 
-        <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400 mb-6">
-          &quot;Болтовня ничего не стоит. Покажите мне код.&ldquo; Линус Торвальдс
-        </blockquote>
-
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
-          Ниже инициализация фонового синхронизатора с заданными параметрами в файле ServiceWorker,
-          а также сам код расширения плагина Workbox Background Sync, который повторяет запросы с
-          интервалом и растит его экспоненциально в случае отката (так называемая{' '}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://advancedweb.hu/how-to-implement-an-exponential-backoff-retry-strategy-in-javascript/"
-          >
-            стратегия Exponential Backoff Retry
-          </a>
-          ):
-        </p>
-
-        <h3 className="text-xl font-semibold mt-6 mb-2">service-worker.js</h3>
-        <CodeBlock
-          code={`// service-worker.js
+          <h3 className="text-xl font-semibold mt-6 mb-2">service-worker.js</h3>
+          <CodeBlock
+            code={`// service-worker.js
 
 backgroundSyncInit(self, {
   queueName: 'OfflineRequests', // Имя очереди для хранения запросов в IndexedDB
   maxRetentionTime: 24 * 60, // Максимальное время хранения запросов в очереди (24 часа)
   urls: SYNC_URLS, // Список URL для синхронизации
 });`}
-          language="javascript"
-        />
+            language="javascript"
+          />
 
-        <h3 className="text-xl font-semibold mt-6 mb-2">backgroundSyncInit.ts</h3>
-        <CodeBlock
-          language="typescript"
-          code={`// backgroundSyncInit.ts
+          <h3 className="text-xl font-semibold mt-6 mb-2">backgroundSyncInit.ts</h3>
+          <CodeBlock
+            language="typescript"
+            code={`// backgroundSyncInit.ts
 
 import { updateAccessToken } from './accessToken'; // Импорт функций для работы с токенами
 import { FALLBACK_SYNC_EVENT, REFRESH_TOKEN_EVENT } from './events'; // Импорт событий для синхронизации
@@ -192,12 +217,12 @@ const backgroundSyncInit = (
 };
 
 export default backgroundSyncInit;`}
-        />
+          />
 
-        <h3 className="text-xl font-semibold mt-6 mb-2">createQueue.ts</h3>
-        <CodeBlock
-          language="typescript"
-          code={`// createQueue.ts
+          <h3 className="text-xl font-semibold mt-6 mb-2">createQueue.ts</h3>
+          <CodeBlock
+            language="typescript"
+            code={`// createQueue.ts
 
 import { Queue } from 'workbox-background-sync'; // Импорт класса очереди
 import { getFriendlyURL } from 'workbox-core/_private/getFriendlyURL';
@@ -384,80 +409,82 @@ const createQueue = (
 };
 
 export default createQueue;`}
-        />
-        <h3 className="text-xl font-semibold mt-6 mb-2">
-          Триггер через online - альтернатива SyncManager
-        </h3>
-        <p>
-          Триггером к началу работы очереди, вместо SyncManager может послужить более старое и
-          стабильное API, которая дает понять, что наше приложение вернулось в online:
-        </p>
-        <CodeBlock
-          code={`window.addEventListener('online', () => {
+          />
+          <h3 className="text-xl font-semibold mt-6 mb-2">
+            Триггер через online - альтернатива SyncManager
+          </h3>
+          <p>
+            Триггером к началу работы очереди, вместо SyncManager может послужить более старое и
+            стабильное API, которая дает понять, что наше приложение вернулось в online:
+          </p>
+          <CodeBlock
+            code={`window.addEventListener('online', () => {
   navigator?.serviceWorker?.controller?.postMessage({
     type: 'FALLBACK_SYNC_EVENT',
   });
 });`}
-          language="javascript"
-        />
+            language="javascript"
+          />
 
-        <h3 className="text-xl font-semibold mt-6 mb-2">Перехват изменяющих запросов в SW</h3>
-        <CodeBlock
-          code={`self.addEventListener('fetch', (event) => {
+          <h3 className="text-xl font-semibold mt-6 mb-2">Перехват изменяющих запросов в SW</h3>
+          <CodeBlock
+            code={`self.addEventListener('fetch', (event) => {
   const changeVerbs = ['POST', 'PUT', 'PATCH', 'DELETE'];
   if (!changeVerbs.includes(event.request.method)) return;
   event.respondWith(handleRequest(event));
 });`}
-          language="javascript"
-        />
+            language="javascript"
+          />
 
-        <h3 className="text-xl font-semibold mt-6 mb-2">Основные акценты реализации</h3>
-        <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4">
-          <li>
-            Я реализую кастомное событие <b>FALLBACK_SYNC_EVENT</b>, которое по факту заменяет
-            нативное событие SyncEvent.
-          </li>
-          <li>
-            <b>handleRequest</b> метод обеспечивает клонирование запроса и соответствующую повторную
-            отправку на сервер.
-          </li>
-          <li>
-            <b>hasBadStatusAndShouldBeRepeated</b> функция проверяет статус ответа и определяет,
-            требует ли запрос повторной попытки или новой отправки в очередь.
-          </li>
-          <li>
-            Метаданные запроса хранят информацию об интервале, через который запрос нужно повторить,
-            а также о том, пришел ли этот запрос после ошибочного повтора или впервые в очередь.
-          </li>
-        </ul>
+          <h3 className="text-xl font-semibold mt-6 mb-2">Основные акценты реализации</h3>
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4">
+            <li>
+              Я реализую кастомное событие <b>FALLBACK_SYNC_EVENT</b>, которое по факту заменяет
+              нативное событие SyncEvent.
+            </li>
+            <li>
+              <b>handleRequest</b> метод обеспечивает клонирование запроса и соответствующую
+              повторную отправку на сервер.
+            </li>
+            <li>
+              <b>hasBadStatusAndShouldBeRepeated</b> функция проверяет статус ответа и определяет,
+              требует ли запрос повторной попытки или новой отправки в очередь.
+            </li>
+            <li>
+              Метаданные запроса хранят информацию об интервале, через который запрос нужно
+              повторить, а также о том, пришел ли этот запрос после ошибочного повтора или впервые в
+              очередь.
+            </li>
+          </ul>
 
-        <h3 className="text-xl font-semibold mt-6 mb-2">Fallback‑синхронизация очереди в SW</h3>
-        <CodeBlock
-          code={`self.addEventListener('message', async (event) => {
+          <h3 className="text-xl font-semibold mt-6 mb-2">Fallback‑синхронизация очереди в SW</h3>
+          <CodeBlock
+            code={`self.addEventListener('message', async (event) => {
   if (event?.data?.type === 'FALLBACK_SYNC_EVENT') {
     await onQueueSync({ queue });
   }
 });`}
-          language="javascript"
-        />
+            language="javascript"
+          />
 
-        <h2 className="text-2xl font-semibold mt-8 mb-3">Практические советы</h2>
-        <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4">
-          <li>Не кладите в очередь GET/OPTIONS — они не меняют состояние.</li>
-          <li>Обновляйте access token перед пакетной доотправкой, чтобы избежать 401/403.</li>
-          <li>Логируйте причины отказов (5xx/429/сеть) и метрики повторов.</li>
-        </ul>
+          <h2 className="text-2xl font-semibold mt-8 mb-3">Практические советы</h2>
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4">
+            <li>Не кладите в очередь GET/OPTIONS — они не меняют состояние.</li>
+            <li>Обновляйте access token перед пакетной доотправкой, чтобы избежать 401/403.</li>
+            <li>Логируйте причины отказов (5xx/429/сеть) и метрики повторов.</li>
+          </ul>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-3">Итоги</h2>
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
-          Расширение возможности Workbox Background Sync для поддержки всех платформ, включая iOS и
-          частичные реализации Android WebView, требует немало кода. Тем не менее, этот код легко
-          масштабируем и готов для обработки нестандартных ошибок и ограничений, он дает
-          определенную гибкость. А самое главное, что мы все также остаемся в связке с Workbox, и в
-          случае более широкой поддержки Background Synchronization API можно легко откатиться на
-          оригинальный плагин без собственных расширений.
-        </p>
-      </div>
-    </article>
+          <h2 className="text-2xl font-semibold mt-8 mb-3">Итоги</h2>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            Расширение возможности Workbox Background Sync для поддержки всех платформ, включая iOS
+            и частичные реализации Android WebView, требует немало кода. Тем не менее, этот код
+            легко масштабируем и готов для обработки нестандартных ошибок и ограничений, он дает
+            определенную гибкость. А самое главное, что мы все также остаемся в связке с Workbox, и
+            в случае более широкой поддержки Background Synchronization API можно легко откатиться
+            на оригинальный плагин без собственных расширений.
+          </p>
+        </div>
+      </article>
+    </>
   );
 }

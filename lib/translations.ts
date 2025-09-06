@@ -95,6 +95,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     stampsDesc:
       'Collecting stamps and postal items featuring bison themes. This hobby is surprisingly close to frontend development — it helps me study various layouts, typography, and design patterns from different eras.',
     certificates: 'Education & Certificates',
+    viewCertificate: 'View Certificate',
+    closeCertificate: 'Close',
+    openInNewTab: 'Open in new tab',
     diploma: 'Diploma in Computer Science',
     college: 'Technological College Educational Institution GRSU • 2011',
     contact: 'Get In Touch',
@@ -304,6 +307,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     stampsDesc:
       'Собираю марки и почтовые предметы с изображением зубров. Это хобби удивительно близко к фронтенд-разработке — помогает изучать различные лейауты, типографику и дизайнерские паттерны разных эпох.',
     certificates: 'Образование & Сертификаты',
+    viewCertificate: 'Посмотреть сертификат',
+    closeCertificate: 'Закрыть',
+    openInNewTab: 'Открыть в новой вкладке',
     diploma: 'Диплом в области Информатики',
     college: 'Технологический колледж ГрГУ им. Янки Купалы • 2011',
     contact: 'Связаться',
