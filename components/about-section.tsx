@@ -43,7 +43,10 @@ export function AboutSection() {
               <div className="bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg">
                 <BookOpen className="w-8 h-8 mb-2 text-purple-400" />
                 <h3 className="font-semibold mb-1">{t.learning}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{t.learningDesc}</p>
+                <p
+                  className="text-sm text-gray-600 dark:text-gray-400"
+                  dangerouslySetInnerHTML={{ __html: t.learningDesc }}
+                />
               </div>
             </div>
             <Player autoplay loop src="/lottie.json" style={{ height: '300px', width: '100%' }} />

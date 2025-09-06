@@ -17,16 +17,12 @@ export function ArticleTitle({ text }: Props) {
         theme === ETheme.dark
           ? {
               backgroundImage:
-                // linear-gradient(-90deg, #112033 0, #007cb1 30%, #55389e 50%, #752884 70%, #4e1f5b 90%, #492530 100%)
                 'linear-gradient(-90deg, #395171 0, #35c3ff 30%, #a07cfb 50%, #b179bc 70%, #cc7fe0 90%, #fbadc6 100%)',
               backgroundSize: '100%',
               backgroundRepeat: 'repeat',
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              '-webkit-background-clip': 'text',
-              '-webkit-text-fill-color': 'transparent',
-              '-moz-background-clip': 'text',
-              '-moz-text-fill-color': 'transparent',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              MozBackgroundClip: 'text',
               filter: 'drop-shadow(0 0 2rem #000)',
               textShadow: 'none',
             }
@@ -35,12 +31,9 @@ export function ArticleTitle({ text }: Props) {
                 'linear-gradient(-90deg, #112033 0, #007cb1 30%, #55389e 50%, #752884 70%, #4e1f5b 90%, #492530 100%)',
               backgroundSize: '100%',
               backgroundRepeat: 'repeat',
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              '-webkit-background-clip': 'text',
-              '-webkit-text-fill-color': 'transparent',
-              '-moz-background-clip': 'text',
-              '-moz-text-fill-color': 'transparent',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              MozBackgroundClip: 'text',
               textShadow: 'none',
             }
       }

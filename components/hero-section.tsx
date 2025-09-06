@@ -3,12 +3,13 @@
 import Image from 'next/image';
 import { Github, Linkedin, NotebookText, Mail, Send } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
+import ArticleTitle from '@/components/article-title';
 
 export function HeroSection() {
   const { t } = useLanguage();
 
   return (
-    <header className="relative h-screen flex items-center justify-center">
+    <header className="hero-section relative h-screen flex items-center justify-center">
       <div className="absolute inset-0">
         <Image
           src="/background.avif"
@@ -29,7 +30,7 @@ export function HeroSection() {
             priority
           />
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold mb-4">Artur Basak</h1>
+        <ArticleTitle text={'Artur Basak'} />
         <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4">{t.role}</h2>
         <p className="text-lg md:text-base text-gray-600 dark:text-gray-300 mb-8">{t.subtitle}</p>
         <div className="flex justify-center gap-6">
@@ -53,7 +54,6 @@ export function HeroSection() {
           </a>
           <a
             href="/blog"
-            target="_blank"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
             aria-label={t.blog}
           >

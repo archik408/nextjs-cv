@@ -7,8 +7,8 @@ export const translations = {
     about: 'About Me',
     aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
 My journey is a bridge between computing eras. It began with the structured programming with <strong>Pascal</strong>, <strong>C++</strong> and <strong>Borland <abbr title="Visual Component Library">VCL</abbr></strong>, where I learned the core principles of memory management and algorithms. I then built powerful desktop and early web applications for the enterprise world using <strong>Java</strong>, <strong>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></strong> and <strong><abbr title="Standard Widget Toolkit">SWT</abbr></strong>, and gained a critical eye for quality and process through test automation with <strong>Selenium RC</strong> and later <strong>WebDriver</strong>, <strong>Cypress</strong> and <strong>Playwright</strong>.<br/><br/>
-I was on the front lines of the web's transformation, crafting dynamic applications with its first-generation tools: <strong><abbr title="Asynchronous Javascript and XML ">AJAX</abbr></strong>, <strong>jQuery</strong>, <strong>ExtJS</strong>, <strong>Angular.js</strong>, and <strong>Ember.js</strong>. This deep historical context is my greatest asset. It allows me to architect modern <strong>React</strong> and <strong>TypeScript</strong> applications with a profound understanding of the problems they solve, ensuring they are not just trendy but truly well-engineered, scalable, and built to last.<br/><br/>
-Today, I focus on creating accessible, user-centric, offline and mobile-first <strong>Progressive Web Apps (<abbr>PWA</abbr>)</strong> and robust frontend architectures.<br/>
+I was on the front lines of the web's transformation, crafting dynamic applications with its first-generation tools: <strong><abbr title="Asynchronous Javascript and XML ">AJAX</abbr></strong>, <strong>jQuery</strong>, <strong>ExtJS</strong>, <strong>Angular.js</strong>, and <strong>Ember.js</strong>. This deep historical context is my greatest asset. It allows me to architect modern <strong>React</strong>, <strong>Web Components</strong> and <strong>TypeScript</strong> applications with a profound understanding of the problems they solve, ensuring they are not just trendy but truly well-engineered, scalable, and built to last.<br/><br/>
+Today, I focus on creating accessible, user-centric, offline and mobile-first <strong>Progressive Web Apps (<abbr>PWA</abbr>)</strong> and robust frontend architectures based on modern tools like <strong>Webpack</strong>, <strong>Vite</strong>, <strong>Next.js</strong>, <strong>MobX</strong>, <strong>React-Router</strong>, <strong>Material UI</strong>, <strong>Tailwind CSS</strong>, etc.<br/>
 I've been trusted to deliver solutions for industry giants like Daimler and SAP, retailers like X5 Group ans Kohl's, tech innovators like Croc, startups like TrueImpact, Lition, Tispr/Indy and chemical leaders like Sibur and Evonik.<br/><br/>
 Now, I've come full circle: I'm passing on the logic and joy of creation to the next generation by teaching my children to code in <strong>Scratch</strong> and <strong>Blockly</strong>.`,
     cleanCode: 'Clean Code',
@@ -19,7 +19,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     bestPractices: 'Best Practices',
     bestPracticesDesc: 'Following industry standards with modern frontend frameworks and tools',
     learning: 'Learning',
-    learningDesc: 'Continuous improvement and learning through practice and MOOC platforms',
+    learningDesc:
+      'Continuous improvement and learning through practice and <abbr title="Massive Open Online Courses">MOOC</abbr> platforms (Frontend Masters, Coursera, edX)',
     skills: 'Skills',
     experience: 'Experience',
     experiences: [
@@ -208,8 +209,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     about: 'Обо мне',
     aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
 Мой путь — это мост между эпохами вычислительной техники. Он начался со структурно-процедурного программирования на <strong>Pascal</strong>, <strong>C++</strong> и <strong>Borland <abbr title="Visual Component Library">VCL</abbr></strong>, где я изучил основные принципы управления памятью и базовые алгоритмы. Затем я создавал мощные десктопные и ранние веб-приложения для корпоративного мира, используя <strong>Java</strong>, <strong>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></strong> и <strong><abbr title="Standard Widget Toolkit">SWT</abbr></strong>, а также развил критический взгляд на качество и процессы тестирования через автоматизацию тестов с <strong>Selenium RC</strong>, а позже с <strong>WebDriver</strong>, <strong>Cypress</strong> и <strong>Playwright</strong>.<br/><br/>
-Я был на передовой трансформации веб-технологий, создавая динамические приложения с помощью инструментов первого поколения: <strong><abbr title="Asynchronous Javascript and XML">AJAX</abbr></strong>, <strong>jQuery</strong>, <strong>ExtJS</strong>, <strong>Angular.js</strong> и <strong>Ember.js</strong>. Этот глубокий исторический контекст — мое наибольшее преимущество. Он позволяет мне проектировать современные приложения на <strong>React</strong> и <strong>TypeScript</strong> с глубоким пониманием проблем, которые они решают, гарантируя, что они не просто модные, а действительно хорошо спроектированные, масштабируемые и созданные на долгий срок.<br/><br/>
-Сегодня я сосредоточен на создании доступных, ориентированных на пользователя, офлайн- и mobile-first <strong>Progressive Web Apps (<abbr>PWA</abbr>)</strong> и надежных фронтенд-архитектурах.
+Я был на передовой трансформации веб-технологий, создавая динамические приложения с помощью инструментов первого поколения: <strong><abbr title="Asynchronous Javascript and XML">AJAX</abbr></strong>, <strong>jQuery</strong>, <strong>ExtJS</strong>, <strong>Angular.js</strong> и <strong>Ember.js</strong>. Этот глубокий исторический контекст — мое наибольшее преимущество. Он позволяет мне проектировать современные приложения на <strong>React</strong>, <strong>Web Components</strong> и <strong>TypeScript</strong> с глубоким пониманием проблем, которые они решают, гарантируя, что они не просто модные, а действительно хорошо спроектированные, масштабируемые и созданные на долгий срок.<br/><br/>
+Сегодня я сосредоточен на создании доступных, ориентированных на пользователя, офлайн- и mobile-first <strong>Progressive Web Apps (<abbr>PWA</abbr>)</strong> и надежных фронтенд-архитектурах на основе современных инструментов: <strong>Webpack</strong>, <strong>Vite</strong>, <strong>Next.js</strong>, <strong>MobX</strong>, <strong>React-Router</strong>, <strong>Material UI</strong>, <strong>Tailwind CSS</strong> и др.
 Мне доверяли создание решений для таких отраслевых гигантов, как Daimler и SAP, ритейлеров, таких как X5 Group и Kohl's, технологических новаторов, как КРОК, стартапов, таких как TrueImpact, Lition, Tispr/Indy, и лидеров химической промышленности, таких как СИБУР и Evonik.<br/><br/>
 Теперь я замкнул круг: передаю опыт и радость творчества следующему поколению, обучая своих детей программированию на <strong>Scratch</strong> и <strong>Blockly</strong>.`,
     cleanCode: 'Чистый код',
@@ -221,7 +222,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     bestPracticesDesc:
       'Следование отраслевым стандартам вместе с современными фреймворками и инструментами',
     learning: 'Обучение',
-    learningDesc: 'Непрерывное совершенствование и обучение через практику и MOOC платформы',
+    learningDesc:
+      'Непрерывное совершенствование и обучение через практику и <abbr title="Massive Open Online Courses">MOOC</abbr> платформы (Frontend Masters, Coursera, edX)',
     skills: 'Навыки',
     experience: 'Опыт работы',
     experiences: [
@@ -287,7 +289,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     funActivities: 'Увлечения',
     artTitle: 'Арт и Иллюстрация',
-    artDesc: 'Создание цифрового искусства и иллюстраций в свободное время',
+    artDesc: 'Создание цифрового искусства и классических иллюстраций',
     kidsTitle: 'Обучение Детей',
     kidsDesc: 'Обучение детей основам программирования в Scratch',
     cycleTitle: 'Велосипед',

@@ -33,8 +33,8 @@ export function CertificatesSection() {
             <div className="flex items-center gap-4">
               <Award className="w-8 h-8 text-green-400" />
               <div>
-                <h3 className="text-xl font-semibold">Foundation of UX Design</h3>
-                <p className="text-gray-600 dark:text-gray-400">Google • 2021</p>
+                <h3 className="text-xl font-semibold">Google UX Design</h3>
+                <p className="text-gray-600 dark:text-gray-400">Google • 2021/2025</p>
               </div>
             </div>
           </div>

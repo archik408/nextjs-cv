@@ -24,39 +24,42 @@ export default function BlogListPage() {
           </div>
         </div>
         <div className="space-y-5">
-          {sorted.map((post) => (
-            <a
-              key={post.href}
-              href={post.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block bg-white dark:bg-gray-800 p-5 rounded-lg shadow-sm dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-            >
-              <div className="flex items-start gap-4">
-                <div className="relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-700">
-                  <Image
-                    src={post.image || '/globe.svg'}
-                    alt="cover"
-                    fill
-                    className="object-contain p-3"
-                    sizes="64px"
-                    unoptimized
-                  />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-lg mb-1">{post.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{post.excerpt}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                    {formatDate(new Date(post.date))}
-                  </p>
-                  <div className="inline-flex items-center gap-2 text-blue-700 dark:text-blue-400">
-                    <ExternalLink className="w-4 h-4" />
-                    <span>{post.source}</span>
+          {sorted.map((post) => {
+            const isExternal = post.href.includes('http');
+            return (
+              <a
+                key={post.href}
+                href={post.href}
+                target={isExternal ? '_blank' : undefined}
+                rel={isExternal ? 'noopener noreferrer' : undefined}
+                className="block bg-white dark:bg-gray-800 p-5 rounded-lg shadow-sm dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-700">
+                    <Image
+                      src={post.image || '/globe.svg'}
+                      alt="cover"
+                      fill
+                      className="object-contain p-3"
+                      sizes="64px"
+                      unoptimized
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-lg mb-1">{post.title}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{post.excerpt}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                      {formatDate(new Date(post.date))}
+                    </p>
+                    <div className="inline-flex items-center gap-2 text-blue-700 dark:text-blue-400">
+                      <ExternalLink className="w-4 h-4" />
+                      <span>{post.source}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
