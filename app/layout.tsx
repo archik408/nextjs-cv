@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: 'Artur Basak Portfolio',
     images: [
       {
-        url: '/og-image.png',
+        url: '/avatar.jpeg',
         width: 1200,
         height: 630,
         alt: 'Artur Basak - Senior Frontend Engineer & UI/UX Enthusiast',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: 'Artur Basak - Frontend Engineer & UI/UX Enthusiast',
     description:
       'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development.',
-    images: ['/og-image.png'],
+    images: ['/avatar.jpeg'],
     site: '@archik408',
   },
   robots: {

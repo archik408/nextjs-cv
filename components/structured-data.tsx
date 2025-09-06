@@ -71,7 +71,7 @@ export const createArticleSchema = (article: {
     name: 'Artur Basak',
     url: 'https://arturbasak.dev',
   },
-  image: article.image || 'https://arturbasak.dev/og-image.png',
+  image: article.image || 'https://arturbasak.dev/avatar.jpeg',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': article.url,
