@@ -84,12 +84,16 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     funActivities: 'Fun Activities',
     artTitle: 'Art & Illustration',
-    artDesc: 'Creating digital art and illustrations in my free time',
+    artDesc:
+      'Creating digital art and classical illustrations based on mythological creatures, as well as exhibitions in museums and castles, creating printed books with my illustrations',
     kidsTitle: 'Kids Programming',
     kidsDesc: 'Teaching children programming basics with Scratch',
     cycleTitle: 'Cycling',
     cycleDesc:
       'Enjoying long-distance cycling and city rides — it helps me reset my mind and find elegant solutions to complex engineering problems.',
+    stampsTitle: 'Stamp Collecting',
+    stampsDesc:
+      'Collecting stamps and postal items featuring bison themes. This hobby is surprisingly close to frontend development — it helps me study various layouts, typography, and design patterns from different eras.',
     certificates: 'Education & Certificates',
     diploma: 'Diploma in Computer Science',
     college: 'Technological College Educational Institution GRSU • 2011',
@@ -289,12 +293,16 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     funActivities: 'Увлечения',
     artTitle: 'Арт и Иллюстрация',
-    artDesc: 'Создание цифрового искусства и классических иллюстраций',
+    artDesc:
+      'Создание цифрового искусства и классических иллюстраций на основе мифологических существ, а также выставки в музеях и замках, создание печатных книг с моими иллюстрациями',
     kidsTitle: 'Обучение Детей',
     kidsDesc: 'Обучение детей основам программирования в Scratch',
     cycleTitle: 'Велосипед',
     cycleDesc:
       'Дальние и городские велопоездки — это помогает перезагрузиться и находить изящные решения сложных задач',
+    stampsTitle: 'Коллекционирование марок',
+    stampsDesc:
+      'Собираю марки и почтовые предметы с изображением зубров. Это хобби удивительно близко к фронтенд-разработке — помогает изучать различные лейауты, типографику и дизайнерские паттерны разных эпох.',
     certificates: 'Образование & Сертификаты',
     diploma: 'Диплом в области Информатики',
     college: 'Технологический колледж ГрГУ им. Янки Купалы • 2011',
