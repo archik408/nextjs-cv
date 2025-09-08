@@ -60,7 +60,9 @@ export function SkillsSection() {
               aria-label={`Search for ${skill} on Google`}
             >
               <div className="flex items-center gap-3">
-                <TechIcon name={skill} size={20} />
+                <span className="hidden md:block">
+                  <TechIcon name={skill} size={20} />
+                </span>
                 <span className="font-medium text-blue-900 dark:text-white">{skill}</span>
               </div>
             </button>

@@ -135,4 +135,13 @@ export const seoConfigs = {
       'OCR, Text Recognition, Image to Text, Russian OCR, English OCR, Tesseract, Image Processing',
     path: '/ocr',
   },
+  svgOptimizer: {
+    title: 'SVG Optimizer - Clean and Optimize SVG Code',
+    description:
+      'Optimize your SVG code by removing unnecessary attributes, empty groups, and metadata. Reduce file size and improve performance.',
+    keywords: 'SVG, optimization, clean, minify, performance, web development',
+    path: '/svg-optimizer',
+    type: 'website',
+    locale: 'en',
+  },
 } as const;

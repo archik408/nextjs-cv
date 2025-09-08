@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import Image from 'next/image';
@@ -22,6 +22,11 @@ export function CertificateModal({
   isImage = false,
 }: CertificateModalProps) {
   const { t } = useLanguage();
+  const [isLoading, setIsLoading] = useState<boolean>(!!isImage);
+
+  useEffect(() => {
+    setIsLoading(!!isImage);
+  }, [url, isImage]);
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -75,8 +80,21 @@ export function CertificateModal({
         <div className="flex-1 p-4 flex items-center justify-center relative">
           {isImage ? (
             <div className="relative w-full h-full max-w-4xl">
-              <Image src={url} alt={title} fill className="object-contain rounded" priority />
-              <CertificateRibbon />
+              {/* Skeleton */}
+              {isLoading && (
+                <div className="absolute inset-0 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                  <div className="animate-pulse w-full h-full bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
+                </div>
+              )}
+              <Image
+                src={url}
+                alt={title}
+                fill
+                className={`object-contain rounded ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+                priority
+                onLoadingComplete={() => setIsLoading(false)}
+              />
+              {!isLoading && <CertificateRibbon />}
             </div>
           ) : (
             <iframe

@@ -122,7 +122,7 @@ export default function RootLayout({
     speaksLanguage: ['English', 'Belarusian', 'Russian'],
   };
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

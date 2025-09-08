@@ -11,7 +11,13 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "type-check": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "security:audit": "npm audit --audit-level=moderate",
+    "security:audit:fix": "npm audit fix",
+    "security:check": "npm run security:audit && npm run security:headers",
+    "security:headers": "node scripts/check-security-headers.js",
+    "pre-commit": "npm run security:check && lint-staged",
+    "test:security": "node scripts/security-test.js"
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.6.0",
@@ -22,6 +28,7 @@
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "svgo": "^4.0.0",
     "tesseract.js": "^6.0.1"
   },
   "devDependencies": {
@@ -53,5 +60,10 @@
     "*.{json,css,md}": [
       "prettier --write"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
   }
 }

@@ -13,9 +13,10 @@ import {
   Code,
   Zap,
   ArrowRight,
-  Home,
   Binary,
+  Wrench,
 } from 'lucide-react';
+import NavigationButtons from '@/components/NavigationButtons';
 
 export function ToolsPageClient() {
   const { t } = useLanguage();
@@ -42,6 +43,18 @@ export function ToolsPageClient() {
       href: '/algorithms',
       status: 'ready',
       color: 'green',
+      isExternal: false,
+    },
+    {
+      id: 'svg-optimizer',
+      title: t.svgOptimizer || 'SVG Optimizer',
+      description:
+        t.svgOptimizerDesc ||
+        'Optimize your SVG code by removing unnecessary attributes, empty groups, and metadata.',
+      icon: Zap,
+      href: '/svg-optimizer',
+      status: 'ready',
+      color: 'purple',
       isExternal: false,
     },
     {
@@ -216,15 +229,7 @@ export function ToolsPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <div className="fixed top-4 left-4 z-50 flex gap-2">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 px-3 py-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg hover:bg-white dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 shadow-lg transition-colors"
-          title={t.home || 'Home'}
-        >
-          <Home className="w-4 h-4" />
-        </Link>
-      </div>
+      <NavigationButtons />
       <div className="fixed top-4 right-4 z-50 flex gap-2">
         <ThemeSwitcher />
         <LanguageSwitcher />
@@ -246,7 +251,7 @@ export function ToolsPageClient() {
           {/* Tools Section */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-              <Code className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              <Wrench className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               {t.tools || 'Tools'}
             </h2>
 
