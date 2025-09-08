@@ -247,6 +247,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgToJsxError: 'Failed to convert to JSX',
     svgJsxCopy: 'Copy',
     svgJsxCopied: 'Copied!',
+    toTop: 'To the top',
   },
   [ELanguage.ru]: {
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
@@ -498,6 +499,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgToJsxError: 'Не удалось конвертировать в JSX',
     svgJsxCopy: 'Копировать',
     svgJsxCopied: 'Скопировано!',
+    toTop: 'Наверх',
   },
 } as const;
 

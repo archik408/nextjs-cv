@@ -32,6 +32,29 @@ export function ViewTransitions({ children }: ViewTransitionsProps) {
       return;
     }
 
+    const prefetchInternal = (href: string) => {
+      try {
+        if (
+          href &&
+          !href.startsWith('http') &&
+          !href.startsWith('mailto:') &&
+          !href.startsWith('tel:')
+        ) {
+          router.prefetch?.(href);
+        }
+      } catch {}
+    };
+
+    // Prefetch visible internal links shortly after mount
+    setTimeout(() => {
+      const links = Array.from(document.querySelectorAll('a[href]')) as HTMLAnchorElement[];
+      links.forEach((a) => {
+        const href = a.getAttribute('href') || '';
+        prefetchInternal(href);
+        a.addEventListener('mouseenter', () => prefetchInternal(href), { once: true });
+      });
+    }, 150);
+
     const handleLinkClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       const link = target.closest('a[href]') as HTMLAnchorElement;
@@ -61,13 +84,13 @@ export function ViewTransitions({ children }: ViewTransitionsProps) {
 
       event.preventDefault();
       isNavigatingRef.current = true;
-
       link.classList.add('transitioning');
 
       if (supportsViewTransitionsRef.current && document.startViewTransition) {
         document
           .startViewTransition(() => {
             return new Promise((resolve) => {
+              prefetchInternal(href);
               router.push(href);
               setTimeout(resolve, 50);
             });
@@ -78,10 +101,11 @@ export function ViewTransitions({ children }: ViewTransitionsProps) {
           });
       } else {
         setTimeout(() => {
+          prefetchInternal(href);
           router.push(href);
           isNavigatingRef.current = false;
           link.classList.remove('transitioning');
-        }, 100);
+        }, 80);
       }
     };
 

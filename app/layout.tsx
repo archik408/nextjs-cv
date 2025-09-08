@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/lib/use-theme';
 import './globals.css';
 import { CursorMount } from '@/components/cursor-mount';
 import { ViewTransitions } from '@/components/view-transitions';
+import { BackToTop } from '@/components/back-to-top';
 
 const rubikFont = Rubik({
   subsets: ['latin'],
@@ -152,6 +153,7 @@ export default function RootLayout({
             <ViewTransitions>
               {children}
               <CursorMount />
+              <BackToTop />
             </ViewTransitions>
           </LanguageProvider>
         </ThemeProvider>

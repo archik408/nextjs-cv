@@ -106,7 +106,7 @@ export function CertificatesSection() {
               <div className="flex items-center gap-4">
                 <Award className="min-w-8 w-8 h-8 text-purple-400" />
                 <div>
-                  <h3 className="text-xl font-semibold">Introduction to Web Accessibility</h3>
+                  <h3 className="text-xl font-semibold">Web Accessibility</h3>
                   <p className="text-gray-600 dark:text-gray-400">W3Cx WAI0.1x • 2021</p>
                 </div>
               </div>
