@@ -6,6 +6,7 @@ import './globals.css';
 import { CursorMount } from '@/components/cursor-mount';
 import { ViewTransitions } from '@/components/view-transitions';
 import { BackToTop } from '@/components/back-to-top';
+import { Analytics } from '@vercel/analytics/next';
 
 const rubikFont = Rubik({
   subsets: ['latin'],
@@ -157,6 +158,7 @@ export default function RootLayout({
             </ViewTransitions>
           </LanguageProvider>
         </ThemeProvider>
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
