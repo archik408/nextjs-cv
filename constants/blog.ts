@@ -10,6 +10,16 @@ type Post = {
 
 export const posts: Post[] = [
   {
+    title: '15 лет в коммерческой разработке: что я понял? Что ничего не понял',
+    excerpt:
+      'Набор рабочих тезисов о профессии, знаниях, титулах и продуктах — без абсолютных истин.',
+    href: '/blog/15-years-in-dev',
+    image: '/macbook.svg',
+    source: 'On-site',
+    date: '2025-09-11',
+    author: 'Artur Basak',
+  },
+  {
     title: 'Настройка Workbox Background Sync для совместимости с iOS и Android WebView',
     excerpt:
       'Практический гайд: как доотправлять запросы оффлайн надёжно на iOS/Safari и Android WebView.',
