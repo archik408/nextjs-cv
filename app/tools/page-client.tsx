@@ -7,7 +7,6 @@ import { useLanguage } from '@/lib/use-language';
 import {
   ScanText,
   Palette,
-  Calculator,
   QrCode,
   Image as ImageIcon,
   Code,
@@ -15,8 +14,9 @@ import {
   ArrowRight,
   Binary,
   Wrench,
+  RefreshCcw,
 } from 'lucide-react';
-import NavigationButtons from '@/components/NavigationButtons';
+import NavigationButtons from '@/components/navigation-buttons';
 
 export function ToolsPageClient() {
   const { t } = useLanguage();
@@ -31,6 +31,18 @@ export function ToolsPageClient() {
       href: '/ocr',
       status: 'ready',
       color: 'blue',
+      isExternal: false,
+    },
+    {
+      id: 'event-loop',
+      title: t.eventLoopTitle || 'JavaScript Event Loop',
+      description:
+        t.eventLoopDescription ||
+        'Interactive visualization of the JS runtime: Call Stack, Web APIs, Task Queue and Microtask Queue.',
+      icon: RefreshCcw,
+      href: '/event-loop',
+      status: 'ready',
+      color: 'indigo',
       isExternal: false,
     },
     {
@@ -65,16 +77,6 @@ export function ToolsPageClient() {
       href: '#',
       status: 'coming-soon',
       color: 'purple',
-      isExternal: false,
-    },
-    {
-      id: 'calculator',
-      title: 'Advanced Calculator',
-      description: 'Scientific calculator with programming functions',
-      icon: Calculator,
-      href: '#',
-      status: 'coming-soon',
-      color: 'green',
       isExternal: false,
     },
     {

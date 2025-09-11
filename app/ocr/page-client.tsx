@@ -5,7 +5,7 @@ import { createWorker } from 'tesseract.js';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { useLanguage } from '@/lib/use-language';
-import NavigationButtons from '@/components/NavigationButtons';
+import NavigationButtons from '@/components/navigation-buttons';
 
 export function OCRPageClient() {
   const { t } = useLanguage();

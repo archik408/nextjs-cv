@@ -144,4 +144,12 @@ export const seoConfigs = {
     type: 'website',
     locale: 'en',
   },
+  eventLoop: {
+    title: 'JavaScript Event Loop Visualization',
+    description:
+      'Animated visual explanation of the JS runtime: Call Stack, Web APIs, Task Queue and Microtask Queue with examples like fetch and setTimeout.',
+    keywords:
+      'JavaScript, Event Loop, Call Stack, Microtask Queue, Task Queue, Web APIs, setTimeout, fetch, setInterval, IndexedDB',
+    path: '/event-loop',
+  },
 } as const;

@@ -6,7 +6,7 @@ import { LanguageSwitcher } from '@/components/language-switcher';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { Download, Copy, Check, AlertCircle, Zap } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
-import NavigationButtons from '@/components/NavigationButtons';
+import NavigationButtons from '@/components/navigation-buttons';
 
 export function SVGOptimizerPageClient() {
   const { t } = useLanguage();
