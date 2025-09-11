@@ -87,13 +87,16 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     artDesc:
       'Creating digital art and classical illustrations based on mythological creatures, as well as exhibitions in museums and castles, creating printed books with my illustrations',
     kidsTitle: 'Kids Programming',
-    kidsDesc: 'Teaching children programming basics with Scratch',
+    kidsDesc: 'Teaching children programming basics with Scratch and Blockly',
     cycleTitle: 'Cycling',
     cycleDesc:
       'Enjoying long-distance cycling and city rides — it helps me reset my mind and find elegant solutions to complex engineering problems.',
     stampsTitle: 'Stamp Collecting',
     stampsDesc:
       'Collecting stamps and postal items featuring bison themes. This hobby is surprisingly close to frontend development — it helps me study various layouts, typography, and design patterns from different eras.',
+    batmobileTitle: 'Batmobiles Collection',
+    batmobileDesc:
+      'As a DC Comics fan, I collect Batmobile models from different eras — from classic TV-series to modern cinematic universes.',
     certificates: 'Education & Certificates',
     viewCertificate: 'View Certificate',
     closeCertificate: 'Close',
@@ -393,13 +396,16 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     artDesc:
       'Создание цифрового искусства и классических иллюстраций на основе мифологических существ, а также выставки в музеях и замках, создание печатных книг с моими иллюстрациями',
     kidsTitle: 'Обучение Детей',
-    kidsDesc: 'Обучение детей основам программирования в Scratch',
+    kidsDesc: 'Обучение детей основам программирования в Scratch и Blockly',
     cycleTitle: 'Велосипед',
     cycleDesc:
       'Дальние и городские велопоездки — это помогает перезагрузиться и находить изящные решения сложных задач',
     stampsTitle: 'Коллекционирование марок',
     stampsDesc:
       'Собираю марки и почтовые предметы с изображением зубров. Это хобби удивительно близко к фронтенд-разработке — помогает изучать различные лейауты, типографику и дизайнерские паттерны разных эпох.',
+    batmobileTitle: 'Коллекция Бэтмобилей',
+    batmobileDesc:
+      'Как поклонник DC Comics, коллекционирую модели Бэтмобилей разных эпох — от классических сериалов до современных кино-вселенных.',
     certificates: 'Образование & Сертификаты',
     viewCertificate: 'Посмотреть сертификат',
     closeCertificate: 'Закрыть',

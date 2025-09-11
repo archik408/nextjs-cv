@@ -1,12 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
 import { Github, Linkedin, NotebookText, Mail, Send, Wrench } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import ArticleTitle from '@/components/article-title';
 
 export function HeroSection() {
   const { t } = useLanguage();
+  const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <header className="hero-section relative h-screen flex items-center justify-center">
@@ -21,14 +23,33 @@ export function HeroSection() {
       </div>
       <div className="relative z-10 text-center px-4">
         <div className="mb-8 flex justify-center">
-          <Image
-            src="/avatar.jpeg"
-            alt="Artur Basak"
-            width={160}
-            height={160}
-            className="rounded-full border-4 border-blue-500 object-cover"
-            priority
-          />
+          <div
+            className="group relative w-40 h-40 [perspective:1000px] cursor-pointer"
+            onClick={() => setIsFlipped((prev) => !prev)}
+            aria-label="Avatar flip card"
+            role="button"
+          >
+            <div
+              className={`relative size-full transition-transform duration-700 [transform-style:preserve-3d] ${
+                isFlipped ? 'rotate-y-180' : ''
+              } group-hover:rotate-y-180`}
+            >
+              <Image
+                src="/avatar.jpeg"
+                alt="Artur Basak"
+                fill
+                className="absolute inset-0 rounded-full border-4 border-blue-500 object-cover [backface-visibility:hidden]"
+                priority
+              />
+              <Image
+                src="/back-bg.jpg"
+                alt="Background"
+                fill
+                className="absolute inset-0 rounded-full border-4 border-blue-500 object-cover rotate-y-180 [backface-visibility:hidden]"
+                priority
+              />
+            </div>
+          </div>
         </div>
         <ArticleTitle text={'Artur Basak'} />
         <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4">{t.role}</h2>

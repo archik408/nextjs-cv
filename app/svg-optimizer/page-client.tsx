@@ -349,7 +349,7 @@ export function SVGOptimizerPageClient() {
           <button
             onClick={handleOptimize}
             disabled={isProcessing || !inputSvg.trim()}
-            className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg transition-colors"
+            className="w-fit flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg transition-colors"
           >
             {isProcessing ? (
               <>

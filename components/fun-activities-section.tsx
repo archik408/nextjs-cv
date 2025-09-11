@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Palette, Users, Bike, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Palette, Users, Bike, Mail, ChevronLeft, ChevronRight, Car } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import { useState, useRef } from 'react';
 
@@ -27,6 +27,21 @@ export function FunActivitiesSection() {
       ],
     },
     {
+      id: 'stamps',
+      title: t.stampsTitle,
+      description: t.stampsDesc,
+      icon: Mail,
+      color: 'text-blue-600',
+      href: 'https://zubry.by',
+      isExternal: true,
+      images: [
+        {
+          src: 'https://www.zubry.by/assets/pics/slide1.jpg',
+          alt: 'Bison stamps and postal items collection',
+        },
+      ],
+    },
+    {
       id: 'kids',
       title: t.kidsTitle,
       description: t.kidsDesc,
@@ -43,19 +58,12 @@ export function FunActivitiesSection() {
       images: [{ src: '/cycling.jpg', alt: 'Cycling family trip' }],
     },
     {
-      id: 'stamps',
-      title: t.stampsTitle,
-      description: t.stampsDesc,
-      icon: Mail,
-      color: 'text-blue-600',
-      href: 'https://zubry.by',
-      isExternal: true,
-      images: [
-        {
-          src: 'https://www.zubry.by/assets/pics/slide1.jpg',
-          alt: 'Bison stamps and postal items collection',
-        },
-      ],
+      id: 'batmobiles',
+      title: t.batmobileTitle,
+      description: t.batmobileDesc,
+      icon: Car,
+      color: 'text-indigo-600',
+      images: [{ src: '/batman.jpg', alt: 'Batmobiles collection inspired by DC Comics' }],
     },
   ];
 
