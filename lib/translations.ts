@@ -214,6 +214,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgOptimizer: 'SVG Optimizer',
     svgOptimizerDesc:
       'Optimize your SVG code by removing unnecessary attributes, empty groups, and metadata',
+    svgNoOpMode: 'No-op mode (only strip doctype/comments)',
+    svgSafeMode: 'Safe mode (preserve filters, defs, transforms)',
     svgUploadLabel: 'Upload SVG File (Optional)',
     svgInputLabel: 'SVG Code Input',
     svgInputPlaceholder: 'Paste your SVG code here...',
@@ -244,6 +246,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgToJsxDesc: 'Transforms attributes to camelCase and converts inline styles to JSX objects.',
     svgToJsxButton: 'Convert to JSX',
     svgJsxOutputLabel: 'JSX Output',
+    svgJsxPreviewLabel: 'JSX Preview',
     svgToJsxError: 'Failed to convert to JSX',
     svgJsxCopy: 'Copy',
     svgJsxCopied: 'Copied!',
@@ -518,6 +521,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgOptimizer: 'Оптимизатор SVG',
     svgOptimizerDesc:
       'Оптимизируйте ваш SVG код, удаляя ненужные атрибуты, пустые группы и метаданные',
+    svgNoOpMode: 'No-op режим (удалить только doctype/комментарии)',
+    svgSafeMode: 'Безопасный режим (сохранить filters, defs, transforms)',
     svgUploadLabel: 'Загрузить файл SVG (необязательно)',
     svgInputLabel: 'Ввод SVG кода',
     svgInputPlaceholder: 'Вставьте сюда ваш SVG код...',
@@ -548,6 +553,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgToJsxDesc: 'Преобразует атрибуты в camelCase и переводит inline-стили в объект JSX.',
     svgToJsxButton: 'Конвертировать в JSX',
     svgJsxOutputLabel: 'JSX результат',
+    svgJsxPreviewLabel: 'Предпросмотр JSX',
     svgToJsxError: 'Не удалось конвертировать в JSX',
     svgJsxCopy: 'Копировать',
     svgJsxCopied: 'Скопировано!',

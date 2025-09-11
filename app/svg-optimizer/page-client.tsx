@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { ThemeSwitcher } from '@/components/theme-switcher';
@@ -14,6 +14,8 @@ export function SVGOptimizerPageClient() {
   const [optimizedSvg, setOptimizedSvg] = useState<string>('');
   const [jsxCode, setJsxCode] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState(false);
+  const [safeMode, setSafeMode] = useState(false);
+  const [noOpMode, setNoOpMode] = useState(false);
   const [error, setError] = useState<string>('');
   const [stats, setStats] = useState<{
     originalSize: number;
@@ -42,7 +44,7 @@ export function SVGOptimizerPageClient() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ svg: inputSvg }),
+        body: JSON.stringify({ svg: inputSvg, safeMode, noOpMode }),
       });
 
       if (!response.ok) {
@@ -181,7 +183,60 @@ export function SVGOptimizerPageClient() {
 
     // Self-close empty elements where appropriate (basic)
     output = output.replace(/<([a-zA-Z][^>\s]*)\s*><\/\1>/g, '<$1 />');
-    return output;
+
+    // Collect all ids
+    const idSet = new Set<string>();
+    const idAttrRegex = /\sid=("([^"]+)"|'([^']+)')/g;
+    let m: RegExpExecArray | null;
+    while ((m = idAttrRegex.exec(output)) !== null) {
+      const idVal = m[2] || m[3];
+      if (idVal) idSet.add(idVal);
+    }
+
+    // Map ids -> useId variables
+    const makeVarName = (id: string) => {
+      const base = id.replace(/[^a-zA-Z0-9_]/g, '_').replace(/^([^a-zA-Z_])/, '_$1');
+      return `${base}Id`;
+    };
+    const idMap = new Map<string, string>();
+    Array.from(idSet).forEach((id) => {
+      idMap.set(id, makeVarName(id));
+    });
+
+    // Replace id="x" -> id={xId}
+    idMap.forEach((varName, origId) => {
+      const re = new RegExp(`(\\sid=)(["'])${origId}\\2`, 'g');
+      output = output.replace(re, `$1{${varName}}`);
+    });
+
+    // Replace url(#x) -> url(${xId}) in attributes and inline styles
+    const urlRefRegex = /url\(#([^)]+)\)/g;
+    output = output.replace(urlRefRegex, (_m, refId) => {
+      const varName = idMap.get(refId);
+      return varName ? `url(#$\{${varName}\})` : _m;
+    });
+
+    // Ensure attributes containing ${...} become JSX template strings: attr={`...${var}...`}
+    // Double-quoted attributes
+    output = output.replace(/(\s[\w:.-]+=)"([^"]*\$\{[^}]+\}[^"]*)"/g, (_m, p1, p2) => {
+      return `${p1}{\`${p2}\`}`;
+    });
+    // Single-quoted attributes
+    output = output.replace(/(\s[\w:.-]+=)'([^']*\$\{[^}]+\}[^']*)'/g, (_m, p1, p2) => {
+      return `${p1}{\`${p2}\`}`;
+    });
+
+    // Inject {...props} into root <svg>
+    output = output.replace(/<svg(\s|>)/, '<svg {...props}$1');
+
+    // Build component code with useId declarations
+    const idDecls = Array.from(idMap.values())
+      .map((v) => `  const ${v} = useId();`)
+      .join('\n');
+
+    const component = `import React, { useId } from 'react';\n\nexport function SvgIcon(props: React.SVGProps<SVGSVGElement>) {\n${idDecls ? idDecls + '\n' : ''}  return (\n    ${output}\n  );\n}\n`;
+
+    return component;
   };
 
   const handleConvertToJsx = () => {
@@ -271,8 +326,26 @@ export function SVGOptimizerPageClient() {
           />
         </div>
 
-        {/* Optimize Button */}
-        <div className="mb-6">
+        {/* Options + Optimize Button */}
+        <div className="mb-6 flex flex-col gap-3">
+          <label className="inline-flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={noOpMode}
+              onChange={(e) => setNoOpMode(e.target.checked)}
+              className="h-4 w-4"
+            />
+            <span>{t.svgNoOpMode || 'No-op mode (only strip doctype/comments)'}</span>
+          </label>
+          <label className="inline-flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={safeMode}
+              onChange={(e) => setSafeMode(e.target.checked)}
+              className="h-4 w-4"
+            />
+            <span>{t.svgSafeMode || 'Safe mode (preserve filters, defs, transforms)'}</span>
+          </label>
           <button
             onClick={handleOptimize}
             disabled={isProcessing || !inputSvg.trim()}

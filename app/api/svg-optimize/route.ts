@@ -18,6 +18,8 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json().catch(() => null);
     const svg: unknown = body && (body as any).svg;
+    const safeMode: boolean = Boolean(body && (body as any).safeMode);
+    const noOpMode: boolean = Boolean(body && (body as any).noOpMode);
 
     if (typeof svg !== 'string' || svg.trim().length === 0) {
       return NextResponse.json(
@@ -37,27 +39,78 @@ export async function POST(req: NextRequest) {
     // Strip any script blocks defensively (SVGO will also remove them)
     const svgWithoutScripts = trimmed.replace(/<script[\s\S]*?<\/script>/gi, '');
 
-    // SVGO v3 valid plugins only
+    // SVGO v3 configuration tuned to preserve filters/clipPaths/gradients and foreignObject
+    // Key points:
+    // - cleanupIds disabled to avoid breaking url(#id) references
+    // - removeUnknownsAndDefaults disabled to keep foreignObject and its children
+    // - inlineStyles disabled to avoid rewriting CSS like backdrop-filter
+    // - removeUselessDefs disabled to prevent accidental removal of referenced <defs>
     const result = optimize(svgWithoutScripts, {
-      plugins: [
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        { name: 'preset-default', params: { overrides: { removeViewBox: false } } },
-        'removeXMLNS',
-        'removeEmptyContainers',
-        'removeMetadata',
-        'removeTitle',
-        'removeDesc',
-        'removeStyleElement',
-        'removeScripts',
-        'removeEmptyAttrs',
-        'removeHiddenElems',
-        'removeUselessDefs',
-        'removeUnusedNS',
-        'removeDoctype',
-        'removeComments',
-        'sortAttrs',
-      ],
+      multipass: true,
+      plugins: noOpMode
+        ? [
+            // No-op mode: keep structure; only strip doctype/comments (scripts removed earlier)
+            'removeDoctype',
+            'removeComments',
+          ]
+        : safeMode
+          ? [
+              {
+                name: 'preset-default',
+                params: {
+                  overrides: {
+                    removeViewBox: false,
+                    cleanupIds: false,
+                    removeUnknownsAndDefaults: false,
+                    inlineStyles: false,
+                    removeUselessDefs: false,
+                    convertPathData: false,
+                    mergePaths: false,
+                    convertShapeToPath: false,
+                    collapseGroups: false,
+                    moveElemsAttrsToGroup: false,
+                    moveGroupAttrsToElems: false,
+                    convertTransform: false,
+                    cleanupNumericValues: false,
+                    minifyStyles: false,
+                    removeHiddenElems: false,
+                    removeEmptyAttrs: false,
+                    removeUnusedNS: false,
+                    sortAttrs: false,
+                  },
+                },
+              },
+              'removeScripts',
+              'removeDoctype',
+              'removeComments',
+            ]
+          : [
+              {
+                name: 'preset-default',
+                params: {
+                  overrides: {
+                    removeViewBox: false,
+                    cleanupIds: false,
+                    removeUnknownsAndDefaults: false,
+                    inlineStyles: false,
+                    removeUselessDefs: false,
+                  },
+                },
+              },
+              // Keep namespace; some consumers rely on xmlns for embedded content
+              // 'removeXMLNS',
+              'removeMetadata',
+              'removeTitle',
+              'removeDesc',
+              'removeScripts',
+              'removeEmptyAttrs',
+              'removeHiddenElems',
+              // 'removeUselessDefs', // handled above via preset override
+              'removeUnusedNS',
+              'removeDoctype',
+              'removeComments',
+              'sortAttrs',
+            ],
     });
 
     if ((result as any).error) {
