@@ -254,6 +254,26 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgJsxCopy: 'Copy',
     svgJsxCopied: 'Copied!',
     toTop: 'To the top',
+    // Image Placeholder Page
+    imgPhTitle: 'Image Placeholder',
+    imgPhDesc:
+      'Generate placeholder image URLs with custom width/height. Return a gray box with size text or a random illustration from public/image-placeholders.',
+    imgPhParamsTitle: 'Parameters',
+    imgPhPreviewTitle: 'Preview',
+    imgPhWidth: 'Width (px)',
+    imgPhHeight: 'Height (px)',
+    imgPhShowIllustration: 'Show illustration (if available)',
+    imgPhUseOriginal: 'Use original image size (ignore width/height)',
+    imgPhCollectionLabel: 'Collection (optional)',
+    imgPhCollectionAny: '— Any —',
+    imgPhCollectionHint: 'Folder inside /public/image-placeholders',
+    imgPhLink: 'Link',
+    imgPhCopy: 'Copy',
+    imgPhCopied: 'Copied',
+    imgPhCopiedFullUrlNote: 'Full URL will include your domain (origin).',
+    // Tools Page - Image Placeholder
+    imgPhToolTitle: 'Image Placeholder',
+    imgPhToolDesc: 'Generate placeholder URLs with custom size or random illustration',
     // Event Loop Page
     eventLoopTitle: 'JavaScript Event Loop',
     eventLoopDescription:
@@ -564,6 +584,26 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgJsxCopy: 'Копировать',
     svgJsxCopied: 'Скопировано!',
     toTop: 'Наверх',
+    // Image Placeholder Page
+    imgPhTitle: 'Image Placeholder',
+    imgPhDesc:
+      'Генерируйте URL плейсхолдера нужного размера. Возвращает серый бокс с размерами или случайную иллюстрацию из public/image-placeholders.',
+    imgPhParamsTitle: 'Параметры',
+    imgPhPreviewTitle: 'Превью',
+    imgPhWidth: 'Ширина (px)',
+    imgPhHeight: 'Высота (px)',
+    imgPhShowIllustration: 'Показывать иллюстрацию (если есть)',
+    imgPhUseOriginal: 'Оригинальный размер изображения (игнорировать ширину/высоту)',
+    imgPhCollectionLabel: 'Коллекция (необязательно)',
+    imgPhCollectionAny: '— Любая —',
+    imgPhCollectionHint: 'Папка внутри /public/image-placeholders',
+    imgPhLink: 'Ссылка',
+    imgPhCopy: 'Копировать',
+    imgPhCopied: 'Скопировано',
+    imgPhCopiedFullUrlNote: 'В буфер будет скопирован полный URL с доменом.',
+    // Tools Page - Image Placeholder
+    imgPhToolTitle: 'Image Placeholder',
+    imgPhToolDesc: 'Генерирует URL плейсхолдера с нужным размером или случайной иллюстрацией',
     // Event Loop Page
     eventLoopTitle: 'JavaScript Event Loop',
     eventLoopDescription:

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { optimize } from 'svgo';
+// Import svgo dynamically inside the handler in production to avoid bundling issues on Vercel
 import { secureHeaders, RateLimiter } from '@/lib/security';
 
 // 20 requests per minute per IP
@@ -38,6 +38,9 @@ export async function POST(req: NextRequest) {
 
     // Strip any script blocks defensively (SVGO will also remove them)
     const svgWithoutScripts = trimmed.replace(/<script[\s\S]*?<\/script>/gi, '');
+
+    // Load svgo at runtime (avoids css-tree data file resolution issues in some edge runtimes)
+    const { optimize } = await import('svgo');
 
     // SVGO v3 configuration tuned to preserve filters/clipPaths/gradients and foreignObject
     // Key points:

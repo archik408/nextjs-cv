@@ -34,6 +34,17 @@ export function ToolsPageClient() {
       isExternal: false,
     },
     {
+      id: 'image-placeholder',
+      title: t.imgPhToolTitle || 'Image Placeholder',
+      description:
+        t.imgPhToolDesc || 'Generate placeholder URLs with custom size or random illustration',
+      icon: ImageIcon,
+      href: '/image-placeholder',
+      status: 'ready',
+      color: 'purple',
+      isExternal: false,
+    },
+    {
       id: 'event-loop',
       title: t.eventLoopTitle || 'JavaScript Event Loop',
       description:
@@ -66,7 +77,7 @@ export function ToolsPageClient() {
       icon: Zap,
       href: '/svg-optimizer',
       status: 'ready',
-      color: 'purple',
+      color: 'blue',
       isExternal: false,
     },
     {

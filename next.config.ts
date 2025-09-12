@@ -108,7 +108,8 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
-  serverExternalPackages: [],
+  // Ensure serverless functions don't bundle these modules so their data files are available at runtime
+  serverExternalPackages: ['svgo', 'css-tree', 'csso'],
 };
 
 export default nextConfig;
