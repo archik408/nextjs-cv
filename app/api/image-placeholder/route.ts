@@ -9,13 +9,20 @@ function clamp(value: number, min: number, max: number) {
 async function pickRandomImage(dirRelative?: string): Promise<string | null> {
   try {
     const base = path.join(process.cwd(), 'public', 'image-placeholders');
-    const dir = dirRelative ? path.join(base, dirRelative) : base;
-    const files = await fs.readdir(dir);
+    // Allow only safe directory names (defense-in-depth in case caller forgets to sanitize)
+    const safeSegment = dirRelative && /^[a-z0-9_-]+$/i.test(dirRelative) ? dirRelative : '';
+    const dir = safeSegment ? path.join(base, safeSegment) : base;
+    const resolvedBase = path.resolve(base);
+    const resolvedDir = path.resolve(dir);
+    if (resolvedDir !== resolvedBase && !resolvedDir.startsWith(resolvedBase + path.sep)) {
+      return null;
+    }
+    const files = await fs.readdir(resolvedDir);
     const candidates = files.filter((f) => /\.(png|jpe?g|webp|gif|avif|svg)$/i.test(f));
     if (!candidates.length) return null;
     const file = candidates[Math.floor(Math.random() * candidates.length)];
-    const rel = dirRelative ? `${dirRelative.replace(/\\/g, '/')}/` : '';
-    return `/image-placeholders/${rel}${file}`;
+    const rel = safeSegment ? `${encodeURIComponent(safeSegment)}/` : '';
+    return `/image-placeholders/${rel}${encodeURIComponent(file)}`;
   } catch {
     return null;
   }
@@ -51,7 +58,12 @@ export async function GET(request: Request) {
     if (useOriginal && src) {
       try {
         const publicDir = path.join(process.cwd(), 'public');
-        const filePath = path.join(publicDir, src.replace(/^\//, ''));
+        const filePathUnsafe = path.join(publicDir, src.replace(/^\//, ''));
+        const filePath = path.resolve(filePathUnsafe);
+        const resolvedPublic = path.resolve(publicDir);
+        if (!filePath.startsWith(resolvedPublic + path.sep)) {
+          throw new Error('Path traversal detected');
+        }
         const data = await fs.readFile(filePath);
         const ext = path.extname(filePath).toLowerCase();
         const typeMap: Record<string, string> = {
@@ -64,7 +76,9 @@ export async function GET(request: Request) {
           '.svg': 'image/svg+xml',
         };
         const contentType = typeMap[ext] || 'application/octet-stream';
-        return new NextResponse(data, {
+        // Use Blob to satisfy BodyInit type in a platform-agnostic way
+        const blob = new Blob([data], { type: contentType });
+        return new NextResponse(blob, {
           status: 200,
           headers: {
             'Content-Type': contentType,
