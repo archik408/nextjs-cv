@@ -76,9 +76,10 @@ export async function GET(request: Request) {
           '.svg': 'image/svg+xml',
         };
         const contentType = typeMap[ext] || 'application/octet-stream';
-        // Use Blob to satisfy BodyInit type in a platform-agnostic way
-        const blob = new Blob([data], { type: contentType });
-        return new NextResponse(blob, {
+        // Copy Buffer into a new ArrayBuffer (avoids SharedArrayBuffer typing issues)
+        const arrayBuffer = new ArrayBuffer(data.byteLength);
+        new Uint8Array(arrayBuffer).set(data);
+        return new NextResponse(arrayBuffer, {
           status: 200,
           headers: {
             'Content-Type': contentType,
