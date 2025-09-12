@@ -9,6 +9,7 @@ import { useLanguage } from '@/lib/use-language';
 
 export function ImagePlaceholderClient() {
   const { t } = useLanguage();
+  const [time, setTime] = useState<number>(Date.now());
   const [width, setWidth] = useState(400);
   const [height, setHeight] = useState(300);
   const [illustration, setIllustration] = useState(true);
@@ -19,9 +20,8 @@ export function ImagePlaceholderClient() {
 
   const url = useMemo(() => {
     const params = new URLSearchParams();
+    params.set('t', String(time + Date.now()));
     // Only attach width/height when not using original size for illustrations
-    params.set('t', String(Date.now()));
-
     if (!(useOriginal && illustration)) {
       params.set('w', String(width));
       params.set('h', String(height));
@@ -30,7 +30,7 @@ export function ImagePlaceholderClient() {
     if (collection) params.set('collection', collection);
     if (useOriginal && illustration) params.set('original', '1');
     return `/api/image-placeholder?${params.toString()}`;
-  }, [width, height, illustration, collection, useOriginal]);
+  }, [width, height, illustration, collection, useOriginal, time]);
 
   useEffect(() => {
     let aborted = false;
@@ -73,110 +73,118 @@ export function ImagePlaceholderClient() {
               'Generate placeholder image URLs with custom width/height. Return a gray box with size text or a random illustration from public/image-placeholders.'}
           </p>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-              <h2 className="font-semibold mb-4 flex items-center gap-2">
-                <Boxes className="w-5 h-5" /> {t.imgPhParamsTitle || 'Parameters'}
-              </h2>
-              <div className="space-y-3">
-                <label className="block text-sm">
-                  <span className="text-gray-600 dark:text-gray-300">
-                    {t.imgPhWidth || 'Width (px)'}
-                  </span>
-                  <input
-                    type="number"
-                    min={1}
-                    max={4000}
-                    value={width}
-                    onChange={(e) => setWidth(Number(e.target.value))}
-                    className="mt-1 w-full rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2"
-                  />
-                </label>
-                <label className="block text-sm">
-                  <span className="text-gray-600 dark:text-gray-300">
-                    {t.imgPhHeight || 'Height (px)'}
-                  </span>
-                  <input
-                    type="number"
-                    min={1}
-                    max={4000}
-                    value={height}
-                    onChange={(e) => setHeight(Number(e.target.value))}
-                    className="mt-1 w-full rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2"
-                  />
-                </label>
-                <label className="inline-flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={illustration}
-                    onChange={(e) => setIllustration(e.target.checked)}
-                    className="h-4 w-4"
-                  />
-                  <span>{t.imgPhShowIllustration || 'Show illustration (if available)'}</span>
-                </label>
-                <label className="inline-flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={useOriginal}
-                    onChange={(e) => setUseOriginal(e.target.checked)}
-                    className="h-4 w-4"
-                  />
-                  <span>
-                    {t.imgPhUseOriginal || 'Use original image size (ignore width/height)'}
-                  </span>
-                </label>
-                <label className="block text-sm">
-                  <span className="text-gray-600 dark:text-gray-300">
-                    {t.imgPhCollectionLabel || 'Collection (optional)'}
-                  </span>
-                  <select
-                    value={collection}
-                    onChange={(e) => setCollection(e.target.value)}
-                    className="mt-1 w-full rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2"
-                  >
-                    <option value="">{t.imgPhCollectionAny || '— Any —'}</option>
-                    {collections.map((c) => (
-                      <option key={c.value} value={c.value}>
-                        {c.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="space-y-6">
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
+                <h2 className="font-semibold mb-4 flex items-center gap-2">
+                  <Boxes className="w-5 h-5" /> {t.imgPhParamsTitle || 'Parameters'}
+                </h2>
+                <div className="space-y-3">
+                  <label className="block text-sm">
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {t.imgPhWidth || 'Width (px)'}
+                    </span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={4000}
+                      value={width}
+                      onChange={(e) => setWidth(Number(e.target.value))}
+                      className="mt-1 w-full rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2"
+                    />
+                  </label>
+                  <label className="block text-sm">
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {t.imgPhHeight || 'Height (px)'}
+                    </span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={4000}
+                      value={height}
+                      onChange={(e) => setHeight(Number(e.target.value))}
+                      className="mt-1 w-full rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2"
+                    />
+                  </label>
+                  <label className="inline-flex items-center gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={illustration}
+                      onChange={(e) => setIllustration(e.target.checked)}
+                      className="h-4 w-4"
+                    />
+                    <span>{t.imgPhShowIllustration || 'Show illustration (if available)'}</span>
+                  </label>
+                  <label className="inline-flex items-center gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={useOriginal}
+                      onChange={(e) => setUseOriginal(e.target.checked)}
+                      className="h-4 w-4"
+                    />
+                    <span>
+                      {t.imgPhUseOriginal || 'Use original image size (ignore width/height)'}
+                    </span>
+                  </label>
+                  <label className="block text-sm">
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {t.imgPhCollectionLabel || 'Collection (optional)'}
+                    </span>
+                    <select
+                      value={collection}
+                      onChange={(e) => setCollection(e.target.value)}
+                      className="mt-1 w-full rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2"
+                    >
+                      <option value="">{t.imgPhCollectionAny || '— Any —'}</option>
+                      {collections.map((c) => (
+                        <option key={c.value} value={c.value}>
+                          {c.label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
               </div>
-            </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-              <h2 className="font-semibold mb-4 flex items-center gap-2">
-                <Link2 className="w-5 h-5" /> {t.imgPhLink || 'Link'}
-              </h2>
-              <div className="flex items-center gap-2">
-                <input
-                  readOnly
-                  value={url}
-                  className="flex-1 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm"
-                />
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
+                <h2 className="font-semibold mb-4 flex items-center gap-2">
+                  <Link2 className="w-5 h-5" /> {t.imgPhLink || 'Link'}
+                </h2>
+                <div className="flex items-center gap-2">
+                  <input
+                    readOnly
+                    value={url}
+                    className="flex-1 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm"
+                  />
+                  <button
+                    onClick={copyUrl}
+                    className="inline-flex items-center gap-1 px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white"
+                  >
+                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    {copied ? t.imgPhCopied || 'Copied' : t.imgPhCopy || 'Copy'}
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                  {t.imgPhCopiedFullUrlNote || 'Full URL will include your domain (origin).'}
+                </p>
                 <button
-                  onClick={copyUrl}
-                  className="inline-flex items-center gap-1 px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white"
+                  onClick={() => setTime(Date.now())}
+                  className={`my-5 w-fit inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-gray-300 dark:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
-                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  {copied ? t.imgPhCopied || 'Copied' : t.imgPhCopy || 'Copy'}
+                  {t.eventLoopControls?.reset || 'Reset'}
                 </button>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                {t.imgPhCopiedFullUrlNote || 'Full URL will include your domain (origin).'}
-              </p>
             </div>
-          </div>
 
-          <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-            <h2 className="font-semibold mb-4">{t.imgPhPreviewTitle || 'Preview'}</h2>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={url}
-              alt="preview"
-              className="max-w-full rounded border border-gray-200 dark:border-gray-700"
-            />
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
+              <h2 className="font-semibold mb-4">{t.imgPhPreviewTitle || 'Preview'}</h2>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={url}
+                alt="preview"
+                className="w-full rounded border border-gray-200 dark:border-gray-700"
+              />
+            </div>
           </div>
         </div>
       </div>

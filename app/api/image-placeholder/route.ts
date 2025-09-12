@@ -106,14 +106,48 @@ export async function GET(request: Request) {
   <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="${fontSize}" fill="${fg}">No images</text>
 </svg>`;
     } else {
-      // Use pure SVG <image> element (better CSP compatibility than foreignObject)
-      svg = `<?xml version="1.0" encoding="UTF-8"?>
+      // Embed image as data URI to avoid CSP issues with external image references
+      try {
+        const publicDir = path.join(process.cwd(), 'public');
+        const filePathUnsafe = path.join(publicDir, src.replace(/^\//, ''));
+        const filePath = path.resolve(filePathUnsafe);
+        const resolvedPublic = path.resolve(publicDir);
+        if (!filePath.startsWith(resolvedPublic + path.sep)) {
+          throw new Error('Path traversal detected');
+        }
+        const data = await fs.readFile(filePath);
+        const ext = path.extname(filePath).toLowerCase();
+        const typeMap: Record<string, string> = {
+          '.png': 'image/png',
+          '.jpg': 'image/jpeg',
+          '.jpeg': 'image/jpeg',
+          '.webp': 'image/webp',
+          '.gif': 'image/gif',
+          '.avif': 'image/avif',
+          '.svg': 'image/svg+xml',
+        };
+        const contentType = typeMap[ext] || 'application/octet-stream';
+        const base64 = data.toString('base64');
+        const dataUri = `data:${contentType};base64,${base64}`;
+
+        svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
   <defs>
     <clipPath id="clip"><rect x="0" y="0" width="${w}" height="${h}"/></clipPath>
   </defs>
-  <image href="${src}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip)"/>
+  <image href="${dataUri}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip)"/>
 </svg>`;
+      } catch {
+        // Fallback to gray box if image loading fails
+        const bg = '#e5e7eb';
+        const fg = '#374151';
+        const fontSize = Math.max(12, Math.round(Math.min(w, h) / 8));
+        svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+  <rect width="100%" height="100%" fill="${bg}"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="${fontSize}" fill="${fg}">Image load failed</text>
+</svg>`;
+      }
     }
   }
 
