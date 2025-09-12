@@ -7,6 +7,8 @@ const rateLimiter = new RateLimiter(60000, 20);
 
 export async function POST(req: NextRequest) {
   try {
+    // Dynamic import keeps internal data files accessible in serverless envs
+    const { optimize } = await import('svgo');
     const clientIP =
       req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
     if (!rateLimiter.isAllowed(clientIP)) {
@@ -40,7 +42,7 @@ export async function POST(req: NextRequest) {
     const svgWithoutScripts = trimmed.replace(/<script[\s\S]*?<\/script>/gi, '');
 
     // Load svgo at runtime (avoids css-tree data file resolution issues in some edge runtimes)
-    const { optimize } = await import('svgo');
+    // const { optimize } = await import('svgo');
 
     // SVGO v3 configuration tuned to preserve filters/clipPaths/gradients and foreignObject
     // Key points:
@@ -97,6 +99,7 @@ export async function POST(req: NextRequest) {
                     removeUnknownsAndDefaults: false,
                     inlineStyles: false,
                     removeUselessDefs: false,
+                    minifyStyles: false,
                   },
                 },
               },

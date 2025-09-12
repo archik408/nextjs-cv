@@ -47,10 +47,33 @@ export async function GET(request: Request) {
 </svg>`;
   } else {
     const src = (await pickRandomImage(collection || undefined)) ?? '';
-    // If original requested and we have an image, redirect to the asset
+    // If original requested and we have an image, stream the file directly (avoid redirect/CORP issues)
     if (useOriginal && src) {
-      const redirectUrl = new URL(src, request.url);
-      return NextResponse.redirect(redirectUrl);
+      try {
+        const publicDir = path.join(process.cwd(), 'public');
+        const filePath = path.join(publicDir, src.replace(/^\//, ''));
+        const data = await fs.readFile(filePath);
+        const ext = path.extname(filePath).toLowerCase();
+        const typeMap: Record<string, string> = {
+          '.png': 'image/png',
+          '.jpg': 'image/jpeg',
+          '.jpeg': 'image/jpeg',
+          '.webp': 'image/webp',
+          '.gif': 'image/gif',
+          '.avif': 'image/avif',
+          '.svg': 'image/svg+xml',
+        };
+        const contentType = typeMap[ext] || 'application/octet-stream';
+        return new NextResponse(data, {
+          status: 200,
+          headers: {
+            'Content-Type': contentType,
+            'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=600',
+          },
+        });
+      } catch {
+        // fall through to gray box if reading failed
+      }
     }
     // If no images found, fallback to gray box text
     if (!src) {
