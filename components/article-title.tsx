@@ -28,7 +28,7 @@ export function ArticleTitle({ text }: Props) {
             }
           : {
               backgroundImage:
-                'linear-gradient(-90deg, #112033 0, #007cb1 30%, #55389e 50%, #752884 70%, #4e1f5b 90%, #492530 100%)',
+                'linear-gradient(-90deg,rgb(176, 194, 218) 0, #007cb1 30%, #55389e 50%, #752884 70%, #4e1f5b 90%, #492530 100%)',
               backgroundSize: '100%',
               backgroundRepeat: 'repeat',
               WebkitBackgroundClip: 'text',

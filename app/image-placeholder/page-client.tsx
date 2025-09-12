@@ -20,6 +20,8 @@ export function ImagePlaceholderClient() {
   const url = useMemo(() => {
     const params = new URLSearchParams();
     // Only attach width/height when not using original size for illustrations
+    params.set('t', String(Date.now()));
+
     if (!(useOriginal && illustration)) {
       params.set('w', String(width));
       params.set('h', String(height));
