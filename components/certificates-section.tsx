@@ -82,7 +82,7 @@ export function CertificatesSection() {
                 <Award className="min-w-8 w-8 h-8 text-green-400" />
                 <div>
                   <h3 className="text-xl font-semibold">Google UX Design</h3>
-                  <p className="text-gray-600 dark:text-gray-400">Google • 2021/2025</p>
+                  <p className="text-gray-600 dark:text-gray-400">Coursera • 2021/2025</p>
                 </div>
               </div>
               <button

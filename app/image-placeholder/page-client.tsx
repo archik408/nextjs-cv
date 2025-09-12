@@ -17,10 +17,15 @@ export function ImagePlaceholderClient() {
   const [collections, setCollections] = useState<Array<{ value: string; label: string }>>([]);
   const [useOriginal, setUseOriginal] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   const url = useMemo(() => {
     const params = new URLSearchParams();
-    params.set('t', String(time + Date.now()));
+    // Добавляем время для кеш-бастинга только после гидратации
+    if (isClient) {
+      params.set('t', String(time));
+    }
     // Only attach width/height when not using original size for illustrations
     if (!(useOriginal && illustration)) {
       params.set('w', String(width));
@@ -30,7 +35,7 @@ export function ImagePlaceholderClient() {
     if (collection) params.set('collection', collection);
     if (useOriginal && illustration) params.set('original', '1');
     return `/api/image-placeholder?${params.toString()}`;
-  }, [width, height, illustration, collection, useOriginal, time]);
+  }, [width, height, illustration, collection, useOriginal, time, isClient]);
 
   useEffect(() => {
     let aborted = false;
@@ -45,6 +50,23 @@ export function ImagePlaceholderClient() {
       aborted = true;
     };
   }, []);
+
+  // Устанавливаем isClient после гидратации
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Отслеживаем изменения параметров и обновляем время для кеш-бастинга
+  useEffect(() => {
+    if (isClient) {
+      setTime(Date.now());
+    }
+  }, [width, height, illustration, collection, useOriginal, isClient]);
+
+  // Отслеживаем изменения URL и управляем состоянием загрузки
+  useEffect(() => {
+    setIsLoading(true);
+  }, [url]);
 
   const copyUrl = async () => {
     await navigator.clipboard.writeText(location.origin + url);
@@ -168,7 +190,12 @@ export function ImagePlaceholderClient() {
                   {t.imgPhCopiedFullUrlNote || 'Full URL will include your domain (origin).'}
                 </p>
                 <button
-                  onClick={() => setTime(Date.now())}
+                  onClick={() => {
+                    if (isClient) {
+                      setTime(Date.now());
+                      setIsLoading(true);
+                    }
+                  }}
                   className={`my-5 w-fit inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-gray-300 dark:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                   {t.eventLoopControls?.reset || 'Reset'}
@@ -178,12 +205,28 @@ export function ImagePlaceholderClient() {
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
               <h2 className="font-semibold mb-4">{t.imgPhPreviewTitle || 'Preview'}</h2>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={url}
-                alt="preview"
-                className="w-full rounded border border-gray-200 dark:border-gray-700"
-              />
+              <div className="relative">
+                {isLoading && (
+                  <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 rounded border border-gray-200 dark:border-gray-700 animate-pulse">
+                    <div className="flex items-center justify-center h-full">
+                      <div className="text-center">
+                        <div className="w-12 h-12 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-2 animate-pulse"></div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">Loading...</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={url}
+                  alt="preview"
+                  className={`w-full rounded border border-gray-200 dark:border-gray-700 transition-opacity duration-300 ${
+                    isLoading ? 'opacity-0' : 'opacity-100'
+                  }`}
+                  onLoad={() => setIsLoading(false)}
+                  onError={() => setIsLoading(false)}
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -274,6 +274,53 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Tools Page - Image Placeholder
     imgPhToolTitle: 'Image Placeholder',
     imgPhToolDesc: 'Generate placeholder URLs with custom size or random illustration',
+    // React Fiber Page
+    reactFiberTitle: 'React Fiber & JSX Parser',
+    reactFiberDescription:
+      'Interactive visualization of JSX parsing and React Fiber reconciliation process with animated data flow',
+    reactFiberExplanation:
+      'Watch how React transforms JSX code through the Fiber reconciliation algorithm. See the data flow from JSX source to DOM updates with step-by-step animations.',
+    reactFiberControls: {
+      play: 'Play',
+      pause: 'Pause',
+      reset: 'Reset',
+      speed: 'Speed',
+      showDetails: 'Show Node Details',
+      hideDetails: 'Hide Node Details',
+    },
+    reactFiberSteps: {
+      jsxParsing: 'JSX Code Parsing',
+      astToElements: 'AST to React Elements',
+      fiberCreation: 'Fiber Tree Creation',
+      reconciliation: 'Reconciliation Phase',
+      commit: 'Commit Phase',
+    },
+    reactFiberDetails: {
+      jsxParsing:
+        'Babel parser transforms JSX syntax into JavaScript code. JSX elements (like <div>, <h1>) become React.createElement() calls. This allows browsers to understand JSX as regular JavaScript.',
+      astToElements:
+        'Abstract Syntax Tree (AST) is converted to React elements - objects describing component structure. Each JSX element becomes an object with type, props, and children.',
+      fiberCreation:
+        'React creates Fiber tree - internal data structure for tracking components. Each Fiber node contains information about the component, its state, and relationships with other nodes.',
+      reconciliation:
+        'Reconciliation phase compares new Fiber tree with previous one and determines what changes need to be made to DOM. React uses diffing algorithm to optimize updates.',
+      commit:
+        'Commit phase applies all changes to the real DOM. React updates only elements that actually changed, ensuring high performance.',
+    },
+    reactFiberSections: {
+      jsxSource: 'JSX Source Code',
+      currentStep: 'Current Step',
+      dataFlow: 'Data Flow',
+      fiberTree: 'Fiber Tree Structure',
+      animationControls: 'Animation Controls',
+    },
+    reactFiberCodeTitles: {
+      originalJSX: 'Original JSX Code',
+      astRepresentation: 'AST (Abstract Syntax Tree)',
+      createElementCalls: 'React.createElement Calls',
+      reactElements: 'React Elements & Fiber Nodes',
+      finalHTML: 'Final HTML & DOM Updates',
+    },
     // Event Loop Page
     eventLoopTitle: 'JavaScript Event Loop',
     eventLoopDescription:
@@ -583,6 +630,53 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgToJsxError: 'Не удалось конвертировать в JSX',
     svgJsxCopy: 'Копировать',
     svgJsxCopied: 'Скопировано!',
+    // React Fiber Page
+    reactFiberTitle: 'React Fiber & JSX Parser',
+    reactFiberDescription:
+      'Интерактивная визуализация парсинга JSX и процесса согласования React Fiber с анимированными потоками данных',
+    reactFiberExplanation:
+      'Посмотрите, как React преобразует JSX код через алгоритм согласования Fiber. Увидьте поток данных от JSX источника до обновлений DOM с пошаговыми анимациями.',
+    reactFiberControls: {
+      play: 'Воспроизвести',
+      pause: 'Пауза',
+      reset: 'Сброс',
+      speed: 'Скорость',
+      showDetails: 'Показать детали узлов',
+      hideDetails: 'Скрыть детали узлов',
+    },
+    reactFiberSteps: {
+      jsxParsing: 'Парсинг JSX кода',
+      astToElements: 'AST в React элементы',
+      fiberCreation: 'Создание Fiber дерева',
+      reconciliation: 'Фаза согласования',
+      commit: 'Фаза коммита',
+    },
+    reactFiberDetails: {
+      jsxParsing:
+        'Babel парсер преобразует JSX синтаксис в JavaScript код. JSX элементы (как <div>, <h1>) превращаются в вызовы React.createElement(). Это позволяет браузеру понимать JSX как обычный JavaScript.',
+      astToElements:
+        'Абстрактное синтаксическое дерево (AST) преобразуется в React элементы - объекты, описывающие структуру компонентов. Каждый JSX элемент становится объектом с типом, пропсами и дочерними элементами.',
+      fiberCreation:
+        'React создает Fiber дерево - внутреннюю структуру данных для отслеживания компонентов. Каждый узел Fiber содержит информацию о компоненте, его состоянии и связях с другими узлами.',
+      reconciliation:
+        'Фаза согласования (Reconciliation) сравнивает новое Fiber дерево с предыдущим и определяет, какие изменения нужно внести в DOM. React использует алгоритм diffing для оптимизации обновлений.',
+      commit:
+        'Фаза коммита применяет все изменения к реальному DOM. React обновляет только те элементы, которые действительно изменились, что обеспечивает высокую производительность.',
+    },
+    reactFiberSections: {
+      jsxSource: 'Исходный JSX код',
+      currentStep: 'Текущий шаг',
+      dataFlow: 'Поток данных',
+      fiberTree: 'Структура Fiber дерева',
+      animationControls: 'Управление анимацией',
+    },
+    reactFiberCodeTitles: {
+      originalJSX: 'Исходный JSX код',
+      astRepresentation: 'AST (Абстрактное синтаксическое дерево)',
+      createElementCalls: 'Вызовы React.createElement',
+      reactElements: 'React элементы и Fiber узлы',
+      finalHTML: 'Финальный HTML и обновления DOM',
+    },
     toTop: 'Наверх',
     // Image Placeholder Page
     imgPhTitle: 'Image Placeholder',

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Github, Linkedin, NotebookText, Mail, Send, Wrench } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import ArticleTitle from '@/components/article-title';
+import { AVATAR_PLACEHOLDER } from '@/lib/avatar-placeholder';
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -40,6 +41,8 @@ export function HeroSection() {
                 fill
                 className="absolute inset-0 rounded-full border-4 border-blue-500 object-cover [backface-visibility:hidden]"
                 priority
+                placeholder="blur"
+                blurDataURL={AVATAR_PLACEHOLDER}
               />
               <Image
                 src="/back-bg.jpg"
@@ -47,6 +50,8 @@ export function HeroSection() {
                 fill
                 className="absolute inset-0 rounded-full border-4 border-blue-500 object-cover rotate-y-180 [backface-visibility:hidden]"
                 priority
+                placeholder="blur"
+                blurDataURL={AVATAR_PLACEHOLDER}
               />
             </div>
           </div>
@@ -59,49 +64,49 @@ export function HeroSection() {
             href="https://github.com/archik408"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label="GitHub Profile"
           >
-            <Github className="w-6 h-6" />
+            <Github className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
           <a
             href="https://www.linkedin.com/in/arturbasak"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label="LinkedIn Profile"
           >
-            <Linkedin className="w-6 h-6" />
+            <Linkedin className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
           <a
             href="/blog"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label={t.blog}
           >
-            <NotebookText className="w-6 h-6" />
+            <NotebookText className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
           <a
             href="/tools"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label={t.toolsAndExperiments || 'Tools & Experiments'}
           >
-            <Wrench className="w-6 h-6" />
+            <Wrench className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
           <a
             href="mailto:artur.basak.devingrodno@gmail.com"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label="Send Email"
           >
-            <Mail className="w-6 h-6" />
+            <Mail className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
           <a
             href="https://t.me/arturbasak"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label="Telegram"
           >
-            <Send className="w-6 h-6" />
+            <Send className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { ELanguage } from '@/constants/enums';
 const styles = StyleSheet.create({
   page: {
     fontFamily: 'Helvetica',
-    fontSize: 11,
+    fontSize: 16,
     paddingTop: 28,
     paddingBottom: 28,
     paddingHorizontal: 28,
@@ -16,11 +16,11 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   name: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 700,
   },
   role: {
-    fontSize: 12,
+    fontSize: 20,
     color: '#334155',
     marginTop: 4,
   },
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     textDecoration: 'none',
   },
   sectionTitle: {
-    fontSize: 13,
+    fontSize: 18,
     fontWeight: 700,
     marginTop: 16,
     marginBottom: 6,
@@ -60,6 +60,11 @@ const styles = StyleSheet.create({
   listItem: {
     marginLeft: 10,
   },
+  footer: {
+    fontSize: 11,
+    marginTop: 32,
+    color: '#334155',
+  },
 });
 
 type Props = {
@@ -74,6 +79,7 @@ export function ResumeDocument({ lang }: Props) {
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/arturbasak' },
     { label: 'Telegram', href: 'https://t.me/arturbasak' },
     { label: 'Email', href: 'mailto:artur.basak.devingrodno@gmail.com' },
+    { label: 'Blog', href: 'https://arturbasak.dev/blog' },
   ];
 
   return (
@@ -85,7 +91,7 @@ export function ResumeDocument({ lang }: Props) {
           <View style={styles.row}>
             {contacts.map((c, i) => (
               <Link key={i} src={c.href} style={styles.link}>
-                {c.label}
+                {c.label} |
               </Link>
             ))}
           </View>
@@ -97,10 +103,7 @@ export function ResumeDocument({ lang }: Props) {
         </View>
 
         <Text style={styles.sectionTitle}>{t.about}</Text>
-        <Text style={styles.paragraph}>
-          {/* Strip tags from aboutText */}
-          {t.aboutText.replace(/<[^>]*>/g, ' ')}
-        </Text>
+        <Text style={styles.paragraph}>{t.aboutText.replace(/<[^>]*>/g, '')}</Text>
 
         <Text style={styles.sectionTitle}>{t.skills}</Text>
         <Text style={styles.paragraph}>
@@ -109,9 +112,9 @@ export function ResumeDocument({ lang }: Props) {
           Systems, UI/UX Design, Web Accessibility (WCAG), Web Performance, Web Security (OWASP),
           PWA, HTTPS/REST, QA & Automated Testing, Web Components, Lit,
           (Jest/RTL/Cypress/Playwright), FrontOps (Webpack, Vite, Turbopack, npm, yarn), CI/CD,
-          Rust/WebAssembly, Workbox, Tailwind CSS, Headless CMS (Strapi, Contentful, WordPress,
-          Prismic), Micro-frontends, Material UI, Mobile-First, Offline-First, Bun, Python/Django,
-          IndexedDB, MongoDB, PostgreSQL, MySQL, SQL/NoSQL
+          Rust/WebAssembly, Workbox, Bootstrap, Tailwind CSS, Headless CMS (Strapi, Contentful,
+          WordPress, Prismic), Micro-frontends, Material UI, Mobile-First, Offline-First, Bun,
+          Python/Django, IndexedDB, MongoDB, PostgreSQL, MySQL, SQL/NoSQL
         </Text>
 
         <Text style={styles.sectionTitle}>{t.experience}</Text>
@@ -133,8 +136,9 @@ export function ResumeDocument({ lang }: Props) {
           {t.diploma} — {t.college}
         </Text>
         <Text style={styles.paragraph}>Professional Front-End Web Developer — W3Cx 2019</Text>
-        <Text style={styles.paragraph}>UX Design — Google 2021-2025</Text>
-        <Text style={styles.role}>
+        <Text style={styles.paragraph}>Google UX Design — Coursera 2021-2025</Text>
+        <Text style={styles.paragraph}>Web Accessibility — W3Cx WAI0.1x 2021</Text>
+        <Text style={styles.footer}>
           CV was generated automatically by{' '}
           <Link src="https://arturbasak.dev" style={styles.link}>
             https://arturbasak.dev

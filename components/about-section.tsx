@@ -22,7 +22,7 @@ export function AboutSection() {
           />
           <div>
             <div className="grid grid-rows-[16rem_16rem] md:grid-rows-[12.5rem_12.5rem] grid-cols-2 gap-4 mb-10 md:mb-15">
-              <div className="bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg">
+              <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">
                 <Code2 className="w-8 h-8 mb-2 text-blue-400" />
                 <h3 className="font-semibold mb-1">{t.cleanCode}</h3>
                 <p
@@ -30,17 +30,17 @@ export function AboutSection() {
                   dangerouslySetInnerHTML={{ __html: t.cleanCodeDesc }}
                 />
               </div>
-              <div className="bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg">
+              <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">
                 <Boxes className="w-8 h-8 mb-2 text-green-400" />
                 <h3 className="font-semibold mb-1">{t.components}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">{t.componentsDesc}</p>
               </div>
-              <div className="bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg">
+              <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">
                 <Trophy className="w-8 h-8 mb-2 text-yellow-400" />
                 <h3 className="font-semibold mb-1">{t.bestPractices}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">{t.bestPracticesDesc}</p>
               </div>
-              <div className="bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg">
+              <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">
                 <BookOpen className="w-8 h-8 mb-2 text-purple-400" />
                 <h3 className="font-semibold mb-1">{t.learning}</h3>
                 <p

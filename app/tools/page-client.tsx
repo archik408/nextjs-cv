@@ -15,6 +15,7 @@ import {
   Binary,
   Wrench,
   RefreshCcw,
+  GitBranch,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 
@@ -78,6 +79,17 @@ export function ToolsPageClient() {
       href: '/svg-optimizer',
       status: 'ready',
       color: 'blue',
+      isExternal: false,
+    },
+    {
+      id: 'react-fiber',
+      title: 'React Fiber & JSX Parser',
+      description:
+        'Interactive visualization of JSX parsing and React Fiber reconciliation process with animated data flow',
+      icon: GitBranch,
+      href: '/react-fiber',
+      status: 'ready',
+      color: 'cyan',
       isExternal: false,
     },
     {
@@ -180,6 +192,8 @@ export function ToolsPageClient() {
         return `${baseClasses} ${isReady ? 'hover:border-yellow-300 dark:hover:border-yellow-600' : ''}`;
       case 'red':
         return `${baseClasses} ${isReady ? 'hover:border-red-300 dark:hover:border-red-600' : ''}`;
+      case 'cyan':
+        return `${baseClasses} ${isReady ? 'hover:border-cyan-300 dark:hover:border-cyan-600' : ''}`;
       default:
         return baseClasses;
     }
@@ -201,6 +215,8 @@ export function ToolsPageClient() {
         return 'text-yellow-600 dark:text-yellow-400';
       case 'red':
         return 'text-red-600 dark:text-red-400';
+      case 'cyan':
+        return 'text-cyan-600 dark:text-cyan-400';
       default:
         return 'text-gray-600 dark:text-gray-400';
     }

@@ -38,7 +38,8 @@ export function ViewTransitions({ children }: ViewTransitionsProps) {
           href &&
           !href.startsWith('http') &&
           !href.startsWith('mailto:') &&
-          !href.startsWith('tel:')
+          !href.startsWith('tel:') &&
+          !href.includes('/resume')
         ) {
           router.prefetch?.(href);
         }
@@ -69,6 +70,7 @@ export function ViewTransitions({ children }: ViewTransitionsProps) {
         href.startsWith('mailto:') ||
         href.startsWith('tel:') ||
         href.includes('#') ||
+        href.includes('/resume') ||
         link.target === '_blank' ||
         event.ctrlKey ||
         event.metaKey ||
