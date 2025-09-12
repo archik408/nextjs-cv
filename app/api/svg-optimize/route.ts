@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+export const runtime = 'nodejs';
 // Import svgo dynamically inside the handler in production to avoid bundling issues on Vercel
 import { secureHeaders, RateLimiter } from '@/lib/security';
 

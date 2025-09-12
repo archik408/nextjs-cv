@@ -84,6 +84,11 @@ export async function GET(request: Request) {
           headers: {
             'Content-Type': contentType,
             'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=600',
+            // Allow embedding this resource across origins (overrides global CORP same-origin)
+            'Cross-Origin-Resource-Policy': 'cross-origin',
+            // Basic CORS for image fetches
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
           },
         });
       } catch {
@@ -117,6 +122,9 @@ export async function GET(request: Request) {
     headers: {
       'Content-Type': 'image/svg+xml; charset=utf-8',
       'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=600',
+      'Cross-Origin-Resource-Policy': 'cross-origin',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
     },
   });
   return res;
