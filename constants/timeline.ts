@@ -16,12 +16,27 @@ export const timelineData: TimelineEvent[] = [
     image: '/back-bg.jpg',
   },
   {
+    year: 1998,
+    title: 'Гимназия №1 г. Барановичи',
+    description:
+      'Пошел в первый класс гимназии №1 г. Барановичи, где учился в физико-математическом классе',
+    category: 'career',
+    image: '/timeline/gimnasium.png',
+  },
+  {
     year: 1999,
     title: 'Первое знакомство с компьютером',
     description:
       'Впервые увидел и сел за компьютер у крестного на работе, играл в сапера на Windows 95',
     category: 'career',
     image: '/timeline/saper.jpg',
+  },
+  {
+    year: 2000,
+    title: 'Приставка Dendy',
+    description: 'Появилась приставка Dendy, которая привила любовь к 8-битным играм на всю жизнь',
+    category: 'career',
+    image: '/timeline/mario.png',
   },
   {
     year: 2002,
@@ -41,10 +56,10 @@ export const timelineData: TimelineEvent[] = [
   },
   {
     year: 2005,
-    title: 'Городская олимпиада',
+    title: 'Городская олимпиада г. Барановичи',
     description: 'Принял участие в городской олимпиаде по информатике и занял второе место',
     category: 'career',
-    image: '/timeline/pascal.jpg',
+    image: '/timeline/baranovichi.png',
   },
   {
     year: 2006,
@@ -56,11 +71,19 @@ export const timelineData: TimelineEvent[] = [
   },
   {
     year: 2007,
-    title: 'Поступление в колледж',
+    title: 'Поступление в колледж г. Гродно',
     description:
       'Поступил в Технологический Колледж ГрГУ на специальность "Программное обеспечение информационных технологий"',
     category: 'career',
     image: '/timeline/grodno.png',
+  },
+  {
+    year: 2008,
+    title: 'Первый веб-сайт',
+    description:
+      'Разработал несколько веб-сайтов на PHP и Zend Framework для нескольких организаций и колледжа',
+    category: 'career',
+    image: '/timeline/zend.png',
   },
   {
     year: 2008,
@@ -71,7 +94,7 @@ export const timelineData: TimelineEvent[] = [
   },
   {
     year: 2008,
-    title: 'VI научная конференция',
+    title: 'VI научная конференция г. Гродно',
     description:
       'Принял участие в VI научной конференции со своей программой по симуляции полярной системы координат',
     category: 'career',
@@ -95,13 +118,14 @@ export const timelineData: TimelineEvent[] = [
   {
     year: 2010,
     title: 'QA тестировщик в instinctools',
-    description: 'Устроился на позицию QA тестировщика в компанию instinctools EE Labs',
+    description:
+      'Во время практики устроился на позицию QA тестировщика в компанию instinctools EE Labs',
     category: 'career',
-    image: '/timeline/instinctools.png',
+    image: '/timeline/itools.jpeg',
   },
   {
     year: 2011,
-    title: 'Выпуск из колледжа',
+    title: 'Выпуск из колледжа и диплом',
     description:
       'Выпуск из колледжа, защита дипломного проекта (багтрекер), написанного на Java и Eclipse RCP/SWT',
     category: 'career',
@@ -124,6 +148,22 @@ export const timelineData: TimelineEvent[] = [
     image: '/timeline/java.png',
   },
   {
+    year: 2012,
+    title: 'BIRT для Evonic AG',
+    description:
+      'Разработка функционала BIRT (Business Intelligence and Reporting Tools) для Evonic AG на Eclipse RAP',
+    category: 'career',
+    image: '/timeline/eclipse.png',
+  },
+  {
+    year: 2013,
+    title: 'Sibur Holdings - ExtJS & Documentum',
+    description:
+      'Разработка электронного документооборота для Sibur Holdings на платформе EMC Documentum и ExtJS',
+    category: 'career',
+    image: '/timeline/extjs.png',
+  },
+  {
     year: 2014,
     title: 'ExtJS для немецкой нотариальной палаты',
     description: 'Разрабатывал ПО для немецкой нотариальной палаты на фреймворке ExtJS и Java',
@@ -133,24 +173,40 @@ export const timelineData: TimelineEvent[] = [
   {
     year: 2015,
     title: 'CRM система SMART',
-    description: 'Писал внутреннюю CRM систему SMART для instinctools EE Labs на Java и Angular.js',
+    description:
+      'Разработка внутренней CRM системы SMART для instinctools EE Labs на Java и Angular.js',
     category: 'career',
     image: '/timeline/angular.png',
   },
   {
     year: 2015,
-    title: 'Переход на JavaScript',
+    title: 'Уход в JavaScript',
     description:
       'Полностью сосредоточился на JavaScript-стэке и попал на проект Penton Media, где разрабатывал приложение Equipmentwatch на Ember.js и Node.js',
     category: 'career',
-    image: '/timeline/js.png',
+    image: '/timeline/ember.png',
+  },
+  {
+    year: 2015,
+    title: 'Стартап True Impact',
+    description:
+      'Разработка UI на Angular.js для стартапа True Impact, который занимается анализом и аналитикой грантов, благотворительных инвестиций и волонтерской деятельности',
+    category: 'career',
+    image: '/timeline/angular.png',
+  },
+  {
+    year: 2016,
+    title: 'Женитьба на Катерине',
+    description: 'Женился на своей жене Катерине',
+    category: 'career',
+    image: '/timeline/wife.png',
   },
   {
     year: 2016,
     title: 'Первый Macbook',
-    description: 'Приобрел в себе Macbook Air и с этого момента полностью пересел на MacOS',
+    description: 'Приобрел себе Macbook Air и с этого момента полностью пересел на MacOS',
     category: 'career',
-    image: '/timeline/macbook-air.jpeg',
+    image: '/timeline/macbook-air.png',
   },
   {
     year: 2016,
@@ -160,13 +216,20 @@ export const timelineData: TimelineEvent[] = [
     category: 'career',
     image: '/timeline/group-lead.jpeg',
   },
-  // {
-  //   year: 2017,
-  //   title: 'Руководитель группы разработчиков',
-  //   description: 'Стал руководителем группы разработчиков в instinctools EE Labs и перешел на React.js стэк',
-  //   category: 'career',
-  //   image: '/timeline/group-lead.jpeg'
-  // },
+  {
+    year: 2016,
+    title: 'Топ-3 бизнес-консалтинг',
+    description: 'Разработка ряда проектов для топ-3 в мире бизнес-консалтинга на React.js стэке',
+    category: 'career',
+    image: '/timeline/react.png',
+  },
+  {
+    year: 2017,
+    title: 'Рождение дочери Полины',
+    description: 'Родилась дочь Полина',
+    category: 'career',
+    image: '/timeline/daughter.png',
+  },
   {
     year: 2018,
     title: 'Выступление на GROCON-18',
@@ -181,15 +244,22 @@ export const timelineData: TimelineEvent[] = [
     description:
       'Разрабатывал веб-приложение для немецкого blockchain стартапа Lition Energy, которые создают платформу для покупки зеленой энергии',
     category: 'career',
-    image: '/timeline/lition.jpeg',
+    image: '/timeline/lition.png',
   },
-  // {
-  //   year: 2018,
-  //   title: 'Руководитель группы разработчиков',
-  //   description: 'Стал руководителем группы разработчиков в instinctools EE Labs и перешел на React.js стэк',
-  //   category: 'career',
-  //   image: '/timeline/group-lead.jpeg'
-  // },
+  {
+    year: 2019,
+    title: 'MacBook Pro Intel i9',
+    description: 'Пересел на MacBook Pro Intel i9',
+    category: 'career',
+    image: '/timeline/macbook-i9.png',
+  },
+  {
+    year: 2019,
+    title: 'Рождение сына Матвея',
+    description: 'Родился сын Матвей',
+    category: 'career',
+    image: '/timeline/son.png',
+  },
   {
     year: 2019,
     title: 'CSS-Minsk-JS',
@@ -208,7 +278,7 @@ export const timelineData: TimelineEvent[] = [
     year: 2019,
     title: 'Переход в Tispr',
     description:
-      'Спустя 9 лет ушел из instinctools EE Labs и начал работу в американском стартапе Tispr',
+      'Спустя 9 лет ушел из instinctools EE Labs и начал работу в американском стартапе Tispr в роли React.js разработчика',
     category: 'career',
     image: '/timeline/tispr.jpeg',
   },
@@ -216,7 +286,7 @@ export const timelineData: TimelineEvent[] = [
     year: 2020,
     title: 'Ребрендинг Tispr в Indy',
     description:
-      'Реализовал ребрендинг стартапа Tispr в Indy, применив современный подход темизации с CSS Custom Properties',
+      'Реализовал ребрендинг стартапа Tispr в Indy, применив современный подход темизации с CSS Custom Properties и SSR на Next.js',
     category: 'career',
     image: '/timeline/indy.jpeg',
   },
@@ -237,28 +307,67 @@ export const timelineData: TimelineEvent[] = [
   },
   {
     year: 2022,
-    title: 'IntexSoft и PWA приложение',
-    description:
-      'Перешел в компанию IntexSoft и начал разработку PWA приложения "Клуб Тайных Покупателей" для ритейлера с миллионной аудиторией',
+    title: 'IntexSoft',
+    description: 'Перешел в компанию IntexSoft на позицию ведущего разработчика',
     category: 'career',
-    image: '/image-placeholders/mortal-kombat/ermac.jpg',
+    image: '/timeline/intexsoft.png',
   },
-  // {
-  //   year: 2022,
-  //   title: 'X5 Group',
-  //   description: 'Перешел в компанию IntexSoft и начал разработку PWA приложения "Клуб Тайных Покупателей" для ритейлера с миллионной аудиторией',
-  //   category: 'career',
-  //   image: '/image-placeholders/mortal-kombat/ermac.jpg'
-  // },
-  // {
-  //   year: 2022,
-  //   title: 'X5 Group',
-  //   description: 'Перешел в компанию IntexSoft и начал разработку PWA приложения "Клуб Тайных Покупателей" для ритейлера с миллионной аудиторией',
-  //   category: 'career',
-  //   image: '/image-placeholders/mortal-kombat/ermac.jpg'
-  // },
+  {
+    year: 2022,
+    title: 'PWA для X5 Group',
+    description:
+      'Начал разработку PWA приложения "Клуб Тайных Покупателей" для X5 Group ритейлера с миллионной аудиторией',
+    category: 'career',
+    image: '/timeline/mystery-shopper.png',
+  },
+  {
+    year: 2023,
+    title: 'Митапы в IntexSoft',
+    description:
+      'Провел несколько митапов внутри IntexSoft о нюансах разработки архитектуры гибридных мобильных приложений',
+    category: 'career',
+    image: '/timeline/meetup.png',
+  },
+  {
+    year: 2024,
+    title: 'Программирование с детьми',
+    description:
+      'Начал программировать со своими детьми на Scratch и Blockly, рассказывать про историю компьютеров и программирования',
+    category: 'career',
+    image: '/scratch.jpg',
+  },
+  {
+    year: 2025,
+    title: 'Выступление в X5 Group',
+    description:
+      'Выступил на митапе в X5 Group, рассказал о специфике разработки PWA для оффлайн, IndexedDB и Workbox',
+    category: 'career',
+    image: '/timeline/x5-meetup.png',
+  },
+  {
+    year: 2025,
+    title: 'MacBook Pro M4',
+    description: 'Пересел на MacBook Pro M4',
+    category: 'career',
+    image: '/timeline/macbook-m4.png',
+  },
 
   // Technology milestones (right side)
+  {
+    year: 1993,
+    title: 'Mosaic Browser',
+    description:
+      'Первый популярный графический веб-браузер, который сделал интернет доступным для масс',
+    category: 'technology',
+    image: '/timeline/mosaic.png',
+  },
+  {
+    year: 1995,
+    title: 'Opera Browser',
+    description: 'Первый релиз браузера Opera от норвежской компании Opera Software',
+    category: 'technology',
+    image: '/timeline/opera.png',
+  },
   {
     year: 1995,
     title: 'JavaScript',
@@ -267,12 +376,36 @@ export const timelineData: TimelineEvent[] = [
     image: '/timeline/js.png',
   },
   {
+    year: 1996,
+    title: 'CSS 1.0',
+    description:
+      'W3C принял первую спецификацию CSS, позволившую отделить содержание от оформления веб-страниц',
+    category: 'technology',
+    image: '/timeline/w3c.png',
+  },
+  {
+    year: 1997,
+    title: 'EcmaScript Standard',
+    description:
+      'Ecma International опубликовал первую спецификацию ECMAScript (ECMA-262), стандартизировав JavaScript',
+    category: 'technology',
+    image: '/timeline/es.png',
+  },
+  {
     year: 1998,
     title: 'CSS 2.0',
     description:
       'Выпущена спецификация CSS 2.0, которая добавила поддержку позиционирования и медиа-запросов',
     category: 'technology',
     image: '/timeline/w3c.png',
+  },
+  {
+    year: 1998,
+    title: 'Браузерные войны',
+    description:
+      'Начало интенсивной конкуренции между Internet Explorer и Netscape Navigator за доминирование на рынке',
+    category: 'technology',
+    image: '/timeline/ie.png',
   },
   {
     year: 2000,
@@ -291,6 +424,14 @@ export const timelineData: TimelineEvent[] = [
   },
   {
     year: 2004,
+    title: 'Eclipse RAP/SWT',
+    description:
+      'Eclipse представил RAP (Rich Ajax Platform) и SWT (Standard Widget Toolkit) для веб-приложений',
+    category: 'technology',
+    image: '/timeline/eclipse.png',
+  },
+  {
+    year: 2004,
     title: 'Gmail',
     description:
       'Google запустил Gmail с революционным подходом к веб-почте и 1 ГБ свободного места',
@@ -305,11 +446,43 @@ export const timelineData: TimelineEvent[] = [
     image: '/timeline/ajax.png',
   },
   {
+    year: 2005,
+    title: 'Opera Mini',
+    description:
+      'Первый мобильный браузер Opera Mini для Java-телефонов с серверным сжатием данных',
+    category: 'technology',
+    image: '/timeline/opera.png',
+  },
+  {
     year: 2006,
     title: 'jQuery',
     description: 'Джон Резиг выпустил jQuery, который упростил работу с DOM и AJAX',
     category: 'technology',
     image: '/timeline/jquery.png',
+  },
+  {
+    year: 2006,
+    title: 'Google Web Toolkit (GWT)',
+    description:
+      'Google представил GWT - инструмент для разработки веб-приложений на Java с компиляцией в JavaScript',
+    category: 'technology',
+    image: '/timeline/gwt.png',
+  },
+  {
+    year: 2007,
+    title: 'iPhone с Safari',
+    description:
+      'Apple представила первый iPhone с мобильным браузером Safari, революционизировав мобильный веб',
+    category: 'technology',
+    image: '/timeline/apple.png',
+  },
+  {
+    year: 2007,
+    title: 'ExtJS',
+    description:
+      'Sencha выпустила ExtJS - JavaScript фреймворк для создания богатых веб-приложений с компонентами',
+    category: 'technology',
+    image: '/timeline/extjs.png',
   },
   {
     year: 2008,
@@ -461,6 +634,14 @@ export const timelineData: TimelineEvent[] = [
   },
   {
     year: 2013,
+    title: 'Netflix BFF Pattern',
+    description:
+      'Netflix представил архитектурный паттерн Backend for Frontend для оптимизации взаимодействия между фронтендом и бэкендом',
+    category: 'technology',
+    image: '/timeline/netflix.png',
+  },
+  {
+    year: 2013,
     title: 'Web Components',
     description:
       'W3C начал работу над Web Components - стандартом для создания переиспользуемых компонентов',
@@ -487,7 +668,7 @@ export const timelineData: TimelineEvent[] = [
     description:
       'Выпущен ES6 с классами, стрелочными функциями, модулями и многими другими возможностями',
     category: 'technology',
-    image: '/timeline/js.png',
+    image: '/timeline/es.png',
   },
   {
     year: 2015,
@@ -547,6 +728,14 @@ export const timelineData: TimelineEvent[] = [
     image: '/timeline/webcomponents.png',
   },
   {
+    year: 2019,
+    title: 'Deno Runtime',
+    description:
+      'Райан Даль представил Deno - современную альтернативу Node.js с TypeScript из коробки',
+    category: 'technology',
+    image: '/timeline/deno.png',
+  },
+  {
     year: 2020,
     title: 'CSS Logical Properties',
     description: 'Поддержка CSS Logical Properties для интернационализации',
@@ -589,7 +778,76 @@ export const timelineData: TimelineEvent[] = [
     category: 'technology',
     image: '/timeline/css.png',
   },
+  {
+    year: 2023,
+    title: 'Vite 5.0',
+    description:
+      'Выпущен Vite 5.0 - быстрый сборщик модулей, ставший популярной альтернативой Webpack',
+    category: 'technology',
+    image: '/timeline/vite.png',
+  },
+  {
+    year: 2024,
+    title: 'WebAssembly 2.0',
+    description:
+      'WebAssembly 2.0 получил широкую поддержку браузеров, революционизировав высокопроизводительные веб-приложения',
+    category: 'technology',
+    image: '/timeline/ws.png',
+  },
+  {
+    year: 2025,
+    title: 'AI в веб-разработке',
+    description:
+      'Искусственный интеллект и машинное обучение стали активно интегрироваться в веб-приложения для персонализации и автоматизации',
+    category: 'technology',
+    image: '/timeline/openai.png',
+  },
 ];
 
-// Sort timeline data by year
-export const sortedTimelineData = timelineData.sort((a, b) => a.year - b.year);
+// Sort timeline data by year and alternate between career and technology events
+export const sortedTimelineData = (() => {
+  // First, sort by year
+  const sortedByYear = timelineData.sort((a, b) => a.year - b.year);
+
+  // Group events by year
+  const eventsByYear: { [year: number]: TimelineEvent[] } = {};
+  sortedByYear.forEach((event) => {
+    if (!eventsByYear[event.year]) {
+      eventsByYear[event.year] = [];
+    }
+    eventsByYear[event.year].push(event);
+  });
+
+  // Interleave events within each year (career and technology alternate)
+  const result: TimelineEvent[] = [];
+  const sortedYears = Object.keys(eventsByYear)
+    .map(Number)
+    .sort((a, b) => a - b);
+
+  sortedYears.forEach((year) => {
+    const yearEvents = eventsByYear[year];
+    const careerEvents = yearEvents.filter((e) => e.category === 'career');
+    const techEvents = yearEvents.filter((e) => e.category === 'technology');
+
+    // Alternate between career and technology events
+    const maxLength = Math.max(careerEvents.length, techEvents.length);
+    for (let i = 0; i < maxLength; i++) {
+      if (i < careerEvents.length) {
+        result.push(careerEvents[i]);
+      }
+      if (i < techEvents.length) {
+        result.push(techEvents[i]);
+      }
+    }
+  });
+
+  // Debug: log events after 2019
+  const eventsAfter2019 = result.filter((event) => event.year > 2019);
+  console.log(
+    'Events after 2019:',
+    eventsAfter2019.length,
+    eventsAfter2019.map((e) => `${e.year} - ${e.title}`)
+  );
+
+  return result;
+})();

@@ -54,29 +54,50 @@ export function TimelineClient() {
           </div>
 
           <div className="timeline-card">
-            <div className="timeline-icon">
-              {event.category === 'career' ? (
-                <User className="w-6 h-6" />
-              ) : (
-                <Code className="w-6 h-6" />
-              )}
-            </div>
-
-            <div className="timeline-text">
-              <h3 className="timeline-title">{event.title}</h3>
-              <p className="timeline-description">{event.description}</p>
-            </div>
-
-            {event.image && (
-              <div className="timeline-image">
-                <Image
-                  src={event.image}
-                  alt={event.title}
-                  width={60}
-                  height={60}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            {event.category === 'career' ? (
+              // Career events: icon -> text -> image
+              <>
+                <div className="timeline-icon">
+                  <User className="w-6 h-6" />
+                </div>
+                <div className="timeline-text">
+                  <h3 className="timeline-title">{event.title}</h3>
+                  <p className="timeline-description">{event.description}</p>
+                </div>
+                {event.image && (
+                  <div className="timeline-image">
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      width={60}
+                      height={60}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+              </>
+            ) : (
+              // Technology events: image -> text -> icon (mirrored)
+              <>
+                {event.image && (
+                  <div className="timeline-image">
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      width={60}
+                      height={60}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="timeline-text">
+                  <h3 className="timeline-title">{event.title}</h3>
+                  <p className="timeline-description">{event.description}</p>
+                </div>
+                <div className="timeline-icon">
+                  <Code className="w-6 h-6" />
+                </div>
+              </>
             )}
           </div>
         </div>
