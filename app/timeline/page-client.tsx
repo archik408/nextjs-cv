@@ -2,13 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import { sortedTimelineData, TimelineEvent } from '@/constants/timeline';
-import { ArrowLeft, Calendar, User, Code } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Code, Home } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { LanguageSwitcher } from '@/components/language-switcher';
+import { ThemeSwitcher } from '@/components/theme-switcher';
+import { useLanguage } from '@/lib/use-language';
+import { translations } from '@/lib/translations';
 
 export function TimelineClient() {
   const [visibleEvents, setVisibleEvents] = useState<Set<number>>(new Set());
   const [isLoaded, setIsLoaded] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language];
 
   useEffect(() => {
     setIsLoaded(true);
@@ -55,48 +61,48 @@ export function TimelineClient() {
 
           <div className="timeline-card">
             {event.category === 'career' ? (
-              // Career events: icon -> text -> image
+              // Career events: image -> text -> icon
               <>
+                {event.image && (
+                  <div className="timeline-image">
+                    <Image
+                      src={event.image}
+                      alt={event.title[language]}
+                      width={77}
+                      height={77}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="timeline-text">
+                  <h3 className="timeline-title">{event.title[language]}</h3>
+                  <p className="timeline-description">{event.description[language]}</p>
+                </div>
                 <div className="timeline-icon">
                   <User className="w-6 h-6" />
                 </div>
-                <div className="timeline-text">
-                  <h3 className="timeline-title">{event.title}</h3>
-                  <p className="timeline-description">{event.description}</p>
-                </div>
-                {event.image && (
-                  <div className="timeline-image">
-                    <Image
-                      src={event.image}
-                      alt={event.title}
-                      width={60}
-                      height={60}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
               </>
             ) : (
-              // Technology events: image -> text -> icon (mirrored)
+              // Technology events: icon -> text -> image
               <>
-                {event.image && (
-                  <div className="timeline-image">
-                    <Image
-                      src={event.image}
-                      alt={event.title}
-                      width={60}
-                      height={60}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
-                <div className="timeline-text">
-                  <h3 className="timeline-title">{event.title}</h3>
-                  <p className="timeline-description">{event.description}</p>
-                </div>
                 <div className="timeline-icon">
                   <Code className="w-6 h-6" />
                 </div>
+                <div className="timeline-text">
+                  <h3 className="timeline-title">{event.title[language]}</h3>
+                  <p className="timeline-description">{event.description[language]}</p>
+                </div>
+                {event.image && (
+                  <div className="timeline-image">
+                    <Image
+                      src={event.image}
+                      alt={event.title[language]}
+                      width={60}
+                      height={60}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
               </>
             )}
           </div>
@@ -167,45 +173,59 @@ export function TimelineClient() {
         .timeline-item.visible:nth-child(1) {
           animation-delay: 0.1s;
         }
+
         .timeline-item.visible:nth-child(2) {
           animation-delay: 0.2s;
         }
+
         .timeline-item.visible:nth-child(3) {
           animation-delay: 0.3s;
         }
+
         .timeline-item.visible:nth-child(4) {
           animation-delay: 0.4s;
         }
+
         .timeline-item.visible:nth-child(5) {
           animation-delay: 0.5s;
         }
+
         .timeline-item.visible:nth-child(6) {
           animation-delay: 0.6s;
         }
+
         .timeline-item.visible:nth-child(7) {
           animation-delay: 0.7s;
         }
+
         .timeline-item.visible:nth-child(8) {
           animation-delay: 0.8s;
         }
+
         .timeline-item.visible:nth-child(9) {
           animation-delay: 0.9s;
         }
+
         .timeline-item.visible:nth-child(10) {
           animation-delay: 1s;
         }
+
         .timeline-item.visible:nth-child(11) {
           animation-delay: 1.1s;
         }
+
         .timeline-item.visible:nth-child(12) {
           animation-delay: 1.2s;
         }
+
         .timeline-item.visible:nth-child(13) {
           animation-delay: 1.3s;
         }
+
         .timeline-item.visible:nth-child(14) {
           animation-delay: 1.4s;
         }
+
         .timeline-item.visible:nth-child(15) {
           animation-delay: 1.5s;
         }
@@ -255,45 +275,59 @@ export function TimelineClient() {
         .timeline-item.visible:nth-child(1) .timeline-year {
           animation-delay: 0.15s;
         }
+
         .timeline-item.visible:nth-child(2) .timeline-year {
           animation-delay: 0.25s;
         }
+
         .timeline-item.visible:nth-child(3) .timeline-year {
           animation-delay: 0.35s;
         }
+
         .timeline-item.visible:nth-child(4) .timeline-year {
           animation-delay: 0.45s;
         }
+
         .timeline-item.visible:nth-child(5) .timeline-year {
           animation-delay: 0.55s;
         }
+
         .timeline-item.visible:nth-child(6) .timeline-year {
           animation-delay: 0.65s;
         }
+
         .timeline-item.visible:nth-child(7) .timeline-year {
           animation-delay: 0.75s;
         }
+
         .timeline-item.visible:nth-child(8) .timeline-year {
           animation-delay: 0.85s;
         }
+
         .timeline-item.visible:nth-child(9) .timeline-year {
           animation-delay: 0.95s;
         }
+
         .timeline-item.visible:nth-child(10) .timeline-year {
           animation-delay: 1.05s;
         }
+
         .timeline-item.visible:nth-child(11) .timeline-year {
           animation-delay: 1.15s;
         }
+
         .timeline-item.visible:nth-child(12) .timeline-year {
           animation-delay: 1.25s;
         }
+
         .timeline-item.visible:nth-child(13) .timeline-year {
           animation-delay: 1.35s;
         }
+
         .timeline-item.visible:nth-child(14) .timeline-year {
           animation-delay: 1.45s;
         }
+
         .timeline-item.visible:nth-child(15) .timeline-year {
           animation-delay: 1.55s;
         }
@@ -342,45 +376,59 @@ export function TimelineClient() {
         .timeline-item.visible:nth-child(1) .timeline-card {
           animation-delay: 0.2s;
         }
+
         .timeline-item.visible:nth-child(2) .timeline-card {
           animation-delay: 0.3s;
         }
+
         .timeline-item.visible:nth-child(3) .timeline-card {
           animation-delay: 0.4s;
         }
+
         .timeline-item.visible:nth-child(4) .timeline-card {
           animation-delay: 0.5s;
         }
+
         .timeline-item.visible:nth-child(5) .timeline-card {
           animation-delay: 0.6s;
         }
+
         .timeline-item.visible:nth-child(6) .timeline-card {
           animation-delay: 0.7s;
         }
+
         .timeline-item.visible:nth-child(7) .timeline-card {
           animation-delay: 0.8s;
         }
+
         .timeline-item.visible:nth-child(8) .timeline-card {
           animation-delay: 0.9s;
         }
+
         .timeline-item.visible:nth-child(9) .timeline-card {
           animation-delay: 1s;
         }
+
         .timeline-item.visible:nth-child(10) .timeline-card {
           animation-delay: 1.1s;
         }
+
         .timeline-item.visible:nth-child(11) .timeline-card {
           animation-delay: 1.2s;
         }
+
         .timeline-item.visible:nth-child(12) .timeline-card {
           animation-delay: 1.3s;
         }
+
         .timeline-item.visible:nth-child(13) .timeline-card {
           animation-delay: 1.4s;
         }
+
         .timeline-item.visible:nth-child(14) .timeline-card {
           animation-delay: 1.5s;
         }
+
         .timeline-item.visible:nth-child(15) .timeline-card {
           animation-delay: 1.6s;
         }
@@ -442,8 +490,8 @@ export function TimelineClient() {
         }
 
         .timeline-image {
-          width: 4rem;
-          height: 4rem;
+          width: 6rem;
+          height: 6rem;
           border-radius: 50%;
           overflow: hidden;
           border: 3px solid white;
@@ -469,7 +517,7 @@ export function TimelineClient() {
 
         /* Dark mode styles */
         .dark .timeline-card {
-          background: #1f2937;
+          background: linear-gradient(135deg, #1f2937 0%, #293d53 100%);
           border-color: #374151;
         }
 
@@ -482,7 +530,7 @@ export function TimelineClient() {
         }
 
         .dark .timeline-year {
-          background: #111827;
+          background: linear-gradient(135deg, #111827 0%, #293d53 100%);
           border-color: #374151;
         }
 
@@ -526,7 +574,7 @@ export function TimelineClient() {
         }
       `}</style>
 
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-b from-purple-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
         {/* Floating particles background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400/30 rounded-full animate-pulse"></div>
@@ -539,17 +587,36 @@ export function TimelineClient() {
         {/* Header */}
         <div className="sticky top-0 z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 py-4">
-            <div className="flex items-center gap-4">
-              <Link
-                href="/"
-                className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                Назад на главную
-              </Link>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Timeline развития ({sortedTimelineData.length} событий)
-              </h1>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                {/* Desktop version */}
+                <Link
+                  href="/"
+                  className="hidden md:flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  <ArrowLeft className="w-5 h-5" />
+                  {t.timelineBackToHome}
+                </Link>
+                {/* Mobile version */}
+                <Link
+                  href="/"
+                  className="md:hidden flex items-center justify-center w-10 h-10 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  <Home className="w-5 h-5" />
+                </Link>
+                {/* Desktop title */}
+                <h1 className="hidden md:block text-2xl font-bold text-gray-900 dark:text-white">
+                  {t.timelineTitle} ({sortedTimelineData.length} {t.timelineEventsCount})
+                </h1>
+                {/* Mobile title */}
+                <h1 className="md:hidden text-xl font-bold text-gray-900 dark:text-white">
+                  Timeline
+                </h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <LanguageSwitcher />
+                <ThemeSwitcher />
+              </div>
             </div>
           </div>
         </div>

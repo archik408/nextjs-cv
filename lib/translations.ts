@@ -373,6 +373,12 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         render: 'Render Phase',
       },
     },
+    // Timeline Page
+    timelineTitle: 'Development Timeline',
+    timelineSubtitle: 'Career milestones and web technology evolution',
+    timelineBackToHome: 'Back to Home',
+    timelineLoading: 'Loading timeline...',
+    timelineEventsCount: 'events',
   },
   [ELanguage.ru]: {
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
@@ -750,6 +756,12 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         render: 'Фаза рендера',
       },
     },
+    // Timeline Page
+    timelineTitle: 'Хронология Разработки',
+    timelineSubtitle: 'Карьерные вехи и эволюция веб-технологий',
+    timelineBackToHome: 'На главную',
+    timelineLoading: 'Загрузка хронологии...',
+    timelineEventsCount: 'событий',
   },
 } as const;
 

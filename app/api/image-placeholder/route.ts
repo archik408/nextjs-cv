@@ -151,7 +151,7 @@ export async function GET(request: Request) {
     }
   }
 
-  const res = new NextResponse(svg, {
+  return new NextResponse(svg, {
     status: 200,
     headers: {
       'Content-Type': 'image/svg+xml; charset=utf-8',
@@ -161,5 +161,4 @@ export async function GET(request: Request) {
       'Access-Control-Allow-Methods': 'GET, OPTIONS',
     },
   });
-  return res;
 }

@@ -178,6 +178,11 @@ export function ImagePlaceholderClient() {
                     value={url}
                     className="flex-1 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm"
                   />
+                </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                  {t.imgPhCopiedFullUrlNote || 'Full URL will include your domain (origin).'}
+                </p>
+                <div className="flex items-center gap-2">
                   <button
                     onClick={copyUrl}
                     className="inline-flex items-center gap-1 px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white"
@@ -185,21 +190,18 @@ export function ImagePlaceholderClient() {
                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     {copied ? t.imgPhCopied || 'Copied' : t.imgPhCopy || 'Copy'}
                   </button>
+                  <button
+                    onClick={() => {
+                      if (isClient) {
+                        setTime(Date.now());
+                        setIsLoading(true);
+                      }
+                    }}
+                    className={`my-5 w-fit inline-flex items-center gap-2 rounded-md px-3 py-2 bg-gray-300 dark:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed`}
+                  >
+                    {t.eventLoopControls?.reset || 'Reset'}
+                  </button>
                 </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                  {t.imgPhCopiedFullUrlNote || 'Full URL will include your domain (origin).'}
-                </p>
-                <button
-                  onClick={() => {
-                    if (isClient) {
-                      setTime(Date.now());
-                      setIsLoading(true);
-                    }
-                  }}
-                  className={`my-5 w-fit inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-gray-300 dark:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed`}
-                >
-                  {t.eventLoopControls?.reset || 'Reset'}
-                </button>
               </div>
             </div>
 

@@ -441,26 +441,25 @@ const fiberNode = {
                 <Zap className="w-5 h-5" />{' '}
                 {t.reactFiberSections?.animationControls || 'Animation Controls'}
               </h2>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={togglePlay}
-                  className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg transition-colors"
-                >
-                  {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                  {isPlaying
-                    ? t.reactFiberControls?.pause || 'Pause'
-                    : t.reactFiberControls?.play || 'Play'}
-                </button>
-                <button
-                  onClick={resetAnimation}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                  {t.reactFiberControls?.reset || 'Reset'}
-                </button>
-              </div>
             </div>
-
+            <div className="my-4 flex items-center gap-2">
+              <button
+                onClick={togglePlay}
+                className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg transition-colors"
+              >
+                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                {isPlaying
+                  ? t.reactFiberControls?.pause || 'Pause'
+                  : t.reactFiberControls?.play || 'Play'}
+              </button>
+              <button
+                onClick={resetAnimation}
+                className="flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
+              >
+                <RotateCcw className="w-4 h-4" />
+                {t.reactFiberControls?.reset || 'Reset'}
+              </button>
+            </div>
             <div className="flex items-center gap-4">
               <label className="text-sm font-medium">
                 {t.reactFiberControls?.speed || 'Speed'}:
@@ -496,7 +495,7 @@ const fiberNode = {
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Code Transformation */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div className="overflow-auto bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                 <Code className="w-5 h-5" />{' '}
                 {codeTransformations[currentStep]?.title || 'Code Transformation'}
