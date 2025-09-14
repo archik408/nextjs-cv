@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Clock } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
+import Link from 'next/link';
 
 export function ExperienceSection() {
   const { t } = useLanguage();
@@ -22,7 +23,16 @@ export function ExperienceSection() {
   return (
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8">{t.experience}</h2>
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold">{t.experience}</h2>
+          <Link
+            href="/timeline"
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <Clock className="w-4 h-4" />
+            Timeline
+          </Link>
+        </div>
         <div className="space-y-6 md:space-y-8">
           {t.experiences.map((experience, index) => {
             const expanded = Boolean(open[index]);
