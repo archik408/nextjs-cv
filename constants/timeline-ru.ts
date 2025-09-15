@@ -239,6 +239,13 @@ export const timelineDataRu = [
     image: '/timeline/lition.png',
   },
   {
+    year: 2018,
+    title: 'Курс веб‑разработки в IT‑Academy',
+    description: 'Начал вести курс по разработке веб‑сайтов на HTML, CSS и JavaScript в IT‑Academy',
+    category: 'career' as const,
+    image: '/timeline/itacademy.jpeg',
+  },
+  {
     year: 2019,
     title: 'Рождение сына Матвея',
     description: 'Родился сын Матвей',
@@ -288,6 +295,14 @@ export const timelineDataRu = [
     description: 'Вышла моя статья о CSS Custom Properties на портале Smashing Magazine',
     category: 'career' as const,
     image: '/timeline/smashing.png',
+  },
+  {
+    year: 2020,
+    title: 'WeAreDevelopers Conference',
+    description:
+      'Посетил конференцию WeAreDevelopers, где слушал доклады сэра Тима Бернерса-Ли (создателя Web) и Хокона Виума Ли (создателя CSS)',
+    category: 'career' as const,
+    image: '/timeline/wium.jpeg',
   },
   {
     year: 2021,

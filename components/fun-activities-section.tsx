@@ -9,6 +9,8 @@ export function FunActivitiesSection() {
   const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [carRunKey, setCarRunKey] = useState<number>(0);
+  const [isCarRunning, setIsCarRunning] = useState(false);
 
   const activities = [
     {
@@ -89,10 +91,33 @@ export function FunActivitiesSection() {
   };
 
   return (
-    <section className="py-10 md:py-20 bg-gray-100/50 dark:bg-gray-800/50 overflow-hidden">
+    <section className="py-10 md:py-20 bg-gray-100/50 dark:bg-gray-800/50 overflow-hidden relative">
       {/* Title */}
       <div className="max-w-5xl mx-auto px-4 md:px-8 mb-12">
         <h2 className="text-3xl font-bold text-center">{t.funActivities}</h2>
+      </div>
+
+      {/* Racing car overlay */}
+      <div className="pointer-events-none absolute inset-0 top-2.5" aria-hidden="true">
+        {isCarRunning && (
+          // key forces reflow so animation can retrigger on each hover
+          <div
+            key={carRunKey}
+            className="absolute bottom-8 animate-race-left"
+            style={{ left: '50%', bottom: '-20px' }}
+            onAnimationEnd={() => setIsCarRunning(false)}
+          >
+            <img
+              src="/batmobile.png"
+              alt="bemobile"
+              className="w-56 md:w-64 h-auto"
+              style={{
+                transform: 'translateX(-50%)',
+                filter: 'drop-shadow(0 6px 10px rgba(0,0,0,0.35))',
+              }}
+            />
+          </div>
+        )}
       </div>
 
       {/* Carousel Container - extends beyond main layout */}
@@ -123,7 +148,17 @@ export function FunActivitiesSection() {
           {activities.map((activity) => {
             const IconComponent = activity.icon;
             const CardContent = (
-              <div className="min-w-[280px] md:min-w-[340px] lg:min-w-[380px] h-[420px] md:h-[450px] bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden snap-center group">
+              <div
+                className="min-w-[280px] md:min-w-[340px] lg:min-w-[380px] h-[420px] md:h-[450px] bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden snap-center group"
+                onMouseEnter={
+                  activity.id === 'batmobiles'
+                    ? () => {
+                        setCarRunKey(Date.now());
+                        setIsCarRunning(true);
+                      }
+                    : undefined
+                }
+              >
                 <div className="p-6 md:p-8 h-full flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <div className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-800 ${activity.color}`}>
@@ -179,6 +214,28 @@ export function FunActivitiesSection() {
           })}
         </div>
       </div>
+
+      {/* Animations */}
+      <style jsx>{`
+        @keyframes race-left {
+          0% {
+            transform: translateX(60vw);
+          }
+          40% {
+            transform: translateX(0);
+          }
+          64% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-110vw);
+          }
+        }
+        .animate-race-left {
+          /* 2.5s движения + 0.8s пауза на середине = 3.3s */
+          animation: race-left 3.3s linear both;
+        }
+      `}</style>
     </section>
   );
 }

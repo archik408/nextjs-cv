@@ -239,6 +239,14 @@ export const timelineDataEn = [
     image: '/timeline/lition.png',
   },
   {
+    year: 2018,
+    title: 'Web development course at IT‑Academy',
+    description:
+      'Started teaching a course on building websites with HTML, CSS and JavaScript at IT‑Academy',
+    category: 'career' as const,
+    image: '/timeline/itacademy.jpeg',
+  },
+  {
     year: 2019,
     title: 'Son Matvey born',
     description: 'Son Matvey was born',
@@ -288,6 +296,14 @@ export const timelineDataEn = [
     description: 'Published article about CSS Custom Properties on Smashing Magazine portal',
     category: 'career' as const,
     image: '/timeline/smashing.png',
+  },
+  {
+    year: 2020,
+    title: 'WeAreDevelopers Conference',
+    description:
+      'Attended WeAreDevelopers conference and listened to talks by Sir Tim Berners‑Lee (creator of the Web) and Håkon Wium Lie (creator of CSS)',
+    category: 'career' as const,
+    image: '/timeline/wium.jpeg',
   },
   {
     year: 2021,
