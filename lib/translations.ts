@@ -287,6 +287,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       speed: 'Speed',
       showDetails: 'Show Node Details',
       hideDetails: 'Hide Node Details',
+      nextStep: 'Step',
     },
     reactFiberSteps: {
       jsxParsing: 'JSX Code Parsing',
@@ -649,6 +650,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       speed: 'Скорость',
       showDetails: 'Показать детали узлов',
       hideDetails: 'Скрыть детали узлов',
+      nextStep: 'Шаг',
     },
     reactFiberSteps: {
       jsxParsing: 'Парсинг JSX кода',

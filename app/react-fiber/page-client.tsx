@@ -461,7 +461,7 @@ const fiberNode = {
                 className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
               >
                 <ArrowRight className="w-4 h-4" />
-                {t.reactFiberControls?.nextStep || 'Next Step'}
+                {t.reactFiberControls?.nextStep || 'Step'}
               </button>
               <button
                 onClick={resetAnimation}
