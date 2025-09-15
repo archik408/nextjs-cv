@@ -163,6 +163,13 @@ export const timelineDataRu = [
     image: '/timeline/extjs.png',
   },
   {
+    year: 2014,
+    title: 'Dell Inspiration 3000 и Linux/Ubuntu',
+    description: 'Пересел на ноутбук Dell Inspiration 300 и начал работать в Linux/Ubuntu',
+    category: 'career' as const,
+    image: '/timeline/dell.png',
+  },
+  {
     year: 2015,
     title: 'CRM система SMART',
     description:
@@ -258,6 +265,13 @@ export const timelineDataRu = [
     description: 'Посетил уникальную для Минска конференции CSS-Minsk-JS',
     category: 'career' as const,
     image: '/timeline/minskjs.png',
+  },
+  {
+    year: 2019,
+    title: 'W3Cx Professional Front‑End Web Developer',
+    description: 'Получил профессиональный сертификат Front‑End Web Developer от W3Cx',
+    category: 'career' as const,
+    image: '/timeline/w3cx.png',
   },
   {
     year: 2019,
