@@ -393,6 +393,19 @@ export const EventLoopPageClient = memo(function EventLoopPageClient() {
     });
   };
 
+  // DOM addEventListener callback → macrotask (User Interaction / I/O task source)
+  const enqueueDomEvent = () => {
+    const id = crypto.randomUUID();
+    setIoQueue((q: QueueItem[]) => {
+      const next: QueueItem[] = [
+        ...q,
+        { id, label: 'addEventListener callback', type: 'task' as const, color: 'sky' as const },
+      ];
+      ioQueueRef.current = next;
+      return next;
+    });
+  };
+
   const enqueueIdleCallback = () => {
     const id = crypto.randomUUID();
     idleIdRef.current = id; // store for cancellation
@@ -438,6 +451,35 @@ export const EventLoopPageClient = memo(function EventLoopPageClient() {
       }, loopSpeed) as unknown as number;
     }
   };
+
+  // Stop all running timers/intervals when leaving the page
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      if (loopTimer.current) {
+        clearTimeout(loopTimer.current);
+        loopTimer.current = null;
+      }
+      // Also clear any demo-scheduled handles
+      if (intervalIdRef.current) {
+        clearInterval(intervalIdRef.current);
+        intervalIdRef.current = null;
+      }
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+        timeoutIdRef.current = null;
+      }
+      rafIdRef.current = null;
+      idleIdRef.current = null;
+      if (abortRef.current.controller) {
+        abortRef.current.controller.abort();
+        abortRef.current.controller = null;
+      }
+    };
+  }, []);
 
   const nextStep = () => {
     // Получаем актуальные значения из refs
@@ -658,6 +700,14 @@ export const EventLoopPageClient = memo(function EventLoopPageClient() {
                 : stableTranslations.eventLoopControls?.startLoop || 'Start Loop'}
             </button>
             <button
+              id="loopnextstep"
+              onClick={nextStep}
+              className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-blue-600 text-white disabled:opacity-50 disabled:cursor-not-allowed`}
+            >
+              <Repeat width={16} height={16} />
+              {stableTranslations.eventLoopControls?.nextStep || 'Next Step'}
+            </button>
+            <button
               onClick={reset}
               disabled={isLoopRunning}
               className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-gray-300 dark:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed`}
@@ -685,15 +735,6 @@ export const EventLoopPageClient = memo(function EventLoopPageClient() {
                 </option>
               </select>
             </div>
-            <button
-              id="loopnextstep"
-              onClick={nextStep}
-              style={{ opacity: 0 }}
-              className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-blue-600 text-white disabled:opacity-50 disabled:cursor-not-allowed`}
-            >
-              <Repeat width={16} height={16} />
-              {stableTranslations.eventLoopControls?.nextStep || 'Next Step'}
-            </button>
           </div>
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
@@ -1086,6 +1127,26 @@ export const EventLoopPageClient = memo(function EventLoopPageClient() {
                         <path d="M8 7l-5 5 5 5" />
                       </svg>
                       {stableTranslations.eventLoopControls?.enqueueXHR || 'XMLHttpRequest'}
+                    </button>
+                    <button
+                      onClick={enqueueDomEvent}
+                      className={`${buttonBase} bg-sky-200 dark:bg-sky-700`}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 12h8" />
+                        <path d="M12 8v8" />
+                      </svg>
+                      {'addEventListener callback'}
                     </button>
                   </div>
 

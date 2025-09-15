@@ -326,6 +326,10 @@ const fiberNode = {
     setIsPlaying(!isPlaying);
   };
 
+  const nextStep = () => {
+    setCurrentStep((prev) => (prev + 1) % animationSteps.length);
+  };
+
   const resetAnimation = () => {
     setIsPlaying(false);
     setCurrentStep(0);
@@ -451,6 +455,13 @@ const fiberNode = {
                 {isPlaying
                   ? t.reactFiberControls?.pause || 'Pause'
                   : t.reactFiberControls?.play || 'Play'}
+              </button>
+              <button
+                onClick={nextStep}
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                <ArrowRight className="w-4 h-4" />
+                {t.reactFiberControls?.nextStep || 'Next Step'}
               </button>
               <button
                 onClick={resetAnimation}
