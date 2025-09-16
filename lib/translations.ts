@@ -290,19 +290,18 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       nextStep: 'Step',
     },
     reactFiberSteps: {
-      jsxParsing: 'JSX Code Parsing',
-      astToElements: 'AST to React Elements',
-      fiberCreation: 'Fiber Tree Creation',
-      reconciliation: 'Reconciliation Phase',
-      commit: 'Commit Phase',
+      jsxParsing: 'JSX → AST → Babel parsing',
+      astToElements: 'AST to React Elements → Babel transformation',
+      fiberCreation: 'createElement() → React Elements (Virtual DOM)',
+      reconciliation: 'Fiber Tree Creation & Reconciliation Phase',
+      commit: 'Commit Phase → DOM',
     },
     reactFiberDetails: {
-      jsxParsing:
-        'Babel parser transforms JSX syntax into JavaScript code. JSX elements (like <div>, <h1>) become React.createElement() calls. This allows browsers to understand JSX as regular JavaScript.',
+      jsxParsing: 'Babel parser transforms JSX syntax into Abstract Syntax Tree (AST).',
       astToElements:
-        'Abstract Syntax Tree (AST) is converted to React elements - objects describing component structure. Each JSX element becomes an object with type, props, and children.',
+        'Abstract Syntax Tree (AST) is converted to React elements - objects describing component structure. JSX elements (like <div>, <h1>) become React.createElement() calls. This allows browsers to understand JSX as regular JavaScript.',
       fiberCreation:
-        'React creates Fiber tree - internal data structure for tracking components. Each Fiber node contains information about the component, its state, and relationships with other nodes.',
+        'Each JSX element becomes an object with type, props, and children. React creates Fiber tree - internal data structure for tracking components. Each Fiber node contains information about the component, its state, and relationships with other nodes.',
       reconciliation:
         'Reconciliation phase compares new Fiber tree with previous one and determines what changes need to be made to DOM. React uses diffing algorithm to optimize updates.',
       commit:
@@ -317,7 +316,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     },
     reactFiberCodeTitles: {
       originalJSX: 'Original JSX Code',
-      astRepresentation: 'AST (Abstract Syntax Tree)',
+      astRepresentation: 'AST (Abstract Syntax Tree - simplified version)',
       createElementCalls: 'React.createElement Calls',
       reactElements: 'React Elements & Fiber Nodes',
       finalHTML: 'Final HTML & DOM Updates',
@@ -653,19 +652,19 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       nextStep: 'Шаг',
     },
     reactFiberSteps: {
-      jsxParsing: 'Парсинг JSX кода',
-      astToElements: 'AST в React элементы',
-      fiberCreation: 'Создание Fiber дерева',
-      reconciliation: 'Фаза согласования',
-      commit: 'Фаза коммита',
+      jsxParsing: 'JSX → AST → Babel парсинг',
+      astToElements: 'AST в React элементы → Babel трансформация',
+      fiberCreation: 'createElement() → React Elements (Virtual DOM)',
+      reconciliation: 'Создание Fiber дерева & Фаза согласования',
+      commit: 'Фаза коммита → DOM',
     },
     reactFiberDetails: {
       jsxParsing:
-        'Babel парсер преобразует JSX синтаксис в JavaScript код. JSX элементы (как <div>, <h1>) превращаются в вызовы React.createElement(). Это позволяет браузеру понимать JSX как обычный JavaScript.',
+        'Babel парсер преобразует JSX синтаксис в Абстрактное синтаксическое дерево (AST).',
       astToElements:
-        'Абстрактное синтаксическое дерево (AST) преобразуется в React элементы - объекты, описывающие структуру компонентов. Каждый JSX элемент становится объектом с типом, пропсами и дочерними элементами.',
+        'Абстрактное синтаксическое дерево (AST) преобразуется в React элементы - объекты, описывающие структуру компонентов. JSX элементы (как <div>, <h1>) превращаются в вызовы React.createElement(). Это позволяет браузеру понимать JSX как обычный JavaScript.',
       fiberCreation:
-        'React создает Fiber дерево - внутреннюю структуру данных для отслеживания компонентов. Каждый узел Fiber содержит информацию о компоненте, его состоянии и связях с другими узлами.',
+        'Каждый JSX элемент становится объектом JSON с типом, пропсами и дочерними элементами. React создает Fiber дерево - внутреннюю структуру данных для отслеживания компонентов. Каждый узел Fiber содержит информацию о компоненте, его состоянии и связях с другими узлами.',
       reconciliation:
         'Фаза согласования (Reconciliation) сравнивает новое Fiber дерево с предыдущим и определяет, какие изменения нужно внести в DOM. React использует алгоритм diffing для оптимизации обновлений.',
       commit:
@@ -680,7 +679,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     },
     reactFiberCodeTitles: {
       originalJSX: 'Исходный JSX код',
-      astRepresentation: 'AST (Абстрактное синтаксическое дерево)',
+      astRepresentation: 'AST (Абстрактное синтаксическое дерево - упрощенная версия)',
       createElementCalls: 'Вызовы React.createElement',
       reactElements: 'React элементы и Fiber узлы',
       finalHTML: 'Финальный HTML и обновления DOM',

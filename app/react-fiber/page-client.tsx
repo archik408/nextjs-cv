@@ -67,38 +67,152 @@ export function ReactFiberClient() {
     // Step 2: AST Representation
     {
       language: 'javascript',
-      code: `// Abstract Syntax Tree (AST)
+      code: `
+// Abstract Syntax Tree (AST) based on ESTree (https://github.com/estree/estree)
+// It's very simplified example, you can see real detailed AST here https://ast-explorer.dev
+
 {
-  type: "FunctionDeclaration",
-  id: { name: "App" },
-  body: {
-    type: "BlockStatement",
-    body: [
-      {
-        type: "VariableDeclaration",
-        declarations: [{
-          type: "VariableDeclarator",
-          id: { name: "count" },
-          init: { type: "CallExpression", callee: { name: "useState" } }
-        }]
-      },
-      {
-        type: "ReturnStatement",
-        argument: {
-          type: "JSXElement",
-          openingElement: { name: { name: "div" } },
-          children: [
-            {
-              type: "JSXElement",
-              openingElement: { name: { name: "h1" } },
-              children: [{ type: "JSXText", value: "Counter: " }]
+  "type": "Program",
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "id": { "type": "Identifier", "name": "App" },
+      "params": [],
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "ArrayPattern",
+                  "elements": [
+                    { "type": "Identifier", "name": "count" },
+                    { "type": "Identifier", "name": "setCount" }
+                  ]
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": { "type": "Identifier", "name": "useState" },
+                  "arguments": [{ "type": "Literal", "value": 0 }]
+                }
+              }
+            ],
+            "kind": "const"
+          },
+          {
+            "type": "ReturnStatement",
+            "argument": {
+              "type": "JSXElement",
+              "openingElement": {
+                "type": "JSXOpeningElement",
+                "name": { "type": "JSXIdentifier", "name": "div" },
+                "attributes": [
+                  {
+                    "type": "JSXAttribute",
+                    "name": { "type": "JSXIdentifier", "name": "className" },
+                    "value": {
+                      "type": "StringLiteral",
+                      "value": "container"
+                    }
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "JSXElement",
+                  "openingElement": {
+                    "type": "JSXOpeningElement",
+                    "name": { "type": "JSXIdentifier", "name": "h1" },
+                    "attributes": []
+                  },
+                  "children": [
+                    {
+                      "type": "JSXText",
+                      "value": "Counter: ",
+                      "raw": "Counter: "
+                    },
+                    {
+                      "type": "JSXExpressionContainer",
+                      "expression": {
+                        "type": "Identifier",
+                        "name": "count"
+                      }
+                    }
+                  ],
+                  "closingElement": {
+                    "type": "JSXClosingElement",
+                    "name": { "type": "JSXIdentifier", "name": "h1" }
+                  }
+                },
+                {
+                  "type": "JSXElement",
+                  "openingElement": {
+                    "type": "JSXOpeningElement",
+                    "name": { "type": "JSXIdentifier", "name": "button" },
+                    "attributes": [
+                      {
+                        "type": "JSXAttribute",
+                        "name": { "type": "JSXIdentifier", "name": "onClick" },
+                        "value": {
+                          "type": "JSXExpressionContainer",
+                          "expression": {
+                            "type": "ArrowFunctionExpression",
+                            "params": [],
+                            "body": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "Identifier",
+                                "name": "setCount"
+                              },
+                              "arguments": [
+                                {
+                                  "type": "BinaryExpression",
+                                  "operator": "+",
+                                  "left": {
+                                    "type": "Identifier",
+                                    "name": "count"
+                                  },
+                                  "right": {
+                                    "type": "Literal",
+                                    "value": 1
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "JSXText",
+                      "value": "Increment",
+                      "raw": "Increment"
+                    }
+                  ],
+                  "closingElement": {
+                    "type": "JSXClosingElement",
+                    "name": { "type": "JSXIdentifier", "name": "button" }
+                  }
+                }
+              ],
+              "closingElement": {
+                "type": "JSXClosingElement",
+                "name": { "type": "JSXIdentifier", "name": "div" }
+              }
             }
-          ]
-        }
+          }
+        ]
       }
-    ]
-  }
+    }
+  ],
+  "sourceType": "module"
 }`,
+
       title: t.reactFiberCodeTitles?.astRepresentation || 'AST (Abstract Syntax Tree)',
     },
     // Step 3: React.createElement calls
@@ -153,14 +267,62 @@ const element = {
 };
 
 // Fiber nodes created from elements
-const fiberNode = {
-  type: "div",
-  props: { className: "container" },
-  child: h1Fiber,
-  sibling: buttonFiber,
-  return: parentFiber,
-  effectTag: "PLACEMENT"
-};`,
+    fiberApp = {
+      tag: FunctionComponent,
+      type: App,
+      key: null,
+      stateNode: null, // FC has no instance
+      return: null, // Parent node
+      child: fiberDiv, // First child node - div
+      sibling: null,
+      index: 0,
+      ref: null,
+      pendingProps: {},
+      memoizedProps: {},
+      memoizedState: {
+        baseState: 0,
+        baseQueue: null,
+        memoizedState: 0,
+        queue: {
+          pending: null,
+          dispatch: () => {},
+          lastRenderedReducer: basicStateReducer,
+          lastRenderedState: 0
+        }
+      },
+      updateQueue: null,
+      mode: ConcurrentMode,
+      effectTag: NoEffect,
+      nextEffect: null,
+      firstEffect: null,
+      lastEffect: null,
+      expirationTime: NoWork,
+      childExpirationTime: NoWork,
+      alternate: null 
+    }
+
+    fiberDiv = {
+      tag: HostComponent, // 5
+      type: "div",
+      key: null,
+      stateNode: null, // will create later
+      return: fiberApp, // Parent node - App fiber
+      child: fiberH1, // First child node - h1
+      sibling: null,
+      index: 0,
+      ref: null,
+      pendingProps: { className: "container", children: [...] },
+      memoizedProps: null,
+      updateQueue: null,
+      mode: ConcurrentMode,
+      effectTag: Placement, // DOM effect
+      nextEffect: null,
+      firstEffect: fiberH1, // First effect in list
+      lastEffect: fiberButton, // Last effect in list
+      expirationTime: Sync,
+      childExpirationTime: Sync,
+      alternate: null
+    };`,
       title: t.reactFiberCodeTitles?.reactElements || 'React Elements & Fiber Nodes',
     },
     // Step 5: Final HTML
@@ -247,7 +409,7 @@ const fiberNode = {
       highlightNodes: ['root'],
       dataFlow: [
         { from: 'ast', to: 'react-elements', type: 'jsx' },
-        { from: 'react-elements', to: 'fiber-tree', type: 'fiber' },
+        { from: 'react-elements', to: 'VDOM & fiber-tree', type: 'fiber' },
       ],
     },
     {
