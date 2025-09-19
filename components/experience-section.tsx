@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ChevronDown, Clock } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import Link from 'next/link';
+import ArticleTitle from '@/components/article-title';
 
 export function ExperienceSection() {
   const { t } = useLanguage();
@@ -48,18 +49,17 @@ export function ExperienceSection() {
               >
                 <header className="flex justify-between items-start gap-4 mb-3 md:mb-4">
                   <div>
-                    <h3 className="text-lg md:text-xl font-semibold">{experience.role}</h3>
+                    <h3 className="text-xl md:text-2xl font-semibold">{experience.role}</h3>
                     {companyUrlMap[experience.company] ? (
                       <a
                         href={companyUrlMap[experience.company]}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-pink-900 dark:text-purple-400 hover:underline"
                       >
-                        {experience.company}
+                        <ArticleTitle text={experience.company} small />
                       </a>
                     ) : (
-                      <p className="text-blue-700 dark:text-blue-400">{experience.company}</p>
+                      <ArticleTitle text={experience.company} small />
                     )}
                   </div>
                   <span className="text-gray-500 dark:text-gray-400 whitespace-nowrap">

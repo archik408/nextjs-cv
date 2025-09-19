@@ -8,6 +8,13 @@ export const timelineDataRu = [
     image: '/back-bg.jpg',
   },
   {
+    year: 1991,
+    title: 'World Wide Web',
+    description: 'Тим Бернерс-Ли создал World Wide Web, заложив основы современного интернета',
+    category: 'technology' as const,
+    image: '/timeline/w3c.png',
+  },
+  {
     year: 1998,
     title: 'Гимназия №1 г. Барановичи',
     description:
@@ -149,18 +156,19 @@ export const timelineDataRu = [
   },
   {
     year: 2013,
-    title: 'Sibur Holdings - ExtJS & Documentum',
+    title: 'СИБУР - ExtJS & Documentum ECM',
     description:
-      'Разработка электронного документооборота для Sibur Holdings на платформе EMC Documentum и ExtJS',
+      'Разработка системы управления корпоративным контентом (ECM) для компании «Сибур Холдинг» на базе Documentum ECM, Oracle, Java/JSP и ExtJS 3.5',
     category: 'career' as const,
-    image: '/timeline/extjs.png',
+    image: '/timeline/emc.png',
   },
   {
     year: 2014,
-    title: 'ExtJS для немецкой нотариальной палаты',
-    description: 'Разрабатывал ПО для немецкой нотариальной палаты на фреймворке ExtJS и Java',
+    title: 'ZEUS - ExtJS для немецкой нотариальной палаты',
+    description:
+      'Разрабатывал ПО Zeus для немецкой нотариальной палаты на фреймворке ExtJS и Java, Spring, Hibernate, BPMN/Activiti',
     category: 'career' as const,
-    image: '/timeline/extjs.png',
+    image: '/timeline/zeus.png',
   },
   {
     year: 2014,
@@ -181,9 +189,9 @@ export const timelineDataRu = [
     year: 2015,
     title: 'Уход в JavaScript',
     description:
-      'Полностью сосредоточился на JavaScript-стэке и попал на проект Penton Media, где разрабатывал приложение Equipmentwatch на Ember.js и Node.js',
+      'Полностью сосредоточился на JavaScript-стэке и попал на проект Penton, где разрабатывал приложение Equipmentwatch на Ember.js и Node.js, MongoDB',
     category: 'career' as const,
-    image: '/timeline/ember.png',
+    image: '/timeline/penton.png',
   },
   {
     year: 2015,
@@ -218,9 +226,10 @@ export const timelineDataRu = [
   {
     year: 2016,
     title: 'Топ-3 бизнес-консалтинг',
-    description: 'Разработка ряда проектов для топ-3 в мире бизнес-консалтинга на React.js стэке',
+    description:
+      'Разработка ряда проектов для топ-3 в мире бизнес-консалтинга на React.js стэке, Node.js, Loopback.io и PostgreSQL',
     category: 'career' as const,
-    image: '/timeline/react.png',
+    image: '/timeline/mckinsey.png',
   },
   {
     year: 2017,
@@ -361,7 +370,7 @@ export const timelineDataRu = [
     year: 2025,
     title: 'Выступление в X5 Group',
     description:
-      'Выступил на митапе в X5 Group, рассказал о специфике разработки PWA для оффлайн, IndexedDB и Workbox',
+      'Выступил на JS митапе в X5 Group, рассказал о специфике разработки PWA для оффлайн, IndexedDB и Workbox',
     category: 'career' as const,
     image: '/timeline/x5-meetup.png',
   },
@@ -426,7 +435,7 @@ export const timelineDataRu = [
     description:
       'Начало интенсивной конкуренции между Internet Explorer и Netscape Navigator за доминирование на рынке',
     category: 'technology' as const,
-    image: '/timeline/ie.png',
+    image: '/timeline/war.png',
   },
   {
     year: 2000,
@@ -529,9 +538,10 @@ export const timelineDataRu = [
     image: '/timeline/nodejs.png',
   },
   {
-    year: 2009,
+    year: 2014,
     title: 'HTML5',
-    description: 'W3C начал работу над HTML5, который принес семантические элементы и новые API',
+    description:
+      'W3C официально релизнул HTML5 как Recommendation, который принес семантические элементы и новые API',
     category: 'technology' as const,
     image: '/timeline/html.png',
   },

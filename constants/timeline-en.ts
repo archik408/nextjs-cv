@@ -8,6 +8,14 @@ export const timelineDataEn = [
     image: '/back-bg.jpg',
   },
   {
+    year: 1991,
+    title: 'World Wide Web',
+    description:
+      'Tim Berners-Lee created the World Wide Web, laying the foundation for the modern internet',
+    category: 'technology' as const,
+    image: '/timeline/w3c.png',
+  },
+  {
     year: 1998,
     title: 'Gymnasium №1 Baranovichi',
     description:
@@ -55,9 +63,9 @@ export const timelineDataEn = [
   },
   {
     year: 2006,
-    title: 'Moscow Olympiad OSO-2006',
+    title: 'Moscow Olympiad OCO-2006',
     description:
-      'Under guidance of computer science teacher Shevchenko T.G. participated in Moscow OSO-2006 Olympiad as part of team',
+      'Under guidance of computer science teacher Shevchenko T.G. participated in Moscow OCO-2006 Olympiad as part of team',
     category: 'career' as const,
     image: '/timeline/oco-2006.jpeg',
   },
@@ -109,7 +117,7 @@ export const timelineDataEn = [
   },
   {
     year: 2010,
-    title: 'QA tester at instinctools',
+    title: 'QA tester at instinctools EE Labs',
     description: 'During internship got position as QA tester at instinctools EE Labs',
     category: 'career' as const,
     image: '/timeline/itools.jpeg',
@@ -126,7 +134,7 @@ export const timelineDataEn = [
     year: 2011,
     title: 'First automation tests',
     description:
-      'Started writing first automation tests in Java and Selenium RC for DitaWorks project',
+      'Started writing first automation tests in Java and Selenium RC for SAP DitaWorks project',
     category: 'career' as const,
     image: '/timeline/selenium.png',
   },
@@ -148,18 +156,19 @@ export const timelineDataEn = [
   },
   {
     year: 2013,
-    title: 'Sibur Holdings - ExtJS & Documentum',
+    title: 'Sibur Holding - ExtJS & Documentum ECM',
     description:
-      'Development of electronic document management for Sibur Holdings on EMC Documentum and ExtJS platform',
+      'Developed enterprise content management (ECM) system for Sibur Holding company based on Documentum ECM, Oracle, Java/JSP, and ExtJS 3.5',
     category: 'career' as const,
-    image: '/timeline/extjs.png',
+    image: '/timeline/emc.png',
   },
   {
     year: 2014,
-    title: 'ExtJS for German notary chamber',
-    description: 'Developed software for German notary chamber on ExtJS framework and Java',
+    title: 'ZEUS - ExtJS app for German notary chamber',
+    description:
+      'Developed ZEUS software for German notary chamber on ExtJS framework and Java, Spring, Hibernate, BPMN/Activiti',
     category: 'career' as const,
-    image: '/timeline/extjs.png',
+    image: '/timeline/zeus.png',
   },
   {
     year: 2014,
@@ -180,7 +189,7 @@ export const timelineDataEn = [
     year: 2015,
     title: 'Switch to JavaScript',
     description:
-      'Fully focused on JavaScript stack and got on Penton Media project, developing Equipmentwatch application on Ember.js and Node.js',
+      'Fully focused on JavaScript stack and got on Penton project, developing Equipmentwatch application on Ember.js and Node.js, MongoDB',
     category: 'career' as const,
     image: '/timeline/ember.png',
   },
@@ -218,9 +227,9 @@ export const timelineDataEn = [
     year: 2016,
     title: 'Top-3 business consulting',
     description:
-      'Development of series of projects for top-3 global business consulting on React.js stack',
+      'Development of series of projects for top-3 global business consulting on React.js stack, Node.js, Loopback.io and PostgreSQL',
     category: 'career' as const,
-    image: '/timeline/react.png',
+    image: '/timeline/mckinsey.png',
   },
   {
     year: 2017,
@@ -344,7 +353,7 @@ export const timelineDataEn = [
   },
   {
     year: 2023,
-    title: 'IntexSoft meetups',
+    title: 'IntexSoft JS meetups',
     description:
       'Conducted several internal IntexSoft meetups about hybrid mobile app architecture nuances',
     category: 'career' as const,
@@ -360,9 +369,9 @@ export const timelineDataEn = [
   },
   {
     year: 2025,
-    title: 'X5 Group meetup',
+    title: 'X5 Group JS meetup',
     description:
-      'Spoke at X5 Group meetup about PWA development specifics for offline, IndexedDB and Workbox',
+      'Spoke at X5 Group JS meetup about PWA development specifics for offline, IndexedDB and Workbox',
     category: 'career' as const,
     image: '/timeline/x5-meetup.png',
   },
@@ -426,7 +435,7 @@ export const timelineDataEn = [
     description:
       'Intensive competition between Internet Explorer and Netscape Navigator for market dominance',
     category: 'technology' as const,
-    image: '/timeline/ie.png',
+    image: '/timeline/war.png',
   },
   {
     year: 2000,
@@ -529,9 +538,10 @@ export const timelineDataEn = [
     image: '/timeline/nodejs.png',
   },
   {
-    year: 2009,
+    year: 2014,
     title: 'HTML5',
-    description: 'W3C started work on HTML5, which brought semantic elements and new APIs',
+    description:
+      'W3C officially released HTML5 as Recommendation, which brought semantic elements and new APIs',
     category: 'technology' as const,
     image: '/timeline/html.png',
   },
