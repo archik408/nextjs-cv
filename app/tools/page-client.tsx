@@ -114,8 +114,8 @@ export function ToolsPageClient() {
     },
     {
       id: 'image-optimizer',
-      title: 'Image Optimizer',
-      description: 'Compress and optimize images for web',
+      title: t.ioToolTitle || 'Image Optimizer',
+      description: t.ioToolDesc || 'Compress and optimize images for web',
       icon: ImageIcon,
       href: '/image-optimizer',
       status: 'ready',

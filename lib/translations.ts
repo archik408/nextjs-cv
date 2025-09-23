@@ -404,6 +404,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ioErrorLoadWasm: 'Failed to load WASM module',
     ioErrorWorkerFailed: 'Worker failed',
     ioErrorOptimizationFailed: 'Optimization failed',
+    // Tools card - Image Optimizer
+    ioToolTitle: 'Image Optimizer',
+    ioToolDesc: 'Compress and optimize images for web',
   },
   [ELanguage.ru]: {
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
@@ -813,6 +816,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ioErrorLoadWasm: 'Не удалось загрузить WASM модуль',
     ioErrorWorkerFailed: 'Ошибка воркера',
     ioErrorOptimizationFailed: 'Не удалось выполнить оптимизацию',
+    // Tools card - Image Optimizer
+    ioToolTitle: 'Оптимизатор изображений',
+    ioToolDesc: 'Сжимайте и оптимизируйте изображения для веба',
   },
 } as const;
 
