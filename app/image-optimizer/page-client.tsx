@@ -183,7 +183,7 @@ export function ImageOptimizerPageClient() {
         const optimized = out.length;
         const percent = Math.max(0, (1 - optimized / original) * 100 || 0);
         setStats({ original, optimized, percent });
-        setSuccessText(`Saved ${percent.toFixed(1)}%`);
+        setSuccessText(`${t.ioSaved} ${percent.toFixed(1)}%`);
       }
     } catch (e) {
       console.error(e);
