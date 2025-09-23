@@ -15,6 +15,7 @@ export function ArticleTitle({ text, small }: Props) {
     () =>
       theme === ETheme.dark
         ? {
+            lineHeight: '1.25',
             backgroundImage:
               'linear-gradient(-90deg, #395171 0, #35c3ff 30%, #a07cfb 50%, #b179bc 70%, #cc7fe0 90%, #fbadc6 100%)',
             backgroundSize: '100%',
@@ -26,6 +27,7 @@ export function ArticleTitle({ text, small }: Props) {
             textShadow: 'none',
           }
         : {
+            lineHeight: '1.25',
             backgroundImage:
               'linear-gradient(-90deg,rgb(176, 194, 218) 0, #007cb1 30%, #55389e 50%, #752884 70%, #4e1f5b 90%, #492530 100%)',
             backgroundSize: '100%',

@@ -1,4 +1,79 @@
 @import 'tailwindcss';
+@import 'highlight.js/styles/github-dark-dimmed.css';
+
+/* Typography for Digital Garden */
+.prose-garden {
+  /* base paragraph */
+  p {
+    margin: 0.9rem 0;
+    line-height: 1.8;
+    font-size: 1.02rem;
+  }
+  h1 {
+    margin: 1.6rem 0 0.8rem;
+    line-height: 1.25;
+  }
+  h2 {
+    margin: 1.4rem 0 0.6rem;
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+  h3 {
+    margin: 1.2rem 0 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+  ul,
+  ol {
+    list-style: initial;
+    padding-left: 1.25rem;
+    margin: 0.75rem 0;
+  }
+  li {
+    margin: 0.3rem 0;
+  }
+  blockquote {
+    border-left: 4px solid rgba(125, 125, 125, 0.3);
+    padding-left: 1rem;
+    color: #64748b;
+    margin: 1rem 0;
+  }
+  pre {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow: auto;
+    background: #0b1220;
+  }
+  code {
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+      monospace;
+    font-size: 0.95rem;
+  }
+  pre code {
+    font-size: 0.9rem;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+  }
+  th,
+  td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+.dark .prose-garden {
+  blockquote {
+    color: #94a3b8;
+    border-left-color: rgba(148, 163, 184, 0.3);
+  }
+  pre {
+    background: #0b1220;
+  }
+}
 
 @custom-variant dark (&:where(.dark, .dark *));
 @view-transition {
