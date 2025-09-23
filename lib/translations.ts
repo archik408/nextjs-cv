@@ -112,6 +112,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     blog: 'Blog',
     readArticle: 'Read article',
     viewAll: 'View all',
+    garden: 'Digital Garden',
+    backToHome: 'Back to Home',
     allArticles: 'All articles',
     testimonials: [
       {
@@ -522,6 +524,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     blog: 'Блог',
     readArticle: 'Читать статью',
     viewAll: 'Смотреть все',
+    garden: 'Digital Garden',
+    backToHome: 'На главную',
     allArticles: 'Все статьи',
     testimonials: [
       {

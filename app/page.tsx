@@ -5,6 +5,7 @@ import { AboutSection } from '@/components/about-section';
 import { SkillsSection } from '@/components/skills-section';
 import { ExperienceSection } from '@/components/experience-section';
 import { BlogSection } from '@/components/blog-section';
+import { GardenSection } from '@/components/garden-section';
 import { TestimonialsSection } from '@/components/testimonials-section';
 import { CertificatesSection } from '@/components/certificates-section';
 import { FunActivitiesSection } from '@/components/fun-activities-section';
@@ -48,8 +49,11 @@ export default function Home() {
         {/* Certificates Section */}
         <CertificatesSection />
 
-        {/* Blog Section (after Education) */}
+        {/* Blog Section */}
         <BlogSection />
+
+        {/* Garden Section */}
+        <GardenSection />
 
         {/* Fun Activities Section */}
         <FunActivitiesSection />

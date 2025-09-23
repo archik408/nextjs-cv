@@ -26,7 +26,8 @@
     "security:headers": "node scripts/check-security-headers.js",
     "pre-commit": "npm run security:check && lint-staged",
     "pre-push": "npm run test:ci && npm run type-check",
-    "test:security": "node scripts/security-test.js"
+    "test:security": "node scripts/security-test.js",
+    "garden:new": "node scripts/new-garden-note.js"
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.6.0",
@@ -36,6 +37,7 @@
     "cheerio": "^1.1.2",
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.542.0",
+    "marked": "^15.0.12",
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
