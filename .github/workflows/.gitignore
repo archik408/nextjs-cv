@@ -1,0 +1,26 @@
+# GitHub Actions temporary files
+*.log
+*.tmp
+.env
+.env.local
+.env.production
+.env.staging
+
+# Build artifacts
+dist/
+build/
+.next/
+out/
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Security scan results
+trivy-results.sarif
+security-report.json
+
+# Lighthouse results
+lighthouse-results/
+
+

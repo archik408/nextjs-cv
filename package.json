@@ -25,6 +25,7 @@
     "security:check": "npm run security:audit && npm run security:headers",
     "security:headers": "node scripts/check-security-headers.js",
     "pre-commit": "npm run security:check && lint-staged",
+    "pre-push": "npm run test:ci && npm run type-check",
     "test:security": "node scripts/security-test.js"
   },
   "dependencies": {

@@ -7,7 +7,7 @@ const skills = [
   'JavaScript',
   'TypeScript',
   'React',
-  'Next.js (SSR/SSG/ISR)',
+  'Next.js (SSR/SSG)',
   'HTML5',
   'CSS3',
   'Lit / Web Components',
@@ -22,7 +22,8 @@ const skills = [
   'RWD / Mobile-First',
   'HTTP / REST',
   'Node.js / Express',
-  'Python / Django',
+  'Bun',
+  'Deno',
   'IndexedDB',
   'SQL / NoSQL',
   'Rust / WebAssembly',
@@ -60,9 +61,7 @@ export function SkillsSection() {
               aria-label={`Search for ${skill} on Google`}
             >
               <div className="flex items-center gap-3">
-                <span className="hidden md:block">
-                  <TechIcon name={skill} size={20} />
-                </span>
+                <TechIcon name={skill} size={20} />
                 <span className="font-medium text-blue-900 dark:text-white">{skill}</span>
               </div>
             </button>
