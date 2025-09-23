@@ -110,11 +110,11 @@ export function ResumeDocument({ lang }: Props) {
           {/* Summarized skills – keep concise for one-page */}
           HTML5, CSS, JavaScript, TypeScript, Node.js, React, MobX, Next.js (SSR/SSG/ISR), Design
           Systems, UI/UX Design, Web Accessibility (WCAG), Web Performance, Web Security (OWASP),
-          PWA, HTTPS/REST, QA & Automated Testing, Web Components, Lit,
-          (Jest/RTL/Cypress/Playwright), FrontOps (Webpack, Vite, Turbopack, npm, yarn), CI/CD,
-          Rust/WebAssembly, Workbox, Bootstrap, Tailwind CSS, Headless CMS (Strapi, Contentful,
-          WordPress, Prismic), Micro-frontends, Material UI, Mobile-First, Offline-First, Bun,
-          Python/Django, IndexedDB, MongoDB, PostgreSQL, MySQL, SQL/NoSQL
+          PWA, HTTPS/REST, QA & Automated Testing (Jest/RTL/Cypress/Playwright), Web Components,
+          Lit, FrontOps (Webpack, Vite, Turbopack, npm, yarn), CI/CD, Rust/WebAssembly, Workbox,
+          Bootstrap, Tailwind CSS, Headless CMS (Strapi, Contentful, WordPress, Prismic),
+          Micro-frontends, Material UI, Mobile-First, Offline-First, Bun, Deno, IndexedDB, MongoDB,
+          PostgreSQL, MySQL, SQL/NoSQL, Angular.js, EmberJS, ExtJS, jQuery, Backbone.js
         </Text>
 
         <Text style={styles.sectionTitle}>{t.experience}</Text>
