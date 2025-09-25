@@ -139,10 +139,18 @@ export const timelineDataRu = [
     image: '/timeline/selenium.png',
   },
   {
+    year: 2011,
+    title: 'Волонтерство в Software-Testing.ru',
+    description:
+      'Волонтерил в составе команды рассылки крупнейшего русскоязычного ресурса о тестировании. Был активным участником форума, готовил материалы и даже засветился в первом бумажном журнале о тестировании ПО на русском языке.',
+    category: 'career' as const,
+    image: '/timeline/sqadays11.jpg',
+  },
+  {
     year: 2012,
     title: 'Переход в разработку на Java',
     description:
-      'Перевелся в отдел разработки, где попал на проект Daimler, работая с Java, jQuery и Selenium',
+      'Перевелся в отдел разработки, где попал на проект Daimler, работая с Java, JSP/JSF, jQuery UI и Selenium',
     category: 'career' as const,
     image: '/timeline/java.png',
   },

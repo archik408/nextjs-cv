@@ -2,10 +2,11 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { Github, Linkedin, NotebookText, Mail, Send, Wrench } from 'lucide-react';
+import { Github, Linkedin, NotebookText, Mail, Send, Wrench, Sprout } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import ArticleTitle from '@/components/article-title';
 import { AVATAR_PLACEHOLDER } from '@/lib/avatar-placeholder';
+import Link from 'next/link';
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -78,20 +79,27 @@ export function HeroSection() {
           >
             <Linkedin className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
-          <a
+          <Link
+            href="/garden"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
+            aria-label="Digital Garden"
+          >
+            <Sprout className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
+          </Link>
+          <Link
             href="/blog"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label={t.blog}
           >
             <NotebookText className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
-          </a>
-          <a
+          </Link>
+          <Link
             href="/tools"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label={t.toolsAndExperiments || 'Tools & Experiments'}
           >
             <Wrench className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
-          </a>
+          </Link>
           <a
             href="mailto:artur.basak.devingrodno@gmail.com"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
