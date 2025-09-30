@@ -19,7 +19,7 @@ export default function GardenIndexPage() {
       <ul className="space-y-4">
         {notes.map((note) => (
           <li key={note.slug} className="border-b border-neutral-400 pb-4 dark:border-neutral-500">
-            <h2 className="text-xl font-semibold flex items-start gap-2 flex-row-reverse md:flex-row text-left justify-between">
+            <h2 className="text-xl font-semibold flex items-start gap-2 flex-row-reverse md:flex-row text-left justify-between md:justify-start">
               <Sprout className="w-6 h-6 text-green-600 dark:text-green-400" />
               <Link href={`/garden/${note.slug}`} className="hover:underline">
                 {note.frontmatter.title}
