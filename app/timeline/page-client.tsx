@@ -5,10 +5,9 @@ import { sortedTimelineData, TimelineEvent } from '@/constants/timeline';
 import { ArrowLeft, Calendar, User, Code, Home } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { LanguageSwitcher } from '@/components/language-switcher';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import { useLanguage } from '@/lib/use-language';
 import { translations } from '@/lib/translations';
+import NavigationButtons from '@/components/navigation-buttons';
 
 export function TimelineClient() {
   const [visibleEvents, setVisibleEvents] = useState<Set<number>>(new Set());
@@ -613,10 +612,7 @@ export function TimelineClient() {
                   Timeline
                 </h1>
               </div>
-              <div className="flex items-center gap-2">
-                <LanguageSwitcher />
-                <ThemeSwitcher />
-              </div>
+              <NavigationButtons showLanguageSwitcher showThemeSwitcher />
             </div>
           </div>
         </div>

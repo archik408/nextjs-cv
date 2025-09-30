@@ -2,8 +2,6 @@
 
 import React, { useState, useRef } from 'react';
 
-import { LanguageSwitcher } from '@/components/language-switcher';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import { Download, Copy, Check, AlertCircle, Zap } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import NavigationButtons from '@/components/navigation-buttons';
@@ -275,16 +273,10 @@ export function SVGOptimizerPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      {/* Header */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <LanguageSwitcher />
-        <ThemeSwitcher />
-      </div>
-
       <div className="container mx-auto px-4 py-8">
         {/* Navigation */}
         <div className="mb-8">
-          <NavigationButtons levelUp="tools" />
+          <NavigationButtons levelUp="tools" showLanguageSwitcher showThemeSwitcher />
 
           <div className="flex items-center gap-3 mt-14 mb-2">
             <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-800 text-purple-600 dark:text-purple-400">

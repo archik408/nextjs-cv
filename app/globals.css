@@ -35,7 +35,7 @@
   blockquote {
     border-left: 4px solid rgba(125, 125, 125, 0.3);
     padding-left: 1rem;
-    color: #64748b;
+    color: var(--text-muted);
     margin: 1rem 0;
   }
   pre {
@@ -178,6 +178,7 @@
   --card-bg-secondary: #e2e8f0;
   --text-muted: #64748b;
   --border: #cbd5e1;
+  --primary-color: #3b82f6;
 }
 
 .dark {
@@ -188,6 +189,7 @@
   --card-bg-secondary: #334155;
   --text-muted: #94a3b8;
   --border: #475569;
+  --primary-color: #3b82f6;
 }
 
 html {
@@ -223,21 +225,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: var(--card-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: var(--border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: var(--text-muted);
 }
 
 /* Focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 
@@ -281,6 +283,22 @@ p {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Visually hidden until focused skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 8px;
+  background: #111827;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 10000;
+}
+.skip-link:focus {
+  top: 8px;
+  outline: 2px solid var(--primary-color);
 }
 
 /* Shimmer card effect */

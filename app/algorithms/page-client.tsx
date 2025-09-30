@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import { useLanguage } from '@/lib/use-language';
 import { Github, ExternalLink } from 'lucide-react';
 import { useEffect } from 'react';
@@ -383,12 +382,7 @@ export function AlgorithmsPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      {/* Theme and Language Switchers */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <ThemeSwitcher />
-      </div>
-
-      <NavigationButtons levelUp="tools" />
+      <NavigationButtons levelUp="tools" showLanguageSwitcher showThemeSwitcher />
 
       <div className="container mx-auto px-4 py-14 md:py-8">
         <div className="max-w-7xl mx-auto">

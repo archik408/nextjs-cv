@@ -1,8 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { LanguageSwitcher } from '@/components/language-switcher';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import { useLanguage } from '@/lib/use-language';
 import {
   ScanText,
@@ -258,11 +256,7 @@ export function ToolsPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <NavigationButtons />
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <ThemeSwitcher />
-        <LanguageSwitcher />
-      </div>
+      <NavigationButtons showLanguageSwitcher showThemeSwitcher />
 
       <div className="container mx-auto px-4 md:py-8 py-14">
         <div className="max-w-6xl mx-auto">

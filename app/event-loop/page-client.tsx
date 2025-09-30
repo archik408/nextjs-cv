@@ -4,8 +4,6 @@ import { useEffect, useMemo, useRef, useState, memo } from 'react';
 import { Repeat } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import NavigationButtons from '@/components/navigation-buttons';
-import { LanguageSwitcher } from '@/components/language-switcher';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 
 type QueueItem = {
   id: string;
@@ -670,11 +668,7 @@ export const EventLoopPageClient = memo(function EventLoopPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <NavigationButtons levelUp="tools" />
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <ThemeSwitcher />
-        <LanguageSwitcher />
-      </div>
+      <NavigationButtons levelUp="tools" showLanguageSwitcher showThemeSwitcher />
 
       <div className="container mx-auto px-4 md:py-8 py-14">
         <div className="max-w-7xl mx-auto">

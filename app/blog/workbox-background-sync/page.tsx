@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
-import Link from 'next/link';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import CodeBlock from '@/components/code-block';
 import ArticleTitle from '@/components/article-title';
 import { StructuredData, createArticleSchema } from '@/components/structured-data';
+import NavigationButtons from '@/components/navigation-buttons';
 
 export const metadata: Metadata = generateSEOMetadata({
   title: 'Настройка Workbox Background Sync для совместимости с iOS и Android WebView',
@@ -34,26 +33,7 @@ export default function ArticleWorkboxBackgroundSync() {
       <StructuredData data={articleSchema} />
       <article className="py-10 md:py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
         <div className="max-w-3xl mx-auto">
-          <nav className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3 text-sm">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-              >
-                <span>На главную</span>
-              </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-              >
-                <span>К списку статей</span>
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <ThemeSwitcher />
-            </div>
-          </nav>
-
+          <NavigationButtons levelUp="blog" showLanguageSwitcher={false} showThemeSwitcher />
           <ArticleTitle text="Настройка Workbox Background Sync для совместимости с iOS и Android WebView" />
 
           {/* Article metadata */}

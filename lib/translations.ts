@@ -2,6 +2,28 @@ import { ELanguage } from '@/constants/enums';
 
 export const translations = {
   [ELanguage.en]: {
+    // Accessibility Page
+    accessibility: 'Accessibility',
+    accessibilityTitle: 'Accessibility Statement',
+    accessibilityIntro:
+      'I am committed to making this website usable by all people, including those using assistive technologies. I aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA.',
+    accessibilityMeasuresTitle: 'Measures taken',
+    accessibilityMeasuresList: [
+      'Semantic landmarks: header, main, footer, and clear section headings',
+      'Keyboard accessibility: visible focus styles and skip link to main content',
+      'Text alternatives for meaningful images; decorative images marked accordingly',
+      'Color contrast meeting or exceeding AA guidelines where applicable',
+      'Responsive design and reflow without loss of content or functionality',
+    ],
+    accessibilityFeedbackTitle: 'Feedback and contact',
+    accessibilityFeedbackText:
+      'If you encounter an accessibility barrier, please contact me at <a href="mailto:archik408@gmail.com">archik408@gmail.com</a>. I typically respond within 5 business days.',
+    accessibilityAssessmentTitle: 'Assessment approach',
+    accessibilityAssessmentText:
+      'The site is tested using manual keyboard navigation, screen reader spot checks (VoiceOver), and automated tooling for common issues. Accessibility is an ongoing effort.',
+    accessibilityLimitationsTitle: 'Known limitations',
+    accessibilityLimitationsText:
+      'Some dynamic visualizations may have reduced screen reader verbosity. I am working on adding improved labels and descriptions.',
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
@@ -411,6 +433,28 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ioToolDesc: 'Compress and optimize images for web',
   },
   [ELanguage.ru]: {
+    // Accessibility Page
+    accessibility: 'Доступность',
+    accessibilityTitle: 'Заявление о доступности',
+    accessibilityIntro:
+      'Я стремлюсь сделать этот сайт удобным для всех пользователей, включая людей, использующих вспомогательные технологии. Цель — соответствие стандарту WCAG 2.2 уровня AA.',
+    accessibilityMeasuresTitle: 'Принятые меры',
+    accessibilityMeasuresList: [
+      'Семантическая разметка: header, main, footer и чёткая структура заголовков',
+      'Доступность с клавиатуры: заметные стили фокуса и ссылка «к основному контенту»',
+      'Текстовые альтернативы для значимых изображений; декоративные помечены соответствующим образом',
+      'Цветовой контраст соответствует требованиям уровня AA, где применимо',
+      'Адаптивный дизайн и корректный рефлоу без потери функциональности',
+    ],
+    accessibilityFeedbackTitle: 'Обратная связь',
+    accessibilityFeedbackText:
+      'Если вы столкнулись с барьером доступности, напишите мне на <a href="mailto:archik408@gmail.com">archik408@gmail.com</a>. Обычно отвечаю в течение 5 рабочих дней.',
+    accessibilityAssessmentTitle: 'Подход к оценке',
+    accessibilityAssessmentText:
+      'Сайт проверяется вручную при помощи навигации с клавиатуры, точечных проверок экранным диктором (VoiceOver) и автоматизированных инструментов для выявления типичных проблем. Доступность — это непрерывный процесс.',
+    accessibilityLimitationsTitle: 'Известные ограничения',
+    accessibilityLimitationsText:
+      'Некоторые динамические визуализации могут давать сокращённые описания для экранных дикторов. Ведётся работа по улучшению меток и описаний.',
     role: 'Senior Frontend Engineer • UI/UX Enthusiast',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',

@@ -150,10 +150,15 @@ export default function RootLayout({
         />
       </head>
       <body className={`${rubikFont.className} antialiased`}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <ThemeProvider>
           <LanguageProvider>
             <ViewTransitions>
-              {children}
+              <main id="main-content" role="main">
+                {children}
+              </main>
               <CursorMount />
               <BackToTop />
             </ViewTransitions>
