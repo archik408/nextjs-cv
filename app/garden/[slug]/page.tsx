@@ -3,9 +3,8 @@ import { getGardenNoteBySlug, listGardenNotes } from '@/lib/garden';
 import { renderMarkdownToHtml } from '@/lib/markdown';
 import { ArticleTitle } from '@/components/article-title';
 import { generateMetadata as buildMetadata } from '@/lib/seo';
-import GardenBreadcrumbs from '@/components/garden-breadcrumbs';
 import NavigationButtons from '@/components/navigation-buttons';
-import { ThemeSwitcher } from '@/components/theme-switcher';
+import { SharePanel } from '@/components/share-panel';
 
 export const dynamic = 'force-static';
 
@@ -22,11 +21,7 @@ export default async function GardenNotePage({ params }: PageParams) {
   if (!note) return notFound();
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
-      <NavigationButtons />
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <ThemeSwitcher />
-      </div>
-      <GardenBreadcrumbs to="index" />
+      <NavigationButtons levelUp="garden" showLanguageSwitcher={false} showThemeSwitcher />
       <ArticleTitle text={note.frontmatter.title} />
       {note.frontmatter.date && (
         <div className="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
@@ -49,6 +44,13 @@ export default async function GardenNotePage({ params }: PageParams) {
         className="prose prose-neutral prose-garden dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: renderMarkdownToHtml(note.content) }}
       />
+      <div className="mt-8">
+        <SharePanel
+          title={note.frontmatter.title}
+          url={`https://arturbasak.dev/garden/${note.slug}`}
+          summary={note.frontmatter.description}
+        />
+      </div>
     </main>
   );
 }

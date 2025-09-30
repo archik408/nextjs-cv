@@ -2,8 +2,6 @@
 
 import { useState, useRef } from 'react';
 import { createWorker } from 'tesseract.js';
-import { LanguageSwitcher } from '@/components/language-switcher';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import { useLanguage } from '@/lib/use-language';
 import NavigationButtons from '@/components/navigation-buttons';
 
@@ -68,13 +66,7 @@ export function OCRPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <NavigationButtons levelUp="tools" />
-
-      {/* Theme and Language Switchers */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <ThemeSwitcher />
-        <LanguageSwitcher />
-      </div>
+      <NavigationButtons levelUp="tools" showLanguageSwitcher showThemeSwitcher />
 
       <div className="container mx-auto px-4 py-14 md:py-8">
         <div className="max-w-4xl mx-auto">

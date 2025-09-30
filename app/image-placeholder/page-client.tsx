@@ -1,8 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { ThemeSwitcher } from '@/components/theme-switcher';
-import { LanguageSwitcher } from '@/components/language-switcher';
 import NavigationButtons from '@/components/navigation-buttons';
 import { Copy, Check, Image as ImageIcon, Link2, Boxes } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
@@ -76,11 +74,7 @@ export function ImagePlaceholderClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <NavigationButtons levelUp="tools" />
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <ThemeSwitcher />
-        <LanguageSwitcher />
-      </div>
+      <NavigationButtons levelUp="tools" showLanguageSwitcher showThemeSwitcher />
 
       <div className="container mx-auto px-4 py-14 md:py-16">
         <div className="max-w-4xl mx-auto">

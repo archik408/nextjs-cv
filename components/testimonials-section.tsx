@@ -75,12 +75,12 @@ export function TestimonialsSection() {
           </button>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-8 space-x-3">
             {t.testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                className={`w-6 h-6 rounded-full transition-all duration-200 ${
                   index === currentIndex
                     ? 'bg-blue-600 dark:bg-blue-400 scale-110'
                     : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'

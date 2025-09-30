@@ -2,9 +2,8 @@ import Link from 'next/link';
 import { listGardenNotes } from '@/lib/garden';
 import { generateMetadata as buildMetadata } from '@/lib/seo';
 import ArticleTitle from '@/components/article-title';
-import GardenBreadcrumbs from '@/components/garden-breadcrumbs';
 import NavigationButtons from '@/components/navigation-buttons';
-import { ThemeSwitcher } from '@/components/theme-switcher';
+import { Sprout } from 'lucide-react';
 
 export const dynamic = 'force-static';
 
@@ -12,19 +11,16 @@ export default function GardenIndexPage() {
   const notes = listGardenNotes();
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
-      <NavigationButtons />
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <ThemeSwitcher />
-      </div>
-      <GardenBreadcrumbs to="home" />
+      <NavigationButtons showLanguageSwitcher={false} showThemeSwitcher />
       <ArticleTitle text="Digital Garden" />
       <p className="mb-8 text-neutral-600 dark:text-neutral-300">
         Заметки, идеи и черновики. Часто обновляются.
       </p>
       <ul className="space-y-4">
         {notes.map((note) => (
-          <li key={note.slug} className="border-b border-neutral-200 pb-4 dark:border-neutral-800">
-            <h2 className="text-xl font-semibold">
+          <li key={note.slug} className="border-b border-neutral-400 pb-4 dark:border-neutral-500">
+            <h2 className="text-xl font-semibold flex items-start gap-2 flex-row-reverse md:flex-row text-left justify-between md:justify-start">
+              <Sprout className="w-6 h-6 text-green-600 dark:text-green-400" />
               <Link href={`/garden/${note.slug}`} className="hover:underline">
                 {note.frontmatter.title}
               </Link>

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
-import Link from 'next/link';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import ArticleTitle from '@/components/article-title';
+import { SharePanel } from '@/components/share-panel';
 import { StructuredData, createArticleSchema } from '@/components/structured-data';
+import NavigationButtons from '@/components/navigation-buttons';
 
 export const metadata: Metadata = generateSEOMetadata({
   title: '15 лет в коммерческой разработке: что я понял? Что ничего не понял',
@@ -33,32 +33,21 @@ export default function Article15YearsInDev() {
       <StructuredData data={articleSchema} />
       <article className="py-10 md:py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
         <div className="max-w-3xl mx-auto">
-          <nav className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3 text-sm">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-              >
-                <span>На главную</span>
-              </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-              >
-                <span>К списку статей</span>
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <ThemeSwitcher />
-            </div>
-          </nav>
-
+          <NavigationButtons levelUp="blog" showLanguageSwitcher={false} showThemeSwitcher />
           <ArticleTitle text="15 лет в коммерческой разработке. Что я понял? Что я ничего не понял." />
 
           <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
             <span>11 сентября 2025</span>
             <span>•</span>
             <span>Artur Basak</span>
+          </div>
+
+          <div className="mb-8">
+            <SharePanel
+              title="15 лет в коммерческой разработке: что я понял? Что ничего не понял"
+              url="https://arturbasak.dev/blog/15-years-in-dev"
+              summary="Личные наблюдения о профессии, знаниях, титулах и продуктах после 15 лет в коммерческой разработке — без абсолютных истин, но с рабочими выводами."
+            />
           </div>
 
           <p className="text-gray-700 dark:text-gray-300 mb-4">

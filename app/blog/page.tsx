@@ -2,11 +2,10 @@ import type { Metadata } from 'next';
 import { generateMetadata as generateSEOMetadata, seoConfigs } from '@/lib/seo';
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import { posts } from '@/constants/blog';
 import { formatDate } from '@/utils/date';
 import { StructuredData, createBlogSchema } from '@/components/structured-data';
+import NavigationButtons from '@/components/navigation-buttons';
 
 export const metadata: Metadata = generateSEOMetadata(seoConfigs.blog);
 
@@ -19,16 +18,8 @@ export default function BlogListPage() {
       <section className="py-10 md:py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-3xl font-bold">Все статьи</h1>
-            <div className="flex items-center gap-2">
-              <ThemeSwitcher />
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-              >
-                <span>На главную</span>
-              </Link>
-            </div>
+            <h1 className="w-full text-3xl font-bold text-center md:text-left">Все статьи</h1>
+            <NavigationButtons showLanguageSwitcher={false} showThemeSwitcher />
           </div>
           <div className="space-y-5">
             {sorted.map((post) => {

@@ -150,7 +150,7 @@ export function FunActivitiesSection() {
             const CardContent = (
               <div
                 className="min-w-[280px] md:min-w-[340px] lg:min-w-[380px] h-[420px] md:h-[450px] bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden snap-center group"
-                onMouseEnter={
+                onClick={
                   activity.id === 'batmobiles'
                     ? () => {
                         setCarRunKey(Date.now());
