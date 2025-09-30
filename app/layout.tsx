@@ -132,17 +132,21 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || !theme) {
-                    document.documentElement.classList.add('dark');
-                    document.documentElement.style.backgroundColor = '#0f172a';
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                    document.documentElement.style.backgroundColor = '#ffffff';
+                  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+                    var theme = window.localStorage ? localStorage.getItem('theme') : null;
+                    if (theme === 'dark' || !theme) {
+                      document.documentElement.classList.add('dark');
+                      document.documentElement.style.backgroundColor = '#0f172a';
+                    } else {
+                      document.documentElement.classList.remove('dark');
+                      document.documentElement.style.backgroundColor = '#ffffff';
+                    }
                   }
                 } catch (e) {
-                  document.documentElement.classList.add('dark');
-                  document.documentElement.style.backgroundColor = '#0f172a';
+                  if (typeof document !== 'undefined') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.backgroundColor = '#0f172a';
+                  }
                 }
               })();
             `,
