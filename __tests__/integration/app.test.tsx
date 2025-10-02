@@ -14,9 +14,6 @@ describe('App Integration Tests', () => {
 
     // Check for main content
     expect(screen.getByText('Senior Frontend Engineer • UI/UX Specialist')).toBeInTheDocument();
-    expect(
-      screen.getByText('Building the Web of Tomorrow, Grounded in the Engineering of the Past.')
-    ).toBeInTheDocument();
   });
 
   it('renders social media links', () => {

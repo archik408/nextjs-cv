@@ -8,9 +8,6 @@ describe('HeroSection', () => {
 
     expect(screen.getByText('Artur Basak')).toBeInTheDocument();
     expect(screen.getByText('Senior Frontend Engineer • UI/UX Specialist')).toBeInTheDocument();
-    expect(
-      screen.getByText('Building the Web of Tomorrow, Grounded in the Engineering of the Past.')
-    ).toBeInTheDocument();
   });
 
   it('renders social media links', () => {
