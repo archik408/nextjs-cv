@@ -33,6 +33,7 @@ const skills = [
   'Automated Testing',
   'Headless CMS',
   'SEO',
+  'Scratch',
 ];
 
 export function SkillsSection() {
