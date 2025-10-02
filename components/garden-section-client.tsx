@@ -24,7 +24,7 @@ export function GardenSectionClient({ notes }: Props) {
               className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-sm dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               <h3 className="font-semibold text-lg mb-1 flex items-center gap-2">
-                <Sprout className="w-6 h-6 text-green-600 dark:text-green-400" />
+                <Sprout className="w-6 h-6 min-w-6 text-green-600 dark:text-green-400" />
                 {n.frontmatter.title}
               </h3>
               {n.frontmatter.description && (

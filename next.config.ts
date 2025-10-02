@@ -10,6 +10,24 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // WebAssembly support
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+
+    // Enable WebAssembly support
+    config.experiments = {
+      ...config.experiments,
+      asyncWebAssembly: true,
+    };
+
+    return config;
+  },
+
   // Security headers
   async headers() {
     return [
@@ -96,6 +114,20 @@ const nextConfig: NextConfig = {
           {
             key: 'X-Powered-By',
             value: '',
+          },
+        ],
+      },
+      // WASM files headers
+      {
+        source: '/wasm/:path*',
+        headers: [
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'require-corp',
+          },
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin',
           },
         ],
       },

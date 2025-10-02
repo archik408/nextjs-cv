@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Rubik } from 'next/font/google';
+import { Rubik, JetBrains_Mono } from 'next/font/google';
 import { LanguageProvider } from '@/lib/use-language';
 import { ThemeProvider } from '@/lib/use-theme';
 import './globals.css';
@@ -11,6 +11,11 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const rubikFont = Rubik({
   subsets: ['latin'],
+});
+
+const jetbrainsMonoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
 });
 
 export const metadata: Metadata = {
@@ -153,7 +158,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${rubikFont.className} antialiased`}>
+      <body className={`${rubikFont.className} ${jetbrainsMonoFont.variable} antialiased`}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

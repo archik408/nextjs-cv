@@ -52,7 +52,7 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({
             title={t.garden || 'Digital Garden'}
           >
             <ArrowLeft className="w-4 h-4" />
-            <Sprout className="w-4 h-4 hidden sm:block" />
+            <Sprout className="w-4 h-4 min-w-4 hidden sm:block" />
             <span className="hidden sm:block">{t.garden || 'Digital Garden'}</span>
           </Link>
         )}

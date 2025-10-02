@@ -7,9 +7,10 @@ import { useLanguage } from '@/lib/use-language';
 import ArticleTitle from '@/components/article-title';
 import { AVATAR_PLACEHOLDER } from '@/lib/avatar-placeholder';
 import Link from 'next/link';
+import TypingRotate from '@/components/typing-rotate';
 
 export function HeroSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
@@ -59,7 +60,21 @@ export function HeroSection() {
         </div>
         <ArticleTitle text={'Artur Basak'} />
         <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4">{t.role}</h2>
-        <p className="text-lg md:text-base text-gray-600 dark:text-gray-300 mb-8">{t.subtitle}</p>
+        <div className="mb-8 min-h-[3rem] md:min-h-[2.5rem] flex items-center justify-center">
+          <p className="text-lg md:text-base text-gray-600 dark:text-gray-300 font-[var(--font-jetbrains-mono)] text-center">
+            <TypingRotate
+              texts={[t.subtitle]}
+              fixedPrefix={
+                language === 'en' ? 'Building the Web of Tomorrow, ' : 'Создаю веб будущего, '
+              }
+              periodMs={2000}
+              typingSpeedMs={110}
+              deletingSpeedMs={55}
+              pauseAfterDeleteMs={2000}
+              pauseAfterCompleteMs={3000}
+            />
+          </p>
+        </div>
         <div className="flex justify-center gap-6">
           <a
             href="https://github.com/archik408"
@@ -84,7 +99,7 @@ export function HeroSection() {
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
             aria-label="Digital Garden"
           >
-            <Sprout className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
+            <Sprout className="w-6 h-6 min-w-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </Link>
           <Link
             href="/blog"

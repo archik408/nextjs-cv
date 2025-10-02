@@ -353,3 +353,172 @@ img {
 }
 
 /* Trace arrow animation */
+
+/* Caret for typing rotate */
+/* Terminal-like block caret */
+.txt-rotate {
+  position: relative;
+}
+.txt-rotate > .wrap {
+  position: relative;
+}
+.txt-rotate > .wrap::after {
+  content: '';
+  display: inline-block;
+  width: 0.6ch;
+  height: 1em;
+  margin-left: 2px;
+  background: currentColor;
+  vertical-align: -0.12em; /* baseline alignment tweak */
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Terminal / Monitor styles */
+.monitor {
+  width: min(760px, 92vw);
+  margin: 0 auto;
+}
+
+.monitor-inner {
+  background: #0b1220;
+  border-radius: 10px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.terminal {
+  color: #e5e7eb;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-title {
+  margin-left: auto;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-red {
+  background: #ef4444;
+}
+.dot-yellow {
+  background: #f59e0b;
+}
+.dot-green {
+  background: #22c55e;
+}
+
+.terminal-body {
+  position: relative;
+  padding: 18px 16px 22px 16px;
+  min-height: 68px;
+}
+
+/* Typing effect: show full text, then erase and retype */
+.terminal-line {
+  display: flex;
+  align-items: baseline;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.typing-text {
+  --chars: 32;
+  --erase-chars: 8;
+  --type-duration: 4s;
+  --type-delay: 0.2s;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: var(--chars);
+  animation:
+    showText 0.1s var(--type-delay) forwards,
+    eraseText calc(var(--type-duration) * 0.3) calc(var(--type-delay) + 1s) forwards,
+    retypeText calc(var(--type-duration) * 0.7)
+      calc(var(--type-delay) + 1s + calc(var(--type-duration) * 0.3)) forwards;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1em;
+  margin-left: 2px;
+  background: currentColor;
+  vertical-align: baseline;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes showText {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--chars);
+  }
+}
+
+@keyframes eraseText {
+  from {
+    width: var(--chars);
+  }
+  to {
+    width: calc(var(--chars) - var(--erase-chars));
+  }
+}
+
+@keyframes retypeText {
+  from {
+    width: calc(var(--chars) - var(--erase-chars));
+  }
+  to {
+    width: var(--chars);
+  }
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.monitor-stand {
+  width: 120px;
+  height: 10px;
+  background: linear-gradient(180deg, #0b1220, #0c1425);
+  margin: 10px auto 0;
+  border-radius: 0 0 6px 6px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.dark .monitor-inner {
+  background: #0b1220;
+}
+.dark .terminal-title {
+  color: #94a3b8;
+}

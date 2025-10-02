@@ -5,10 +5,10 @@ let wasmReady = false;
 
 async function ensureInit() {
   if (wasmReady) return;
-  const loaderUrl = '/wasm/image-compressor/image_compressor.js';
+  const loaderUrl = '/wasm/image-compressor/image_compressor.js?v=' + Date.now();
    
   const mod = await import(/* webpackIgnore: true */ loaderUrl);
-  await mod.default('/wasm/image-compressor/image_compressor_bg.wasm');
+  await mod.default('/wasm/image-compressor/image_compressor_bg.wasm?v=' + Date.now());
   wasmMod = mod;
   wasmReady = true;
 }
@@ -22,8 +22,25 @@ self.onmessage = async (e) => {
     postMessage({ id: 'status', state: 'started' });
     let out;
     if (options) {
-      const optsJson = JSON.stringify(options);
-      out = wasmMod.compress_with_options(bytes, optsJson);
+      // Новый API - передаем только нужные опции
+      const opts = {
+        quality: options.quality || 80,
+        resize_percent: options.resize_percent || 100,
+        aggressive_png: options.aggressive_png || false,
+        output_format: options.output_format || "Keep"
+      };
+
+      console.log('Worker options:', opts);
+      const optsJson = JSON.stringify(opts);
+      console.log('Worker JSON:', optsJson);
+      
+      try {
+        out = wasmMod.compress_with_options(bytes, optsJson);
+      } catch (compressError) {
+        console.error('Compression error:', compressError);
+        console.log('Falling back to simple API');
+        out = wasmMod.compress_image_quick(bytes, opts.quality);
+      }
     } else {
       out = wasmMod.compress_image_quick(bytes, 80);
     }

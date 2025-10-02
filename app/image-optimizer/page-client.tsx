@@ -38,9 +38,9 @@ export function ImageOptimizerPageClient() {
     const load = async () => {
       try {
         // Загружаем ESM-лоадер и wasm прямо из public
-        const loaderUrl = '/wasm/image-compressor/image_compressor.js';
+        const loaderUrl = '/wasm/image-compressor/image_compressor.js?v=' + Date.now();
         const mod = (await import(/* webpackIgnore: true */ loaderUrl)) as unknown as WasmModule;
-        await mod.default('/wasm/image-compressor/image_compressor_bg.wasm');
+        await mod.default('/wasm/image-compressor/image_compressor_bg.wasm?v=' + Date.now());
         setWasm(mod);
         const worker = new Worker('/workers/image-optimizer.worker.js');
         workerRef.current = worker;
@@ -154,18 +154,29 @@ export function ImageOptimizerPageClient() {
     setSuccessText('');
     try {
       const bytes = await readAsUint8(file);
+
+      // Новый API автоматически определяет и сохраняет альфа-канал
+      // Упрощаем логику - новый модуль сам решает как обрабатывать прозрачность
       const options = {
         quality,
         resize_percent: resizePercent,
         aggressive_png: aggressivePng,
-        output_format: outputFormat,
+        output_format: outputFormat, // Передаем строку напрямую
       } as any;
+
+      console.log('Client options:', options);
       if (workerRef.current) {
         workerRef.current.postMessage({ id: 'compress', bytes, options });
       } else {
         let out;
         if (wasm.compress_with_options) {
-          out = (wasm as any).compress_with_options(bytes, JSON.stringify(options)) as Uint8Array;
+          try {
+            out = (wasm as any).compress_with_options(bytes, JSON.stringify(options)) as Uint8Array;
+          } catch (compressError) {
+            console.error('Compression error:', compressError);
+            console.log('Falling back to simple API');
+            out = (wasm as any).compress_image_quick(bytes, quality) as Uint8Array;
+          }
         } else {
           out = (wasm as any).compress_image_quick(bytes, quality) as Uint8Array;
         }
@@ -215,6 +226,18 @@ export function ImageOptimizerPageClient() {
           <h1 className="text-3xl font-bold">{t.ioTitle}</h1>
         </div>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{t.ioDesc}</p>
+
+        <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <span className="text-sm font-medium text-blue-800 dark:text-blue-200">
+              🎨 Автоматическое сохранение прозрачности
+            </span>
+          </div>
+          <p className="text-sm text-blue-700 dark:text-blue-300">
+            PNG и WebP с альфа-каналом автоматически сохраняют прозрачность при сжатии
+          </p>
+        </div>
 
         {!wasm && (
           <div className="mb-6 p-4 bg-yellow-100 dark:bg-yellow-900 border border-yellow-300 dark:border-yellow-700 rounded-lg text-sm">
@@ -362,13 +385,22 @@ export function ImageOptimizerPageClient() {
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium mb-2">Original</label>
-              <div className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 bg-white dark:bg-gray-800 min-h-[240px] flex items-center justify-center">
+              <div
+                className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 min-h-[240px] flex items-center justify-center"
+                style={{
+                  backgroundSize: '16px 16px',
+                  backgroundImage:
+                    'linear-gradient(45deg, rgba(0,0,0,0.06) 25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,0.06) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.06) 75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.06) 75%)',
+                  backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
+                }}
+              >
                 {originalUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={originalUrl}
                     alt="original"
                     className="max-h-80 max-w-full object-contain"
+                    style={{ backgroundColor: 'transparent' }}
                   />
                 ) : (
                   <div className="text-sm text-gray-500">{t.ioNoImageSelected}</div>
@@ -377,13 +409,22 @@ export function ImageOptimizerPageClient() {
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">{t.ioOptimized}</label>
-              <div className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 bg-white dark:bg-gray-800 min-h-[240px] flex items-center justify-center">
+              <div
+                className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 min-h-[240px] flex items-center justify-center"
+                style={{
+                  backgroundSize: '16px 16px',
+                  backgroundImage:
+                    'linear-gradient(45deg, rgba(0,0,0,0.06) 25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,0.06) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.06) 75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.06) 75%)',
+                  backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
+                }}
+              >
                 {resultUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={resultUrl}
                     alt="optimized"
                     className="max-h-80 max-w-full object-contain"
+                    style={{ backgroundColor: 'transparent' }}
                   />
                 ) : (
                   <div className="text-sm text-gray-500">{t.ioRunToPreview}</div>
