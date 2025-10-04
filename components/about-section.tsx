@@ -14,7 +14,9 @@ export function AboutSection() {
   return (
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8">{t.about}</h2>
+        <h2 id="main-content" className="text-3xl font-bold mb-8">
+          {t.about}
+        </h2>
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div
             className="text-gray-700 dark:text-gray-300 leading-relaxed"

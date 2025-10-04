@@ -8,6 +8,7 @@ import { ViewTransitions } from '@/components/view-transitions';
 import { BackToTop } from '@/components/back-to-top';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import SkipLink from '@/components/skip-link';
 
 const rubikFont = Rubik({
   subsets: ['latin'],
@@ -159,15 +160,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${rubikFont.className} ${jetbrainsMonoFont.variable} antialiased`}>
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
+        <SkipLink />
         <ThemeProvider>
           <LanguageProvider>
             <ViewTransitions>
-              <main id="main-content" role="main">
-                {children}
-              </main>
+              <main>{children}</main>
               <CursorMount />
               <BackToTop />
             </ViewTransitions>

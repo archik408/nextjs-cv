@@ -58,7 +58,7 @@ export function SkillsSection() {
             <button
               key={skill}
               onClick={() => handleSkillClick(skill)}
-              className="bg-blue-100 dark:bg-blue-800 p-4 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors transform hover:scale-105 duration-200 text-left"
+              className="shadow-lg bg-blue-100 dark:bg-blue-800 p-4 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors transform hover:scale-105 duration-200 text-left"
               aria-label={`Search for ${skill} on Google`}
             >
               <div className="flex items-center gap-3">

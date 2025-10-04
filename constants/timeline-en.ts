@@ -50,7 +50,7 @@ export const timelineDataEn = [
     year: 2003,
     title: 'First home computer',
     description:
-      'Mom bought Intel Pentium III with Windows 2000 and I got the opportunity to program at home',
+      'Mom bought Intel Pentium III with Windows 2000, ZyXEL Dial-up and CTX monitor, I got the opportunity to program at home',
     category: 'career' as const,
     image: '/timeline/windows-2000.jpg',
   },
@@ -136,7 +136,7 @@ export const timelineDataEn = [
     description:
       'Started writing first automation tests in Java and Selenium RC for SAP DitaWorks project',
     category: 'career' as const,
-    image: '/timeline/selenium.png',
+    image: '/timeline/ditaworks.png',
   },
   {
     year: 2011,
@@ -152,15 +152,15 @@ export const timelineDataEn = [
     description:
       'Transferred to development department, got on Daimler project working with Java, JSP/JSF, jQuery UI and Selenium',
     category: 'career' as const,
-    image: '/timeline/java.png',
+    image: '/timeline/daimler.png',
   },
   {
     year: 2012,
-    title: 'BIRT for Evonic AG',
+    title: 'BIRT for Evonik AG',
     description:
-      'Development of BIRT (Business Intelligence and Reporting Tools) functionality for Evonic AG on Eclipse RAP',
+      'Development of BIRT (Business Intelligence and Reporting Tools) functionality for Evonik AG on Eclipse RAP',
     category: 'career' as const,
-    image: '/timeline/eclipse.png',
+    image: '/timeline/evonik.png',
   },
   {
     year: 2013,
@@ -207,7 +207,7 @@ export const timelineDataEn = [
     description:
       'UI development on Angular.js for True Impact startup, which deals with analysis and analytics of grants, charitable investments and volunteer activities',
     category: 'career' as const,
-    image: '/timeline/angular.png',
+    image: '/timeline/trueimpact.png',
   },
   {
     year: 2016,
@@ -215,6 +215,14 @@ export const timelineDataEn = [
     description: 'Married to wife Katerina',
     category: 'career' as const,
     image: '/timeline/wife.png',
+  },
+  {
+    year: 2016,
+    title: 'Human Detection System for USA Hospital Desk',
+    description:
+      'Implemented mobile and tablet UI for hospital desk application with Tracking.js and Angular',
+    category: 'career' as const,
+    image: '/timeline/trackingui.png',
   },
   {
     year: 2016,
@@ -319,12 +327,13 @@ export const timelineDataEn = [
     description:
       'Implemented Tispr startup rebranding to Indy, applying modern theming approach with CSS Custom Properties and SSR on Next.js',
     category: 'career' as const,
-    image: '/timeline/indy.jpeg',
+    image: '/timeline/indy.png',
   },
   {
     year: 2020,
     title: 'Smashing Magazine article',
-    description: 'Published article about CSS Custom Properties on Smashing Magazine portal',
+    description:
+      'Published article about CSS Custom Properties on Smashing Magazine portal under Rachel Andrew editing',
     category: 'career' as const,
     image: '/timeline/smashing.png',
   },
@@ -349,7 +358,7 @@ export const timelineDataEn = [
     title: 'IntexSoft',
     description: 'Moved to IntexSoft as lead developer',
     category: 'career' as const,
-    image: '/timeline/intexsoft.png',
+    image: '/avatar-2.png',
   },
   {
     year: 2022,
@@ -381,7 +390,7 @@ export const timelineDataEn = [
     description:
       'Spoke at X5 Group JS meetup about PWA development specifics for offline, IndexedDB and Workbox',
     category: 'career' as const,
-    image: '/timeline/x5-meetup.png',
+    image: '/avatar-2.jpg',
   },
   {
     year: 2025,

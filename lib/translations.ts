@@ -24,7 +24,7 @@ export const translations = {
     accessibilityLimitationsTitle: 'Known limitations',
     accessibilityLimitationsText:
       'Some dynamic visualizations may have reduced screen reader verbosity. I am working on adding improved labels and descriptions.',
-    role: 'Senior Frontend Engineer • UI/UX Enthusiast',
+    role: 'Principal UI/UX Engineer',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
     aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
@@ -51,7 +51,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'IntexSoft',
         period: '2022 - Present',
         listDescription: [
-          'Led the development of a hybrid mobile application using React.js, PWA, and Fugu API for one of the largest grocery retail groups globally, operating 21,000+ convenience stores with MAU ~22 million',
+          'Led the development of a hybrid mobile application using React.js, PWA, and Fugu API for one of the largest grocery retail groups globally, operating 20k+ convenience stores with MAU ~20 million',
           'Integrated advanced web technologies to deliver a seamless cross-platform experience for both iOS and Android, ensuring high performance and scalability',
           'Participated in AI/LLM integration for moderation and fraud detection',
           'Collaborated closely with cross-functional teams to align the application with business goals, resulting in improved user engagement and operational efficiency',
@@ -109,7 +109,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     artDesc:
       'Creating digital art and classical illustrations based on mythological creatures, as well as exhibitions in museums and castles, creating printed books with my illustrations',
     kidsTitle: 'Kids Programming',
-    kidsDesc: 'Teaching children programming basics with Scratch and Blockly',
+    kidsDesc:
+      'Teaching children programming basics with Scratch, MakeCode and Blockly using Micro:bit and MakeyMakey boards',
     cycleTitle: 'Cycling',
     cycleDesc:
       'Enjoying long-distance cycling and city rides — it helps me reset my mind and find elegant solutions to complex engineering problems.',
@@ -455,7 +456,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     accessibilityLimitationsTitle: 'Известные ограничения',
     accessibilityLimitationsText:
       'Некоторые динамические визуализации могут давать сокращённые описания для экранных дикторов. Ведётся работа по улучшению меток и описаний.',
-    role: 'Senior Frontend Engineer • UI/UX Enthusiast',
+    role: 'Principal UI/UX Engineer',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',
     aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
@@ -483,7 +484,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'IntexSoft',
         period: '2022 - Настоящее время',
         listDescription: [
-          'Руководил разработкой гибридного мобильного приложения с использованием React.js, PWA и Fugu API для одной из крупнейших розничных сетей продуктовых магазинов в мире, включающей более 21 000 магазинов и с ежемесячной аудиторией около 22 миллионов пользователей',
+          'Руководил разработкой гибридного мобильного приложения с использованием React.js, PWA и Fugu API для одной из крупнейших розничных сетей продуктовых магазинов в мире, включающей более 20 000 магазинов и с ежемесячной аудиторией около 20 миллионов пользователей',
           'Интегрировал передовые веб-технологии для создания бесшовного кросс-платформенного опыта на iOS и Android, обеспечивая высокую производительность и масштабируемость',
           'Участвовал в интеграции AI/LLM для модерации и обнаружения мошенничества',
           'Тесно сотрудничал с кросс-функциональными командами для согласования разработки приложения с бизнес-целями, что привело к повышению вовлеченности пользователей и операционной эффективности',
@@ -543,7 +544,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     artDesc:
       'Создание цифрового искусства и классических иллюстраций на основе мифологических существ, а также выставки в музеях и замках, создание печатных книг с моими иллюстрациями',
     kidsTitle: 'Обучение Детей',
-    kidsDesc: 'Обучение детей основам программирования в Scratch и Blockly',
+    kidsDesc:
+      'Обучение детей основам программирования в Scratch, MakeCode и Blockly используя платы Micro:bit и MakeyMakey',
     cycleTitle: 'Велосипед',
     cycleDesc:
       'Дальние и городские велопоездки — это помогает перезагрузиться и находить изящные решения сложных задач',

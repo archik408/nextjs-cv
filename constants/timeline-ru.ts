@@ -49,7 +49,7 @@ export const timelineDataRu = [
     year: 2003,
     title: 'Первый домашний компьютер',
     description:
-      'Мама купила Intel Pentium III с Window 2000 и появилась возможность программировать дома',
+      'Мама купила Intel Pentium III с Window 2000, ZyXEL Dial-up и CTX монитором, и появилась возможность программировать дома',
     category: 'career' as const,
     image: '/timeline/windows-2000.jpg',
   },
@@ -134,9 +134,9 @@ export const timelineDataRu = [
     year: 2011,
     title: 'Первые автотесты',
     description:
-      'Начал писать первые тесты по автоматизации на Java и Selenium RC для проекта DitaWorks',
+      'Начал писать первые тесты по автоматизации на Java и Selenium RC для проекта SAP AG и DitaWorks',
     category: 'career' as const,
-    image: '/timeline/selenium.png',
+    image: '/timeline/ditaworks.png',
   },
   {
     year: 2011,
@@ -152,15 +152,15 @@ export const timelineDataRu = [
     description:
       'Перевелся в отдел разработки, где попал на проект Daimler, работая с Java, JSP/JSF, jQuery UI и Selenium',
     category: 'career' as const,
-    image: '/timeline/java.png',
+    image: '/timeline/daimler.png',
   },
   {
     year: 2012,
-    title: 'BIRT для Evonic AG',
+    title: 'BIRT для Evonik AG',
     description:
-      'Разработка функционала BIRT (Business Intelligence and Reporting Tools) для Evonic AG на Eclipse RAP',
+      'Разработка функционала BIRT (Business Intelligence and Reporting Tools) для Evonik AG на Eclipse RAP',
     category: 'career' as const,
-    image: '/timeline/eclipse.png',
+    image: '/timeline/evonik.png',
   },
   {
     year: 2013,
@@ -207,7 +207,7 @@ export const timelineDataRu = [
     description:
       'Разработка UI на Angular.js для стартапа True Impact, который занимается анализом и аналитикой грантов, благотворительных инвестиций и волонтерской деятельности',
     category: 'career' as const,
-    image: '/timeline/angular.png',
+    image: '/timeline/trueimpact.png',
   },
   {
     year: 2016,
@@ -215,6 +215,14 @@ export const timelineDataRu = [
     description: 'Женился на своей жене Катерине',
     category: 'career' as const,
     image: '/timeline/wife.png',
+  },
+  {
+    year: 2016,
+    title: 'Система идентификации посетителей госпиталя',
+    description:
+      'Реализовал UI для мобильной и планшетной версии приложения регистратуры госпиталя используя Tracking.js и Angular',
+    category: 'career' as const,
+    image: '/timeline/trackingui.png',
   },
   {
     year: 2016,
@@ -318,12 +326,13 @@ export const timelineDataRu = [
     description:
       'Реализовал ребрендинг стартапа Tispr в Indy, применив современный подход темизации с CSS Custom Properties и SSR на Next.js',
     category: 'career' as const,
-    image: '/timeline/indy.jpeg',
+    image: '/timeline/indy.png',
   },
   {
     year: 2020,
     title: 'Статья в Smashing Magazine',
-    description: 'Вышла моя статья о CSS Custom Properties на портале Smashing Magazine',
+    description:
+      'Вышла моя статья о CSS Custom Properties на портале Smashing Magazine под редактированием Rachel Andrew',
     category: 'career' as const,
     image: '/timeline/smashing.png',
   },
@@ -348,7 +357,7 @@ export const timelineDataRu = [
     title: 'IntexSoft',
     description: 'Перешел в компанию IntexSoft на позицию ведущего разработчика',
     category: 'career' as const,
-    image: '/timeline/intexsoft.png',
+    image: '/avatar-2.png',
   },
   {
     year: 2022,
@@ -380,7 +389,7 @@ export const timelineDataRu = [
     description:
       'Выступил на JS митапе в X5 Group, рассказал о специфике разработки PWA для оффлайн, IndexedDB и Workbox',
     category: 'career' as const,
-    image: '/timeline/x5-meetup.png',
+    image: '/avatar-2.jpg',
   },
   {
     year: 2025,

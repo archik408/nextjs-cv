@@ -112,4 +112,39 @@ export const posts: Post[] = [
     source: 'Medium',
     date: '2017-07-19',
   },
+  {
+    title: 'Human-Computer Interaction',
+    excerpt:
+      'This document summarizes technologies related to human-computer interaction including computer vision, face detection, face recognition, thought detection, barcode reading, and Bluetooth. It provides links to resources on OpenCV, Point Cloud Library, Node OpenCV, tracking.js, CCV, Visage, Haar-like features, Viola-Jones algorithm, WebRTC, getUserMedia, Neurosky brain-computer interface, Bluetooth Low Energy including AltBeacon, iBeacon, and Eddystone, Noble and Bluetooth Serial Port Node.js modules, and Web Bluetooth. It also lists some example applications built with Angular2 that incorporate computer vision and QR code reading functionality.',
+    href: 'https://www.slideshare.net/slideshow/js-amp-hci-2017ppt/77153125',
+    image: '/icons/slideshare.png',
+    source: 'Slideshare',
+    date: '2017',
+  },
+  {
+    title: 'Dev Guide to the Internet of Things (IoT)',
+    excerpt:
+      'The document provides an overview of developing for the Internet of Things using the IBM stack. It introduces various hardware components like Raspberry Pi and sensors that can be used to build IoT devices. It also shares links to software tools and platforms like Node-RED, Bluemix, and Fritzing that are useful for prototyping and developing IoT applications. The goal is to share knowledge from a course on IoT development with the team.',
+    href: 'https://www.slideshare.net/slideshow/dev-guide-to-the-iot-ibm-stack/74148969',
+    image: '/icons/slideshare.png',
+    source: 'Slideshare',
+    date: '2017',
+  },
+  {
+    title: 'CI, CD, CT, Deploy, IaaS, DevOps, Stage',
+    excerpt: 'По следам своего свежего опыта с AWS и Jenkins',
+    href: 'https://www.slideshare.net/slideshow/ci-cd-ct-deploy-iaas-devops-stage/74660514',
+    image: '/icons/slideshare.png',
+    source: 'Slideshare',
+    date: '2016',
+  },
+  {
+    title: 'Experience with hapi.js',
+    excerpt:
+      "Walmart is investing heavily in open source software development. The presentation discusses Walmart's use of open source technologies like Node.js, NPM, and modules to build server-side applications and APIs. Key aspects include routing, plugins, and leveraging existing open source packages.",
+    href: 'https://www.slideshare.net/slideshow/hapi-2016/77153062',
+    image: '/icons/slideshare.png',
+    source: 'Slideshare',
+    date: '2016',
+  },
 ];

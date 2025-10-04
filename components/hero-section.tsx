@@ -33,7 +33,8 @@ export function HeroSection() {
             role="button"
           >
             <div
-              className={`relative size-full transition-transform duration-700 [transform-style:preserve-3d] ${
+              className={`relative size-full transition-transform duration-700 [transform-style:preserve-3d] 
+              custom-gradient-before before:absolute before:-z-10 before:w-full before:h-full before:[left:-50%] before:transform before:translate-x-1/2 before:scale-105 before:rounded-full ${
                 isFlipped ? 'rotate-y-180' : ''
               } group-hover:rotate-y-180`}
             >
@@ -41,7 +42,7 @@ export function HeroSection() {
                 src="/avatar.jpeg"
                 alt="Artur Basak"
                 fill
-                className="absolute inset-0 rounded-full border-4 border-blue-500 object-cover [backface-visibility:hidden]"
+                className="absolute inset-0 rounded-full object-cover [backface-visibility:hidden]"
                 priority
                 placeholder="blur"
                 blurDataURL={AVATAR_PLACEHOLDER}
@@ -50,7 +51,7 @@ export function HeroSection() {
                 src="/back-bg.jpg"
                 alt="Background"
                 fill
-                className="absolute inset-0 rounded-full border-4 border-blue-500 object-cover rotate-y-180 [backface-visibility:hidden]"
+                className="absolute inset-0 rounded-full object-cover rotate-y-180 [backface-visibility:hidden]"
                 priority
                 placeholder="blur"
                 blurDataURL={AVATAR_PLACEHOLDER}
@@ -61,7 +62,7 @@ export function HeroSection() {
         <ArticleTitle text={'Artur Basak'} />
         <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4">{t.role}</h2>
         <div className="mb-8 min-h-[3rem] md:min-h-[2.5rem] flex items-center justify-center">
-          <p className="text-lg md:text-base text-gray-600 dark:text-gray-300 font-[var(--font-jetbrains-mono)] text-center">
+          <p className="text-base md:text-sm text-gray-600 dark:text-gray-300 font-[var(--font-jetbrains-mono)] text-center">
             <TypingRotate
               texts={[t.subtitle]}
               fixedPrefix={

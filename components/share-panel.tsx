@@ -84,7 +84,7 @@ export function SharePanel({ title, url, summary, className }: SharePanelProps) 
       <button
         type="button"
         onClick={handleWebShare}
-        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors"
+        className="shadow-lg inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors"
         aria-label="Share via device"
       >
         <Share2 className="w-4 h-4" />
@@ -96,7 +96,7 @@ export function SharePanel({ title, url, summary, className }: SharePanelProps) 
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors"
+          className="shadow-lg inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors"
           aria-label={`Share to ${name}`}
         >
           {name === 'VK' ? (

@@ -3,6 +3,7 @@
 import NavigationButtons from '@/components/navigation-buttons';
 import { useLanguage } from '@/lib/use-language';
 import ArticleTitle from '@/components/article-title';
+import Image from 'next/image';
 
 export function AccessibilityContent() {
   const { t } = useLanguage();
@@ -28,7 +29,8 @@ export function AccessibilityContent() {
       <p>{t.accessibilityAssessmentText}</p>
 
       <h2>{t.accessibilityLimitationsTitle}</h2>
-      <p>{t.accessibilityLimitationsText}</p>
+      <p className="py-2">{t.accessibilityLimitationsText}</p>
+      <Image src="/accessibility.webp" alt="" width="540" height="100" />
     </div>
   );
 }
