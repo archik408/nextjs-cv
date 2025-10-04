@@ -22,8 +22,8 @@ export async function GET() {
 
     // Map to display names for known collections
     const displayNameMap: Record<string, string> = {
-      'mortal-kombat': 'Mortal Kombat',
-      tmnt: 'Teenage Mutant Ninja Turtles',
+      belarus: 'Belarus',
+      world: 'World',
     };
 
     const result = valid.map((name) => ({ value: name, label: displayNameMap[name] || name }));
