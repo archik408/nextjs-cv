@@ -68,7 +68,7 @@ export function ExperienceSection() {
                   </span>
                 </header>
 
-                <div aria-controls={`exp-panel-${index}`} className="relative">
+                <div id={`exp-panel-${index}`} className="relative">
                   <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
                     {visible.map((description: string, descIndex: number) => (
                       <li key={descIndex}>{description}</li>
