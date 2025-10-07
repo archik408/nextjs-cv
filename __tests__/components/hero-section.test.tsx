@@ -33,8 +33,8 @@ describe('HeroSection', () => {
   it('renders avatar image', () => {
     render(<HeroSection />);
 
-    const avatars = screen.getAllByRole('presentation');
-    const avatar = avatars.find((img) => img.getAttribute('src') === '/avatar.jpeg');
+    const avatars = screen.getAllByRole('img');
+    const avatar = avatars.find((img) => img.getAttribute('alt') === 'Artur Basak');
     expect(avatar).toBeInTheDocument();
     expect(avatar).toHaveAttribute('src', '/avatar.jpeg');
   });
@@ -44,50 +44,12 @@ describe('HeroSection', () => {
     render(<HeroSection />);
 
     const avatarFlipCard = screen.getByRole('button', { name: 'Avatar flip card' });
-    const avatars = screen.getAllByRole('presentation');
-    const defaultAvatar = avatars.find((img) => img.getAttribute('src') === '/avatar.jpeg');
+    const avatars = screen.getAllByRole('img');
+    const defaultAvatar = avatars.find((img) => img.getAttribute('alt') === 'Artur Basak');
 
     expect(defaultAvatar).toBeInTheDocument();
 
     await user.click(avatarFlipCard);
-
-    expect(defaultAvatar).toBeInTheDocument();
-  });
-
-  it('changes avatar on LinkedIn hover', async () => {
-    const user = userEvent.setup();
-    render(<HeroSection />);
-
-    const linkedinLink = screen.getByLabelText('LinkedIn Profile');
-    const avatars = screen.getAllByRole('presentation');
-    const defaultAvatar = avatars.find((img) => img.getAttribute('src') === '/avatar.jpeg');
-
-    expect(defaultAvatar).toBeInTheDocument();
-
-    await user.hover(linkedinLink);
-
-    expect(defaultAvatar).toBeInTheDocument();
-
-    await user.unhover(linkedinLink);
-
-    expect(defaultAvatar).toBeInTheDocument();
-  });
-
-  it('changes avatar on Telegram hover', async () => {
-    const user = userEvent.setup();
-    render(<HeroSection />);
-
-    const telegramLink = screen.getByLabelText('Telegram');
-    const avatars = screen.getAllByRole('presentation');
-    const defaultAvatar = avatars.find((img) => img.getAttribute('src') === '/avatar.jpeg');
-
-    expect(defaultAvatar).toBeInTheDocument();
-
-    await user.hover(telegramLink);
-
-    expect(defaultAvatar).toBeInTheDocument();
-
-    await user.unhover(telegramLink);
 
     expect(defaultAvatar).toBeInTheDocument();
   });

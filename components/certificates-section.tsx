@@ -69,7 +69,7 @@ export function CertificatesSection() {
                   )
                 }
                 className="hidden sm:flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 rounded-lg transition-colors"
-                aria-label="View certificate"
+                aria-label={t.viewCertificate}
               >
                 <ExternalLink className="w-4 h-4" />
                 <span className="inline">{t.viewCertificate}</span>
@@ -94,7 +94,7 @@ export function CertificatesSection() {
                   )
                 }
                 className="hidden sm:flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 rounded-lg transition-colors"
-                aria-label="View certificate"
+                aria-label={t.viewCertificate}
               >
                 <ExternalLink className="w-4 h-4" />
                 <span className="inline">{t.viewCertificate}</span>
@@ -119,7 +119,7 @@ export function CertificatesSection() {
                   )
                 }
                 className="hidden sm:flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 rounded-lg transition-colors"
-                aria-label="View certificate"
+                aria-label={t.viewCertificate}
               >
                 <ExternalLink className="w-4 h-4" />
                 <span className="inline">{t.viewCertificate}</span>

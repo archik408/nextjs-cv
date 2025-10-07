@@ -52,7 +52,7 @@ export function ExperienceSection() {
                     <h3 className="text-xl md:text-2xl font-semibold">{experience.role}</h3>
                     {companyUrlMap[experience.company] ? (
                       <a
-                        className="block"
+                        className="block w-fit"
                         href={companyUrlMap[experience.company]}
                         target="_blank"
                         rel="noopener noreferrer"

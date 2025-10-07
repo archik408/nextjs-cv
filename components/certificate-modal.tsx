@@ -70,7 +70,7 @@ export function CertificateModal({
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
-            aria-label="Close modal"
+            aria-label={t.closeModal}
           >
             <X className="w-5 h-5" />
           </button>

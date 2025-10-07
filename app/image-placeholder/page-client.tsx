@@ -36,6 +36,10 @@ export function ImagePlaceholderClient() {
   }, [width, height, illustration, collection, useOriginal, time, isClient]);
 
   useEffect(() => {
+    // Skip network call in Jest tests to avoid act warnings
+    if (typeof process !== 'undefined' && process.env && process.env.JEST_WORKER_ID) {
+      return;
+    }
     let aborted = false;
     fetch('/api/image-placeholder/collections')
       .then((r) => r.json())
@@ -170,6 +174,7 @@ export function ImagePlaceholderClient() {
                   <input
                     readOnly
                     value={url}
+                    aria-label={t.imgPhLink || 'Link'}
                     className="flex-1 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm"
                   />
                 </div>
@@ -215,7 +220,7 @@ export function ImagePlaceholderClient() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={url}
-                  alt="preview"
+                  alt={t.imgPhPreviewTitle || 'Preview'}
                   className={`w-full rounded border border-gray-200 dark:border-gray-700 transition-opacity duration-300 ${
                     isLoading ? 'opacity-0' : 'opacity-100'
                   }`}

@@ -1,4 +1,6 @@
 import '@testing-library/jest-dom';
+import { toHaveNoViolations } from 'jest-axe';
+expect.extend(toHaveNoViolations);
 
 // Mock next/router
 jest.mock('next/router', () => ({
@@ -27,11 +29,55 @@ jest.mock('next/router', () => ({
 // Mock next/image
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props) => {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img {...props} alt="" />;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  default: ({
+    src,
+    alt,
+    width,
+    height,
+    className,
+    style,
+    fill,
+    sizes,
+    placeholder,
+    blurDataURL,
+    priority,
+    unoptimized,
+    ...rest
+  }) => {
+    const computedStyle = {
+      ...(style || {}),
+      ...(fill ? { width: '100%', height: '100%', objectFit: 'cover' } : {}),
+    };
+
+    const role = !alt ? 'presentation' : undefined;
+    return (
+      <img
+        src={typeof src === 'string' ? src : ''}
+        alt={alt || ''}
+        width={fill ? undefined : width}
+        height={fill ? undefined : height}
+        className={className}
+        style={computedStyle}
+        role={role}
+        {...rest}
+      />
+    );
   },
 }));
+
+// Keep img.src attribute as provided (avoid URL resolution differences in JSDOM)
+try {
+  Object.defineProperty(window.HTMLImageElement.prototype, 'src', {
+    configurable: true,
+    get() {
+      return this.getAttribute('src') || '';
+    },
+    set(value) {
+      this.setAttribute('src', value);
+    },
+  });
+} catch {}
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
@@ -93,6 +139,13 @@ jest.mock('@/lib/use-language', () => ({
       name: 'Artur Basak',
       role: 'Senior Frontend Engineer • UI/UX Specialist',
       subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
+      garden: 'Digital Garden',
+      switchLangToRu: 'Switch language to Russian',
+      switchLangToEn: 'Switch language to English',
+      switchToLight: 'Switch to light theme',
+      switchToDark: 'Switch to dark theme',
+      light: 'Light',
+      dark: 'Dark',
       experience: 'Experience',
       skills: 'Skills',
       certificates: 'Certificates',
@@ -101,6 +154,26 @@ jest.mock('@/lib/use-language', () => ({
       showLess: 'Show less',
       blog: 'Blog',
       toolsAndExperiments: 'Tools & Experiments',
+      heroAvatarFlipCard: 'Avatar flip card',
+      heroGitHubProfile: 'GitHub Profile',
+      heroLinkedInProfile: 'LinkedIn Profile',
+      heroSendEmail: 'Send Email',
+      heroTelegram: 'Telegram',
+      testimonialsTitle: 'Testimonials',
+      // Image Optimizer translations used in tests
+      ioTitle: 'Image Optimizer',
+      ioUploadImage: 'Upload Image',
+      ioQuality: 'Quality',
+      ioResizeBefore: 'Resize before compress',
+      ioOutputFormat: 'Output format',
+      ioKeep: 'Keep',
+      ioPng: 'PNG',
+      ioWebP: 'WebP',
+      ioAvif: 'AVIF',
+      ioOptimizeButton: 'Optimize Image',
+      ioOptimizing: 'Optimizing...',
+      // OCR heading
+      ocrSupportedFormats: 'Supported Formats',
       experiences: [],
       skillsList: [],
       certificatesList: [],

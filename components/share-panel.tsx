@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { Share2, Linkedin, Twitter, Mail, Facebook, Send } from 'lucide-react';
 import { VkIcon } from '@/components/icons/vk';
 import { ThreadsIcon } from '@/components/icons/threads';
+import { useLanguage } from '@/lib/use-language';
 
 type SharePanelProps = {
   title: string;
@@ -13,6 +14,7 @@ type SharePanelProps = {
 };
 
 export function SharePanel({ title, url, summary, className }: SharePanelProps) {
+  const { t } = useLanguage();
   const shareUrl = useMemo(() => {
     if (typeof window !== 'undefined') {
       return url || window.location.href;
@@ -85,10 +87,10 @@ export function SharePanel({ title, url, summary, className }: SharePanelProps) 
         type="button"
         onClick={handleWebShare}
         className="shadow-lg inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors"
-        aria-label="Share via device"
+        aria-label={t.shareViaDevice}
       >
         <Share2 className="w-4 h-4" />
-        <span className="text-sm">Share</span>
+        <span className="text-sm">{t.share}</span>
       </button>
       {links.map(({ name, href, Icon }) => (
         <a
@@ -97,7 +99,7 @@ export function SharePanel({ title, url, summary, className }: SharePanelProps) 
           target="_blank"
           rel="noopener noreferrer"
           className="shadow-lg inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors"
-          aria-label={`Share to ${name}`}
+          aria-label={`${t.shareTo} ${name}`}
         >
           {name === 'VK' ? (
             <VkIcon className="w-4 h-4" />

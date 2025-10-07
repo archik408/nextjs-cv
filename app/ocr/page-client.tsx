@@ -122,7 +122,7 @@ export function OCRPageClient() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={selectedImage}
-                    alt="Uploaded"
+                    alt={t.ocrUploadedImage || 'Uploaded image'}
                     className="max-w-full max-h-96 mx-auto rounded-lg shadow-md"
                   />
                   <div className="flex gap-4 justify-center">
@@ -130,6 +130,11 @@ export function OCRPageClient() {
                       onClick={recognizeText}
                       disabled={isProcessing}
                       className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                      aria-label={
+                        isProcessing
+                          ? `${t.ocrProcessing || 'Processing'} ${progress}%`
+                          : t.ocrRecognizeText || 'Recognize Text'
+                      }
                     >
                       {isProcessing ? (
                         <>
@@ -163,6 +168,7 @@ export function OCRPageClient() {
                       onClick={clearImage}
                       disabled={isProcessing}
                       className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:cursor-not-allowed transition-colors"
+                      aria-label={t.ocrClear || 'Clear'}
                     >
                       {t.ocrClear || 'Clear'}
                     </button>
@@ -228,9 +234,9 @@ export function OCRPageClient() {
 
           {/* Info Section */}
           <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-2 text-blue-800 dark:text-blue-200">
+            <h2 className="text-lg font-semibold mb-2 text-blue-800 dark:text-blue-200">
               {t.ocrSupportedFormats || 'Supported Formats'}
-            </h3>
+            </h2>
             <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
               {(
                 t.ocrFormatsList || [

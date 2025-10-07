@@ -62,14 +62,14 @@ export function TestimonialsSection() {
           <button
             onClick={goToPrevious}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-            aria-label="Previous testimonial"
+            aria-label={`${t.previous} ${t.testimonial}`}
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={goToNext}
             className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-            aria-label="Next testimonial"
+            aria-label={`${t.next} ${t.testimonial}`}
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -85,7 +85,7 @@ export function TestimonialsSection() {
                     ? 'bg-blue-600 dark:bg-blue-400 scale-110'
                     : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`${t.goTo} ${t.testimonial} ${index + 1}`}
               />
             ))}
           </div>

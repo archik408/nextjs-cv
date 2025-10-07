@@ -16,20 +16,14 @@ export function HeroSection() {
   return (
     <header className="hero-section relative h-screen flex items-center justify-center">
       <div className="absolute inset-0">
-        <Image
-          src="/background.avif"
-          alt="Background"
-          fill
-          className="object-cover opacity-10"
-          priority
-        />
+        <Image src="/background.avif" alt="" fill className="object-cover opacity-10" priority />
       </div>
       <div className="relative z-10 text-center px-4">
         <div className="mb-8 flex justify-center">
           <div
             className="group relative w-40 h-40 [perspective:1000px] cursor-pointer"
             onClick={() => setIsFlipped((prev) => !prev)}
-            aria-label="Avatar flip card"
+            aria-label={t.heroAvatarFlipCard}
             role="button"
           >
             <div
@@ -49,7 +43,7 @@ export function HeroSection() {
               />
               <Image
                 src="/back-bg.jpg"
-                alt="Background"
+                alt=""
                 fill
                 className="absolute inset-0 rounded-full object-cover rotate-y-180 [backface-visibility:hidden]"
                 priority
@@ -82,7 +76,7 @@ export function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
-            aria-label="GitHub Profile"
+            aria-label={t.heroGitHubProfile}
           >
             <Github className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
@@ -91,16 +85,16 @@ export function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
-            aria-label="LinkedIn Profile"
+            aria-label={t.heroLinkedInProfile}
           >
             <Linkedin className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
           <Link
             href="/garden"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
-            aria-label="Digital Garden"
+            aria-label={t.garden}
           >
-            <Sprout className="w-6 h-6 min-w-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
+            <Sprout className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </Link>
           <Link
             href="/blog"
@@ -119,7 +113,7 @@ export function HeroSection() {
           <a
             href="mailto:artur.basak.devingrodno@gmail.com"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
-            aria-label="Send Email"
+            aria-label={t.heroSendEmail}
           >
             <Mail className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
@@ -128,7 +122,7 @@ export function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
-            aria-label="Telegram"
+            aria-label={t.heroTelegram}
           >
             <Send className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>

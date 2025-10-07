@@ -17,10 +17,10 @@ export const translations = {
     ],
     accessibilityFeedbackTitle: 'Feedback and contact',
     accessibilityFeedbackText:
-      'If you encounter an accessibility barrier, please contact me at <a href="mailto:archik408@gmail.com">archik408@gmail.com</a>. I typically respond within 5 business days.',
+      'If you encounter an accessibility barrier, please contact me at <a href="mailto:artur.basak.devingrodno@gmail.com">artur.basak.devingrodno@gmail.com</a>. I typically respond within 5 business days.',
     accessibilityAssessmentTitle: 'Assessment approach',
     accessibilityAssessmentText:
-      'The site is tested using manual keyboard navigation, screen reader spot checks (VoiceOver), and automated tooling for common issues. Accessibility is an ongoing effort.',
+      'The site is tested using manual keyboard navigation, screen reader spot checks (VoiceOver), and automated tooling for common issues (Axe, WAVE)). Accessibility is an ongoing effort.',
     accessibilityLimitationsTitle: 'Known limitations',
     accessibilityLimitationsText:
       'Some dynamic visualizations may have reduced screen reader verbosity. I am working on adding improved labels and descriptions.',
@@ -131,6 +131,30 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       "I'm always open to new opportunities and interesting projects. <br>Feel free to reach out if you'd like to collaborate!<br> Let's build something remarkable together.",
     contactButton: 'Contact Me',
     resumeButton: 'Download Resume',
+    // Common UI / ARIA
+    switchToLight: 'Switch to light theme',
+    switchToDark: 'Switch to dark theme',
+    light: 'Light',
+    dark: 'Dark',
+    share: 'Share',
+    shareViaDevice: 'Share via device',
+    shareTo: 'Share to',
+    switchLangToRu: 'Switch language to Russian',
+    switchLangToEn: 'Switch language to English',
+    closeModal: 'Close modal',
+    searchFor: 'Search for',
+    onGoogle: 'on Google',
+    previous: 'Previous',
+    next: 'Next',
+    goTo: 'Go to',
+    testimonial: 'testimonial',
+    activity: 'activity',
+    // Hero ARIA labels
+    heroAvatarFlipCard: 'Avatar flip card',
+    heroGitHubProfile: 'GitHub Profile',
+    heroLinkedInProfile: 'LinkedIn Profile',
+    heroSendEmail: 'Send Email',
+    heroTelegram: 'Telegram',
     testimonialsTitle: 'Testimonials',
     blog: 'Blog',
     readArticle: 'Read article',
@@ -279,6 +303,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     svgJsxCopy: 'Copy',
     svgJsxCopied: 'Copied!',
     toTop: 'To the top',
+    // OCR / Images - alt texts
+    ocrUploadedImage: 'Uploaded image',
     // Image Placeholder Page
     imgPhTitle: 'Image Placeholder',
     imgPhDesc:
@@ -449,10 +475,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     accessibilityFeedbackTitle: 'Обратная связь',
     accessibilityFeedbackText:
-      'Если вы столкнулись с барьером доступности, напишите мне на <a href="mailto:archik408@gmail.com">archik408@gmail.com</a>. Обычно отвечаю в течение 5 рабочих дней.',
+      'Если вы столкнулись с проблемами в доступности веб-сайта, напишите мне на <a href="mailto:artur.basak.devingrodno@gmail.com">artur.basak.devingrodno@gmail.com</a>. Обычно отвечаю в течение 5 рабочих дней.',
     accessibilityAssessmentTitle: 'Подход к оценке',
     accessibilityAssessmentText:
-      'Сайт проверяется вручную при помощи навигации с клавиатуры, точечных проверок экранным диктором (VoiceOver) и автоматизированных инструментов для выявления типичных проблем. Доступность — это непрерывный процесс.',
+      'Сайт проверяется вручную при помощи навигации с клавиатуры, точечных проверок экранным диктором (VoiceOver) и автоматизированных инструментов для выявления типичных проблем (Axe, WAVE). Доступность — это непрерывный процесс.',
     accessibilityLimitationsTitle: 'Известные ограничения',
     accessibilityLimitationsText:
       'Некоторые динамические визуализации могут давать сокращённые описания для экранных дикторов. Ведётся работа по улучшению меток и описаний.',
@@ -566,6 +592,30 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Я всегда открыт для новых возможностей и интересных проектов. <br>Свяжитесь со мной, если хотите сотрудничать! <br/> Давайте создадим что-то выдающееся вместе.',
     contactButton: 'Написать',
     resumeButton: 'Скачать резюме',
+    // Common UI / ARIA
+    switchToLight: 'Переключить на светлую тему',
+    switchToDark: 'Переключить на тёмную тему',
+    light: 'Светлая',
+    dark: 'Тёмная',
+    share: 'Поделиться',
+    shareViaDevice: 'Поделиться через устройство',
+    shareTo: 'Поделиться в',
+    switchLangToRu: 'Переключить язык на русский',
+    switchLangToEn: 'Переключить язык на английский',
+    closeModal: 'Закрыть окно',
+    searchFor: 'Искать',
+    onGoogle: 'в Google',
+    previous: 'Назад',
+    next: 'Вперёд',
+    goTo: 'Перейти к',
+    testimonial: 'отзыву',
+    activity: 'активности',
+    // Hero ARIA labels
+    heroAvatarFlipCard: 'Переворот карточки аватара',
+    heroGitHubProfile: 'Профиль GitHub',
+    heroLinkedInProfile: 'Профиль LinkedIn',
+    heroSendEmail: 'Отправить письмо',
+    heroTelegram: 'Телеграм',
     testimonialsTitle: 'Отзывы',
     blog: 'Блог',
     readArticle: 'Читать статью',
@@ -763,6 +813,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       finalHTML: 'Финальный HTML и обновления DOM',
     },
     toTop: 'Наверх',
+    // OCR / Images - alt texts
+    ocrUploadedImage: 'Загруженное изображение',
     // Image Placeholder Page
     imgPhTitle: 'Image Placeholder',
     imgPhDesc:

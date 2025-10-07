@@ -42,9 +42,9 @@ export function ArticleTitle({ text, small }: Props) {
 
   if (small) {
     return (
-      <p className="text-lg md:text-xl font-bold mb-4" style={calcStyles}>
+      <h3 className="text-lg md:text-xl font-bold mb-4" style={calcStyles}>
         {text}
-      </p>
+      </h3>
     );
   }
 

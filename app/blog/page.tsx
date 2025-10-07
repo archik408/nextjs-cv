@@ -36,7 +36,7 @@ export default function BlogListPage() {
                     <div className="relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-700">
                       <Image
                         src={post.image || '/globe.svg'}
-                        alt="cover"
+                        alt={post.title}
                         fill
                         className="object-contain p-3"
                         sizes="64px"

@@ -109,7 +109,7 @@ export function FunActivitiesSection() {
           >
             <img
               src="/batmobile.png"
-              alt="bemobile"
+              alt=""
               className="w-56 md:w-64 h-auto"
               style={{
                 transform: 'translateX(-50%)',
@@ -126,7 +126,7 @@ export function FunActivitiesSection() {
         <button
           onClick={prevSlide}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-          aria-label="Previous activity"
+          aria-label={`${t.previous} ${t.activity}`}
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
@@ -134,7 +134,7 @@ export function FunActivitiesSection() {
         <button
           onClick={nextSlide}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-          aria-label="Next activity"
+          aria-label={`${t.next} ${t.activity}`}
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -183,7 +183,7 @@ export function FunActivitiesSection() {
                       >
                         <Image
                           src={image.src}
-                          alt={image.alt}
+                          alt={activity.title}
                           width={activity.images.length === 4 ? 300 : 500}
                           height={activity.images.length === 4 ? 300 : 350}
                           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
