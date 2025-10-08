@@ -28,9 +28,9 @@ export function ExperienceSection() {
           <h2 className="text-3xl font-bold">{t.experience}</h2>
           <Link
             href="/timeline"
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="animate-wobble group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <Clock className="w-4 h-4" />
+            <Clock className="w-4 h-4 transition-all duration-300" />
             Timeline
           </Link>
         </div>
@@ -38,9 +38,6 @@ export function ExperienceSection() {
           {t.experiences.map((experience, index) => {
             const expanded = Boolean(open[index]);
             const total = experience.listDescription.length;
-            const visible = expanded
-              ? experience.listDescription
-              : experience.listDescription.slice(0, previewCount);
 
             return (
               <article
@@ -69,14 +66,32 @@ export function ExperienceSection() {
                 </header>
 
                 <div id={`exp-panel-${index}`} className="relative">
-                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                    {visible.map((description: string, descIndex: number) => (
-                      <li key={descIndex}>{description}</li>
-                    ))}
-                  </ul>
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      expanded ? 'max-h-96' : 'max-h-20'
+                    }`}
+                  >
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
+                      {experience.listDescription.map((description: string, descIndex: number) => (
+                        <li
+                          key={descIndex}
+                          className={`transition-all duration-300 ease-in-out ${
+                            descIndex < previewCount || expanded
+                              ? 'opacity-100 translate-y-0'
+                              : 'opacity-0 -translate-y-2'
+                          }`}
+                          style={{
+                            transitionDelay: expanded ? `${descIndex * 30}ms` : '0ms',
+                          }}
+                        >
+                          {description}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
                   {!expanded && total > previewCount && (
-                    <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-10 bg-gradient-to-t from-white dark:from-gray-800 to-transparent rounded-b-lg" />
+                    <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-10 bg-gradient-to-t from-white dark:from-gray-800 to-transparent rounded-b-lg transition-opacity duration-300" />
                   )}
                 </div>
 
@@ -85,13 +100,15 @@ export function ExperienceSection() {
                     <button
                       type="button"
                       onClick={() => toggle(index)}
-                      className="inline-flex items-center gap-2 text-sm md:text-base text-blue-700 dark:text-blue-400 hover:underline"
+                      className="group inline-flex items-center gap-2 text-sm md:text-base text-blue-700 dark:text-blue-400 hover:underline transition-all duration-200"
                       aria-controls={`exp-panel-${index}`}
                       aria-expanded={expanded}
                     >
                       {expanded ? t.showLess : t.showMore}
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`}
+                        className={`w-4 h-4 transition-all duration-300 ease-in-out group-hover:animate-bounce ${
+                          expanded ? 'rotate-180' : 'mt-0.5 group-hover:mt-2'
+                        }`}
                         aria-hidden
                       />
                     </button>
