@@ -39,6 +39,59 @@ const skills = [
 export function SkillsSection() {
   const { t } = useLanguage();
 
+  const prefersReducedMotion =
+    typeof window !== 'undefined' && window.matchMedia
+      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      : false;
+
+  const handleMove: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    if (prefersReducedMotion) return;
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const px = x / rect.width; // 0..1
+    const py = y / rect.height; // 0..1
+
+    // Map to -1..1 (center is 0,0)
+    const dx = px * 2 - 1;
+    const dy = py * 2 - 1;
+
+    const maxTiltDeg = 12;
+    const rotateY = dx * maxTiltDeg; // left/right
+    const rotateX = -dy * maxTiltDeg; // up/down (invert so top pushes back)
+
+    card.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale(1.04)`;
+
+    // Update glare position and intensity via CSS variables
+    card.style.setProperty('--glare-x', `${(px * 100).toFixed(2)}%`);
+    card.style.setProperty('--glare-y', `${(py * 100).toFixed(2)}%`);
+    const intensity = Math.min(0.5, 0.12 + (Math.abs(dx) + Math.abs(dy)) * 0.2);
+    card.style.setProperty('--glare-o', `${intensity.toFixed(3)}`);
+
+    // Angle the streak roughly perpendicular to the dominant axis of tilt
+    const angleRad = Math.atan2(dy, dx); // -PI..PI
+    const angleDeg = (angleRad * 180) / Math.PI; // -180..180
+    // Rotate streak to cross the bright spot pleasingly
+    const rot = angleDeg + 90;
+    card.style.setProperty('--glare-rot', `${rot.toFixed(1)}deg`);
+  };
+
+  const handleEnter: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    if (prefersReducedMotion) return;
+    const card = e.currentTarget;
+    card.style.transition = 'transform 120ms ease-out';
+  };
+
+  const handleLeave: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    const card = e.currentTarget;
+    card.style.transition = 'transform 180ms ease-in';
+    card.style.transform = '';
+    card.style.removeProperty('--glare-x');
+    card.style.removeProperty('--glare-y');
+    card.style.removeProperty('--glare-o');
+  };
+
   const handleSkillClick = (skill: string) => {
     const searchQuery = skill
       .replace(/\s*\([^)]*\)/g, '')
@@ -58,13 +111,20 @@ export function SkillsSection() {
             <button
               key={skill}
               onClick={() => handleSkillClick(skill)}
-              className="shadow-lg bg-blue-100 dark:bg-blue-800 p-4 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors transform hover:scale-105 duration-200 text-left"
+              onMouseMove={handleMove}
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
+              className="relative overflow-hidden shadow-lg bg-blue-100 dark:bg-blue-800 p-4 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors duration-200 text-left transform-gpu will-change-transform"
               aria-label={`${t.searchFor} ${skill} ${t.onGoogle}`}
             >
-              <div className="flex items-center gap-3">
+              <div className="relative z-10 flex items-center gap-3">
                 <TechIcon name={skill} size={20} />
                 <span className="font-medium text-blue-900 dark:text-white">{skill}</span>
               </div>
+              <div
+                className="tilt-glare pointer-events-none absolute inset-0 rounded-lg"
+                aria-hidden
+              />
             </button>
           ))}
         </div>

@@ -45,12 +45,12 @@ export function TestimonialsSection() {
                       dangerouslySetInnerHTML={{ __html: `"${testimonial.content}"` }}
                     />
                     <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-                      <h4 className="font-semibold text-xl text-gray-900 dark:text-white mb-1">
+                      <h4 className="font-semibold text-xl text-blue-600 dark:text-blue-400 mb-1">
                         {testimonial.name}
                       </h4>
-                      <p className="text-blue-600 dark:text-blue-400 font-medium">
+                      <h5 className="text-gray-900 dark:text-white  font-medium">
                         {testimonial.role}
-                      </p>
+                      </h5>
                     </div>
                   </div>
                 </div>

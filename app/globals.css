@@ -204,6 +204,11 @@
   --text-muted: #94a3b8;
   --border: #475569;
   --primary-color: #3b82f6;
+
+  --glare-x: 50%;
+  --glare-y: 0%;
+  --glare-o: 0;
+  --glare-rot: 45deg;
 }
 
 html {
@@ -427,4 +432,60 @@ img {
   75% {
     transform: rotate(-2deg) scale(1.15);
   }
+}
+
+.tilt-glare {
+  z-index: 1;
+  mix-blend-mode: screen;
+  background:
+    /* cursor hotspot */
+    radial-gradient(
+      150px 120px at var(--glare-x) var(--glare-y),
+      rgba(255, 255, 255, var(--glare-o)) 0%,
+      rgba(255, 255, 255, calc(var(--glare-o) * 0.8)) 20%,
+      rgba(255, 255, 255, 0) 60%
+    ),
+    /* elongated streak */
+      linear-gradient(
+        var(--glare-rot),
+        rgba(255, 255, 255, calc(var(--glare-o) * 0.35)) 0%,
+        rgba(255, 255, 255, 0) 60%
+      );
+  transition: opacity 120ms ease-out;
+}
+
+.double-underline,
+.single-underline {
+  position: absolute;
+  width: 100%;
+  bottom: -4px;
+  left: 0;
+  height: 10px;
+  z-index: -1;
+}
+
+.text-single-underline,
+.text-double-underline {
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+}
+
+.dark .text-single-underline,
+.dark .text-double-underline {
+  text-shadow:
+    rgba(21, 17, 24, 0.5) 0px 1px 1px,
+    rgba(21, 17, 24, 0.5) 0px 1px 4px,
+    rgb(21, 17, 24) 0px 0px 6px;
+}
+
+abbr:where([title]) {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+em,
+i {
+  font-style: normal;
 }
