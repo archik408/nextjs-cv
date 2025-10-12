@@ -20,38 +20,40 @@ export default async function GardenNotePage({ params }: PageParams) {
   const note = getGardenNoteBySlug(slug);
   if (!note) return notFound();
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
-      <NavigationButtons levelUp="garden" showLanguageSwitcher={false} showThemeSwitcher />
-      <ArticleTitle text={note.frontmatter.title} />
-      {note.frontmatter.date && (
-        <div className="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
-          {new Date(note.frontmatter.date).toLocaleDateString('ru-RU')}
-        </div>
-      )}
-      {note.frontmatter.tags && note.frontmatter.tags.length > 0 && (
-        <div className="mb-6 flex flex-wrap gap-2">
-          {note.frontmatter.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded bg-neutral-100 px-2 py-0.5 text-xs text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
-            >
-              #{tag}
-            </span>
-          ))}
-        </div>
-      )}
-      <article
-        className="prose prose-neutral prose-garden dark:prose-invert"
-        dangerouslySetInnerHTML={{ __html: renderMarkdownToHtml(note.content) }}
-      />
-      <div className="mt-8">
-        <SharePanel
-          title={note.frontmatter.title}
-          url={`https://arturbasak.dev/garden/${note.slug}`}
-          summary={note.frontmatter.description}
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <main className="mx-auto max-w-3xl px-4 py-12">
+        <NavigationButtons levelUp="garden" showLanguageSwitcher={false} showThemeSwitcher />
+        <ArticleTitle text={note.frontmatter.title} />
+        {note.frontmatter.date && (
+          <div className="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
+            {new Date(note.frontmatter.date).toLocaleDateString('ru-RU')}
+          </div>
+        )}
+        {note.frontmatter.tags && note.frontmatter.tags.length > 0 && (
+          <div className="mb-6 flex flex-wrap gap-2">
+            {note.frontmatter.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded bg-neutral-100 px-2 py-0.5 text-xs text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+        <article
+          className="prose prose-neutral prose-garden dark:prose-invert"
+          dangerouslySetInnerHTML={{ __html: renderMarkdownToHtml(note.content) }}
         />
-      </div>
-    </main>
+        <div className="mt-8">
+          <SharePanel
+            title={note.frontmatter.title}
+            url={`https://arturbasak.dev/garden/${note.slug}`}
+            summary={note.frontmatter.description}
+          />
+        </div>
+      </main>
+    </div>
   );
 }
 

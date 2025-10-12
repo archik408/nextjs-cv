@@ -79,14 +79,44 @@
   }
 }
 
+/* Light theme styles for prose-garden */
+.prose-garden {
+  color: #374151;
+  background: transparent;
+}
+
+.prose-garden blockquote {
+  color: #6b7280;
+  border-left-color: rgba(107, 114, 128, 0.3);
+}
+
+.prose-garden pre {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.prose-garden code {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
 .dark .prose-garden {
-  blockquote {
-    color: #94a3b8;
-    border-left-color: rgba(148, 163, 184, 0.3);
-  }
-  pre {
-    background: #0b1220;
-  }
+  color: #e5e7eb;
+  background: transparent;
+}
+
+.dark .prose-garden blockquote {
+  color: #94a3b8;
+  border-left-color: rgba(148, 163, 184, 0.3);
+}
+
+.dark .prose-garden pre {
+  background: #0b1220;
+}
+
+.dark .prose-garden code {
+  background: #1e293b;
+  color: #e2e8f0;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
