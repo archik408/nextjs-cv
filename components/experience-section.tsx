@@ -25,7 +25,7 @@ export function ExperienceSection() {
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">{t.experience}</h2>
+          <h2 className="text-3xl font-bold text-center md:text-left">{t.experience}</h2>
           <Link
             href="/timeline"
             className="animate-wobble group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -68,7 +68,7 @@ export function ExperienceSection() {
                 <div id={`exp-panel-${index}`} className="relative">
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      expanded ? 'max-h-96' : 'max-h-20'
+                      expanded ? 'max-h-none' : 'max-h-20'
                     }`}
                   >
                     <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
@@ -91,12 +91,12 @@ export function ExperienceSection() {
                   </div>
 
                   {!expanded && total > previewCount && (
-                    <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-10 bg-gradient-to-t from-white dark:from-gray-800 to-transparent rounded-b-lg transition-opacity duration-300" />
+                    <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-gray-800 to-transparent rounded-b-lg transition-opacity duration-300" />
                   )}
                 </div>
 
                 {total > previewCount && (
-                  <div className="mt-4">
+                  <div className="mt-4 pb-2">
                     <button
                       type="button"
                       onClick={() => toggle(index)}

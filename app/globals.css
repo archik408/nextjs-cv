@@ -186,7 +186,7 @@
 
 :root {
   /* Light theme (default) */
-  --background: #ffffff;
+  --background: #0f172a;
   --foreground: #0f172a;
   --card-bg: #f8fafc;
   --card-bg-secondary: #e2e8f0;
@@ -198,7 +198,7 @@
 .dark {
   /* Dark theme */
   --background: #0f172a;
-  --foreground: #ffffff;
+  --foreground: #dedeff;
   --card-bg: #1e293b;
   --card-bg-secondary: #334155;
   --text-muted: #94a3b8;

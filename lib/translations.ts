@@ -43,7 +43,45 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     learning: 'Learning',
     learningDesc:
       'Continuous improvement and learning through practice and <abbr title="Massive Open Online Courses">MOOC</abbr> platforms (Frontend Masters, Coursera, edX)',
-    skills: 'Skills',
+    skills: 'Core Expertise',
+    skillsDescription:
+      'Deep expertise across the full spectrum of modern web development, from architecture to team leadership',
+    expertise: [
+      {
+        title: 'Frontend Architecture & Technical Strategy',
+        description:
+          'Designing scalable web systems, micro-frontends, and long-term tech vision for enterprise applications',
+      },
+      {
+        title: 'Design Systems & UI Engineering Leadership',
+        description:
+          'Building and governing component libraries, bridging design-development workflow, ensuring consistency at scale',
+      },
+      {
+        title: 'Web Performance & Platform Excellence',
+        description:
+          'Optimizing Core Web Vitals, PWA/offline capabilities, web accessibility (WCAG), web security (OWASP) and cross-platform compatibility with RWD/mobile-first approaches',
+      },
+      {
+        title: 'Modern React & Web Standards Evolution',
+        description:
+          'Architecting with React/Next.js ecosystem while advancing web platform through Lit/Web Components and Rust/WASM',
+      },
+      {
+        title: 'Engineering Team Development & Mentorship',
+        description:
+          'Building high-performing teams, technical leadership, and fostering engineering culture across distributed teams',
+      },
+      {
+        title: 'Full-Stack JavaScript & Platform Engineering',
+        description:
+          'Architecting end-to-end solutions with Node.js/Deno/Bun, Rust/WASM, and cloud-native deployment',
+      },
+    ],
+    mySetup: 'My Setup',
+    mySetupDescription: 'Essential development tools I use daily',
+    tools: 'My Setup',
+    toolsDescription: 'Essential development tools I use daily',
     experience: 'Experience',
     experiences: [
       {
@@ -502,7 +540,45 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     learning: 'Обучение',
     learningDesc:
       'Непрерывное совершенствование и обучение через практику и <abbr title="Massive Open Online Courses">MOOC</abbr> платформы (Frontend Masters, Coursera, edX)',
-    skills: 'Навыки',
+    skills: 'Основная Экспертиза',
+    skillsDescription:
+      'Глубокая экспертиза во всем спектре современной веб-разработки, от архитектуры до лидерства команд',
+    expertise: [
+      {
+        title: 'Фронтенд Архитектура и Техническая Стратегия',
+        description:
+          'Проектирование масштабируемых веб-систем, микрофронтендов и долгосрочного технического видения для корпоративных приложений',
+      },
+      {
+        title: 'Дизайн-системы и Лидерство в UI Инженерии',
+        description:
+          'Создание и управление библиотеками компонентов, мостик между дизайном и разработкой, обеспечение согласованности в масштабе',
+      },
+      {
+        title: 'Веб-производительность и Превосходство Платформы',
+        description:
+          'Оптимизация Core Web Vitals, PWA/офлайн-возможности, веб-доступность (WCAG), веб-безопасность (OWASP) и кроссплатформенная совместимость с RWD/mobile-first подходами',
+      },
+      {
+        title: 'Современный React и Эволюция Веб-стандартов',
+        description:
+          'Архитектура с экосистемой React/Next.js при продвижении веб-платформы через Lit/Web Components и Rust/WASM',
+      },
+      {
+        title: 'Развитие Инженерных Команд и Менторство',
+        description:
+          'Построение высокопроизводительных команд, техническое лидерство и развитие инженерной культуры в распределенных командах',
+      },
+      {
+        title: 'Full-Stack JavaScript и Платформенная Инженерия',
+        description:
+          'Архитектура end-to-end решений с Node.js/Deno/Bun, Rust/WASM и cloud-native развертыванием',
+      },
+    ],
+    mySetup: 'Моя Настройка',
+    mySetupDescription: 'Основные инструменты разработки, которые я использую ежедневно',
+    tools: 'Моя Настройка',
+    toolsDescription: 'Основные инструменты разработки, которые я использую ежедневно',
     experience: 'Опыт работы',
     experiences: [
       {

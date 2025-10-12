@@ -3,6 +3,7 @@ import { ThemeSwitcher } from '@/components/theme-switcher';
 import { HeroSection } from '@/components/hero-section';
 import { AboutSection } from '@/components/about-section';
 import { SkillsSection } from '@/components/skills-section';
+import { ToolsSection } from '@/components/tools-section';
 import { ExperienceSection } from '@/components/experience-section';
 import { BlogSection } from '@/components/blog-section';
 import { GardenSection } from '@/components/garden-section';
@@ -64,6 +65,14 @@ export default function Home() {
           <hr className="my-8 border-gray-300 dark:border-gray-700" />
         </div>
 
+        {/*/!* Garden Section *!/*/}
+        <GardenSection />
+
+        {/* Divider */}
+        <div className="mx-auto max-w-6xl px-4">
+          <hr className="my-8 border-gray-300 dark:border-gray-700" />
+        </div>
+
         {/* Blog Section */}
         <BlogSection />
 
@@ -72,8 +81,13 @@ export default function Home() {
           <hr className="my-8 border-gray-300 dark:border-gray-700" />
         </div>
 
-        {/*/!* Garden Section *!/*/}
-        <GardenSection />
+        {/* Tools Section */}
+        <ToolsSection />
+
+        {/* Divider */}
+        <div className="mx-auto max-w-6xl px-4">
+          <hr className="my-8 border-gray-300 dark:border-gray-700" />
+        </div>
 
         {/* Fun Activities Section */}
         <FunActivitiesSection />

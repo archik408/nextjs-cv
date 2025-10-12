@@ -22,14 +22,25 @@ export function ToolsPageClient() {
 
   const tools = [
     {
-      id: 'ocr',
-      title: t.ocrTitle || 'Image Text Recognition',
+      id: 'svg-optimizer',
+      title: t.svgOptimizer || 'SVG Optimizer',
       description:
-        t.ocrSubtitle || 'Extract text from images with support for Russian, English, and digits',
-      icon: ScanText,
-      href: '/ocr',
+        t.svgOptimizerDesc ||
+        'Optimize your SVG code by removing unnecessary attributes, empty groups, and metadata.',
+      icon: Zap,
+      href: '/svg-optimizer',
       status: 'ready',
       color: 'blue',
+      isExternal: false,
+    },
+    {
+      id: 'image-optimizer',
+      title: t.ioToolTitle || 'Image Optimizer',
+      description: t.ioToolDesc || 'Compress and optimize images for web',
+      icon: ImageIcon,
+      href: '/image-optimizer',
+      status: 'ready',
+      color: 'pink',
       isExternal: false,
     },
     {
@@ -56,6 +67,17 @@ export function ToolsPageClient() {
       isExternal: false,
     },
     {
+      id: 'react-fiber',
+      title: 'React Fiber & JSX Parser',
+      description:
+        'Interactive visualization of JSX parsing and React Fiber reconciliation process with animated data flow',
+      icon: GitBranch,
+      href: '/react-fiber',
+      status: 'ready',
+      color: 'cyan',
+      isExternal: false,
+    },
+    {
       id: 'algorithms',
       title: t.algorithmsTitle || 'Algorithms & Data Structures',
       description:
@@ -68,26 +90,14 @@ export function ToolsPageClient() {
       isExternal: false,
     },
     {
-      id: 'svg-optimizer',
-      title: t.svgOptimizer || 'SVG Optimizer',
+      id: 'ocr',
+      title: t.ocrTitle || 'Image Text Recognition',
       description:
-        t.svgOptimizerDesc ||
-        'Optimize your SVG code by removing unnecessary attributes, empty groups, and metadata.',
-      icon: Zap,
-      href: '/svg-optimizer',
+        t.ocrSubtitle || 'Extract text from images with support for Russian, English, and digits',
+      icon: ScanText,
+      href: '/ocr',
       status: 'ready',
       color: 'blue',
-      isExternal: false,
-    },
-    {
-      id: 'react-fiber',
-      title: 'React Fiber & JSX Parser',
-      description:
-        'Interactive visualization of JSX parsing and React Fiber reconciliation process with animated data flow',
-      icon: GitBranch,
-      href: '/react-fiber',
-      status: 'ready',
-      color: 'cyan',
       isExternal: false,
     },
     {
@@ -108,16 +118,6 @@ export function ToolsPageClient() {
       href: '#',
       status: 'coming-soon',
       color: 'indigo',
-      isExternal: false,
-    },
-    {
-      id: 'image-optimizer',
-      title: t.ioToolTitle || 'Image Optimizer',
-      description: t.ioToolDesc || 'Compress and optimize images for web',
-      icon: ImageIcon,
-      href: '/image-optimizer',
-      status: 'ready',
-      color: 'pink',
       isExternal: false,
     },
     {

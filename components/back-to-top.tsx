@@ -30,15 +30,15 @@ export function BackToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (!visible) return null;
-
   return (
     <button
       type="button"
       onClick={scrollToTop}
       aria-label={t?.toTop || 'To the top'}
       title={t?.toTop || 'To the top'}
-      className="fixed bottom-6 right-6 z-40 inline-flex items-center justify-center w-11 h-11 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 active:scale-95 transition-all"
+      className={`fixed bottom-6 right-6 z-40 inline-flex items-center justify-center w-11 h-11 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 active:scale-95 transition-all duration-300 ease-in-out ${
+        visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+      }`}
     >
       <ArrowUp className="w-5 h-5" />
     </button>

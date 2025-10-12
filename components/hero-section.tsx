@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Github, Linkedin, NotebookText, Mail, Send, Wrench, Sprout } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import ArticleTitle from '@/components/article-title';
@@ -12,6 +12,24 @@ import TypingRotate from '@/components/typing-rotate';
 export function HeroSection() {
   const { t, language } = useLanguage();
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Простой автоматический flip через 1 секунду после загрузки компонента
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsFlipped(true);
+
+      setTimeout(() => {
+        setIsFlipped(false);
+      }, 2000);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Обработчики hover
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   return (
     <header className="hero-section relative h-screen flex items-center justify-center">
@@ -23,14 +41,17 @@ export function HeroSection() {
           <div
             className="group relative w-40 h-40 [perspective:1000px] cursor-pointer"
             onClick={() => setIsFlipped((prev) => !prev)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             aria-label={t.heroAvatarFlipCard}
             role="button"
           >
             <div
               className={`relative size-full transition-transform duration-700 [transform-style:preserve-3d] 
-              custom-gradient-before before:absolute before:-z-10 before:w-full before:h-full before:[left:-50%] before:transform before:translate-x-1/2 before:scale-105 before:rounded-full ${
-                isFlipped ? 'rotate-y-180' : ''
-              } group-hover:rotate-y-180`}
+              custom-gradient-before before:absolute before:-z-10 before:w-full before:h-full before:[left:-50%] before:transform before:translate-x-1/2 before:scale-105 before:rounded-full`}
+              style={{
+                transform: isFlipped || isHovered ? 'rotateY(180deg)' : 'rotateY(0deg)',
+              }}
             >
               <Image
                 src="/avatar.jpeg"
@@ -89,6 +110,15 @@ export function HeroSection() {
           >
             <Linkedin className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
+          <a
+            href="https://t.me/arturbasak"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
+            aria-label={t.heroTelegram}
+          >
+            <Send className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
+          </a>
           <Link
             href="/garden"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
@@ -116,15 +146,6 @@ export function HeroSection() {
             aria-label={t.heroSendEmail}
           >
             <Mail className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
-          </a>
-          <a
-            href="https://t.me/arturbasak"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors group"
-            aria-label={t.heroTelegram}
-          >
-            <Send className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce" />
           </a>
         </div>
       </div>
