@@ -106,7 +106,7 @@ export function SkillsSection() {
               onMouseMove={handleMove}
               onMouseEnter={handleEnter}
               onMouseLeave={handleLeave}
-              className={`group relative p-8 rounded-2xl border-2 ${expertiseBgColors[index]} ${expertiseBorderColors[index]} hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out transform-gpu will-change-transform`}
+              className={`group relative p-8 rounded-2xl border-2 ${expertiseBgColors[index]} ${expertiseBorderColors[index]} hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out transform-gpu will-change-transform z-10`}
             >
               {/* Gradient overlay */}
               <div
@@ -116,7 +116,7 @@ export function SkillsSection() {
               <div className="relative z-10">
                 {/* Icon */}
                 <div className="mb-6">
-                  <div className="w-16 h-16 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/30 dark:border-white/20 flex items-center justify-center shadow-sm group-hover:bg-white/30 dark:group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/30 dark:border-white/20 flex items-center justify-center shadow-sm group-hover:bg-white/30 dark:group-hover:bg-white/15 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-black/25 dark:group-hover:shadow-black/60 dark:group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-300 relative z-20">
                     {['🎨', '🏗️', '🤝'].includes(expertiseIcons[index]) ? (
                       <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
                         {expertiseIcons[index]}
