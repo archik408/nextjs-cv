@@ -106,7 +106,7 @@ export function SkillsSection() {
               onMouseMove={handleMove}
               onMouseEnter={handleEnter}
               onMouseLeave={handleLeave}
-              className={`group relative p-8 rounded-2xl border-2 ${expertiseBgColors[index]} ${expertiseBorderColors[index]} hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out transform-gpu will-change-transform z-10`}
+              className={`group relative p-8 rounded-2xl border-2 ${expertiseBgColors[index]} ${expertiseBorderColors[index]} hover:shadow-2xl transition-all duration-500 ease-out transform-gpu will-change-transform z-10`}
             >
               {/* Gradient overlay */}
               <div
@@ -142,7 +142,7 @@ export function SkillsSection() {
                 {/* Hover indicator */}
                 <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div
-                    className={`w-full h-1 bg-gradient-to-r ${expertiseColors[index]} rounded-full`}
+                    className={`w-full h-2 bg-gradient-to-r ${expertiseColors[index]} rounded-full`}
                   />
                 </div>
               </div>
