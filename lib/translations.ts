@@ -80,8 +80,6 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     mySetup: 'My Setup',
     mySetupDescription: 'Essential development tools I use daily',
-    tools: 'My Setup',
-    toolsDescription: 'Essential development tools I use daily',
     experience: 'Experience',
     experiences: [
       {
@@ -577,8 +575,6 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     mySetup: 'Моя Настройка',
     mySetupDescription: 'Основные инструменты разработки, которые я использую ежедневно',
-    tools: 'Моя Настройка',
-    toolsDescription: 'Основные инструменты разработки, которые я использую ежедневно',
     experience: 'Опыт работы',
     experiences: [
       {
