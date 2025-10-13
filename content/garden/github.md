@@ -2,7 +2,7 @@
 title: Почему пустой GitHub — это нормально
 description: Миф о "квадратиках": Почему пустой GitHub — это нормально
 date: 2025-09-25
-tags: [opensource,career, programming, mental-model]
+tags: [opensource,career,programming,mental-model]
 ---
 
 ## Миф о "квадратиках": Почему пустой GitHub — это нормально
