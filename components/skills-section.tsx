@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/lib/use-language';
 import { TechIcon } from './tech-icon';
+import { Palette, Hammer, Gauge, Globe, Handshake, Server } from 'lucide-react';
 
 const expertiseIcons = ['🏗️', '🎨', 'HTML5', 'React', '🤝', 'Node.js / Express'];
 
@@ -113,6 +114,38 @@ export function SkillsSection() {
                 className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${expertiseColors[index]} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
               />
 
+              {/* Background icons for all cards */}
+              {index === 0 && (
+                <div className="absolute top-2 right-2 opacity-15 group-hover:opacity-25 transition-opacity duration-300">
+                  <Hammer size={160} className="text-blue-500/40 dark:text-blue-400/40" />
+                </div>
+              )}
+              {index === 1 && (
+                <div className="absolute top-2 right-2 opacity-15 group-hover:opacity-25 transition-opacity duration-300">
+                  <Palette size={160} className="text-purple-500/40 dark:text-purple-400/40" />
+                </div>
+              )}
+              {index === 2 && (
+                <div className="absolute top-2 right-2 opacity-15 group-hover:opacity-25 transition-opacity duration-300">
+                  <Gauge size={160} className="text-orange-500/40 dark:text-orange-400/40" />
+                </div>
+              )}
+              {index === 3 && (
+                <div className="absolute top-2 right-2 opacity-15 group-hover:opacity-25 transition-opacity duration-300">
+                  <Globe size={160} className="text-cyan-500/40 dark:text-cyan-400/40" />
+                </div>
+              )}
+              {index === 4 && (
+                <div className="absolute top-2 right-2 opacity-15 group-hover:opacity-25 transition-opacity duration-300">
+                  <Handshake size={160} className="text-green-500/40 dark:text-green-400/40" />
+                </div>
+              )}
+              {index === 5 && (
+                <div className="absolute top-2 right-2 opacity-15 group-hover:opacity-25 transition-opacity duration-300">
+                  <Server size={160} className="text-teal-500/40 dark:text-teal-400/40" />
+                </div>
+              )}
+
               <div className="relative z-10">
                 {/* Icon */}
                 <div className="mb-6">
@@ -138,13 +171,6 @@ export function SkillsSection() {
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
                   {item.description}
                 </p>
-
-                {/* Hover indicator */}
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div
-                    className={`w-full h-2 bg-gradient-to-r ${expertiseColors[index]} rounded-full`}
-                  />
-                </div>
               </div>
 
               {/* Glare effect */}

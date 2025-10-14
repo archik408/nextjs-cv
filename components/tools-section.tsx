@@ -6,6 +6,8 @@ import { TechIcon } from './tech-icon';
 const tools = [
   'MacOS',
   'M4 Pro',
+  'Keychron B6',
+  'ERGO M575S',
   'WebStorm',
   'Cursor AI',
   'Chrome DevTools',
