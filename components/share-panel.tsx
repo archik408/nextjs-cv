@@ -66,11 +66,9 @@ export function SharePanel({ title, url, summary, className }: SharePanelProps) 
 
   const handleWebShare = async () => {
     if (typeof window === 'undefined') return;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (navigator.share) {
       try {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         await navigator.share({ title, text: summary || title, url: shareUrl });
       } catch (error) {

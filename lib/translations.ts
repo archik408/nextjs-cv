@@ -44,7 +44,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     learning: 'Learning',
     learningDesc:
       'Continuous improvement and learning through practice and <abbr title="Massive Open Online Courses">MOOC</abbr> platforms (Frontend Masters, Coursera, edX)',
-    skills: 'Core Expertise',
+    skills: 'Core Expertise (USP)',
     skillsDescription:
       'Deep expertise across the full spectrum of modern web development, from architecture to team leadership',
     expertise: [
@@ -540,7 +540,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     learning: 'Обучение',
     learningDesc:
       'Непрерывное совершенствование и обучение через практику и <abbr title="Massive Open Online Courses">MOOC</abbr> платформы (Frontend Masters, Coursera, edX)',
-    skills: 'Основная Экспертиза',
+    skills: 'Основная Экспертиза (УТП)',
     skillsDescription:
       'Глубокая экспертиза во всем спектре современной веб-разработки, от архитектуры до лидерства команд',
     expertise: [

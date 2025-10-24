@@ -81,14 +81,14 @@ export function CertificatesSection() {
               <div className="flex items-center gap-4">
                 <Award className="min-w-8 w-8 h-8 text-green-400" />
                 <div>
-                  <h3 className="text-xl font-semibold">Google UX Design</h3>
-                  <p className="text-gray-600 dark:text-gray-400">Coursera • 2021/2025</p>
+                  <h3 className="text-xl font-semibold">Professional Google UX Design</h3>
+                  <p className="text-gray-600 dark:text-gray-400">Coursera • 2025</p>
                 </div>
               </div>
               <button
                 onClick={() =>
                   openCertificate(
-                    'Google UX Design Certificate',
+                    'Google UX Design Professional Certificate',
                     '/certificates/google-ux-design.png',
                     true
                   )

@@ -47,7 +47,6 @@ const renderer = {
 
 marked.setOptions({
   breaks: true,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   headerIds: true,
   headerPrefix: 'h-',

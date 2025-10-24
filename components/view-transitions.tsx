@@ -9,7 +9,6 @@ interface ViewTransitionsProps {
 
 declare global {
   interface Document {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     startViewTransition?: (callback: () => void | Promise<void>) => {
       finished: Promise<void>;

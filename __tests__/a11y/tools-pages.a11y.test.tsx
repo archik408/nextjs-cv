@@ -9,7 +9,6 @@ import { OCRPageClient } from '@/app/ocr/page-client';
 describe('Tools pages accessibility', () => {
   beforeAll(() => {
     // Mock fetch for ImagePlaceholderClient
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     global.fetch = jest.fn().mockResolvedValue({ json: async () => ({ collections: [] }) });
   });

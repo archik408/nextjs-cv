@@ -186,7 +186,6 @@ export function ImageOptimizerPageClient() {
         }
 
         const mime = detectMime(out);
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         const blob = new Blob([out], { type: mime });
         const url = URL.createObjectURL(blob);

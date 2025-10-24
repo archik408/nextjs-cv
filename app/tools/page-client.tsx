@@ -227,7 +227,6 @@ export function ToolsPageClient() {
     const props = isReady ? { href: tool.href } : {};
 
     return (
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       <Component
         {...props}
