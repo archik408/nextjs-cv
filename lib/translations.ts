@@ -2,6 +2,7 @@ import { ELanguage } from '@/constants/enums';
 
 export const translations = {
   [ELanguage.en]: {
+    skipLinkMain: 'Skip to main content',
     // Accessibility Page
     accessibility: 'Accessibility',
     accessibilityTitle: 'Accessibility Statement',
@@ -496,6 +497,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ioToolDesc: 'Compress and optimize images for web',
   },
   [ELanguage.ru]: {
+    skipLinkMain: 'Перейти к основному содержимому',
     // Accessibility Page
     accessibility: 'Доступность',
     accessibilityTitle: 'Заявление о доступности',

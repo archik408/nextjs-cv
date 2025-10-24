@@ -160,9 +160,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${rubikFont.className} ${jetbrainsMonoFont.variable} antialiased`}>
-        <SkipLink />
         <ThemeProvider>
           <LanguageProvider>
+            <SkipLink />
             <ViewTransitions>
               <main>{children}</main>
               <CursorMount />

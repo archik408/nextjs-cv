@@ -1,6 +1,10 @@
 'use client';
 
+import { useLanguage } from '@/lib/use-language';
+
 const SkipLink = () => {
+  const { t } = useLanguage();
+
   return (
     <a
       href="#main-content"
@@ -11,7 +15,7 @@ const SkipLink = () => {
           ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }
     >
-      Skip to main content
+      {t.skipLinkMain}
     </a>
   );
 };
