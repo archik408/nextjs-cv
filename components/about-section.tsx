@@ -18,7 +18,7 @@ export function AboutSection() {
           {t.about}
         </h2>
         <div className="grid md:grid-cols-2 gap-8 items-start">
-          <div
+          <p
             className="text-gray-700 dark:text-gray-300 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: t.aboutText }}
           />

@@ -29,12 +29,53 @@ const useCursorFollower = () => {
       const isInteractive = !!el?.closest(
         'a,button,[role="button"],input,textarea,select,label,summary,details'
       );
+
+      // Check if we're over text content
+      const isTextContent =
+        el?.nodeType === Node.TEXT_NODE ||
+        (el?.tagName &&
+          [
+            'P',
+            'H1',
+            'H2',
+            'H3',
+            'H4',
+            'H5',
+            'H6',
+            'SPAN',
+            'LI',
+            'TD',
+            'TH',
+            'FIGCAPTION',
+            'CAPTION',
+            'BLOCKQUOTE',
+            'PRE',
+            'CODE',
+          ].includes(el.tagName));
+
       if (isInteractive) {
+        // Interactive elements - round cursor with pulse
         elementRef.current.classList.add('pulse');
+        elementRef.current.classList.remove('text-cursor');
         elementRef.current.style.transform = 'translate3d(-50%, -50%, 0) scale(2)';
-      } else {
+        elementRef.current.style.width = '24px';
+        elementRef.current.style.height = '24px';
+        elementRef.current.style.borderRadius = '420px';
+      } else if (isTextContent && !isInteractive) {
+        // Text content - thin cursor
         elementRef.current.classList.remove('pulse');
+        elementRef.current.classList.add('text-cursor');
         elementRef.current.style.transform = 'translate3d(-50%, -50%, 0)';
+        elementRef.current.style.width = '4px';
+        elementRef.current.style.height = '20px';
+        elementRef.current.style.borderRadius = '10px';
+      } else {
+        // Default - round cursor
+        elementRef.current.classList.remove('pulse', 'text-cursor');
+        elementRef.current.style.transform = 'translate3d(-50%, -50%, 0)';
+        elementRef.current.style.width = '24px';
+        elementRef.current.style.height = '24px';
+        elementRef.current.style.borderRadius = '420px';
       }
     },
     [updatePosition]
@@ -97,8 +138,9 @@ export const CursorFollower = () => {
           pointerEvents: 'none',
           transform: 'translate3d(-50%, -50%, 0)',
           zIndex: 9999,
-          willChange: 'transform, width, height',
-          transition: 'transform 0.2s ease-out',
+          willChange: 'transform, width, height, border-radius',
+          transition:
+            'transform 0.2s ease-out, width 0.3s ease-out, height 0.3s ease-out, border-radius 0.3s ease-out',
         }}
       ></div>
     </>
