@@ -20,7 +20,7 @@ const jetbrainsMonoFont = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Artur Basak - Frontend Engineer & UI/UX Enthusiast',
+  title: 'Artur Basak - Principal UI/UX Engineer & Frontend Architect',
   description:
     'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development. Specializing in JavaScript, React, Node.js, and Progressive Web Apps (PWA).',
   keywords:
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Artur Basak - Frontend Engineer & UI/UX Enthusiast',
+    title: 'Artur Basak - Principal UI/UX Engineer & Frontend Architect',
     description:
       'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development.',
     url: 'https://arturbasak.dev',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: '/avatar.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Artur Basak - Senior Frontend Engineer & UI/UX Enthusiast',
+        alt: 'Artur Basak - Principal UI/UX Engineer & Frontend Architect',
       },
     ],
     locale: 'en_US',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Artur Basak - Frontend Engineer & UI/UX Enthusiast',
+    title: 'Artur Basak - Principal UI/UX Engineer & Frontend Architect',
     description:
       'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development.',
     images: ['/avatar.jpeg'],
@@ -88,7 +88,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Artur Basak',
-    jobTitle: 'Senior Frontend Engineer',
+    jobTitle: 'Artur Basak - Principal UI/UX Engineer & Frontend Architect',
     url: 'https://arturbasak.dev',
     image: 'https://arturbasak.dev/avatar.jpeg',
     sameAs: [
@@ -102,6 +102,8 @@ export default function RootLayout({
       name: 'IntexSoft',
     },
     knowsAbout: [
+      'HTML',
+      'CSS',
       'React',
       'Svelte',
       'Web Components',
@@ -113,10 +115,11 @@ export default function RootLayout({
       'Core Web Vitals',
       'PWA',
       'Node.js',
-      'GraphQL',
+      'Web Security',
+      'Web Performance',
       'Automated Testing',
       'CI/CD',
-      'UI/UX',
+      'UI/UX Design',
     ],
     address: {
       '@type': 'PostalAddress',

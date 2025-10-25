@@ -28,9 +28,13 @@ export const createPersonSchema = () => ({
   },
   knowsAbout: [
     'React',
+    'HTML',
+    'CSS',
     'TypeScript',
     'JavaScript',
     'Next.js',
+    'Web Accessibility',
+    'Web Security',
     'Web Development',
     'Frontend Architecture',
     'UI/UX Design',

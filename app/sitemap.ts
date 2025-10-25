@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { posts } from '@/constants/blog';
+import { listGardenNotes } from '@/lib/garden';
 
 const baseUrl = 'https://arturbasak.dev';
 
@@ -34,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/algorithms`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      priority: 0.5,
     },
     {
       url: `${baseUrl}/event-loop`,
@@ -46,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/ocr`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.6,
+      priority: 0.5,
     },
   ];
 
@@ -60,5 +61,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     }));
 
-  return [...staticPages, ...blogPages];
+  // Digital Garden notes
+  const gardenNotes = listGardenNotes().map((note) => ({
+    url: `${baseUrl}/garden/${note.slug}`,
+    lastModified: note.frontmatter.date ? new Date(note.frontmatter.date) : new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...blogPages, ...gardenNotes];
 }
