@@ -75,7 +75,9 @@ export function HeroSection() {
           </div>
         </div>
         <ArticleTitle text={'Artur Basak'} />
-        <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4">{t.role}</h2>
+        <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 md:mb-0">
+          {t.role}
+        </h2>
         <div className="mb-8 min-h-[3rem] md:min-h-[2.5rem] flex items-center justify-center">
           <p className="text-base md:text-sm text-gray-600 dark:text-gray-300 font-[var(--font-jetbrains-mono)] text-center">
             <TypingRotate

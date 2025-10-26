@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Award, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import { CertificateModal } from './certificate-modal';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 export function CertificatesSection() {
   const { t } = useLanguage();
@@ -40,7 +41,11 @@ export function CertificatesSection() {
   return (
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center md:text-left">{t.certificates}</h2>
+        <AnimatedSectionTitle
+          text={t.certificates}
+          className="justify-center md:justify-start"
+          wrapperClassName="text-center"
+        />
         <div className="grid gap-6">
           <div className="bg-white dark:bg-gray-900/40 p-6 rounded-lg shadow-sm dark:shadow-none">
             <div className="flex items-center gap-4">

@@ -94,7 +94,10 @@ export default function TypingRotate({
   return (
     <span className={className} aria-live="polite">
       <span className="txt-rotate">
-        <span className="wrap" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+        <span
+          className={`wrap transition-opacity ${txt?.length ? 'opacity-100' : 'opacity-0'}`}
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
+        >
           {txt}
         </span>
       </span>

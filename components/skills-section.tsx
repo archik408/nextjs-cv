@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/use-language';
 import { TechIcon } from './tech-icon';
 import { Palette, Hammer, Gauge, Globe, Handshake, Server } from 'lucide-react';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 const expertiseIcons = ['🏗️', '🎨', 'HTML5', 'React', '🤝', 'Node.js / Express'];
 
@@ -94,9 +95,11 @@ export function SkillsSection() {
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="mb-8 text-center md:text-left">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent mb-4">
-            {t.skills}
-          </h2>
+          <AnimatedSectionTitle
+            text={t.skills}
+            className="justify-center md:justify-start"
+            wrapperClassName="text-center md:text-left"
+          />
           <p className="text-base text-gray-600 dark:text-gray-300">{t.skillsDescription}</p>
         </div>
 

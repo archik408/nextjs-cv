@@ -3,6 +3,7 @@
 import { Mail } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import Player from '@/components/lottie-player';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 export function ContactSection() {
   const { t } = useLanguage();
@@ -11,7 +12,11 @@ export function ContactSection() {
     <section className="py-20 px-4 md:px-8 bg-gray-400/50 dark:bg-gray-900/50">
       <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-10 items-center">
         <div className="text-center md:text-left">
-          <h2 className="text-3xl font-bold mb-8">{t.contact}</h2>
+          <AnimatedSectionTitle
+            text={t.contact}
+            className="justify-center md:justify-start"
+            wrapperClassName="text-center md:text-left"
+          />
           <p
             className="text-gray-700 dark:text-gray-300 mb-8"
             dangerouslySetInnerHTML={{ __html: t.contactText }}

@@ -5,6 +5,7 @@ import { useLanguage } from '@/lib/use-language';
 import type { GardenNote } from '@/lib/garden';
 import { formatDate } from '@/utils/date';
 import { Sprout, ExternalLink } from 'lucide-react';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 type Props = {
   notes: GardenNote[];
@@ -15,7 +16,11 @@ export function GardenSectionClient({ notes }: Props) {
   return (
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">{t.garden}</h2>
+        <AnimatedSectionTitle
+          text={t.garden}
+          className="justify-center"
+          wrapperClassName="text-center"
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {notes.map((n) => (
             <Link
@@ -42,7 +47,7 @@ export function GardenSectionClient({ notes }: Props) {
             </Link>
           ))}
         </div>
-        <div className="mt-6">
+        <div className="mt-6 text-center md:text-left">
           <Link
             href="/garden"
             className="inline-flex items-center gap-2 text-blue-700 dark:text-blue-400 hover:underline"

@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/lib/use-language';
 import { TechIcon } from './tech-icon';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 const tools = [
   'MacOS',
@@ -40,7 +41,11 @@ export function ToolsSection() {
     <section className="py-12 px-4 md:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t.mySetup}</h2>
+          <AnimatedSectionTitle
+            text={t.mySetup}
+            className="justify-center"
+            wrapperClassName="text-gray-900 dark:text-white text-center"
+          />
           <p className="text-base text-gray-600 dark:text-gray-300">{t.mySetupDescription}</p>
         </div>
 

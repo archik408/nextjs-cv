@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { Code2, Boxes, Trophy, BookOpen } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 const Player = dynamic(() => import('@/components/lottie-player'), {
   ssr: false,
@@ -14,9 +15,12 @@ export function AboutSection() {
   return (
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 id="main-content" className="text-3xl font-bold mb-8 text-center md:text-left">
-          {t.about}
-        </h2>
+        <AnimatedSectionTitle
+          text={t.about}
+          id="main-content"
+          className="justify-center md:justify-start"
+          wrapperClassName="text-center md:text-left"
+        />
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <p
             className="text-gray-700 dark:text-gray-300 leading-relaxed"

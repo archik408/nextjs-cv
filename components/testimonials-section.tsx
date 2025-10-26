@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 export function TestimonialsSection() {
   const { t } = useLanguage();
@@ -28,7 +29,7 @@ export function TestimonialsSection() {
   return (
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">{t.testimonialsTitle}</h2>
+        <AnimatedSectionTitle text={t.testimonialsTitle} className="justify-center" />
         <div className="relative">
           {/* Carousel Container */}
           <div className="overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg dark:shadow-none">

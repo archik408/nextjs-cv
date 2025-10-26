@@ -5,6 +5,7 @@ import { ChevronDown, Clock } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import Link from 'next/link';
 import ArticleTitle from '@/components/article-title';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 export function ExperienceSection() {
   const { t } = useLanguage();
@@ -25,7 +26,12 @@ export function ExperienceSection() {
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-center md:text-left">{t.experience}</h2>
+          <AnimatedSectionTitle
+            withoutMargin
+            text={t.experience}
+            className="justify-center md:justify-start"
+            wrapperClassName="text-center md:text-left"
+          />
           <Link
             href="/timeline"
             className="animate-wobble group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"

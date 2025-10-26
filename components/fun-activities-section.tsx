@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Palette, Users, Bike, Mail, ChevronLeft, ChevronRight, Car } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import { useState, useRef } from 'react';
+import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 export function FunActivitiesSection() {
   const { t } = useLanguage();
@@ -94,7 +95,11 @@ export function FunActivitiesSection() {
     <section className="py-10 md:py-20 bg-gray-100/50 dark:bg-gray-800/50 overflow-hidden relative">
       {/* Title */}
       <div className="max-w-5xl mx-auto px-4 md:px-8 mb-12">
-        <h2 className="text-3xl font-bold text-center">{t.funActivities}</h2>
+        <AnimatedSectionTitle
+          text={t.funActivities}
+          className="justify-center"
+          wrapperClassName="text-center"
+        />
       </div>
 
       {/* Racing car overlay */}
