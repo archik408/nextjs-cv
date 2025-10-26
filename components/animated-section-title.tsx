@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { AnimatedText } from '@/components/animated-text';
+import { useAnimationPreferences } from '@/lib/use-animation-preferences';
 
 interface AnimatedSectionTitleProps {
   text: string;
@@ -24,9 +25,16 @@ export function AnimatedSectionTitle({
 }: AnimatedSectionTitleProps) {
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const { shouldAnimate } = useAnimationPreferences();
 
   // Intersection Observer для отслеживания появления заголовка
   useEffect(() => {
+    // Если анимации отключены, сразу показываем текст
+    if (!shouldAnimate) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -48,7 +56,7 @@ export function AnimatedSectionTitle({
         observer.unobserve(titleRef.current);
       }
     };
-  }, [threshold, rootMargin]);
+  }, [threshold, rootMargin, shouldAnimate]);
 
   return (
     <h2
@@ -57,7 +65,11 @@ export function AnimatedSectionTitle({
       className={`text-3xl font-bold ${withoutMargin ? 'm-0' : 'mb-8'} ${wrapperClassName}`}
     >
       {isVisible ? (
-        <AnimatedText text={text} className={`opacity-0 ${className}`} />
+        shouldAnimate ? (
+          <AnimatedText text={text} className={`opacity-0 ${className}`} />
+        ) : (
+          <span className={className}>{text}</span>
+        )
       ) : (
         <span className="opacity-0">{text}</span>
       )}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useAnimationPreferences } from '@/lib/use-animation-preferences';
 
 interface TypingRotateProps {
   texts: string[] | string;
@@ -28,12 +29,19 @@ export default function TypingRotate({
   const toRotate = useMemo(() => (Array.isArray(texts) ? texts : [texts]), [texts]);
   const [loopNum, setLoopNum] = useState(0);
   const [txt, setTxt] = useState('');
+  const { shouldAnimate } = useAnimationPreferences();
   const [isDeleting, setIsDeleting] = useState(false);
   const tickTimeout = useRef<NodeJS.Timeout | null>(null);
   const txtRef = useRef('');
   const isDeletingRef = useRef(false);
 
   useEffect(() => {
+    // Если анимации отключены, не запускаем логику анимации
+    if (!shouldAnimate) {
+      setTxt(`${fixedPrefix}${toRotate[0]}`);
+      return;
+    }
+
     const i = loopNum % toRotate.length;
     const fullTxt = toRotate[i];
     const visibleBase = fixedPrefix && fullTxt.startsWith(fixedPrefix) ? fixedPrefix : fixedPrefix;
@@ -83,6 +91,7 @@ export default function TypingRotate({
     pauseAfterDeleteMs,
     pauseAfterCompleteMs,
     fixedPrefix,
+    shouldAnimate,
   ]);
 
   // Отдельный useEffect для отслеживания изменений isDeleting
@@ -90,6 +99,17 @@ export default function TypingRotate({
     // Этот useEffect нужен только для того, чтобы React знал об изменениях isDeleting
     // Логика анимации остается в основном useEffect
   }, [isDeleting]);
+
+  // Если анимации отключены, показываем статический текст
+  if (!shouldAnimate) {
+    return (
+      <span className={className} aria-live="polite">
+        <span className="txt-rotate">
+          <span style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>{toRotate[0]}</span>
+        </span>
+      </span>
+    );
+  }
 
   return (
     <span className={className} aria-live="polite">
