@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { Code2, Boxes, Trophy, BookOpen } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
+import { AnimatedAboutText } from '@/components/animated-about-text';
 
 const Player = dynamic(() => import('@/components/lottie-player'), {
   ssr: false,
@@ -22,10 +23,7 @@ export function AboutSection() {
           wrapperClassName="text-center md:text-left"
         />
         <div className="grid md:grid-cols-2 gap-8 items-start">
-          <p
-            className="text-gray-700 dark:text-gray-300 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: t.aboutText }}
-          />
+          <AnimatedAboutText html={t.aboutText} />
           <div>
             <div className="grid grid-rows-[16rem_16rem] md:grid-rows-[12.5rem_12.5rem] grid-cols-2 gap-4 mb-10 md:mb-15">
               <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">

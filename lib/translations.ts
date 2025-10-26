@@ -89,10 +89,12 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         period: '2022 - Present',
         listDescription: [
           'Led the development of a hybrid mobile application using React.js, PWA, and Fugu API for one of the largest grocery retail groups globally, operating 20k+ convenience stores with MAU ~20 million',
-          'Integrated advanced web technologies to deliver a seamless cross-platform experience for both iOS and Android, ensuring high performance and scalability',
+          'Implemented offline functionality for the app, thereby increasing user retention and reducing attrition based on ServiceWorker API/Workbox, IndexedDB and Dixie.js',
+          'Increased NPS by improving UI based on A/B Testing and UX Interviews & Research',
+          'Integrated advanced web technologies to deliver a seamless cross-platform experience for both iOS and Android, ensuring high performance and scalability with a lot of modern APIs like View Transition API, Vibration API, Geolocation API, Web Share and Lottie animations',
           'Participated in AI/LLM integration for moderation and fraud detection',
           'Collaborated closely with cross-functional teams to align the application with business goals, resulting in improved user engagement and operational efficiency',
-          'Developed side  projects like admin/moderator application based on React-Admin with Bun server, and a bunch of landings based on Next.js',
+          'Implemented side projects like admin/moderation application based on React-Admin and mock Bun server plus a bunch of landing pages based on SSR/Next.js',
         ],
       },
       {
@@ -585,7 +587,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         period: '2022 - Настоящее время',
         listDescription: [
           'Руководил разработкой гибридного мобильного приложения с использованием React.js, PWA и Fugu API для одной из крупнейших розничных сетей продуктовых магазинов в мире, включающей более 20 000 магазинов и с ежемесячной аудиторией около 20 миллионов пользователей',
-          'Интегрировал передовые веб-технологии для создания бесшовного кросс-платформенного опыта на iOS и Android, обеспечивая высокую производительность и масштабируемость',
+          'Реализовал оффлайн функционал для приложения, тем самым повысив удержание и уменьшив отток пользователей из-за плохого интернета благодаря технологиям ServiceWorker API/Workbox, IndexedDB и Dixie.js',
+          'Увеличил показатели NPS благодаря улучшениям UI на основе A/B тестирования и UX интервью',
+          'Интегрировал передовые веб-технологии для создания бесшовного кросс-платформенного опыта на iOS и Android, обеспечивая высокую производительность и масштабируемость вместе с современными Web API: View Transition API, Vibration API, Geolocation API, Web Share и Lottie анимациями',
           'Участвовал в интеграции AI/LLM для модерации и обнаружения мошенничества',
           'Тесно сотрудничал с кросс-функциональными командами для согласования разработки приложения с бизнес-целями, что привело к повышению вовлеченности пользователей и операционной эффективности',
           'Разрабатывал сторонние проекты, такие как приложение администратора/модератора на основе React-Admin с сервером Bun и ряд лендингов на основе Next.js',
