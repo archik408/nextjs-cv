@@ -14,7 +14,7 @@ const DEFAULT_PREFERENCES: AnimationPreferences = {
   prefersReducedMotion: false,
   isLowEndDevice: false,
   isSlowConnection: false,
-  shouldAnimate: true,
+  shouldAnimate: false,
   detectionComplete: false,
 };
 
