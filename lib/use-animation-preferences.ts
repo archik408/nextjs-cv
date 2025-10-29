@@ -185,6 +185,15 @@ async function safelyCheckLowEndDevice(): Promise<boolean> {
       return true;
     }
 
+    if ((window.performance as any)?.memory?.jsHeapSizeLimit) {
+      const jsHeapSizeLimit = (window.performance as any).memory.jsHeapSizeLimit;
+      const availableRAM = Math.round(jsHeapSizeLimit / (1024 * 1024 * 1024));
+
+      if (availableRAM < 2) {
+        return true;
+      }
+    }
+
     // User agent эвристики для известно слабых устройств
     const userAgent = navigator.userAgent.toLowerCase();
     const weakDevicePatterns = [
