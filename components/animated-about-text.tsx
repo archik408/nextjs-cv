@@ -10,10 +10,10 @@ interface AnimatedAboutTextProps {
 
 export function AnimatedAboutText({ html, className = '' }: AnimatedAboutTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { shouldAnimate } = useAnimationPreferences();
+  const { shouldAnimate, detectionComplete } = useAnimationPreferences();
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !detectionComplete) return;
 
     // Небольшая задержка для того, чтобы HTML был отрендерен
     const timer = setTimeout(() => {
@@ -80,7 +80,7 @@ export function AnimatedAboutText({ html, className = '' }: AnimatedAboutTextPro
         (containerRef.current as any).__observer.disconnect();
       }
     };
-  }, [html, shouldAnimate]);
+  }, [html, shouldAnimate, detectionComplete]);
 
   return (
     <div

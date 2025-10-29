@@ -53,7 +53,14 @@ export function AboutSection() {
                 />
               </div>
             </div>
-            <Player autoplay loop src="/lottie.json" style={{ height: '300px', width: '100%' }} />
+            <Player
+              autoplay
+              loop
+              src="/lottie.json"
+              fallbackSrc="/lottie.png"
+              fallbackAlt={t.about}
+              style={{ height: '300px', width: '100%' }}
+            />
           </div>
         </div>
       </div>

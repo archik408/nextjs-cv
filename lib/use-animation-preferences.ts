@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 interface AnimationPreferences {
   prefersReducedMotion: boolean;
@@ -18,11 +18,11 @@ const DEFAULT_PREFERENCES: AnimationPreferences = {
   detectionComplete: false,
 };
 
-const STORAGE_KEY = 'animation-preferences-v1';
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 часа
+const WEBGL_STORAGE_KEY = 'webgl-performance-v1';
+const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 дней
 
-interface CachedData {
-  preferences: Omit<AnimationPreferences, 'detectionComplete'>;
+interface WebGLCachedData {
+  isOptimized: boolean;
   timestamp: number;
   userAgent: string; // Для валидации устройства
 }
@@ -114,11 +114,6 @@ export function useAnimationPreferences(): AnimationPreferences {
 }
 
 async function getQuickPreferences(): Promise<Partial<AnimationPreferences>> {
-  const cached = getCachedPreferences();
-  if (cached) {
-    return { ...cached.preferences, detectionComplete: true };
-  }
-
   const prefersReducedMotion =
     window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches || false;
   const isSlowConnection = safelyCheckSlowConnection();
@@ -132,11 +127,6 @@ async function getQuickPreferences(): Promise<Partial<AnimationPreferences>> {
 }
 
 async function getFullPreferences(): Promise<AnimationPreferences> {
-  const cached = getCachedPreferences();
-  if (cached) {
-    return { ...cached.preferences, detectionComplete: true };
-  }
-
   const prefersReducedMotion =
     window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches || false;
   const isSlowConnection = safelyCheckSlowConnection();
@@ -144,62 +134,56 @@ async function getFullPreferences(): Promise<AnimationPreferences> {
 
   const shouldAnimate = !prefersReducedMotion && !isLowEndDevice && !isSlowConnection;
 
-  const result: AnimationPreferences = {
+  return {
     prefersReducedMotion,
     isLowEndDevice,
     isSlowConnection,
     shouldAnimate,
     detectionComplete: true,
   };
-
-  try {
-    const cacheData: CachedData = {
-      preferences: {
-        prefersReducedMotion,
-        isLowEndDevice,
-        isSlowConnection,
-        shouldAnimate,
-      },
-      timestamp: Date.now(),
-      userAgent: navigator.userAgent,
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cacheData));
-  } catch (error) {
-    console.warn('Failed to cache preferences:', error);
-  }
-
-  return result;
 }
 
-function getCachedPreferences(): CachedData | null {
+function getCachedWebGLResult(): boolean | null {
   try {
-    const cached = localStorage.getItem(STORAGE_KEY);
+    const cached = localStorage.getItem(WEBGL_STORAGE_KEY);
     if (!cached) return null;
 
-    const data: CachedData = JSON.parse(cached);
+    const data: WebGLCachedData = JSON.parse(cached);
 
     // Проверяем валидность кеша
     const isExpired = Date.now() - data.timestamp > CACHE_DURATION;
     const isDifferentDevice = data.userAgent !== navigator.userAgent;
 
     if (isExpired || isDifferentDevice) {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(WEBGL_STORAGE_KEY);
       return null;
     }
 
-    return data;
+    return data.isOptimized;
   } catch {
     return null;
+  }
+}
+
+function cacheWebGLResult(isOptimized: boolean): void {
+  try {
+    const cacheData: WebGLCachedData = {
+      isOptimized,
+      timestamp: Date.now(),
+      userAgent: navigator.userAgent,
+    };
+    localStorage.setItem(WEBGL_STORAGE_KEY, JSON.stringify(cacheData));
+  } catch (error) {
+    console.warn('Failed to cache WebGL result:', error);
   }
 }
 
 async function safelyCheckLowEndDevice(): Promise<boolean> {
   try {
     const cores = navigator.hardwareConcurrency || 4;
-    if (cores <= 2) return true;
-
-    const memory = (navigator as any).deviceMemory;
-    if (memory && memory <= 2) return true;
+    if (cores <= 2) {
+      return true;
+    }
 
     // User agent эвристики для известно слабых устройств
     const userAgent = navigator.userAgent.toLowerCase();
@@ -215,23 +199,37 @@ async function safelyCheckLowEndDevice(): Promise<boolean> {
     }
 
     const isLowBattery = await checkBatteryLevel();
-    if (isLowBattery) return true;
+    if (isLowBattery) {
+      return true;
+    }
 
-    return await testWebGLPerformanceOptimized();
+    return !(await isWebGLPerformanceOptimized());
   } catch {
     return false;
   }
 }
 
-async function testWebGLPerformanceOptimized(): Promise<boolean> {
+async function isWebGLPerformanceOptimized(): Promise<boolean> {
+  // Сначала проверяем кэш
+  const cachedResult = getCachedWebGLResult();
+  if (cachedResult !== null) {
+    return cachedResult;
+  }
+
   return new Promise((resolve) => {
     // Пропускаем тест если страница не видна
     if (document.hidden) {
-      resolve(true);
+      const result = true;
+      cacheWebGLResult(result);
+      resolve(result);
       return;
     }
 
-    const timeout = setTimeout(() => resolve(true), 200);
+    const timeout = setTimeout(() => {
+      const result = true;
+      cacheWebGLResult(result);
+      resolve(result);
+    }, 200);
 
     try {
       const canvas = document.createElement('canvas');
@@ -247,7 +245,9 @@ async function testWebGLPerformanceOptimized(): Promise<boolean> {
 
       if (!gl) {
         clearTimeout(timeout);
-        resolve(true); // Если WebGL недоступен, не блокируем анимации
+        const result = true; // Если WebGL недоступен, не блокируем анимации
+        cacheWebGLResult(result);
+        resolve(result);
         return;
       }
 
@@ -260,17 +260,24 @@ async function testWebGLPerformanceOptimized(): Promise<boolean> {
 
           const duration = performance.now() - startTime;
           clearTimeout(timeout);
-          resolve(duration < 8);
+
+          const result = duration < 8;
+          cacheWebGLResult(result);
+          resolve(result);
         } catch {
           clearTimeout(timeout);
-          resolve(true);
+          const result = true;
+          cacheWebGLResult(result);
+          resolve(result);
         }
       };
 
       requestAnimationFrame(testFrame);
     } catch {
       clearTimeout(timeout);
-      resolve(true);
+      const result = true;
+      cacheWebGLResult(result);
+      resolve(result);
     }
   });
 }

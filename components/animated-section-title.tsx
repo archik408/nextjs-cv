@@ -25,10 +25,15 @@ export function AnimatedSectionTitle({
 }: AnimatedSectionTitleProps) {
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const { shouldAnimate } = useAnimationPreferences();
+  const { shouldAnimate, detectionComplete } = useAnimationPreferences();
 
   // Intersection Observer для отслеживания появления заголовка
   useEffect(() => {
+    // Ждем завершения определения настроек
+    if (!detectionComplete) {
+      return;
+    }
+
     // Если анимации отключены, сразу показываем текст
     if (!shouldAnimate) {
       setIsVisible(true);
@@ -56,7 +61,7 @@ export function AnimatedSectionTitle({
         observer.unobserve(titleRef.current);
       }
     };
-  }, [threshold, rootMargin, shouldAnimate]);
+  }, [threshold, rootMargin, shouldAnimate, detectionComplete]);
 
   return (
     <h2

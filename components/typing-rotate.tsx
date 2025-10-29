@@ -29,13 +29,18 @@ export default function TypingRotate({
   const toRotate = useMemo(() => (Array.isArray(texts) ? texts : [texts]), [texts]);
   const [loopNum, setLoopNum] = useState(0);
   const [txt, setTxt] = useState('');
-  const { shouldAnimate } = useAnimationPreferences();
+  const { shouldAnimate, detectionComplete } = useAnimationPreferences();
   const [isDeleting, setIsDeleting] = useState(false);
   const tickTimeout = useRef<NodeJS.Timeout | null>(null);
   const txtRef = useRef('');
   const isDeletingRef = useRef(false);
 
   useEffect(() => {
+    // Ждем завершения определения настроек
+    if (!detectionComplete) {
+      return;
+    }
+
     // Если анимации отключены, не запускаем логику анимации
     if (!shouldAnimate) {
       setTxt(`${fixedPrefix}${toRotate[0]}`);
@@ -92,6 +97,7 @@ export default function TypingRotate({
     pauseAfterCompleteMs,
     fixedPrefix,
     shouldAnimate,
+    detectionComplete,
   ]);
 
   // Отдельный useEffect для отслеживания изменений isDeleting
@@ -101,7 +107,7 @@ export default function TypingRotate({
   }, [isDeleting]);
 
   // Если анимации отключены, показываем статический текст
-  if (!shouldAnimate) {
+  if (detectionComplete && !shouldAnimate) {
     return (
       <span className={className} aria-live="polite">
         <span className="txt-rotate">

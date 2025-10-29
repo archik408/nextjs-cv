@@ -1,6 +1,28 @@
 @import 'tailwindcss';
 @import 'highlight.js/styles/github-dark-dimmed.css';
 
+/* ========================================
+   ACCESSIBILITY: Reduced Motion Support
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Отключаем view transitions */
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(hero),
+  ::view-transition-new(hero) {
+    animation: none !important;
+  }
+}
+
 @layer components {
   .custom-gradient-before::before {
     background: linear-gradient(
@@ -243,6 +265,13 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Отключаем smooth scroll при prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -511,11 +540,12 @@ img {
 }
 
 /* Если анимации отключены, показываем подчеркивания сразу */
+/* (Глобальное правило prefers-reduced-motion уже отключает transitions,
+   здесь мы просто показываем подчеркивания сразу) */
 @media (prefers-reduced-motion: reduce) {
   .single-underline,
   .double-underline {
     transform: scaleX(1);
-    transition: none;
   }
 }
 

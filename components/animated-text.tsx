@@ -11,10 +11,10 @@ interface AnimatedTextProps {
 
 export function AnimatedText({ text, className = '', onComplete }: AnimatedTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { shouldAnimate } = useAnimationPreferences();
+  const { shouldAnimate, detectionComplete } = useAnimationPreferences();
 
   useEffect(() => {
-    if (!containerRef.current || !text) return;
+    if (!containerRef.current || !text || !detectionComplete) return;
 
     const container = containerRef.current;
 
@@ -63,7 +63,7 @@ export function AnimatedText({ text, className = '', onComplete }: AnimatedTextP
         clearTimeout(timer);
       };
     });
-  }, [text, shouldAnimate, onComplete]);
+  }, [text, shouldAnimate, detectionComplete, onComplete]);
   const chars = text.split('').map((char, index) => (
     <span key={index} className="char">
       {char === ' ' ? '\u00A0' : char}

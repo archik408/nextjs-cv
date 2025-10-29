@@ -9,7 +9,7 @@ export function ContactSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-gray-400/50 dark:bg-gray-900/50">
+    <section className="pt-20 pb-4 px-4 md:px-8 bg-gray-400/50 dark:bg-gray-900/50">
       <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-10 items-center">
         <div className="text-center md:text-left">
           <AnimatedSectionTitle
@@ -28,14 +28,16 @@ export function ContactSection() {
             {t.contactButton} <Mail className="w-4 h-4 ml-2" />
           </a>
         </div>
-        <div className="hidden md:block">
-          <Player
-            autoplay
-            loop
-            src="/email-lottie.json"
-            className="w-full max-w-md ml-auto pointer-events-none select-none"
-          />
-        </div>
+
+        <Player
+          autoplay
+          loop
+          src="/email-lottie.json"
+          fallbackSrc="/email-lottie.png"
+          fallbackAlt={t.contact}
+          style={{ height: '400px', width: '100%' }}
+          className="pointer-events-none select-none"
+        />
       </div>
     </section>
   );
