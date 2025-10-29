@@ -99,6 +99,19 @@
     border: 1px solid var(--border);
     padding: 0.5rem 0.75rem;
   }
+
+  strong,
+  em {
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  li + li {
+    margin-top: 1rem;
+  }
 }
 
 /* Light theme styles for prose-garden */
