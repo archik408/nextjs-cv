@@ -24,9 +24,15 @@ tags: [a11y, accessibility, wcag, programming, audit, skip-links]
 
 Это быстрый индикатор культуры доступности в команде. Если эти штуки присутствуют на портале, то скорее всего и все остальное с большой долей вероятности будет впорядке.
 
-- _Accessibility Statement_ — есть ли заявление о доступности? Обычно это отдельная страничка ссылка на которую есть в подвале рядом с Privacy Policy, Legal и Copyright. Его наличие говорит о том, что компания задумывается о доступности, берет на себя обязательства и предоставляет канал для обратной связи.
+- _Accessibility Statement_ — есть ли заявление о доступности? Обычно это отдельная страничка ссылка на которую есть в подвале рядом с Privacy Policy, Terms of Use и Copyright. Его наличие говорит о том, что компания задумывается о доступности, берет на себя обязательства и предоставляет канал для обратной связи.
 - _Skip Links_ — появляется ли при нажатии Tab ссылка "пропустить навигацию" в шапке?
   [Это популярный шаблон доступной навигации](/garden/skip-links).
+
+Пример Accessibility Statement:
+![McDonald's Accessibility Statement](/garden/audit/accessibility-statement.png)
+
+Пример Skip Links:
+![McDonald's Skip Links](/garden/skip-links/mac.png)
 
 ### 2. Цвет и контраст
 
@@ -34,6 +40,9 @@ tags: [a11y, accessibility, wcag, programming, audit, skip-links]
 
 - Проверяем сомнительные цвета через [Colour Contrast Analyser (CCA)](https://www.tpgi.com/color-contrast-checker/) - я использую внешний десктопный инструмент от TPGi, потому что он не мешает мне переключаться между вкладками и окнами абстрагируясь от браузера. Хотя можно использовать и какое-нибудь расширение или [онлайн сервис вроде WebAIM](https://webaim.org/resources/contrastchecker). Это критично для людей с ослабленным зрением, дальтонизмом или для использования на улице при ярком солнечном свете.
 - Убеждаемся, что цвет — не единственный источник информации, желательно чтобы обратная связь была усилена текстом.
+
+Проверка контраста веб-сайта:
+![Проверка контраста McDonald's](/garden/audit/color-contrast.png)
 
 ### 3. Навигация с клавиатуры
 
@@ -50,6 +59,9 @@ tags: [a11y, accessibility, wcag, programming, audit, skip-links]
 - Включаем сильное размытие (эффект плохого зрения) - для этого я сделал себе небольшое расширения для браузера, но можно просто в консоле выполнить код: `document.body.style = 'filter: blur(5px) !important;'`
 - Активируем скринридер (в моем случае это VoiceOver, но отталкиваясь от вашей ОС это может быть любой популярный: NVDA, JAWS, Narrator, Orca) и пытаемся выполнить базовые задачи с озвучкой и клавиатурой
 
+Проверка веб-сайта с VoiceOver:
+![Проверка McDonald's с VoiceOver](/garden/audit/voice-over.png)
+
 ### 5. Автоматизированное сканирование
 
 Инструменты не найдут всех проблем, но отлично ловят технические ошибки. По статистике до 30% проблем можно отловить автоматическими инструментами.
@@ -59,6 +71,12 @@ tags: [a11y, accessibility, wcag, programming, audit, skip-links]
 - [axe DevTools](https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US) - наверное, лучший сканер сейчас на рынке для подобной работы
 - [WAVE](https://wave.webaim.org/) - этим инструментом я обычно наглядно проверяю структуру страницы и доступность информации на ней
 - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview?hl=ru) и [ARC Toolkit](https://www.tpgi.com/arc-platform/arc-toolkit/) - как доп. проверка после axe
+
+Проверка веб-сайта с axe DevTools:
+![Проверка McDonald's с axe DevTools](/garden/audit/axe.png)
+
+Проверка веб-сайта с WAVE:
+![Проверка McDonald's с WAVE](/garden/audit/wave.png)
 
 Они ловят технические ошибки: отсутствие alt-текстов, некорректный HTML, ошибки ARIA, несоответствие WCAG. Вам даже не надо глубоко знать все эти спецификации, инструменты сами подскажут что нужно поправить для соответствия.
 
