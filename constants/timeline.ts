@@ -70,13 +70,5 @@ export const sortedTimelineData = (() => {
     }
   });
 
-  // Debug: log events after 2019
-  const eventsAfter2019 = result.filter((event) => event.year > 2019);
-  console.log(
-    'Events after 2019:',
-    eventsAfter2019.length,
-    eventsAfter2019.map((e) => `${e.year} - ${e.title.ru}`)
-  );
-
   return result;
 })();

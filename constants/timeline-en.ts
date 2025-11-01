@@ -399,6 +399,14 @@ export const timelineDataEn = [
     category: 'career' as const,
     image: '/timeline/macbook-m4.png',
   },
+  {
+    year: 2025,
+    title: 'Google UX Design Certificate',
+    description:
+      'Finished 7 courses at Coursera and earned professional UX Design certificate from Google',
+    category: 'career' as const,
+    image: '/timeline/google-ux-design.png',
+  },
 
   // Technology milestones (right side)
   {
@@ -844,6 +852,13 @@ export const timelineDataEn = [
     title: 'AI in web development',
     description:
       'Artificial intelligence and machine learning became actively integrated into web applications for personalization and automation',
+    category: 'technology' as const,
+    image: '/timeline/openai.png',
+  },
+  {
+    year: 2025,
+    title: 'OpenAI released Atlas',
+    description: 'OpenAI released own web browser with AI assistant based on ChatGPT and Chromium',
     category: 'technology' as const,
     image: '/timeline/openai.png',
   },

@@ -25,7 +25,7 @@ export const translations = {
     accessibilityLimitationsTitle: 'Known limitations',
     accessibilityLimitationsText:
       'Some dynamic visualizations may have reduced screen reader verbosity. I am working on adding improved labels and descriptions.',
-    role: 'Principal UI/UX Engineer',
+    role: 'Web UI/UX Engineer',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
     aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and school Computer Science teacher, and then fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
@@ -522,7 +522,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     accessibilityLimitationsTitle: 'Известные ограничения',
     accessibilityLimitationsText:
       'Некоторые динамические визуализации могут давать сокращённые описания для экранных дикторов. Ведётся работа по улучшению меток и описаний.',
-    role: 'Principal UI/UX Engineer',
+    role: 'Web UI/UX Engineer',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',
     aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>

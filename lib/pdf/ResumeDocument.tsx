@@ -207,7 +207,6 @@ export function ResumeDocument({ lang }: Props) {
               alt="Artur Basak"
             />
             <Text style={styles.name}>Artur Basak</Text>
-            <Text style={styles.role}>Principal</Text>
             <Text style={styles.role}>UI/UX Engineer</Text>
           </View>
 

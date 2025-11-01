@@ -83,7 +83,7 @@ export function AnimatedAboutText({ html, className = '' }: AnimatedAboutTextPro
   }, [html, shouldAnimate, detectionComplete]);
 
   return (
-    <div
+    <p
       ref={containerRef}
       className={`text-gray-700 dark:text-gray-300 leading-relaxed ${className}`}
       dangerouslySetInnerHTML={{ __html: html }}

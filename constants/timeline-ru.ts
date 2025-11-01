@@ -398,6 +398,14 @@ export const timelineDataRu = [
     category: 'career' as const,
     image: '/timeline/macbook-m4.png',
   },
+  {
+    year: 2025,
+    title: 'Google UX Design Certificate',
+    description:
+      'Окончил 7 курсов на Coursera и получил профессионаольный сертификат от Google по UX Design',
+    category: 'career' as const,
+    image: '/timeline/google-ux-design.png',
+  },
 
   // Technology milestones (right side)
   {
@@ -847,6 +855,14 @@ export const timelineDataRu = [
     title: 'AI в веб-разработке',
     description:
       'Искусственный интеллект и машинное обучение стали активно интегрироваться в веб-приложения для персонализации и автоматизации',
+    category: 'technology' as const,
+    image: '/timeline/openai.png',
+  },
+  {
+    year: 2025,
+    title: 'OpenAI выпустил Atlas',
+    description:
+      'OpenAI выпустил собственный браузер со встроенным ИИ ассистентом ChatGPT на базе Chromium',
     category: 'technology' as const,
     image: '/timeline/openai.png',
   },

@@ -181,7 +181,7 @@ function cacheWebGLResult(isOptimized: boolean): void {
 async function safelyCheckLowEndDevice(): Promise<boolean> {
   try {
     const cores = navigator.hardwareConcurrency || 4;
-    if (cores <= 2) {
+    if (cores < 2) {
       return true;
     }
 
