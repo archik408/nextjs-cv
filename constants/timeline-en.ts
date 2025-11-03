@@ -118,7 +118,8 @@ export const timelineDataEn = [
   {
     year: 2010,
     title: 'QA tester at instinctools EE Labs',
-    description: 'During internship got position as QA tester at instinctools EE Labs',
+    description:
+      'During internship got position as QA tester at instinctools EE Labs. First project was CROC document workflow system',
     category: 'career' as const,
     image: '/timeline/itools.jpeg',
   },
@@ -147,20 +148,19 @@ export const timelineDataEn = [
     image: '/timeline/sqadays11.jpg',
   },
   {
-    year: 2012,
+    year: 2011,
     title: 'Transition to Java development',
     description:
-      'Transferred to development department, got on Daimler project working with Java, JSP/JSF, jQuery UI and Selenium',
+      'Transferred to development department. Implementation of BIRT (Business Intelligence and Reporting Tools) functionality for Evonik AG on Eclipse RAP',
     category: 'career' as const,
-    image: '/timeline/daimler.png',
+    image: '/timeline/evonik.png',
   },
   {
     year: 2012,
-    title: 'BIRT for Evonik AG',
-    description:
-      'Development of BIRT (Business Intelligence and Reporting Tools) functionality for Evonik AG on Eclipse RAP',
+    title: 'Daimler UMS',
+    description: 'Got on Daimler project and worked with Java, JSP/JSF, jQuery UI and Selenium',
     category: 'career' as const,
-    image: '/timeline/evonik.png',
+    image: '/timeline/daimler.png',
   },
   {
     year: 2013,

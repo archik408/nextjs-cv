@@ -104,11 +104,11 @@ export const seoConfigs = {
       'Frontend Developer, React, Next.js, TypeScript, JavaScript, UI/UX, Web Development, PWA, Senior Engineer, Full Stack',
   },
   blog: {
-    title: 'Blog - Articles about Frontend Development',
+    title: 'Publications - Articles about Frontend Development',
     description:
       'Technical articles about frontend development, React, TypeScript, web performance, and modern web technologies by Artur Basak.',
     keywords:
-      'Frontend Blog, React Articles, TypeScript Tutorials, Web Development, JavaScript, Technical Writing',
+      'Frontend Publications, React Articles, TypeScript Tutorials, Web Development, JavaScript, Technical Writing',
     path: '/blog',
   },
   tools: {

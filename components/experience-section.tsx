@@ -16,8 +16,19 @@ export function ExperienceSection() {
     IntexSoft: 'https://intexsoft.com',
     'Godel Technologies': 'https://www.godeltech.com',
     'Indy (ex-Tispr)': 'https://www.tispr.com',
-    'instinctools EE Labs': 'https://www.instinctools.com',
+    '*instinctools EE Labs': 'https://www.instinctools.com',
     'IT Academy': 'https://www.it-academy.by',
+    SIBUR: 'https://www.sibur.com/en',
+    CROC: 'https://www.croc.ru/',
+    TrueImpact: 'https://www.trueimpact.com/',
+    'Big Three Management Consulting (NDA, but easy to Google)':
+      'https://www.google.com/search?q=Big+Three+Management+Consulting',
+    EquipmentWatch: 'https://equipmentwatch.com/',
+    'Westernacher Solutions': 'https://westernacher-solutions.com/',
+    'Mercedes Benz Daimler AG': 'https://group.mercedes-benz.com/en/',
+    'Evonik AG': 'https://www.evonik.com/en/company.html',
+    'Lition Energy':
+      'https://www.forbes.com/sites/lukefitzpatrick/2019/06/24/the-backstory-to-the-lition-blockchain',
   };
 
   const toggle = (idx: number) => setOpen((prev) => ({ ...prev, [idx]: !prev[idx] }));
@@ -52,7 +63,10 @@ export function ExperienceSection() {
               >
                 <header className="flex justify-between items-start gap-4 mb-3 md:mb-4">
                   <div>
-                    <h3 className="text-xl md:text-2xl font-semibold">{experience.role}</h3>
+                    <h3
+                      className="text-xl md:text-2xl font-semibold"
+                      dangerouslySetInnerHTML={{ __html: experience.role }}
+                    />
                     {companyUrlMap[experience.company] ? (
                       <a
                         className="block w-fit"

@@ -86,7 +86,7 @@ export const createWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Artur Basak Portfolio',
-  description: 'Web UI/UX Engineer portfolio and blog',
+  description: 'Web UI/UX Engineer portfolio and publications',
   url: 'https://arturbasak.dev',
   author: {
     '@type': 'Person',
@@ -105,7 +105,7 @@ export const createWebsiteSchema = () => ({
 export const createBlogSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Blog',
-  name: 'Artur Basak Blog',
+  name: 'Artur Basak Publications',
   description:
     'Technical articles about frontend development, React, TypeScript, and web technologies',
   url: 'https://arturbasak.dev/blog',

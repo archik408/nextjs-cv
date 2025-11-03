@@ -370,6 +370,10 @@ p {
   text-rendering: optimizeSpeed;
 }
 
+small {
+  font-weight: normal;
+}
+
 /* Responsive images */
 img {
   max-width: 100%;

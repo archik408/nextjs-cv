@@ -145,6 +145,11 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     fontSize: 13,
   },
+  expRoleTail: {
+    color: '#957bef',
+    fontWeight: 400,
+    fontSize: 12,
+  },
   expPeriod: {
     fontSize: 11,
     color: '#64748b',
@@ -189,7 +194,7 @@ export function ResumeDocument({ lang }: Props) {
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/arturbasak' },
     { label: 'Telegram', href: 'https://t.me/arturbasak' },
     { label: 'Email', href: 'mailto:artur.basak.devingrodno@gmail.com' },
-    { label: 'Blog', href: 'https://arturbasak.dev/blog' },
+    { label: 'Publications', href: 'https://arturbasak.dev/blog' },
     { label: 'Digital Garden', href: 'https://arturbasak.dev/garden' },
   ];
 
@@ -268,18 +273,25 @@ export function ResumeDocument({ lang }: Props) {
 
           {/* Experience Section */}
           <Text style={styles.sectionTitle}>{t.experience}</Text>
-          {t.experiences.map((exp: any, idx: number) => (
-            <View key={idx} style={styles.expCard} wrap>
-              <View style={styles.expHeader}>
-                <Text style={styles.expRole}>{exp.role}</Text>
-                <Text style={styles.expPeriod}>{exp.period}</Text>
+          {t.experiences.map((exp: any, idx: number) => {
+            const [mainRole, tail] = exp.role.split('<small>');
+
+            return (
+              <View key={idx} style={styles.expCard} wrap>
+                <View style={styles.expHeader}>
+                  <Text style={styles.expRole}>{mainRole}</Text>
+                  <Text style={styles.expPeriod}>{exp.period}</Text>
+                </View>
+                {tail ? (
+                  <Text style={styles.expRoleTail}>{tail.replace('</small>', '')}</Text>
+                ) : null}
+                <Text style={styles.expCompany}>{exp.company}</Text>
+                {(exp.listDescription || []).map((line: string, li: number) => (
+                  <Text key={li} style={styles.listItem}>{`• ${line}`}</Text>
+                ))}
               </View>
-              <Text style={styles.expCompany}>{exp.company}</Text>
-              {(exp.listDescription || []).map((line: string, li: number) => (
-                <Text key={li} style={styles.listItem}>{`• ${line}`}</Text>
-              ))}
-            </View>
-          ))}
+            );
+          })}
 
           {/* Certificates Section */}
           <Text style={styles.sectionTitle}>{t.certificates}</Text>

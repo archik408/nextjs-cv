@@ -10,26 +10,6 @@ type Post = {
 
 export const posts: Post[] = [
   {
-    title: '15 лет в коммерческой разработке: что я понял? Что ничего не понял',
-    excerpt:
-      'Набор рабочих тезисов о профессии, знаниях, титулах и продуктах — без абсолютных истин.',
-    href: '/blog/15-years-in-dev',
-    image: '/macbook.svg',
-    source: 'On-site',
-    date: '2025-09-11',
-    author: 'Artur Basak',
-  },
-  {
-    title: 'Настройка Workbox Background Sync для совместимости с iOS и Android WebView',
-    excerpt:
-      'Практический гайд: как доотправлять запросы оффлайн надёжно на iOS/Safari и Android WebView.',
-    href: '/blog/workbox-background-sync',
-    image: '/macbook.svg',
-    source: 'On-site',
-    date: '2025-06-05',
-    author: 'Artur Basak',
-  },
-  {
     title: 'Реальная эффективность Brotli',
     excerpt: 'Экспериментально оцениваем пользу Brotli для продакшн‑проектов.',
     href: 'https://medium.com/@arturbasak/%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C-brotli-9ff6edeb5abf',

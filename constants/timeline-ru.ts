@@ -118,7 +118,7 @@ export const timelineDataRu = [
     year: 2010,
     title: 'QA тестировщик в instinctools',
     description:
-      'Во время практики устроился на позицию QA тестировщика в компанию instinctools EE Labs',
+      'Во время практики устроился на позицию QA тестировщика в компанию instinctools EE Labs. Первым проектом стала система документооборота от компании КРОК',
     category: 'career' as const,
     image: '/timeline/itools.jpeg',
   },
@@ -147,20 +147,20 @@ export const timelineDataRu = [
     image: '/timeline/sqadays11.jpg',
   },
   {
-    year: 2012,
+    year: 2011,
     title: 'Переход в разработку на Java',
     description:
-      'Перевелся в отдел разработки, где попал на проект Daimler, работая с Java, JSP/JSF, jQuery UI и Selenium',
+      'Перевелся в отдел разработки. Разработка функционала BIRT (Business Intelligence and Reporting Tools) для Evonik AG на основе Ditaworks и Eclipse RAP',
     category: 'career' as const,
-    image: '/timeline/daimler.png',
+    image: '/timeline/evonik.png',
   },
   {
     year: 2012,
-    title: 'BIRT для Evonik AG',
+    title: 'Daimler UMS',
     description:
-      'Разработка функционала BIRT (Business Intelligence and Reporting Tools) для Evonik AG на Eclipse RAP',
+      'Работа над системой менеджмента пользователей Daimler, работал с Java, JSP/JSF, jQuery UI и Selenium',
     category: 'career' as const,
-    image: '/timeline/evonik.png',
+    image: '/timeline/daimler.png',
   },
   {
     year: 2013,
@@ -197,7 +197,7 @@ export const timelineDataRu = [
     year: 2015,
     title: 'Уход в JavaScript',
     description:
-      'Полностью сосредоточился на JavaScript-стэке и попал на проект Penton, где разрабатывал приложение Equipmentwatch на Ember.js и Node.js, MongoDB',
+      'Полностью сосредоточился на JavaScript-стэке и попал на проект EquipmentWatch, где разрабатывал приложение на Ember.js и Node.js, MongoDB',
     category: 'career' as const,
     image: '/timeline/penton.png',
   },

@@ -38,11 +38,11 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 px-3 py-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg hover:bg-white dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 shadow-lg transition-colors"
-            title={'Блог'}
+            title={'Публикации'}
           >
             <ArrowLeft className="w-4 h-4" />
             <NotebookIcon className="w-4 h-4 hidden sm:block" />
-            <span className="hidden sm:block">{'Блог'}</span>
+            <span className="hidden sm:block">{'Публикации'}</span>
           </Link>
         )}
         {levelUp === 'garden' && (

@@ -18,7 +18,7 @@ export default function BlogListPage() {
       <section className="py-10 md:py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="w-full text-3xl font-bold text-center md:text-left">Все статьи</h1>
+            <h1 className="w-full text-3xl font-bold text-center md:text-left">Все публикации</h1>
             <NavigationButtons showLanguageSwitcher={false} showThemeSwitcher />
           </div>
           <div className="space-y-5">
