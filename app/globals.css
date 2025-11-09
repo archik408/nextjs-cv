@@ -112,6 +112,27 @@
   li + li {
     margin-top: 1rem;
   }
+
+  img {
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  img:hover {
+    transform: scale(1.02);
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /*img:focus {*/
+  /*  outline: 2px solid var(--primary-color, #3b82f6);*/
+  /*  outline-offset: 2px;*/
+  /*}*/
 }
 
 /* Light theme styles for prose-garden */
@@ -210,6 +231,13 @@
   from {
     opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .transitioning {
@@ -246,6 +274,16 @@
   from {
     transform: scale(1.05);
     opacity: 0;
+  }
+}
+
+@keyframes link {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
   }
 }
 

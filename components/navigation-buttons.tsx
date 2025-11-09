@@ -6,19 +6,23 @@ import { useLanguage } from '@/lib/use-language';
 import { FC } from 'react';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { LanguageSwitcher } from '@/components/language-switcher';
+import { translations } from '@/lib/translations';
 
 interface NavigationButtonsProps {
   levelUp?: 'tools' | 'blog' | 'garden' | 'timeline';
   showLanguageSwitcher: boolean;
   showThemeSwitcher: boolean;
+  locale?: 'ru' | 'en';
 }
 
 const NavigationButtons: FC<NavigationButtonsProps> = ({
   levelUp,
+  locale,
   showLanguageSwitcher,
   showThemeSwitcher,
 }) => {
-  const { t } = useLanguage();
+  const { t: contextT } = useLanguage();
+  const t = locale ? translations[locale] : contextT;
 
   return (
     <>
@@ -66,7 +70,7 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({
       </nav>
       {(showLanguageSwitcher || showThemeSwitcher) && (
         <div className="fixed top-4 right-4 z-50 flex gap-2">
-          {showThemeSwitcher && <ThemeSwitcher />}
+          {showThemeSwitcher && <ThemeSwitcher locale={locale} />}
           {showLanguageSwitcher && <LanguageSwitcher />}
         </div>
       )}

@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { useEffect, useRef, useState } from 'react';
 import { Code2, Boxes, Trophy, BookOpen } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
@@ -12,9 +13,58 @@ const Player = dynamic(() => import('@/components/lottie-player'), {
 
 export function AboutSection() {
   const { t } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
+  const lottieContainerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const isDesktopRef = useRef(false);
+
+  useEffect(() => {
+    // Проверка размера экрана
+    const checkDesktop = () => {
+      const desktop = window.innerWidth >= 768;
+      setIsDesktop(desktop);
+      isDesktopRef.current = desktop;
+    };
+
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+
+    // Функция для вычисления масштаба на основе скролла
+    const handleScroll = () => {
+      if (!isDesktopRef.current || !sectionRef.current || !lottieContainerRef.current) {
+        return;
+      }
+
+      const section = sectionRef.current;
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Вычисляем прогресс скролла через секцию
+      // Когда секция входит в viewport, начинаем увеличивать масштаб
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+      const scrollProgress = Math.max(
+        0,
+        Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight))
+      );
+
+      // Масштаб от 0.8 до 1.7 при скролле
+      const newScale = 0.8 + scrollProgress * 0.9;
+      setScale(newScale);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkDesktop);
+    };
+  }, []);
 
   return (
-    <section className="py-10 md:py-20 px-4 md:px-8">
+    <section ref={sectionRef} className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
         <AnimatedSectionTitle
           text={t.about}
@@ -53,14 +103,23 @@ export function AboutSection() {
                 />
               </div>
             </div>
-            <Player
-              autoplay
-              loop
-              src="/lottie.json"
-              fallbackSrc="/lottie.png"
-              fallbackAlt={t.about}
-              style={{ height: '300px', width: '100%' }}
-            />
+            <div
+              ref={lottieContainerRef}
+              style={{
+                transform: isDesktop ? `scale(${scale})` : 'none',
+                transformOrigin: 'center center',
+                transition: 'transform 0.1s ease-out',
+              }}
+            >
+              <Player
+                autoplay
+                loop
+                src="/lottie.json"
+                fallbackSrc="/lottie.png"
+                fallbackAlt={t.about}
+                style={{ height: '300px', width: '100%' }}
+              />
+            </div>
           </div>
         </div>
       </div>

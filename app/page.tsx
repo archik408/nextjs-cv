@@ -11,7 +11,6 @@ import { TestimonialsSection } from '@/components/testimonials-section';
 import { CertificatesSection } from '@/components/certificates-section';
 import { FunActivitiesSection } from '@/components/fun-activities-section';
 import { ContactSection } from '@/components/contact-section';
-import { Footer } from '@/components/footer';
 import { DownloadResume } from '@/components/download-resume';
 import {
   StructuredData,
@@ -94,9 +93,6 @@ export default function Home() {
 
         {/* Contact Section */}
         <ContactSection />
-
-        {/* Footer */}
-        <Footer />
       </div>
     </>
   );

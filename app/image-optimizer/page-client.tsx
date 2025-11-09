@@ -279,7 +279,7 @@ export function ImageOptimizerPageClient() {
                 accept="image/jpeg,image/png,image/webp,image/avif"
                 onChange={onInputChange}
                 disabled={!wasm || isProcessing || !!statusText}
-                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 dark:file:bg-blue-800 dark:file:text-blue-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 dark:file:bg-blue-800 dark:file:text-blue-300 disabled:opacity-60"
               />
             </div>
 
@@ -344,7 +344,7 @@ export function ImageOptimizerPageClient() {
             <button
               onClick={onOptimize}
               disabled={!file || !wasm || isProcessing || !!statusText}
-              className="w-fit flex items-center gap-2 px-6 py-3 bg-pink-600 hover:bg-pink-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg transition-colors"
+              className="w-fit flex items-center gap-2 px-6 py-3 bg-pink-600 hover:bg-pink-700 disabled:bg-gray-400 text-white rounded-lg transition-colors"
               aria-label={isProcessing ? t.ioOptimizing : t.ioOptimizeButton}
             >
               {isProcessing ? (

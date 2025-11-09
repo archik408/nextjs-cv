@@ -152,4 +152,12 @@ export const seoConfigs = {
       'JavaScript, Event Loop, Call Stack, Microtask Queue, Task Queue, Web APIs, setTimeout, fetch, setInterval, IndexedDB',
     path: '/event-loop',
   },
+  aiAssistant: {
+    title: 'AI Assistant - Chat with AI',
+    description:
+      'Chat with an AI assistant powered by free AI models. Ask questions, get help, or have a conversation with streaming responses.',
+    keywords:
+      'AI Assistant, Chatbot, AI Chat, Conversational AI, Free AI, Streaming AI, Hugging Face, Groq',
+    path: '/ai-assistant',
+  },
 } as const;

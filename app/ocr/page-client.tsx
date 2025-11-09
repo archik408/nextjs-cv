@@ -112,7 +112,7 @@ export function OCRPageClient() {
                   />
                   <label
                     htmlFor="image-upload"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 cursor-pointer transition-colors"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
                   >
                     {t.ocrSelectImage || 'Select Image'}
                   </label>
@@ -129,7 +129,7 @@ export function OCRPageClient() {
                     <button
                       onClick={recognizeText}
                       disabled={isProcessing}
-                      className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                      className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 disabled:bg-gray-400 transition-colors"
                       aria-label={
                         isProcessing
                           ? `${t.ocrProcessing || 'Processing'} ${progress}%`
@@ -167,7 +167,7 @@ export function OCRPageClient() {
                     <button
                       onClick={clearImage}
                       disabled={isProcessing}
-                      className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:cursor-not-allowed transition-colors"
+                      className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
                       aria-label={t.ocrClear || 'Clear'}
                     >
                       {t.ocrClear || 'Clear'}

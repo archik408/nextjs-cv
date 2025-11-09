@@ -341,7 +341,7 @@ export function SVGOptimizerPageClient() {
           <button
             onClick={handleOptimize}
             disabled={isProcessing || !inputSvg.trim()}
-            className="w-fit flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg transition-colors"
+            className="w-fit flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg transition-colors"
           >
             {isProcessing ? (
               <>
@@ -474,7 +474,7 @@ export function SVGOptimizerPageClient() {
           <button
             onClick={handleConvertToJsx}
             disabled={!inputSvg.trim() && !optimizedSvg.trim()}
-            className="flex items-center gap-2 px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg transition-colors mb-3"
+            className="flex items-center gap-2 px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 text-white rounded-lg transition-colors mb-3"
           >
             {t.svgToJsxButton || 'Convert to JSX'}
           </button>

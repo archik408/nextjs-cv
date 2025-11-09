@@ -14,6 +14,7 @@ import {
   Wrench,
   RefreshCcw,
   GitBranch,
+  Bot,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 
@@ -52,41 +53,6 @@ export function ToolsPageClient() {
       href: '/image-placeholder',
       status: 'ready',
       color: 'purple',
-      isExternal: false,
-    },
-    {
-      id: 'event-loop',
-      title: t.eventLoopTitle || 'JavaScript Event Loop',
-      description:
-        t.eventLoopDescription ||
-        'Interactive visualization of the JS runtime: Call Stack, Web APIs, Task Queue and Microtask Queue.',
-      icon: RefreshCcw,
-      href: '/event-loop',
-      status: 'ready',
-      color: 'indigo',
-      isExternal: false,
-    },
-    {
-      id: 'react-fiber',
-      title: 'React Fiber & JSX Parser',
-      description:
-        'Interactive visualization of JSX parsing and React Fiber reconciliation process with animated data flow',
-      icon: GitBranch,
-      href: '/react-fiber',
-      status: 'ready',
-      color: 'cyan',
-      isExternal: false,
-    },
-    {
-      id: 'algorithms',
-      title: t.algorithmsTitle || 'Algorithms & Data Structures',
-      description:
-        t.algorithmsDescription ||
-        'Collection of algorithm implementations and data structure solutions from competitive programming practice.',
-      icon: Binary,
-      href: '/algorithms',
-      status: 'ready',
-      color: 'green',
       isExternal: false,
     },
     {
@@ -134,6 +100,41 @@ export function ToolsPageClient() {
 
   const experiments = [
     {
+      id: 'event-loop',
+      title: t.eventLoopTitle || 'JavaScript Event Loop',
+      description:
+        t.eventLoopDescription ||
+        'Interactive visualization of the JS runtime: Call Stack, Web APIs, Task Queue and Microtask Queue.',
+      icon: RefreshCcw,
+      href: '/event-loop',
+      status: 'ready',
+      color: 'indigo',
+      isExternal: false,
+    },
+    {
+      id: 'react-fiber',
+      title: 'React Fiber & JSX Parser',
+      description:
+        'Interactive visualization of JSX parsing and React Fiber reconciliation process with animated data flow',
+      icon: GitBranch,
+      href: '/react-fiber',
+      status: 'ready',
+      color: 'cyan',
+      isExternal: false,
+    },
+    {
+      id: 'algorithms',
+      title: t.algorithmsTitle || 'Algorithms & Data Structures',
+      description:
+        t.algorithmsDescription ||
+        'Collection of algorithm implementations and data structure solutions from competitive programming practice.',
+      icon: Binary,
+      href: '/algorithms',
+      status: 'ready',
+      color: 'green',
+      isExternal: false,
+    },
+    {
       id: 'webgl-demo',
       title: 'WebGL Experiments',
       description: 'Interactive 3D graphics and shaders',
@@ -141,6 +142,18 @@ export function ToolsPageClient() {
       href: '#',
       status: 'prototype',
       color: 'red',
+      isExternal: false,
+    },
+    {
+      id: 'ai-assistant',
+      title: t.aiAssistantTitle || 'AI Assistant',
+      description:
+        t.aiAssistantDesc ||
+        'Chat with an AI assistant powered by free AI models. Ask questions, get help, or have a conversation.',
+      icon: Bot,
+      href: '#',
+      status: 'coming-soon',
+      color: 'purple',
       isExternal: false,
     },
   ];
@@ -171,9 +184,7 @@ export function ToolsPageClient() {
   };
 
   const getColorClasses = (color: string, isReady: boolean) => {
-    const baseClasses = isReady
-      ? 'hover:shadow-lg transform hover:-translate-y-1 cursor-pointer'
-      : 'opacity-75 cursor-not-allowed';
+    const baseClasses = isReady ? 'hover:shadow-lg transform hover:-translate-y-1' : 'opacity-75';
 
     switch (color) {
       case 'blue':
@@ -224,7 +235,7 @@ export function ToolsPageClient() {
     const Icon = tool.icon;
     const isReady = tool.status === 'ready';
     const Component = isReady ? Link : 'div';
-    const props = isReady ? { href: tool.href } : {};
+    const props = isReady ? { href: tool.href } : { 'data-disabled': !isReady };
 
     return (
       // @ts-expect-error
@@ -232,23 +243,34 @@ export function ToolsPageClient() {
         {...props}
         className={`relative bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-all duration-200 ${getColorClasses(tool.color, isReady)}`}
       >
-        <div className="flex items-start justify-between mb-4">
+        <div data-disabled={!isReady} className="flex items-start justify-between mb-4">
           <div
+            data-disabled={!isReady}
             className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-900 ${getIconColorClasses(tool.color)}`}
           >
-            <Icon className="w-6 h-6" />
+            <Icon data-disabled={!isReady} className="w-6 h-6" />
           </div>
-          <div className="flex items-center gap-2">
+          <div data-disabled={!isReady} className="flex items-center gap-2">
             {getStatusBadge(tool.status)}
             {isReady && (
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
+              <ArrowRight
+                data-disabled={!isReady}
+                className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors"
+              />
             )}
           </div>
         </div>
 
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{tool.title}</h3>
+        <h3
+          data-disabled={!isReady}
+          className="text-lg font-semibold text-gray-900 dark:text-white mb-2"
+        >
+          {tool.title}
+        </h3>
 
-        <p className="text-gray-600 dark:text-gray-400 text-sm">{tool.description}</p>
+        <p data-disabled={!isReady} className="text-gray-600 dark:text-gray-400 text-sm">
+          {tool.description}
+        </p>
       </Component>
     );
   };

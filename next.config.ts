@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://cdn.jsdelivr.net", // Next.js requires unsafe-eval and unsafe-inline for dev
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://cdn.jsdelivr.net https://va.vercel-scripts.com", // Next.js requires unsafe-eval and unsafe-inline for dev
               "worker-src 'self' blob: https://cdn.jsdelivr.net", // Allow Web Workers from blob URLs and CDN
               "style-src 'self' 'unsafe-inline'", // Required for styled-jsx and CSS-in-JS
               "img-src 'self' data: https: blob:",

@@ -13,18 +13,26 @@ export const translations = {
       'Semantic landmarks: header, main, footer, and clear section headings',
       'Keyboard accessibility: visible focus styles and skip link to main content',
       'Text alternatives for meaningful images; decorative images marked accordingly',
-      'Color contrast meeting or exceeding AA guidelines where applicable',
+      'Color contrast meeting or exceeding Level AA guidelines where applicable',
+      'Light and dark theme support for situational switching in low contrast use cases',
       'Responsive design and reflow without loss of content or functionality',
+      'Reduce motions (switch off all animations) based on user OS settings',
     ],
     accessibilityFeedbackTitle: 'Feedback and contact',
     accessibilityFeedbackText:
       'If you encounter an accessibility barrier, please contact me at <a href="mailto:artur.basak.devingrodno@gmail.com">artur.basak.devingrodno@gmail.com</a>. I typically respond within 5 business days.',
     accessibilityAssessmentTitle: 'Assessment approach',
     accessibilityAssessmentText:
-      'The site is tested using manual keyboard navigation, screen reader spot checks (VoiceOver), and automated tooling for common issues (Axe, WAVE)). Accessibility is an ongoing effort.',
+      'The site is tested using manual keyboard navigation, screen reader spot checks (VoiceOver), and automated tooling for common issues (Axe DevTools, WebAIM WAVE, Google Lighthouse). Accessibility is an ongoing effort.',
     accessibilityLimitationsTitle: 'Known limitations',
-    accessibilityLimitationsText:
-      'Some dynamic visualizations may have reduced screen reader verbosity. I am working on adding improved labels and descriptions.',
+    accessibilityLimitationsText: [
+      'Some dynamic visualizations may have reduced screen reader verbosity.',
+      'Some images may not contain very detailed alt texts.',
+      'Some pages of the site are localized for only one language - my native Russian (for example, Digital Garden notes are only in Russian)',
+      'This website has not been tested with screen readers other than VoiceOver, so there is no guarantee that it will work with JAWS, NVDA, Narrator, Orca, etc.',
+      'After closing the dialog box with the enlarged image, the focus is lost on the original content.',
+      'I am working on adding improved labels and descriptions.',
+    ],
     role: 'Web UI/UX Engineer',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
@@ -375,6 +383,20 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Avoid too small or blurry text',
     ],
     ocrError: 'Error recognizing text. Please try again.',
+    // AI Assistant Page
+    aiAssistantTitle: 'AI Assistant',
+    aiAssistantDesc:
+      'Chat with an AI assistant powered by free AI models. Ask questions, get help, or have a conversation.',
+    aiAssistantDescription:
+      'Chat with an AI assistant. Ask questions, get help, or just have a conversation.',
+    aiAssistantStartMessage: 'Start a conversation by typing a message below',
+    aiAssistantPlaceholder: 'Type your message...',
+    aiAssistantHint: 'Press Enter to send, Shift+Enter for new line',
+    aiAssistantSend: 'Send message',
+    aiAssistantClear: 'Clear conversation',
+    aiAssistantInfoTitle: 'About this AI Assistant',
+    aiAssistantInfoText:
+      'This AI assistant uses a free AI model to provide conversational responses. Responses are streamed in real-time for a better user experience.',
     // Tools Page
     toolsAndExperiments: 'Tools & Experiments',
     toolsDescription:
@@ -606,17 +628,25 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Доступность с клавиатуры: заметные стили фокуса и ссылка «к основному контенту»',
       'Текстовые альтернативы для значимых изображений; декоративные помечены соответствующим образом',
       'Цветовой контраст соответствует требованиям уровня AA, где применимо',
+      'Поддержка светлой и темной темы для ситуативных переключений при плохом контрасте',
       'Адаптивный дизайн и корректный рефлоу без потери функциональности',
+      'Выключение всех анимация в зависимости от настроек пользовательской ОС',
     ],
     accessibilityFeedbackTitle: 'Обратная связь',
     accessibilityFeedbackText:
       'Если вы столкнулись с проблемами в доступности веб-сайта, напишите мне на <a href="mailto:artur.basak.devingrodno@gmail.com">artur.basak.devingrodno@gmail.com</a>. Обычно отвечаю в течение 5 рабочих дней.',
     accessibilityAssessmentTitle: 'Подход к оценке',
     accessibilityAssessmentText:
-      'Сайт проверяется вручную при помощи навигации с клавиатуры, точечных проверок экранным диктором (VoiceOver) и автоматизированных инструментов для выявления типичных проблем (Axe, WAVE). Доступность — это непрерывный процесс.',
+      'Сайт проверяется вручную при помощи навигации с клавиатуры, точечных проверок экранным диктором (VoiceOver) и автоматизированных инструментов для выявления типичных проблем (Axe DevTools, WebAIM WAVE, Google Lighthouse). Доступность — это непрерывный процесс.',
     accessibilityLimitationsTitle: 'Известные ограничения',
-    accessibilityLimitationsText:
-      'Некоторые динамические визуализации могут давать сокращённые описания для экранных дикторов. Ведётся работа по улучшению меток и описаний.',
+    accessibilityLimitationsText: [
+      'Некоторые динамические визуализации могут давать сокращённые описания для экранных дикторов.',
+      'Некоторые изображения могут содержать не дотошно подробные alt-тексты',
+      'Некоторые страницы сайта имею локализацию только для одного языка - моего нативного русского (к примеру, заметки Digital Garden только на русском)',
+      'Веб-сайт не тестировался с другими скринридерами кроме как с VoiceOver, поэтому нет гарантий стабильной работы с JAWS, NVDA, Narrator, Orca и т.д.',
+      'После закрытия диалогового окна с увеличенным изображением идет потеря фокуса в оригинальном контенте',
+      'Ведётся работа по улучшению меток и описаний.',
+    ],
     role: 'Web UI/UX Engineer',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',
@@ -971,6 +1001,20 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Избегайте слишком мелкого или размытого текста',
     ],
     ocrError: 'Ошибка при распознавании текста. Попробуйте еще раз.',
+    // AI Assistant Page
+    aiAssistantTitle: 'ИИ Помощник',
+    aiAssistantDesc:
+      'Общайтесь с ИИ помощником на основе бесплатных ИИ моделей. Задавайте вопросы, получайте помощь или просто общайтесь.',
+    aiAssistantDescription:
+      'Общайтесь с ИИ помощником. Задавайте вопросы, получайте помощь или просто ведите беседу.',
+    aiAssistantStartMessage: 'Начните разговор, введя сообщение ниже',
+    aiAssistantPlaceholder: 'Введите ваше сообщение...',
+    aiAssistantHint: 'Нажмите Enter для отправки, Shift+Enter для новой строки',
+    aiAssistantSend: 'Отправить сообщение',
+    aiAssistantClear: 'Очистить разговор',
+    aiAssistantInfoTitle: 'Об этом ИИ помощнике',
+    aiAssistantInfoText:
+      'Этот ИИ помощник использует бесплатную ИИ модель для предоставления ответов в разговоре. Ответы передаются в реальном времени для лучшего пользовательского опыта.',
     // Tools Page
     toolsAndExperiments: 'Инструменты и Эксперименты',
     toolsDescription:

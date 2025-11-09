@@ -10,9 +10,9 @@ export const dynamic = 'force-static';
 export default function GardenIndexPage() {
   const notes = listGardenNotes();
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
       <main className="mx-auto max-w-3xl px-4 py-12">
-        <NavigationButtons showLanguageSwitcher={false} showThemeSwitcher />
+        <NavigationButtons locale="ru" showLanguageSwitcher={false} showThemeSwitcher />
         <ArticleTitle text="Digital Garden" />
         <p className="mb-8 text-neutral-600 dark:text-neutral-300">
           Заметки, идеи и черновики. Часто обновляются.

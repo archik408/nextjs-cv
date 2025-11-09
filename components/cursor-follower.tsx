@@ -27,9 +27,12 @@ const useCursorFollower = () => {
 
       const el = (e as unknown as MouseEvent).target as Element | null;
       const isInteractive = !!el?.closest(
-        'a,button,[role="button"],input,textarea,select,label,summary,details'
+        'a,button,[role="button"],summary,details,.prose-garden img'
       );
-
+      const isDisabled =
+        el?.ariaDisabled ||
+        el?.hasAttribute('disabled') ||
+        (el?.hasAttribute('data-disabled') && el?.getAttribute('data-disabled') === 'true');
       // Check if we're over text content
       const isTextContent =
         el?.nodeType === Node.TEXT_NODE ||
@@ -51,10 +54,19 @@ const useCursorFollower = () => {
             'BLOCKQUOTE',
             'PRE',
             'CODE',
+            'INPUT',
+            'TEXTAREA',
+            'SELECT',
+            'LABEL',
           ].includes(el.tagName));
-
-      if (isInteractive) {
+      if (isDisabled) {
+        elementRef.current.classList.add('disabled');
+        elementRef.current.style.transform = 'translate3d(-50%, -50%, 0) scale(2)';
+        elementRef.current.style.width = '24px';
+        elementRef.current.style.height = '24px';
+      } else if (isInteractive) {
         // Interactive elements - round cursor with pulse
+        elementRef.current.classList.remove('text-cursor', 'disabled');
         elementRef.current.classList.add('pulse');
         elementRef.current.classList.remove('text-cursor');
         elementRef.current.style.transform = 'translate3d(-50%, -50%, 0) scale(2)';
@@ -63,7 +75,7 @@ const useCursorFollower = () => {
         elementRef.current.style.borderRadius = '420px';
       } else if (isTextContent && !isInteractive) {
         // Text content - thin cursor
-        elementRef.current.classList.remove('pulse');
+        elementRef.current.classList.remove('pulse', 'disabled');
         elementRef.current.classList.add('text-cursor');
         elementRef.current.style.transform = 'translate3d(-50%, -50%, 0)';
         elementRef.current.style.width = '4px';
@@ -71,7 +83,7 @@ const useCursorFollower = () => {
         elementRef.current.style.borderRadius = '10px';
       } else {
         // Default - round cursor
-        elementRef.current.classList.remove('pulse', 'text-cursor');
+        elementRef.current.classList.remove('pulse', 'text-cursor', 'disabled');
         elementRef.current.style.transform = 'translate3d(-50%, -50%, 0)';
         elementRef.current.style.width = '24px';
         elementRef.current.style.height = '24px';
@@ -106,20 +118,37 @@ export const CursorFollower = () => {
         dangerouslySetInnerHTML={{
           __html: `
 .pulse {
+  position: relative;
   animation: pulse-animation 1s infinite;
+}
+
+.disabled {
+  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+
+.pulse::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  content: '';
+  width: 90%;
+  height: 90%;
+  border-radius: 100%;
+  background: black;
 }
 
 @keyframes pulse-animation {
   0% {
-    box-shadow: 0 0 0 0 rgba(77, 136, 255, 0.5);
+    box-shadow: 0 0 0 0 rgba(255, 252, 77, 0.5);
   }
 
   70% {
-    box-shadow: 0 0 0 10px rgba(77, 136, 255, 0);
+    box-shadow: 0 0 0 10px rgba(255, 252, 77, 0);
   }
 
   100% {
-    box-shadow: 0 0 0 2px rgba(77, 136, 255, 0);
+    box-shadow: 0 0 0 2px rgba(255, 252, 77, 0);
   }
 }`,
         }}

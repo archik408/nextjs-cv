@@ -696,7 +696,7 @@ export const EventLoopPageClient = memo(function EventLoopPageClient() {
             <button
               id="loopnextstep"
               onClick={nextStep}
-              className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-blue-600 text-white disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-blue-600 text-white disabled:opacity-50`}
             >
               <Repeat width={16} height={16} />
               {stableTranslations.eventLoopControls?.nextStep || 'Next Step'}
@@ -704,14 +704,14 @@ export const EventLoopPageClient = memo(function EventLoopPageClient() {
             <button
               onClick={reset}
               disabled={isLoopRunning}
-              className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-gray-300 dark:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm bg-gray-300 dark:bg-gray-600 disabled:opacity-50`}
             >
               {stableTranslations.eventLoopControls?.reset || 'Reset'}
             </button>
             <div className="inline-flex items-center gap-2 text-sm ml-2">
               <span>{stableTranslations.eventLoopControls?.speed || 'Speed'}</span>
               <select
-                className="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1 disabled:opacity-50"
                 value={loopSpeed}
                 onChange={(e) => {
                   setLoopSpeed(Number(e.target.value));

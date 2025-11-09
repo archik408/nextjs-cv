@@ -6,6 +6,7 @@ import './globals.css';
 import { CursorMount } from '@/components/cursor-mount';
 import { ViewTransitions } from '@/components/view-transitions';
 import { BackToTop } from '@/components/back-to-top';
+import { Footer } from '@/components/footer';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import SkipLink from '@/components/skip-link';
@@ -168,6 +169,7 @@ export default function RootLayout({
             <SkipLink />
             <ViewTransitions>
               <main>{children}</main>
+              <Footer />
               <CursorMount />
               <BackToTop />
             </ViewTransitions>

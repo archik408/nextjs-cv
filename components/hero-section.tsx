@@ -39,7 +39,7 @@ export function HeroSection() {
       <div className="relative z-10 text-center px-4">
         <div className="mb-8 flex justify-center">
           <div
-            className="group relative w-40 h-40 [perspective:1000px] cursor-pointer"
+            className="group relative w-40 h-40 [perspective:1000px]"
             onClick={() => setIsFlipped((prev) => !prev)}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
