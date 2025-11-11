@@ -33,66 +33,67 @@ export default function Home() {
 
         {/* Hero Section */}
         <HeroSection />
+        <main>
+          {/* About Section */}
+          <AboutSection />
 
-        {/* About Section */}
-        <AboutSection />
+          {/* Skills Section */}
+          <SkillsSection />
 
-        {/* Skills Section */}
-        <SkillsSection />
+          {/* Experience Section */}
+          <ExperienceSection />
 
-        {/* Experience Section */}
-        <ExperienceSection />
+          {/* Divider */}
+          <div className="mx-auto max-w-6xl px-4">
+            <hr className="my-8 border-gray-300 dark:border-gray-700" />
+          </div>
 
-        {/* Divider */}
-        <div className="mx-auto max-w-6xl px-4">
-          <hr className="my-8 border-gray-300 dark:border-gray-700" />
-        </div>
+          {/* Testimonials Section */}
+          <TestimonialsSection />
 
-        {/* Testimonials Section */}
-        <TestimonialsSection />
+          {/* Divider */}
+          <div className="mx-auto max-w-6xl px-4">
+            <hr className="my-8 border-gray-300 dark:border-gray-700" />
+          </div>
 
-        {/* Divider */}
-        <div className="mx-auto max-w-6xl px-4">
-          <hr className="my-8 border-gray-300 dark:border-gray-700" />
-        </div>
+          {/* Certificates Section */}
+          <CertificatesSection />
 
-        {/* Certificates Section */}
-        <CertificatesSection />
+          {/* Divider */}
+          <div className="mx-auto max-w-6xl px-4">
+            <hr className="my-8 border-gray-300 dark:border-gray-700" />
+          </div>
 
-        {/* Divider */}
-        <div className="mx-auto max-w-6xl px-4">
-          <hr className="my-8 border-gray-300 dark:border-gray-700" />
-        </div>
+          {/*/!* Garden Section *!/*/}
+          <GardenSection />
 
-        {/*/!* Garden Section *!/*/}
-        <GardenSection />
+          {/* Divider */}
+          <div className="mx-auto max-w-6xl px-4">
+            <hr className="my-8 border-gray-300 dark:border-gray-700" />
+          </div>
 
-        {/* Divider */}
-        <div className="mx-auto max-w-6xl px-4">
-          <hr className="my-8 border-gray-300 dark:border-gray-700" />
-        </div>
+          {/* Blog Section */}
+          <BlogSection />
 
-        {/* Blog Section */}
-        <BlogSection />
+          {/* Divider */}
+          <div className="mx-auto max-w-6xl px-4">
+            <hr className="my-8 border-gray-300 dark:border-gray-700" />
+          </div>
 
-        {/* Divider */}
-        <div className="mx-auto max-w-6xl px-4">
-          <hr className="my-8 border-gray-300 dark:border-gray-700" />
-        </div>
+          {/* Tools Section */}
+          <ToolsSection />
 
-        {/* Tools Section */}
-        <ToolsSection />
+          {/* Divider */}
+          <div className="mx-auto max-w-6xl px-4">
+            <hr className="my-8 border-gray-300 dark:border-gray-700" />
+          </div>
 
-        {/* Divider */}
-        <div className="mx-auto max-w-6xl px-4">
-          <hr className="my-8 border-gray-300 dark:border-gray-700" />
-        </div>
+          {/* Fun Activities Section */}
+          <FunActivitiesSection />
 
-        {/* Fun Activities Section */}
-        <FunActivitiesSection />
-
-        {/* Contact Section */}
-        <ContactSection />
+          {/* Contact Section */}
+          <ContactSection />
+        </main>
       </div>
     </>
   );

@@ -168,7 +168,7 @@ export default function RootLayout({
           <LanguageProvider>
             <SkipLink />
             <ViewTransitions>
-              <main>{children}</main>
+              <div>{children}</div>
               <Footer />
               <CursorMount />
               <BackToTop />

@@ -33,6 +33,22 @@ export const translations = {
       'After closing the dialog box with the enlarged image, the focus is lost on the original content.',
       'I am working on adding improved labels and descriptions.',
     ],
+    // Privacy Policy Page
+    privacyTitle: 'Privacy Policy',
+    privacyIntro:
+      'This page describes my privacy practices and how I handle data on this website. I want to be transparent about what data I collect and how I use it.',
+    privacyAnalyticsTitle: 'Analytics',
+    privacyAnalyticsText:
+      'I use standard Vercel Speed Insights and Vercel Analytics to understand how visitors interact with this website and to improve its performance. These tools help me identify performance bottlenecks, understand user behavior patterns, and make the site better. No personal data is collected through these analytics tools. The data collected is anonymized and aggregated, and I do not have access to any personally identifiable information.',
+    privacyDataTitle: 'Data Collection',
+    privacyDataText:
+      'I do not collect, store, or process any personal data from visitors to this website. The analytics tools I use (Vercel Speed Insights and Vercel Analytics) operate with <a target="_blank" rel="noopener noreferrer" href="https://vercel.com/docs/analytics">default settings</a> that respect user privacy and do not collect personal information. I do not use cookies to track users, and I do not have any forms or user accounts that would require personal information.',
+    privacyNoSellingTitle: 'No Data Selling or Sharing',
+    privacyNoSellingText:
+      'I do not sell, rent, or share any data with third parties. Since I do not collect personal data, there is nothing to sell or share. I personally do not engage in any data monetization practices, and I am committed to maintaining your privacy.',
+    privacyOpenSourceTitle: 'Open Source',
+    privacyOpenSourceText:
+      'This website is open source, so you can review the code yourself to verify what data is being collected and how it is used. The source code is available on <a href="https://github.com/archik408/nextjs-cv" target="_blank" rel="noopener noreferrer">GitHub</a>. If you have any questions or concerns about privacy, please contact me at <a href="mailto:artur.basak.devingrodno@gmail.com">artur.basak.devingrodno@gmail.com</a>.',
     role: 'Web UI/UX Engineer',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
@@ -647,6 +663,22 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'После закрытия диалогового окна с увеличенным изображением идет потеря фокуса в оригинальном контенте',
       'Ведётся работа по улучшению меток и описаний.',
     ],
+    // Privacy Policy Page
+    privacyTitle: 'Политика конфиденциальности',
+    privacyIntro:
+      'Эта страница описывает мои практики конфиденциальности и то, как я обрабатываю данные на этом веб-сайте. Я хочу быть прозрачным в отношении того, какие данные я собираю и как их использую.',
+    privacyAnalyticsTitle: 'Аналитика',
+    privacyAnalyticsText:
+      'Я использую стандартные настройки Vercel Speed Insights и Vercel Analytics для понимания того, как посетители взаимодействуют с этим веб-сайтом, и для улучшения его производительности. Эти инструменты помогают мне выявлять узкие места производительности, понимать модели поведения пользователей и делать сайт лучше. Через эти инструменты аналитики не собираются персональные данные. Собираемые данные анонимизированы и агрегированы, и у меня нет доступа к какой-либо личной информации, позволяющей установить личность.',
+    privacyDataTitle: 'Сбор данных',
+    privacyDataText:
+      'Я не собираю, не храню и не обрабатываю какие-либо персональные данные посетителей этого веб-сайта. Используемые мной инструменты аналитики (Vercel Speed Insights и Vercel Analytics) работают с <a target="_blank" rel="noopener noreferrer" href="https://vercel.com/docs/analytics">настройками по умолчанию</a>, которые уважают конфиденциальность пользователей и не собирают личную информацию. Я не использую cookies для отслеживания пользователей, и у меня нет форм или пользовательских аккаунтов, которые требовали бы личной информации.',
+    privacyNoSellingTitle: 'Не продаю и не передаю данные',
+    privacyNoSellingText:
+      'Я не продаю, не сдаю в аренду и не передаю какие-либо данные третьим лицам. Поскольку я не собираю персональные данные, мне нечего продавать или передавать. Я лично не занимаюсь монетизацией данных и обязуюсь сохранять вашу конфиденциальность.',
+    privacyOpenSourceTitle: 'Открытый исходный код',
+    privacyOpenSourceText:
+      'Этот веб-сайт имеет открытый исходный код, поэтому вы можете сами просмотреть код, чтобы проверить, какие данные собираются и как они используются. Исходный код доступен на <a href="https://github.com/archik408/nextjs-cv" target="_blank" rel="noopener noreferrer">GitHub</a>. Если у вас есть вопросы или опасения по поводу конфиденциальности, пожалуйста, свяжитесь со мной по адресу <a href="mailto:artur.basak.devingrodno@gmail.com">artur.basak.devingrodno@gmail.com</a>.',
     role: 'Web UI/UX Engineer',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',

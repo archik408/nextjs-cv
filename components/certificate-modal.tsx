@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
 import { useLanguage } from '@/lib/use-language';
 import Image from 'next/image';
 import { CertificateRibbon } from './certificate-ribbon';
+import { useFocusTrap } from '@/lib/use-focus-trap';
 
 interface CertificateModalProps {
   isOpen: boolean;
@@ -23,6 +24,7 @@ export function CertificateModal({
 }: CertificateModalProps) {
   const { t } = useLanguage();
   const [isLoading, setIsLoading] = useState<boolean>(!!isImage);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsLoading(!!isImage);
@@ -55,10 +57,19 @@ export function CertificateModal({
     };
   }, [isOpen, onClose]);
 
+  // Use shared focus trap hook - must be called before any conditional returns
+  useFocusTrap(containerRef, { isActive: isOpen, initialFocusSelector: 'button[aria-label]' });
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div
+      ref={containerRef}
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+    >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
 

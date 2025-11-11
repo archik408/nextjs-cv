@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
+import { useFocusTrap } from '@/lib/use-focus-trap';
 
 interface ImageLightboxProps {
   isOpen: boolean;
@@ -20,9 +21,6 @@ export function ImageLightbox({ isOpen, src, alt, onClose }: ImageLightboxProps)
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      // Focus trap - focus on close button
-      const closeButton = containerRef.current?.querySelector('button');
-      closeButton?.focus();
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -32,79 +30,8 @@ export function ImageLightbox({ isOpen, src, alt, onClose }: ImageLightboxProps)
     };
   }, [isOpen]);
 
-  // Focus trap implementation
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Get all focusable elements inside the modal
-    const getFocusableElements = (): HTMLElement[] => {
-      const focusableSelectors = [
-        'button:not([disabled])',
-        '[href]',
-        'input:not([disabled])',
-        'select:not([disabled])',
-        'textarea:not([disabled])',
-        '[tabindex]:not([tabindex="-1"])',
-      ].join(', ');
-
-      return Array.from(container.querySelectorAll(focusableSelectors)) as HTMLElement[];
-    };
-
-    const handleTabKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Tab') return;
-
-      const focusableElements = getFocusableElements();
-      if (focusableElements.length === 0) {
-        e.preventDefault();
-        return;
-      }
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      // If Shift+Tab on first element, focus last element
-      if (e.shiftKey && document.activeElement === firstElement) {
-        e.preventDefault();
-        lastElement.focus();
-        return;
-      }
-
-      // If Tab on last element, focus first element
-      if (!e.shiftKey && document.activeElement === lastElement) {
-        e.preventDefault();
-        firstElement.focus();
-        return;
-      }
-
-      // If focus is outside modal, focus first element
-      if (!container.contains(document.activeElement)) {
-        e.preventDefault();
-        firstElement.focus();
-      }
-    };
-
-    // Prevent focus from leaving modal
-    const handleFocusIn = (e: FocusEvent) => {
-      if (!container.contains(e.target as Node)) {
-        e.preventDefault();
-        const focusableElements = getFocusableElements();
-        if (focusableElements.length > 0) {
-          focusableElements[0].focus();
-        }
-      }
-    };
-
-    document.addEventListener('keydown', handleTabKey);
-    document.addEventListener('focusin', handleFocusIn);
-
-    return () => {
-      document.removeEventListener('keydown', handleTabKey);
-      document.removeEventListener('focusin', handleFocusIn);
-    };
-  }, [isOpen]);
+  // Use shared focus trap hook
+  useFocusTrap(containerRef, { isActive: isOpen, initialFocusSelector: 'button[aria-label]' });
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
