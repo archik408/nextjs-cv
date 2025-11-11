@@ -107,6 +107,7 @@
 
   a {
     text-decoration: underline;
+    color: var(--color-blue-600);
   }
 
   li + li {
@@ -173,6 +174,10 @@
 .dark .prose-garden code {
   background: #1e293b;
   color: #e2e8f0;
+}
+
+.dark .prose-garden a {
+  color: #35c3ff;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
