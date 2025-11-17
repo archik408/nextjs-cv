@@ -2,10 +2,10 @@
 
 import { useLanguage } from '@/lib/use-language';
 import { TechIcon } from './tech-icon';
-import { Palette, Hammer, Gauge, Globe, Handshake, Server } from 'lucide-react';
+import { Palette, Hammer, Gauge, Globe, Server, Accessibility } from 'lucide-react';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
-const expertiseIcons = ['🏗️', '🎨', 'HTML5', 'React', '🤝', 'Node.js / Express'];
+const expertiseIcons = ['🏗️', '🎨', 'HTML5', 'React', '♿', 'Node.js / Express'];
 
 const expertiseColors = [
   'from-blue-500 to-indigo-600',
@@ -140,7 +140,7 @@ export function SkillsSection() {
               )}
               {index === 4 && (
                 <div className="absolute top-2 right-2 opacity-15 group-hover:opacity-25 transition-opacity duration-300">
-                  <Handshake size={160} className="text-green-500/40 dark:text-green-400/40" />
+                  <Accessibility size={160} className="text-green-500/40 dark:text-green-400/40" />
                 </div>
               )}
               {index === 5 && (
@@ -153,7 +153,7 @@ export function SkillsSection() {
                 {/* Icon */}
                 <div className="mb-6">
                   <div className="w-16 h-16 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/30 dark:border-white/20 flex items-center justify-center shadow-sm group-hover:bg-white/30 dark:group-hover:bg-white/15 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-black/25 dark:group-hover:shadow-black/60 dark:group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-300 relative z-20">
-                    {['🎨', '🏗️', '🤝'].includes(expertiseIcons[index]) ? (
+                    {['🎨', '🏗️', '♿'].includes(expertiseIcons[index]) ? (
                       <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
                         {expertiseIcons[index]}
                       </span>
@@ -171,9 +171,10 @@ export function SkillsSection() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
-                  {item.description}
-                </p>
+                <p
+                  className="text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300"
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
               </div>
 
               {/* Glare effect */}

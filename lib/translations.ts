@@ -55,7 +55,7 @@ export const translations = {
     aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and school Computer Science teacher, and then fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
 My journey is <span class="text-double-underline">a bridge<img aria-hidden="true" src="/double-underline.png" alt="" class="double-underline"></span> between computing eras. It began with the structured programming with <em>Pascal</em>, <em>C++</em> and <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, where I learned the core principles of memory management and algorithms. I then built powerful desktop and early web applications for the enterprise world using <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> and <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, and gained a critical eye for quality and process through test automation with <em>Selenium RC</em> and later <em>WebDriver</em>, <em>Cypress</em> and <em>Playwright</em>.<br/><br/>
 I was on the front lines of the web's transformation, crafting dynamic applications with its first-generation tools: <em><abbr title="Asynchronous Javascript and XML ">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em>, and <em>Ember.js</em>. This deep historical context is my greatest asset. It allows me to architect modern <em>React</em>, <em>Web Components</em> and <em>TypeScript</em> applications with a profound understanding of the problems they solve, ensuring they are not just trendy but <span class="text-single-underline">truly well-engineered<img aria-hidden="true" src="/single-underline.png" alt="" class="single-underline"></span>, scalable, and built to last.<br/><br/>
-Today, I focus on creating accessible, user-centric, offline and mobile-first <em>Progressive Web Apps (<abbr>PWA</abbr>)</em> and robust frontend architectures based on modern tools like <em>Webpack</em>, <em>Vite</em>, <em>Next.js</em>, <em>MobX</em>, <em>React-Router</em>, <em>Material UI</em>, <em>Tailwind CSS</em>, etc.<br/>
+Today, I focus on creating accessible, user-centric, offline and mobile-first <em>Progressive Web Apps (<abbr>PWA</abbr>)</em> and robust frontend architectures based on modern tools like <em>Webpack</em>, <em>Vite</em>, <em>Next.js</em>, <em>MobX</em>, <em>React-Router</em>, <em>Material UI</em>, <em>Tailwind CSS</em>, <em>Rust/WebAssembly</em>, etc.<br/>
 I've been trusted to deliver solutions for industry giants like Daimler and SAP, retailers like X5 Group ans Kohl's, tech innovators like Croc, startups like TrueImpact, Lition, Tispr/Indy and chemical leaders like Sibur and Evonik.<br/><br/>
 Now, I've come full circle: I'm passing on the logic and joy of creation to the next generation by teaching my children to code in <em>Scratch</em>, <em>MakeCode</em> and <em>Blockly</em>.`,
     cleanCode: 'Clean Code',
@@ -93,9 +93,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
           'Architecting with React/Next.js ecosystem while advancing web platform through Lit/Web Components and Rust/WASM',
       },
       {
-        title: 'Engineering Team Development & Mentorship',
+        title: 'Web Accessibility Consulting & Audits',
         description:
-          'Building high-performing teams, technical leadership, and fostering engineering culture across distributed teams',
+          'Providing accessibility consultations, conducting and performing accessibility audits, deeply immersed in this topic. Also running a small Telegram channel about accessibility: <a href="https://t.me/proa11y" target="_blank" rel="noopener noreferrer">@proa11y</a>',
       },
       {
         title: 'Full-Stack JavaScript & Platform Engineering',
@@ -288,6 +288,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     contactText:
       "I'm always open to new opportunities and interesting projects. <br>Feel free to reach out if you'd like to collaborate!<br> Let's build something remarkable together.",
     contactButton: 'Contact Me',
+    followOnLinkedIn: 'Follow on LinkedIn',
     resumeButton: 'Download Resume',
     // Common UI / ARIA
     switchToLight: 'Switch to light theme',
@@ -685,7 +686,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
 Мой путь — это <span class="text-double-underline">мост между эпохами<img aria-hidden="true" src="/double-underline.png" alt="" class="double-underline"></span> вычислительной техники. Он начался со структурно-процедурного программирования на <em>Pascal</em>, <em>C++</em> и <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, где я изучил основные принципы управления памятью и базовые алгоритмы. Затем я создавал мощные десктопные и ранние веб-приложения для корпоративного мира, используя <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> и <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, а также развил критический взгляд на качество и процессы тестирования через автоматизацию тестов с <em>Selenium RC</em>, а позже с <em>WebDriver</em>, <em>Cypress</em> и <em>Playwright</em>.<br/><br/>
 Я был на передовой трансформации веб-технологий, создавая динамические приложения с помощью инструментов первого поколения: <em><abbr title="Asynchronous Javascript and XML">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em> и <em>Ember.js</em>. Этот глубокий исторический контекст — мое наибольшее преимущество. Он позволяет мне проектировать современные приложения на <em>React</em>, <em>Web Components</em> и <em>TypeScript</em> с глубоким пониманием проблем, которые они решают, гарантируя, что они не просто модные, а <span class="text-single-underline">действительно хорошо<img aria-hidden="true" src="/single-underline.png" alt="" class="single-underline"></span> спроектированные, масштабируемые и созданные на долгий срок.<br/><br/>
-Сегодня я сосредоточен на создании доступных, ориентированных на пользователя, офлайн- и mobile-first <em>Progressive Web Apps (<abbr>PWA</abbr>)</em> и надежных фронтенд-архитектурах на основе современных инструментов: <em>Webpack</em>, <em>Vite</em>, <em>Next.js</em>, <em>MobX</em>, <em>React-Router</em>, <em>Material UI</em>, <em>Tailwind CSS</em> и др.
+Сегодня я сосредоточен на создании доступных, ориентированных на пользователя, офлайн- и mobile-first <em>Progressive Web Apps (<abbr>PWA</abbr>)</em> и надежных фронтенд-архитектурах на основе современных инструментов: <em>Webpack</em>, <em>Vite</em>, <em>Next.js</em>, <em>MobX</em>, <em>React-Router</em>, <em>Material UI</em>, <em>Tailwind CSS</em>, <em>Rust/WebAssembly</em> и др.
 Мне доверяли создание решений для таких отраслевых гигантов, как Daimler и SAP, ритейлеров, таких как X5 Group и Kohl's, технологических новаторов, как КРОК, стартапов, таких как TrueImpact, Lition, Tispr/Indy, и лидеров химической промышленности, таких как СИБУР и Evonik.<br/><br/>
 Теперь я замкнул круг: передаю опыт и радость творчества следующему поколению, обучая своих детей программированию на <em>Scratch</em>, <em>MakeCode</em> и <em>Blockly</em>.`,
     cleanCode: 'Чистый код',
@@ -724,9 +725,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
           'Архитектура с экосистемой React/Next.js при продвижении веб-платформы через Lit/Web Components и Rust/WASM',
       },
       {
-        title: 'Развитие Инженерных Команд и Менторство',
+        title: 'Консультации и Аудит по Веб-доступности',
         description:
-          'Построение высокопроизводительных команд, техническое лидерство и развитие инженерной культуры в распределенных командах',
+          'Оказываю консультации по доступности, прохожу и провожу аудиты по доступности, очень погружен в эту тему. Также веду свой небольшой телеграм канал об этом: <a href="https://t.me/proa11y" target="_blank" rel="noopener noreferrer">@proa11y</a>',
       },
       {
         title: 'Full-Stack JavaScript и Платформенная Инженерия',
@@ -921,6 +922,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     contactText:
       'Я всегда открыт для новых возможностей и интересных проектов. <br>Свяжитесь со мной, если хотите сотрудничать! <br/> Давайте создадим что-то выдающееся вместе.',
     contactButton: 'Написать',
+    followOnLinkedIn: 'Подписаться в LinkedIn',
     resumeButton: 'Скачать резюме',
     // Common UI / ARIA
     switchToLight: 'Переключить на светлую тему',
