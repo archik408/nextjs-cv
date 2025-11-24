@@ -9,6 +9,7 @@ const tools = [
   'M4 Pro',
   'Keychron B6',
   'ERGO M575S',
+  'Barner Eyewear',
   'WebStorm',
   'Cursor AI',
   'Chrome DevTools',

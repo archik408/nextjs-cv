@@ -10,23 +10,8 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // WebAssembly support
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-      };
-    }
-
-    // Enable WebAssembly support
-    config.experiments = {
-      ...config.experiments,
-      asyncWebAssembly: true,
-    };
-
-    return config;
-  },
+  // Turbopack has built-in WebAssembly support, no webpack config needed
+  // For production builds, WebAssembly is handled automatically
 
   // Security headers
   async headers() {
