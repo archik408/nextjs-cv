@@ -10,6 +10,15 @@ type Post = {
 
 export const posts: Post[] = [
   {
+    title: 'Аудит доступности веб-приложения Приорбанка',
+    excerpt:
+      'Я долго думал, аудит какого веб-приложения провести первым для своей небольшой заметки, чтобы показать наглядно подход из 5 шагов.',
+    href: 'https://habr.com/ru/articles/965834/',
+    image: '/icons/habr.png',
+    source: 'Habr',
+    date: '2025-11-12',
+  },
+  {
     title: 'Реальная эффективность Brotli',
     excerpt: 'Экспериментально оцениваем пользу Brotli для продакшн‑проектов.',
     href: 'https://medium.com/@arturbasak/%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C-brotli-9ff6edeb5abf',
