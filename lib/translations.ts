@@ -49,6 +49,26 @@ export const translations = {
     privacyOpenSourceTitle: 'Open Source',
     privacyOpenSourceText:
       'This website is open source, so you can review the code yourself to verify what data is being collected and how it is used. The source code is available on <a href="https://github.com/archik408/nextjs-cv" target="_blank" rel="noopener noreferrer">GitHub</a>. If you have any questions or concerns about privacy, please contact me at <a href="mailto:artur.basak.devingrodno@gmail.com">artur.basak.devingrodno@gmail.com</a>.',
+    // Time Machine Page
+    timeMachineTitle: 'Time Machine',
+    timeMachineIntro:
+      'Take a journey through time and see how this website has evolved over the years. Each snapshot represents a significant milestone in the development and design of arturbasak.dev.',
+    timeMachineTimelineLabel: 'Select a year to view',
+    timeMachineYear: 'Year',
+    timeMachineScreenshot: 'Website screenshot from',
+    timeMachineViewFullSize: 'View full size screenshot from',
+    timeMachineLoading: 'Loading screenshot',
+    timeMachineCloseLightbox: 'Close full-size view',
+    timeMachinePrevious: 'Previous year',
+    timeMachineNext: 'Next year',
+    timeMachine2021Description:
+      'I just registered the domain and implemented a maximally simple content website with brief and very sparse information about myself as a frontend specialist. It resembled a static online CV.',
+    timeMachine2022Description:
+      "The website gained color and monochrome images, which added some style, but the content remained the same. There wasn't much time to work on it, and the site was deployed on GitHub Pages.",
+    timeMachine2023Description:
+      'The content and text on the site were refined, with more information and external links to articles, publications, and social networks added.',
+    timeMachine2025Description:
+      'Complete overhaul of the website to Next.js with server-side rendering and migration to Vercel. The goal was not only to present content with comprehensive information about me as a specialist, but also to demonstrate my skills as a designer and frontend engineer right here. The website also became a sandbox to work with an AI assistant. Beyond the portfolio, the site now features a digital garden, career timeline, and numerous experiments in the form of online tools.',
     role: 'Web UI/UX Engineer',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
@@ -680,6 +700,26 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     privacyOpenSourceTitle: 'Открытый исходный код',
     privacyOpenSourceText:
       'Этот веб-сайт имеет открытый исходный код, поэтому вы можете сами просмотреть код, чтобы проверить, какие данные собираются и как они используются. Исходный код доступен на <a href="https://github.com/archik408/nextjs-cv" target="_blank" rel="noopener noreferrer">GitHub</a>. Если у вас есть вопросы или опасения по поводу конфиденциальности, пожалуйста, свяжитесь со мной по адресу <a href="mailto:artur.basak.devingrodno@gmail.com">artur.basak.devingrodno@gmail.com</a>.',
+    // Time Machine Page
+    timeMachineTitle: 'Машина Времени',
+    timeMachineIntro:
+      'Отправьтесь в путешествие во времени и посмотрите, как этот сайт развивался на протяжении лет. Каждый снимок представляет собой важную веху в разработке и дизайне arturbasak.dev.',
+    timeMachineTimelineLabel: 'Выберите год для просмотра',
+    timeMachineYear: 'Год',
+    timeMachineScreenshot: 'Скриншот сайта за',
+    timeMachineViewFullSize: 'Открыть полноразмерный скриншот за',
+    timeMachineLoading: 'Загрузка скриншота',
+    timeMachineCloseLightbox: 'Закрыть полноразмерный просмотр',
+    timeMachinePrevious: 'Предыдущий год',
+    timeMachineNext: 'Следующий год',
+    timeMachine2021Description:
+      'Я только зарегистрировал домен и реализовал максимально простой контентный веб-сайт с тезисной и очень скудной информацией о себе как о фронтенд специалисте, похоже на статическое онлайн CV.',
+    timeMachine2022Description:
+      'У веб-сайта появился цвет и монохромные изображения, это придало немного стиля, но контент тот же, особо не было времени заниматься им, сайт задеплоен на GitHub Pages.',
+    timeMachine2023Description:
+      'Был проработан контент и текст на сайте, появилось больше информации и внешние ссылки на статьи, публикации и социальные сети.',
+    timeMachine2025Description:
+      'Полная переработка веб-сайта на Next.js с серверным рендерингом и переезд на Vercel. Задача была не только оформить контент с полной информацией обо мне как о специалисте, но также продемонстрировать свои навыки дизайнера и фронтенд инженера прямо тут. При этом веб-сайт стал песочницей, чтобы поработать с ИИ ассистентом. На сайте помимо портфолио появился цифровой сад, таймлайн карьеры и множество экспериментов в виде онлайн инструментов.',
     role: 'Web UI/UX Engineer',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',
