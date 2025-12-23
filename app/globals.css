@@ -130,6 +130,20 @@
       0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
+  video {
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    max-height: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    video {
+      max-height: 550px;
+    }
+  }
+
   /*img:focus {*/
   /*  outline: 2px solid var(--primary-color, #3b82f6);*/
   /*  outline-offset: 2px;*/
