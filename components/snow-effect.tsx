@@ -48,7 +48,7 @@ export function SnowEffect() {
     snowContainer.setAttribute('aria-hidden', 'true');
     document.body.appendChild(snowContainer);
 
-    const numberOfSnowflakes = 50;
+    const numberOfSnowflakes = 100;
     const cleanupTimeouts: NodeJS.Timeout[] = [];
 
     // Создаем снежинки
@@ -59,7 +59,7 @@ export function SnowEffect() {
       const leftPosition = Math.random() * 100;
       const animationDuration = Math.random() * 3 + 2; // 2-5 секунд
       const animationDelay = Math.random() * 5;
-      const fontSize = Math.random() * 10 + 10;
+      const fontSize = Math.random() * 5 + 5;
       const opacity = Math.random() * 0.5 + 0.5; // 0.5-1.0
       const horizontalDrift = (Math.random() - 0.5) * 50; // Дрейф влево-вправо
 
