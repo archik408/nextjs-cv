@@ -39,7 +39,7 @@ tags: [microbit, программирование, дети, рождество,
 
 На видео то, что получилось! 🎥 Смотреть со звуком!
 
-<video controls style="width: 100%; max-width: 800px; margin: 2rem auto; display: block; border-radius: 0.5rem;">
+<video controls poster="/garden/microbit-cover.png">
   <source src="/garden/microbit.mp4" type="video/mp4">
   Ваш браузер не поддерживает воспроизведение видео.
 </video>
