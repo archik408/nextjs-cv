@@ -2,10 +2,10 @@
 
 import { ETheme } from '@/constants/enums';
 import { useTheme } from '@/lib/use-theme';
-import { useMemo } from 'react';
+import { useMemo, ReactNode } from 'react';
 
 type Props = {
-  text: string;
+  text: string | ReactNode;
   small?: boolean;
 };
 

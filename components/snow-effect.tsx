@@ -8,7 +8,7 @@ import { ETheme } from '@/constants/enums';
  * Проверяет, находится ли текущая дата в периоде с 20 декабря по 2 февраля включительно
  * Период: с 20 декабря текущего года по 2 февраля следующего года
  */
-function isSnowPeriod(): boolean {
+export function isSnowPeriod(): boolean {
   const today = new Date();
   const month = today.getMonth(); // 0-11 (0 = январь, 11 = декабрь)
   const day = today.getDate();
