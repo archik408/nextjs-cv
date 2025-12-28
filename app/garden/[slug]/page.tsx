@@ -6,7 +6,6 @@ import { generateMetadata as buildMetadata } from '@/lib/seo';
 import NavigationButtons from '@/components/navigation-buttons';
 import { SharePanel } from '@/components/share-panel';
 import { GardenArticle } from '@/components/garden-article';
-import { SnowEffect } from '@/components/snow-effect';
 
 export const dynamic = 'force-static';
 
@@ -23,7 +22,6 @@ export default async function GardenNotePage({ params }: PageParams) {
   if (!note) return notFound();
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <SnowEffect />
       <main className="mx-auto max-w-3xl px-4 py-12">
         <NavigationButtons
           levelUp="garden"

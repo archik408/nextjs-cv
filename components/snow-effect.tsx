@@ -31,13 +31,24 @@ export function isSnowPeriod(): boolean {
   return false;
 }
 
+const getColor = (theme: ETheme) => (theme === ETheme.dark ? '#ffffff' : '#0158af');
+
 export function SnowEffect() {
   const { theme } = useTheme();
   const [shouldShow, setShouldShow] = useState(false);
 
   useEffect(() => {
-    // Показываем снег только в темной теме и в период снега
-    setShouldShow(isSnowPeriod() && theme === ETheme.dark);
+    // Показываем снег в период зимы
+    setShouldShow(isSnowPeriod());
+  }, [theme]);
+
+  useEffect(() => {
+    const snowflakes = document.querySelectorAll<HTMLDivElement>('.snowflake');
+    if (snowflakes.length) {
+      snowflakes.forEach((snowflake) => {
+        snowflake.style.color = getColor(theme);
+      });
+    }
   }, [theme]);
 
   useEffect(() => {
@@ -64,6 +75,7 @@ export function SnowEffect() {
       const horizontalDrift = (Math.random() - 0.5) * 50; // Дрейф влево-вправо
 
       // Начинаем снежинки за пределами видимой области
+      snowflake.style.color = getColor(theme);
       snowflake.style.top = '-50px';
       snowflake.style.left = `${leftPosition}vw`;
       snowflake.style.animationDuration = `${animationDuration}s`;
@@ -91,7 +103,7 @@ export function SnowEffect() {
         snowContainer.parentNode.removeChild(snowContainer);
       }
     };
-  }, [shouldShow]);
+  }, [shouldShow, theme]);
 
   // Добавляем стили в head
   useEffect(() => {

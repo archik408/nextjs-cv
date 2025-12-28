@@ -4,7 +4,6 @@ import { generateMetadata as buildMetadata } from '@/lib/seo';
 import ArticleTitle from '@/components/article-title';
 import NavigationButtons from '@/components/navigation-buttons';
 import { Sprout } from 'lucide-react';
-import { SnowEffect } from '@/components/snow-effect';
 
 export const dynamic = 'force-static';
 
@@ -12,7 +11,6 @@ export default function GardenIndexPage() {
   const notes = listGardenNotes();
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      <SnowEffect />
       <main className="mx-auto max-w-3xl px-4 py-12">
         <NavigationButtons locale="ru" showLanguageSwitcher={false} showThemeSwitcher />
         <ArticleTitle text="Digital Garden" />

@@ -7,6 +7,8 @@ import { FC } from 'react';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { translations } from '@/lib/translations';
+import { SantaXMasHat } from '@/components/santa-x-mas-hat';
+import { SnowEffect } from '@/components/snow-effect';
 
 interface NavigationButtonsProps {
   levelUp?: 'tools' | 'blog' | 'garden' | 'timeline';
@@ -62,9 +64,10 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({
         )}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-3 py-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg hover:bg-white dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 shadow-lg dark:shadow-xl/20 transition-colors"
+          className="inline-flex items-center gap-2 px-3 py-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg hover:bg-white dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 shadow-lg dark:shadow-xl/20 transition-colors relative"
           title={t.home || 'Home'}
         >
+          <SantaXMasHat />
           <Home className="w-4 h-4" />
         </Link>
       </nav>
@@ -74,6 +77,7 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({
           {showLanguageSwitcher && <LanguageSwitcher />}
         </div>
       )}
+      <SnowEffect />
     </>
   );
 };
