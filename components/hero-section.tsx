@@ -75,11 +75,19 @@ export function HeroSection() {
           </div>
         </div>
         <ArticleTitle text={'Artur Basak'} />
-        <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 md:mb-0">
+        <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 md:mb-2">
           {t.role}
         </h2>
-        <div className="mb-8 min-h-[3rem] md:min-h-[2.5rem] flex items-center justify-center">
-          <p className="text-base md:text-sm text-gray-600 dark:text-gray-300 font-[var(--font-jetbrains-mono)] text-center">
+        <div className="mb-8 min-h-[3rem] md:min-h-[2.5rem] flex items-center justify-center relative">
+          <p
+            className="text-base md:text-sm text-gray-600 dark:text-gray-300 font-[var(--font-jetbrains-mono)] text-center"
+            style={{
+              position: 'absolute',
+              top: '0',
+              width: '650px',
+              maxWidth: 'calc(100vw - 32px)',
+            }}
+          >
             <TypingRotate
               texts={[t.subtitle]}
               fixedPrefix={
