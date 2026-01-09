@@ -1,4 +1,3 @@
-import { isSnowPeriod } from '@/components/snow-effect';
 import { FC } from 'react';
 
 interface IProps {
@@ -8,8 +7,26 @@ interface IProps {
   left?: string;
 }
 
+export function isXMasPeriod(): boolean {
+  const today = new Date();
+  const month = today.getMonth(); // 0-11 (0 = январь, 11 = декабрь)
+  const day = today.getDate();
+
+  // Если мы в декабре, проверяем от 20 декабря текущего года
+  if (month === 11 && day >= 20) {
+    return true;
+  }
+
+  // Если мы в январе, и до старого НГ
+  if (month === 0 && day <= 15) {
+    return true;
+  }
+
+  return false;
+}
+
 export const SantaXMasHat: FC<IProps> = (props) => {
-  return isSnowPeriod() ? (
+  return isXMasPeriod() ? (
     <span
       style={{
         position: 'absolute',

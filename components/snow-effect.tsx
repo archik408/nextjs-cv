@@ -4,17 +4,13 @@ import { useEffect, useState } from 'react';
 import { useTheme } from '@/lib/use-theme';
 import { ETheme } from '@/constants/enums';
 
-/**
- * Проверяет, находится ли текущая дата в периоде с 20 декабря по 2 февраля включительно
- * Период: с 20 декабря текущего года по 2 февраля следующего года
- */
 export function isSnowPeriod(): boolean {
   const today = new Date();
   const month = today.getMonth(); // 0-11 (0 = январь, 11 = декабрь)
   const day = today.getDate();
 
-  // Если мы в декабре, проверяем от 20 декабря текущего года
-  if (month === 11 && day >= 20) {
+  // Если мы в декабре, проверяем от 1 декабря текущего года
+  if (month === 11 && day >= 1) {
     return true;
   }
 
@@ -23,8 +19,8 @@ export function isSnowPeriod(): boolean {
     return true;
   }
 
-  // Если мы в феврале, проверяем до 2 февраля включительно
-  if (month === 1 && day <= 2) {
+  // Если мы в феврале, проверяем до 29 февраля включительно
+  if (month === 1 && day <= 29) {
     return true;
   }
 
