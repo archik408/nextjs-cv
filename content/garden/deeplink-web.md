@@ -47,3 +47,13 @@ checkAppOpened();
 - Пытаемся открыть приложение через deeplink
 - Если приложение установлено - страница скрывается, таймер сбрасывается
 - Если через 2.5 секунды страница видна - редиректим в App Store/Google Play
+
+---
+
+### Связанные заметки
+
+- [[View Transitions в React — рабочий инструмент, который уже год в продакшене](/garden/view-transitions)]
+- [[Настройка Workbox Background Sync для совместимости с iOS и Android WebView](/garden/workbox-background-sync)]
+- [[Вычисление видимой части viewport](/garden/viewport)]
+- [[Конфликт оффлайн функциональности и ленивой подгрузки](/garden/offline-vs-lazy-loading)]
+- [[Улучшение просмотра изображений](/garden/zoom)]

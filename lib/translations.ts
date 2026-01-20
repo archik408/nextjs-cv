@@ -399,6 +399,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     showLess: 'Show less',
     showMore: 'Show more',
+    enableMotion: 'Enable motion effects',
+    motionActive: 'Motion tracking active',
     copyright: `© ${new Date().getFullYear()} Artur Basak. All rights reserved.`,
     // OCR Page
     ocrTitle: 'Image Text Recognition',
@@ -1053,6 +1055,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     showLess: 'Свернуть',
     showMore: 'Показать больше',
+    enableMotion: 'Включить motion эффекты',
+    motionActive: 'Motion отслеживание активно',
     copyright: `© ${new Date().getFullYear()} Artur Basak. Все права защищены.`,
     // OCR Page
     ocrTitle: 'Распознавание текста на изображениях',

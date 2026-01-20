@@ -36,3 +36,10 @@ tags: [opensource,career,programming,mental-model]
 
 Приватный GitLab:
 ![Private GitLab Activity](/garden/gitlab.png)
+
+---
+
+### Связанные заметки
+
+- [[15 лет в коммерческой разработке. Что я понял? Что я ничего не понял.](/garden/15-years-in-dev)]
+- [[TypeScript — самая большая ошибка в мире фронтенда!](/garden/typescript)]

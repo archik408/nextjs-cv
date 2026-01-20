@@ -2,8 +2,10 @@
 
 import { useLanguage } from '@/lib/use-language';
 import { TechIcon } from './tech-icon';
-import { Palette, Hammer, Gauge, Globe, Server, Accessibility } from 'lucide-react';
+import { Palette, Hammer, Gauge, Globe, Server, Accessibility, Smartphone } from 'lucide-react';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
+import { useDeviceOrientation } from '@/lib/use-device-orientation';
+import { useRef, useEffect, useCallback } from 'react';
 
 const expertiseIcons = ['🏗️', '🎨', 'HTML5', 'React', '♿', 'Node.js / Express'];
 
@@ -36,56 +38,119 @@ const expertiseBorderColors = [
 
 export function SkillsSection() {
   const { t } = useLanguage();
+  const [orientation, requestOrientationPermission] = useDeviceOrientation({
+    useRelativeOrientation: true,
+    smoothingFactor: 0.12,
+  });
+
+  // Refs for all cards to apply orientation transforms
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const prefersReducedMotion =
     typeof window !== 'undefined' && window.matchMedia
       ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
       : false;
 
-  const handleMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    if (prefersReducedMotion) return;
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const px = x / rect.width; // 0..1
-    const py = y / rect.height; // 0..1
+  // Apply orientation-based transforms to all cards on mobile
+  useEffect(() => {
+    if (!orientation.isTracking || prefersReducedMotion) return;
 
-    // Map to -1..1 (center is 0,0)
+    // Map orientation to card transforms
+    // beta: front/back tilt (-180 to 180) -> rotateX
+    // gamma: left/right tilt (-90 to 90) -> rotateY
+    const maxTiltDeg = 8;
+
+    // Clamp and scale values
+    const rotateX = Math.max(-maxTiltDeg, Math.min(maxTiltDeg, orientation.beta * 0.3));
+    const rotateY = Math.max(-maxTiltDeg, Math.min(maxTiltDeg, orientation.gamma * -0.4));
+
+    // Calculate glare based on orientation
+    const px = (rotateY / maxTiltDeg + 1) / 2; // 0..1
+    const py = (-rotateX / maxTiltDeg + 1) / 2; // 0..1
     const dx = px * 2 - 1;
     const dy = py * 2 - 1;
-
-    const maxTiltDeg = 8;
-    const rotateY = dx * maxTiltDeg; // left/right
-    const rotateX = -dy * maxTiltDeg; // up/down (invert so top pushes back)
-
-    card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale(1.02)`;
-
-    // Update glare position and intensity via CSS variables
-    card.style.setProperty('--glare-x', `${(px * 100).toFixed(2)}%`);
-    card.style.setProperty('--glare-y', `${(py * 100).toFixed(2)}%`);
     const intensity = Math.min(0.5, 0.12 + (Math.abs(dx) + Math.abs(dy)) * 0.2);
-    card.style.setProperty('--glare-o', `${intensity.toFixed(3)}`);
-
-    // Angle the streak roughly perpendicular to the dominant axis of tilt
-    const angleRad = Math.atan2(dy, dx); // -PI..PI
-    const angleDeg = (angleRad * 180) / Math.PI; // -180..180
-    // Rotate streak to cross the bright spot pleasingly
+    const angleRad = Math.atan2(dy, dx);
+    const angleDeg = (angleRad * 180) / Math.PI;
     const rot = angleDeg + 90;
-    card.style.setProperty('--glare-rot', `${rot.toFixed(1)}deg`);
-  };
 
-  const handleEnter: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    if (prefersReducedMotion) return;
-    const card = e.currentTarget;
-    card.style.transition = 'transform 150ms ease-out';
-  };
+    cardRefs.current.forEach((card) => {
+      if (!card) return;
 
-  const handleLeave: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    const card = e.currentTarget;
-    card.style.transition = 'transform 200ms ease-in';
-    card.style.transform = '';
-  };
+      // Add smooth transition for mobile motion
+      card.style.transition = 'transform 0.15s ease-out';
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale(1.02)`;
+      card.style.setProperty('--glare-x', `${(px * 100).toFixed(2)}%`);
+      card.style.setProperty('--glare-y', `${(py * 100).toFixed(2)}%`);
+      card.style.setProperty('--glare-o', `${intensity.toFixed(3)}`);
+      card.style.setProperty('--glare-rot', `${rot.toFixed(1)}deg`);
+    });
+  }, [orientation.beta, orientation.gamma, orientation.isTracking, prefersReducedMotion]);
+
+  // Desktop mouse handlers
+  const handleMove: React.MouseEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      // Skip mouse handling on mobile when orientation is active
+      if (prefersReducedMotion || orientation.isTracking) return;
+
+      const card = e.currentTarget;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const px = x / rect.width; // 0..1
+      const py = y / rect.height; // 0..1
+
+      // Map to -1..1 (center is 0,0)
+      const dx = px * 2 - 1;
+      const dy = py * 2 - 1;
+
+      const maxTiltDeg = 8;
+      const rotateY = dx * maxTiltDeg; // left/right
+      const rotateX = -dy * maxTiltDeg; // up/down (invert so top pushes back)
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale(1.02)`;
+
+      // Update glare position and intensity via CSS variables
+      card.style.setProperty('--glare-x', `${(px * 100).toFixed(2)}%`);
+      card.style.setProperty('--glare-y', `${(py * 100).toFixed(2)}%`);
+      const intensity = Math.min(0.5, 0.12 + (Math.abs(dx) + Math.abs(dy)) * 0.2);
+      card.style.setProperty('--glare-o', `${intensity.toFixed(3)}`);
+
+      // Angle the streak roughly perpendicular to the dominant axis of tilt
+      const angleRad = Math.atan2(dy, dx); // -PI..PI
+      const angleDeg = (angleRad * 180) / Math.PI; // -180..180
+      // Rotate streak to cross the bright spot pleasingly
+      const rot = angleDeg + 90;
+      card.style.setProperty('--glare-rot', `${rot.toFixed(1)}deg`);
+    },
+    [prefersReducedMotion, orientation.isTracking]
+  );
+
+  const handleEnter: React.MouseEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      if (prefersReducedMotion || orientation.isTracking) return;
+      const card = e.currentTarget;
+      card.style.transition = 'transform 150ms ease-out';
+    },
+    [prefersReducedMotion, orientation.isTracking]
+  );
+
+  const handleLeave: React.MouseEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      // Don't reset transform on mobile when orientation is active
+      if (orientation.isTracking) return;
+
+      const card = e.currentTarget;
+      card.style.transition = 'transform 200ms ease-in';
+      card.style.transform = '';
+    },
+    [orientation.isTracking]
+  );
+
+  // Handler for permission button
+  const handleEnableMotion = useCallback(async () => {
+    await requestOrientationPermission();
+  }, [requestOrientationPermission]);
 
   return (
     <section className="py-10 md:py-20 px-4 md:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
@@ -103,10 +168,42 @@ export function SkillsSection() {
           <p className="text-base text-gray-600 dark:text-gray-300">{t.skillsDescription}</p>
         </div>
 
+        {/* Mobile motion enable button - shown only when permission is required and not yet granted */}
+        {orientation.isMobileDevice &&
+          orientation.permissionRequired &&
+          !orientation.permissionGranted && (
+            <div className="mb-6 flex justify-center">
+              <button
+                onClick={handleEnableMotion}
+                className="group/btn flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200"
+                aria-label={t.enableMotion || 'Enable motion effects'}
+              >
+                <Smartphone
+                  size={20}
+                  className="group-hover/btn:rotate-12 transition-transform duration-200"
+                />
+                <span>{t.enableMotion || 'Enable motion effects'}</span>
+              </button>
+            </div>
+          )}
+
+        {/* Motion status indicator */}
+        {orientation.isTracking && (
+          <div className="mb-4 flex justify-center">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              {t.motionActive || 'Motion tracking active'}
+            </span>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {t.expertise.map((item, index) => (
             <div
               key={index}
+              ref={(el) => {
+                cardRefs.current[index] = el;
+              }}
               onMouseMove={handleMove}
               onMouseEnter={handleEnter}
               onMouseLeave={handleLeave}
@@ -197,7 +294,7 @@ export function SkillsSection() {
           );
           background-position: var(--glare-x, 0%), var(--glare-y, 0%);
           background-size: 200% 200%;
-          opacity: 0;
+          opacity: ${orientation.isTracking ? '1' : '0'};
           transition: opacity 0.3s ease;
         }
 

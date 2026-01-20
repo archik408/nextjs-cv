@@ -412,6 +412,11 @@ button {
   transition: all 0.2s ease-in-out;
 }
 
+button,
+button span {
+  text-box: trim-both cap alphabetic;
+}
+
 /* Improve text rendering */
 h1,
 h2,
