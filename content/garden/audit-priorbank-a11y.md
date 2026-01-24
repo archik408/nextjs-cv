@@ -160,6 +160,7 @@ tags: [a11y, accessibility, audit, banking, priorbank]
 
 ### Связанные заметки
 
+- [[Аудит доступности Wildberries. Может ли незрячий пользователь купить Бэтмобиль?](/garden/audit-wildberries-a11y)]
 - [[Skip Links — невидимый маркер хорошего вкуса](/garden/skip-links)]
 - [[Практический аудит веб-доступности: 5 шагов без фанатизма](/garden/audit-a11y-without-wcag)]
 - [[Веб-доступность — это не хайп, а ответственность](/garden/a11y-my-task-crafting)]

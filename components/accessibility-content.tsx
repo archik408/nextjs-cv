@@ -15,7 +15,13 @@ export function AccessibilityContent() {
         <main className="prose-garden">
           <ArticleTitle text={t.accessibilityTitle} />
           <p dangerouslySetInnerHTML={{ __html: t.accessibilityIntro }} />
-
+          <Image
+            src="/disability-persons.png"
+            role="presentation"
+            alt=""
+            width="540"
+            height="100"
+          />
           <h2>{t.accessibilityMeasuresTitle}</h2>
           <ul>
             {t.accessibilityMeasuresList.map((item: string) => (
@@ -35,7 +41,6 @@ export function AccessibilityContent() {
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <Image src="/accessibility.webp" role="presentation" alt="" width="540" height="100" />
         </main>
       </div>
     </article>

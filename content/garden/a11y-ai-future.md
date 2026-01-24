@@ -55,5 +55,6 @@ tags: [a11y, accessibility, ai, aria, mental-model, programming]
 
 - [[Практический аудит веб-доступности: 5 шагов без фанатизма](/garden/audit-a11y-without-wcag)]
 - [[Аудит доступности веб-приложения Приорбанка](/garden/audit-priorbank-a11y)]
+- [[Аудит доступности Wildberries. Может ли незрячий пользователь купить Бэтмобиль?](/garden/audit-wildberries-a11y)]
 - [[Skip Links — невидимый маркер хорошего вкуса](/garden/skip-links)]
 - [[Веб-доступность — это не хайп, а ответственность](/garden/a11y-my-task-crafting)]
