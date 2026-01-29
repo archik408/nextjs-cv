@@ -130,7 +130,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       {
         role: 'Senior Software Engineer',
         company: 'IntexSoft',
-        period: '2022 - Present',
+        period: '2022 - 2026',
         listDescription: [
           'Led the development of a hybrid mobile application using React.js, PWA, and Fugu API for one of the largest grocery retail groups globally, operating 20k+ convenience stores with MAU ~20 million',
           'Implemented offline functionality for the app, thereby increasing user retention and reducing attrition based on ServiceWorker API/Workbox, IndexedDB and Dixie.js',
@@ -784,7 +784,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       {
         role: 'Senior Software Engineer',
         company: 'IntexSoft',
-        period: '2022 - Настоящее время',
+        period: '2022 - 2026',
         listDescription: [
           'Руководил разработкой гибридного мобильного приложения с использованием React.js, PWA и Fugu API для одной из крупнейших розничных сетей продуктовых магазинов в мире, включающей более 20 000 магазинов и с ежемесячной аудиторией около 20 миллионов пользователей',
           'Реализовал оффлайн функционал для приложения, тем самым повысив удержание и уменьшив отток пользователей из-за плохого интернета благодаря технологиям ServiceWorker API/Workbox, IndexedDB и Dixie.js',
