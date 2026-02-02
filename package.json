@@ -41,7 +41,7 @@
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.542.0",
     "marked": "^15.0.12",
-    "next": "15.5.9",
+    "next": "16.1.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "svgo": "^4.0.0",
