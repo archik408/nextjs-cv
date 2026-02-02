@@ -50,6 +50,8 @@ export function FunActivitiesSection() {
       description: t.kidsDesc,
       icon: Users,
       color: 'text-orange-400',
+      href: '/garden?tag=дети',
+      isExternal: false,
       images: [{ src: '/scratch.jpg', alt: 'Kids Programming' }],
     },
     {

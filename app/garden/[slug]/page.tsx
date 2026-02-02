@@ -6,6 +6,7 @@ import { generateMetadata as buildMetadata } from '@/lib/seo';
 import NavigationButtons from '@/components/navigation-buttons';
 import { SharePanel } from '@/components/share-panel';
 import { GardenArticle } from '@/components/garden-article';
+import { GardenTagLink } from '@/components/garden-tag-link';
 
 export const dynamic = 'force-static';
 
@@ -38,12 +39,7 @@ export default async function GardenNotePage({ params }: PageParams) {
         {note.frontmatter.tags && note.frontmatter.tags.length > 0 && (
           <div className="mb-6 flex flex-wrap gap-2">
             {note.frontmatter.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded bg-neutral-100 px-2 py-0.5 text-xs text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
-              >
-                #{tag}
-              </span>
+              <GardenTagLink key={tag} tag={tag} variant="badge" />
             ))}
           </div>
         )}

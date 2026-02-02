@@ -113,3 +113,5 @@ export function getGardenNoteBySlug(slug: string): GardenNote | null {
   }
   return null;
 }
+
+export { getAllTagsFromNotes, filterNotesByTag } from './garden-utils';
