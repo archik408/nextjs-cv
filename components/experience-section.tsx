@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDown, Clock } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import Link from 'next/link';
 import ArticleTitle from '@/components/article-title';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';

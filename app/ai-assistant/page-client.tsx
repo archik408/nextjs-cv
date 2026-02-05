@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import NavigationButtons from '@/components/navigation-buttons';
 import { Send, Loader2, Bot, User, Trash2 } from 'lucide-react';
 

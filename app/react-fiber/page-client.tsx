@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import NavigationButtons from '@/components/navigation-buttons';
 import { CodeBlock } from '@/components/code-block';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import {
   GitBranch,
   Code,

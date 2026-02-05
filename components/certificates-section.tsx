@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Award, ExternalLink } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { CertificateModal } from './certificate-modal';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 

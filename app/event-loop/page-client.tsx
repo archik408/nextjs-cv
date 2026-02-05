@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, memo } from 'react';
 import { Repeat } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import NavigationButtons from '@/components/navigation-buttons';
 
 type QueueItem = {

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowLeft, Home, NotebookIcon, Sprout, Wrench } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { FC } from 'react';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { LanguageSwitcher } from '@/components/language-switcher';

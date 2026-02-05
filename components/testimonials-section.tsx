@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 export function TestimonialsSection() {

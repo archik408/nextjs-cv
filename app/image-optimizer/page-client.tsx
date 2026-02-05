@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import NavigationButtons from '@/components/navigation-buttons';
 import { AlertCircle, Download, Image as ImageIcon, Zap } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 
 type WasmModule = {
   default: (path?: string) => Promise<unknown>;

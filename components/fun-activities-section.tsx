@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Palette, Users, Bike, Mail, ChevronLeft, ChevronRight, Car } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { useState, useRef } from 'react';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 

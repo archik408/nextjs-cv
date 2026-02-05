@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import Image from 'next/image';
 import { CertificateRibbon } from './certificate-ribbon';
-import { useFocusTrap } from '@/lib/use-focus-trap';
+import { useFocusTrap } from '@/lib/hooks/use-focus-trap';
 
 interface CertificateModalProps {
   isOpen: boolean;

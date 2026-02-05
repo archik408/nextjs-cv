@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { createWorker } from 'tesseract.js';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import NavigationButtons from '@/components/navigation-buttons';
 
 export function OCRPageClient() {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { ELanguage } from '@/constants/enums';
 import { Download } from 'lucide-react';
 import { SnowEffect } from '@/components/snow-effect';

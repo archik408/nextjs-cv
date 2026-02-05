@@ -2,8 +2,8 @@
 import { ETheme } from '@/constants/enums';
 
 import { Sun, Moon } from 'lucide-react';
-import { useTheme } from '@/lib/use-theme';
-import { useLanguage } from '@/lib/use-language';
+import { useTheme } from '@/lib/hooks/use-theme';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { translations } from '@/lib/translations';
 import { FC } from 'react';
 

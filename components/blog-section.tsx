@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { posts } from '@/constants/blog';
 import { formatDate } from '@/utils/date';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';

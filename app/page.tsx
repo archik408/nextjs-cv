@@ -17,6 +17,7 @@ import {
   createPersonSchema,
   createWebsiteSchema,
 } from '@/components/structured-data';
+import { SectionDivider } from '@/components/section-divider';
 
 export default function Home() {
   return (
@@ -43,52 +44,28 @@ export default function Home() {
           {/* Experience Section */}
           <ExperienceSection />
 
-          {/* Divider */}
-          <div className="mx-auto max-w-6xl px-4">
-            <hr className="my-8 border-gray-300 dark:border-gray-700" />
-          </div>
-
           {/* Testimonials Section */}
+          <SectionDivider />
           <TestimonialsSection />
 
-          {/* Divider */}
-          <div className="mx-auto max-w-6xl px-4">
-            <hr className="my-8 border-gray-300 dark:border-gray-700" />
-          </div>
-
           {/* Certificates Section */}
+          <SectionDivider />
           <CertificatesSection />
 
-          {/* Divider */}
-          <div className="mx-auto max-w-6xl px-4">
-            <hr className="my-8 border-gray-300 dark:border-gray-700" />
-          </div>
-
-          {/*/!* Garden Section *!/*/}
+          {/* Garden Section */}
+          <SectionDivider />
           <GardenSection />
 
-          {/* Divider */}
-          <div className="mx-auto max-w-6xl px-4">
-            <hr className="my-8 border-gray-300 dark:border-gray-700" />
-          </div>
-
           {/* Blog Section */}
+          <SectionDivider />
           <BlogSection />
 
-          {/* Divider */}
-          <div className="mx-auto max-w-6xl px-4">
-            <hr className="my-8 border-gray-300 dark:border-gray-700" />
-          </div>
-
           {/* Tools Section */}
+          <SectionDivider />
           <ToolsSection />
 
-          {/* Divider */}
-          <div className="mx-auto max-w-6xl px-4">
-            <hr className="my-8 border-gray-300 dark:border-gray-700" />
-          </div>
-
           {/* Fun Activities Section */}
+          <SectionDivider />
           <FunActivitiesSection />
 
           {/* Contact Section */}

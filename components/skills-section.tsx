@@ -1,10 +1,10 @@
 'use client';
 
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { TechIcon } from './tech-icon';
 import { Palette, Hammer, Gauge, Globe, Server, Accessibility, Smartphone } from 'lucide-react';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
-import { useDeviceOrientation } from '@/lib/use-device-orientation';
+import { useDeviceOrientation } from '@/lib/hooks/use-device-orientation';
 import { useRef, useEffect, useCallback } from 'react';
 
 const expertiseIcons = ['🏗️', '🎨', 'HTML5', 'React', '♿', 'Node.js / Express'];

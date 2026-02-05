@@ -36,7 +36,7 @@ export const timelineData: TimelineEvent[] = timelineDataRu.map((ruEvent, index)
 // Sort timeline data by year and alternate between career and technology events
 export const sortedTimelineData = (() => {
   // First, sort by year
-  const sortedByYear = timelineData.sort((a, b) => a.year - b.year);
+  const sortedByYear = [...timelineData].sort((a, b) => a.year - b.year);
 
   // Group events by year
   const eventsByYear: { [year: number]: TimelineEvent[] } = {};

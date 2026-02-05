@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 
 import { Download, Copy, Check, AlertCircle, Zap } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import NavigationButtons from '@/components/navigation-buttons';
 
 export function SVGOptimizerPageClient() {

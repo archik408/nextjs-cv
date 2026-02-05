@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import NavigationButtons from '@/components/navigation-buttons';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import ArticleTitle from '@/components/article-title';
 import Image from 'next/image';
 import { ImageLightbox } from '@/components/image-lightbox';

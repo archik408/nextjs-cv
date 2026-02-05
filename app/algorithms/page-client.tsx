@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { Github, ExternalLink } from 'lucide-react';
 import { useEffect } from 'react';
 

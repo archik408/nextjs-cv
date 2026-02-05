@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { TechIcon } from './tech-icon';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 

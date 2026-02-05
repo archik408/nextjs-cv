@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { ELanguage } from '@/constants/enums';
 
 interface CertificateRibbonProps {

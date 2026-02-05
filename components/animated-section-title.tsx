@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { AnimatedText } from '@/components/animated-text';
-import { useAnimationPreferences } from '@/lib/use-animation-preferences';
+import { useAnimationPreferences } from '@/lib/hooks/use-animation-preferences';
 
 interface AnimatedSectionTitleProps {
   text: string;

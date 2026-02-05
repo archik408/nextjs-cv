@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import { Code2, Boxes, Trophy, BookOpen } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 import { AnimatedAboutText } from '@/components/animated-about-text';
 

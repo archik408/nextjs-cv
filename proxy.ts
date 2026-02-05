@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
 
   // Additional security headers that can't be set in next.config.ts
@@ -82,7 +82,7 @@ function generateNonce(): string {
   return Buffer.from(array).toString('base64');
 }
 
-// Configure which paths the middleware runs on
+// Configure which paths the proxy runs on
 export const config = {
   matcher: [
     /*

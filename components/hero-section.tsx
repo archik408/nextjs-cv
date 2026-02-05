@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, NotebookText, Mail, Send, Wrench, Sprout } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import ArticleTitle from '@/components/article-title';
 import { AVATAR_PLACEHOLDER } from '@/lib/avatar-placeholder';
 import Link from 'next/link';

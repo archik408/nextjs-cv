@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { Share2, Linkedin, Twitter, Mail, Facebook, Send } from 'lucide-react';
 import { VkIcon } from '@/components/icons/vk';
 import { ThreadsIcon } from '@/components/icons/threads';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 
 type SharePanelProps = {
   title: string;

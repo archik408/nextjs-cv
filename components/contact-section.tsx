@@ -1,7 +1,7 @@
 'use client';
 
 import { Mail, Linkedin } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import Player from '@/components/lottie-player';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 

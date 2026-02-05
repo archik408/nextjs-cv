@@ -2,8 +2,8 @@
 import { ELanguage } from '@/constants/enums';
 
 import { Globe2 } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
-import { useLanguage as useT } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
+import { useLanguage as useT } from '@/lib/hooks/use-language';
 
 export function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();

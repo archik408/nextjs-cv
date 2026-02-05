@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import type { GardenNote } from '@/lib/garden';
 import { formatDate } from '@/utils/date';
 import { Sprout, ExternalLink } from 'lucide-react';

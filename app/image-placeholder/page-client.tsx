@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import NavigationButtons from '@/components/navigation-buttons';
 import { Copy, Check, Image as ImageIcon, Link2, Boxes } from 'lucide-react';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 
 export function ImagePlaceholderClient() {
   const { t } = useLanguage();

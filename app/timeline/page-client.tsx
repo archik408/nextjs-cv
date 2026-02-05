@@ -5,7 +5,7 @@ import { sortedTimelineData, TimelineEvent } from '@/constants/timeline';
 import { ArrowLeft, Calendar, User, Code, Home } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useLanguage } from '@/lib/use-language';
+import { useLanguage } from '@/lib/hooks/use-language';
 import { translations } from '@/lib/translations';
 import NavigationButtons from '@/components/navigation-buttons';
 
