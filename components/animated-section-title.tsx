@@ -27,14 +27,14 @@ export function AnimatedSectionTitle({
   const titleRef = useRef<HTMLHeadingElement>(null);
   const { shouldAnimate, detectionComplete } = useAnimationPreferences();
 
-  // Intersection Observer для отслеживания появления заголовка
+  // Use Intersection Observer to detect when the heading enters the viewport
   useEffect(() => {
-    // Ждем завершения определения настроек
+    // Wait until user animation preferences are detected
     if (!detectionComplete) {
       return;
     }
 
-    // Если анимации отключены, сразу показываем текст
+    // If animations are disabled in user preferences, show text immediately
     if (!shouldAnimate) {
       setIsVisible(true);
       return;
@@ -52,13 +52,15 @@ export function AnimatedSectionTitle({
       }
     );
 
-    if (titleRef.current) {
-      observer.observe(titleRef.current);
+    const node = titleRef.current;
+
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (titleRef.current) {
-        observer.unobserve(titleRef.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, [threshold, rootMargin, shouldAnimate, detectionComplete]);

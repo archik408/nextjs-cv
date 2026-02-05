@@ -20,17 +20,18 @@ export function AboutSection() {
   const isDesktopRef = useRef(false);
 
   useEffect(() => {
-    // Проверка размера экрана
+    // Check current viewport width to determine if we should apply scroll-based scaling
     const checkDesktop = () => {
       const desktop = window.innerWidth >= 768;
       setIsDesktop(desktop);
       isDesktopRef.current = desktop;
     };
 
+    // Initialize desktop state on mount
     checkDesktop();
     window.addEventListener('resize', checkDesktop);
 
-    // Функция для вычисления масштаба на основе скролла
+    // Adjust Lottie illustration scale based on scroll progress through the section
     const handleScroll = () => {
       if (!isDesktopRef.current || !sectionRef.current || !lottieContainerRef.current) {
         return;
@@ -40,8 +41,8 @@ export function AboutSection() {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Вычисляем прогресс скролла через секцию
-      // Когда секция входит в viewport, начинаем увеличивать масштаб
+      // Calculate scroll progress through the section.
+      // When the section enters the viewport, gradually increase the scale.
       const sectionTop = rect.top;
       const sectionHeight = rect.height;
       const scrollProgress = Math.max(
@@ -49,7 +50,7 @@ export function AboutSection() {
         Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight))
       );
 
-      // Масштаб от 0.8 до 1.7 при скролле
+      // Scale from 0.8 to 1.7 while scrolling through the section
       const newScale = 0.8 + scrollProgress * 0.9;
       setScale(newScale);
     };
