@@ -386,6 +386,10 @@ body {
 }
 
 /* Focus styles for accessibility */
+:focus {
+  --tw-ring-color: transparent;
+  outline: none;
+}
 :focus-visible {
   outline: 4px dotted var(--primary-color);
   outline-offset: 2px;
@@ -584,7 +588,7 @@ img {
       rgba(255, 255, 255, 0) 60%
     ),
     /* elongated streak */
-      linear-gradient(
+    linear-gradient(
         var(--glare-rot),
         rgba(255, 255, 255, calc(var(--glare-o) * 0.35)) 0%,
         rgba(255, 255, 255, 0) 60%

@@ -15,6 +15,7 @@ import {
   RefreshCcw,
   GitBranch,
   Bot,
+  BookOpen,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 
@@ -64,6 +65,18 @@ export function ToolsPageClient() {
       href: '/ocr',
       status: 'ready',
       color: 'blue',
+      isExternal: false,
+    },
+    {
+      id: 'braille-converter',
+      title: t.brailleConverterTitle || 'Braille Converter',
+      description:
+        t.brailleConverterToolDesc ||
+        'Convert text to Braille and back. Russian, Belarusian, English.',
+      icon: BookOpen,
+      href: '/braille-converter',
+      status: 'ready',
+      color: 'indigo',
       isExternal: false,
     },
     {

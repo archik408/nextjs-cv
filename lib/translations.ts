@@ -520,6 +520,26 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Tools Page - Image Placeholder
     imgPhToolTitle: 'Image Placeholder',
     imgPhToolDesc: 'Generate placeholder URLs with custom size or random illustration',
+    // Braille Converter Page
+    brailleConverterTitle: 'Braille Converter',
+    brailleConverterDesc:
+      'Convert text to Braille and back. Supports Russian, Belarusian, and English.',
+    brailleConverterToolDesc: 'Convert text to Braille and back. Russian, Belarusian, English.',
+    brailleLanguage: 'Language',
+    brailleDirection: 'Direction',
+    brailleToBraille: 'Text → Braille',
+    brailleFromBraille: 'Braille → Text',
+    brailleInputText: 'Text',
+    brailleInputBraille: 'Braille',
+    brailleOutputText: 'Text',
+    brailleOutputBraille: 'Braille',
+    braillePlaceholderText: 'Enter text...',
+    braillePlaceholderBraille: 'Paste Braille (e.g. ⠠⠗⠥⠎⠎⠅⠊⠯)...',
+    brailleCopy: 'Copy',
+    brailleCopied: 'Copied',
+    brailleLangRussian: 'Russian',
+    brailleLangBelarusian: 'Belarusian',
+    brailleLangEnglish: 'English',
     // React Fiber Page
     reactFiberTitle: 'React Fiber & JSX Parser',
     reactFiberDescription:
@@ -1225,6 +1245,27 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Tools Page - Image Placeholder
     imgPhToolTitle: 'Image Placeholder',
     imgPhToolDesc: 'Генерирует URL плейсхолдера с нужным размером или случайной иллюстрацией',
+    // Braille Converter Page
+    brailleConverterTitle: 'Конвертер Брайля',
+    brailleConverterDesc:
+      'Перевод текста в шрифт Брайля и обратно. Поддержка русского, белорусского и английского.',
+    brailleConverterToolDesc:
+      'Перевод текста в шрифт Брайля и обратно. Русский, белорусский, английский.',
+    brailleLanguage: 'Язык',
+    brailleDirection: 'Направление',
+    brailleToBraille: 'Текст → Брайль',
+    brailleFromBraille: 'Брайль → Текст',
+    brailleInputText: 'Текст',
+    brailleInputBraille: 'Брайль',
+    brailleOutputText: 'Текст',
+    brailleOutputBraille: 'Брайль',
+    braillePlaceholderText: 'Введите текст...',
+    braillePlaceholderBraille: 'Вставьте Брайль (напр. ⠠⠗⠥⠎⠎⠅⠊⠯)...',
+    brailleCopy: 'Копировать',
+    brailleCopied: 'Скопировано',
+    brailleLangRussian: 'Русский',
+    brailleLangBelarusian: 'Белорусский',
+    brailleLangEnglish: 'Английский',
     // Event Loop Page
     eventLoopTitle: 'JavaScript Event Loop',
     eventLoopDescription:

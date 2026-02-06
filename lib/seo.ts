@@ -144,6 +144,16 @@ export const seoConfigs = {
     type: 'website',
     locale: 'en',
   },
+  brailleConverter: {
+    title: 'Braille Converter - Text to Braille and Back',
+    description:
+      'Convert text to Braille and Braille to text. Supports Russian, Belarusian, and English. Uses Unicode Braille patterns.',
+    keywords:
+      'Braille, Braille converter, text to Braille, Braille to text, Russian Braille, accessibility',
+    path: '/braille-converter',
+    type: 'website',
+    locale: 'en',
+  },
   eventLoop: {
     title: 'JavaScript Event Loop Visualization',
     description:
