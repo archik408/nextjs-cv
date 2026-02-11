@@ -69,7 +69,7 @@ export const translations = {
       'The content and text on the site were refined, with more information and external links to articles, publications, and social networks added.',
     timeMachine2025Description:
       'Complete overhaul of the website to Next.js with server-side rendering and migration to Vercel. The goal was not only to present content with comprehensive information about me as a specialist, but also to demonstrate my skills as a designer and frontend engineer right here. The website also became a sandbox to work with an AI assistant. Beyond the portfolio, the site now features a digital garden, career timeline, and numerous experiments in the form of online tools.',
-    role: 'Web UI/UX Engineer',
+    role: 'T-Shaped Web Engineer | 15+ Yrs',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
     aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and school Computer Science teacher, and then fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
@@ -80,7 +80,7 @@ I've been trusted to deliver solutions for industry giants like Daimler and SAP,
 Now, I've come full circle: I'm passing on the logic and joy of creation to the next generation by teaching my children to code in <em>Scratch</em>, <em>MakeCode</em> and <em>Blockly</em>.`,
     cleanCode: 'Clean Code',
     cleanCodeDesc:
-      'Writing maintainable and scalable code based on <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr> and <abbr title="Don\'t Repeat Yourself">DRY</abbr> principles',
+      'Writing maintainable and scalable code based on <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr>, <abbr title="Easy to Change">ETC</abbr> and <abbr title="Don\'t Repeat Yourself">DRY</abbr> principles',
     components: 'Components',
     componentsDesc: 'Building reusable, accessible, responsive and user-friendly UI components',
     bestPractices: 'Best Practices',
@@ -742,7 +742,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Был проработан контент и текст на сайте, появилось больше информации и внешние ссылки на статьи, публикации и социальные сети.',
     timeMachine2025Description:
       'Полная переработка веб-сайта на Next.js с серверным рендерингом и переезд на Vercel. Задача была не только оформить контент с полной информацией обо мне как о специалисте, но также продемонстрировать свои навыки дизайнера и фронтенд инженера прямо тут. При этом веб-сайт стал песочницей, чтобы поработать с ИИ ассистентом. На сайте помимо портфолио появился цифровой сад, таймлайн карьеры и множество экспериментов в виде онлайн инструментов.',
-    role: 'Web UI/UX Engineer',
+    role: 'T-Shaped Web Engineer | 15+ Yrs',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',
     aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
@@ -753,7 +753,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
 Теперь я замкнул круг: передаю опыт и радость творчества следующему поколению, обучая своих детей программированию на <em>Scratch</em>, <em>MakeCode</em> и <em>Blockly</em>.`,
     cleanCode: 'Чистый код',
     cleanCodeDesc:
-      'Написание поддерживаемого и масштабируемого кода на основе принципов <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr> и <abbr title="Don\'t Repeat Yourself">DRY</abbr>',
+      'Написание поддерживаемого и масштабируемого кода на основе принципов <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr>, <abbr title="Easy to Change">ETC</abbr> и <abbr title="Don\'t Repeat Yourself">DRY</abbr>',
     components: 'Компоненты',
     componentsDesc: 'Создание переиспользуемых, доступных и адаптивных UI компонентов',
     bestPractices: 'Лучшие практики',

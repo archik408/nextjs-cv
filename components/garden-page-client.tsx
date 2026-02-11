@@ -6,7 +6,7 @@ import type { GardenNote } from '@/lib/garden';
 import { getAllTagsFromNotes, filterNotesByTag } from '@/lib/garden-utils';
 import { GardenTagLink } from '@/components/garden-tag-link';
 import ArticleTitle from '@/components/article-title';
-import { Sprout } from 'lucide-react';
+import { Rss, Sprout } from 'lucide-react';
 
 type Props = {
   notes: GardenNote[];
@@ -56,8 +56,18 @@ export function GardenPageClient({ notes, title, description }: Props) {
       <main className="min-w-0 flex-1 lg:order-2">
         {title && <ArticleTitle text={title} />}
         {description && (
-          <p className="mb-8 text-neutral-600 dark:text-neutral-300">{description}</p>
+          <p className="mb-4 text-neutral-600 dark:text-neutral-300">{description}</p>
         )}
+        <p className="mb-8 text-sm text-neutral-600 dark:text-neutral-400">
+          <Link
+            href="/garden/rss.xml"
+            className="inline-flex items-center gap-2 rounded-md border border-orange-300 bg-orange-50 px-3 py-1.5 text-orange-900 transition hover:bg-orange-100 dark:border-orange-500/60 dark:bg-orange-950/40 dark:text-orange-100 dark:hover:bg-orange-900/60"
+            aria-label="RSS-лента Digital Garden — подписаться"
+          >
+            <Rss className="h-4 w-4" aria-hidden="true" />
+            <span>RSS-лента Digital Garden</span>
+          </Link>
+        </p>
         {activeTag && (
           <p className="mb-6 text-sm text-neutral-600 dark:text-neutral-400">
             Фильтр по тегу: <strong>#{activeTag}</strong>{' '}

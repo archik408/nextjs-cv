@@ -13,7 +13,7 @@ export const createPersonSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Artur Basak',
-  jobTitle: 'Web UI/UX Engineer',
+  jobTitle: 'T-Shaped Web Engineer | 15+ Yrs',
   url: 'https://arturbasak.dev',
   image: 'https://arturbasak.dev/avatar.jpeg',
   sameAs: [
@@ -86,7 +86,7 @@ export const createWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Artur Basak Portfolio',
-  description: 'Web UI/UX Engineer portfolio and publications',
+  description: 'T-Shaped Web Engineer portfolio and publications',
   url: 'https://arturbasak.dev',
   author: {
     '@type': 'Person',

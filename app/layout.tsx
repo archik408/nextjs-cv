@@ -21,7 +21,7 @@ const jetbrainsMonoFont = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Artur Basak - Web UI/UX Engineer & Frontend Architect',
+  title: 'Artur Basak - T-Shaped Web Engineer & Frontend Architect | 15+ Yrs',
   description:
     'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development. Specializing in JavaScript, React, Node.js, and Progressive Web Apps (PWA).',
   keywords:
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Artur Basak - Web UI/UX Engineer & Frontend Architect',
+    title: 'Artur Basak - T-Shaped Web Engineer & Frontend Architect | 15+ Yrs',
     description:
       'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development.',
     url: 'https://arturbasak.dev',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
         url: '/avatar.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Artur Basak - Web UI/UX Engineer & Frontend Architect',
+        alt: 'Artur Basak - T-Shaped Web Engineer & Frontend Architect | 15+ Yrs',
       },
     ],
     locale: 'en_US',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Artur Basak - Web UI/UX Engineer & Frontend Architect',
+    title: 'Artur Basak - T-Shaped Web Engineer & Frontend Architect | 15+ Yrs',
     description:
       'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development.',
     images: ['/avatar.jpeg'],
@@ -89,7 +89,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Artur Basak',
-    jobTitle: 'Artur Basak - Web UI/UX Engineer & Frontend Architect',
+    jobTitle: 'Artur Basak - T-Shaped Web Engineer & Frontend Architect | 15+ Yrs',
     url: 'https://arturbasak.dev',
     image: 'https://arturbasak.dev/avatar.jpeg',
     sameAs: [
