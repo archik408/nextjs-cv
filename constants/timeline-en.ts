@@ -407,6 +407,13 @@ export const timelineDataEn = [
     category: 'career' as const,
     image: '/timeline/google-ux-design.png',
   },
+  {
+    year: 2026,
+    title: 'X5 Tech',
+    description: 'Moved to X5 Tech as web development lead',
+    category: 'career' as const,
+    image: '/timeline/x5tech.jpg',
+  },
 
   // Technology milestones (right side)
   {

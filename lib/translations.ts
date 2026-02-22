@@ -128,17 +128,27 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     experience: 'Experience',
     experiences: [
       {
+        role: 'Web Development Lead',
+        company: 'X5 Tech',
+        period: '2026 - Present',
+        listDescription: [
+          'Leading the development of a hybrid mobile application (Native + WebView) for one of the largest grocery retail groups globally with MAU 20+ millions using React.js and PWA',
+          'Implementing mystery shopping functionality that achieving more than 70% geographic coverage of stores, significantly reducing OPEX',
+          'Designing and implementing offline functionality for the app that increasing user retention and reducing attrition based on ServiceWorker API/Workbox, IndexedDB and Dixie.js',
+          'Increasing NPS by improving UI based on A/B Testing and UX Interviews & Research',
+          'Integrating advanced web technologies to deliver a seamless cross-platform experience for both iOS and Android, ensuring high performance and scalability with a lot of modern Fugu APIs like View Transition API, Vibration API, Geolocation API, Web Share, modern CSS and Lottie animations',
+          'Organize continuous monitoring and surveillance of the frontend system using Sentry and other tools to improve stability, Core Web Vitals, and quality',
+          'Participating in AI/LLM integration for data moderation through Computer Vision and fraud detection',
+          'Collaborating closely with cross-functional teams to align the application with business goals, resulting in improved user engagement and operational efficiency',
+          'Maintain and support side projects like admin/moderation application based on React-Admin and mock Bun server plus a bunch of landing pages based on SSR/Next.js',
+        ],
+      },
+      {
         role: 'Senior Software Engineer',
         company: 'IntexSoft',
         period: '2022 - 2026',
         listDescription: [
-          'Led the development of a hybrid mobile application using React.js, PWA, and Fugu API for one of the largest grocery retail groups globally, operating 20k+ convenience stores with MAU ~20 million',
-          'Implemented offline functionality for the app, thereby increasing user retention and reducing attrition based on ServiceWorker API/Workbox, IndexedDB and Dixie.js',
-          'Increased NPS by improving UI based on A/B Testing and UX Interviews & Research',
-          'Integrated advanced web technologies to deliver a seamless cross-platform experience for both iOS and Android, ensuring high performance and scalability with a lot of modern APIs like View Transition API, Vibration API, Geolocation API, Web Share and Lottie animations',
-          'Participated in AI/LLM integration for moderation and fraud detection',
-          'Collaborated closely with cross-functional teams to align the application with business goals, resulting in improved user engagement and operational efficiency',
-          'Implemented side projects like admin/moderation application based on React-Admin and mock Bun server plus a bunch of landing pages based on SSR/Next.js',
+          'Worked as a Senior/Lead Front-End Web Developer on several client projects (including one of the largest grocery retail groups in the world), focusing on user experience, performance, accessibility, and design systems, in addition to core business logic.',
         ],
       },
       {
@@ -802,17 +812,27 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     experience: 'Опыт работы',
     experiences: [
       {
+        role: 'Руководитель команды разработки',
+        company: 'X5 Tech',
+        period: '2026 - настоящее время',
+        listDescription: [
+          'Руководство разработкой гибридного мобильного приложения (Native + WebView) для одной из крупнейших розничных сетей продуктовых магазинов в мире с ежемесячной активностью более 20 миллионов пользователей с использованием React.js и PWA.',
+          'Внедрение функции «тайного покупателя», обеспечивающей более 70% географического охвата магазинов, что значительно снижает операционные расходы.',
+          'Разработка и внедрение офлайн-функционала для приложения, повышающего удержание пользователей и снижающего отток на основе API ServiceWorker/Workbox, IndexedDB и Dixie.js.',
+          'Повышение NPS за счет улучшения пользовательского интерфейса на основе A/B-тестирования и UX-интервью и исследований.',
+          'Интеграция передовых веб-технологий для обеспечения бесперебойной кроссплатформенной работы как для iOS, так и для Android, гарантирующая высокую производительность и масштабируемость с использованием множества современных API Fugu, таких как View Transition API, Vibration API, Geolocation API, Web Share, современные CSS и анимации Lottie.',
+          'Организация непрерывного мониторинга и наблюдения за фронтенд-системой с использованием Sentry и других инструментов для повышения стабильности, Core Web Vitals и качества.',
+          'Участие в интеграции ИИ/LLM для модерации данных с помощью компьютерного зрения и выявления мошенничества. обнаружение',
+          'Тесное сотрудничество с межфункциональными командами для согласования приложения с бизнес-целями, что приводит к улучшению вовлеченности пользователей и операционной эффективности.',
+          'Поддержка и развитие побочных проектов, таких как приложение для администрирования/модерации на основе React-Admin и имитационный сервер Bun, а также ряд целевых страниц на основе SSR/Next.js.',
+        ],
+      },
+      {
         role: 'Senior Software Engineer',
         company: 'IntexSoft',
         period: '2022 - 2026',
         listDescription: [
-          'Руководил разработкой гибридного мобильного приложения с использованием React.js, PWA и Fugu API для одной из крупнейших розничных сетей продуктовых магазинов в мире, включающей более 20 000 магазинов и с ежемесячной аудиторией около 20 миллионов пользователей',
-          'Реализовал оффлайн функционал для приложения, тем самым повысив удержание и уменьшив отток пользователей из-за плохого интернета благодаря технологиям ServiceWorker API/Workbox, IndexedDB и Dixie.js',
-          'Увеличил показатели NPS благодаря улучшениям UI на основе A/B тестирования и UX интервью',
-          'Интегрировал передовые веб-технологии для создания бесшовного кросс-платформенного опыта на iOS и Android, обеспечивая высокую производительность и масштабируемость вместе с современными Web API: View Transition API, Vibration API, Geolocation API, Web Share и Lottie анимациями',
-          'Участвовал в интеграции AI/LLM для модерации и обнаружения мошенничества',
-          'Тесно сотрудничал с кросс-функциональными командами для согласования разработки приложения с бизнес-целями, что привело к повышению вовлеченности пользователей и операционной эффективности',
-          'Разрабатывал сторонние проекты, такие как приложение администратора/модератора на основе React-Admin с сервером Bun и ряд лендингов на основе Next.js',
+          'Работал старшим/ведущим фронтенд-разработчиком веб-приложений над несколькими клиентскими проектами (включая одну из крупнейших розничных сетей продуктовых магазинов в мире), уделяя особое внимание пользовательскому опыту, производительности, доступности и системам дизайна, а также основной бизнес-логике.',
         ],
       },
       {

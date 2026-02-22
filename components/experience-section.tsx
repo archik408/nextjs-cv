@@ -13,6 +13,7 @@ export function ExperienceSection() {
   const previewCount = 2;
 
   const companyUrlMap: Record<string, string> = {
+    'X5 Tech': 'https://x5.tech',
     IntexSoft: 'https://intexsoft.com',
     'Godel Technologies': 'https://www.godeltech.com',
     'Indy (ex-Tispr)': 'https://www.tispr.com',
