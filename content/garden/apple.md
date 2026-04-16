@@ -69,3 +69,4 @@ tags: [books, it, apple]
 ### Связанные заметки
 
 - [[IBM: История, рассказанная бухгалтером](/garden/ibm)]
+- [[Книга «Программист-прагматик»](/garden/pragmatic-programmer-book)]
