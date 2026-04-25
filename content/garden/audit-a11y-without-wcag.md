@@ -46,7 +46,7 @@ tags: [a11y, accessibility, wcag, programming, audit, skip-links]
 Для команды разработки создание базового варианта такой страницы — [задача, которая почти ничего не стоит](https://www.w3.org/WAI/planning/statements/generator/#create), но сразу добавляет прозрачности и доверия.
 
 Пример Accessibility Statement:
-![McDonald's Accessibility Statement](/garden/audit/accessibility-statement.png)
+![McDonald's Accessibility Statement](/garden/audit/accessibility-statement.webp)
 
 Конечно, отличная доступность сайта — это прежде всего качественная реализация «под капотом», а не наличие красивого заявления. Фундаментально, сайт может быть полностью доступен без этого документа и этих шаблонов.
 
@@ -65,7 +65,7 @@ tags: [a11y, accessibility, wcag, programming, audit, skip-links]
 [Эта простая и популярная практика](/garden/skip-links) позволяет пользователям скринридеров и клавиатуры сразу переходить к контенту, минуя повторяющиеся блоки навигации.
 
 Пример Skip Links:
-![McDonald's Skip Links](/garden/skip-links/mac.png)
+![McDonald's Skip Links](/garden/skip-links/mac.webp)
 
 ### 2. Цвет и контраст
 
@@ -75,7 +75,7 @@ tags: [a11y, accessibility, wcag, programming, audit, skip-links]
 - Убеждаемся, что цвет — не единственный источник информации, желательно чтобы обратная связь была усилена текстом.
 
 Проверка контраста веб-сайта:
-![Проверка контраста McDonald's](/garden/audit/color-contrast.png)
+![Проверка контраста McDonald's](/garden/audit/color-contrast.webp)
 
 ### 3. Навигация с клавиатуры
 
@@ -98,7 +98,7 @@ document.body.style = 'filter: blur(5px) !important;
 - Активируем скринридер (в моем случае это VoiceOver, но отталкиваясь от вашей ОС это может быть любой популярный: NVDA, JAWS, Narrator, Orca) и пытаемся выполнить базовые задачи с озвучкой и клавиатурой
 
 Проверка веб-сайта с VoiceOver:
-![Проверка McDonald's с VoiceOver](/garden/audit/voice-over.png)
+![Проверка McDonald's с VoiceOver](/garden/audit/voice-over.webp)
 
 ### 5. Автоматизированное сканирование
 
@@ -111,10 +111,10 @@ document.body.style = 'filter: blur(5px) !important;
 - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview?hl=ru) и [ARC Toolkit](https://www.tpgi.com/arc-platform/arc-toolkit/) - как доп. проверка после axe
 
 Проверка веб-сайта с axe DevTools:
-![Проверка McDonald's с axe DevTools](/garden/audit/axe.png)
+![Проверка McDonald's с axe DevTools](/garden/audit/axe.webp)
 
 Проверка веб-сайта с WAVE:
-![Проверка McDonald's с WAVE](/garden/audit/wave.png)
+![Проверка McDonald's с WAVE](/garden/audit/wave.webp)
 
 Они ловят технические ошибки: отсутствие alt-текстов, некорректный HTML, ошибки ARIA, несоответствие WCAG. Вам даже не надо глубоко знать все эти спецификации, инструменты сами подскажут что нужно поправить для соответствия.
 

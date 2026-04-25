@@ -32,10 +32,10 @@ tags: [opensource,career,programming,mental-model]
 Мои самые насыщенные "квадратики" живут в приватном репозитории. Их там много, и я ими горжусь, даже если никто их не видит. И это не делает меня или кого-либо еще хуже разработчиков с яркими публичными профилями.
 
 Публичный GitHub:
-![Public GitHub Activity](/garden/github.png)
+![Public GitHub Activity](/garden/github.webp)
 
 Приватный GitLab:
-![Private GitLab Activity](/garden/gitlab.png)
+![Private GitLab Activity](/garden/gitlab.webp)
 
 ---
 

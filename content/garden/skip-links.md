@@ -53,16 +53,16 @@ Skip links (ссылки для пропуска) — функциональны
 ## Примеры в дикой природе
 
 Google Search
-![Google Search](/garden/skip-links/google.png)
+![Google Search](/garden/skip-links/google.webp)
 McDonald's
-![McDonald's](/garden/skip-links/mac.png)
+![McDonald's](/garden/skip-links/mac.webp)
 WCAG guidelines сайты
 (тут, кстати, панель со ссылками пропуска всегда видна и не прячется)
-![WCAG guidelines](/garden/skip-links/wai.png)
+![WCAG guidelines](/garden/skip-links/wai.webp)
 Microsoft Learn
-![Microsoft Learn](/garden/skip-links/microsoft.png)
+![Microsoft Learn](/garden/skip-links/microsoft.webp)
 Figma
-![Figma](/garden/skip-links/figma.png)
+![Figma](/garden/skip-links/figma.webp)
 
 ---
 
