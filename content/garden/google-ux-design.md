@@ -22,6 +22,6 @@ tags: [design, mental-model, ux, a11y, accessibility]
 - Обладать здоровой самооценкой и понимать свою ценность.
 - Не бояться заявлять о себе и своих успехах.
 
-![Сертификат Google UX Design 2025](/certificates/google-ux-design.png)
+![Сертификат Google UX Design 2025](/certificates/google-ux-design.webp)
 
 P.S. Без темы доступности (accessibility) на курсах не обошлось! Что-то повторил, что-то узнал новое)

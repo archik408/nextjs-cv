@@ -24,7 +24,7 @@ export function FunActivitiesSection() {
       isExternal: true,
       images: [
         {
-          src: '/art-gallery.png',
+          src: '/art-gallery.webp',
           alt: 'Art gallery exhibition featuring fantasy illustrations and mythological characters',
         },
       ],
@@ -52,7 +52,7 @@ export function FunActivitiesSection() {
       color: 'text-orange-400',
       href: '/garden?tag=дети',
       isExternal: false,
-      images: [{ src: '/scratch.jpg', alt: 'Kids Programming' }],
+      images: [{ src: '/scratch.webp', alt: 'Kids Programming' }],
     },
     {
       id: 'cycling',
@@ -60,7 +60,7 @@ export function FunActivitiesSection() {
       description: t.cycleDesc,
       icon: Bike,
       color: 'text-green-500',
-      images: [{ src: '/cycling.jpg', alt: 'Cycling family trip' }],
+      images: [{ src: '/cycling.webp', alt: 'Cycling family trip' }],
     },
     {
       id: 'batmobiles',
@@ -68,7 +68,7 @@ export function FunActivitiesSection() {
       description: t.batmobileDesc,
       icon: Car,
       color: 'text-indigo-600',
-      images: [{ src: '/batman.jpg', alt: 'Batmobiles collection inspired by DC Comics' }],
+      images: [{ src: '/batman.webp', alt: 'Batmobiles collection inspired by DC Comics' }],
     },
   ];
 
@@ -115,7 +115,7 @@ export function FunActivitiesSection() {
             onAnimationEnd={() => setIsCarRunning(false)}
           >
             <img
-              src="/batmobile.png"
+              src="/batmobile.webp"
               alt=""
               className="w-56 md:w-64 h-auto"
               style={{

@@ -207,7 +207,7 @@ export function ResumeDocument({ lang }: Props) {
           <View style={styles.header}>
             <Image
               style={styles.avatar}
-              src="https://arturbasak.dev/avatar.jpeg"
+              src="https://arturbasak.dev/avatar.webp"
               // @ts-expect-error
               alt="Artur Basak"
             />

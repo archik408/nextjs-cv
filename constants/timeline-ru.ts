@@ -5,14 +5,14 @@ export const timelineDataRu = [
     title: 'Рождение',
     description: '4 августа 1991 года родился в г. Барановичи, Беларусь',
     category: 'career' as const,
-    image: '/back-bg.jpg',
+    image: '/back-bg.webp',
   },
   {
     year: 1991,
     title: 'World Wide Web',
     description: 'Тим Бернерс-Ли создал World Wide Web, заложив основы современного интернета',
     category: 'technology' as const,
-    image: '/timeline/w3c.png',
+    image: '/timeline/w3c.webp',
   },
   {
     year: 1998,
@@ -20,7 +20,7 @@ export const timelineDataRu = [
     description:
       'Пошел в первый класс гимназии №1 г. Барановичи, где учился в физико-математическом классе',
     category: 'career' as const,
-    image: '/timeline/gimnasium.png',
+    image: '/timeline/gimnasium.webp',
   },
   {
     year: 1999,
@@ -28,14 +28,14 @@ export const timelineDataRu = [
     description:
       'Впервые увидел и сел за компьютер у крестного на работе, играл в сапера на Windows 95',
     category: 'career' as const,
-    image: '/timeline/saper.jpg',
+    image: '/timeline/saper.webp',
   },
   {
     year: 2000,
     title: 'Приставка Dendy',
     description: 'Появилась приставка Dendy, которая привила любовь к 8-битным играм на всю жизнь',
     category: 'career' as const,
-    image: '/timeline/mario.png',
+    image: '/timeline/mario.webp',
   },
   {
     year: 2002,
@@ -43,7 +43,7 @@ export const timelineDataRu = [
     description:
       'Попал в кабинет информатики в школе и написал свой первый код на Turbo Pascal 7.0 с модулями CRT и GRAPH',
     category: 'career' as const,
-    image: '/timeline/pascal.jpg',
+    image: '/timeline/pascal.webp',
   },
   {
     year: 2003,
@@ -51,14 +51,14 @@ export const timelineDataRu = [
     description:
       'Мама купила Intel Pentium III с Window 2000, ZyXEL Dial-up и CTX монитором, и появилась возможность программировать дома',
     category: 'career' as const,
-    image: '/timeline/windows-2000.jpg',
+    image: '/timeline/windows-2000.webp',
   },
   {
     year: 2005,
     title: 'Городская олимпиада г. Барановичи',
     description: 'Принял участие в городской олимпиаде по информатике и занял второе место',
     category: 'career' as const,
-    image: '/timeline/baranovichi.png',
+    image: '/timeline/baranovichi.webp',
   },
   {
     year: 2006,
@@ -66,7 +66,7 @@ export const timelineDataRu = [
     description:
       'Под руководством учителя информатики Шевченко Т.Г. участвовал в составе команды на Московской олимпиаде ОСО-2006',
     category: 'career' as const,
-    image: '/timeline/oco-2006.jpeg',
+    image: '/timeline/oco-2006.webp',
   },
   {
     year: 2007,
@@ -74,7 +74,7 @@ export const timelineDataRu = [
     description:
       'Поступил в Технологический Колледж ГрГУ на специальность "Программное обеспечение информационных технологий"',
     category: 'career' as const,
-    image: '/timeline/grodno.png',
+    image: '/timeline/grodno.webp',
   },
   {
     year: 2008,
@@ -82,14 +82,14 @@ export const timelineDataRu = [
     description:
       'Разработал несколько веб-сайтов на PHP и Zend Framework для нескольких организаций и колледжа',
     category: 'career' as const,
-    image: '/timeline/zend.png',
+    image: '/timeline/zend.webp',
   },
   {
     year: 2008,
     title: 'Победа в олимпиаде',
     description: 'Занял первое место во внутриколледжной олимпиаде по информатике',
     category: 'career' as const,
-    image: '/timeline/1-pace.jpeg',
+    image: '/timeline/1-pace.webp',
   },
   {
     year: 2008,
@@ -97,7 +97,7 @@ export const timelineDataRu = [
     description:
       'Принял участие в VI научной конференции со своей программой по симуляции полярной системы координат',
     category: 'career' as const,
-    image: '/timeline/science.jpeg',
+    image: '/timeline/science.webp',
   },
   {
     year: 2009,
@@ -105,14 +105,14 @@ export const timelineDataRu = [
     description:
       'Пересел с Borland Pascal на Borland C++, который останестся моим основным инструментом до конца учебы',
     category: 'career' as const,
-    image: '/timeline/borland.png',
+    image: '/timeline/borland.webp',
   },
   {
     year: 2009,
     title: 'Первый ноутбук',
     description: 'Мне подарили мой первый ноутбук для учебы Toshiba Sitelite A300D 213',
     category: 'career' as const,
-    image: '/timeline/toshiba.jpg',
+    image: '/timeline/toshiba.webp',
   },
   {
     year: 2010,
@@ -120,7 +120,7 @@ export const timelineDataRu = [
     description:
       'Во время практики устроился на позицию QA тестировщика в компанию instinctools EE Labs. Первым проектом стала система документооборота от компании КРОК',
     category: 'career' as const,
-    image: '/timeline/itools.jpeg',
+    image: '/timeline/itools.webp',
   },
   {
     year: 2011,
@@ -128,7 +128,7 @@ export const timelineDataRu = [
     description:
       'Выпуск из колледжа, защита дипломного проекта (багтрекер), написанного на Java и Eclipse RCP/SWT',
     category: 'career' as const,
-    image: '/timeline/diplom.png',
+    image: '/timeline/diplom.webp',
   },
   {
     year: 2011,
@@ -136,7 +136,7 @@ export const timelineDataRu = [
     description:
       'Начал писать первые тесты по автоматизации на Java и Selenium RC для проекта SAP AG и DitaWorks',
     category: 'career' as const,
-    image: '/timeline/ditaworks.png',
+    image: '/timeline/ditaworks.webp',
   },
   {
     year: 2011,
@@ -144,7 +144,7 @@ export const timelineDataRu = [
     description:
       'Волонтерил в составе команды рассылки крупнейшего русскоязычного ресурса о тестировании. Был активным участником форума, готовил материалы и даже засветился в первом бумажном журнале о тестировании ПО на русском языке.',
     category: 'career' as const,
-    image: '/timeline/sqadays11.jpg',
+    image: '/timeline/sqadays11.webp',
   },
   {
     year: 2011,
@@ -152,7 +152,7 @@ export const timelineDataRu = [
     description:
       'Перевелся в отдел разработки. Разработка функционала BIRT (Business Intelligence and Reporting Tools) для Evonik AG на основе Ditaworks и Eclipse RAP',
     category: 'career' as const,
-    image: '/timeline/evonik.png',
+    image: '/timeline/evonik.webp',
   },
   {
     year: 2012,
@@ -160,7 +160,7 @@ export const timelineDataRu = [
     description:
       'Работа над системой менеджмента пользователей Daimler, работал с Java, JSP/JSF, jQuery UI и Selenium',
     category: 'career' as const,
-    image: '/timeline/daimler.png',
+    image: '/timeline/daimler.webp',
   },
   {
     year: 2013,
@@ -168,7 +168,7 @@ export const timelineDataRu = [
     description:
       'Разработка системы управления корпоративным контентом (ECM) для компании «Сибур Холдинг» на базе Documentum ECM, Oracle, Java/JSP и ExtJS 3.5',
     category: 'career' as const,
-    image: '/timeline/emc.png',
+    image: '/timeline/emc.webp',
   },
   {
     year: 2014,
@@ -176,14 +176,14 @@ export const timelineDataRu = [
     description:
       'Разрабатывал ПО Zeus для немецкой нотариальной палаты на фреймворке ExtJS и Java, Spring, Hibernate, BPMN/Activiti',
     category: 'career' as const,
-    image: '/timeline/zeus.png',
+    image: '/timeline/zeus.webp',
   },
   {
     year: 2014,
     title: 'Dell Inspiration 3000 и Linux/Ubuntu',
     description: 'Пересел на ноутбук Dell Inspiration 300 и начал работать в Linux/Ubuntu',
     category: 'career' as const,
-    image: '/timeline/dell.png',
+    image: '/timeline/dell.webp',
   },
   {
     year: 2015,
@@ -191,7 +191,7 @@ export const timelineDataRu = [
     description:
       'Разработка внутренней CRM системы SMART для instinctools EE Labs на Java и Angular.js',
     category: 'career' as const,
-    image: '/timeline/angular.png',
+    image: '/timeline/angular.webp',
   },
   {
     year: 2015,
@@ -199,7 +199,7 @@ export const timelineDataRu = [
     description:
       'Полностью сосредоточился на JavaScript-стэке и попал на проект EquipmentWatch, где разрабатывал приложение на Ember.js и Node.js, MongoDB',
     category: 'career' as const,
-    image: '/timeline/penton.png',
+    image: '/timeline/penton.webp',
   },
   {
     year: 2015,
@@ -207,14 +207,14 @@ export const timelineDataRu = [
     description:
       'Разработка UI на Angular.js для стартапа True Impact, который занимается анализом и аналитикой грантов, благотворительных инвестиций и волонтерской деятельности',
     category: 'career' as const,
-    image: '/timeline/trueimpact.png',
+    image: '/timeline/trueimpact.webp',
   },
   {
     year: 2016,
     title: 'Женитьба на Катерине',
     description: 'Женился на своей жене Катерине',
     category: 'career' as const,
-    image: '/timeline/wife.png',
+    image: '/timeline/wife.webp',
   },
   {
     year: 2016,
@@ -222,14 +222,14 @@ export const timelineDataRu = [
     description:
       'Реализовал UI для мобильной и планшетной версии приложения регистратуры госпиталя используя Tracking.js и Angular',
     category: 'career' as const,
-    image: '/timeline/trackingui.png',
+    image: '/timeline/trackingui.webp',
   },
   {
     year: 2016,
     title: 'Первый Macbook',
     description: 'Приобрел себе Macbook Air и с этого момента полностью пересел на MacOS',
     category: 'career' as const,
-    image: '/timeline/macbook-air.png',
+    image: '/timeline/macbook-air.webp',
   },
   {
     year: 2016,
@@ -237,7 +237,7 @@ export const timelineDataRu = [
     description:
       'Стал руководителем группы разработчиков в instinctools EE Labs и перешел на React.js стэк',
     category: 'career' as const,
-    image: '/timeline/group-lead.jpeg',
+    image: '/timeline/group-lead.webp',
   },
   {
     year: 2016,
@@ -245,14 +245,14 @@ export const timelineDataRu = [
     description:
       'Разработка ряда проектов для топ-3 в мире бизнес-консалтинга на React.js стэке, Node.js, Loopback.io и PostgreSQL',
     category: 'career' as const,
-    image: '/timeline/mckinsey.png',
+    image: '/timeline/mckinsey.webp',
   },
   {
     year: 2017,
     title: 'Рождение дочери Полины',
     description: 'Родилась дочь Полина',
     category: 'career' as const,
-    image: '/timeline/daughter.png',
+    image: '/timeline/daughter.webp',
   },
   {
     year: 2018,
@@ -260,7 +260,7 @@ export const timelineDataRu = [
     description:
       'Выступил на конференции GROCON-18, где рассказал про свой пет-проект GrodnoVR, опыт с ReactVR и виртуальной реальностью',
     category: 'career' as const,
-    image: '/timeline/grocon-18.png',
+    image: '/timeline/grocon-18.webp',
   },
   {
     year: 2018,
@@ -268,42 +268,42 @@ export const timelineDataRu = [
     description:
       'Разрабатывал веб-приложение для немецкого blockchain стартапа Lition Energy, которые создают платформу для покупки зеленой энергии',
     category: 'career' as const,
-    image: '/timeline/lition.png',
+    image: '/timeline/lition.webp',
   },
   {
     year: 2018,
     title: 'Курс веб‑разработки в IT‑Academy',
     description: 'Начал вести курс по разработке веб‑сайтов на HTML, CSS и JavaScript в IT‑Academy',
     category: 'career' as const,
-    image: '/timeline/itacademy.jpeg',
+    image: '/timeline/itacademy.webp',
   },
   {
     year: 2019,
     title: 'Рождение сына Матвея',
     description: 'Родился сын Матвей',
     category: 'career' as const,
-    image: '/timeline/son.png',
+    image: '/timeline/son.webp',
   },
   {
     year: 2019,
     title: 'CSS-Minsk-JS',
     description: 'Посетил уникальную для Минска конференции CSS-Minsk-JS',
     category: 'career' as const,
-    image: '/timeline/minskjs.png',
+    image: '/timeline/minskjs.webp',
   },
   {
     year: 2019,
     title: 'W3Cx Professional Front‑End Web Developer',
     description: 'Получил профессиональный сертификат Front‑End Web Developer от W3Cx',
     category: 'career' as const,
-    image: '/timeline/w3cx.png',
+    image: '/timeline/w3cx.webp',
   },
   {
     year: 2019,
     title: 'Выступление на GROCON-19',
     description: 'Выступил на конференции GROCON-19, где рассказал про Lition Energy',
     category: 'career' as const,
-    image: '/timeline/grocon-19.jpeg',
+    image: '/timeline/grocon-19.webp',
   },
   {
     year: 2019,
@@ -311,14 +311,14 @@ export const timelineDataRu = [
     description:
       'Спустя 9 лет ушел из instinctools EE Labs и начал работу в американском стартапе Tispr в роли React.js разработчика',
     category: 'career' as const,
-    image: '/timeline/tispr.jpeg',
+    image: '/timeline/tispr.webp',
   },
   {
     year: 2019,
     title: 'MacBook Pro Intel i9',
     description: 'Пересел на MacBook Pro Intel i9',
     category: 'career' as const,
-    image: '/timeline/macbook-i9.png',
+    image: '/timeline/macbook-i9.webp',
   },
   {
     year: 2020,
@@ -326,7 +326,7 @@ export const timelineDataRu = [
     description:
       'Реализовал ребрендинг стартапа Tispr в Indy, применив современный подход темизации с CSS Custom Properties и SSR на Next.js',
     category: 'career' as const,
-    image: '/timeline/indy.png',
+    image: '/timeline/indy.webp',
   },
   {
     year: 2020,
@@ -334,7 +334,7 @@ export const timelineDataRu = [
     description:
       'Вышла моя статья о CSS Custom Properties на портале Smashing Magazine под редактированием Rachel Andrew',
     category: 'career' as const,
-    image: '/timeline/smashing.png',
+    image: '/timeline/smashing.webp',
   },
   {
     year: 2020,
@@ -342,7 +342,7 @@ export const timelineDataRu = [
     description:
       'Посетил конференцию WeAreDevelopers, где слушал доклады сэра Тима Бернерса-Ли (создателя Web) и Хокона Виума Ли (создателя CSS)',
     category: 'career' as const,
-    image: '/timeline/wium.jpeg',
+    image: '/timeline/wium.webp',
   },
   {
     year: 2021,
@@ -350,14 +350,14 @@ export const timelineDataRu = [
     description:
       'Перешел в компанию Godel Technologies на позицию менеджера и начал вести корпоративный JS подкаст и канал о веб-доступности',
     category: 'career' as const,
-    image: '/timeline/godel.jpeg',
+    image: '/timeline/godel.webp',
   },
   {
     year: 2022,
     title: 'IntexSoft',
     description: 'Перешел в компанию IntexSoft на позицию ведущего разработчика',
     category: 'career' as const,
-    image: '/avatar-2.png',
+    image: '/avatar-2.webp',
   },
   {
     year: 2022,
@@ -365,7 +365,7 @@ export const timelineDataRu = [
     description:
       'Начал разработку PWA приложения "Клуб Тайных Покупателей" для X5 Group ритейлера с миллионной аудиторией',
     category: 'career' as const,
-    image: '/timeline/mystery-shopper.png',
+    image: '/timeline/mystery-shopper.webp',
   },
   {
     year: 2023,
@@ -373,7 +373,7 @@ export const timelineDataRu = [
     description:
       'Провел несколько митапов внутри IntexSoft о нюансах разработки архитектуры гибридных мобильных приложений',
     category: 'career' as const,
-    image: '/timeline/meetup.png',
+    image: '/timeline/meetup.webp',
   },
   {
     year: 2024,
@@ -381,7 +381,7 @@ export const timelineDataRu = [
     description:
       'Начал программировать со своими детьми на Scratch и Blockly, рассказывать про историю компьютеров и программирования',
     category: 'career' as const,
-    image: '/scratch.jpg',
+    image: '/scratch.webp',
   },
   {
     year: 2025,
@@ -389,14 +389,14 @@ export const timelineDataRu = [
     description:
       'Выступил на JS митапе в X5 Group, рассказал о специфике разработки PWA для оффлайн, IndexedDB и Workbox',
     category: 'career' as const,
-    image: '/avatar-2.jpg',
+    image: '/avatar-2.webp',
   },
   {
     year: 2025,
     title: 'MacBook Pro M4',
     description: 'Пересел на MacBook Pro M4',
     category: 'career' as const,
-    image: '/timeline/macbook-m4.png',
+    image: '/timeline/macbook-m4.webp',
   },
   {
     year: 2025,
@@ -404,14 +404,14 @@ export const timelineDataRu = [
     description:
       'Окончил 7 курсов на Coursera и получил профессионаольный сертификат от Google по UX Design',
     category: 'career' as const,
-    image: '/timeline/google-ux-design.png',
+    image: '/timeline/google-ux-design.webp',
   },
   {
     year: 2026,
     title: 'X5 Tech',
     description: 'Перешел в компанию X5 Tech на позицию руководителя команды разработки',
     category: 'career' as const,
-    image: '/timeline/x5tech.jpg',
+    image: '/timeline/x5tech.webp',
   },
   // Technology milestones (right side)
   {
@@ -420,21 +420,21 @@ export const timelineDataRu = [
     description:
       'Первый популярный графический веб-браузер, который сделал интернет доступным для масс',
     category: 'technology' as const,
-    image: '/timeline/mosaic.png',
+    image: '/timeline/mosaic.webp',
   },
   {
     year: 1995,
     title: 'Opera Browser',
     description: 'Первый релиз браузера Opera от норвежской компании Opera Software',
     category: 'technology' as const,
-    image: '/timeline/opera.png',
+    image: '/timeline/opera.webp',
   },
   {
     year: 1995,
     title: 'JavaScript',
     description: 'Брендан Эйк создал JavaScript за 10 дней для браузера Netscape Navigator',
     category: 'technology' as const,
-    image: '/timeline/js.png',
+    image: '/timeline/js.webp',
   },
   {
     year: 1996,
@@ -442,7 +442,7 @@ export const timelineDataRu = [
     description:
       'W3C принял первую спецификацию CSS, позволившую отделить содержание от оформления веб-страниц',
     category: 'technology' as const,
-    image: '/timeline/w3c.png',
+    image: '/timeline/w3c.webp',
   },
   {
     year: 1997,
@@ -450,7 +450,7 @@ export const timelineDataRu = [
     description:
       'Ecma International опубликовал первую спецификацию ECMAScript (ECMA-262), стандартизировав JavaScript',
     category: 'technology' as const,
-    image: '/timeline/es.png',
+    image: '/timeline/es.webp',
   },
   {
     year: 1998,
@@ -458,7 +458,7 @@ export const timelineDataRu = [
     description:
       'Выпущена спецификация CSS 2.0, которая добавила поддержку позиционирования и медиа-запросов',
     category: 'technology' as const,
-    image: '/timeline/w3c.png',
+    image: '/timeline/w3c.webp',
   },
   {
     year: 1998,
@@ -466,7 +466,7 @@ export const timelineDataRu = [
     description:
       'Начало интенсивной конкуренции между Internet Explorer и Netscape Navigator за доминирование на рынке',
     category: 'technology' as const,
-    image: '/timeline/war.png',
+    image: '/timeline/war.webp',
   },
   {
     year: 2000,
@@ -474,14 +474,14 @@ export const timelineDataRu = [
     description:
       'Microsoft создала XMLHttpRequest для Outlook Web Access, что стало основой для AJAX',
     category: 'technology' as const,
-    image: '/timeline/ajax.png',
+    image: '/timeline/ajax.webp',
   },
   {
     year: 2003,
     title: 'WordPress',
     description: 'Мэтт Малленвег и Майк Литтл создали WordPress как форк b2/cafelog',
     category: 'technology' as const,
-    image: '/timeline/wordpress.png',
+    image: '/timeline/wordpress.webp',
   },
   {
     year: 2004,
@@ -489,7 +489,7 @@ export const timelineDataRu = [
     description:
       'Eclipse представил RAP (Rich Ajax Platform) и SWT (Standard Widget Toolkit) для веб-приложений',
     category: 'technology' as const,
-    image: '/timeline/eclipse.png',
+    image: '/timeline/eclipse.webp',
   },
   {
     year: 2004,
@@ -497,14 +497,14 @@ export const timelineDataRu = [
     description:
       'Google запустил Gmail с революционным подходом к веб-почте и 1 ГБ свободного места',
     category: 'technology' as const,
-    image: '/timeline/gmail.png',
+    image: '/timeline/gmail.webp',
   },
   {
     year: 2005,
     title: 'AJAX',
     description: 'Джесси Джеймс Гарретт ввел термин AJAX, что изменило подход к веб-разработке',
     category: 'technology' as const,
-    image: '/timeline/ajax.png',
+    image: '/timeline/ajax.webp',
   },
   {
     year: 2005,
@@ -512,14 +512,14 @@ export const timelineDataRu = [
     description:
       'Первый мобильный браузер Opera Mini для Java-телефонов с серверным сжатием данных',
     category: 'technology' as const,
-    image: '/timeline/opera.png',
+    image: '/timeline/opera.webp',
   },
   {
     year: 2006,
     title: 'jQuery',
     description: 'Джон Резиг выпустил jQuery, который упростил работу с DOM и AJAX',
     category: 'technology' as const,
-    image: '/timeline/jquery.png',
+    image: '/timeline/jquery.webp',
   },
   {
     year: 2006,
@@ -527,7 +527,7 @@ export const timelineDataRu = [
     description:
       'Google представил GWT - инструмент для разработки веб-приложений на Java с компиляцией в JavaScript',
     category: 'technology' as const,
-    image: '/timeline/gwt.png',
+    image: '/timeline/gwt.webp',
   },
   {
     year: 2007,
@@ -535,7 +535,7 @@ export const timelineDataRu = [
     description:
       'Apple представила первый iPhone с мобильным браузером Safari, революционизировав мобильный веб',
     category: 'technology' as const,
-    image: '/timeline/apple.png',
+    image: '/timeline/apple.webp',
   },
   {
     year: 2007,
@@ -543,7 +543,7 @@ export const timelineDataRu = [
     description:
       'Sencha выпустила ExtJS - JavaScript фреймворк для создания богатых веб-приложений с компонентами',
     category: 'technology' as const,
-    image: '/timeline/extjs.png',
+    image: '/timeline/extjs.webp',
   },
   {
     year: 2008,
@@ -551,7 +551,7 @@ export const timelineDataRu = [
     description:
       'Google выпустил браузер Chrome с движком V8, который значительно ускорил JavaScript',
     category: 'technology' as const,
-    image: '/timeline/chrome.png',
+    image: '/timeline/chrome.webp',
   },
   {
     year: 2008,
@@ -559,14 +559,14 @@ export const timelineDataRu = [
     description:
       'Google представил движок V8, который революционизировал производительность JavaScript',
     category: 'technology' as const,
-    image: '/timeline/v8.png',
+    image: '/timeline/v8.webp',
   },
   {
     year: 2009,
     title: 'Node.js',
     description: 'Райан Даль создал Node.js, позволив использовать JavaScript на сервере',
     category: 'technology' as const,
-    image: '/timeline/nodejs.png',
+    image: '/timeline/nodejs.webp',
   },
   {
     year: 2014,
@@ -574,7 +574,7 @@ export const timelineDataRu = [
     description:
       'W3C официально релизнул HTML5 как Recommendation, который принес семантические элементы и новые API',
     category: 'technology' as const,
-    image: '/timeline/html.png',
+    image: '/timeline/html.webp',
   },
   {
     year: 2009,
@@ -582,7 +582,7 @@ export const timelineDataRu = [
     description:
       'HTML5 Canvas API стал доступен, позволив создавать 2D графику и анимации прямо в браузере',
     category: 'technology' as const,
-    image: '/timeline/html.png',
+    image: '/timeline/html.webp',
   },
   {
     year: 2009,
@@ -590,14 +590,14 @@ export const timelineDataRu = [
     description:
       'JSON стал стандартом RFC 7159, заменив XML как основной формат обмена данными в веб',
     category: 'technology' as const,
-    image: '/timeline/json.png',
+    image: '/timeline/json.webp',
   },
   {
     year: 2010,
     title: 'Backbone.js',
     description: 'Джереми Ашкенас создал Backbone.js, один из первых JavaScript MVC фреймворков',
     category: 'technology' as const,
-    image: '/timeline/backbone.png',
+    image: '/timeline/backbone.webp',
   },
   {
     year: 2010,
@@ -605,42 +605,42 @@ export const timelineDataRu = [
     description:
       'Началось активное развитие CSS3 с новыми возможностями: градиенты, тени, анимации',
     category: 'technology' as const,
-    image: '/timeline/css.png',
+    image: '/timeline/css.webp',
   },
   {
     year: 2010,
     title: 'Firefox 4.0',
     description: 'Mozilla выпустил Firefox 4.0 с улучшенным движком Gecko и поддержкой WebGL',
     category: 'technology' as const,
-    image: '/timeline/ff.png',
+    image: '/timeline/ff.webp',
   },
   {
     year: 2011,
     title: 'AngularJS',
     description: 'Google выпустил AngularJS, который ввел концепцию двусторонней привязки данных',
     category: 'technology' as const,
-    image: '/timeline/angular.png',
+    image: '/timeline/angular.webp',
   },
   {
     year: 2011,
     title: 'Ember.js',
     description: 'Yehuda Katz и Tom Dale создали Ember.js как преемника SproutCore',
     category: 'technology' as const,
-    image: '/timeline/ember.png',
+    image: '/timeline/ember.webp',
   },
   {
     year: 2011,
     title: 'Internet Explorer 9',
     description: 'Microsoft выпустил IE9 с поддержкой HTML5, CSS3 и аппаратным ускорением',
     category: 'technology' as const,
-    image: '/timeline/ie.png',
+    image: '/timeline/ie.webp',
   },
   {
     year: 2012,
     title: 'TypeScript',
     description: 'Microsoft выпустил TypeScript - типизированную версию JavaScript',
     category: 'technology' as const,
-    image: '/timeline/ts.png',
+    image: '/timeline/ts.webp',
   },
   {
     year: 2012,
@@ -648,21 +648,21 @@ export const timelineDataRu = [
     description:
       'JavaScript стал самым популярным языком программирования по версии GitHub и Stack Overflow',
     category: 'technology' as const,
-    image: '/timeline/js.png',
+    image: '/timeline/js.webp',
   },
   {
     year: 2012,
     title: 'Safari 6.0',
     description: 'Apple выпустил Safari 6.0 с движком WebKit и поддержкой новых веб-стандартов',
     category: 'technology' as const,
-    image: '/timeline/safari.png',
+    image: '/timeline/safari.webp',
   },
   {
     year: 2013,
     title: 'React',
     description: 'Facebook выпустил React - библиотеку для создания пользовательских интерфейсов',
     category: 'technology' as const,
-    image: '/timeline/react.png',
+    image: '/timeline/react.webp',
   },
   {
     year: 2013,
@@ -670,7 +670,7 @@ export const timelineDataRu = [
     description:
       'Netflix представил архитектурный паттерн Backend for Frontend для оптимизации взаимодействия между фронтендом и бэкендом',
     category: 'technology' as const,
-    image: '/timeline/netflix.png',
+    image: '/timeline/netflix.webp',
   },
   {
     year: 2013,
@@ -678,7 +678,7 @@ export const timelineDataRu = [
     description:
       'W3C начал работу над Web Components - стандартом для создания переиспользуемых компонентов',
     category: 'technology' as const,
-    image: '/timeline/webcomponents.png',
+    image: '/timeline/webcomponents.webp',
   },
   {
     year: 2013,
@@ -686,21 +686,21 @@ export const timelineDataRu = [
     description:
       'Google создал Blink - форк WebKit для Chrome, положив начало новой эре браузерных движков',
     category: 'technology' as const,
-    image: '/timeline/chrome.png',
+    image: '/timeline/chrome.webp',
   },
   {
     year: 2014,
     title: 'Vue.js',
     description: 'Эван Ю создал Vue.js - прогрессивный JavaScript фреймворк',
     category: 'technology' as const,
-    image: '/timeline/vue.png',
+    image: '/timeline/vue.webp',
   },
   {
     year: 2014,
     title: 'WebAssembly',
     description: 'Началась работа над WebAssembly - бинарным форматом для веб-приложений',
     category: 'technology' as const,
-    image: '/timeline/ws.png',
+    image: '/timeline/ws.webp',
   },
   {
     year: 2015,
@@ -708,42 +708,42 @@ export const timelineDataRu = [
     description:
       'Выпущен ES6 с классами, стрелочными функциями, модулями и многими другими возможностями',
     category: 'technology' as const,
-    image: '/timeline/es.png',
+    image: '/timeline/es.webp',
   },
   {
     year: 2015,
     title: 'Service Workers',
     description: 'Google представил Service Workers для создания офлайн-приложений',
     category: 'technology' as const,
-    image: '/timeline/pwa.png',
+    image: '/timeline/pwa.webp',
   },
   {
     year: 2015,
     title: 'Microsoft Edge',
     description: 'Microsoft выпустил Edge с движком EdgeHTML, заменив Internet Explorer',
     category: 'technology' as const,
-    image: '/timeline/edge.png',
+    image: '/timeline/edge.webp',
   },
   {
     year: 2016,
     title: 'Progressive Web Apps',
     description: 'Google ввел концепцию PWA - веб-приложений, работающих как нативные',
     category: 'technology' as const,
-    image: '/timeline/pwa.png',
+    image: '/timeline/pwa.webp',
   },
   {
     year: 2016,
     title: 'Webpack 2',
     description: 'Выпущен Webpack 2 с улучшенной производительностью и поддержкой ES6 модулей',
     category: 'technology' as const,
-    image: '/timeline/webpack.png',
+    image: '/timeline/webpack.webp',
   },
   {
     year: 2017,
     title: 'CSS Grid',
     description: 'Поддержка CSS Grid Layout стала доступна во всех основных браузерах',
     category: 'technology' as const,
-    image: '/timeline/css.png',
+    image: '/timeline/css.webp',
   },
   {
     year: 2017,
@@ -751,28 +751,28 @@ export const timelineDataRu = [
     description:
       'Adobe объявила о прекращении поддержки Flash Player к 2020 году, окончательно похоронив эпоху Flash/ActionScript',
     category: 'technology' as const,
-    image: '/timeline/flash.png',
+    image: '/timeline/flash.webp',
   },
   {
     year: 2017,
     title: 'WebAssembly 1.0',
     description: 'Выпущена первая стабильная версия WebAssembly',
     category: 'technology' as const,
-    image: '/timeline/ws.png',
+    image: '/timeline/ws.webp',
   },
   {
     year: 2018,
     title: 'CSS Custom Properties',
     description: 'CSS Custom Properties (CSS Variables) получили широкую поддержку браузеров',
     category: 'technology' as const,
-    image: '/timeline/css.png',
+    image: '/timeline/css.webp',
   },
   {
     year: 2018,
     title: 'Web Components v1',
     description: 'Выпущена стабильная версия Web Components с Custom Elements и Shadow DOM',
     category: 'technology' as const,
-    image: '/timeline/webcomponents.png',
+    image: '/timeline/webcomponents.webp',
   },
   {
     year: 2018,
@@ -780,7 +780,7 @@ export const timelineDataRu = [
     description:
       'Mozilla выпустил Firefox Quantum с новым движком Servo, значительно улучшив производительность',
     category: 'technology' as const,
-    image: '/timeline/ff.png',
+    image: '/timeline/ff.webp',
   },
   {
     year: 2019,
@@ -788,14 +788,14 @@ export const timelineDataRu = [
     description:
       'Райан Даль представил Deno - современную альтернативу Node.js с TypeScript из коробки',
     category: 'technology' as const,
-    image: '/timeline/deno.png',
+    image: '/timeline/deno.webp',
   },
   {
     year: 2020,
     title: 'CSS Logical Properties',
     description: 'Поддержка CSS Logical Properties для интернационализации',
     category: 'technology' as const,
-    image: '/timeline/css.png',
+    image: '/timeline/css.webp',
   },
   {
     year: 2020,
@@ -803,42 +803,42 @@ export const timelineDataRu = [
     description:
       'Google представил Core Web Vitals - метрики для измерения пользовательского опыта',
     category: 'technology' as const,
-    image: '/timeline/chrome.png',
+    image: '/timeline/chrome.webp',
   },
   {
     year: 2020,
     title: 'Microsoft Edge на Chromium',
     description: 'Microsoft перевел Edge на движок Chromium, объединив экосистему браузеров',
     category: 'technology' as const,
-    image: '/timeline/edge.png',
+    image: '/timeline/edge.webp',
   },
   {
     year: 2021,
     title: 'CSS Cascade Layers',
     description: 'Выпущена спецификация CSS Cascade Layers для лучшего контроля каскада',
     category: 'technology' as const,
-    image: '/timeline/css.png',
+    image: '/timeline/css.webp',
   },
   {
     year: 2021,
     title: 'WebGPU',
     description: 'Началась работа над WebGPU - новым API для графики и вычислений',
     category: 'technology' as const,
-    image: '/timeline/webgpu.png',
+    image: '/timeline/webgpu.webp',
   },
   {
     year: 2022,
     title: 'CSS Container Queries',
     description: 'Container Queries получили поддержку в основных браузерах',
     category: 'technology' as const,
-    image: '/timeline/css.png',
+    image: '/timeline/css.webp',
   },
   {
     year: 2022,
     title: 'CSS Cascade Layers',
     description: 'CSS Cascade Layers стали доступны во всех современных браузерах',
     category: 'technology' as const,
-    image: '/timeline/css.png',
+    image: '/timeline/css.webp',
   },
   {
     year: 2023,
@@ -846,7 +846,7 @@ export const timelineDataRu = [
     description:
       'Выпущен Vite 5.0 - быстрый сборщик модулей, ставший популярной альтернативой Webpack',
     category: 'technology' as const,
-    image: '/timeline/vite.png',
+    image: '/timeline/vite.webp',
   },
   {
     year: 2024,
@@ -854,7 +854,7 @@ export const timelineDataRu = [
     description:
       'WebAssembly 2.0 получил широкую поддержку браузеров, революционизировав высокопроизводительные веб-приложения',
     category: 'technology' as const,
-    image: '/timeline/ws.png',
+    image: '/timeline/ws.webp',
   },
   {
     year: 2025,
@@ -862,7 +862,7 @@ export const timelineDataRu = [
     description:
       'Искусственный интеллект и машинное обучение стали активно интегрироваться в веб-приложения для персонализации и автоматизации',
     category: 'technology' as const,
-    image: '/timeline/openai.png',
+    image: '/timeline/openai.webp',
   },
   {
     year: 2025,
@@ -870,6 +870,6 @@ export const timelineDataRu = [
     description:
       'OpenAI выпустил собственный браузер со встроенным ИИ ассистентом ChatGPT на базе Chromium',
     category: 'technology' as const,
-    image: '/timeline/openai.png',
+    image: '/timeline/openai.webp',
   },
 ];

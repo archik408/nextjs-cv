@@ -16,7 +16,7 @@ export function AccessibilityContent() {
           <ArticleTitle text={t.accessibilityTitle} />
           <p dangerouslySetInnerHTML={{ __html: t.accessibilityIntro }} />
           <Image
-            src="/disability-persons.png"
+            src="/disability-persons.webp"
             role="presentation"
             alt=""
             width="540"

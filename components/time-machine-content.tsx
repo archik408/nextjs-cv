@@ -33,22 +33,22 @@ export function TimeMachineContent() {
   const snapshots: TimeMachineSnapshot[] = [
     {
       year: 2021,
-      image: '/time-machine/2021.png',
+      image: '/time-machine/2021.webp',
       description: t.timeMachine2021Description,
     },
     {
       year: 2022,
-      image: '/time-machine/2022.png',
+      image: '/time-machine/2022.webp',
       description: t.timeMachine2022Description,
     },
     {
       year: 2023,
-      image: '/time-machine/2023.png',
+      image: '/time-machine/2023.webp',
       description: t.timeMachine2023Description,
     },
     {
       year: 2025,
-      image: '/time-machine/2025.png',
+      image: '/time-machine/2025.webp',
       description: t.timeMachine2025Description,
     },
   ];

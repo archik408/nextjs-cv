@@ -9,7 +9,7 @@ tags: [books, it, apple]
 
 Одна из лучших профессиональных книг за последнее время. Подарок от жены оказался невероятно точным. Находился под большим впечатлением в процессе всего чтения.
 
-![Apple Evolution Photo 1](/garden/apple/photo_2025-10-12_21-24-33.jpg)
+![Apple Evolution Photo 1](/garden/apple/photo_2025-10-12_21-24-33.webp)
 
 ### 🤔 Почему книга зашла?
 
@@ -38,9 +38,9 @@ tags: [books, it, apple]
 
 Очень **вдохновляющее и мотивирующее** издание - видеть путь от гаража до триллионной компании.
 
-![Apple Evolution Photo 7](/garden/apple/photo_2025-10-12_21-24-52.jpg)
+![Apple Evolution Photo 7](/garden/apple/photo_2025-10-12_21-24-52.webp)
 
-![Apple Evolution Photo 8](/garden/apple/photo_2025-10-12_21-24-54.jpg)
+![Apple Evolution Photo 8](/garden/apple/photo_2025-10-12_21-24-54.webp)
 
 ### 💎 Вывод
 
@@ -54,15 +54,15 @@ tags: [books, it, apple]
 
 ### 📸 Фотографии из книги
 
-![Apple Evolution Photo 2](/garden/apple/photo_2025-10-12_21-24-41.jpg)
+![Apple Evolution Photo 2](/garden/apple/photo_2025-10-12_21-24-41.webp)
 
-![Apple Evolution Photo 3](/garden/apple/photo_2025-10-12_21-24-43.jpg)
+![Apple Evolution Photo 3](/garden/apple/photo_2025-10-12_21-24-43.webp)
 
-![Apple Evolution Photo 4](/garden/apple/photo_2025-10-12_21-24-45.jpg)
+![Apple Evolution Photo 4](/garden/apple/photo_2025-10-12_21-24-45.webp)
 
-![Apple Evolution Photo 5](/garden/apple/photo_2025-10-12_21-24-47.jpg)
+![Apple Evolution Photo 5](/garden/apple/photo_2025-10-12_21-24-47.webp)
 
-![Apple Evolution Photo 6](/garden/apple/photo_2025-10-12_21-24-49.jpg)
+![Apple Evolution Photo 6](/garden/apple/photo_2025-10-12_21-24-49.webp)
 
 ---
 

@@ -29,11 +29,11 @@ tags: [a11y, accessibility, wcag, mental-model, programming]
 - Активно учился [проходя курсы и сертификации](https://drive.google.com/drive/folders/1JC0VYLgvi1ezr2SVJhEQzjf82fJ6Q737) по веб-доступности и дизайну.
 - Начал вести публичный [Телеграм канал](https://t.me/proa11y) про цифровую доступность и около нее
 
-![Сертификат W3C WAI & edX - Введение в веб-доступность](/certificates/w3cx-wai-accessibility.png)
+![Сертификат W3C WAI & edX - Введение в веб-доступность](/certificates/w3cx-wai-accessibility.webp)
 
-![Сертификат Frontend Masters - Доступность в приложениях JavaScript](/certificates/javascript-accessibility.png)
+![Сертификат Frontend Masters - Доступность в приложениях JavaScript](/certificates/javascript-accessibility.webp)
 
-![Сертификат Google UX Design 2025](/certificates/google-ux-design.png)
+![Сертификат Google UX Design 2025](/certificates/google-ux-design.webp)
 
 ## Привычка, а не героизм
 

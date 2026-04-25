@@ -116,7 +116,7 @@ export function AboutSection() {
                 autoplay
                 loop
                 src="/lottie.json"
-                fallbackSrc="/lottie.png"
+                fallbackSrc="/lottie.webp"
                 fallbackAlt={t.about}
                 style={{ height: '300px', width: '100%' }}
               />

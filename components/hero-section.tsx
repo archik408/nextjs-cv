@@ -54,7 +54,7 @@ export function HeroSection() {
               }}
             >
               <Image
-                src="/avatar.jpeg"
+                src="/avatar.webp"
                 alt="Artur Basak"
                 fill
                 className="absolute inset-0 rounded-full object-cover [backface-visibility:hidden]"
@@ -63,7 +63,7 @@ export function HeroSection() {
                 blurDataURL={AVATAR_PLACEHOLDER}
               />
               <Image
-                src="/back-bg.jpg"
+                src="/back-bg.webp"
                 alt=""
                 fill
                 className="absolute inset-0 rounded-full object-cover rotate-y-180 [backface-visibility:hidden]"

@@ -14,7 +14,7 @@ interface SEOConfig {
 }
 
 const baseUrl = 'https://arturbasak.dev';
-const defaultImage = '/avatar.jpeg';
+const defaultImage = '/avatar.webp';
 
 export function generateMetadata(config: SEOConfig): Metadata {
   const {

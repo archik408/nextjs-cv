@@ -69,7 +69,7 @@ export function CertificatesSection() {
                 onClick={() =>
                   openCertificate(
                     'W3Cx Professional Front-End Web Developer Certificate',
-                    '/certificates/w3cx-professional-frontend.png',
+                    '/certificates/w3cx-professional-frontend.webp',
                     true
                   )
                 }
@@ -94,7 +94,7 @@ export function CertificatesSection() {
                 onClick={() =>
                   openCertificate(
                     'Google UX Design Professional Certificate',
-                    '/certificates/google-ux-design.png',
+                    '/certificates/google-ux-design.webp',
                     true
                   )
                 }
@@ -119,7 +119,7 @@ export function CertificatesSection() {
                 onClick={() =>
                   openCertificate(
                     'W3Cx WAI0.1x Certificate - Introduction to Web Accessibility',
-                    '/certificates/w3cx-wai-accessibility.png',
+                    '/certificates/w3cx-wai-accessibility.webp',
                     true
                   )
                 }

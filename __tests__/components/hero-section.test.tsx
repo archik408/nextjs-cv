@@ -36,7 +36,7 @@ describe('HeroSection', () => {
     const avatars = screen.getAllByRole('img');
     const avatar = avatars.find((img) => img.getAttribute('alt') === 'Artur Basak');
     expect(avatar).toBeInTheDocument();
-    expect(avatar).toHaveAttribute('src', '/avatar.jpeg');
+    expect(avatar).toHaveAttribute('src', '/avatar.webp');
   });
 
   it('toggles avatar flip on click', async () => {

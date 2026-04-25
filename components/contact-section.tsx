@@ -43,7 +43,7 @@ export function ContactSection() {
           autoplay
           loop
           src="/email-lottie.json"
-          fallbackSrc="/email-lottie.png"
+          fallbackSrc="/email-lottie.webp"
           fallbackAlt={t.contact}
           style={{ height: '400px', width: '100%' }}
           className="pointer-events-none select-none"
