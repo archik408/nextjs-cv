@@ -207,12 +207,12 @@ export function ResumeDocument({ lang }: Props) {
           <View style={styles.header}>
             <Image
               style={styles.avatar}
-              src="https://arturbasak.dev/avatar.webp"
+              src="https://arturbasak.dev/avatar.jpeg"
               // @ts-expect-error
               alt="Artur Basak"
             />
             <Text style={styles.name}>Artur Basak</Text>
-            <Text style={styles.role}>UI/UX Engineer</Text>
+            <Text style={styles.role}>UI/UX Web Engineer</Text>
           </View>
 
           {/* Contact Information */}
