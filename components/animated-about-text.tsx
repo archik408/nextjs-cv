@@ -57,12 +57,10 @@ export function AnimatedAboutText({ html, className = '' }: AnimatedAboutTextPro
           if (underlineImg) {
             // Устанавливаем начальное состояние
             if (shouldAnimate) {
-              underlineImg.style.transform = 'scaleX(0)';
               underlineImg.style.transformOrigin = 'left';
               underlineImg.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            } else {
-              underlineImg.style.transform = 'scaleX(1)';
             }
+            underlineImg.style.transform = 'scaleX(1)';
             observer.observe(element);
           }
         });
