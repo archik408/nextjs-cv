@@ -19,7 +19,9 @@ export function ExperienceSection() {
     'Indy (ex-Tispr)': 'https://www.tispr.com',
     '*instinctools EE Labs': 'https://www.instinctools.com',
     'IT Academy': 'https://www.it-academy.by',
+    СИБУР: 'https://www.sibur.com/en',
     SIBUR: 'https://www.sibur.com/en',
+    КРОК: 'https://www.croc.ru/',
     CROC: 'https://www.croc.ru/',
     TrueImpact: 'https://www.trueimpact.com/',
     'Big Three Management Consulting (NDA, but easy to Google)':
