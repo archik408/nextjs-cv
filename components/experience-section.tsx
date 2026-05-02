@@ -26,6 +26,8 @@ export function ExperienceSection() {
     TrueImpact: 'https://www.trueimpact.com/',
     'Big Three Management Consulting (NDA, but easy to Google)':
       'https://www.google.com/search?q=Big+Three+Management+Consulting',
+    'Большая тройка консалтинга (NDA, но легко нагуглить)':
+      'https://www.google.com/search?q=Big+Three+Management+Consulting',
     EquipmentWatch: 'https://equipmentwatch.com/',
     'Westernacher Solutions': 'https://westernacher-solutions.com/',
     'Mercedes Benz Daimler AG': 'https://group.mercedes-benz.com/en/',
