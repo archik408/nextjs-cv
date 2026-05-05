@@ -413,6 +413,13 @@ export const timelineDataRu = [
     category: 'career' as const,
     image: '/timeline/x5tech.webp',
   },
+  {
+    year: 2026,
+    title: 'MoscowJS 70 x X5 Tech',
+    description: 'Выступил на юбилейном митапе',
+    category: 'career' as const,
+    image: '/timeline/moscowjs.webp',
+  },
   // Technology milestones (right side)
   {
     year: 1993,

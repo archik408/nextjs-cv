@@ -414,6 +414,13 @@ export const timelineDataEn = [
     category: 'career' as const,
     image: '/timeline/x5tech.webp',
   },
+  {
+    year: 2026,
+    title: 'MoscowJS 70 x X5 Tech',
+    description: 'Spoke at the anniversary meetup',
+    category: 'career' as const,
+    image: '/timeline/moscowjs.webp',
+  },
 
   // Technology milestones (right side)
   {
