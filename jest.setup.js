@@ -29,7 +29,6 @@ jest.mock('next/router', () => ({
 // Mock next/image
 jest.mock('next/image', () => ({
   __esModule: true,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   default: ({
     src,
     alt,
@@ -38,11 +37,11 @@ jest.mock('next/image', () => ({
     className,
     style,
     fill,
-    sizes,
-    placeholder,
-    blurDataURL,
-    priority,
-    unoptimized,
+    sizes: _sizes,
+    placeholder: _placeholder,
+    blurDataURL: _blurDataURL,
+    priority: _priority,
+    unoptimized: _unoptimized,
     ...rest
   }) => {
     const computedStyle = {

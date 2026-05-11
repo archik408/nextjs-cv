@@ -16,6 +16,7 @@ import {
   GitBranch,
   Bot,
   BookOpen,
+  Hash as HashIcon,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 
@@ -23,6 +24,18 @@ export function ToolsPageClient() {
   const { t } = useLanguage();
 
   const tools = [
+    {
+      id: 'hash-generator',
+      title: t.hashGenToolTitle || 'Hash Generator',
+      description:
+        t.hashGenToolDesc ||
+        'Generate hashes (SHA-1/SHA-2/MD5/SHA3/SHAKE) locally in your browser with instant output and copy.',
+      icon: HashIcon,
+      href: '/hash-generator',
+      status: 'ready',
+      color: 'indigo',
+      isExternal: false,
+    },
     {
       id: 'svg-optimizer',
       title: t.svgOptimizer || 'SVG Optimizer',
@@ -91,11 +104,13 @@ export function ToolsPageClient() {
     },
     {
       id: 'qr-generator',
-      title: 'QR Code Generator',
-      description: 'Generate QR codes for text, URLs, and more',
+      title: t.qrGeneratorToolTitle || 'QR / Barcode Generator',
+      description:
+        t.qrGeneratorToolDesc ||
+        'Generate QR codes and barcodes (Code128, EAN-13, Data Matrix, and more) right in your browser.',
       icon: QrCode,
-      href: '#',
-      status: 'coming-soon',
+      href: '/qr-code-generator',
+      status: 'ready',
       color: 'indigo',
       isExternal: false,
     },

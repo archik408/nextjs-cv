@@ -531,6 +531,48 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Tools Page - Image Placeholder
     imgPhToolTitle: 'Image Placeholder',
     imgPhToolDesc: 'Generate placeholder URLs with custom size or random illustration',
+    // Tools Page - QR / Barcode Generator
+    qrGeneratorToolTitle: 'QR / Barcode Generator',
+    qrGeneratorToolDesc:
+      'Generate QR codes and barcodes (Code128, EAN-13, Data Matrix, and more) right in your browser.',
+    // Hash Generator Page
+    hashGenTitle: 'Hash Generator',
+    hashGenDesc:
+      'Generate hashes locally in your browser. Uses Web Crypto API when available and falls back to lightweight libraries for other algorithms.',
+    hashGenInputLabel: 'Input',
+    hashGenInputPlaceholder: 'Enter any text...',
+    hashGenAlgorithmLabel: 'Algorithm',
+    hashGenAlgorithmHint:
+      'SHA-1/SHA-2 use Web Crypto API. MD5/SHA3/SHAKE are computed via dynamic imports.',
+    hashGenFormatLabel: 'Output format',
+    hashGenFormatHex: 'Hex',
+    hashGenFormatBase64: 'Base64',
+    hashGenFormatMd5Note:
+      'Note: MD5 is produced via a library and encoded from raw bytes for Base64.',
+    hashGenHexCaseLabel: 'Hex case',
+    hashGenHexLower: 'lowercase',
+    hashGenHexUpper: 'UPPERCASE',
+    hashGenHmacEnable: 'Enable HMAC',
+    hashGenHmacKeyLabel: 'Secret key',
+    hashGenHmacKeyPlaceholder: 'Enter secret key...',
+    hashGenHmacHint: 'HMAC is supported for SHA-1 and SHA-2 algorithms via Web Crypto API.',
+    hashGenOutputTitle: 'Result',
+    hashGenOutputLabel: 'Hash output',
+    hashGenOutputPlaceholder: 'Your hash will appear here…',
+    hashGenCopy: 'Copy',
+    hashGenCopied: 'Copied',
+    hashGenStatusGenerating: 'Generating…',
+    hashGenStatusGenerated: 'Generated',
+    hashGenPerfHint: 'Tip: hashing is debounced to keep typing responsive on large inputs.',
+    hashGenErrorFriendlyPrefix: 'Error',
+    hashGenErrorUnavailable: 'This algorithm is not available in your browser.',
+    hashGenErrorHmacUnavailable: 'HMAC is not supported for the selected algorithm.',
+    hashGenErrorHmacKeyRequired: 'HMAC key is required.',
+    hashGenErrorCopy: 'Failed to copy to clipboard.',
+    // Tools Page - Hash Generator
+    hashGenToolTitle: 'Hash Generator',
+    hashGenToolDesc:
+      'Generate hashes (SHA-1/SHA-2/MD5/SHA3/SHAKE) locally in your browser with instant output and copy.',
     // Braille Converter Page
     brailleConverterTitle: 'Braille Converter',
     brailleConverterDesc:
@@ -684,6 +726,28 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Tools card - Image Optimizer
     ioToolTitle: 'Image Optimizer',
     ioToolDesc: 'Compress and optimize images for web',
+    // QR / Barcode Generator Page
+    qrGenTitle: 'QR / Barcode Generator',
+    qrGenDesc:
+      'Generate QR codes and barcodes (Code128, EAN-13, Data Matrix, and more) right in your browser.',
+    qrGenInputLabel: 'Text',
+    qrGenInputPlaceholder: 'Enter text or URL...',
+    qrGenTypeLabel: 'Barcode type',
+    qrGenCustomTypeLabel: 'Custom type (bcid)',
+    qrGenUseCustom: 'Use',
+    qrGenSupportedTypesHint:
+      'You can use any bwip-js type (e.g. code11, code93, itf14, etc.) using Custom type.',
+    qrGenSupportedTypesLink: 'Supported barcode types',
+    qrGenScaleLabel: 'Scale',
+    qrGenHeightLabel: 'Height',
+    qrGenHeightHint: 'Some 2D codes ignore height.',
+    qrGenIncludeText: 'Show human-readable text (if supported)',
+    qrGenPreview: 'Preview',
+    qrGenPreviewHint:
+      'Tip: download uses a white background for best compatibility when printing/scanning.',
+    qrGenDownload: 'Download PNG',
+    qrGenErrorInvalidType: 'Failed to generate code. Check barcode type and input.',
+    qrGenErrorDownload: 'Failed to download image.',
   },
   [ELanguage.ru]: {
     skipLinkMain: 'Перейти к основному содержимому',
@@ -1267,6 +1331,49 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Tools Page - Image Placeholder
     imgPhToolTitle: 'Image Placeholder',
     imgPhToolDesc: 'Генерирует URL плейсхолдера с нужным размером или случайной иллюстрацией',
+    // Tools Page - QR / Barcode Generator
+    qrGeneratorToolTitle: 'QR / Генератор штрихкодов',
+    qrGeneratorToolDesc:
+      'Генерируйте QR‑коды и штрихкоды (Code128, EAN‑13, Data Matrix и др.) прямо в браузере.',
+    // Hash Generator Page
+    hashGenTitle: 'Hash Generator',
+    hashGenDesc:
+      'Генерируйте хэши локально в браузере. Используется Web Crypto API, а для остальных алгоритмов — лёгкие библиотеки (подключаются динамически).',
+    hashGenInputLabel: 'Ввод',
+    hashGenInputPlaceholder: 'Введите любой текст...',
+    hashGenAlgorithmLabel: 'Алгоритм',
+    hashGenAlgorithmHint:
+      'SHA-1/SHA-2 считаются через Web Crypto API. MD5/SHA3/SHAKE подключаются динамически через библиотеки.',
+    hashGenFormatLabel: 'Формат вывода',
+    hashGenFormatHex: 'Hex',
+    hashGenFormatBase64: 'Base64',
+    hashGenFormatMd5Note:
+      'Примечание: MD5 вычисляется библиотекой и для Base64 кодируется из «сырых» байт.',
+    hashGenHexCaseLabel: 'Регистр hex',
+    hashGenHexLower: 'строчные',
+    hashGenHexUpper: 'ПРОПИСНЫЕ',
+    hashGenHmacEnable: 'Включить HMAC',
+    hashGenHmacKeyLabel: 'Секретный ключ',
+    hashGenHmacKeyPlaceholder: 'Введите секретный ключ...',
+    hashGenHmacHint: 'HMAC поддерживается для SHA-1 и SHA-2 через Web Crypto API.',
+    hashGenOutputTitle: 'Результат',
+    hashGenOutputLabel: 'Вывод хэша',
+    hashGenOutputPlaceholder: 'Хэш появится здесь…',
+    hashGenCopy: 'Копировать',
+    hashGenCopied: 'Скопировано',
+    hashGenStatusGenerating: 'Генерация…',
+    hashGenStatusGenerated: 'Готово',
+    hashGenPerfHint:
+      'Подсказка: генерация идёт с дебаунсом, чтобы ввод не тормозил на больших текстах.',
+    hashGenErrorFriendlyPrefix: 'Ошибка',
+    hashGenErrorUnavailable: 'Этот алгоритм недоступен в вашем браузере.',
+    hashGenErrorHmacUnavailable: 'HMAC не поддерживается для выбранного алгоритма.',
+    hashGenErrorHmacKeyRequired: 'Для HMAC нужен секретный ключ.',
+    hashGenErrorCopy: 'Не удалось скопировать в буфер обмена.',
+    // Tools Page - Hash Generator
+    hashGenToolTitle: 'Генератор хэшей',
+    hashGenToolDesc:
+      'Генерируйте хэши (SHA-1/SHA-2/MD5/SHA3/SHAKE) локально в браузере с мгновенным выводом и копированием.',
     // Braille Converter Page
     brailleConverterTitle: 'Конвертер Брайля',
     brailleConverterDesc:
@@ -1374,6 +1481,28 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Tools card - Image Optimizer
     ioToolTitle: 'Оптимизатор изображений',
     ioToolDesc: 'Сжимайте и оптимизируйте изображения для веба',
+    // QR / Barcode Generator Page
+    qrGenTitle: 'QR / Генератор штрихкодов',
+    qrGenDesc:
+      'Генерируйте QR‑коды и штрихкоды (Code128, EAN‑13, Data Matrix и др.) прямо в браузере.',
+    qrGenInputLabel: 'Текст',
+    qrGenInputPlaceholder: 'Введите текст или URL...',
+    qrGenTypeLabel: 'Тип кода',
+    qrGenCustomTypeLabel: 'Свой тип (bcid)',
+    qrGenUseCustom: 'Использовать',
+    qrGenSupportedTypesHint:
+      'Можно указать любой тип из bwip-js (например, code11, code93, itf14 и т. д.) через «Свой тип».',
+    qrGenSupportedTypesLink: 'Поддерживаемые типы кодов',
+    qrGenScaleLabel: 'Масштаб',
+    qrGenHeightLabel: 'Высота',
+    qrGenHeightHint: 'Некоторые 2D-коды игнорируют высоту.',
+    qrGenIncludeText: 'Показывать текст под кодом (если поддерживается)',
+    qrGenPreview: 'Предпросмотр',
+    qrGenPreviewHint:
+      'Подсказка: при скачивании используется белый фон — это надёжнее для печати и сканирования.',
+    qrGenDownload: 'Скачать PNG',
+    qrGenErrorInvalidType: 'Не удалось сгенерировать код. Проверьте тип и ввод.',
+    qrGenErrorDownload: 'Не удалось скачать изображение.',
   },
 } as const;
 
