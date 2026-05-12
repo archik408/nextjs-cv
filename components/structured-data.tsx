@@ -15,7 +15,7 @@ export const createPersonSchema = () => ({
   name: 'Artur Basak',
   jobTitle: 'T-Shaped Web Engineer | 15+ Yrs',
   url: 'https://arturbasak.dev',
-  image: 'https://arturbasak.dev/avatar.webp',
+  image: 'https://arturbasak.dev/ogp.jpg',
   sameAs: [
     'https://github.com/archik408',
     'https://www.linkedin.com/in/arturbasak',
@@ -75,7 +75,7 @@ export const createArticleSchema = (article: {
     name: 'Artur Basak',
     url: 'https://arturbasak.dev',
   },
-  image: article.image || 'https://arturbasak.dev/avatar.webp',
+  image: article.image || 'https://arturbasak.dev/ogp.jpg',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': article.url,

@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: 'Artur Basak Portfolio',
     images: [
       {
-        url: '/avatar.webp',
+        url: '/ogp.jpg',
         width: 1200,
         height: 630,
         alt: 'Artur Basak - T-Shaped Web Engineer & Frontend Architect | 15+ Yrs',
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: 'Artur Basak - T-Shaped Web Engineer & Frontend Architect | 15+ Yrs',
     description:
       'Passionate second generation programmer with over a decade of hands-on experience in full-stack web development.',
-    images: ['/avatar.webp'],
+    images: ['/ogp.jpg'],
     site: '@archik408',
   },
   robots: {
@@ -91,7 +91,7 @@ export default function RootLayout({
     name: 'Artur Basak',
     jobTitle: 'Artur Basak - T-Shaped Web Engineer & Frontend Architect | 15+ Yrs',
     url: 'https://arturbasak.dev',
-    image: 'https://arturbasak.dev/avatar.webp',
+    image: 'https://arturbasak.dev/ogp.jpg',
     sameAs: [
       'https://github.com/archik408',
       'https://www.linkedin.com/in/arturbasak',
