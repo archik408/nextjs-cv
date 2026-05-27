@@ -7,6 +7,7 @@ import {
   Palette,
   QrCode,
   Image as ImageIcon,
+  FileImage,
   Code,
   Zap,
   ArrowRight,
@@ -34,6 +35,18 @@ export function ToolsPageClient() {
       href: '/hash-generator',
       status: 'ready',
       color: 'indigo',
+      isExternal: false,
+    },
+    {
+      id: 'image-to-base64',
+      title: t.imgB64ToolTitle || 'Image to Base64',
+      description:
+        t.imgB64ToolDesc ||
+        'Convert images to Base64 data URIs, CSS background rules, or HTML img tags — locally in your browser.',
+      icon: FileImage,
+      href: '/image-to-base64',
+      status: 'ready',
+      color: 'orange',
       isExternal: false,
     },
     {
@@ -231,6 +244,8 @@ export function ToolsPageClient() {
         return `${baseClasses} ${isReady ? 'hover:border-red-300 dark:hover:border-red-600' : ''}`;
       case 'cyan':
         return `${baseClasses} ${isReady ? 'hover:border-cyan-300 dark:hover:border-cyan-600' : ''}`;
+      case 'orange':
+        return `${baseClasses} ${isReady ? 'hover:border-orange-300 dark:hover:border-orange-600' : ''}`;
       default:
         return baseClasses;
     }
@@ -254,6 +269,8 @@ export function ToolsPageClient() {
         return 'text-red-600 dark:text-red-400';
       case 'cyan':
         return 'text-cyan-600 dark:text-cyan-400';
+      case 'orange':
+        return 'text-orange-600 dark:text-orange-400';
       default:
         return 'text-gray-600 dark:text-gray-400';
     }

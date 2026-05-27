@@ -573,6 +573,31 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     hashGenToolTitle: 'Hash Generator',
     hashGenToolDesc:
       'Generate hashes (SHA-1/SHA-2/MD5/SHA3/SHAKE) locally in your browser with instant output and copy.',
+    // Image to Base64 Page
+    imgB64Title: 'Image to Base64',
+    imgB64Desc: 'Upload an image file, then choose a ready-made code snippet for use on your site.',
+    imgB64UploadText: 'Drag and drop an image or click to select',
+    imgB64UploadAria: 'Upload image',
+    imgB64SelectImage: 'Select Image',
+    imgB64SelectedFile: 'Selected file:',
+    imgB64Clear: 'Clear',
+    imgB64Loading: 'Loading…',
+    imgB64Copy: 'Copy',
+    imgB64Copied: 'Copied',
+    imgB64FormatTabsAria: 'Output format',
+    imgB64InfoTitle: 'How it works',
+    imgB64InfoList: [
+      'Conversion happens entirely in your browser — nothing is uploaded to a server.',
+      'Choose Data URI for inline use, CSS for background-image, or HTML for an img tag.',
+      'Supports JPG, PNG, GIF, WebP, SVG, and other common image formats.',
+    ],
+    imgB64ErrorInvalidType: 'Please select a valid image file.',
+    imgB64ErrorLoad: 'Failed to load the image. Please try another file.',
+    imgB64ErrorCopy: 'Failed to copy to clipboard.',
+    // Tools Page - Image to Base64
+    imgB64ToolTitle: 'Image to Base64',
+    imgB64ToolDesc:
+      'Convert images to Base64 data URIs, CSS background rules, or HTML img tags — locally in your browser.',
     // Braille Converter Page
     brailleConverterTitle: 'Braille Converter',
     brailleConverterDesc:
@@ -1374,6 +1399,32 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     hashGenToolTitle: 'Генератор хэшей',
     hashGenToolDesc:
       'Генерируйте хэши (SHA-1/SHA-2/MD5/SHA3/SHAKE) локально в браузере с мгновенным выводом и копированием.',
+    // Image to Base64 Page
+    imgB64Title: 'Изображение в Base64',
+    imgB64Desc:
+      'Загрузите файл картинки, после этого выберите вариант готового кода для вставки на сайт.',
+    imgB64UploadText: 'Перетащите изображение сюда или нажмите для выбора файла',
+    imgB64UploadAria: 'Загрузка изображения',
+    imgB64SelectImage: 'Выбрать изображение',
+    imgB64SelectedFile: 'Выбран файл:',
+    imgB64Clear: 'Очистить',
+    imgB64Loading: 'Загрузка…',
+    imgB64Copy: 'Копировать',
+    imgB64Copied: 'Скопировано',
+    imgB64FormatTabsAria: 'Формат вывода',
+    imgB64InfoTitle: 'Как это работает',
+    imgB64InfoList: [
+      'Конвертация выполняется полностью в браузере — файлы не отправляются на сервер.',
+      'Выберите Data URI для встраивания, CSS для background-image или HTML для тега img.',
+      'Поддерживаются JPG, PNG, GIF, WebP, SVG и другие распространённые форматы.',
+    ],
+    imgB64ErrorInvalidType: 'Выберите корректный файл изображения.',
+    imgB64ErrorLoad: 'Не удалось загрузить изображение. Попробуйте другой файл.',
+    imgB64ErrorCopy: 'Не удалось скопировать в буфер обмена.',
+    // Tools Page - Image to Base64
+    imgB64ToolTitle: 'Изображение в Base64',
+    imgB64ToolDesc:
+      'Перевод изображений в Base64: data URI, CSS background или HTML-тег img — локально в браузере.',
     // Braille Converter Page
     brailleConverterTitle: 'Конвертер Брайля',
     brailleConverterDesc:
