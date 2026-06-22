@@ -69,7 +69,8 @@ export const translations = {
       'The content and text on the site were refined, with more information and external links to articles, publications, and social networks added.',
     timeMachine2025Description:
       'Complete overhaul of the website to Next.js with server-side rendering and migration to Vercel. The goal was not only to present content with comprehensive information about me as a specialist, but also to demonstrate my skills as a designer and frontend engineer right here. The website also became a sandbox to work with an AI assistant. Beyond the portfolio, the site now features a digital garden, career timeline, and numerous experiments in the form of online tools.',
-    role: 'T-Shaped Web Engineer | 15+ Yrs',
+    role: 'Web Engineer & Frontend Architect | 15+ Yrs',
+    roleMobile: 'Web Engineer & Frontend Architect',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
     aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and school Computer Science teacher, and then fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
@@ -598,6 +599,138 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     imgB64ToolTitle: 'Image to Base64',
     imgB64ToolDesc:
       'Convert images to Base64 data URIs, CSS background rules, or HTML img tags — locally in your browser.',
+    // Code Review Emoji Page
+    codeReviewEmojiTitle: 'Code Review Emoji Picker',
+    codeReviewEmojiDesc:
+      'A curated set of emoji for code review comments. Click any card to copy and use in GitHub, GitLab, Jira, Slack, and other tools.',
+    codeReviewEmojiSearchLabel: 'Search',
+    codeReviewEmojiSearchPlaceholder: 'Search by name or keyword...',
+    codeReviewEmojiFilterLabel: 'Category',
+    codeReviewEmojiAllCategories: 'All',
+    codeReviewEmojiCopy: 'Copy',
+    codeReviewEmojiCopied: 'Copied',
+    codeReviewEmojiNoResults: 'No emoji found for this filter.',
+    codeReviewEmojiCopyError: 'Failed to copy emoji.',
+    codeReviewEmojiItems: [
+      {
+        emoji: 'ℹ️',
+        label: 'Info / Context',
+        category: 'Info',
+        keywords: ['info', 'context', 'details', 'clarification'],
+      },
+      {
+        emoji: '👍',
+        label: 'Looks good',
+        category: 'Approval',
+        keywords: ['approve', 'good', 'ship', 'lgtm'],
+      },
+      {
+        emoji: '🎯',
+        label: 'Exactly right',
+        category: 'Approval',
+        keywords: ['exact', 'precise', 'right', 'spot on'],
+      },
+      {
+        emoji: '🙌',
+        label: 'Great work',
+        category: 'Approval',
+        keywords: ['great', 'awesome', 'thanks', 'nice'],
+      },
+      {
+        emoji: '🧠',
+        label: 'Smart approach',
+        category: 'Idea',
+        keywords: ['smart', 'clever', 'architecture', 'approach'],
+      },
+      {
+        emoji: '💡',
+        label: 'Suggestion',
+        category: 'Idea',
+        keywords: ['idea', 'suggestion', 'proposal', 'improvement'],
+      },
+      {
+        emoji: '🤔',
+        label: 'Need clarification',
+        category: 'Question',
+        keywords: ['question', 'clarify', 'unclear', 'thinking'],
+      },
+      {
+        emoji: '🔍',
+        label: 'Needs investigation',
+        category: 'Question',
+        keywords: ['investigate', 'check', 'review', 'inspect'],
+      },
+      {
+        emoji: '⚠️',
+        label: 'Potential issue',
+        category: 'Warning',
+        keywords: ['warning', 'careful', 'risk', 'attention'],
+      },
+      {
+        emoji: '❗',
+        label: 'Blocker',
+        category: 'Warning',
+        keywords: ['blocker', 'critical', 'must fix', 'stop'],
+      },
+      {
+        emoji: '💥',
+        label: 'Breaking change',
+        category: 'Warning',
+        keywords: ['boom', 'breaking', 'compatibility', 'api'],
+      },
+      {
+        emoji: '🔥',
+        label: 'Urgent',
+        category: 'Warning',
+        keywords: ['urgent', 'hotfix', 'priority', 'asap'],
+      },
+      {
+        emoji: '🧪',
+        label: 'Needs tests',
+        category: 'Quality',
+        keywords: ['tests', 'coverage', 'quality', 'qa'],
+      },
+      {
+        emoji: '🛠️',
+        label: 'Refactor',
+        category: 'Quality',
+        keywords: ['refactor', 'cleanup', 'maintainability', 'tech debt'],
+      },
+      {
+        emoji: '🐛',
+        label: 'Bug',
+        category: 'Quality',
+        keywords: ['bug', 'defect', 'error', 'issue'],
+      },
+      {
+        emoji: '✅',
+        label: 'Done',
+        category: 'Status',
+        keywords: ['done', 'resolved', 'fixed', 'completed'],
+      },
+      {
+        emoji: '🚀',
+        label: 'Ready to merge',
+        category: 'Status',
+        keywords: ['merge', 'ready', 'ship', 'release'],
+      },
+      {
+        emoji: '📌',
+        label: 'Important note',
+        category: 'Status',
+        keywords: ['note', 'important', 'pin', 'remember'],
+      },
+      {
+        emoji: '🙏',
+        label: 'Thanks',
+        category: 'Status',
+        keywords: ['thanks', 'appreciate', 'gratitude', 'thank you'],
+      },
+    ],
+    // Tools Page - Code Review Emoji
+    codeReviewEmojiToolTitle: 'Code Review Emoji Picker',
+    codeReviewEmojiToolDesc:
+      'Useful emoji for code review comments with quick copy for GitHub, GitLab, and other tools.',
     // Braille Converter Page
     brailleConverterTitle: 'Braille Converter',
     brailleConverterDesc:
@@ -842,7 +975,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Был проработан контент и текст на сайте, появилось больше информации и внешние ссылки на статьи, публикации и социальные сети.',
     timeMachine2025Description:
       'Полная переработка веб-сайта на Next.js с серверным рендерингом и переезд на Vercel. Задача была не только оформить контент с полной информацией обо мне как о специалисте, но также продемонстрировать свои навыки дизайнера и фронтенд инженера прямо тут. При этом веб-сайт стал песочницей, чтобы поработать с ИИ ассистентом. На сайте помимо портфолио появился цифровой сад, таймлайн карьеры и множество экспериментов в виде онлайн инструментов.',
-    role: 'T-Shaped Web Engineer | 15+ Yrs',
+    role: 'Web Engineer & Frontend Architect | 15+ Yrs',
+    roleMobile: 'Web Engineer & Frontend Architect',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',
     aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
@@ -1425,6 +1559,138 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     imgB64ToolTitle: 'Изображение в Base64',
     imgB64ToolDesc:
       'Перевод изображений в Base64: data URI, CSS background или HTML-тег img — локально в браузере.',
+    // Code Review Emoji Page
+    codeReviewEmojiTitle: 'Emoji для Code Review',
+    codeReviewEmojiDesc:
+      'Подборка полезных emoji для комментариев в code review. Нажмите на карточку, чтобы скопировать и вставить в GitHub, GitLab, Jira, Slack и другие инструменты.',
+    codeReviewEmojiSearchLabel: 'Поиск',
+    codeReviewEmojiSearchPlaceholder: 'Поиск по названию или ключевому слову...',
+    codeReviewEmojiFilterLabel: 'Категория',
+    codeReviewEmojiAllCategories: 'Все',
+    codeReviewEmojiCopy: 'Скопировать',
+    codeReviewEmojiCopied: 'Скопировано',
+    codeReviewEmojiNoResults: 'По этому фильтру emoji не найдены.',
+    codeReviewEmojiCopyError: 'Не удалось скопировать emoji.',
+    codeReviewEmojiItems: [
+      {
+        emoji: 'ℹ️',
+        label: 'Инфо / Контекст',
+        category: 'Инфо',
+        keywords: ['инфо', 'контекст', 'детали', 'уточнение'],
+      },
+      {
+        emoji: '👍',
+        label: 'Выглядит хорошо',
+        category: 'Одобрение',
+        keywords: ['одобрено', 'хорошо', 'ок', 'lgtm'],
+      },
+      {
+        emoji: '🎯',
+        label: 'Точно в цель',
+        category: 'Одобрение',
+        keywords: ['точно', 'верно', 'правильно', 'в цель'],
+      },
+      {
+        emoji: '🙌',
+        label: 'Отличная работа',
+        category: 'Одобрение',
+        keywords: ['круто', 'отлично', 'спасибо', 'класс'],
+      },
+      {
+        emoji: '🧠',
+        label: 'Умное решение',
+        category: 'Идея',
+        keywords: ['умно', 'классно', 'архитектура', 'подход'],
+      },
+      {
+        emoji: '💡',
+        label: 'Предложение',
+        category: 'Идея',
+        keywords: ['идея', 'предложение', 'улучшение', 'вариант'],
+      },
+      {
+        emoji: '🤔',
+        label: 'Нужно уточнение',
+        category: 'Вопрос',
+        keywords: ['вопрос', 'уточнить', 'неясно', 'подумать'],
+      },
+      {
+        emoji: '🔍',
+        label: 'Нужно проверить',
+        category: 'Вопрос',
+        keywords: ['проверка', 'разобраться', 'ревью', 'исследовать'],
+      },
+      {
+        emoji: '⚠️',
+        label: 'Потенциальная проблема',
+        category: 'Предупреждение',
+        keywords: ['внимание', 'риск', 'осторожно', 'предупреждение'],
+      },
+      {
+        emoji: '❗',
+        label: 'Блокер',
+        category: 'Предупреждение',
+        keywords: ['блокер', 'критично', 'надо исправить', 'стоп'],
+      },
+      {
+        emoji: '💥',
+        label: 'Ломающее изменение',
+        category: 'Предупреждение',
+        keywords: ['boom', 'breaking', 'совместимость', 'api'],
+      },
+      {
+        emoji: '🔥',
+        label: 'Срочно',
+        category: 'Предупреждение',
+        keywords: ['срочно', 'хотфикс', 'приоритет', 'asap'],
+      },
+      {
+        emoji: '🧪',
+        label: 'Нужны тесты',
+        category: 'Качество',
+        keywords: ['тесты', 'покрытие', 'качество', 'qa'],
+      },
+      {
+        emoji: '🛠️',
+        label: 'Рефакторинг',
+        category: 'Качество',
+        keywords: ['рефакторинг', 'чистка', 'поддерживаемость', 'техдолг'],
+      },
+      {
+        emoji: '🐛',
+        label: 'Баг',
+        category: 'Качество',
+        keywords: ['баг', 'дефект', 'ошибка', 'проблема'],
+      },
+      {
+        emoji: '✅',
+        label: 'Сделано',
+        category: 'Статус',
+        keywords: ['сделано', 'решено', 'исправлено', 'готово'],
+      },
+      {
+        emoji: '🚀',
+        label: 'Готово к мержу',
+        category: 'Статус',
+        keywords: ['мерж', 'готово', 'релиз', 'ship'],
+      },
+      {
+        emoji: '📌',
+        label: 'Важная заметка',
+        category: 'Статус',
+        keywords: ['заметка', 'важно', 'пин', 'запомнить'],
+      },
+      {
+        emoji: '🙏',
+        label: 'Спасибо',
+        category: 'Статус',
+        keywords: ['спасибо', 'благодарность', 'appreciate', 'thank you'],
+      },
+    ],
+    // Tools Page - Code Review Emoji
+    codeReviewEmojiToolTitle: 'Emoji для Code Review',
+    codeReviewEmojiToolDesc:
+      'Полезные emoji для комментариев в code review с быстрым копированием для GitHub, GitLab и других инструментов.',
     // Braille Converter Page
     brailleConverterTitle: 'Конвертер Брайля',
     brailleConverterDesc:

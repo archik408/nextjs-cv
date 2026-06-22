@@ -18,6 +18,7 @@ import {
   Bot,
   BookOpen,
   Hash as HashIcon,
+  Smile,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 
@@ -47,6 +48,18 @@ export function ToolsPageClient() {
       href: '/image-to-base64',
       status: 'ready',
       color: 'orange',
+      isExternal: false,
+    },
+    {
+      id: 'code-review-emojis',
+      title: t.codeReviewEmojiToolTitle || 'Code Review Emoji Picker',
+      description:
+        t.codeReviewEmojiToolDesc ||
+        'Useful emoji for code review comments with quick copy for GitHub, GitLab, and other tools.',
+      icon: Smile,
+      href: '/code-review-emojis',
+      status: 'ready',
+      color: 'indigo',
       isExternal: false,
     },
     {

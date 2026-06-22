@@ -76,9 +76,10 @@ export function HeroSection() {
         </div>
         <ArticleTitle text={'Artur Basak'} />
         <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 md:mb-2">
-          {t.role}
+          <span className="md:hidden">{t.roleMobile}</span>
+          <span className="hidden md:inline">{t.role}</span>
         </h2>
-        <div className="mb-8 min-h-[3rem] md:min-h-[2.5rem] flex items-center justify-center relative">
+        <div className="mb-8 min-h-[5.5rem] md:min-h-[2.5rem] flex items-center justify-center relative">
           <p
             className="text-base md:text-sm text-gray-600 dark:text-gray-300 font-[var(--font-jetbrains-mono)] text-center"
             style={{

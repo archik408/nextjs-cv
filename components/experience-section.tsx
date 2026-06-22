@@ -1,11 +1,164 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { ChevronDown, Clock } from 'lucide-react';
 import { useLanguage } from '@/lib/hooks/use-language';
 import Link from 'next/link';
 import ArticleTitle from '@/components/article-title';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
+
+type Experience = {
+  role: string;
+  company: string;
+  period: string;
+  listDescription: string[];
+};
+
+function useIsOverflowing({
+  collapsedMaxHeightPx,
+  expanded,
+}: {
+  collapsedMaxHeightPx: number;
+  expanded: boolean;
+}) {
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+
+    const measure = () => {
+      // When expanded we don't need "show more" based on overflow.
+      if (expanded) {
+        setIsOverflowing(false);
+        return;
+      }
+      setIsOverflowing(el.scrollHeight > collapsedMaxHeightPx + 1);
+    };
+
+    // Measure after paint (fonts/wrapping affect height on mobile).
+    const raf = window.requestAnimationFrame(measure);
+
+    const onResize = () => measure();
+    window.addEventListener('resize', onResize, { passive: true });
+
+    return () => {
+      window.cancelAnimationFrame(raf);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [collapsedMaxHeightPx, expanded]);
+
+  return { contentRef, isOverflowing };
+}
+
+function ExperienceCard({
+  experience,
+  index,
+  expanded,
+  onToggle,
+  previewCount,
+  companyUrlMap,
+  showMoreLabel,
+  showLessLabel,
+}: {
+  experience: Experience;
+  index: number;
+  expanded: boolean;
+  onToggle: (idx: number) => void;
+  previewCount: number;
+  companyUrlMap: Record<string, string>;
+  showMoreLabel: string;
+  showLessLabel: string;
+}) {
+  // Tailwind `max-h-20` = 5rem = 80px
+  const collapsedMaxHeightPx = 80;
+  const { contentRef, isOverflowing } = useIsOverflowing({ collapsedMaxHeightPx, expanded });
+  const total = experience.listDescription.length;
+  const shouldPreviewByCount = total > previewCount;
+  const shouldShowToggle = shouldPreviewByCount || isOverflowing;
+  const panelId = useId();
+
+  return (
+    <article className="bg-white dark:bg-gray-800 p-5 md:p-6 rounded-lg shadow-sm dark:shadow-none">
+      <header className="flex justify-between items-start gap-4 mb-3 md:mb-4">
+        <div>
+          <h3
+            className="text-xl md:text-2xl font-semibold"
+            dangerouslySetInnerHTML={{ __html: experience.role }}
+          />
+          {companyUrlMap[experience.company] ? (
+            <a
+              className="block w-fit"
+              href={companyUrlMap[experience.company]}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ArticleTitle text={experience.company} small />
+            </a>
+          ) : (
+            <ArticleTitle text={experience.company} small />
+          )}
+        </div>
+        <span className="text-gray-500 dark:text-gray-400 whitespace-nowrap">
+          {experience.period}
+        </span>
+      </header>
+
+      <div id={panelId} className="relative">
+        <div
+          ref={contentRef}
+          data-testid={`exp-content-${index}`}
+          className={`overflow-hidden transition-all duration-500 ease-in-out ${
+            expanded ? 'max-h-none' : 'max-h-20'
+          }`}
+        >
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
+            {experience.listDescription.map((description: string, descIndex: number) => (
+              <li
+                key={descIndex}
+                className={`transition-all duration-300 ease-in-out ${
+                  !shouldPreviewByCount || descIndex < previewCount || expanded
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 -translate-y-2'
+                }`}
+                style={{
+                  transitionDelay: expanded ? `${descIndex * 30}ms` : '0ms',
+                }}
+              >
+                {description}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {!expanded && shouldShowToggle && (
+          <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-gray-800 to-transparent rounded-b-lg transition-opacity duration-300" />
+        )}
+      </div>
+
+      {shouldShowToggle && (
+        <div className="mt-4 pb-2">
+          <button
+            type="button"
+            onClick={() => onToggle(index)}
+            className="group inline-flex items-center gap-2 text-sm md:text-base text-blue-700 dark:text-blue-400 hover:underline transition-all duration-200"
+            aria-controls={panelId}
+            aria-expanded={expanded}
+          >
+            {expanded ? showLessLabel : showMoreLabel}
+            <ChevronDown
+              className={`w-4 h-4 transition-all duration-300 ease-in-out group-hover:animate-bounce ${
+                expanded ? 'rotate-180' : 'mt-0.5 group-hover:mt-2'
+              }`}
+              aria-hidden
+            />
+          </button>
+        </div>
+      )}
+    </article>
+  );
+}
 
 export function ExperienceSection() {
   const { t } = useLanguage();
@@ -38,6 +191,8 @@ export function ExperienceSection() {
 
   const toggle = (idx: number) => setOpen((prev) => ({ ...prev, [idx]: !prev[idx] }));
 
+  const experiences = useMemo(() => t.experiences as unknown as Experience[], [t.experiences]);
+
   return (
     <section className="py-10 md:py-20 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
@@ -57,91 +212,19 @@ export function ExperienceSection() {
           </Link>
         </div>
         <div className="space-y-6 md:space-y-8">
-          {t.experiences.map((experience, index) => {
-            const expanded = Boolean(open[index]);
-            const total = experience.listDescription.length;
-
-            return (
-              <article
-                key={index}
-                className="bg-white dark:bg-gray-800 p-5 md:p-6 rounded-lg shadow-sm dark:shadow-none"
-              >
-                <header className="flex justify-between items-start gap-4 mb-3 md:mb-4">
-                  <div>
-                    <h3
-                      className="text-xl md:text-2xl font-semibold"
-                      dangerouslySetInnerHTML={{ __html: experience.role }}
-                    />
-                    {companyUrlMap[experience.company] ? (
-                      <a
-                        className="block w-fit"
-                        href={companyUrlMap[experience.company]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ArticleTitle text={experience.company} small />
-                      </a>
-                    ) : (
-                      <ArticleTitle text={experience.company} small />
-                    )}
-                  </div>
-                  <span className="text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                    {experience.period}
-                  </span>
-                </header>
-
-                <div id={`exp-panel-${index}`} className="relative">
-                  <div
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      expanded ? 'max-h-none' : 'max-h-20'
-                    }`}
-                  >
-                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                      {experience.listDescription.map((description: string, descIndex: number) => (
-                        <li
-                          key={descIndex}
-                          className={`transition-all duration-300 ease-in-out ${
-                            descIndex < previewCount || expanded
-                              ? 'opacity-100 translate-y-0'
-                              : 'opacity-0 -translate-y-2'
-                          }`}
-                          style={{
-                            transitionDelay: expanded ? `${descIndex * 30}ms` : '0ms',
-                          }}
-                        >
-                          {description}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {!expanded && total > previewCount && (
-                    <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-gray-800 to-transparent rounded-b-lg transition-opacity duration-300" />
-                  )}
-                </div>
-
-                {total > previewCount && (
-                  <div className="mt-4 pb-2">
-                    <button
-                      type="button"
-                      onClick={() => toggle(index)}
-                      className="group inline-flex items-center gap-2 text-sm md:text-base text-blue-700 dark:text-blue-400 hover:underline transition-all duration-200"
-                      aria-controls={`exp-panel-${index}`}
-                      aria-expanded={expanded}
-                    >
-                      {expanded ? t.showLess : t.showMore}
-                      <ChevronDown
-                        className={`w-4 h-4 transition-all duration-300 ease-in-out group-hover:animate-bounce ${
-                          expanded ? 'rotate-180' : 'mt-0.5 group-hover:mt-2'
-                        }`}
-                        aria-hidden
-                      />
-                    </button>
-                  </div>
-                )}
-              </article>
-            );
-          })}
+          {experiences.map((experience, index) => (
+            <ExperienceCard
+              key={index}
+              experience={experience}
+              index={index}
+              expanded={Boolean(open[index])}
+              onToggle={toggle}
+              previewCount={previewCount}
+              companyUrlMap={companyUrlMap}
+              showMoreLabel={t.showMore}
+              showLessLabel={t.showLess}
+            />
+          ))}
         </div>
       </div>
     </section>
