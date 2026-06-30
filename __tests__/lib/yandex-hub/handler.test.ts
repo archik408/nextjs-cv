@@ -61,7 +61,7 @@ describe('yandex-hub microbit skill', () => {
     const response = await handleYandexAliceRequest(baseRequest);
 
     expect(response.version).toBe('1.0');
-    expect(response.response.text).toContain('Мой microbit');
+    expect(response.response.text).toContain('Мой Микробит');
     expect(response.response.end_session).toBe(false);
   });
 

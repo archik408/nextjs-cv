@@ -1,6 +1,6 @@
 export const YANDEX_DIALOGS_VERSION = '1.0' as const;
 
-export const SKILL_NAME = 'Мой microbit';
+export const SKILL_NAME = 'Мой Микробит';
 
 export type YandexRequestType = 'SimpleUtterance' | 'ButtonPressed' | 'Show.Pull';
 

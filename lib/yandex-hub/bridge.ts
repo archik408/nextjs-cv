@@ -43,7 +43,7 @@ export async function dispatchMicrobitCommand(
     const response = await fetch(bridgeUrl, {
       method: 'POST',
       headers,
-      body: JSON.stringify({ command, source: 'yandex-alice', skill: 'Мой microbit' }),
+      body: JSON.stringify({ command, source: 'yandex-alice', skill: 'Мой Микробит' }),
       signal: controller.signal,
     });
 

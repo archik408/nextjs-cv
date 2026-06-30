@@ -54,7 +54,7 @@ export async function GET() {
     {
       ok: true,
       service: 'microbit',
-      skill: 'Мой microbit',
+      skill: 'Мой Микробит',
       protocol: 'yandex-dialogs-alice',
       version: YANDEX_DIALOGS_VERSION,
       endpoint: '/api/hooks/yandex-hub',
