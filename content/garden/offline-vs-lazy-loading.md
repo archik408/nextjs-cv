@@ -1,7 +1,7 @@
 ---
 title: Конфликт оффлайн функциональности и ленивой подгрузки
 description: Когда нужно организовать работу в offline, то такое нефункциональное требование к веб-приложению порождает конфликт с механизмом оптимизации загрузки бандла путем разбиения его на чанки и последующей ленивой подгрузкой
-date: 2026-03-12
+date: 2026-06-30
 tags: [pwa, mobile, offline, react, webpack, vite, optimization]
 ---
 
@@ -108,78 +108,63 @@ const RatingPage = React.lazy(() => import('pages/RatingPage'));
 
 ## Адаптация под Vite
 
-Описанный выше подход родился в контексте webpack, где группировка чанков контролируется через магический комментарий webpackChunkName. При миграции на Vite (Rollup под капотом) механика меняется, но сам принцип остаётся.
+Описанный выше подход родился в контексте webpack, где группировка чанков контролируется через магические комментарии. В Vite (Rollup/Rolldown) этот слой контроля другой, а главное — меняется поведение "прогрева" ленивых страниц.
 
-### Проблема: нет webpackChunkName
+### Что важно понимать в Vite + React.lazy
 
-Rollup не поддерживает магические комментарии webpack. Нельзя просто написать /_ webpackChunkName: "offline-critical" _/ и ожидать, что все импорты окажутся в одном чанке.
+- `import('./routes/offline-critical-chunk')` прогревает только модуль-агрегатор.
+- Если внутри агрегатора страницы описаны через `React.lazy(() => import('pages/...'))`, реальные page-chunks **не загружаются** до первого рендера компонента.
+- Если агрегатор уже статически импортируется в роутере, динамический `import()` этого же файла становится неэффективным (bundler это обычно подсвечивает).
 
-### Решение: группировка через модуль-агрегатор
+Именно поэтому прогрев нужно делать не агрегатором, а прямыми `import('pages/...')`.
 
-Вместо аннотаций в комментариях мы полагаемся на естественное поведение Rollup: если несколько динамических импортов вызываются из одного модуля, Rollup склонен группировать их общие зависимости.
-Файл offline-critical-chunk.ts остаётся агрегатором, но без магических комментариев (тут же пример, как импортировать компоненты без default-импортов):
+### Корректный прогрев оффлайн-критичных страниц
 
-```jsx
-// offline-critical-chunk.ts
+```ts
+// routes/offline-critical-chunk.ts
 import React from 'react';
 
+const loadRegistrationPage = () => import('pages/RegistrationPage');
+const loadMainPage = () => import('pages/MainPage');
+const loadTaskPreviewPage = () => import('pages/TaskPreview');
+const loadTaskStartPage = () => import('pages/TaskStart');
+const loadSendingTaskPage = () => import('pages/SendingTaskPage');
+const loadSendingSuccessPage = () => import('pages/SendingSuccess');
+
+export function preloadOfflineCriticalPages(): Promise<void> {
+  return Promise.allSettled([
+    loadRegistrationPage(),
+    loadMainPage(),
+    loadTaskPreviewPage(),
+    loadTaskStartPage(),
+    loadSendingTaskPage(),
+    loadSendingSuccessPage(),
+  ]).then(() => undefined);
+}
+
 const RegistrationPage = React.lazy(() =>
-  import('pages/RegistrationPage').then((module) => ({
-    default: module.RegistrationPage,
-  }))
+  loadRegistrationPage().then((module) => ({ default: module.RegistrationPage }))
 );
 
-const MainPage = React.lazy(() =>
-  import('pages/MainPage').then((module) => ({ default: module.MainPage }))
-);
+const MainPage = React.lazy(() => loadMainPage().then((module) => ({ default: module.MainPage })));
 
-const TaskPreview = React.lazy(() =>
-  import('pages/TaskPreview').then((module) => ({
-    default: module.TaskPreview,
-  }))
-);
-
-const TaskStart = React.lazy(() =>
-  import('pages/TaskStart').then((module) => ({ default: module.TaskStart }))
-);
-
-const SendingTask = React.lazy(() =>
-  import('pages/SendingTaskPage').then((module) => ({
-    default: module.SendingTaskPage,
-  }))
-);
-
-const SendingSuccess = React.lazy(() =>
-  import('pages/SendingSuccess').then((module) => ({
-    default: module.SendingSuccess,
-  }))
-);
-
-export { RegistrationPage, MainPage, TaskPreview, TaskStart, SendingTask, SendingSuccess };
+// ... остальные lazy-страницы по той же схеме
 ```
-
-Ключевое отличие — у каждого `React.lazy` используется `.then()` для извлечения именованного экспорта. Это связано с тем, что `React.lazy` ожидает модуль с default-экспортом, а в проекте принят паттерн именованных экспортов.
-Прогрев чанка при старте
-В webpack для предзагрузки использовался `/* webpackPrefetch: true */`. В Vite аналога нет, поэтому прогрев делается вручную — `void import()` в точке входа:
 
 ```ts
 // main.tsx
-serviceWorkerRegister();
+import { preloadOfflineCriticalPages } from 'routes/offline-critical-chunk';
 
-try {
-  // Прогреваем оффлайн-критичный чанк с ключевыми страницами,
-  // чтобы при первом заходе как можно быстрее скачать их код.
-  void import('./routes/offline-critical-chunk');
-} catch {
-  // Игнорируем ошибки
-}
+scheduleTask(() => {
+  void preloadOfflineCriticalPages();
+});
 ```
 
-`void import()` запускает загрузку модуля в фоне, не блокируя рендеринг. Браузер скачает чанк в idle-время, и к моменту навигации на критическую страницу код уже будет в кэше.
+Так страницы остаются разрезанными на чанки, но их код начинает загружаться сразу после старта приложения.
 
-### Многослойное кэширование в Service Worker
+### Кэширование в Service Worker
 
-В webpack-версии достаточно было полагаться на precache манифест Workbox. При переходе на Vite с `vite-plugin-pwa` появляется возможность выстроить более гибкую стратегию.
+Одного preload недостаточно: при плохой сети запросы всё равно могут сорваться. Поэтому для offline-устойчивости нужен precache JS/CSS и runtime-кэш как страховка.
 
 #### Слой 1: Precache через injectManifest
 
