@@ -64,11 +64,14 @@ function buildEncounterText(state: WitcherSessionState): string {
     return 'Я не смогла найти чудовище. Попробуйте ещё раз.';
   }
 
+  const weaponsList = state.encounter.options.join(', ');
+
   return [
     `Ты ведьмак школы ${state.selectedSchool}.`,
+    `У тебя ${state.lives} жизни.`,
     `Ты оказался ${state.encounter.locationPhrase}.`,
     `Перед тобой ${state.encounter.monsterName}: ${state.encounter.monsterDescription}`,
-    `Выбери, чем сразить чудовище. У тебя ${state.lives} жизни.`,
+    `Выбери, чем сразить чудовище: ${weaponsList}.`,
   ].join(' ');
 }
 
@@ -84,7 +87,7 @@ async function resolveSchoolSelection(
   const battleState = await startBattle(withSchool);
   return {
     nextState: battleState,
-    text: `Добро пожаловать в мир Ведьмака! Ты выбрал школу ${school}. ${buildEncounterText(battleState)}`,
+    text: buildEncounterText(battleState),
     buttons: battleState.encounter
       ? buildWeaponButtons(battleState.encounter.options)
       : buildSchoolButtons(),

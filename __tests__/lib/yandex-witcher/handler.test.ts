@@ -108,8 +108,41 @@ describe('yandex-witcher skill handler', () => {
 
     expect(response.session_state?.selectedSchool).toBe('Волка');
     expect(response.session_state?.phase).toBe('choose_weapon');
+    expect(response.response.text).toContain('Ты ведьмак школы Волка.');
+    expect(response.response.text).toContain('У тебя 3 жизни.');
+    expect(response.response.text).toContain(
+      `Выбери, чем сразить чудовище: ${encounterA.options.join(', ')}.`
+    );
     expect(response.response.text).toContain(encounterA.monsterName);
     expect(response.response.buttons).toHaveLength(3);
+  });
+
+  it('accepts different phrasing for school selection', async () => {
+    const variants: Array<{ utterance: string; expectedSchool: string }> = [
+      { utterance: 'медведь', expectedSchool: 'Медведя' },
+      { utterance: 'медведя', expectedSchool: 'Медведя' },
+      { utterance: 'школа медведя', expectedSchool: 'Медведя' },
+      { utterance: 'школу медведя', expectedSchool: 'Медведя' },
+      { utterance: 'школа медведь', expectedSchool: 'Медведя' },
+      { utterance: 'волк', expectedSchool: 'Волка' },
+      { utterance: 'школу грифона', expectedSchool: 'Грифона' },
+      { utterance: 'мантикора', expectedSchool: 'Мантикоры' },
+      { utterance: 'школа змея', expectedSchool: 'Змеи' },
+      { utterance: 'школа кот', expectedSchool: 'Кота' },
+    ];
+
+    for (const [index, variant] of variants.entries()) {
+      mockedCreateEncounter.mockResolvedValueOnce(encounterA);
+      const response = await handleYandexWitcherRequest(
+        requestWithOverrides({
+          session: { new: false, message_id: 50 + index, session_id: `school-variant-${index}` },
+          request: { command: variant.utterance, original_utterance: variant.utterance },
+        })
+      );
+
+      expect(response.session_state?.selectedSchool).toBe(variant.expectedSchool);
+      expect(response.session_state?.phase).toBe('choose_weapon');
+    }
   });
 
   it('wins fight and starts new encounter', async () => {
