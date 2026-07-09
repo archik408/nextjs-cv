@@ -223,4 +223,33 @@ describe('yandex-witcher skill handler', () => {
     expect(response.session_state?.lives).toBe(3);
     expect(response.response.text).toContain('Новый контракт');
   });
+
+  it('keeps progress without incoming state.session', async () => {
+    mockedCreateEncounter.mockResolvedValueOnce(encounterA).mockResolvedValueOnce(encounterB);
+
+    const schoolResponse = await handleYandexWitcherRequest(
+      requestWithOverrides({
+        session: { new: false, message_id: 10, session_id: 'persisted-session' },
+        request: { command: 'Кота', original_utterance: 'Кота' },
+      })
+    );
+
+    expect(schoolResponse.session_state?.phase).toBe('choose_weapon');
+    expect(schoolResponse.session_state?.encounter?.monsterName).toBe(encounterA.monsterName);
+
+    const fightResponse = await handleYandexWitcherRequest(
+      requestWithOverrides({
+        session: { new: false, message_id: 11, session_id: 'persisted-session' },
+        request: {
+          command: 'яблочный сок',
+          original_utterance: 'Яблочный сок',
+        },
+      })
+    );
+
+    expect(fightResponse.response.text).toContain('Неверный выбор');
+    expect(fightResponse.session_state?.phase).toBe('choose_weapon');
+    expect(fightResponse.session_state?.lives).toBe(2);
+    expect(fightResponse.session_state?.encounter?.monsterName).toBe(encounterB.monsterName);
+  });
 });

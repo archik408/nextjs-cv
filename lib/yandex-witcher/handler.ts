@@ -19,6 +19,8 @@ const VICTORY_REWARDS = [
   'карту с тайником мастера',
 ];
 
+const runtimeSessionStore = new Map<string, WitcherSessionState>();
+
 function randomItem<T>(items: readonly T[]): T {
   const index = Math.floor(Math.random() * items.length);
   return items[index];
@@ -114,7 +116,7 @@ async function resolveCorrectAnswer(
   const nextState = await startBattle(updatedState);
   return {
     nextState,
-    text: `Отличный выбор! ${state.encounter.monsterName} повержен. Награда: ${reward}. Побед: ${nextState.victories}. ${buildEncounterText(nextState)}`,
+    text: `Отлично, ты победил существо ${state.encounter.monsterName}. Награда: ${reward}. Начинаем новый контракт. Побед: ${nextState.victories}. ${buildEncounterText(nextState)}`,
     buttons: nextState.encounter
       ? buildWeaponButtons(nextState.encounter.options)
       : buildSchoolButtons(),
@@ -157,7 +159,7 @@ async function resolveWrongAnswer(
   const nextState = await startBattle(updatedState);
   return {
     nextState,
-    text: `Неверный выбор. Тебя смертельно ранили и друзья отвезли в лазарет замка ведьмаков твоей школы. Осталось жизней: ${lives}. Возвращаемся в бой. ${buildEncounterText(nextState)}`,
+    text: `Неверный выбор. Тебя ранили и отвезли в лазарет замка ведьмаков. Осталось жизней: ${lives}. Начинаем новый контракт. ${buildEncounterText(nextState)}`,
     buttons: nextState.encounter
       ? buildWeaponButtons(nextState.encounter.options)
       : buildSchoolButtons(),
@@ -282,13 +284,25 @@ async function resolveByPhase(
 export async function handleYandexWitcherRequest(
   request: YandexAliceRequest
 ): Promise<YandexAliceResponse> {
+  const sessionId = request.session.session_id;
+  if (request.session.new) {
+    runtimeSessionStore.delete(sessionId);
+  }
+
+  const fallbackStoredState = runtimeSessionStore.get(sessionId);
   const state = normalizeWitcherSessionState(
-    request.state?.session ?? createInitialWitcherSessionState()
+    request.state?.session ?? fallbackStoredState ?? createInitialWitcherSessionState()
   );
   const commandText = extractCommandText(request);
   const parsed = parseWitcherCommand(commandText, request.session.new);
 
   const { text, buttons, nextState, endSession } = await resolveByPhase(request, parsed, state);
+
+  if (endSession) {
+    runtimeSessionStore.delete(sessionId);
+  } else {
+    runtimeSessionStore.set(sessionId, nextState);
+  }
 
   return {
     version: YANDEX_DIALOGS_VERSION,

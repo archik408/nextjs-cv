@@ -23,6 +23,14 @@ function normalizeText(value: string): string {
   return value.toLowerCase().replace(/ё/g, 'е').trim();
 }
 
+function normalizeForOptionMatch(value: string): string {
+  return normalizeText(value)
+    .replace(/[«»"']/g, '')
+    .replace(/[.,!?;:()[\]{}]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function includesKeyword(text: string, keywords: string[]): boolean {
   return keywords.some((keyword) => text.includes(keyword));
 }
@@ -71,22 +79,28 @@ export function resolveWeaponChoice(
     const payloadWeapon = request.request.payload.weapon;
     if (
       typeof payloadWeapon === 'string' &&
-      encounter.options.some((option) => normalizeText(option) === normalizeText(payloadWeapon))
+      encounter.options.some(
+        (option) => normalizeForOptionMatch(option) === normalizeForOptionMatch(payloadWeapon)
+      )
     ) {
       return encounter.options.find(
-        (option) => normalizeText(option) === normalizeText(payloadWeapon)
+        (option) => normalizeForOptionMatch(option) === normalizeForOptionMatch(payloadWeapon)
       );
     }
   }
 
-  const normalizedCommand = normalizeText(command);
+  const normalizedCommand = normalizeForOptionMatch(command);
   if (!normalizedCommand) {
     return undefined;
   }
 
   return encounter.options.find((option) => {
-    const normalizedOption = normalizeText(option);
-    return normalizedCommand === normalizedOption || normalizedCommand.includes(normalizedOption);
+    const normalizedOption = normalizeForOptionMatch(option);
+    return (
+      normalizedCommand === normalizedOption ||
+      normalizedCommand.includes(normalizedOption) ||
+      normalizedOption.includes(normalizedCommand)
+    );
   });
 }
 
