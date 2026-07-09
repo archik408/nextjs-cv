@@ -13,8 +13,8 @@ import { SKILL_NAME, YANDEX_DIALOGS_VERSION } from './types';
 function buildHelpText(): string {
   return [
     `Я навык «${SKILL_NAME}».`,
-    'Скажите «улыбнись» — micro:bit покажет улыбку.',
-    'Скажите «издай звук» или «пищи» — micro:bit подаст сигнал.',
+    'Скажите «улыбнись» — Микробит покажет улыбку.',
+    'Скажите «издай звук» или «пищи» — Микробит подаст сигнал.',
     'Также доступны команды «статус» и «пока».',
   ].join(' ');
 }
@@ -25,14 +25,14 @@ function formatLastCommand(command: MicrobitCommand): string {
 
 function buildBridgeSuffix(status: 'sent' | 'queued' | 'failed'): string {
   if (status === 'sent') {
-    return ' Команда отправлена на micro:bit.';
+    return ' Команда отправлена на Микробит.';
   }
 
   if (status === 'queued') {
-    return ' Команда сохранена. micro:bit получит её при следующем подключении.';
+    return ' Команда сохранена. Микробит получит её при следующем подключении.';
   }
 
-  return ' Не удалось связаться с micro:bit. Попробуйте ещё раз.';
+  return ' Не удалось связаться с Микробит. Попробуйте ещё раз.';
 }
 
 async function executeMicrobitCommand(
@@ -71,7 +71,7 @@ async function resolveResponseForCommand(
     case 'status': {
       if (!sessionState.lastCommand) {
         return {
-          text: 'micro:bit ещё не получал команд в этой сессии. Скажите «улыбнись» или «пищи».',
+          text: 'Микробит ещё не получал команд в этой сессии. Скажите «улыбнись» или «пищи».',
           endSession: false,
           nextState: sessionState,
         };
@@ -93,7 +93,7 @@ async function resolveResponseForCommand(
 
     case 'goodbye':
       return {
-        text: 'До встречи! micro:bit на связи.',
+        text: 'До встречи! Микробит на связи.',
         endSession: true,
         nextState: sessionState,
       };
@@ -101,7 +101,7 @@ async function resolveResponseForCommand(
     case 'smile': {
       const nextState = await executeMicrobitCommand('smile', sessionState);
       return {
-        text: `Показываю улыбку на micro:bit.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
+        text: `Показываю улыбку на Микробит.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
         endSession: false,
         nextState,
       };
@@ -110,7 +110,7 @@ async function resolveResponseForCommand(
     case 'sound': {
       const nextState = await executeMicrobitCommand('sound', sessionState);
       return {
-        text: `Издаю звук на micro:bit.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
+        text: `Издаю звук на Микробит.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
         endSession: false,
         nextState,
       };
