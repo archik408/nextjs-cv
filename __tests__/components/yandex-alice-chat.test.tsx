@@ -17,36 +17,35 @@ const chatProps = {
   accent: 'blue' as const,
 };
 
+const originalFetch = global.fetch;
+
 describe('YandexAliceChat', () => {
   afterEach(() => {
-    jest.restoreAllMocks();
+    global.fetch = originalFetch;
   });
 
   it('starts a session and sends a button payload', async () => {
     const fetchMock = jest
-      .spyOn(global, 'fetch')
-      .mockResolvedValueOnce(
-        new Response(
-          JSON.stringify({
-            text: 'Выберите команду',
-            buttons: [{ title: 'Улыбнись', payload: { command: 'улыбнись' } }],
-            endSession: false,
-            sessionState: {},
-          }),
-          { status: 200, headers: { 'Content-Type': 'application/json' } }
-        )
-      )
-      .mockResolvedValueOnce(
-        new Response(
-          JSON.stringify({
-            text: 'Показываю улыбку',
-            buttons: [],
-            endSession: false,
-            sessionState: { lastCommand: 'smile' },
-          }),
-          { status: 200, headers: { 'Content-Type': 'application/json' } }
-        )
-      );
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          text: 'Выберите команду',
+          buttons: [{ title: 'Улыбнись', payload: { command: 'улыбнись' } }],
+          endSession: false,
+          sessionState: {},
+        }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          text: 'Показываю улыбку',
+          buttons: [],
+          endSession: false,
+          sessionState: { lastCommand: 'smile' },
+        }),
+      });
+    global.fetch = fetchMock;
     const user = userEvent.setup();
 
     render(<YandexAliceChat {...chatProps} />);

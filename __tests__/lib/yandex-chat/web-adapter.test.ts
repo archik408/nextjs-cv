@@ -1,7 +1,4 @@
-import {
-  parseWebChatTurnRequest,
-  simulateWebChatTurn,
-} from '@/lib/yandex-chat/web-adapter';
+import { parseWebChatTurnRequest, simulateWebChatTurn } from '@/lib/yandex-chat/web-adapter';
 
 describe('Yandex web chat adapter', () => {
   it('accepts a valid web chat turn', () => {

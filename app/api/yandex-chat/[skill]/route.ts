@@ -17,10 +17,7 @@ function isSupportedSkill(value: string): value is WebChatSkill {
   return supportedSkills.has(value as WebChatSkill);
 }
 
-export async function POST(
-  request: NextRequest,
-  context: { params: Promise<{ skill: string }> }
-) {
+export async function POST(request: NextRequest, context: { params: Promise<{ skill: string }> }) {
   try {
     const { skill } = await context.params;
     if (!isSupportedSkill(skill)) {

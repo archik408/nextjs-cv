@@ -329,9 +329,7 @@ export function YandexAliceChat({
 
               {isEnded && (
                 <div className="text-center">
-                  <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
-                    Сессия завершена.
-                  </p>
+                  <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">Сессия завершена.</p>
                   <button
                     type="button"
                     onClick={startSession}
