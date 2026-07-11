@@ -19,6 +19,8 @@ import {
   BookOpen,
   Hash as HashIcon,
   Smile,
+  Cpu,
+  Swords,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 
@@ -153,6 +155,28 @@ export function ToolsPageClient() {
   ];
 
   const experiments = [
+    {
+      id: 'yandex-hub',
+      title: 'Мой Микробит',
+      description:
+        'Текстовый диалог с навыком Яндекс Станции: отправляйте команды Микробиту и получайте ответы Алисы.',
+      icon: Cpu,
+      href: '/yandex-hub',
+      status: 'ready',
+      color: 'blue',
+      isExternal: false,
+    },
+    {
+      id: 'yandex-witcher',
+      title: 'Ведьмак для Матвея',
+      description:
+        'Текстовая версия приключения для Яндекс Станции с выбором школы, охотой и готовыми вариантами ответа.',
+      icon: Swords,
+      href: '/yandex-witcher',
+      status: 'ready',
+      color: 'purple',
+      isExternal: false,
+    },
     {
       id: 'event-loop',
       title: t.eventLoopTitle || 'JavaScript Event Loop',
