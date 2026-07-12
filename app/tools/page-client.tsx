@@ -154,6 +154,16 @@ export function ToolsPageClient() {
 
   const experiments = [
     {
+      id: 'yandex-alice-skills',
+      title: t.yandexAliceSkillsTitle,
+      description: t.yandexAliceSkillsToolDescription,
+      icon: Bot,
+      href: '/yandex-alice-skills',
+      status: 'ready',
+      color: 'blue',
+      isExternal: false,
+    },
+    {
       id: 'event-loop',
       title: t.eventLoopTitle || 'JavaScript Event Loop',
       description:
