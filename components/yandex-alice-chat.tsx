@@ -3,6 +3,9 @@
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { Bot, Loader2, RefreshCcw, Send, User } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
+import { translations } from '@/lib/translations';
+
+type AliceSkill = 'yandex-hub' | 'yandex-witcher';
 
 interface ChatButton {
   title: string;
@@ -22,12 +25,10 @@ interface ChatResponse {
   sessionState?: Record<string, unknown>;
 }
 
-interface YandexAliceChatProps {
-  skill: 'yandex-hub' | 'yandex-witcher';
+interface SkillConfig {
+  slug: AliceSkill;
   title: string;
   description: string;
-  startText: string;
-  infoText: string;
   accent: 'blue' | 'purple';
 }
 
@@ -80,15 +81,26 @@ function isChatResponse(value: unknown): value is ChatResponse {
   );
 }
 
-export function YandexAliceChat({
-  skill,
-  title,
-  description,
-  startText,
-  infoText,
-  accent,
-}: YandexAliceChatProps) {
-  const styles = accentStyles[accent];
+const t = translations.ru;
+
+export function YandexAliceChat() {
+  const skillConfigs: Record<AliceSkill, SkillConfig> = {
+    'yandex-hub': {
+      slug: 'yandex-hub',
+      title: t.yandexAliceMicrobitTitle,
+      description: t.yandexAliceMicrobitDescription,
+      accent: 'blue',
+    },
+    'yandex-witcher': {
+      slug: 'yandex-witcher',
+      title: t.yandexAliceWitcherTitle,
+      description: t.yandexAliceWitcherDescription,
+      accent: 'purple',
+    },
+  };
+  const [selectedSkill, setSelectedSkill] = useState<AliceSkill | null>(null);
+  const selectedConfig = selectedSkill ? skillConfigs[selectedSkill] : null;
+  const styles = accentStyles[selectedConfig?.accent ?? 'blue'];
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [options, setOptions] = useState<ChatButton[]>([]);
   const [input, setInput] = useState('');
@@ -102,9 +114,14 @@ export function YandexAliceChat({
   const localMessageIdRef = useRef(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const firstSkillButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' });
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    messagesEndRef.current?.scrollIntoView?.({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'nearest',
+    });
   }, [messages, options, isLoading]);
 
   const appendMessage = (role: ChatMessage['role'], content: string) => {
@@ -121,10 +138,11 @@ export function YandexAliceChat({
     command: string,
     payload?: Record<string, unknown>,
     isNew = false,
-    showUserMessage = true
+    showUserMessage = true,
+    targetSkill: AliceSkill | null = selectedSkill
   ) => {
     const normalizedCommand = command.trim();
-    if (isLoading || (!isNew && !normalizedCommand)) {
+    if (!targetSkill || isLoading || (!isNew && !normalizedCommand)) {
       return;
     }
 
@@ -137,7 +155,7 @@ export function YandexAliceChat({
     setIsLoading(true);
 
     try {
-      const response = await fetch(`/api/yandex-chat/${skill}`, {
+      const response = await fetch(`/api/yandex-chat/${targetSkill}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -155,11 +173,11 @@ export function YandexAliceChat({
         const errorMessage =
           result && typeof result === 'object' && 'error' in result
             ? String(result.error)
-            : 'Не удалось получить ответ.';
+            : t.yandexAliceGenericError;
         throw new Error(errorMessage);
       }
       if (!isChatResponse(result)) {
-        throw new Error('Сервер вернул ответ в неизвестном формате.');
+        throw new Error(t.yandexAliceUnknownResponse);
       }
 
       messageIdRef.current += 1;
@@ -172,17 +190,18 @@ export function YandexAliceChat({
         window.setTimeout(() => inputRef.current?.focus(), 0);
       }
     } catch (requestError) {
-      setError(
-        requestError instanceof Error
-          ? requestError.message
-          : 'Не удалось получить ответ. Попробуйте ещё раз.'
-      );
+      setError(requestError instanceof Error ? requestError.message : t.yandexAliceGenericError);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const startSession = () => {
+  const startSession = (skill: AliceSkill | null = selectedSkill) => {
+    if (!skill) {
+      return;
+    }
+
+    setSelectedSkill(skill);
     sessionIdRef.current = createSessionId();
     sessionStateRef.current = undefined;
     messageIdRef.current = 0;
@@ -192,7 +211,22 @@ export function YandexAliceChat({
     setError(null);
     setIsEnded(false);
     setIsStarted(true);
-    void sendTurn('', undefined, true, false);
+    void sendTurn('', undefined, true, false, skill);
+  };
+
+  const chooseAnotherSkill = () => {
+    setSelectedSkill(null);
+    setMessages([]);
+    setOptions([]);
+    setInput('');
+    setError(null);
+    setIsStarted(false);
+    setIsEnded(false);
+    sessionIdRef.current = '';
+    sessionStateRef.current = undefined;
+    messageIdRef.current = 0;
+    localMessageIdRef.current = 0;
+    window.setTimeout(() => firstSkillButtonRef.current?.focus(), 0);
   };
 
   const handleSubmit = (event: FormEvent) => {
@@ -218,15 +252,17 @@ export function YandexAliceChat({
         showThemeSwitcher
       />
 
-      <main id="main-content" className="container mx-auto px-4 py-14 md:py-8">
+      <main id="main-content" lang="ru" className="container mx-auto px-4 py-14 md:py-8">
         <div className="mx-auto max-w-4xl">
           <header className="mb-8 text-center">
-            <h1 className="mb-4 text-4xl font-bold">{title}</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400">{description}</p>
+            <h1 className="mb-4 text-4xl font-bold">{t.yandexAliceSkillsTitle}</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              {t.yandexAliceSkillsDescription}
+            </p>
           </header>
 
           <section
-            aria-label={`Текстовый диалог с навыком «${title}»`}
+            aria-label={t.yandexAliceChatLabel}
             className="flex h-[620px] min-h-[500px] max-h-[72vh] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800"
           >
             <div
@@ -238,20 +274,33 @@ export function YandexAliceChat({
             >
               {!isStarted ? (
                 <div className="flex h-full items-center justify-center text-center">
-                  <div className="max-w-md">
+                  <div className="max-w-2xl">
                     <div
                       className={`mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full ${styles.avatar}`}
                     >
                       <Bot aria-hidden="true" className="h-8 w-8" />
                     </div>
-                    <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">{startText}</p>
-                    <button
-                      type="button"
-                      onClick={startSession}
-                      className={`rounded-lg px-5 py-3 font-medium text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 ${styles.primary}`}
-                    >
-                      Начать сессию
-                    </button>
+                    <p className="mb-6 text-lg font-medium text-gray-700 dark:text-gray-200">
+                      {t.yandexAliceChooseSkill}
+                    </p>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {Object.values(skillConfigs).map((skill, index) => {
+                        const skillStyles = accentStyles[skill.accent];
+
+                        return (
+                          <button
+                            key={skill.slug}
+                            ref={index === 0 ? firstSkillButtonRef : undefined}
+                            type="button"
+                            onClick={() => startSession(skill.slug)}
+                            className={`rounded-xl border p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 ${skillStyles.option}`}
+                          >
+                            <span className="block font-semibold">{skill.title}</span>
+                            <span className="mt-1 block text-sm">{skill.description}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -267,7 +316,7 @@ export function YandexAliceChat({
                         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${styles.avatar}`}
                       >
                         <Bot aria-hidden="true" className="h-5 w-5" />
-                        <span className="sr-only">Алиса</span>
+                        <span className="sr-only">{t.yandexAliceAssistantName}</span>
                       </div>
                     )}
                     <div
@@ -282,7 +331,7 @@ export function YandexAliceChat({
                     {message.role === 'user' && (
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300">
                         <User aria-hidden="true" className="h-5 w-5" />
-                        <span className="sr-only">Вы</span>
+                        <span className="sr-only">{t.yandexAliceUserName}</span>
                       </div>
                     )}
                   </div>
@@ -298,13 +347,16 @@ export function YandexAliceChat({
                   </div>
                   <div className="rounded-2xl bg-gray-100 px-4 py-3 dark:bg-gray-700">
                     <Loader2 aria-hidden="true" className="h-5 w-5 animate-spin" />
-                    <span className="sr-only">Алиса отвечает</span>
+                    <span className="sr-only">{t.yandexAliceResponding}</span>
                   </div>
                 </div>
               )}
 
               {options.length > 0 && !isLoading && (
-                <div aria-label="Варианты ответа" className="flex flex-wrap gap-2 pl-0 sm:pl-12">
+                <div
+                  aria-label={t.yandexAliceResponseOptions}
+                  className="flex flex-wrap gap-2 pl-0 sm:pl-12"
+                >
                   {options.map((option, index) => (
                     <button
                       key={`${option.title}-${index}`}
@@ -329,14 +381,16 @@ export function YandexAliceChat({
 
               {isEnded && (
                 <div className="text-center">
-                  <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">Сессия завершена.</p>
+                  <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+                    {t.yandexAliceSessionEnded}
+                  </p>
                   <button
                     type="button"
-                    onClick={startSession}
+                    onClick={() => startSession()}
                     className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 font-medium text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 ${styles.primary}`}
                   >
                     <RefreshCcw aria-hidden="true" className="h-4 w-4" />
-                    Начать новую сессию
+                    {t.yandexAliceNewSession}
                   </button>
                 </div>
               )}
@@ -353,8 +407,12 @@ export function YandexAliceChat({
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
                   onKeyDown={handleKeyDown}
-                  aria-label="Ваше сообщение"
-                  placeholder={isStarted ? 'Введите сообщение…' : 'Сначала начните сессию'}
+                  aria-label={t.yandexAliceMessageLabel}
+                  placeholder={
+                    isStarted
+                      ? t.yandexAliceMessagePlaceholder
+                      : t.yandexAliceChooseSkillPlaceholder
+                  }
                   rows={1}
                   maxLength={1000}
                   disabled={!isStarted || isLoading || isEnded}
@@ -368,7 +426,7 @@ export function YandexAliceChat({
                 <button
                   type="submit"
                   disabled={!input.trim() || !isStarted || isLoading || isEnded}
-                  aria-label="Отправить сообщение"
+                  aria-label={t.yandexAliceSendMessage}
                   className={`flex min-h-11 min-w-11 items-center justify-center rounded-lg px-4 text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-400 dark:focus-visible:ring-offset-gray-800 ${styles.primary}`}
                 >
                   {isLoading ? (
@@ -380,24 +438,35 @@ export function YandexAliceChat({
                 {isStarted && !isEnded && (
                   <button
                     type="button"
-                    onClick={startSession}
+                    onClick={() => startSession()}
                     disabled={isLoading}
-                    aria-label="Начать сессию заново"
+                    aria-label={t.yandexAliceRestartSession}
                     className="flex min-h-11 min-w-11 items-center justify-center rounded-lg bg-gray-200 px-4 text-gray-700 transition-colors hover:bg-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 dark:focus-visible:ring-offset-gray-800"
                   >
                     <RefreshCcw aria-hidden="true" className="h-5 w-5" />
                   </button>
                 )}
+                {selectedSkill && (
+                  <button
+                    type="button"
+                    onClick={chooseAnotherSkill}
+                    disabled={isLoading}
+                    className="min-h-11 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 dark:focus-visible:ring-offset-gray-800"
+                  >
+                    {t.yandexAliceChangeSkill}
+                  </button>
+                )}
               </div>
               <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                Enter — отправить, Shift+Enter — новая строка
+                {selectedConfig ? `${selectedConfig.title} · ` : ''}
+                {t.yandexAliceKeyboardHint}
               </p>
             </form>
           </section>
 
           <aside className={`mt-8 rounded-lg border p-5 text-sm ${styles.info}`}>
-            <h2 className="mb-2 text-base font-semibold">О текстовом режиме</h2>
-            <p>{infoText}</p>
+            <h2 className="mb-2 text-base font-semibold">{t.yandexAliceTextModeTitle}</h2>
+            <p>{t.yandexAliceTextModeInfo}</p>
           </aside>
         </div>
       </main>

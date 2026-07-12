@@ -1,8 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import { YandexHubPageClient } from '@/app/yandex-hub/page-client';
-import { YandexWitcherPageClient } from '@/app/yandex-witcher/page-client';
+import { YandexAliceSkillsPageClient } from '@/app/yandex-alice-skills/page-client';
 
 jest.mock('@/components/navigation-buttons', () => ({
   __esModule: true,
@@ -10,13 +9,8 @@ jest.mock('@/components/navigation-buttons', () => ({
 }));
 
 describe('Yandex chat pages accessibility', () => {
-  it('hub page has no accessibility violations', async () => {
-    const { container } = render(<YandexHubPageClient />);
-    expect(await axe(container)).toHaveNoViolations();
-  });
-
-  it('witcher page has no accessibility violations', async () => {
-    const { container } = render(<YandexWitcherPageClient />);
+  it('unified skills page has no accessibility violations', async () => {
+    const { container } = render(<YandexAliceSkillsPageClient />);
     expect(await axe(container)).toHaveNoViolations();
   });
 });

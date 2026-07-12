@@ -8,15 +8,6 @@ jest.mock('@/components/navigation-buttons', () => ({
   default: () => null,
 }));
 
-const chatProps = {
-  skill: 'yandex-hub' as const,
-  title: 'Мой Микробит',
-  description: 'Описание',
-  startText: 'Начните диалог',
-  infoText: 'Информация',
-  accent: 'blue' as const,
-};
-
 const originalFetch = global.fetch;
 
 describe('YandexAliceChat', () => {
@@ -48,10 +39,11 @@ describe('YandexAliceChat', () => {
     global.fetch = fetchMock;
     const user = userEvent.setup();
 
-    render(<YandexAliceChat {...chatProps} />);
-    await user.click(screen.getByRole('button', { name: 'Начать сессию' }));
+    render(<YandexAliceChat />);
+    await user.click(screen.getByRole('button', { name: /Мой Микробит/ }));
 
     expect(await screen.findByText('Выберите команду')).toBeInTheDocument();
+    expect(fetchMock).toHaveBeenNthCalledWith(1, '/api/yandex-chat/yandex-hub', expect.any(Object));
     const firstRequest = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
     expect(firstRequest).toMatchObject({
       command: '',
@@ -71,5 +63,25 @@ describe('YandexAliceChat', () => {
       payload: { command: 'улыбнись' },
       sessionState: {},
     });
+  });
+
+  it('starts the selected Witcher skill through its existing web API slug', async () => {
+    const fetchMock = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        text: 'Выберите школу',
+        buttons: [],
+        endSession: false,
+        sessionState: {},
+      }),
+    });
+    global.fetch = fetchMock;
+    const user = userEvent.setup();
+
+    render(<YandexAliceChat />);
+    await user.click(screen.getByRole('button', { name: /Ведьмак для Матвея/ }));
+
+    expect(await screen.findByText('Выберите школу')).toBeInTheDocument();
+    expect(fetchMock).toHaveBeenCalledWith('/api/yandex-chat/yandex-witcher', expect.any(Object));
   });
 });

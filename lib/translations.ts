@@ -456,6 +456,36 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     experiments: 'Experiments',
     home: 'Home',
     backToTools: 'Back to Tools',
+    yandexAliceSkillsTitle: 'Skills for Yandex Station with Alice',
+    yandexAliceSkillsToolDescription:
+      'Chat with Alice skills in the browser: My Microbit and The Witcher for Matvey.',
+    yandexAliceSkillsDescription:
+      'Choose a skill in the chat and try the same commands and dialogue available on Yandex Station.',
+    yandexAliceChooseSkill: 'Which skill would you like to launch?',
+    yandexAliceMicrobitTitle: 'My Microbit',
+    yandexAliceMicrobitDescription: 'Send commands to Microbit and receive Alice’s replies.',
+    yandexAliceWitcherTitle: 'The Witcher for Matvey',
+    yandexAliceWitcherDescription:
+      'Choose a witcher school, go hunting, and reply using suggested options or text.',
+    yandexAliceChatLabel: 'Text chat with Yandex Station Alice skills',
+    yandexAliceAssistantName: 'Alice',
+    yandexAliceUserName: 'You',
+    yandexAliceResponding: 'Alice is responding',
+    yandexAliceResponseOptions: 'Response options',
+    yandexAliceSessionEnded: 'The session has ended.',
+    yandexAliceNewSession: 'Start a new session',
+    yandexAliceChangeSkill: 'Choose another skill',
+    yandexAliceMessageLabel: 'Your message',
+    yandexAliceMessagePlaceholder: 'Type a message…',
+    yandexAliceChooseSkillPlaceholder: 'Choose a skill first',
+    yandexAliceSendMessage: 'Send message',
+    yandexAliceRestartSession: 'Restart session',
+    yandexAliceKeyboardHint: 'Enter — send, Shift+Enter — new line',
+    yandexAliceTextModeTitle: 'About text mode',
+    yandexAliceTextModeInfo:
+      'The page sends messages to the existing skills without changing their Yandex Dialogs protocol. The real station webhooks and session behavior remain independent.',
+    yandexAliceGenericError: 'Could not get a response. Please try again.',
+    yandexAliceUnknownResponse: 'The server returned a response in an unknown format.',
     // Algorithms Page
     algorithmsTitle: 'Algorithms & Data Structures',
     algorithmsDescription:
@@ -1366,6 +1396,36 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     experiments: 'Эксперименты',
     home: 'Главная',
     backToTools: 'Назад к инструментам',
+    yandexAliceSkillsTitle: 'Навыки для Яндекс Станции Алиса',
+    yandexAliceSkillsToolDescription:
+      'Текстовый диалог с навыками Алисы в браузере: «Мой Микробит» и «Ведьмак для Матвея».',
+    yandexAliceSkillsDescription:
+      'Выберите навык прямо в чате и попробуйте те же команды и диалоги, что доступны на Яндекс Станции.',
+    yandexAliceChooseSkill: 'Какой навык запустить?',
+    yandexAliceMicrobitTitle: 'Мой Микробит',
+    yandexAliceMicrobitDescription: 'Отправляйте команды Микробиту и получайте ответы Алисы.',
+    yandexAliceWitcherTitle: 'Ведьмак для Матвея',
+    yandexAliceWitcherDescription:
+      'Выберите школу ведьмаков, отправляйтесь на охоту и отвечайте готовыми вариантами или текстом.',
+    yandexAliceChatLabel: 'Текстовый диалог с навыками Яндекс Станции Алиса',
+    yandexAliceAssistantName: 'Алиса',
+    yandexAliceUserName: 'Вы',
+    yandexAliceResponding: 'Алиса отвечает',
+    yandexAliceResponseOptions: 'Варианты ответа',
+    yandexAliceSessionEnded: 'Сессия завершена.',
+    yandexAliceNewSession: 'Начать новую сессию',
+    yandexAliceChangeSkill: 'Выбрать другой навык',
+    yandexAliceMessageLabel: 'Ваше сообщение',
+    yandexAliceMessagePlaceholder: 'Введите сообщение…',
+    yandexAliceChooseSkillPlaceholder: 'Сначала выберите навык',
+    yandexAliceSendMessage: 'Отправить сообщение',
+    yandexAliceRestartSession: 'Начать сессию заново',
+    yandexAliceKeyboardHint: 'Enter — отправить, Shift+Enter — новая строка',
+    yandexAliceTextModeTitle: 'О текстовом режиме',
+    yandexAliceTextModeInfo:
+      'Страница передаёт сообщения существующим навыкам без изменения протокола Яндекс Диалогов. Webhook-адреса настоящей станции и состояние её сессий остаются независимыми.',
+    yandexAliceGenericError: 'Не удалось получить ответ. Попробуйте ещё раз.',
+    yandexAliceUnknownResponse: 'Сервер вернул ответ в неизвестном формате.',
     // Algorithms Page
     algorithmsTitle: 'Алгоритмы и Структуры Данных',
     algorithmsDescription:
