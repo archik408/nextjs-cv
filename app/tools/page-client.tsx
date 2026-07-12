@@ -19,6 +19,7 @@ import {
   BookOpen,
   Hash as HashIcon,
   Smile,
+  Cpu,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 
@@ -153,6 +154,16 @@ export function ToolsPageClient() {
   ];
 
   const experiments = [
+    {
+      id: 'microbit-connector',
+      title: t.microbitConnectorToolTitle,
+      description: t.microbitConnectorToolDescription,
+      icon: Cpu,
+      href: '/microbit-connector',
+      status: 'ready',
+      color: 'cyan',
+      isExternal: false,
+    },
     {
       id: 'yandex-alice-skills',
       title: t.yandexAliceSkillsTitle,

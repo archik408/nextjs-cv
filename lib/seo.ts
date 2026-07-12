@@ -162,6 +162,16 @@ export const seoConfigs = {
       'JavaScript, Event Loop, Call Stack, Microtask Queue, Task Queue, Web APIs, setTimeout, fetch, setInterval, IndexedDB',
     path: '/event-loop',
   },
+  microbitConnector: {
+    title: 'Microbit Connector - Web Bluetooth & USB',
+    description:
+      'Connect to a BBC micro:bit v2 from the browser via Web Bluetooth or USB and send UART protocol commands to the LED matrix.',
+    keywords:
+      'micro:bit, BBC microbit, Web Bluetooth, WebUSB, Web Serial, UART, MakeCode, education, hardware',
+    path: '/microbit-connector',
+    type: 'website',
+    locale: 'en',
+  },
   aiAssistant: {
     title: 'AI Assistant - Chat with AI',
     description:
