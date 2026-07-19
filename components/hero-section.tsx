@@ -34,7 +34,14 @@ export function HeroSection() {
   return (
     <header className="hero-section relative h-screen flex items-center justify-center">
       <div className="absolute inset-0">
-        <Image src="/background.avif" alt="" fill className="object-cover opacity-10" priority />
+        <Image
+          src="/background.avif"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-10"
+          priority
+        />
       </div>
       <div className="relative z-10 text-center px-4">
         <div className="mb-8 flex justify-center">
@@ -57,6 +64,7 @@ export function HeroSection() {
                 src="/avatar.webp"
                 alt="Artur Basak"
                 fill
+                sizes="160px"
                 className="absolute inset-0 rounded-full object-cover [backface-visibility:hidden]"
                 priority
                 placeholder="blur"
@@ -66,6 +74,7 @@ export function HeroSection() {
                 src="/back-bg.webp"
                 alt=""
                 fill
+                sizes="160px"
                 className="absolute inset-0 rounded-full object-cover rotate-y-180 [backface-visibility:hidden]"
                 priority
                 placeholder="blur"

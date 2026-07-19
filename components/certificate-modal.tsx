@@ -101,9 +101,10 @@ export function CertificateModal({
                 src={url}
                 alt={title}
                 fill
+                sizes="(max-width: 1024px) 90vw, 896px"
                 className={`object-contain rounded ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
                 priority
-                onLoadingComplete={() => setIsLoading(false)}
+                onLoad={() => setIsLoading(false)}
               />
               {!isLoading && <CertificateRibbon />}
             </div>

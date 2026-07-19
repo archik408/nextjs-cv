@@ -36,13 +36,7 @@ export function OtherCertificatesCarousel({ onOpenCertificate }: OtherCertificat
   };
 
   return (
-    <div
-      className="mt-8"
-      role="region"
-      aria-roledescription="carousel"
-      aria-labelledby={labelId}
-      aria-hidden="true"
-    >
+    <div className="mt-8" role="region" aria-roledescription="carousel" aria-labelledby={labelId}>
       <div className="mb-3 flex items-start justify-between gap-3">
         <p
           id={labelId}
@@ -103,10 +97,11 @@ export function OtherCertificatesCarousel({ onOpenCertificate }: OtherCertificat
                   <Image
                     src={certificate.src}
                     alt={copy.alt}
-                    width={160}
-                    height={112}
-                    className="h-20 w-auto rounded-md border border-gray-200/80 dark:border-gray-700 object-cover shadow-sm transition-opacity group-hover:opacity-90"
-                    sizes="160px"
+                    width={114}
+                    height={80}
+                    className="rounded-md border border-gray-200/80 dark:border-gray-700 object-cover shadow-sm transition-opacity group-hover:opacity-90"
+                    style={{ width: 114, height: 80, maxWidth: 'none' }}
+                    sizes="114px"
                     loading="lazy"
                   />
                 </button>
@@ -131,10 +126,11 @@ export function OtherCertificatesCarousel({ onOpenCertificate }: OtherCertificat
                     <Image
                       src={certificate.src}
                       alt=""
-                      width={160}
-                      height={112}
-                      className="h-20 w-auto rounded-md border border-gray-200/80 dark:border-gray-700 object-cover shadow-sm"
-                      sizes="160px"
+                      width={114}
+                      height={80}
+                      className="rounded-md border border-gray-200/80 dark:border-gray-700 object-cover shadow-sm"
+                      style={{ width: 114, height: 80, maxWidth: 'none' }}
+                      sizes="114px"
                       loading="lazy"
                     />
                   </button>

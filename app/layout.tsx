@@ -135,7 +135,7 @@ export default function RootLayout({
     speaksLanguage: ['English', 'Belarusian', 'Russian'],
   };
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

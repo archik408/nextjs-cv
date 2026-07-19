@@ -200,6 +200,7 @@ export function FunActivitiesSection() {
                           width={activity.images.length === 4 ? 300 : 500}
                           height={activity.images.length === 4 ? 300 : 350}
                           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                          style={{ height: '100%' }}
                           priority={false}
                         />
                         {activity.id === 'art' && (

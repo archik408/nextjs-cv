@@ -390,7 +390,7 @@ export const timelineDataEn = [
     description:
       'Spoke at X5 Group JS meetup about PWA development specifics for offline, IndexedDB and Workbox',
     category: 'career' as const,
-    image: '/x5-meetup.webp',
+    image: '/timeline/x5-meetup.webp',
   },
   {
     year: 2025,
