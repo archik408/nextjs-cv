@@ -69,15 +69,17 @@ export const translations = {
       'The content and text on the site were refined, with more information and external links to articles, publications, and social networks added.',
     timeMachine2025Description:
       'Complete overhaul of the website to Next.js with server-side rendering and migration to Vercel. The goal was not only to present content with comprehensive information about me as a specialist, but also to demonstrate my skills as a designer and frontend engineer right here. The website also became a sandbox to work with an AI assistant. Beyond the portfolio, the site now features a digital garden, career timeline, and numerous experiments in the form of online tools.',
-    role: 'Web Engineer & Frontend Architect | 15+ Yrs',
-    roleMobile: 'Web Engineer & Frontend Architect',
+    role: 'Web Engineer & Architect | 15+ Yrs',
+    roleMobile: 'Web Engineer & Architect',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
+    resumeAbout:
+      "Product-minded Web Engineer & Architect with 15+ years across the full web stack — UI architecture, BFF/API layers, Node.js services, HTTP/caching, and offline-capable clients. I specialize in accessible, high-performance PWAs and scalable web systems grounded in strong UI/UX practice—without dark patterns. Recently leading hybrid WebView/PWA delivery at X5 Tech (20M+ MAU), with prior work for Daimler, SAP, Kohl's, and startups including Lition. Published in Smashing Magazine; deep focus on WCAG, design systems, Core Web Vitals, and pragmatic full-stack delivery.",
     aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and school Computer Science teacher, and then fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
-My journey is <span class="text-double-underline">a bridge<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> between computing eras. It began with the structured programming with <em>Pascal</em>, <em>C++</em> and <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, where I learned the core principles of memory management and algorithms. I then built powerful desktop and early web applications for the enterprise world using <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> and <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, and gained a critical eye for quality and process through test automation with <em>Selenium RC</em> and later <em>WebDriver</em>, <em>Cypress</em> and <em>Playwright</em>.<br/><br/>
+My journey is <span class="text-double-underline">a bridge<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> between computing eras. It began with structured programming in <em>Pascal</em>, <em>C++</em> and <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, where I learned the core principles of memory management and algorithms. I then built powerful desktop and early web applications for the enterprise world using <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> and <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, and gained a critical eye for quality and process through test automation with <em>Selenium RC</em> and later <em>WebDriver</em>, <em>Cypress</em> and <em>Playwright</em>.<br/><br/>
 I was on the front lines of the web's transformation, crafting dynamic applications with its first-generation tools: <em><abbr title="Asynchronous Javascript and XML ">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em>, and <em>Ember.js</em>. This deep historical context is my greatest asset. It allows me to architect modern <em>React</em>, <em>Web Components</em> and <em>TypeScript</em> applications with a profound understanding of the problems they solve, ensuring they are not just trendy but <span class="text-single-underline">truly well-engineered<img aria-hidden="true" src="/single-underline.webp" alt="" class="single-underline"></span>, scalable, and built to last.<br/><br/>
 Today, I focus on creating accessible, user-centric, offline and mobile-first <em>Progressive Web Apps (<abbr>PWA</abbr>)</em> and robust frontend architectures based on modern tools like <em>Webpack</em>, <em>Vite</em>, <em>Next.js</em>, <em>MobX</em>, <em>React-Router</em>, <em>Material UI</em>, <em>Tailwind CSS</em>, <em>Rust/WebAssembly</em>, etc.<br/>
-I've been trusted to deliver solutions for industry giants like Daimler and SAP, retailers like X5 Group ans Kohl's, tech innovators like Croc, startups like TrueImpact, Lition, Tispr/Indy and chemical leaders like Sibur and Evonik.<br/><br/>
+I've been trusted to deliver solutions for industry giants like Daimler and SAP, retailers like X5 Group and Kohl's, tech innovators like Croc, startups like TrueImpact, Lition, Tispr/Indy and chemical leaders like Sibur and Evonik.<br/><br/>
 Now, I've come full circle: I'm passing on the logic and joy of creation to the next generation by teaching my children to code in <em>Scratch</em>, <em>MakeCode</em> and <em>Blockly</em>.`,
     cleanCode: 'Clean Code',
     cleanCodeDesc:
@@ -101,27 +103,27 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       {
         title: 'Design Systems & UI Engineering Leadership',
         description:
-          'Building and governing component libraries, bridging design-development workflow, ensuring consistency at scale',
+          'Building and governing component libraries, bridging the design–development workflow, and ensuring consistency at scale',
       },
       {
         title: 'Web Performance & Platform Excellence',
         description:
-          'Optimizing Core Web Vitals, PWA/offline capabilities, web accessibility (WCAG), web security (OWASP) and cross-platform compatibility with RWD/mobile-first approaches',
+          'Optimizing Core Web Vitals, PWA/offline capabilities, web accessibility (WCAG), web security (OWASP), and cross-platform compatibility with RWD/mobile-first approaches',
       },
       {
         title: 'Modern React & Web Standards Evolution',
         description:
-          'Architecting with React/Next.js ecosystem while advancing web platform through Lit/Web Components and Rust/WASM',
+          'Architecting with the React/Next.js ecosystem while advancing the web platform through Lit/Web Components and Rust/WASM',
       },
       {
         title: 'Web Accessibility Consulting & Audits',
         description:
-          'Providing accessibility consultations, conducting and performing accessibility audits, deeply immersed in this topic. Also running a small Telegram channel about accessibility: <a href="https://t.me/proa11y" target="_blank" rel="noopener noreferrer">@proa11y</a>',
+          'Providing accessibility consultations and conducting accessibility audits—a topic I am deeply immersed in. I also run a Telegram channel on accessibility: <a href="https://t.me/proa11y" target="_blank" rel="noopener noreferrer">@proa11y</a>',
       },
       {
         title: 'Full-Stack JavaScript & Platform Engineering',
         description:
-          'Architecting end-to-end solutions with Node.js/Deno/Bun, Rust/WASM, and cloud-native deployment',
+          'Architecting end-to-end web solutions across BFF/API layers, Node.js/Deno/Bun services, HTTP caching and networking, Rust/WASM, and cloud-native deployment',
       },
     ],
     mySetup: 'My Setup',
@@ -133,16 +135,16 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'X5 Tech',
         period: '2026 - Present',
         listDescription: [
-          'Leading the development of a hybrid mobile application (Native + WebView) for one of the largest grocery retail groups globally with MAU 20+ millions using React.js and PWA',
-          'Implementing mystery shopping functionality that achieving more than 70% geographic coverage of stores, significantly reducing OPEX',
-          'Designing and implementing offline functionality for the app that increasing user retention and reducing attrition based on ServiceWorker API/Workbox, IndexedDB and Dixie.js',
-          'Increasing NPS by improving UI based on A/B Testing and UX Interviews & Research',
-          'Integrating advanced web technologies to deliver a seamless cross-platform experience for both iOS and Android, ensuring high performance and scalability with a lot of modern Web APIs like View Transition API, Vibration API, Geolocation API, Web Share, modern CSS and Lottie animations',
-          'Organize continuous monitoring and surveillance of the frontend system using Sentry and other tools to improve stability, Core Web Vitals, and quality',
-          'Participating in AI/LLM integration for data moderation through Computer Vision and fraud detection',
-          'Product winner of E+ Awards and CX Awards in nominations AI adoption, innovation and best client experience',
-          'Collaborating closely with cross-functional teams to align the application with business goals, resulting in improved user engagement and operational efficiency',
-          'Maintain and support side projects like admin/moderation application based on React-Admin and mock Bun server plus a bunch of landing pages based on SSR/Next.js',
+          'Leading development of a hybrid mobile application (Native + WebView) for one of the largest grocery retail groups globally, with 20M+ MAU, using React.js and PWA',
+          'Implemented mystery-shopping functionality that achieved more than 70% geographic coverage of stores, significantly reducing OPEX',
+          'Designed and implemented offline functionality with Service Worker API/Workbox, IndexedDB, and Dexie.js, increasing user retention and reducing attrition',
+          'Increased NPS by improving the UI based on A/B testing and UX interviews & research',
+          'Integrated modern Web APIs (View Transitions, Vibration, Geolocation, Web Share), modern CSS, and Lottie animations to deliver a seamless cross-platform experience on iOS and Android',
+          'Organizing continuous frontend monitoring with Sentry and related tooling to improve stability, Core Web Vitals, and overall quality',
+          'Participating in AI/LLM integration for data moderation via computer vision and fraud detection',
+          'Product won E+ Awards and CX Awards in AI adoption, innovation, and best client experience',
+          'Collaborating with cross-functional teams to align the application with business goals, improving engagement and operational efficiency',
+          'Maintaining side projects including an admin/moderation app (React-Admin + mock Bun server) and SSR/Next.js landing pages',
         ],
       },
       {
@@ -150,7 +152,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'IntexSoft',
         period: '2022 - 2026',
         listDescription: [
-          'Worked as a Senior/Lead Front-End Web Developer on several client projects (including one of the largest grocery retail groups in the world), focusing on user experience, performance, accessibility, and design systems, in addition to core business logic.',
+          'Acted as Senior/Lead Frontend Engineer on client engagements, including a top global grocery retailer later continued in-house at X5 Tech',
+          'Owned frontend architecture for hybrid WebView/PWA mobile experiences with a focus on performance, accessibility (WCAG), and design-system consistency',
+          'Delivered offline-capable features and Core Web Vitals improvements using Service Workers, IndexedDB, and modern React tooling',
+          'Partnered with product, QA, and design to ship user-facing features and elevate frontend quality practices across the engagement',
         ],
       },
       {
@@ -173,9 +178,9 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
           'Enhanced the existing functionality of the web platform and played a pivotal role in the design and implementation of major new features, including WYSIWYG rich editors, calendars, task boards, and white-labeling solutions',
           "Developed and maintained the company's custom Design System/UI Kit (Tispr Design Library - TDL), ensuring consistency and scalability across all projects",
           'Migrated the UI Kit to a sharable npm package hosted on the Nexus registry, enabling seamless integration and reuse across multiple projects',
-          'Adopted approach with Design Tokens based on CSS Custom Properties and later wrote about that in Smashing Magazine and Better Programming articles',
+          'Adopted a Design Tokens approach based on CSS Custom Properties and later wrote about it in Smashing Magazine and Better Programming',
           'Introduced and implemented unit and integration testing for the frontend codebase, transitioning from Enzyme to React Testing Library (RTL). Increased test coverage from zero to over 50%, significantly improving code quality and reliability',
-          'Designed and implemented a modern architecture for the website and content blog using headless CMS (Strapi) and server-side rendering (SSR, Next.js), resulting in enhanced SEO, performance, and user engagement',
+          'Designed and implemented a modern architecture for the website and content blog using a headless CMS (Strapi) and server-side rendering (SSR, Next.js), resulting in enhanced SEO, performance, and user engagement',
           'Played a key role in interviewing and forming a strong onsite frontend team, replacing all outstaff personnel with senior software engineers',
         ],
       },
@@ -187,10 +192,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
           'Over 9 years, contributed to 20+ projects across a diverse range of clients, including enterprise-level companies (Daimler, Evonik, SIBUR), mid-sized businesses (Florence Healthcare, NextGate, EquipmentWatch, Westernacher), and startups (TrueImpact, Lition Energy)',
           'Primarily worked through outsourcing and outstaffing models, delivering high-quality Web UI and Frontend solutions tailored to client needs',
           'Joined the company as a QA Engineer/SDET when it had 20+ employees and played a key role in its transformation into a thriving organization with 300+ employees',
-          'Advanced to the position of Lead Software Engineer, where I managed one of the engineering groups within the Web Department, overseeing a team of 9 engineers',
-          'Provided technical leadership, mentorship, and guidance to the team, ensuring the successful delivery of projects and fostering a culture of collaboration and innovation',
-          'Delivered scalable and user-friendly Web UI/Frontend solutions for clients across various industries',
-          "Supported the company's growth by contributing to process improvements, team development, and the establishment of best practices in software engineering",
+          'Advanced to Lead Software Engineer, managing one of the engineering groups within the Web Department and overseeing a team of 9 engineers',
+          'Provided technical leadership, mentorship, and guidance, ensuring successful delivery and fostering collaboration and innovation',
+          'Delivered scalable, user-friendly Web UI/Frontend solutions for clients across various industries',
+          "Supported the company's growth by contributing to process improvements, team development, and best practices in software engineering",
         ],
       },
       {
@@ -198,14 +203,14 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'Lition Energy',
         period: '2018-2019',
         listDescription: [
-          'Developed from scratch a web application for the German blockchain startup Lition Energy, creating a green energy purchasing platform based on full-featured JavaScript technologies such as React.js, Redux, Next.js / SSR, Headless CMS, Node.js, Express.js, Knex.js, MySQL, and Ethereum.',
-          'Adapted all projects to mobile, tablet, and desktop screens using a RWD approach.',
-          'Maintained a high level of frontend accessibility using Lighthouse metrics.',
-          'Improved the backend quality by implementing unit and integration tests.',
-          'Developed an architecture based on a Headless CMS (Contentful) and SSR (Next.js) to replace the old WordPress platform so the client could conveniently manage landing page content for various consumer groups. Improved SEO and Core Web Vitals to increase search visibility.',
-          'Integrated the third-party PowerCloud system for electricity payment and billing.',
-          'Led the frontend and backend development team.',
-          'As a result, the startup raised $5 million during the ICO round and was mentioned in Forbes, and was later sold.',
+          'Built from scratch a green-energy purchasing platform for the German blockchain startup Lition Energy using React.js, Redux, Next.js/SSR, a headless CMS, Node.js, Express.js, Knex.js, MySQL, and Ethereum',
+          'Adapted all screens to mobile, tablet, and desktop using a responsive (RWD) approach',
+          'Maintained a high level of frontend accessibility using Lighthouse metrics',
+          'Improved backend quality by implementing unit and integration tests',
+          'Replaced WordPress with a Headless CMS (Contentful) + SSR (Next.js) architecture so the client could manage landing content for different consumer groups; improved SEO and Core Web Vitals',
+          'Integrated the third-party PowerCloud system for electricity payment and billing',
+          'Led the frontend and backend development team',
+          'As a result, the startup raised $5 million during the ICO round, was mentioned in Forbes, and was later sold',
         ],
       },
       {
@@ -219,10 +224,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'Big Three Management Consulting (NDA, but easy to Google)',
         period: '2016-2018',
         listDescription: [
-          'Developing a competitive matching module for an analytics platform for a leading US retailer. Main tech stack was React, Redux (own customization based on Publisher-Subscriber pattern), React-Toolbox UI, Unit tests with Enzyme and End-to-End tests with WebDriver. ',
-          'Managing a team of front-end developers who developed the front-end for a strategic web application enabling competitive analysis of product range and pricing in the mass market segment.',
-          'Migrating legacy modules from jQuery to modern React, creating a high-performance interface with a sophisticated filter system, interactive catalog, dashboards and modern UX based on user surveys and testing.',
-          'The implemented functionality provided the client with a data-driven decision-making tool, enabling real-time comparison of their key product categories with those of major market players (Amazon, Target, TJ Maxx).',
+          'Developed a competitive matching module for an analytics platform for a leading US retailer (React, custom Redux on a pub/sub pattern, React-Toolbox UI, Enzyme unit tests, WebDriver E2E)',
+          'Managed a frontend team building a strategic web app for competitive analysis of product range and pricing in the mass-market segment',
+          'Migrated legacy jQuery modules to modern React, creating a high-performance UI with advanced filters, an interactive catalog, dashboards, and UX informed by user research',
+          'Enabled data-driven decisions with real-time comparison of key product categories against major market players (Amazon, Target, TJ Maxx)',
         ],
       },
       {
@@ -230,8 +235,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'TrueImpact',
         period: '2015-2016',
         listDescription: [
-          'Developing a user interface using Angular.js 1.5 and Bootstrap for TrueImpact, a startup that provides grant analysis, charitable investment, and volunteerism analytics from scratch in a very fast and flexible timeframe. At the initial stage, it was crucial to act quickly and show investors a demo every day.',
-          'Later, the MVP was transformed into a ready-to-use app with a thorough redesign of the communication logic and UX.',
+          'Built the UI from scratch with Angular.js 1.5 and Bootstrap for a startup providing grant, charitable investment, and volunteerism analytics—shipping investor demos on a daily cadence early on',
+          'Evolved the MVP into a production-ready app with a thorough redesign of communication logic and UX',
         ],
       },
       {
@@ -239,58 +244,63 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'EquipmentWatch',
         period: '2015-2016',
         listDescription: [
-          'Starting from this project fully focused on JavaScript stack and got on EquipmentWatch project, developing web-based application on Ember.js and Node.js, MongoDB.',
-          'Mostly was focus on UI part and SPA routing with Ember.js and ecosystem around framework.',
-          'Later project was sold to Randall-Reilly.',
+          'From this project onward, focused fully on the JavaScript stack, building a web application with Ember.js, Node.js, and MongoDB',
+          'Primarily owned the UI and SPA routing within the Ember.js ecosystem',
+          'The project was later sold to Randall-Reilly',
         ],
       },
       {
         role: 'Java Software Engineer <small>(outstaff from *instinctools)</small>',
         company: 'Westernacher Solutions',
         period: '2014-2015',
+        includeInResume: false,
         listDescription: [
-          'I developed the ZEUS software for the German Chamber of Notaries using the ExtJS framework and Java, Spring, Hibernate, and BPMN/Activiti.',
-          'Primarily worked on the user interface and frontend of a single-page application (SPA), using a routing approach with ExtJS 4 and new UI Theme Neptune.',
-          'I learned a lot from my German colleagues in the fields of JavaScript and Domain-Driven Design (DDD). Fun fact: I remember when I joined team send me PDF copy of Eric Evans book about DDD and said "Read it before start"',
+          'Developed ZEUS software for the German Chamber of Notaries using ExtJS with Java, Spring, Hibernate, and BPMN/Activiti',
+          'Primarily worked on the SPA UI with ExtJS 4 routing and the Neptune theme',
+          'Learned a great deal from German colleagues about JavaScript and Domain-Driven Design (DDD). Fun fact: when I joined, the team sent me a PDF of Eric Evans\' DDD book and said, "Read it before you start."',
         ],
       },
       {
         role: 'Java Software Engineer <small>(outstaff from *instinctools)</small>',
         company: 'SIBUR',
         period: '2013-2014',
+        includeInResume: false,
         listDescription: [
-          'I was involved in developing an enterprise content management (ECM) system for Sibur Holding based on Documentum ECM, Oracle, Java/JSP, and ExtJS 3.5. The process was a waterfall, with an expected estimation 10 person-years of development time.',
-          'On the team, I specialized in UI development using ExtJS and legacy CSS approaches, such as table layout and floats.',
-          'I also was a first line to worked on JavaScript bug fixes.',
+          'Helped develop an enterprise content management (ECM) system for Sibur Holding based on Documentum ECM, Oracle, Java/JSP, and ExtJS 3.5 in a waterfall process estimated at about 10 person-years',
+          'Specialized in UI development with ExtJS and legacy CSS approaches such as table layout and floats',
+          'Also served as the first line for JavaScript bug fixes',
         ],
       },
       {
         role: 'Java Software Engineer <small>(outstaff from *instinctools)</small>',
         company: 'Mercedes Benz Daimler AG',
         period: '2012-2013',
+        includeInResume: false,
         listDescription: [
-          'Developed an internal user management system (UMS) for Daimler AG concern. I was chosen for this project due to my combination of backend, frontend, and test automation skills.',
-          'I handled all layout and frontend tasks, including mobile adaptation with technologies like jQuery UI and jQuery Mobile, JSF PrimeFaces and XHTML.',
-          'Supported the backend with Java Core and IBM DB2.',
-          'Increased coverage and configured tests with Selenium and JMeter.',
-          'Fun fact: I even drew icons in Photoshop for the various button states of wide range of tables.',
+          'Developed an internal user management system (UMS) for Daimler AG; selected for the combination of backend, frontend, and test automation skills',
+          'Handled layout and frontend tasks, including mobile adaptation with jQuery UI, jQuery Mobile, JSF PrimeFaces, and XHTML',
+          'Supported the backend with Java Core and IBM DB2',
+          'Increased coverage and configured tests with Selenium and JMeter',
+          'Fun fact: I even drew icons in Photoshop for various button states across a wide range of tables',
         ],
       },
       {
         role: 'Java Software Engineer <small>(outstaff from *instinctools)</small>',
         company: 'Evonik AG',
         period: '2011-2012',
+        includeInResume: false,
         listDescription: [
-          'I participated in the development of a web-based document management system based on Ditaworks solutions using technologies such as Java, Eclipse RAP/RCP, qooxdoo.js and SWT. My focus was on implementing BIRT (Business Intelligence and Reporting Tools) reporting functionality at the intersection of JavaScript and Java technologies.',
-          'Previously as QA engineer I tested the multi-touch presentation table app at the Evonik exhibition.',
+          'Contributed to a web-based document management system based on Ditaworks using Java, Eclipse RAP/RCP, qooxdoo.js, and SWT, focusing on BIRT reporting at the JavaScript/Java intersection',
+          'Earlier, as a QA engineer, tested the multi-touch presentation table app at the Evonik exhibition',
         ],
       },
       {
         role: 'QA Engineer <small>(outstaff from *instinctools)</small>',
         company: 'CROC',
         period: '2010-2011',
+        includeInResume: false,
         listDescription: [
-          'Tested a document management system based on EMC Documentum. Supported test scenarios in Excel spreadsheets. Conducted cross-browser testing, including very old versions of Opera and IE7.',
+          'Tested a document management system based on EMC Documentum. Maintained test scenarios in Excel. Conducted cross-browser testing, including very old versions of Opera and IE7.',
         ],
       },
     ],
@@ -1076,12 +1086,14 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Был проработан контент и текст на сайте, появилось больше информации и внешние ссылки на статьи, публикации и социальные сети.',
     timeMachine2025Description:
       'Полная переработка веб-сайта на Next.js с серверным рендерингом и переезд на Vercel. Задача была не только оформить контент с полной информацией обо мне как о специалисте, но также продемонстрировать свои навыки дизайнера и фронтенд инженера прямо тут. При этом веб-сайт стал песочницей, чтобы поработать с ИИ ассистентом. На сайте помимо портфолио появился цифровой сад, таймлайн карьеры и множество экспериментов в виде онлайн инструментов.',
-    role: 'Web Engineer & Frontend Architect | 15+ Yrs',
-    roleMobile: 'Web Engineer & Frontend Architect',
+    role: 'Web Engineer & Architect | 15+ Yrs',
+    roleMobile: 'Web Engineer & Architect',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',
+    resumeAbout:
+      "Web Engineer & Architect с продуктовым мышлением и 15+ годами практики по полному web-стеку — UI-архитектура, слои BFF/API, сервисы на Node.js, HTTP/кэширование и offline-capable клиенты. Специализируюсь на доступных высокопроизводительных PWA и масштабируемых веб-системах, опираясь на сильные UI/UX-практики — без dark patterns. В последнее время веду hybrid WebView/PWA поставку в X5 Tech (20M+ MAU); ранее — Daimler, SAP, Kohl's и стартапы, включая Lition. Публикации в Smashing Magazine; глубокий фокус на WCAG, дизайн-системах, Core Web Vitals и pragmatic full-stack delivery.",
     aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
-Мой путь — это <span class="text-double-underline">мост между эпохами<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> вычислительной техники. Он начался со структурно-процедурного программирования на <em>Pascal</em>, <em>C++</em> и <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, где я изучил основные принципы управления памятью и базовые алгоритмы. Затем я создавал мощные десктопные и ранние веб-приложения для корпоративного мира, используя <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> и <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, а также развил критический взгляд на качество и процессы тестирования через автоматизацию тестов с <em>Selenium RC</em>, а позже с <em>WebDriver</em>, <em>Cypress</em> и <em>Playwright</em>.<br/><br/>
+Мой путь — это <span class="text-double-underline">мост между эпохами<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> вычислительной техники. Он начался со структурного программирования на <em>Pascal</em>, <em>C++</em> и <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, где я изучил основные принципы управления памятью и базовые алгоритмы. Затем я создавал мощные десктопные и ранние веб-приложения для корпоративного мира, используя <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> и <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, а также развил критический взгляд на качество и процессы тестирования через автоматизацию тестов с <em>Selenium RC</em>, а позже с <em>WebDriver</em>, <em>Cypress</em> и <em>Playwright</em>.<br/><br/>
 Я был на передовой трансформации веб-технологий, создавая динамические приложения с помощью инструментов первого поколения: <em><abbr title="Asynchronous Javascript and XML">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em> и <em>Ember.js</em>. Этот глубокий исторический контекст — мое наибольшее преимущество. Он позволяет мне проектировать современные приложения на <em>React</em>, <em>Web Components</em> и <em>TypeScript</em> с глубоким пониманием проблем, которые они решают, гарантируя, что они не просто модные, а <span class="text-single-underline">действительно хорошо<img aria-hidden="true" src="/single-underline.webp" alt="" class="single-underline"></span> спроектированные, масштабируемые и созданные на долгий срок.<br/><br/>
 Сегодня я сосредоточен на создании доступных, ориентированных на пользователя, офлайн- и mobile-first <em>Progressive Web Apps (<abbr>PWA</abbr>)</em> и надежных фронтенд-архитектурах на основе современных инструментов: <em>Webpack</em>, <em>Vite</em>, <em>Next.js</em>, <em>MobX</em>, <em>React-Router</em>, <em>Material UI</em>, <em>Tailwind CSS</em>, <em>Rust/WebAssembly</em> и др.
 Мне доверяли создание решений для таких отраслевых гигантов, как Daimler и SAP, ритейлеров, таких как X5 Group и Kohl's, технологических новаторов, как КРОК, стартапов, таких как TrueImpact, Lition, Tispr/Indy, и лидеров химической промышленности, таких как СИБУР и Evonik.<br/><br/>
@@ -1102,34 +1114,34 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Глубокая экспертиза во всем спектре современной веб-разработки, от архитектуры до лидерства команд',
     expertise: [
       {
-        title: 'Фронтенд Архитектура и Техническая Стратегия',
+        title: 'Фронтенд-архитектура и техническая стратегия',
         description:
           'Проектирование масштабируемых веб-систем, микрофронтендов и долгосрочного технического видения для корпоративных приложений',
       },
       {
-        title: 'Дизайн-системы и Лидерство в UI Инженерии',
+        title: 'Дизайн-системы и лидерство в UI-инженерии',
         description:
-          'Создание и управление библиотеками компонентов, мостик между дизайном и разработкой, обеспечение согласованности в масштабе',
+          'Создание и управление библиотеками компонентов, выстраивание связки design–development и обеспечение согласованности в масштабе',
       },
       {
-        title: 'Веб-производительность и Превосходство Платформы',
+        title: 'Веб-производительность и платформенное качество',
         description:
           'Оптимизация Core Web Vitals, PWA/офлайн-возможности, веб-доступность (WCAG), веб-безопасность (OWASP) и кроссплатформенная совместимость с RWD/mobile-first подходами',
       },
       {
-        title: 'Современный React и Эволюция Веб-стандартов',
+        title: 'Современный React и эволюция веб-стандартов',
         description:
-          'Архитектура с экосистемой React/Next.js при продвижении веб-платформы через Lit/Web Components и Rust/WASM',
+          'Архитектура на экосистеме React/Next.js при развитии веб-платформы через Lit/Web Components и Rust/WASM',
       },
       {
-        title: 'Консультации и Аудит по Веб-доступности',
+        title: 'Консультации и аудиты по веб-доступности',
         description:
-          'Оказываю консультации по доступности, прохожу и провожу аудиты по доступности, очень погружен в эту тему. Также веду свой небольшой телеграм канал об этом: <a href="https://t.me/proa11y" target="_blank" rel="noopener noreferrer">@proa11y</a>',
+          'Консультации по доступности и проведение accessibility-аудитов — тема, в которую я глубоко погружён. Также веду Telegram-канал об accessibility: <a href="https://t.me/proa11y" target="_blank" rel="noopener noreferrer">@proa11y</a>',
       },
       {
-        title: 'Full-Stack JavaScript и Платформенная Инженерия',
+        title: 'Full-Stack JavaScript и платформенная инженерия',
         description:
-          'Архитектура end-to-end решений с Node.js/Deno/Bun, Rust/WASM и cloud-native развертыванием',
+          'End-to-end веб-решения: слои BFF/API, сервисы на Node.js/Deno/Bun, HTTP-кэширование и сеть, Rust/WASM и cloud-native развёртывание',
       },
     ],
     mySetup: 'Моя Настройка',
@@ -1137,20 +1149,20 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     experience: 'Опыт работы',
     experiences: [
       {
-        role: 'Lead Web Engineer',
+        role: 'Web Development Lead',
         company: 'X5 Tech',
         period: '2026 - наст. время',
         listDescription: [
-          'Руководство разработкой гибридного мобильного приложения (Native + WebView) для одной из крупнейших розничных сетей продуктовых магазинов в мире с ежемесячной активностью более 20 миллионов пользователей с использованием React.js и PWA.',
-          'Внедрение в продукт функции «тайного покупателя», обеспечивающей более 70% географического охвата магазинов, что значительно снижает операционные расходы.',
-          'Разработка и внедрение офлайн-функционала для приложения, повышающего удержание пользователей и снижающего отток на основе API ServiceWorker/Workbox, IndexedDB и Dixie.js.',
-          'Повышение NPS за счет улучшения пользовательского интерфейса на основе A/B-тестирования и UX-интервью и исследований.',
-          'Интеграция передовых веб-технологий для обеспечения бесперебойной кроссплатформенной работы как для iOS, так и для Android, гарантирующая высокую производительность и масштабируемость с использованием множества современных Web API, таких как View Transition API, Vibration API, Geolocation API, Web Share, современные CSS и Lottie анимации.',
-          'Организация непрерывного мониторинга и наблюдения за фронтенд-системой с использованием Sentry и других инструментов для повышения стабильности, Core Web Vitals и качества.',
-          'Участие в интеграции ИИ/LLM для модерации данных с помощью компьютерного зрения и выявления мошенничества.',
-          'Продукт-победитель премий E+ Awards и CX Awards в номинациях «Внедрение ИИ», «Инновации» и «Лучший клиентский опыт».',
-          'Тесное сотрудничество с межфункциональными командами для согласования приложения с бизнес-целями, что приводит к улучшению вовлеченности пользователей и операционной эффективности.',
-          'Поддержка и развитие побочных проектов, таких как приложение для администрирования/модерации на основе React-Admin и имитационный сервер Bun, а также ряд целевых страниц на основе SSR/Next.js.',
+          'Руковожу разработкой гибридного мобильного приложения (Native + WebView) для одной из крупнейших мировых продуктовых ритейл-сетей с 20M+ MAU на React.js и PWA',
+          'Внедрил функциональность «тайного покупателя», которая обеспечила более 70% географического охвата магазинов и существенно снизила OPEX',
+          'Спроектировал и реализовал офлайн-функциональность на Service Worker API/Workbox, IndexedDB и Dexie.js — повысил удержание и снизил отток',
+          'Повысил NPS за счёт улучшения UI на основе A/B-тестирования и UX-интервью/исследований',
+          'Интегрировал современные Web API (View Transitions, Vibration, Geolocation, Web Share), современный CSS и Lottie-анимации для бесшовного кроссплатформенного опыта на iOS и Android',
+          'Организую непрерывный мониторинг фронтенда через Sentry и связанные инструменты для стабильности, Core Web Vitals и общего качества',
+          'Участвую в интеграции AI/LLM для модерации данных через computer vision и antifraud',
+          'Продукт получил E+ Awards и CX Awards в номинациях AI adoption, innovation и best client experience',
+          'Сотрудничаю с кросс-функциональными командами, чтобы согласовать приложение с бизнес-целями и улучшить вовлечённость и операционную эффективность',
+          'Поддерживаю побочные проекты: admin/moderation на React-Admin + mock Bun server и лендинги на SSR/Next.js',
         ],
       },
       {
@@ -1158,7 +1170,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'IntexSoft',
         period: '2022 - 2026',
         listDescription: [
-          'Работал старшим/ведущим фронтенд-разработчиком веб-приложений над несколькими клиентскими проектами (включая одну из крупнейших розничных сетей продуктовых магазинов в мире), уделяя особое внимание пользовательскому опыту, производительности, доступности и системам дизайна, а также основной бизнес-логике.',
+          'Работал как Senior/Lead Frontend Engineer на клиентских проектах, включая одного из крупнейших мировых продуктовых ритейлеров (продолжение — in-house в X5 Tech)',
+          'Владел фронтенд-архитектурой hybrid WebView/PWA мобильных сценариев с фокусом на производительность, доступность (WCAG) и согласованность дизайн-системы',
+          'Поставлял офлайн-возможности и улучшения Core Web Vitals на Service Workers, IndexedDB и современном React-стеке',
+          'Сотрудничал с product, QA и design, чтобы выпускать пользовательские фичи и повышать качество фронтенд-практик на проекте',
         ],
       },
       {
@@ -1166,11 +1181,11 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'Godel Technologies',
         period: '2021 - 2022',
         listDescription: [
-          'Принимал участие в управлении 4-м по величине подразделением компании, курируя операции в нескольких локациях',
-          'Выступал в качестве основного контактного лица для средних и крупных клиентов, обрабатывая их запросы и обеспечивая соответствие возможностям внутренних ресурсов компании',
-          'Оптимизировал распределение ресурсов, сопоставляя потребности клиентов с наиболее подходящими инженерами из внутреннего пула талантов, что обеспечивало высокое качество реализации проектов',
-          'В качестве Talent Manager оказывал наставничество и карьерное сопровождение ведущим senior-инженерам подразделения, помогая им формулировать и достигать профессиональных целей при помощи SWOT-анализа и методологии SMART',
-          'Успешно внедрил систему OKR (Objectives and Key Results) в подразделении',
+          'Управлял 4-м по величине подразделением компании, курируя операции в Гродно (Беларусь) и Вильнюсе (Литва)',
+          'Был основным контактом для средних и крупных UK-клиентов: обрабатывал запросы и согласовывал их с возможностями внутренней команды',
+          'Оптимизировал распределение ресурсов, подбирая инженеров из внутреннего пула под задачи клиентов и обеспечивая качество поставки',
+          'Как Talent Manager наставлял ведущих senior-инженеров подразделения, помогая формулировать и достигать целей через SWOT и SMART',
+          'Успешно внедрил OKR (Objectives and Key Results) в подразделении',
         ],
       },
       {
@@ -1178,27 +1193,27 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'Indy (ex-Tispr)',
         period: '2019 - 2021',
         listDescription: [
-          'Улучшил существующую функциональность веб-платформы и сыграл ключевую роль в проектировании и реализации основных новых функций, включая WYSIWYG-редакторы, календарь, доски задач и кастомизацию white-labeling',
-          'Участвовал в разработке и поддержке собственной дизайн-системы компании (Tispr Design Library - TDL), обеспечивая согласованность и масштабируемость во всех проектах',
-          'Мигрировал UI компоненты в npm-пакет, размещенный в реестре Nexus, что позволило легко интегрировать и повторно использовать его в различных проектах',
-          'Адаптировал подход с использованием Design Tokens на основе CSS Custom Properties и позже написал об этом в статьях Smashing Magazine и Better Programming',
-          'Внедрил модульное и интеграционное тестирование для кодовой базы фронтенда, попутно перейдя с Enzyme на React Testing Library (RTL). Увеличил покрытие тестами с нуля до более чем 50%, значительно повысив качество и надежность кода',
-          'Разработал и внедрил современную архитектуру для веб-сайта и контентного блога с использованием headless CMS (Strapi) и серверного рендеринга (SSR, Next.js), что улучшило SEO, производительность и вовлеченность пользователей',
-          'Сыграл ключевую роль в проведении собеседований и формировании сильной локальной фронтенд-команды, заменив всех аутстафф-специалистов на senior-инженеров',
+          'Улучшал существующую функциональность веб-платформы и сыграл ключевую роль в проектировании и реализации крупных фич: WYSIWYG-редакторы, календари, доски задач и white-labeling',
+          'Разрабатывал и поддерживал собственную Design System/UI Kit компании (Tispr Design Library — TDL), обеспечивая согласованность и масштабируемость',
+          'Мигрировал UI Kit в переиспользуемый npm-пакет в Nexus registry для интеграции между проектами',
+          'Внедрил подход Design Tokens на CSS Custom Properties и позже написал об этом в Smashing Magazine и Better Programming',
+          'Внедрил unit- и integration-тесты для фронтенда, перейдя с Enzyme на React Testing Library (RTL). Поднял покрытие с нуля до 50%+',
+          'Спроектировал архитектуру сайта и контентного блога на headless CMS (Strapi) и SSR (Next.js) — улучшил SEO, производительность и вовлечённость',
+          'Участвовал в найме и формировании сильной onsite frontend-команды, заменив аутстафф на senior-инженеров',
         ],
       },
       {
-        role: 'Senior Software Engineer',
-        company: 'instinctools EE Labs',
+        role: 'Web Software Engineer',
+        company: '*instinctools EE Labs',
         period: '2010 - 2019',
         listDescription: [
-          'За 9 лет внес вклад в более чем 20 проектов для разнообразных клиентов, включая компании уровня enterprise (SIBUR, Daimler, Evonik), средний бизнес (Florence Healthcare, NextGate, Kanda Software, Westernacher) и стартапы (TrueImpact, Lition Energy)',
-          'В основном работал по моделям аутсорсинга и аутстаффинга, предоставляя высококачественные решения в области Web UI и фронтенда, адаптированные под потребности клиентов',
-          'Присоединился к компании на позиции QA Engineer/SDET, когда в ней работало 20+ сотрудников, и сыграл ключевую роль в ее преобразовании в успешную организацию с более чем 300 сотрудниками',
-          'Вырос до позиции Lead Software Engineer, где управлял одной из инженерных групп в рамках веб-департамента, курируя команду из 9 инженеров',
-          'Обеспечивал техническое лидерство, наставничество и руководство для команды, гарантируя успешную реализацию проектов и способствуя развитию культуры сотрудничества и инноваций',
-          'Разрабатывал масштабируемые и удобные Web UI/фронтенд-решения для клиентов из различных отраслей',
-          'Поддерживал рост компании, внося вклад в улучшение процессов, развитие команды и внедрение лучших практик в области разработки программного обеспечения',
+          'За 9 лет внёс вклад в 20+ проектов для enterprise-клиентов (Daimler, Evonik, SIBUR), mid-size бизнеса (Florence Healthcare, NextGate, EquipmentWatch, Westernacher) и стартапов (TrueImpact, Lition Energy)',
+          'В основном работал по моделям outsourcing/outstaffing, поставляя качественные Web UI и frontend-решения под задачи клиентов',
+          'Пришёл QA Engineer/SDET, когда в компании было 20+ человек, и сыграл ключевую роль в росте до 300+ сотрудников',
+          'Вырос до Lead Software Engineer: управлял одной из инженерных групп Web Department и командой из 9 инженеров',
+          'Обеспечивал техническое лидерство, менторство и поставку, развивая культуру сотрудничества и инноваций',
+          'Поставлял масштабируемые и удобные Web UI/Frontend-решения для клиентов из разных отраслей',
+          'Поддерживал рост компании через улучшение процессов, развитие команды и внедрение engineering best practices',
         ],
       },
       {
@@ -1206,14 +1221,14 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'Lition Energy',
         period: '2018-2019',
         listDescription: [
-          'Разработал с нуля веб-приложение для немецкого блокчейн-стартапа Lition Energy, создавая платформу для покупки зеленой энергии на основе полнофункциональных JavaScript технологий, таких как React.js, Redux, Next.js / SSR, Headless CMS, Node.js, Express.js, Knex.js, MySQL и Ethereum.',
-          'Адаптировал все проекты для мобильных устройств, планшетов и десктопов используя RWD подход.',
-          'Поддерживал высокий уровень frontend доступности используя метрики Lighthouse.',
-          'Улучшил качество backend путем внедрения модульных и интеграционных тестов.',
-          'Разработал архитектуру на основе Headless CMS (Contentful) и SSR (Next.js) для замены старой платформы WordPress, чтобы клиент мог удобно управлять контентом лендингов для различных групп потребителей. Улучшил SEO и Core Web Vitals для повышения видимости в поиске.',
-          'Интегрировал стороннюю систему PowerCloud для оплаты электроэнергии и выставления счетов.',
-          'Руководил командой frontend и backend разработки.',
-          'В результате стартап привлек $5 миллионов во время раунда ICO, был упомянут в Forbes, а позже был продан.',
+          'С нуля собрал платформу покупки зелёной энергии для немецкого blockchain-стартапа Lition Energy на React.js, Redux, Next.js/SSR, headless CMS, Node.js, Express.js, Knex.js, MySQL и Ethereum',
+          'Адаптировал все экраны под mobile, tablet и desktop через responsive (RWD) подход',
+          'Поддерживал высокий уровень frontend-доступности по метрикам Lighthouse',
+          'Улучшил качество backend за счёт unit- и integration-тестов',
+          'Заменил WordPress на архитектуру Headless CMS (Contentful) + SSR (Next.js), чтобы клиент управлял лендингами для разных групп потребителей; улучшил SEO и Core Web Vitals',
+          'Интегрировал стороннюю систему PowerCloud для оплаты электроэнергии и биллинга',
+          'Руководил командой frontend и backend разработки',
+          'В итоге стартап привлек $5 млн на ICO, был упомянут в Forbes и позже был продан',
         ],
       },
       {
@@ -1221,7 +1236,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'IT Academy',
         period: '2018',
         listDescription: [
-          'Вел курс "Разработка веб-сайтов с использованием HTML, CSS и JavaScript"',
+          'Вёл курс «Разработка веб-сайтов с использованием HTML, CSS и JavaScript»',
         ],
       },
       {
@@ -1229,10 +1244,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'Большая тройка консалтинга (NDA, но легко нагуглить)',
         period: '2016-2018',
         listDescription: [
-          'Разработка модуля конкурентного сопоставления для аналитической платформы ведущего американского ритейлера. Основной технологический стек: React, Redux (собственная кастомизация на основе паттерна Publisher-Subscriber), React-Toolbox UI, модульные тесты с Enzyme и End-to-End тесты с WebDriver.',
-          'Управление командой frontend-разработчиков, которые разрабатывали frontend для стратегического веб-приложения, обеспечивающего конкурентный анализ товарного ассортимента и ценообразования в сегменте массового рынка.',
-          'Миграция legacy-модулей с jQuery на современный React, создание высокопроизводительного интерфейса с продвинутой системой фильтров, интерактивным каталогом, дашбордами и современным UX на основе пользовательских опросов и тестирования.',
-          'Реализованная функциональность предоставила клиенту инструмент для принятия решений на основе данных, позволяя в реальном времени сравнивать их ключевые категории товаров с категориями крупных игроков рынка (Amazon, Target, TJ Maxx).',
+          'Разработал модуль competitive matching для аналитической платформы ведущего US-ритейлера (React, кастомный Redux на pub/sub, React-Toolbox UI, Enzyme unit-тесты, WebDriver E2E)',
+          'Управлял frontend-командой, строящей стратегическое веб-приложение для конкурентного анализа ассортимента и цен в mass-market сегменте',
+          'Мигрировал legacy jQuery-модули на современный React: высокопроизводительный UI с фильтрами, интерактивным каталогом, дашбордами и UX на основе пользовательских исследований',
+          'Дал клиенту data-driven инструмент для сравнения ключевых категорий товаров с Amazon, Target и TJ Maxx в реальном времени',
         ],
       },
       {
@@ -1240,8 +1255,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'TrueImpact',
         period: '2015-2016',
         listDescription: [
-          'Разработка пользовательского интерфейса с использованием Angular.js 1.5 и Bootstrap для TrueImpact, стартапа, предоставляющего аналитику грантов, благотворительных инвестиций и волонтерства с нуля в очень быстром и гибком темпе. На начальном этапе было критически важно действовать быстро и показывать инвесторам демо каждый день.',
-          'Позже MVP был преобразован в готовое к использованию приложение с тщательным редизайном логики коммуникации и UX.',
+          'С нуля собрал UI на Angular.js 1.5 и Bootstrap для стартапа аналитики грантов, благотворительных инвестиций и волонтёрства — на старте ежедневно показывали демо инвесторам',
+          'Перевёл MVP в production-ready приложение с переработкой логики коммуникаций и UX',
         ],
       },
       {
@@ -1249,58 +1264,63 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         company: 'EquipmentWatch',
         period: '2015-2016',
         listDescription: [
-          'С этого проекта полностью сосредоточился на JavaScript стеке и попал на проект EquipmentWatch, разрабатывая веб-приложение на Ember.js и Node.js, MongoDB.',
-          'В основном фокусировался на UI части и SPA роутинге с Ember.js и экосистеме вокруг фреймворка.',
-          'Позже проект был продан компании Randall-Reilly.',
+          'С этого проекта полностью сфокусировался на JavaScript-стеке: веб-приложение на Ember.js, Node.js и MongoDB',
+          'В основном владел UI и SPA-роутингом в экосистеме Ember.js',
+          'Позже проект был продан Randall-Reilly',
         ],
       },
       {
         role: 'Java Software Engineer <small>(аутстафф из *instinctools)</small>',
         company: 'Westernacher Solutions',
         period: '2014-2015',
+        includeInResume: false,
         listDescription: [
-          'Разрабатывал программное обеспечение ZEUS для Немецкой нотариальной палаты, используя фреймворк ExtJS и Java, Spring, Hibernate и BPMN/Activiti.',
-          'В основном работал над пользовательским интерфейсом и frontend одностраничного приложения (SPA), используя подход с роутингом в ExtJS 4 и новую UI тему Neptune.',
-          'Многому научился у немецких коллег в области JavaScript и Domain-Driven Design (DDD). Забавный факт: помню, как при присоединении к команде мне прислали PDF копию книги Эрика Эванса о DDD и сказали "Прочитай перед началом работы"',
+          'Разрабатывал ПО ZEUS для Немецкой нотариальной палаты на ExtJS вместе с Java, Spring, Hibernate и BPMN/Activiti',
+          'В основном работал над SPA UI: роутинг ExtJS 4 и тема Neptune',
+          'Многому научился у немецких коллег в JavaScript и Domain-Driven Design (DDD). Забавный факт: когда я присоединился, команда прислала PDF книги Эрика Эванса о DDD со словами: «Прочитай перед стартом»',
         ],
       },
       {
         role: 'Java Software Engineer <small>(аутстафф из *instinctools)</small>',
         company: 'СИБУР',
         period: '2013-2014',
+        includeInResume: false,
         listDescription: [
-          'Участвовал в разработке системы управления корпоративным контентом (ECM) для СИБУР Холдинг на основе Documentum ECM, Oracle, Java/JSP и ExtJS 3.5. Процесс разработки был водопадным с ожидаемой оценкой 10 человеко-лет времени разработки.',
-          'В команде специализировался на разработке UI с использованием ExtJS и legacy подходов CSS, таких как табличная верстка и floats.',
-          'Также был первой линией для работы над исправлением JavaScript багов.',
+          'Участвовал в разработке ECM-системы для СИБУР Холдинг на Documentum ECM, Oracle, Java/JSP и ExtJS 3.5 в waterfall-процессе с оценкой около 10 человеко-лет',
+          'Специализировался на UI на ExtJS и legacy CSS (table layout, floats)',
+          'Также был первой линией по JavaScript bug fixes',
         ],
       },
       {
         role: 'Java Software Engineer <small>(аутстафф из *instinctools)</small>',
         company: 'Mercedes Benz Daimler AG',
         period: '2012-2013',
+        includeInResume: false,
         listDescription: [
-          'Разработал внутреннюю систему управления пользователями (UMS) для концерна Daimler AG. Меня выбрали для этого проекта благодаря моей комбинации навыков backend, frontend и автоматизации тестирования.',
-          'Выполнял все задачи по верстке и frontend, включая мобильную адаптацию с технологиями jQuery UI и jQuery Mobile, JSF PrimeFaces и XHTML.',
-          'Поддерживал backend на Java Core и IBM DB2.',
-          'Увеличил покрытие и настроил тесты с Selenium и JMeter.',
-          'Забавный факт: даже рисовал иконки в Photoshop для различных состояний кнопок широкого спектра таблиц.',
+          'Разработал внутреннюю UMS для Daimler AG; меня выбрали за сочетание backend-, frontend- и test automation навыков',
+          'Делал вёрстку и frontend, включая мобильную адаптацию на jQuery UI, jQuery Mobile, JSF PrimeFaces и XHTML',
+          'Поддерживал backend на Java Core и IBM DB2',
+          'Увеличил покрытие и настроил тесты на Selenium и JMeter',
+          'Забавный факт: рисовал иконки в Photoshop для разных состояний кнопок в широком наборе таблиц',
         ],
       },
       {
         role: 'Java Software Engineer <small>(аутстафф из *instinctools)</small>',
         company: 'Evonik AG',
         period: '2011-2012',
+        includeInResume: false,
         listDescription: [
-          'Участвовал в разработке веб-системы управления документами на основе решений Ditaworks с использованием технологий Java, Eclipse RAP/RCP, qooxdoo.js и SWT. Моя работа была сосредоточена на реализации функциональности отчетности BIRT (Business Intelligence and Reporting Tools) на стыке JavaScript и Java технологий.',
-          'Ранее, будучи QA инженером, тестировал приложение для мультитач презентационного стола на выставке Evonik.',
+          'Участвовал в веб-системе управления документами на Ditaworks (Java, Eclipse RAP/RCP, qooxdoo.js, SWT), фокус — BIRT-отчётность на стыке JavaScript и Java',
+          'Ранее как QA тестировал multi-touch presentation table app на выставке Evonik',
         ],
       },
       {
         role: 'QA Engineer <small>(аутстафф из *instinctools)</small>',
         company: 'КРОК',
         period: '2010-2011',
+        includeInResume: false,
         listDescription: [
-          'Тестировал систему управления документами на основе EMC Documentum. Поддерживал тестовые сценарии в таблицах Excel. Проводил кроссбраузерное тестирование, включая очень старые версии Opera и IE7.',
+          'Тестировал систему управления документами на EMC Documentum. Вёл тестовые сценарии в Excel. Проводил кроссбраузерное тестирование, включая очень старые Opera и IE7.',
         ],
       },
     ],

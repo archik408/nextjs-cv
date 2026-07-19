@@ -13,7 +13,7 @@ export const createPersonSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Artur Basak',
-  jobTitle: 'Web Engineer & Frontend Architect | 15+ Yrs',
+  jobTitle: 'Web Engineer & Architect',
   url: 'https://arturbasak.dev',
   image: 'https://arturbasak.dev/ogp.jpg',
   sameAs: [
@@ -24,7 +24,7 @@ export const createPersonSchema = () => ({
   ],
   worksFor: {
     '@type': 'Organization',
-    name: 'IntexSoft',
+    name: 'X5 Tech',
   },
   knowsAbout: [
     'React',
@@ -33,10 +33,14 @@ export const createPersonSchema = () => ({
     'TypeScript',
     'JavaScript',
     'Next.js',
+    'Node.js',
+    'BFF',
     'Web Accessibility',
     'Web Security',
     'Web Development',
     'Frontend Architecture',
+    'Full Stack Web',
+    'HTTP Caching',
     'UI/UX Design',
     'PWA',
     'Web Performance',
@@ -86,7 +90,7 @@ export const createWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Artur Basak Portfolio',
-  description: 'Web Engineer & Frontend Architect portfolio and publications',
+  description: 'Web Engineer & Architect portfolio and publications',
   url: 'https://arturbasak.dev',
   author: {
     '@type': 'Person',

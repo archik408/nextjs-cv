@@ -187,15 +187,46 @@ type Props = {
 };
 
 export function ResumeDocument({ lang }: Props) {
-  const t = translations[lang];
+  const t = translations[lang] as (typeof translations)[ELanguage.en];
+  const isRu = lang === ELanguage.ru;
+
+  const labels = isRu
+    ? {
+        contact: 'Контакты',
+        skills: 'Технические навыки',
+        uiFrontend: 'UI / Frontend',
+        backendTools: 'Backend и инструменты',
+        designUx: 'Design & UX',
+        testingQuality: 'Тестирование и качество',
+        publications: 'Публикации',
+        garden: 'Цифровой сад',
+        frontEndCert: 'Professional Front-End Web Developer — W3Cx 2019',
+        uxCert: 'Professional Google UX Design — Coursera 2025',
+        a11yCert: 'Web Accessibility — W3Cx WAI0.1x 2021',
+        footerPrefix: 'CV сгенерировано автоматически на',
+      }
+    : {
+        contact: 'Contact',
+        skills: 'Technical Skills',
+        uiFrontend: 'UI / Frontend',
+        backendTools: 'Backend & Tools',
+        designUx: 'Design & UX',
+        testingQuality: 'Testing & Quality',
+        publications: 'Publications',
+        garden: 'Digital Garden',
+        frontEndCert: 'Professional Front-End Web Developer — W3Cx 2019',
+        uxCert: 'Professional Google UX Design — Coursera 2025',
+        a11yCert: 'Web Accessibility — W3Cx WAI0.1x 2021',
+        footerPrefix: 'CV was generated automatically by',
+      };
 
   const contacts = [
     { label: 'GitHub', href: 'https://github.com/archik408' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/arturbasak' },
     { label: 'Telegram', href: 'https://t.me/arturbasak' },
     { label: 'Email', href: 'mailto:artur.basak.devingrodno@gmail.com' },
-    { label: 'Publications', href: 'https://arturbasak.dev/blog' },
-    { label: 'Digital Garden', href: 'https://arturbasak.dev/garden' },
+    { label: labels.publications, href: 'https://arturbasak.dev/blog' },
+    { label: labels.garden, href: 'https://arturbasak.dev/garden' },
   ];
 
   return (
@@ -212,12 +243,12 @@ export function ResumeDocument({ lang }: Props) {
               alt="Artur Basak"
             />
             <Text style={styles.name}>Artur Basak</Text>
-            <Text style={styles.role}>UI/UX Web Engineer</Text>
+            <Text style={styles.role}>{t.roleMobile || t.role}</Text>
           </View>
 
           {/* Contact Information */}
           <View style={styles.contactSection}>
-            <Text style={styles.contactTitle}>Contact</Text>
+            <Text style={styles.contactTitle}>{labels.contact}</Text>
             {contacts.map((c, i) => (
               <Text key={i} style={styles.contactItem}>
                 <Link src={c.href} style={styles.link}>
@@ -229,10 +260,10 @@ export function ResumeDocument({ lang }: Props) {
 
           {/* Skills */}
           <View style={styles.skillsSection}>
-            <Text style={styles.skillsTitle}>Technical Skills</Text>
+            <Text style={styles.skillsTitle}>{labels.skills}</Text>
 
             <View style={styles.skillCategory}>
-              <Text style={styles.skillCategoryTitle}>UI / Frontend</Text>
+              <Text style={styles.skillCategoryTitle}>{labels.uiFrontend}</Text>
               <Text style={styles.skillList}>
                 JavaScript, HTML5, CSS3, PWA, React, Next.js, TypeScript, Lit/Web Components,
                 Tailwind CSS, Material UI
@@ -240,7 +271,7 @@ export function ResumeDocument({ lang }: Props) {
             </View>
 
             <View style={styles.skillCategory}>
-              <Text style={styles.skillCategoryTitle}>Backend & Tools</Text>
+              <Text style={styles.skillCategoryTitle}>{labels.backendTools}</Text>
               <Text style={styles.skillList}>
                 Node.js, Express, MongoDB, PostgreSQL, Git, Webpack, Vite, Turbopack, CI/CD,
                 WASM/Rust, Headless CMS, Bun, Deno
@@ -248,7 +279,7 @@ export function ResumeDocument({ lang }: Props) {
             </View>
 
             <View style={styles.skillCategory}>
-              <Text style={styles.skillCategoryTitle}>Design & UX</Text>
+              <Text style={styles.skillCategoryTitle}>{labels.designUx}</Text>
               <Text style={styles.skillList}>
                 UI/UX Design, Web Accessibility (WCAG), Figma, Design Systems, Mobile-First,
                 Offline-First, Optimistic UI
@@ -256,7 +287,7 @@ export function ResumeDocument({ lang }: Props) {
             </View>
 
             <View style={styles.skillCategory}>
-              <Text style={styles.skillCategoryTitle}>Testing & Quality</Text>
+              <Text style={styles.skillCategoryTitle}>{labels.testingQuality}</Text>
               <Text style={styles.skillList}>
                 Jest, React Testing Library, Cypress, Playwright, Web Performance, Core Web Vitals,
                 Web Security (OWASP)
@@ -269,42 +300,46 @@ export function ResumeDocument({ lang }: Props) {
         <View style={styles.rightColumn}>
           {/* About Section */}
           <Text style={styles.sectionTitle}>{t.about}</Text>
-          <Text style={styles.paragraph}>{t.aboutText.replace(/<[^>]*>/g, '')}</Text>
+          <Text style={styles.paragraph}>
+            {(t.resumeAbout || t.aboutText).replace(/<[^>]*>/g, '')}
+          </Text>
 
           {/* Experience Section */}
           <Text style={styles.sectionTitle}>{t.experience}</Text>
-          {t.experiences.map((exp: any, idx: number) => {
-            const [mainRole, tail] = exp.role.split('<small>');
+          {t.experiences
+            .filter((exp) => !('includeInResume' in exp) || exp.includeInResume !== false)
+            .map((exp, idx) => {
+              const [mainRole, tail] = exp.role.split('<small>');
 
-            return (
-              <View key={idx} style={styles.expCard} wrap>
-                <View style={styles.expHeader}>
-                  <Text style={styles.expRole}>{mainRole}</Text>
-                  <Text style={styles.expPeriod}>{exp.period}</Text>
+              return (
+                <View key={idx} style={styles.expCard} wrap>
+                  <View style={styles.expHeader}>
+                    <Text style={styles.expRole}>{mainRole}</Text>
+                    <Text style={styles.expPeriod}>{exp.period}</Text>
+                  </View>
+                  {tail ? (
+                    <Text style={styles.expRoleTail}>{tail.replace('</small>', '')}</Text>
+                  ) : null}
+                  <Text style={styles.expCompany}>{exp.company}</Text>
+                  {(exp.listDescription || []).map((line: string, li: number) => (
+                    <Text key={li} style={styles.listItem}>{`• ${line}`}</Text>
+                  ))}
                 </View>
-                {tail ? (
-                  <Text style={styles.expRoleTail}>{tail.replace('</small>', '')}</Text>
-                ) : null}
-                <Text style={styles.expCompany}>{exp.company}</Text>
-                {(exp.listDescription || []).map((line: string, li: number) => (
-                  <Text key={li} style={styles.listItem}>{`• ${line}`}</Text>
-                ))}
-              </View>
-            );
-          })}
+              );
+            })}
 
           {/* Certificates Section */}
           <Text style={styles.sectionTitle}>{t.certificates}</Text>
           <Text style={styles.certItem}>
             {t.diploma} — {t.college}
           </Text>
-          <Text style={styles.certItem}>Professional Front-End Web Developer — W3Cx 2019</Text>
-          <Text style={styles.certItem}>Professional Google UX Design — Coursera 2025</Text>
-          <Text style={styles.certItem}>Web Accessibility — W3Cx WAI0.1x 2021</Text>
+          <Text style={styles.certItem}>{labels.frontEndCert}</Text>
+          <Text style={styles.certItem}>{labels.uxCert}</Text>
+          <Text style={styles.certItem}>{labels.a11yCert}</Text>
 
           {/* Footer */}
           <Text style={styles.footer}>
-            CV was generated automatically by{' '}
+            {labels.footerPrefix}{' '}
             <Link src="https://arturbasak.dev" style={styles.link}>
               https://arturbasak.dev
             </Link>
