@@ -151,6 +151,8 @@ jest.mock('@/lib/use-language', () => ({
       contact: 'Contact',
       showMore: 'Show more',
       showLess: 'Show less',
+      viewAllExperience: 'View full experience',
+      timelineLink: 'Timeline',
       blog: 'Blog',
       toolsAndExperiments: 'Tools & Experiments',
       yandexAliceSkillsTitle: 'Skills for Yandex Station with Alice',
@@ -203,7 +205,32 @@ jest.mock('@/lib/use-language', () => ({
       ioOptimizing: 'Optimizing...',
       // OCR heading
       ocrSupportedFormats: 'Supported Formats',
-      experiences: [],
+      experiences: [
+        {
+          role: 'Web Development Lead',
+          company: 'X5 Tech',
+          period: '2026 - Present',
+          listDescription: ['Leading hybrid mobile development'],
+        },
+        {
+          role: 'Senior Software Engineer',
+          company: 'IntexSoft',
+          period: '2022 - 2026',
+          listDescription: ['Client frontend delivery'],
+        },
+        {
+          role: 'Software Engineering Manager',
+          company: 'Godel Technologies',
+          period: '2021 - 2022',
+          listDescription: ['Managed a division'],
+        },
+        {
+          role: 'Senior Web Engineer',
+          company: 'Indy',
+          period: '2019 - 2021',
+          listDescription: ['Design system work'],
+        },
+      ],
       skillsList: [],
       certificatesList: [],
       testimonials: [],

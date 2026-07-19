@@ -41,8 +41,8 @@ export default function Home() {
           {/* Skills Section */}
           <SkillsSection />
 
-          {/* Experience Section */}
-          <ExperienceSection />
+          {/* Experience Section — latest three roles */}
+          <ExperienceSection limit={3} showViewAllLink />
 
           {/* Testimonials Section */}
           <SectionDivider />

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { ChevronDown, Clock } from 'lucide-react';
+import { ArrowRight, ChevronDown, Clock } from 'lucide-react';
 import { useLanguage } from '@/lib/hooks/use-language';
 import Link from 'next/link';
 import ArticleTitle from '@/components/article-title';
@@ -12,6 +12,17 @@ type Experience = {
   company: string;
   period: string;
   listDescription: string[];
+};
+
+type ExperienceSectionProps = {
+  /** Limit how many roles to show (newest first). */
+  limit?: number;
+  /** Animate the section title. Defaults to true on the homepage. */
+  animateTitle?: boolean;
+  /** Render page-level heading (h1) instead of section heading (h2). */
+  titleAs?: 'h1' | 'h2';
+  /** Show a centered link to /experience after the list. */
+  showViewAllLink?: boolean;
 };
 
 function useIsOverflowing({
@@ -29,7 +40,6 @@ function useIsOverflowing({
     if (!el) return;
 
     const measure = () => {
-      // When expanded we don't need "show more" based on overflow.
       if (expanded) {
         setIsOverflowing(false);
         return;
@@ -37,7 +47,6 @@ function useIsOverflowing({
       setIsOverflowing(el.scrollHeight > collapsedMaxHeightPx + 1);
     };
 
-    // Measure after paint (fonts/wrapping affect height on mobile).
     const raf = window.requestAnimationFrame(measure);
 
     const onResize = () => measure();
@@ -71,7 +80,6 @@ function ExperienceCard({
   showMoreLabel: string;
   showLessLabel: string;
 }) {
-  // Tailwind `max-h-20` = 5rem = 80px
   const collapsedMaxHeightPx = 80;
   const { contentRef, isOverflowing } = useIsOverflowing({ collapsedMaxHeightPx, expanded });
   const total = experience.listDescription.length;
@@ -133,7 +141,10 @@ function ExperienceCard({
         </div>
 
         {!expanded && shouldShowToggle && (
-          <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-gray-800 to-transparent rounded-b-lg transition-opacity duration-300" />
+          <div
+            className="pointer-events-none absolute -bottom-1 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-gray-800 to-transparent rounded-b-lg transition-opacity duration-300"
+            aria-hidden
+          />
         )}
       </div>
 
@@ -142,7 +153,7 @@ function ExperienceCard({
           <button
             type="button"
             onClick={() => onToggle(index)}
-            className="group inline-flex items-center gap-2 text-sm md:text-base text-blue-700 dark:text-blue-400 hover:underline transition-all duration-200"
+            className="group inline-flex items-center gap-2 text-sm md:text-base text-blue-700 dark:text-blue-400 hover:underline transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-400 rounded-sm"
             aria-controls={panelId}
             aria-expanded={expanded}
           >
@@ -160,7 +171,12 @@ function ExperienceCard({
   );
 }
 
-export function ExperienceSection() {
+export function ExperienceSection({
+  limit,
+  animateTitle = true,
+  titleAs = 'h2',
+  showViewAllLink = false,
+}: ExperienceSectionProps = {}) {
   const { t } = useLanguage();
   const [open, setOpen] = useState<Record<number, boolean>>({});
   const previewCount = 2;
@@ -191,30 +207,46 @@ export function ExperienceSection() {
 
   const toggle = (idx: number) => setOpen((prev) => ({ ...prev, [idx]: !prev[idx] }));
 
-  const experiences = useMemo(() => t.experiences as unknown as Experience[], [t.experiences]);
+  const experiences = useMemo(() => {
+    const all = t.experiences as unknown as Experience[];
+    return typeof limit === 'number' ? all.slice(0, limit) : all;
+  }, [t.experiences, limit]);
+
+  const titleClassName = 'text-3xl font-bold m-0 text-center md:text-left';
 
   return (
-    <section className="py-10 md:py-20 px-4 md:px-8">
+    <section className="py-10 md:py-20 px-4 md:px-8" aria-labelledby="experience-heading">
       <div className="max-w-5xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <AnimatedSectionTitle
-            withoutMargin
-            text={t.experience}
-            className="justify-center md:justify-start"
-            wrapperClassName="text-center md:text-left"
-          />
+        <div className="flex justify-between items-center gap-4 mb-8">
+          {animateTitle && titleAs === 'h2' ? (
+            <AnimatedSectionTitle
+              id="experience-heading"
+              withoutMargin
+              text={t.experience}
+              className="justify-center md:justify-start"
+              wrapperClassName="text-center md:text-left"
+            />
+          ) : titleAs === 'h1' ? (
+            <h1 id="experience-heading" className={titleClassName}>
+              {t.experience}
+            </h1>
+          ) : (
+            <h2 id="experience-heading" className={titleClassName}>
+              {t.experience}
+            </h2>
+          )}
           <Link
             href="/timeline"
-            className="animate-wobble group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="animate-wobble group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 shrink-0"
           >
-            <Clock className="w-4 h-4 transition-all duration-300" />
-            Timeline
+            <Clock className="w-4 h-4 transition-all duration-300" aria-hidden />
+            <span>{t.timelineLink}</span>
           </Link>
         </div>
         <div className="space-y-6 md:space-y-8">
           {experiences.map((experience, index) => (
             <ExperienceCard
-              key={index}
+              key={`${experience.company}-${experience.period}-${index}`}
               experience={experience}
               index={index}
               expanded={Boolean(open[index])}
@@ -226,6 +258,21 @@ export function ExperienceSection() {
             />
           ))}
         </div>
+
+        {showViewAllLink && (
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/experience"
+              className="group inline-flex items-center gap-2 text-base md:text-lg font-medium text-blue-700 dark:text-blue-400 hover:underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-400 rounded-sm"
+            >
+              {t.viewAllExperience}
+              <ArrowRight
+                className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

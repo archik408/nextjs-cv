@@ -136,7 +136,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         period: '2026 - Present',
         listDescription: [
           'Leading development of a hybrid mobile application (Native + WebView) for one of the largest grocery retail groups globally, with 20M+ MAU, using React.js and PWA',
-          'Implemented mystery-shopping functionality that achieved more than 70% geographic coverage of stores, significantly reducing OPEX',
+          'Implemented mystery-shopping functionality that achieved more than 80% geographic coverage of stores, significantly reducing OPEX',
           'Designed and implemented offline functionality with Service Worker API/Workbox, IndexedDB, and Dexie.js, increasing user retention and reducing attrition',
           'Increased NPS by improving the UI based on A/B testing and UX interviews & research',
           'Integrated modern Web APIs (View Transitions, Vibration, Geolocation, Web Share), modern CSS, and Lottie animations to deliver a seamless cross-platform experience on iOS and Android',
@@ -305,9 +305,11 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       },
     ],
     funActivities: 'Fun Activities',
+    funActivitiesIntro:
+      'Hobbies on a professional site may look out of place — as if no one cares. In reality, they shape how I work. Illustration keeps my visual sense sharp for frontend and design. Collecting teaches order, a systematic approach, and meticulous attention to detail. Cycling resets my mind and gives my eyes a break. Teaching kids to code shows I still enjoy programming as a hobby, keep a childlike curiosity about the craft, and know how to share knowledge with others.',
     artTitle: 'Art & Illustration',
     artDesc:
-      'Creating digital art and classical illustrations based on mythological creatures, as well as exhibitions in museums and castles, creating printed books with my illustrations',
+      'Creating digital art and classical illustrations based on mythological creatures, as well as exhibitions in museums and castles, creating printed books with my illustrations. You can view the illustrations in my ArtStation profile via the link.',
     kidsTitle: 'Kids Programming',
     kidsDesc:
       'Teaching children programming basics with Scratch, MakeCode and Blockly using Micro:bit and MakeyMakey boards',
@@ -331,6 +333,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       "I'm always open to new opportunities and interesting projects. <br>Feel free to reach out if you'd like to collaborate!<br> Let's build something remarkable together.",
     contactButton: 'Contact Me',
     followOnLinkedIn: 'Follow on LinkedIn',
+    followOnTelegram: 'Telegram Channel',
     resumeButton: 'Download Resume',
     // Common UI / ARIA
     switchToLight: 'Switch to light theme',
@@ -421,6 +424,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     showLess: 'Show less',
     showMore: 'Show more',
+    viewAllExperience: 'View full experience',
+    timelineLink: 'Timeline',
+    experiencePageDescription:
+      'Full work history of Artur Basak — web engineering roles across X5 Tech, IntexSoft, Godel, Indy, and earlier enterprise engagements.',
     enableMotion: 'Enable motion effects',
     motionActive: 'Motion tracking active',
     copyright: `© ${new Date().getFullYear()} Artur Basak. All rights reserved.`,
@@ -1154,7 +1161,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         period: '2026 - наст. время',
         listDescription: [
           'Руковожу разработкой гибридного мобильного приложения (Native + WebView) для одной из крупнейших мировых продуктовых ритейл-сетей с 20M+ MAU на React.js и PWA',
-          'Внедрил функциональность «тайного покупателя», которая обеспечила более 70% географического охвата магазинов и существенно снизила OPEX',
+          'Внедрил функциональность «тайного покупателя», которая обеспечила более 80% географического охвата магазинов и существенно снизила OPEX',
           'Спроектировал и реализовал офлайн-функциональность на Service Worker API/Workbox, IndexedDB и Dexie.js — повысил удержание и снизил отток',
           'Повысил NPS за счёт улучшения UI на основе A/B-тестирования и UX-интервью/исследований',
           'Интегрировал современные Web API (View Transitions, Vibration, Geolocation, Web Share), современный CSS и Lottie-анимации для бесшовного кроссплатформенного опыта на iOS и Android',
@@ -1325,9 +1332,11 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       },
     ],
     funActivities: 'Увлечения',
+    funActivitiesIntro:
+      'Увлечения на профессиональном сайте могут казаться лишними — будто это никому не интересно. На самом деле всё наоборот. Иллюстрация помогает балансировать визуальные навыки во фронтенде и дизайне. Коллекционирование учит порядку, системному подходу, скрупулёзности и дотошности. Велосипед перезагружает менталку и даёт глазам хотя бы иногда отдохнуть. А занятия программированием с детьми показывают, что я по-прежнему получаю удовольствие от кода как от хобби, сохраняю детское любопытство к профессии и умею учить других.',
     artTitle: 'Арт и Иллюстрация',
     artDesc:
-      'Создание цифрового искусства и классических иллюстраций на основе мифологических существ, а также выставки в музеях и замках, создание печатных книг с моими иллюстрациями',
+      'Создание цифрового искусства и классических иллюстраций на основе мифологических существ, а также выставки в музеях и замках, создание печатных книг с моими иллюстрациями. Иллюстрации можно посмотреть в профиле ArtStation по ссылке.',
     kidsTitle: 'Обучение Детей',
     kidsDesc:
       'Обучение детей основам программирования в Scratch, MakeCode и Blockly используя платы Micro:bit и MakeyMakey',
@@ -1351,6 +1360,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Я всегда открыт для новых возможностей и интересных проектов. <br>Свяжитесь со мной, если хотите сотрудничать! <br/> Давайте создадим что-то выдающееся вместе.',
     contactButton: 'Написать',
     followOnLinkedIn: 'Подписаться в LinkedIn',
+    followOnTelegram: 'Канал в Telegram',
     resumeButton: 'Скачать резюме',
     // Common UI / ARIA
     switchToLight: 'Переключить на светлую тему',
@@ -1441,6 +1451,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     showLess: 'Свернуть',
     showMore: 'Показать больше',
+    viewAllExperience: 'Смотреть весь опыт',
+    timelineLink: 'Хронология',
+    experiencePageDescription:
+      'Полная история работы Артура Басака — веб-инженерия в X5 Tech, IntexSoft, Godel, Indy и более ранние enterprise-проекты.',
     enableMotion: 'Включить motion эффекты',
     motionActive: 'Motion отслеживание активно',
     copyright: `© ${new Date().getFullYear()} Artur Basak. Все права защищены.`,

@@ -94,18 +94,24 @@ export function FunActivitiesSection() {
   };
 
   return (
-    <section className="py-10 md:py-20 bg-gray-100/50 dark:bg-gray-800/50 overflow-hidden relative">
+    <section className="py-10 md:py-20 bg-gray-100/50 dark:bg-gray-800/50 relative">
       {/* Title */}
-      <div className="max-w-5xl mx-auto px-4 md:px-8 mb-12">
+      <div className="max-w-5xl mx-auto px-4 md:px-8 mb-12 text-center">
         <AnimatedSectionTitle
           text={t.funActivities}
           className="justify-center"
           wrapperClassName="text-center"
         />
+        <p className="mt-4 max-w-3xl mx-auto text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          {t.funActivitiesIntro}
+        </p>
       </div>
 
       {/* Racing car overlay */}
-      <div className="pointer-events-none absolute inset-0 top-2.5" aria-hidden="true">
+      <div
+        className="pointer-events-none absolute inset-0 top-2.5 overflow-hidden"
+        aria-hidden="true"
+      >
         {isCarRunning && (
           // key forces reflow so animation can retrigger on each hover
           <div
@@ -149,14 +155,14 @@ export function FunActivitiesSection() {
         {/* Carousel */}
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-8"
+          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-8 py-3"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {activities.map((activity) => {
             const IconComponent = activity.icon;
             const CardContent = (
               <div
-                className="min-w-[280px] md:min-w-[340px] lg:min-w-[380px] h-[420px] md:h-[450px] bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden snap-center group"
+                className="h-[480px] md:h-[520px] w-full bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden snap-center group"
                 onClick={
                   activity.id === 'batmobiles'
                     ? () => {
@@ -196,6 +202,23 @@ export function FunActivitiesSection() {
                           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                           priority={false}
                         />
+                        {activity.id === 'art' && (
+                          <div
+                            className="pointer-events-none absolute inset-x-0 top-0 z-10 flex h-5 items-center justify-center gap-1.5 bg-black px-2"
+                            aria-hidden="true"
+                          >
+                            <img
+                              src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='32' fill='none' viewBox='0 0 35 32'%3E%3Cpath fill='%2313AFF0' fill-rule='evenodd' d='M35 24.354c0-.704-.208-1.36-.565-1.91L22.937 2.525A3.54 3.54 0 0 0 19.813.652h-6.077l17.76 30.666 2.8-4.833c.553-.925.704-1.334.704-2.131m-35-.037 2.956 5.093h.001a3.54 3.54 0 0 0 3.157 1.938h19.624l-4.072-7.03zM10.832 5.621l7.938 13.701H2.893z' clip-rule='evenodd'/%3E%3C/svg%3E"
+                              alt=""
+                              width={14}
+                              height={12}
+                              className="shrink-0"
+                            />
+                            <span className="text-xs font-medium leading-none tracking-wide text-white">
+                              ArtStation
+                            </span>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -203,18 +226,21 @@ export function FunActivitiesSection() {
               </div>
             );
 
+            const itemClassName =
+              'block w-[280px] md:w-[340px] lg:w-[380px] shrink-0 rounded-xl transition-transform duration-300';
+
             return activity.href ? (
               <a
                 key={activity.id}
                 href={activity.href}
                 target={activity.isExternal ? '_blank' : '_self'}
                 rel={activity.isExternal ? 'noopener noreferrer' : undefined}
-                className="block hover:scale-[1.02] transition-transform duration-300"
+                className={`${itemClassName} hover:z-10 hover:scale-[1.02]`}
               >
                 {CardContent}
               </a>
             ) : (
-              <div key={activity.id} className="block">
+              <div key={activity.id} className={itemClassName}>
                 {CardContent}
               </div>
             );

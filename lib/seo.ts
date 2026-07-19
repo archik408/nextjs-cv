@@ -111,6 +111,14 @@ export const seoConfigs = {
       'Frontend Publications, React Articles, TypeScript Tutorials, Web Development, JavaScript, Technical Writing',
     path: '/blog',
   },
+  experience: {
+    title: 'Experience - Full Work History',
+    description:
+      'Full work history of Artur Basak — web engineering roles across X5 Tech, IntexSoft, Godel, Indy, and earlier enterprise engagements.',
+    keywords:
+      'Work Experience, Web Engineer, Career, X5 Tech, React, Next.js, PWA, Accessibility, Frontend Architecture',
+    path: '/experience',
+  },
   tools: {
     title: 'Tools & Experiments - Developer Utilities',
     description:
