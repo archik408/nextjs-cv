@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Award, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/lib/hooks/use-language';
 import { CertificateModal } from './certificate-modal';
+import { OtherCertificatesCarousel } from './other-certificates-carousel';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 
 export function CertificatesSection() {
@@ -132,6 +133,10 @@ export function CertificatesSection() {
             </div>
           </div>
         </div>
+
+        <OtherCertificatesCarousel
+          onOpenCertificate={(title, url) => openCertificate(title, url, true)}
+        />
       </div>
 
       <CertificateModal

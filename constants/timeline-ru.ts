@@ -389,7 +389,7 @@ export const timelineDataRu = [
     description:
       'Выступил на JS митапе в X5 Group, рассказал о специфике разработки PWA для оффлайн, IndexedDB и Workbox',
     category: 'career' as const,
-    image: '/avatar-2.webp',
+    image: '/x5-meetup.webp',
   },
   {
     year: 2025,

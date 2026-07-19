@@ -326,6 +326,76 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     viewCertificate: 'View Certificate',
     closeCertificate: 'Close',
     openInNewTab: 'Open in new tab',
+    otherCertificatesLabel:
+      'Other certificates from LinkedIn Learning, Coursera, Udemy, Frontend Masters, Microsoft, and more',
+    otherCertificatesPause: 'Pause certificate carousel',
+    otherCertificatesPlay: 'Play certificate carousel',
+    otherCertificatesItems: {
+      'frontend-masters-interviewing': {
+        title: 'Interviewing for Front-End Engineers — Frontend Masters',
+        alt: 'Certificate of Completion for Artur Basak: Interviewing for Front-End Engineers from Frontend Masters, completed March 14, 2020',
+      },
+      'frontend-masters-accessibility-js': {
+        title: 'Accessibility in JavaScript Applications — Frontend Masters',
+        alt: 'Certificate of Completion for Artur Basak: Accessibility in JavaScript Applications from Frontend Masters, completed March 31, 2020',
+      },
+      'frontend-masters-typography': {
+        title: 'Responsive Web Typography v2 — Frontend Masters',
+        alt: 'Certificate of Completion for Artur Basak: Responsive Web Typography v2 from Frontend Masters, completed April 15, 2020',
+      },
+      'linkedin-managing-developers': {
+        title: 'Managing and Leading Developers — LinkedIn Learning',
+        alt: 'LinkedIn Learning certificate for Artur Basak: Managing and Leading Developers learning path, completed February 1, 2022',
+      },
+      'linkedin-a11y-web-design': {
+        title: 'Accessibility for Web Design — LinkedIn Learning',
+        alt: 'LinkedIn Learning certificate for Artur Basak: Accessibility for Web Design, completed February 8, 2022',
+      },
+      'linkedin-react-a11y': {
+        title: 'React: Accessibility — LinkedIn Learning',
+        alt: 'LinkedIn Learning certificate for Artur Basak: React Accessibility, completed January 25, 2022',
+      },
+      'linkedin-a11y-best-practices': {
+        title: 'Simplifying Web Development with Accessibility Best Practices — LinkedIn Learning',
+        alt: 'LinkedIn Learning certificate for Artur Basak: Simplifying Web Development with Accessibility Best Practices, completed February 3, 2022',
+      },
+      'microsoft-a11y-fundamentals': {
+        title: 'Accessibility fundamentals — Microsoft',
+        alt: 'Microsoft certificate for Artur Basak: Accessibility fundamentals, completed February 4, 2022',
+      },
+      'udemy-pwa': {
+        title: 'Progressive Web Apps (PWA) — The Complete Guide — Udemy',
+        alt: 'Udemy Certificate of Completion for Artur Basak: Progressive Web Apps (PWA) — The Complete Guide, completed May 13, 2024',
+      },
+      'frontend-masters-last-algorithms': {
+        title: "The Last Algorithms Course You'll Need — Frontend Masters",
+        alt: "Certificate of Completion for Artur Basak: The Last Algorithms Course You'll Need from Frontend Masters, completed May 17, 2025",
+      },
+      'frontend-masters-algorithms-js': {
+        title: 'A Practical Guide to Algorithms with JavaScript — Frontend Masters',
+        alt: 'Certificate of Completion for Artur Basak: A Practical Guide to Algorithms with JavaScript from Frontend Masters, completed February 10, 2025',
+      },
+      'geekle-react-global': {
+        title: 'React Global Online Summit 22.2 — Geekle',
+        alt: 'Certificate of Attendance for Artur Basak: React Global Online Summit 22.2 by Geekle, November 8–9, 2022',
+      },
+      'geekle-architecture': {
+        title: "Worldwide Software Architecture Summit '22 — Geekle",
+        alt: "Certificate of Attendance for Artur Basak: Worldwide Software Architecture Summit '22 by Geekle, March 1–3, 2022",
+      },
+      'coursera-scratch': {
+        title: 'Introduction to Basic Game Development using Scratch — Coursera',
+        alt: 'Coursera Project Certificate for Artur Basak: Introduction to Basic Game Development using Scratch, completed November 29, 2024',
+      },
+      'frontend-masters-scratch-kids': {
+        title: 'Get Kids into Coding with Scratch — Frontend Masters',
+        alt: 'Certificate of Completion for Artur Basak: Get Kids into Coding with Scratch from Frontend Masters, completed November 28, 2024',
+      },
+      'makey-makey-101': {
+        title: 'Makey Makey 101 Course',
+        alt: 'Certificate of Completion for Artur Basak: Makey Makey 101 Course, completed June 16, 2025',
+      },
+    },
     diploma: 'Diploma in Computer Science',
     college: 'Technological College Educational Institution GRSU • 2011',
     contact: 'Get In Touch',
@@ -1353,6 +1423,76 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     viewCertificate: 'Посмотреть сертификат',
     closeCertificate: 'Закрыть',
     openInNewTab: 'Открыть в новой вкладке',
+    otherCertificatesLabel:
+      'Другие сертификаты с LinkedIn Learning, Coursera, Udemy, Frontend Masters, Microsoft и других платформ',
+    otherCertificatesPause: 'Остановить карусель сертификатов',
+    otherCertificatesPlay: 'Запустить карусель сертификатов',
+    otherCertificatesItems: {
+      'frontend-masters-interviewing': {
+        title: 'Interviewing for Front-End Engineers — Frontend Masters',
+        alt: 'Сертификат о прохождении курса Interviewing for Front-End Engineers от Frontend Masters, выдан Артуру Басаку 14 марта 2020',
+      },
+      'frontend-masters-accessibility-js': {
+        title: 'Accessibility in JavaScript Applications — Frontend Masters',
+        alt: 'Сертификат о прохождении курса Accessibility in JavaScript Applications от Frontend Masters, выдан Артуру Басаку 31 марта 2020',
+      },
+      'frontend-masters-typography': {
+        title: 'Responsive Web Typography v2 — Frontend Masters',
+        alt: 'Сертификат о прохождении курса Responsive Web Typography v2 от Frontend Masters, выдан Артуру Басаку 15 апреля 2020',
+      },
+      'linkedin-managing-developers': {
+        title: 'Managing and Leading Developers — LinkedIn Learning',
+        alt: 'Сертификат LinkedIn Learning для Артура Басака: учебный путь Managing and Leading Developers, 1 февраля 2022',
+      },
+      'linkedin-a11y-web-design': {
+        title: 'Accessibility for Web Design — LinkedIn Learning',
+        alt: 'Сертификат LinkedIn Learning для Артура Басака: Accessibility for Web Design, 8 февраля 2022',
+      },
+      'linkedin-react-a11y': {
+        title: 'React: Accessibility — LinkedIn Learning',
+        alt: 'Сертификат LinkedIn Learning для Артура Басака: React Accessibility, 25 января 2022',
+      },
+      'linkedin-a11y-best-practices': {
+        title: 'Simplifying Web Development with Accessibility Best Practices — LinkedIn Learning',
+        alt: 'Сертификат LinkedIn Learning для Артура Басака: Simplifying Web Development with Accessibility Best Practices, 3 февраля 2022',
+      },
+      'microsoft-a11y-fundamentals': {
+        title: 'Accessibility fundamentals — Microsoft',
+        alt: 'Сертификат Microsoft для Артура Басака: Accessibility fundamentals, 4 февраля 2022',
+      },
+      'udemy-pwa': {
+        title: 'Progressive Web Apps (PWA) — The Complete Guide — Udemy',
+        alt: 'Сертификат Udemy для Артура Басака: Progressive Web Apps (PWA) — The Complete Guide, 13 мая 2024',
+      },
+      'frontend-masters-last-algorithms': {
+        title: "The Last Algorithms Course You'll Need — Frontend Masters",
+        alt: 'Сертификат Frontend Masters для Артура Басака: The Last Algorithms Course You’ll Need, 17 мая 2025',
+      },
+      'frontend-masters-algorithms-js': {
+        title: 'A Practical Guide to Algorithms with JavaScript — Frontend Masters',
+        alt: 'Сертификат Frontend Masters для Артура Басака: A Practical Guide to Algorithms with JavaScript, 10 февраля 2025',
+      },
+      'geekle-react-global': {
+        title: 'React Global Online Summit 22.2 — Geekle',
+        alt: 'Сертификат участника Geekle для Артура Басака: React Global Online Summit 22.2, 8–9 ноября 2022',
+      },
+      'geekle-architecture': {
+        title: "Worldwide Software Architecture Summit '22 — Geekle",
+        alt: "Сертификат участника Geekle для Артура Басака: Worldwide Software Architecture Summit '22, 1–3 марта 2022",
+      },
+      'coursera-scratch': {
+        title: 'Introduction to Basic Game Development using Scratch — Coursera',
+        alt: 'Сертификат Coursera Project Network для Артура Басака: Introduction to Basic Game Development using Scratch, 29 ноября 2024',
+      },
+      'frontend-masters-scratch-kids': {
+        title: 'Get Kids into Coding with Scratch — Frontend Masters',
+        alt: 'Сертификат Frontend Masters для Артура Басака: Get Kids into Coding with Scratch, 28 ноября 2024',
+      },
+      'makey-makey-101': {
+        title: 'Makey Makey 101 Course',
+        alt: 'Сертификат о прохождении курса Makey Makey 101 для Артура Басака, 16 июня 2025',
+      },
+    },
     diploma: 'Диплом в области Информатики',
     college: 'Технологический колледж ГрГУ им. Янки Купалы • 2011',
     contact: 'Связаться',
