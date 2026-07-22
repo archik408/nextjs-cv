@@ -57,6 +57,13 @@ describe('yandex-hub microbit skill', () => {
     });
   });
 
+  it('parses sad command', () => {
+    expect(parseMicrobitCommand('грусти', false)).toEqual({
+      action: 'sad',
+      raw: 'грусти',
+    });
+  });
+
   it('responds to new session with microbit welcome', async () => {
     const response = await handleYandexAliceRequest(baseRequest);
 
@@ -79,6 +86,23 @@ describe('yandex-hub microbit skill', () => {
     expect(response.response.text).toContain('улыбку');
     expect(response.session_state?.lastCommand).toBe('smile');
     expect(response.session_state?.bridgeStatus).toBe('queued');
+  });
+
+  it('queues sad command when bridge is not configured', async () => {
+    const response = await handleYandexAliceRequest({
+      ...baseRequest,
+      session: { ...baseRequest.session, new: false, message_id: 1 },
+      request: {
+        ...baseRequest.request,
+        command: 'грусти',
+        original_utterance: 'грусти',
+      },
+    });
+
+    expect(response.response.text).toContain('грусть');
+    expect(response.session_state?.lastCommand).toBe('sad');
+    expect(response.session_state?.bridgeStatus).toBe('queued');
+    expect(response.response.buttons?.some((button) => button.title === 'Грусти')).toBe(true);
   });
 
   it('returns status with last command', async () => {

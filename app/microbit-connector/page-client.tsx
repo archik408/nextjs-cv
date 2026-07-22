@@ -1,7 +1,17 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { AlertCircle, Bluetooth, Cable, Cpu, Loader2, PlugZap, Send, Unplug } from 'lucide-react';
+import {
+  AlertCircle,
+  Bluetooth,
+  Cable,
+  Cpu,
+  Loader2,
+  PlugZap,
+  Radio,
+  Send,
+  Unplug,
+} from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 import { CodeBlock } from '@/components/code-block';
 import {
@@ -16,6 +26,7 @@ import {
   QUICK_SIMPLE_COMMANDS,
   MICROBIT_MAKECODE_FIRMWARE_EXAMPLE,
   formatCommand,
+  type MicrobitSimpleCommand,
 } from '@/lib/microbit-connector/protocol';
 import { UsbMicrobitTransport } from '@/lib/microbit-connector/usb-transport';
 import {
@@ -26,10 +37,12 @@ import {
   type MicrobitTransport,
 } from '@/lib/microbit-connector/types';
 import { useLanguage } from '@/lib/hooks/use-language';
+import { useMicrobitBridge } from '@/lib/hooks/use-microbit-bridge';
 
 type LastCommand = {
   label: string;
   at: string;
+  source?: 'local' | 'alice';
 };
 
 export function MicrobitConnectorPageClient() {
@@ -108,7 +121,7 @@ export function MicrobitConnectorPageClient() {
   }, []);
 
   const sendCommand = useCallback(
-    async (action: MicrobitBoardAction) => {
+    async (action: MicrobitBoardAction, source: 'local' | 'alice' = 'local') => {
       if (!transportRef.current?.isConnected()) {
         setErrorMessage(copy.errors.notConnected);
         return;
@@ -131,6 +144,7 @@ export function MicrobitConnectorPageClient() {
         setLastCommand({
           label: formatCommand(action).trim(),
           at: new Date().toLocaleTimeString(),
+          source,
         });
       } catch (error) {
         setErrorMessage(error instanceof Error ? error.message : copy.errors.sendFailed);
@@ -147,6 +161,46 @@ export function MicrobitConnectorPageClient() {
     },
     [sendCommand]
   );
+
+  const handleAliceCommand = useCallback(
+    (uartCommand: MicrobitSimpleCommand) => {
+      void sendCommand(uartCommand, 'alice');
+    },
+    [sendCommand]
+  );
+
+  const handleAliceCommandWhileDisconnected = useCallback(
+    (uartCommand: MicrobitSimpleCommand) => {
+      setErrorMessage(`${copy.errors.bridgeNotConnected} (${formatCommand(uartCommand).trim()})`);
+    },
+    [copy.errors.bridgeNotConnected]
+  );
+
+  const isDeviceConnected = useCallback(() => Boolean(transportRef.current?.isConnected()), []);
+
+  const bridgeStatus = useMicrobitBridge({
+    onCommand: handleAliceCommand,
+    onCommandWhileDisconnected: handleAliceCommandWhileDisconnected,
+    isDeviceConnected,
+  });
+
+  const bridgeStatusLabel =
+    bridgeStatus === 'listening'
+      ? copy.bridge.listening
+      : bridgeStatus === 'connecting'
+        ? copy.bridge.connecting
+        : bridgeStatus === 'offline'
+          ? copy.bridge.offline
+          : copy.bridge.disabled;
+
+  const bridgeStatusColor =
+    bridgeStatus === 'listening'
+      ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
+      : bridgeStatus === 'connecting'
+        ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300'
+        : bridgeStatus === 'offline'
+          ? 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300'
+          : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
 
   const statusLabel =
     status === MicrobitConnectionStatus.Connected
@@ -298,6 +352,24 @@ export function MicrobitConnectorPageClient() {
                   </p>
                 )}
               </div>
+
+              <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+                <div className="flex items-center justify-between gap-3 mb-2">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300 inline-flex items-center gap-2">
+                    <Radio className="w-4 h-4 text-teal-600 dark:text-teal-400" aria-hidden />
+                    {copy.bridge.label}
+                  </span>
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${bridgeStatusColor}`}
+                  >
+                    {bridgeStatusLabel}
+                    {bridgeStatus === 'connecting' && (
+                      <Loader2 className="w-3 h-3 ml-1 animate-spin" aria-hidden />
+                    )}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{copy.bridge.hint}</p>
+              </div>
             </section>
 
             <section className="space-y-6">
@@ -387,7 +459,8 @@ export function MicrobitConnectorPageClient() {
                     <span className="font-mono text-gray-700 dark:text-gray-300">
                       {lastCommand.label}
                     </span>{' '}
-                    ({lastCommand.at})
+                    ({lastCommand.at}
+                    {lastCommand.source === 'alice' ? ` · ${copy.bridge.fromAlice}` : ''})
                   </p>
                 )}
               </div>

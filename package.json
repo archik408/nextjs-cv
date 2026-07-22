@@ -44,6 +44,8 @@
     "lucide-react": "^0.542.0",
     "marked": "^15.0.12",
     "next": "^16.2.10",
+    "pusher": "^5.3.4",
+    "pusher-js": "^8.5.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "spark-md5": "^3.0.2",

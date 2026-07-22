@@ -15,12 +15,19 @@ function buildHelpText(): string {
     `Я навык «${SKILL_NAME}».`,
     'Скажите «улыбнись» — Микробит покажет улыбку.',
     'Скажите «издай звук» или «пищи» — Микробит подаст сигнал.',
+    'Скажите «грусти» — Микробит покажет грустное лицо.',
     'Также доступны команды «статус» и «пока».',
   ].join(' ');
 }
 
 function formatLastCommand(command: MicrobitCommand): string {
-  return command === 'smile' ? 'улыбка' : 'звук';
+  if (command === 'smile') {
+    return 'улыбка';
+  }
+  if (command === 'sound') {
+    return 'звук';
+  }
+  return 'грусть';
 }
 
 function buildBridgeSuffix(status: 'sent' | 'queued' | 'failed'): string {
@@ -56,7 +63,7 @@ async function resolveResponseForCommand(
   switch (command.action) {
     case 'session_start':
       return {
-        text: `Привет! Это навык «${SKILL_NAME}». Скажите «улыбнись» или «издай звук».`,
+        text: `Привет! Это навык «${SKILL_NAME}». Скажите «улыбнись», «издай звук» или «грусти».`,
         endSession: false,
         nextState: sessionState,
       };
@@ -71,7 +78,7 @@ async function resolveResponseForCommand(
     case 'status': {
       if (!sessionState.lastCommand) {
         return {
-          text: 'Микробит ещё не получал команд в этой сессии. Скажите «улыбнись» или «пищи».',
+          text: 'Микробит ещё не получал команд в этой сессии. Скажите «улыбнись», «пищи» или «грусти».',
           endSession: false,
           nextState: sessionState,
         };
@@ -116,10 +123,19 @@ async function resolveResponseForCommand(
       };
     }
 
+    case 'sad': {
+      const nextState = await executeMicrobitCommand('sad', sessionState);
+      return {
+        text: `Показываю грусть на Микробит.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
+        endSession: false,
+        nextState,
+      };
+    }
+
     case 'unknown':
     default:
       return {
-        text: `Не поняла команду «${command.raw}». Скажите «улыбнись», «пищи» или «помощь».`,
+        text: `Не поняла команду «${command.raw}». Скажите «улыбнись», «пищи», «грусти» или «помощь».`,
         endSession: false,
         nextState: sessionState,
       };
@@ -154,6 +170,7 @@ export async function handleYandexAliceRequest(
       buttons: [
         { title: 'Улыбнись', payload: { command: 'улыбнись' } },
         { title: 'Издай звук', payload: { command: 'издай звук' } },
+        { title: 'Грусти', payload: { command: 'грусти' } },
         { title: 'Помощь', payload: { command: 'помощь' }, hide: true },
       ],
     },

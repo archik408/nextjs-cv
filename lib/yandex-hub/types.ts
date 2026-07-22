@@ -4,7 +4,7 @@ export const SKILL_NAME = 'Мой Микробит';
 
 export type YandexRequestType = 'SimpleUtterance' | 'ButtonPressed' | 'Show.Pull';
 
-export type MicrobitCommand = 'smile' | 'sound';
+export type MicrobitCommand = 'smile' | 'sound' | 'sad';
 
 export interface YandexAliceRequest {
   meta: {
@@ -76,6 +76,7 @@ export type MicrobitAction =
   | 'session_start'
   | 'smile'
   | 'sound'
+  | 'sad'
   | 'status'
   | 'help'
   | 'goodbye'

@@ -23,6 +23,18 @@ const SOUND_KEYWORDS = [
   'играй',
 ];
 
+const SAD_KEYWORDS = [
+  'грусти',
+  'грусть',
+  'печаль',
+  'печалься',
+  'расстройся',
+  'расстроился',
+  'покажи грусть',
+  'грустное лицо',
+  'sad',
+];
+
 const STATUS_KEYWORDS = ['статус', 'состояние', 'что последнее', 'что делал'];
 const HELP_KEYWORDS = ['помощь', 'помоги', 'что ты умеешь', 'что умеешь', 'команды'];
 const GOODBYE_KEYWORDS = ['пока', 'до свидания', 'выход', 'закройся', 'хватит', 'стоп'];
@@ -60,6 +72,10 @@ export function parseMicrobitCommand(
 
   if (includesKeyword(normalized, SOUND_KEYWORDS)) {
     return { action: 'sound', raw };
+  }
+
+  if (includesKeyword(normalized, SAD_KEYWORDS)) {
+    return { action: 'sad', raw };
   }
 
   return { action: 'unknown', raw };

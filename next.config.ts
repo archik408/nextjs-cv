@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'", // Required for styled-jsx and CSS-in-JS
               "img-src 'self' data: https: blob:",
               "font-src 'self' data:",
-              "connect-src 'self' https: data:",
+              "connect-src 'self' https: data: wss: wss://*.pusher.com wss://ws-*.pusher.com https://*.pusher.com https://sockjs-*.pusher.com",
               "media-src 'self' https:",
               "object-src 'none'",
               "base-uri 'self'",

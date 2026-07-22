@@ -576,6 +576,15 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       viaUsb: 'Connected via USB (Web Serial / WebUSB)',
       unsupportedBluetooth: 'Web Bluetooth is not available in this browser.',
       unsupportedUsb: 'USB connection requires Chrome or Edge with Web Serial or WebUSB.',
+      bridge: {
+        label: 'Alice bridge',
+        hint: 'Listens for commands from Yandex Station / Alice skills (Улыбнись → SMILE, Издай звук → BEEP, Грусти → SAD).',
+        listening: 'Listening',
+        connecting: 'Connecting…',
+        offline: 'Offline',
+        disabled: 'Not configured',
+        fromAlice: 'from Alice',
+      },
       status: {
         disconnected: 'Disconnected',
         connecting: 'Connecting…',
@@ -612,6 +621,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         notConnected: 'Connect to a micro:bit first.',
         sendFailed: 'Failed to send the command.',
         emptyText: 'Enter text before sending a TEXT command.',
+        bridgeNotConnected:
+          'Received an Alice command, but micro:bit is not connected. Connect USB/Bluetooth and try again.',
       },
     },
     yandexAliceSkillsTitle: 'Skills for Yandex Station with Alice',
@@ -1674,6 +1685,15 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       viaUsb: 'Подключено через USB (Web Serial / WebUSB)',
       unsupportedBluetooth: 'Web Bluetooth недоступен в этом браузере.',
       unsupportedUsb: 'USB-подключение требует Chrome или Edge с Web Serial или WebUSB.',
+      bridge: {
+        label: 'Мост Алисы',
+        hint: 'Слушает команды с Яндекс Станции / страницы навыков (Улыбнись → SMILE, Издай звук → BEEP, Грусти → SAD).',
+        listening: 'Слушает',
+        connecting: 'Подключение…',
+        offline: 'Офлайн',
+        disabled: 'Не настроено',
+        fromAlice: 'от Алисы',
+      },
       status: {
         disconnected: 'Не подключено',
         connecting: 'Подключение…',
@@ -1710,6 +1730,8 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
         notConnected: 'Сначала подключите micro:bit.',
         sendFailed: 'Не удалось отправить команду.',
         emptyText: 'Введите текст перед отправкой команды TEXT.',
+        bridgeNotConnected:
+          'Получена команда от Алисы, но micro:bit не подключён. Подключите USB/Bluetooth и повторите.',
       },
     },
     yandexAliceSkillsTitle: 'Навыки для Яндекс Станции Алиса',

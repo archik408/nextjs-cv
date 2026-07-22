@@ -13,7 +13,9 @@ export function normalizeSessionState(state: unknown): MicrobitSessionState {
 
   return {
     lastCommand:
-      candidate.lastCommand === 'smile' || candidate.lastCommand === 'sound'
+      candidate.lastCommand === 'smile' ||
+      candidate.lastCommand === 'sound' ||
+      candidate.lastCommand === 'sad'
         ? candidate.lastCommand
         : undefined,
     lastActionAt: typeof candidate.lastActionAt === 'string' ? candidate.lastActionAt : undefined,
