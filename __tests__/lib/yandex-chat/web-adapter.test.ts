@@ -43,8 +43,17 @@ describe('Yandex web chat adapter', () => {
     expect(response.endSession).toBe(false);
     expect(response.buttons.map((button) => button.title)).toEqual([
       'Улыбнись',
+      'Грусти',
+      'Сердце',
+      'Очисти',
       'Издай звук',
       'Грусти',
+      'Логотип',
+      'Да',
+      'Нет',
+      'Нажми А',
+      'Нажми Б',
+      'Пинг',
       'Помощь',
     ]);
   });
