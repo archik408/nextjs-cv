@@ -3,8 +3,8 @@ import {
   formatMicrobitCommandCatalogForAlice,
   formatMicrobitWelcomeHint,
   MICROBIT_COMMAND_CATALOG,
-} from './command-catalog';
-import { parseMicrobitCommand } from './commands';
+  parseMicrobitCommand,
+} from './commands';
 import { createInitialSessionState, normalizeSessionState } from './session';
 import type {
   MicrobitCommand,

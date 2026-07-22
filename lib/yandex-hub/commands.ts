@@ -249,3 +249,83 @@ export function parseMicrobitCommand(
 
   return { action: 'unknown', raw };
 }
+
+/** Catalog entry for Alice help text and suggestion buttons. */
+export type MicrobitCommandCatalogEntry = {
+  phrase: string;
+  buttonTitle: string;
+  uart: string;
+  description: string;
+};
+
+export const MICROBIT_COMMAND_CATALOG: readonly MicrobitCommandCatalogEntry[] = [
+  {
+    phrase: 'улыбнись',
+    buttonTitle: 'Улыбнись',
+    uart: 'SMILE',
+    description: 'улыбка',
+  },
+  { phrase: 'грусти', buttonTitle: 'Грусти', uart: 'SAD', description: 'грустное лицо' },
+  {
+    phrase: 'издай звук',
+    buttonTitle: 'Издай звук',
+    uart: 'BEEP',
+    description: 'короткий сигнал',
+  },
+  { phrase: 'логотип', buttonTitle: 'Логотип', uart: 'LOGO', description: 'нажатие логотипа' },
+  { phrase: 'очисти', buttonTitle: 'Очисти', uart: 'CLEAR', description: 'очистить экран' },
+  { phrase: 'сердце', buttonTitle: 'Сердце', uart: 'HEART', description: 'нарисовать сердце' },
+  {
+    phrase: 'нарисуй да',
+    buttonTitle: 'Нарисуй да',
+    uart: 'YES',
+    description: 'иконка «да»',
+  },
+  {
+    phrase: 'нарисуй нет',
+    buttonTitle: 'Нарисуй нет',
+    uart: 'NO',
+    description: 'иконка «нет»',
+  },
+  { phrase: 'пинг', buttonTitle: 'Пинг', uart: 'PING', description: 'проверка связи' },
+  { phrase: 'нажми а', buttonTitle: 'Нажми А', uart: 'BTN_A', description: 'кнопка A' },
+  { phrase: 'нажми б', buttonTitle: 'Нажми Б', uart: 'BTN_B', description: 'кнопка B' },
+  {
+    phrase: 'напиши привет',
+    buttonTitle: 'Напиши привет',
+    uart: 'TEXT:привет',
+    description: 'прокрутка текста',
+  },
+  {
+    phrase: 'иконка сердце',
+    buttonTitle: 'Иконка сердце',
+    uart: 'ICON:heart',
+    description: 'именованная иконка (happy, sad, heart, yes, no, …)',
+  },
+  {
+    phrase: 'статус',
+    buttonTitle: 'Статус',
+    uart: '—',
+    description: 'последняя команда и статус доставки',
+  },
+  { phrase: 'помощь', buttonTitle: 'Помощь', uart: '—', description: 'список всех команд' },
+  { phrase: 'пока', buttonTitle: 'Пока', uart: '—', description: 'завершить сессию' },
+] as const;
+
+export function formatMicrobitCommandCatalogForAlice(): string {
+  const lines = MICROBIT_COMMAND_CATALOG.map(
+    (entry) =>
+      `«${entry.phrase}» → ${
+        entry.uart === '—' ? entry.description : `${entry.uart} (${entry.description})`
+      }`
+  );
+  return [
+    'Доступные команды навыка «Мой Микробит»:',
+    ...lines,
+    'Также можно сказать UART-токен напрямую: SMILE, BEEP, SAD, LOGO, CLEAR, HEART, YES, NO, PING, BTN_A, BTN_B, текст:…, icon:….',
+  ].join('\n');
+}
+
+export function formatMicrobitWelcomeHint(): string {
+  return 'Скажите «помощь», чтобы услышать полный список команд, или выберите кнопку ниже.';
+}
