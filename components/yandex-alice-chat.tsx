@@ -301,34 +301,6 @@ export function YandexAliceChat() {
                         );
                       })}
                     </div>
-
-                    <div className="mt-8 space-y-5 text-left">
-                      <h2 className="text-center text-base font-semibold text-gray-800 dark:text-gray-100">
-                        {t.yandexAliceSkillsCatalogTitle}
-                      </h2>
-                      <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-900/40">
-                        <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-white">
-                          {t.yandexAliceMicrobitCommandsTitle}
-                        </h3>
-                        <ul className="list-disc space-y-1 pl-5 text-sm text-gray-700 dark:text-gray-300">
-                          {t.yandexAliceMicrobitCommands.map((command) => (
-                            <li key={command}>
-                              <code className="font-mono text-xs sm:text-sm">{command}</code>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-900/40">
-                        <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-white">
-                          {t.yandexAliceWitcherCommandsTitle}
-                        </h3>
-                        <ul className="list-disc space-y-1 pl-5 text-sm text-gray-700 dark:text-gray-300">
-                          {t.yandexAliceWitcherCommands.map((command) => (
-                            <li key={command}>{command}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                 </div>
               ) : (
