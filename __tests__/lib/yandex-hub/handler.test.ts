@@ -93,6 +93,8 @@ describe('yandex-hub microbit skill', () => {
 
     expect(response.version).toBe('1.0');
     expect(response.response.text).toContain('Мой Микробит');
+    expect(response.response.text).toContain('Доступные команды');
+    expect(response.response.text).toContain('напиши привет');
     expect(response.response.end_session).toBe(false);
   });
 
@@ -125,6 +127,8 @@ describe('yandex-hub microbit skill', () => {
 
     expect(heart.session_state?.lastCommand).toBe('heart');
     expect(heart.response.buttons?.some((button) => button.title === 'Сердце')).toBe(true);
+    expect(heart.response.buttons?.some((button) => button.title === 'Напиши привет')).toBe(true);
+    expect(heart.response.buttons?.some((button) => button.title === 'Иконка сердце')).toBe(true);
 
     const text = await handleYandexAliceRequest({
       ...baseRequest,

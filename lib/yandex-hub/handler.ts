@@ -1,4 +1,9 @@
 import { dispatchMicrobitCommand } from './bridge';
+import {
+  formatMicrobitCommandCatalogForAlice,
+  formatMicrobitWelcomeHint,
+  MICROBIT_COMMAND_CATALOG,
+} from './command-catalog';
 import { parseMicrobitCommand } from './commands';
 import { createInitialSessionState, normalizeSessionState } from './session';
 import type {
@@ -6,6 +11,7 @@ import type {
   MicrobitSessionState,
   MicrobitSimpleAliceCommand,
   ParsedMicrobitCommand,
+  YandexAliceButton,
   YandexAliceRequest,
   YandexAliceResponse,
 } from './types';
@@ -26,13 +32,22 @@ const SIMPLE_RESPONSE: Record<MicrobitSimpleAliceCommand, { text: string; label:
 };
 
 function buildHelpText(): string {
+  return [`Я навык «${SKILL_NAME}».`, formatMicrobitCommandCatalogForAlice()].join('\n');
+}
+
+function buildSkillButtons(): YandexAliceButton[] {
+  const commandButtons: YandexAliceButton[] = MICROBIT_COMMAND_CATALOG.filter(
+    (entry) => entry.phrase !== 'помощь' && entry.phrase !== 'пока' && entry.phrase !== 'статус'
+  ).map((entry) => ({
+    title: entry.buttonTitle,
+    payload: { command: entry.phrase },
+  }));
+
   return [
-    `Я навык «${SKILL_NAME}».`,
-    'Простые команды: «улыбнись», «грусти», «издай звук», «логотип», «очисти», «сердце», «нарисуй да», «нарисуй нет», «пинг», «нажми а», «нажми б».',
-    'Текст: «напиши привет» или «текст:привет».',
-    'Иконка: «иконка сердце» или «icon:happy».',
-    'Также доступны «статус» и «пока».',
-  ].join(' ');
+    ...commandButtons,
+    { title: 'Статус', payload: { command: 'статус' }, hide: true },
+    { title: 'Помощь', payload: { command: 'помощь' }, hide: true },
+  ];
 }
 
 function formatLastCommand(command: MicrobitCommand): string {
@@ -84,7 +99,7 @@ async function resolveResponseForCommand(
   switch (command.action) {
     case 'session_start':
       return {
-        text: `Привет! Это навык «${SKILL_NAME}». Скажите «улыбнись», «сердце», «очисти», «нажми а» или «помощь».`,
+        text: `Привет! Это навык «${SKILL_NAME}».\n${formatMicrobitWelcomeHint()}\n\n${formatMicrobitCommandCatalogForAlice()}`,
         endSession: false,
         nextState: sessionState,
       };
@@ -217,20 +232,7 @@ export async function handleYandexAliceRequest(
       text,
       tts: text,
       end_session: endSession,
-      buttons: [
-        { title: 'Улыбнись', payload: { command: 'улыбнись' } },
-        { title: 'Грусти', payload: { command: 'грусти' } },
-        { title: 'Сердце', payload: { command: 'сердце' } },
-        { title: 'Очисти', payload: { command: 'очисти' } },
-        { title: 'Издай звук', payload: { command: 'издай звук' } },
-        { title: 'Логотип', payload: { command: 'логотип' } },
-        { title: 'Да', payload: { command: 'нарисуй да' } },
-        { title: 'Нет', payload: { command: 'нарисуй нет' } },
-        { title: 'Нажми А', payload: { command: 'нажми а' } },
-        { title: 'Нажми Б', payload: { command: 'нажми б' } },
-        { title: 'Пинг', payload: { command: 'пинг' } },
-        { title: 'Помощь', payload: { command: 'помощь' }, hide: true },
-      ],
+      buttons: buildSkillButtons(),
     },
     session_state: nextState,
   };
