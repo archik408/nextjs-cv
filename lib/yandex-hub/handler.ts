@@ -4,30 +4,45 @@ import { createInitialSessionState, normalizeSessionState } from './session';
 import type {
   MicrobitCommand,
   MicrobitSessionState,
+  MicrobitSimpleAliceCommand,
   ParsedMicrobitCommand,
   YandexAliceRequest,
   YandexAliceResponse,
 } from './types';
-import { SKILL_NAME, YANDEX_DIALOGS_VERSION } from './types';
+import { MICROBIT_SIMPLE_ALICE_COMMANDS, SKILL_NAME, YANDEX_DIALOGS_VERSION } from './types';
+
+const SIMPLE_RESPONSE: Record<MicrobitSimpleAliceCommand, { text: string; label: string }> = {
+  smile: { text: 'Показываю улыбку на Микробит.', label: 'улыбка' },
+  sound: { text: 'Издаю звук на Микробит.', label: 'звук' },
+  sad: { text: 'Показываю грусть на Микробит.', label: 'грусть' },
+  logo: { text: 'Нажимаю логотип на Микробит.', label: 'логотип' },
+  clear: { text: 'Очищаю экран Микробит.', label: 'очистка' },
+  heart: { text: 'Рисую сердце на Микробит.', label: 'сердце' },
+  yes: { text: 'Рисую «да» на Микробит.', label: 'да' },
+  no: { text: 'Рисую «нет» на Микробит.', label: 'нет' },
+  ping: { text: 'Проверяю связь с Микробит.', label: 'пинг' },
+  btn_a: { text: 'Нажимаю кнопку A на Микробит.', label: 'кнопка A' },
+  btn_b: { text: 'Нажимаю кнопку B на Микробит.', label: 'кнопка B' },
+};
 
 function buildHelpText(): string {
   return [
     `Я навык «${SKILL_NAME}».`,
-    'Скажите «улыбнись» — Микробит покажет улыбку.',
-    'Скажите «издай звук» или «пищи» — Микробит подаст сигнал.',
-    'Скажите «грусти» — Микробит покажет грустное лицо.',
-    'Также доступны команды «статус» и «пока».',
+    'Простые команды: «улыбнись», «грусти», «издай звук», «логотип», «очисти», «сердце», «нарисуй да», «нарисуй нет», «пинг», «нажми а», «нажми б».',
+    'Текст: «напиши привет» или «текст:привет».',
+    'Иконка: «иконка сердце» или «icon:happy».',
+    'Также доступны «статус» и «пока».',
   ].join(' ');
 }
 
 function formatLastCommand(command: MicrobitCommand): string {
-  if (command === 'smile') {
-    return 'улыбка';
+  if (typeof command === 'string') {
+    return SIMPLE_RESPONSE[command].label;
   }
-  if (command === 'sound') {
-    return 'звук';
+  if (command.type === 'text') {
+    return `текст «${command.text}»`;
   }
-  return 'грусть';
+  return `иконка ${command.name}`;
 }
 
 function buildBridgeSuffix(status: 'sent' | 'queued' | 'failed'): string {
@@ -56,6 +71,12 @@ async function executeMicrobitCommand(
   };
 }
 
+function isSimpleAliceAction(
+  action: ParsedMicrobitCommand['action']
+): action is MicrobitSimpleAliceCommand {
+  return (MICROBIT_SIMPLE_ALICE_COMMANDS as readonly string[]).includes(action);
+}
+
 async function resolveResponseForCommand(
   command: ParsedMicrobitCommand,
   sessionState: MicrobitSessionState
@@ -63,7 +84,7 @@ async function resolveResponseForCommand(
   switch (command.action) {
     case 'session_start':
       return {
-        text: `Привет! Это навык «${SKILL_NAME}». Скажите «улыбнись», «издай звук» или «грусти».`,
+        text: `Привет! Это навык «${SKILL_NAME}». Скажите «улыбнись», «сердце», «очисти», «нажми а» или «помощь».`,
         endSession: false,
         nextState: sessionState,
       };
@@ -78,7 +99,7 @@ async function resolveResponseForCommand(
     case 'status': {
       if (!sessionState.lastCommand) {
         return {
-          text: 'Микробит ещё не получал команд в этой сессии. Скажите «улыбнись», «пищи» или «грусти».',
+          text: 'Микробит ещё не получал команд в этой сессии. Скажите «улыбнись», «сердце» или «помощь».',
           endSession: false,
           nextState: sessionState,
         };
@@ -105,47 +126,76 @@ async function resolveResponseForCommand(
         nextState: sessionState,
       };
 
-    case 'smile': {
-      const nextState = await executeMicrobitCommand('smile', sessionState);
+    case 'text': {
+      if (!command.text) {
+        return {
+          text: 'Не поняла текст. Скажите, например: «напиши привет».',
+          endSession: false,
+          nextState: sessionState,
+        };
+      }
+      const nextState = await executeMicrobitCommand(
+        { type: 'text', text: command.text },
+        sessionState
+      );
       return {
-        text: `Показываю улыбку на Микробит.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
+        text: `Прокручиваю текст «${command.text}» на Микробит.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
         endSession: false,
         nextState,
       };
     }
 
-    case 'sound': {
-      const nextState = await executeMicrobitCommand('sound', sessionState);
+    case 'icon': {
+      if (!command.iconName) {
+        return {
+          text: 'Не поняла иконку. Скажите, например: «иконка сердце» или «icon:happy».',
+          endSession: false,
+          nextState: sessionState,
+        };
+      }
+      const nextState = await executeMicrobitCommand(
+        { type: 'icon', name: command.iconName },
+        sessionState
+      );
       return {
-        text: `Издаю звук на Микробит.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
+        text: `Рисую иконку ${command.iconName} на Микробит.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
         endSession: false,
         nextState,
       };
     }
 
-    case 'sad': {
-      const nextState = await executeMicrobitCommand('sad', sessionState);
-      return {
-        text: `Показываю грусть на Микробит.${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
-        endSession: false,
-        nextState,
-      };
-    }
+    default: {
+      if (isSimpleAliceAction(command.action)) {
+        const nextState = await executeMicrobitCommand(command.action, sessionState);
+        const { text } = SIMPLE_RESPONSE[command.action];
+        return {
+          text: `${text}${buildBridgeSuffix(nextState.bridgeStatus ?? 'queued')}`,
+          endSession: false,
+          nextState,
+        };
+      }
 
-    case 'unknown':
-    default:
       return {
-        text: `Не поняла команду «${command.raw}». Скажите «улыбнись», «пищи», «грусти» или «помощь».`,
+        text: `Не поняла команду «${command.raw}». Скажите «помощь», чтобы узнать доступные команды.`,
         endSession: false,
         nextState: sessionState,
       };
+    }
   }
 }
 
 function extractCommand(request: YandexAliceRequest): string {
   if (request.request.type === 'ButtonPressed' && request.request.payload) {
-    const payloadCommand = request.request.payload.command;
+    const payload = request.request.payload;
+    const payloadCommand = payload.command;
+
     if (typeof payloadCommand === 'string' && payloadCommand.trim()) {
+      if (payloadCommand === 'text' && typeof payload.text === 'string') {
+        return `текст:${payload.text}`;
+      }
+      if (payloadCommand === 'icon' && typeof payload.icon === 'string') {
+        return `иконка:${payload.icon}`;
+      }
       return payloadCommand.trim();
     }
   }
@@ -169,8 +219,16 @@ export async function handleYandexAliceRequest(
       end_session: endSession,
       buttons: [
         { title: 'Улыбнись', payload: { command: 'улыбнись' } },
-        { title: 'Издай звук', payload: { command: 'издай звук' } },
         { title: 'Грусти', payload: { command: 'грусти' } },
+        { title: 'Сердце', payload: { command: 'сердце' } },
+        { title: 'Очисти', payload: { command: 'очисти' } },
+        { title: 'Издай звук', payload: { command: 'издай звук' } },
+        { title: 'Логотип', payload: { command: 'логотип' } },
+        { title: 'Да', payload: { command: 'нарисуй да' } },
+        { title: 'Нет', payload: { command: 'нарисуй нет' } },
+        { title: 'Нажми А', payload: { command: 'нажми а' } },
+        { title: 'Нажми Б', payload: { command: 'нажми б' } },
+        { title: 'Пинг', payload: { command: 'пинг' } },
         { title: 'Помощь', payload: { command: 'помощь' }, hide: true },
       ],
     },

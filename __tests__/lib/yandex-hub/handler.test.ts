@@ -43,24 +43,48 @@ const baseRequest: YandexAliceRequest = {
 };
 
 describe('yandex-hub microbit skill', () => {
-  it('parses smile command', () => {
-    expect(parseMicrobitCommand('улыбнись', false)).toEqual({
-      action: 'smile',
-      raw: 'улыбнись',
+  it.each([
+    ['улыбнись', 'smile'],
+    ['издай звук', 'sound'],
+    ['грусти', 'sad'],
+    ['логотип', 'logo'],
+    ['очисти', 'clear'],
+    ['сердце', 'heart'],
+    ['нарисуй да', 'yes'],
+    ['нарисуй нет', 'no'],
+    ['пинг', 'ping'],
+    ['нажми а', 'btn_a'],
+    ['нажми б', 'btn_b'],
+    ['SMILE', 'smile'],
+    ['BEEP', 'sound'],
+    ['LOGO', 'logo'],
+    ['CLEAR', 'clear'],
+    ['HEART', 'heart'],
+    ['YES', 'yes'],
+    ['NO', 'no'],
+    ['PING', 'ping'],
+    ['BTN_A', 'btn_a'],
+    ['BTN_B', 'btn_b'],
+  ] as const)('parses %s as %s', (utterance, action) => {
+    expect(parseMicrobitCommand(utterance, false)).toEqual({
+      action,
+      raw: utterance,
     });
   });
 
-  it('parses sound command', () => {
-    expect(parseMicrobitCommand('издай звук', false)).toEqual({
-      action: 'sound',
-      raw: 'издай звук',
+  it('parses text command', () => {
+    expect(parseMicrobitCommand('напиши привет', false)).toEqual({
+      action: 'text',
+      raw: 'напиши привет',
+      text: 'привет',
     });
   });
 
-  it('parses sad command', () => {
-    expect(parseMicrobitCommand('грусти', false)).toEqual({
-      action: 'sad',
-      raw: 'грусти',
+  it('parses icon command', () => {
+    expect(parseMicrobitCommand('иконка сердце', false)).toEqual({
+      action: 'icon',
+      raw: 'иконка сердце',
+      iconName: 'heart',
     });
   });
 
@@ -88,21 +112,32 @@ describe('yandex-hub microbit skill', () => {
     expect(response.session_state?.bridgeStatus).toBe('queued');
   });
 
-  it('queues sad command when bridge is not configured', async () => {
-    const response = await handleYandexAliceRequest({
+  it('queues heart and text commands when bridge is not configured', async () => {
+    const heart = await handleYandexAliceRequest({
       ...baseRequest,
       session: { ...baseRequest.session, new: false, message_id: 1 },
       request: {
         ...baseRequest.request,
-        command: 'грусти',
-        original_utterance: 'грусти',
+        command: 'сердце',
+        original_utterance: 'сердце',
       },
     });
 
-    expect(response.response.text).toContain('грусть');
-    expect(response.session_state?.lastCommand).toBe('sad');
-    expect(response.session_state?.bridgeStatus).toBe('queued');
-    expect(response.response.buttons?.some((button) => button.title === 'Грусти')).toBe(true);
+    expect(heart.session_state?.lastCommand).toBe('heart');
+    expect(heart.response.buttons?.some((button) => button.title === 'Сердце')).toBe(true);
+
+    const text = await handleYandexAliceRequest({
+      ...baseRequest,
+      session: { ...baseRequest.session, new: false, message_id: 2 },
+      request: {
+        ...baseRequest.request,
+        command: 'текст:hello',
+        original_utterance: 'текст:hello',
+      },
+    });
+
+    expect(text.session_state?.lastCommand).toEqual({ type: 'text', text: 'hello' });
+    expect(text.response.text).toContain('hello');
   });
 
   it('returns status with last command', async () => {

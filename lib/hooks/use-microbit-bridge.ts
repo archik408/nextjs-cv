@@ -8,14 +8,14 @@ import {
   type MicrobitBridgePayload,
 } from '@/lib/microbit-bridge/constants';
 import { isAliceMicrobitCommand, mapAliceCommandToUart } from '@/lib/microbit-bridge/command-map';
-import type { MicrobitSimpleCommand } from '@/lib/microbit-connector/protocol';
+import type { MicrobitProtocolCommand } from '@/lib/microbit-connector/protocol';
 
 export type MicrobitBridgeStatus = 'disabled' | 'connecting' | 'listening' | 'offline';
 
 type UseMicrobitBridgeOptions = {
   enabled?: boolean;
-  onCommand: (uartCommand: MicrobitSimpleCommand) => void;
-  onCommandWhileDisconnected?: (uartCommand: MicrobitSimpleCommand) => void;
+  onCommand: (uartCommand: MicrobitProtocolCommand) => void;
+  onCommandWhileDisconnected?: (uartCommand: MicrobitProtocolCommand) => void;
   isDeviceConnected: () => boolean;
 };
 

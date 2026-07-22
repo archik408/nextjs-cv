@@ -7,11 +7,13 @@
  * - MICROBIT_BRIDGE_URL, MICROBIT_BRIDGE_SECRET — optional HTTP forward
  */
 
+import type { MicrobitCommand } from '@/lib/yandex-hub/types';
+
 export const MICROBIT_PUSHER_CHANNEL = 'microbit';
 export const MICROBIT_PUSHER_EVENT = 'command';
 
 export type MicrobitBridgePayload = {
-  command: 'smile' | 'sound' | 'sad';
+  command: MicrobitCommand;
   source: string;
   skill: string;
 };

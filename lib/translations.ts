@@ -578,7 +578,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       unsupportedUsb: 'USB connection requires Chrome or Edge with Web Serial or WebUSB.',
       bridge: {
         label: 'Alice bridge',
-        hint: 'Listens for commands from Yandex Station / Alice skills (Улыбнись → SMILE, Издай звук → BEEP, Грусти → SAD).',
+        hint: 'Listens for Alice → UART commands over Pusher and sends them to the connected micro:bit via USB or Bluetooth.',
         listening: 'Listening',
         connecting: 'Connecting…',
         offline: 'Offline',
@@ -1687,7 +1687,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       unsupportedUsb: 'USB-подключение требует Chrome или Edge с Web Serial или WebUSB.',
       bridge: {
         label: 'Мост Алисы',
-        hint: 'Слушает команды с Яндекс Станции / страницы навыков (Улыбнись → SMILE, Издай звук → BEEP, Грусти → SAD).',
+        hint: 'Слушает команды Алисы → UART через Pusher и отправляет их на подключённый micro:bit по USB или Bluetooth.',
         listening: 'Слушает',
         connecting: 'Подключение…',
         offline: 'Офлайн',

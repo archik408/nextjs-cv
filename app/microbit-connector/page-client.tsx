@@ -26,7 +26,7 @@ import {
   QUICK_SIMPLE_COMMANDS,
   MICROBIT_MAKECODE_FIRMWARE_EXAMPLE,
   formatCommand,
-  type MicrobitSimpleCommand,
+  type MicrobitProtocolCommand,
 } from '@/lib/microbit-connector/protocol';
 import { UsbMicrobitTransport } from '@/lib/microbit-connector/usb-transport';
 import {
@@ -163,14 +163,14 @@ export function MicrobitConnectorPageClient() {
   );
 
   const handleAliceCommand = useCallback(
-    (uartCommand: MicrobitSimpleCommand) => {
+    (uartCommand: MicrobitProtocolCommand) => {
       void sendCommand(uartCommand, 'alice');
     },
     [sendCommand]
   );
 
   const handleAliceCommandWhileDisconnected = useCallback(
-    (uartCommand: MicrobitSimpleCommand) => {
+    (uartCommand: MicrobitProtocolCommand) => {
       setErrorMessage(`${copy.errors.bridgeNotConnected} (${formatCommand(uartCommand).trim()})`);
     },
     [copy.errors.bridgeNotConnected]

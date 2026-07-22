@@ -4,7 +4,48 @@ export const SKILL_NAME = 'Мой Микробит';
 
 export type YandexRequestType = 'SimpleUtterance' | 'ButtonPressed' | 'Show.Pull';
 
-export type MicrobitCommand = 'smile' | 'sound' | 'sad';
+/** Simple Alice commands that map 1:1 to UART lines (SMILE, BEEP, …). */
+export type MicrobitSimpleAliceCommand =
+  | 'smile'
+  | 'sound'
+  | 'sad'
+  | 'logo'
+  | 'clear'
+  | 'heart'
+  | 'yes'
+  | 'no'
+  | 'ping'
+  | 'btn_a'
+  | 'btn_b';
+
+export type MicrobitTextAliceCommand = {
+  type: 'text';
+  text: string;
+};
+
+export type MicrobitIconAliceCommand = {
+  type: 'icon';
+  name: string;
+};
+
+export type MicrobitCommand =
+  | MicrobitSimpleAliceCommand
+  | MicrobitTextAliceCommand
+  | MicrobitIconAliceCommand;
+
+export const MICROBIT_SIMPLE_ALICE_COMMANDS: readonly MicrobitSimpleAliceCommand[] = [
+  'smile',
+  'sound',
+  'sad',
+  'logo',
+  'clear',
+  'heart',
+  'yes',
+  'no',
+  'ping',
+  'btn_a',
+  'btn_b',
+] as const;
 
 export interface YandexAliceRequest {
   meta: {
@@ -74,9 +115,9 @@ export interface YandexAliceResponse {
 
 export type MicrobitAction =
   | 'session_start'
-  | 'smile'
-  | 'sound'
-  | 'sad'
+  | MicrobitSimpleAliceCommand
+  | 'text'
+  | 'icon'
   | 'status'
   | 'help'
   | 'goodbye'
@@ -85,4 +126,6 @@ export type MicrobitAction =
 export interface ParsedMicrobitCommand {
   action: MicrobitAction;
   raw: string;
+  text?: string;
+  iconName?: string;
 }
