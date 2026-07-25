@@ -250,6 +250,7 @@ CacheFirst с TTL 30 дней означает: пока запись в кэш�
 
 ### Связанные заметки
 
+- [[Recovery и observability для PWA после сбоя загрузки](/garden/pwa-recovery-observability)]
 - [[View Transitions в React — рабочий инструмент, который уже год в продакшене](/garden/view-transitions)]
 - [[Настройка Workbox Background Sync для совместимости с iOS и Android WebView](/garden/workbox-background-sync)]
 - [[Вычисление видимой части viewport](/garden/viewport)]

@@ -1,311 +1,192 @@
 ---
 title: View Transitions в React — рабочий инструмент, который уже год в продакшене
-description: В восторге от компонента ViewTransition в React? А что если я скажу, что это работало и раньше.
+description: View Transitions API уже год в продакшене мобильного WebView. Разбор интеграции, именованных групп и артефактов Safari — без ожидания React ViewTransition.
 date: 2026-01-20
 tags: [pwa, mobile, ssr, react, animation]
 ---
 
-**[2026-05-27: Обновлено]**
-На Google I/O 2026 анонсировали набор утилитарных функций, которые помогают более удобно работать с View Transition API - [View Transitions Toolkit
-](https://chrome.dev/view-transitions-toolkit/).
+Когда React в экспериментальном канале анонсировал работу над [компонентом `ViewTransition`](https://react.dev/reference/react/ViewTransition), вокруг поднялся ажиотаж — и это понятно. Но [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) к тому моменту уже не был новостью из будущего: больше года он живёт в продакшене моего гибридного PWA в WebView и на этом сайте.
 
-```bash
-npm i view-transitions-toolkit
-```
-
-Возможно проект вырастет во что-то похожее на Workbox, который стал де-факто стандартом по настройке ServiceWorker API.
-
----
-
-Когда React в своем экспериментальном канале анонсировал работу над [компонентом `ViewTransition`](https://react.dev/reference/react/ViewTransition), коллеги активно начали делиться этой информацией и восторженно комментировать. Меня эти восторги слегка позабавили, ребята просто не умели видимо до этого готовить уже давно существующее API. Потому что [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) — это не новость из будущего, а стабильное, работающее API, которое уже больше года живет в продакшене моего приложения, в современных браузерах и даже в WebView.
-
-Пока все обсуждают RFC и эксперименты, я и мои пользователи уже давно пользуемся плавными, кинематографичными переходами между страницами. В этой статье я покажу, как организовал эту систему в продакшене для SPA на React 18 (речь про гибрид PWA в WebView) и для SSR-приложения на Next.js, разберу код и покажу, почему это работает уже сегодня, а не "когда-нибудь потом".
+Пока все обсуждают RFC и эксперименты, я и мои пользователи уже давно пользуемся плавными переходами между страницами. Ниже — не туториал «как сделать fade», а то, что пришлось выстрадать на реальных роутах: прослойка вокруг `navigate`, CSS для тёмной темы, изоляция хедера и таббара, артефакты Safari с `filter: blur`. React-обёртки упростят связку с навигацией; принципы останутся теми же.
 
 ## Реальная проблема и реальное решение
 
-Мое рабочее приложение — это гибридное PWA/SPA на React 18 с React Router. Задача была классической: уйти от резких, "дерганых" переходов между роутами к чему-то плавному, целостному, что создавало бы ощущение единого приложения, а не набора отдельных страниц.
+Моё рабочее приложение — гибридное PWA/SPA на React 18 с React Router внутри WebView. Задача была классической: уйти от резких, «дёрганых» переходов между роутами к чему-то плавному и целостному — чтобы ощущалось единое приложение, а не набор отдельных страниц.
 
-**View Transitions API** [предлагает элегантную парадигму](https://developer.chrome.com/docs/web-platform/view-transitions?hl=ru): вы говорите браузеру — "вот текущее состояние DOM, вот новое, анимируй изменение между ними". Браузер делает всю тяжелую работу по захвату "снимков", их наложению и анимации на GPU. Наша задача — грамотно интегрировать это в систему маршрутизации.
+**View Transitions API** [предлагает элегантную парадигму](https://developer.chrome.com/docs/web-platform/view-transitions?hl=ru): вы говорите браузеру — «вот текущее состояние DOM, вот новое, анимируй изменение между ними». Браузер делает тяжёлую работу: снимает кадры, накладывает их друг на друга и анимирует на GPU. Наша задача — вовремя вызвать `document.startViewTransition`, дождаться осмысленного нового кадра и не анимировать то, что должно стоять на месте.
 
-## Интеграция в SPA (React Router)
+## Интеграция в SPA: идея важнее листинга
 
-В основе лежит хук `useTransitionNavigate`, который становится "прослойкой" между вашим кодом и стандартным navigate из React Router.
+В основе — хук-прослойка между вашим кодом и `navigate` из React Router: фоллбэк без API, защита от повторных кликов, короткая пауза после навигации (чтобы React успел отрисовать новый экран до снимка «нового» состояния), `skipTransition()` при ошибке ленивой загрузки роута.
 
 ```typescript
-import { useCallback, useEffect } from 'react';
-import noop from 'lodash/noop';
-import { To } from 'react-router';
-import { useNavigate } from 'react-router-dom';
-
 export const useTransitionNavigate = () => {
   const navigate = useNavigate();
-  let isTransitioning = false;
-  let isMounted = true;
+  const isTransitioningRef = useRef(false);
+  const isMountedRef = useRef(true);
 
-  useEffect(() => {
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  useEffect(
+    () => () => {
+      isMountedRef.current = false;
+    },
+    []
+  );
 
   return useCallback(
     (to: To | number) => {
-      // 1. Защита от вызовов после размонтирования
-      if (!isMounted) {
-        return;
-      }
-      // 2. Фоллбэк для браузеров без поддержки API
+      if (!isMountedRef.current || isTransitioningRef.current) return;
+
       if (!document.startViewTransition) {
         navigate(to as To);
         return;
       }
-      // 3. Защита от повторных кликов
-      if (isTransitioning) {
-        return;
-      }
 
-      isTransitioning = true;
-      // 4. Запуск нативной view transition
+      isTransitioningRef.current = true;
+
       const transition = document.startViewTransition(async () => {
         try {
-          // 5. Навигация + микро-задержка для гарантии рендера
-          await new Promise((resolve) => {
+          // Даём роутеру и React время отрисовать «новый» DOM
+          await new Promise<void>((resolve) => {
             navigate(to as To);
             setTimeout(resolve, 100);
           });
         } catch (err) {
-          // 6. Отмена анимации при ошибке навигации
           transition.skipTransition();
           throw err;
         }
       });
 
-      // 7. Чистка состояния в случае сбоя подготовки
       transition.ready.catch(() => {
-        isTransitioning = false;
+        isTransitioningRef.current = false;
       });
 
-      // 8. Гарантированный сброс флага после завершения
-      transition.finished.catch(noop).finally(() => {
-        if (isMounted) {
-          isTransitioning = false;
-        }
+      transition.finished.finally(() => {
+        if (isMountedRef.current) isTransitioningRef.current = false;
       });
     },
-    [navigate, isMounted, isTransitioning]
+    [navigate]
   );
 };
 ```
 
-_Ключевые моменты реализации:_
+На что смотреть в проде:
 
-- Фоллбэк и прогрессивное улучшение: Проверка `document.startViewTransition` — это святое. Наши пользователи в старых браузерах просто увидят мгновенный переход. Без сбоев.
+- **`isTransitioning` / `isMounted` через `ref`**, а не через state в зависимостях `useCallback` — иначе легко поймать устаревшее замыкание или лишние пересоздания колбэка.
+- **`setTimeout` после `navigate`** — рабочий приём, а не «правильное API». Без него снимок нового состояния часто ловит пустой или скелетонный экран.
+- **Прогрессивное улучшение** — без `startViewTransition` просто обычный переход. В старом WebView анимации нет, но и ничего не ломается.
 
-- Защита от двойных кликов: Флаг `isTransitioning` критически важен. Без него быстрый пользователь мог бы "сломать" анимацию несколькими кликами подряд.
-
-- Микро-оптимизация: `setTimeout(resolve, 100)` после `navigate()` дает React Router и вашему коду время отрисовать новый контент до того, как браузер сделает снимок "нового" состояния. Без этого можно поймать анимацию между полупустыми страницами.
-
-- Управление ошибками: Если навигация выбросит ошибку (например, сетевую при lazy-загрузке), `transition.skipTransition()` мгновенно сбросит анимацию и покажет актуальное состояние.
-
-На основе этого хука строится компонент-ссылка `ViewTransitionLink`, который заменяет стандартные `<Link>` из React Router.
+На основе хука — ссылка, которая остаётся семантическим `<a href>` (важно для SEO и доступности), а клик уходит в нашу навигацию:
 
 ```tsx
-import React, { FC, ForwardedRef } from 'react';
-import { useTransitionNavigate } from 'hooks/useTransitionNavigate';
-
-export interface ViewTransitionLinkProps {
-  to: string;
-  tabIndex?: number;
-  children: React.ReactNode | React.ReactNode[];
-  onClick?: VoidFunction;
-  className?: string;
-  ariaLabel?: string;
-}
-
-const ViewTransitionLink: FC<ViewTransitionLinkProps> = React.forwardRef<
+const ViewTransitionLink = React.forwardRef<
   HTMLAnchorElement,
-  ViewTransitionLinkProps
->(({ to, children, onClick, ...props }, ref: ForwardedRef<HTMLAnchorElement>) => {
+  { to: string; children: React.ReactNode; onClick?: () => void; 'aria-label'?: string }
+>(function ViewTransitionLink({ to, children, onClick, ...props }, ref) {
   const navigate = useTransitionNavigate();
 
-  const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault(); // Предотвращаем стандартное поведение браузера
-    if (onClick) {
-      onClick();
-    }
-    navigate(to); // Используем нашу улучшенную навигацию
-  };
-
   return (
-    <a ref={ref} href={to} onClick={handleClick} {...props}>
+    <a
+      ref={ref}
+      href={to}
+      {...props}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick?.();
+        navigate(to);
+      }}
+    >
       {children}
     </a>
   );
 });
-
-ViewTransitionLink.displayName = 'ViewTransitionLink';
-
-export default ViewTransitionLink;
 ```
 
-Этот компонент соблюдает семантику (остается тегом `<a>` с href), что важно для SEO и доступности, но перехватывает клик для плавной навигации.
+## Next.js (App Router): сначала карта вариантов
 
-### Адаптация для Next.js (App Router)
+Со Server-Side Rendering подход меняется. Навигация — прерогатива Next.js, поэтому «обернуть `navigate`» уже не всегда лучший путь.
 
-С Server-Side Rendering (SSR) подход меняется. Здесь навигация — прерогатива Next.js, и нам нужно работать глобально, перехватывая клики по ссылкам.
+Что есть сегодня:
 
-Ниже реализация переходов для текущего моего личного веб-сайта. Тут я решил вопрос в лоб, менее элегантно и достаточно "топорно" в сравнении со своим рабочим клиентским проектом.
+1. **Встроенный путь Next** — флаг [`experimental.viewTransition`](https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition) и [гайд по дизайну переходов](https://nextjs.org/docs/app/guides/view-transitions). Маршруты идут через React Transition, анимации задаются CSS и `<ViewTransition>`.
+2. **Сторонние пакеты** вроде [`next-view-transitions`](https://github.com/shuding/next-view-transitions) — готовые `Link` и обёртки layout, если не хотите тащить экспериментальный флаг.
+3. **Глобальный перехват кликов** — то, что у меня на личном сайте: просто, но топорно. Имеет смысл как запасной вариант и способ понять механику, не как «канон 2026».
+
+Сжатая схема третьего варианта:
 
 ```tsx
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
-
 export function ViewTransitions({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const isNavigatingRef = useRef(false);
-  const supportsViewTransitionsRef = useRef(false);
+  const busy = useRef(false);
 
   useEffect(() => {
-    supportsViewTransitionsRef.current = 'startViewTransition' in document;
+    if (!('startViewTransition' in document)) return;
 
-    if (!supportsViewTransitionsRef.current) {
-      console.warn('View Transitions API not supported, using fallback');
-      return;
-    }
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as HTMLElement).closest('a[href]') as HTMLAnchorElement | null;
+      const href = link?.getAttribute('href');
+      if (!link || !href) return;
 
-    // Функция "умного" префетча
-    const prefetchInternal = (href: string) => {
-      try {
-        if (
-          href &&
-          !href.startsWith('http') && // Внешние ссылки
-          !href.startsWith('mailto:') &&
-          !href.startsWith('tel:') &&
-          !href.includes('/resume') // Исключаем особые страницы
-        ) {
-          router.prefetch?.(href); // Используем встроенный префетч Next.js
-        }
-      } catch {}
-    };
-
-    // Префетч видимых ссылок после монтирования
-    setTimeout(() => {
-      const links = Array.from(document.querySelectorAll('a[href]')) as HTMLAnchorElement[];
-      links.forEach((a) => {
-        const href = a.getAttribute('href') || '';
-        prefetchInternal(href);
-        // Префетч при наведении для динамического контента
-        a.addEventListener('mouseenter', () => prefetchInternal(href), { once: true });
-      });
-    }, 150);
-
-    const handleLinkClick = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      const link = target.closest('a[href]') as HTMLAnchorElement;
-
-      if (!link) return;
-
-      const href = link.getAttribute('href');
-      if (!href) return;
-
-      // Фильтруем клики, которые не должны быть перехвачены
+      // Внешние ссылки, якоря, blank, модификаторы — не трогаем
       if (
-        href.startsWith('http') || // Внешние сайты
-        href.startsWith('mailto:') ||
-        href.startsWith('tel:') ||
-        href.includes('#') || // Якорные ссылки
-        href.includes('/resume') ||
+        href.startsWith('http') ||
+        href.includes('#') ||
         link.target === '_blank' ||
-        event.ctrlKey || // Открытие в новой вкладке
         event.metaKey ||
-        event.shiftKey
+        event.ctrlKey
       ) {
         return;
       }
 
-      // Защита от двойных кликов
-      if (isNavigatingRef.current) {
+      if (busy.current) {
         event.preventDefault();
         return;
       }
 
-      // Перехват навигации
       event.preventDefault();
-      isNavigatingRef.current = true;
-      link.classList.add('transitioning'); // Класс для стилизации "активной" ссылки
+      busy.current = true;
 
-      if (supportsViewTransitionsRef.current && document.startViewTransition) {
-        document
-          .startViewTransition(() => {
-            return new Promise((resolve) => {
-              prefetchInternal(href);
-              router.push(href); // Навигация через Next.js Router
-              setTimeout(resolve, 50); // Короткая задержка для App Router
-            });
-          })
-          .finished.finally(() => {
-            isNavigatingRef.current = false;
-            link.classList.remove('transitioning');
-          });
-      } else {
-        // Фоллбэк-навигация
-        setTimeout(() => {
-          prefetchInternal(href);
+      document
+        .startViewTransition(() => {
           router.push(href);
-          isNavigatingRef.current = false;
-          link.classList.remove('transitioning');
-        }, 80);
-      }
+          return new Promise((r) => setTimeout(r, 50));
+        })
+        .finished.finally(() => {
+          busy.current = false;
+        });
     };
 
-    document.addEventListener('click', handleLinkClick);
-
-    return () => {
-      document.removeEventListener('click', handleLinkClick);
-    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
   }, [router]);
 
   return <>{children}</>;
 }
 ```
 
-_Особенности Next.js реализации:_
-
-- Глобальный перехватчик: Компонент-провайдер ViewTransitions оборачивает приложение и навешивает единый слушатель на document.
-
-- "Умный" префетч: Мы уважаем логику Next.js, используя его `router.prefetch()`, но делаем это более агрессивно (при наведении), чтобы переход был мгновенным.
-
-- Селективный перехват: Фильтрация по href критична. Мы не должны перехватывать клики по внешним ссылкам, якорям или при нажатии Ctrl/Cmd.
-
-- Интеграция с App Router: Короткая задержка в `setTimeout(resolve, 50)` помогает App Router стабильно обработать навигацию перед захватом нового снимка.
+Для нового Next-проекта я бы начинал с пункта 1 или 2. Дальше в статье важнее не обвязка навигации, а то, **что** анимировать.
 
 ## Магия в деталях: CSS для анимаций
 
-Сам API отвечает за захват состояний, но финальный вид — дело CSS. Моя цель — неброские, целостные анимации, которые работают плавно и органично в темной теме.
+Сам API отвечает за захват состояний, но финальный вид — дело CSS. Цель — спокойное появление и лёгкий сдвиг без белых вспышек на тёмном фоне:
 
 ```css
-/*------APP VIEW TRANSITIONS-----------*/
-/* 1. Базовый сброс для темной темы */
 html::view-transition-old(root),
 html::view-transition-new(root) {
-  background: transparent; /* Убираем белые артефакты на стыке */
-  mix-blend-mode: normal; /* Отключаем блендинг для четкости текста */
+  background: transparent; /* без белой подложки на стыке */
+  mix-blend-mode: normal; /* текст не «мылится» смешиванием слоёв */
 }
 
-/* 2. Группировка и изоляция слоев */
 html::view-transition-group(*),
 html::view-transition-image-pair(*) {
-  isolation: auto; /* Позволяет анимациям работать независимо */
+  isolation: auto;
 }
 
-/* 3. Анимация ухода старой страницы */
 html::view-transition-old(root) {
   animation: 0.3s ease-out both pageFadeOut;
 }
 
-/* 4. Анимация появления новой страницы */
 html::view-transition-new(root) {
   animation: 0.4s ease-out both pageFadeIn;
 }
@@ -313,7 +194,7 @@ html::view-transition-new(root) {
 @keyframes pageFadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px); /* Легкое движение снизу */
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -328,74 +209,175 @@ html::view-transition-new(root) {
   }
   to {
     opacity: 0;
-    transform: translateY(-10px); /* Легкое движение вверх */
+    transform: translateY(-10px);
   }
 }
 ```
 
-_Трюки для темной темы:_
+Разные длительности ухода и появления дают лёгкое перекрытие — переход ощущается естественнее, чем синхронный кроссфейд один к одному.
 
-- `background: transparent` решает проблему появления белой подложки или ореола вокруг анимируемых областей на темном фоне.
+И сразу: `@media (prefers-reduced-motion: reduce)` должен гасить и `root`, и именованные группы (таббар и хедер). Иначе «статичная» оболочка вдруг поедет у тех, кто анимации отключил.
 
-- `mix-blend-mode: normal` отключает смешивание слоев, которое по умолчанию может делать текст полупрозрачным и нечитаемым на сложном фоне.
+## А если я хочу анимировать только часть страницы при переходе?
 
-- Разные длительности анимаций (0.3s и 0.4s) создают более естественное, "перекрывающееся" движение, имитирующее реальный переход.
+По умолчанию View Transitions анимирует весь снимок страницы через `root`. Это хорошо для «целого» перехода, но в реальном приложении часто есть постоянный хедер и таббар. Их не нужно «дёргать» вместе с контентом на каждом роуте — наоборот, они должны ощущаться статичными.
 
-## Кастомные анимации для разных разделов: управление через data-атрибуты
+А на отдельных экранах поведение может меняться: например, как на скриншоте ниже, при входе на карту таббар должен плавно уехать вниз за край экрана.
 
-Вы спросите: а что если мне нужны не универсальные, а контекстно-зависимые переходы? Например, при входе в галерею изображений хочется эффекта затемнения, а при переходе между настройками — горизонтального сдвига. Глобальный CSS-код, который мы разбирали, не позволяет такой гибкости.
+![Хедер остаётся на месте, таббар на карте уезжает вниз](/garden/view-transitions/tabbar-header.webp)
 
-Моё текущее решение — использовать data-атрибуты как селекторы для CSS. Это даёт декларативный контроль над анимацией прямо из React-компонента страницы.
+Хедер при этом тоже не должен смещаться вместе с `root`-анимацией. Но у него есть своя ловушка: заголовок меняется («Задания» → «Задания на карте»), и если оставить дефолтный morph без изоляции, старый и новый текст на долю секунды накладываются друг на друга и становятся нечитаемой кашей.
 
-Создаём хук для управления атрибутом:
+Решение одно и то же для всех таких кусков интерфейса: вынести их из общего снимка через изолированные `view-transition-name` и задать каждой группе свою анимацию (или вовсе отключить её).
+
+### Изолируем через `view-transition-name`
+
+Имена уникальны в пределах документа: одновременно не больше одного элемента с конкретным `view-transition-name`. В продакшене я вешаю их прямо на корневые классы хедера и таббара:
+
+```scss
+.header {
+  view-transition-name: header;
+}
+
+.tabbar {
+  view-transition-name: tabbar;
+}
+```
+
+После этого браузер создаёт отдельные группы перехода — их можно стилизовать независимо от `root`.
+
+### Таббар: статичен почти всегда, уезжает только когда исчезает
+
+Если таббар есть и на старом, и на новом экране, нам не нужна анимация — просто «держим» его на месте. Анимация нужна только когда элемент появляется или исчезает целиком. Для этого удобен псевдокласс `:only-child` у `::view-transition-old` / `::view-transition-new`: он срабатывает, когда в паре снимков остался один (элемент ушёл из DOM или только появился).
+
+```css
+html::view-transition-group(tabbar) {
+  z-index: var(--tabbar-layer-index);
+}
+
+/* Оба снимка есть → таббар статичен, не дёргается вместе с root */
+html::view-transition-old(tabbar),
+html::view-transition-new(tabbar) {
+  animation: none;
+}
+
+/* Уход: на карте таббара нет → старый снимок уезжает вниз за экран */
+html::view-transition-old(tabbar):only-child {
+  animation: 0.3s ease-out both slideOut;
+}
+
+/* Появление: обратный переход с карты → новый снимок выезжает снизу */
+html::view-transition-new(tabbar):only-child {
+  animation: 0.3s ease-out both slideIn;
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+```
+
+Так таббар «живёт своей жизнью»: на обычных переходах между вкладками он не участвует в появлении и сдвиге контента, а при уходе на полноэкранную карту — аккуратно съезжает вниз.
+
+### Хедер: позиция стабильна, текст — отдельный fade
+
+Хедер выносим в свою группу и вместо дефолтного morph даём простой кроссфейд. Сам блок остаётся на месте (не едет с `translateY` у `root`), а заголовки не наслаиваются буквой на букву:
+
+```css
+html::view-transition-group(header) {
+  z-index: var(--header-layer-index);
+}
+
+html::view-transition-old(header) {
+  animation: 0.3s ease-out both fadeOut;
+}
+
+html::view-transition-new(header) {
+  animation: 0.3s ease-out both fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+```
+
+Итоговая схема: `root` анимирует основной контент, постоянная оболочка экрана — отдельно, со своими правилами. Пользователь воспринимает приложение как одно целое, а не как набор мигающих страниц с прыгающим низом и верхом.
+
+### Артефакты: когда CSS-фильтры «отваливаются» в снимке
+
+Изоляция нужна не только для удобства, но и чтобы чинить артефакты. В примере ниже на реферальной странице фон сделан через градиентное размытие (`filter: blur(...)` на цветных кругах). В обычном состоянии всё выглядит мягко. Но в промежуточном кадре view transition Safari / iOS WebView часто **не запекает filter в растровый снимок** — и вместо размытого свечения вылезают сырые фиолетовые круги.
+
+![Промежуточный кадр: filter:blur пропал, остались фиолетовые круги](/garden/view-transitions/blur-snapshot.webp)
+
+Лечится тем же приёмом: вынести слой размытия из снимка `root` и для старого/нового состояния **выключить** анимацию (старое сразу спрятать, новое показать без задержки):
+
+```scss
+.blurWrapper {
+  /* на iOS filter: blur часто не попадает в снимок перехода */
+  view-transition-name: gradient-blur-bg;
+}
+```
+
+```css
+html::view-transition-old(gradient-blur-bg) {
+  animation: none;
+  opacity: 0;
+}
+
+html::view-transition-new(gradient-blur-bg) {
+  animation: none;
+}
+```
+
+Практика простая: если элемент в промежуточном состоянии «ломается» (фильтры, сложное смешивание слоёв, тяжёлые эффекты) — не тащите его через общий morph. Дайте `view-transition-name`, отключите анимацию группы и пусть он просто сменится мгновенно. Лучше честный кадр без эффекта на 300 ms, чем заметный глюк посреди перехода.
+
+Именно этот слой работы — постоянная оболочка плюс обход артефактов — отличает «поставил fade на root» от ощущения нативного приложения. После него жалобы на «дёрганые» экраны в WebView ушли туда, куда и должны: в крайние случаи и старые контейнеры без API.
+
+## Кастомные анимации для разных разделов
+
+Вы спросите: а что если нужны не универсальные, а контекстно-зависимые переходы? Например, при входе в галерею — эффект затемнения, между настройками — горизонтальный сдвиг. Удобный рычаг — data-атрибут на `<html>` как селектор для CSS.
 
 ```typescript
 export const TRANSITION_ATTR = 'data-custom-page-transition';
 
 export const useTransitionAttribute = (value = 'active') => {
   useEffect(() => {
-    // Устанавливаем атрибут на корневом элементе <html>
     document.documentElement.setAttribute(TRANSITION_ATTR, value);
-
-    // Очищаем атрибут при размонтировании компонента (смене страницы)
     return () => {
       document.documentElement.removeAttribute(TRANSITION_ATTR);
     };
-  }, [value]); // value можно менять динамически
+  }, [value]);
 };
 ```
-
-Используем хук на целевых страницах:
-
-```tsx
-import { useTransitionAttribute } from '../hooks/useTransitionAttribute';
-
-const GalleryPage = () => {
-  // Эта страница получит кастомную анимацию
-  useTransitionAttribute('gallery-mode');
-
-  return <div>Контент галереи...</div>;
-};
-```
-
-Создаём контекстно-зависимые CSS-анимации:
 
 ```css
-/* Глобальные стили дополняем условными блоками */
-
-/* Базовые анимации (как в основном примере) остаются */
-html::view-transition-old(root),
-html::view-transition-new(root) {
-  background: transparent;
-  mix-blend-mode: normal;
-}
-
-/* УНИВЕРСАЛЬНАЯ АНИМАЦИЯ: плавное появление */
-html::view-transition-new(root) {
-  animation: 0.4s ease-out both pageFadeIn;
-}
-
-/* КАСТОМНАЯ АНИМАЦИЯ 1: для галереи (затемнение) */
 html[data-custom-page-transition='gallery-mode']::view-transition-old(root) {
   animation: 0.5s ease-in both galleryFadeOut;
 }
@@ -403,103 +385,36 @@ html[data-custom-page-transition='gallery-mode']::view-transition-old(root) {
 html[data-custom-page-transition='gallery-mode']::view-transition-new(root) {
   animation: 0.6s ease-out both galleryFadeIn;
 }
-
-@keyframes galleryFadeIn {
-  from {
-    opacity: 0;
-    filter: brightness(0.8);
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    filter: brightness(1);
-    transform: scale(1);
-  }
-}
-
-@keyframes galleryFadeOut {
-  from {
-    opacity: 1;
-    filter: brightness(1);
-  }
-  to {
-    opacity: 0;
-    filter: brightness(0.6);
-  }
-}
 ```
 
-## А если я хочу анимировать только часть страницы, при переходе?
+Важный нюанс по времени: cleanup в `useEffect` снимает атрибут при размонтировании страницы. К моменту снимка нового состояния входящий экран может ещё не успеть выставить свой режим — и середина перехода уйдёт в дефолтный CSS. Надёжнее выставлять атрибут **до** `startViewTransition` (из обёртки навигации по целевому роуту) или держать его на layout, который переживает смену дочернего роута.
 
-## Как это будет выглядеть с ViewTransition от React?
+## Послесловие: что даст React `<ViewTransition>`
 
-React [официально анонсировал](https://react.dev/blog/2025/04/23/react-labs-view-transitions-activity-and-more) экспериментальную поддержку View Transitions через специальный компонент еще в том году. Давайте посмотрим, как мой текущий production-код может эволюционировать с этой нативной интеграцией.
-
-Будущий код с ViewTransition (по мотивам React Docs):
-
-```tsx
-import { ViewTransition, useViewTransition } from 'react';
-
-function GalleryLink() {
-  const { startViewTransition, isTransitioning } = useViewTransition();
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    // React теперь управляет состоянием перехода
-    startViewTransition(() => {
-      navigate('/gallery');
-    });
-  };
-
-  return (
-    <button
-      onClick={handleClick}
-      disabled={isTransitioning} // React даёт состояние перехода "из коробки"
-      aria-busy={isTransitioning}
-    >
-      {isTransitioning ? 'Переход...' : 'В галерею'}
-    </button>
-  );
-}
-```
-
-Или ещё декларативнее — с компонентом-обёрткой:
+Экспериментальный [`ViewTransition`](https://react.dev/blog/2025/04/23/react-labs-view-transitions-activity-and-more) (и интеграция в Next) уберёт часть обвязки: меньше ручных `startViewTransition` и `setTimeout`, лучше стыковка с Suspense и Concurrent. API ещё меняется — ниже скорее направление, не контракт:
 
 ```tsx
 import { ViewTransition } from 'react';
 
-function App() {
-  return (
-    <ViewTransition>
-      {/* React будет автоматически применять анимации 
-          при изменениях внутри этого компонента */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/gallery" element={<Gallery />} />
-      </Routes>
-    </ViewTransition>
-  );
-}
+// Имена и типы переходов — декларативно; CSS остаётся вашим
+<ViewTransition name="header" default="none">
+  <AppHeader title={title} />
+</ViewTransition>;
 ```
 
-_Ключевые отличия нативной интеграции React:_
+Смысл статьи от этого не меняется: **прогрессивное улучшение, изоляция постоянных элементов интерфейса, отдельные анимации для текста, обход артефактов Safari**. React сократит связку с навигацией; вкус перехода по-прежнему в CSS и в том, _что_ вы сознательно не анимируете.
 
-- Декларативный подход вместо императивного вызова `document.startViewTransition()`.
+А экосистема вокруг API уже обрастает утилитами — на Google I/O 2026 показали [View Transitions Toolkit](https://chrome.dev/view-transitions-toolkit/) (`npm i view-transitions-toolkit`). Похоже на ранний Workbox для Service Worker: не обязателен, но может стать удобным слоем над низкоуровневым API.
 
-- Встроенная координация с Concurrent Features — React сможет интеллектуально планировать анимации вместе с приостановкой (suspense) и другими обновлениями.
-
-- Состояние "в процессе" из коробки — флаг `isTransitioning` доступен сразу, не нужно его реализовывать.
-
-- Более тесная интеграция с рендер-циклом — потенциально меньше необходимости в искусственных задержках (`setTimeout`).
-
-Нативная реализация React упростит базовое использование, но принципы, которые я использую уже год в продакшене (прогрессивное улучшение, управление состоянием перехода, CSS-кастомизация) останутся фундаментальными. Когда `<ViewTransition>` станет стабильным, перенести на него текущую логику будет прямой задачей. А пока — я, пользователи и клиент уже получаем все преимущества с текущим решением.
+Пока стабильный `<ViewTransition>` дозревает, пользователи и клиент уже получают пользу от платформенного API. Это и есть рабочий инструмент, а не анонс из будущего.
 
 ---
 
 ### Связанные заметки
 
-- [[Настройка Workbox Background Sync для совместимости с iOS и Android WebView](/garden/workbox-background-sync)]
 - [[Вычисление видимой части viewport](/garden/viewport)]
 - [[Переход по DeepLink из Web](/garden/deeplink-web)]
 - [[Конфликт оффлайн функциональности и ленивой подгрузки](/garden/offline-vs-lazy-loading)]
+- [[Recovery и observability для PWA после сбоя загрузки](/garden/pwa-recovery-observability)]
+- [[Настройка Workbox Background Sync для совместимости с iOS и Android WebView](/garden/workbox-background-sync)]
 - [[Улучшение просмотра изображений](/garden/zoom)]
