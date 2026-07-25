@@ -166,11 +166,11 @@ window.requestIdleCallback(() => {
 
 ### Кэширование в Service Worker
 
-Одного preload недостаточно: при плохой сети запросы всё равно могут сорваться. Поэтому для offline-устойчивости нужен precache JS/CSS и runtime-кэш как страховка.
+`preloadOfflineCriticalPages` скачивает критические page-chunks при старте. Чтобы они переживали повторный offline-заход, ответы должны попасть в Cache Storage: shell/main/index — через precache и настройку manifest, чанки из chunks/ — через runtime-кэш и прогрев.
 
 #### Слой 1: Precache через injectManifest
 
-`vite-plugin-pwa` со стратегией `injectManifest` на этапе сборки внедряет в service worker манифест со всеми статическими ассетами:
+`vite-plugin-pwa` со стратегией `injectManifest` на этапе сборки внедряет в Service Worker манифест со всеми статическими ассетами:
 
 ```ts
 // vite.config.ts
@@ -195,7 +195,7 @@ precacheAndRoute(manifest, {
 ```
 
 Все HTML, JS и CSS файлы из билда попадают в precache при первой установке Service Worker. Исключение только чанки и библиотеки, которые будут загружаться по мере необходимости при навигации.
-Оффлайн-критичные чанки будут доступны сразу, так как прогреваются кодом через `preloadOfflineCriticalPages`.
+Оффлайн-критичные чанки будут доступны, так как прогреваются кодом через `preloadOfflineCriticalPages`.
 
 #### Слой 2: Runtime-кэш для чанков
 
@@ -244,7 +244,7 @@ CacheFirst с TTL 30 дней означает: пока запись в кэш�
 
 В webpack `webpackChunkName` склеивает критические страницы в один файл. В Vite агрегатор не склеивает чанки — у каждой страницы свой `import()`, а роль "забрать критическое заранее" выполняет явный `preloadOfflineCriticalPages()`.
 
-Многослойная стратегия кэширования в service worker делает оффлайн-доступность независимой от конкретного бандлера.
+Многослойная стратегия кэширования в Service Worker делает оффлайн-доступность независимой от конкретного бандлера.
 
 ---
 
