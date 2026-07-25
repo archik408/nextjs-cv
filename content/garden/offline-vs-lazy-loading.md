@@ -96,6 +96,8 @@ const RatingPage = React.lazy(() => import('pages/RatingPage'));
 />;
 ```
 
+Точка входа пользователя — `RegistrationPage` или `MainPage`. Обе входят в чанк `offline-critical`, поэтому при первом заходе в приложение скачивается весь этот чанк целиком — вместе с остальными страницами, нужными для offline. Отдельный preload здесь не нужен: его роль выполняет сам entry-route.
+
 ## Критерии выбора критических чанков
 
 - Основной функционал: страницы, без которых приложение не может выполнять свою основную задачу
@@ -128,7 +130,7 @@ const loadRegistrationPage = () => import('pages/RegistrationPage');
 const loadMainPage = () => import('pages/MainPage');
 const loadTaskPreviewPage = () => import('pages/TaskPreview');
 const loadTaskStartPage = () => import('pages/TaskStart');
-const loadSendingTaskPage = () => import('pages/SendingTaskPage');
+const loadSendingTaskPage = () => import('pages/SendingTask');
 const loadSendingSuccessPage = () => import('pages/SendingSuccess');
 
 export function preloadOfflineCriticalPages(): Promise<void> {
@@ -155,7 +157,7 @@ const MainPage = React.lazy(() => loadMainPage().then((module) => ({ default: mo
 // main.tsx
 import { preloadOfflineCriticalPages } from 'routes/offline-critical-chunk';
 
-scheduleTask(() => {
+window.requestIdleCallback(() => {
   void preloadOfflineCriticalPages();
 });
 ```
@@ -178,6 +180,7 @@ VitePWA({
   filename: 'service-worker.js',
   injectManifest: {
     globPatterns: ['**/*.{html,js,css}'],
+    globIgnores: ['chunks/**', '**/node_modules/**'],
     maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
   },
 });
@@ -191,11 +194,12 @@ precacheAndRoute(manifest, {
 });
 ```
 
-Все HTML, JS и CSS файлы из билда попадают в precache при первой установке service worker. Это гарантирует, что оффлайн-критичные чанки будут доступны сразу.
+Все HTML, JS и CSS файлы из билда попадают в precache при первой установке Service Worker. Исключение только чанки и библиотеки, которые будут загружаться по мере необходимости при навигации.
+Оффлайн-критичные чанки будут доступны сразу, так как прогреваются кодом через `preloadOfflineCriticalPages`.
 
 #### Слой 2: Runtime-кэш для чанков
 
-Precache покрывает текущую версию, но при обновлении приложения старые чанки удаляются из precache до того, как новые будут загружены. Для подстраховки добавляется отдельный runtime-кэш:
+Чанки из chunks/ намеренно исключены из precache, чтобы не раздувать install-манифест. Их offline-доступность даёт runtime-кэш: всё, что скачали preload’ом или по ходу навигации, остаётся в chunk-cache:
 
 ```js
 // service-worker.js
@@ -219,6 +223,8 @@ registerRoute(
 );
 ```
 
+Дополнительно этот слой смягчает гонки при обновлении приложения, когда на экране ещё живут старые hash-URL.
+
 Это работает благодаря единому паттерну именования чанков в Vite-конфигурации:
 
 ```ts
@@ -230,11 +236,15 @@ rollupOptions: {
 }
 ```
 
-Все чанки попадают в директорию `chunks/`, что позволяет перехватывать их одним регулярным выражением. CacheFirst-стратегия с 30-дневным TTL означает: однажды загруженный чанк не запрашивается с сервера повторно.
+CacheFirst с TTL 30 дней означает: пока запись в кэше жива, повторный запрос того же URL идёт из кэша. После истечения TTL, вытеснения или очистки кэша снова нужна сеть. Для hashed-имён ([name]-[hash].js) это обычно приемлемо: новый деплой = новые URL.
 
 ### Вывод
 
-При миграции с webpack на Vite не нужно изобретать новые паттерны — достаточно адаптировать существующие под инструменты Rollup. Модуль-агрегатор выполняет ту же роль, что и webpackChunkName, а void import() заменяет webpackPrefetch. Многослойная стратегия кэширования в service worker делает оффлайн-доступность независимой от конкретного бандлера.
+При миграции с webpack на Vite не нужно изобретать новые паттерны — достаточно адаптировать существующие под инструменты Rollup/Rolldown.
+
+В webpack `webpackChunkName` склеивает критические страницы в один файл. В Vite агрегатор не склеивает чанки — у каждой страницы свой `import()`, а роль "забрать критическое заранее" выполняет явный `preloadOfflineCriticalPages()`.
+
+Многослойная стратегия кэширования в service worker делает оффлайн-доступность независимой от конкретного бандлера.
 
 ---
 

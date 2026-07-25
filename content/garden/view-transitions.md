@@ -429,6 +429,8 @@ html[data-custom-page-transition='gallery-mode']::view-transition-new(root) {
 }
 ```
 
+## А если я хочу анимировать только часть страницы, при переходе?
+
 ## Как это будет выглядеть с ViewTransition от React?
 
 React [официально анонсировал](https://react.dev/blog/2025/04/23/react-labs-view-transitions-activity-and-more) экспериментальную поддержку View Transitions через специальный компонент еще в том году. Давайте посмотрим, как мой текущий production-код может эволюционировать с этой нативной интеграцией.
