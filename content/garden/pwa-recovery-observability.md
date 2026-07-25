@@ -1,7 +1,7 @@
 ---
 title: Recovery и observability для PWA/WebView после сбоя загрузки
 description: Что делать, когда code splitting и Service Worker встречаются с новым деплоем — static fallback до React, аккуратный reload при битых чанках и ранняя диагностика offline-shell
-date: 2026-06-25
+date: 2026-07-05
 tags: [pwa, service-worker, offline, vite, observability, recovery, webview, mobile]
 ---
 
