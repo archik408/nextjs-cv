@@ -27,7 +27,7 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="py-10 md:py-20 px-4 md:px-8">
+    <section className="py-10 md:py-16 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
         <AnimatedSectionTitle text={t.testimonialsTitle} className="justify-center" />
         <div className="relative">

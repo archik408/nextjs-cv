@@ -215,7 +215,7 @@ export function ExperienceSection({
   const titleClassName = 'text-3xl font-bold m-0 text-center md:text-left';
 
   return (
-    <section className="py-10 md:py-20 px-4 md:px-8" aria-labelledby="experience-heading">
+    <section className="py-10 md:py-16 px-4 md:px-8" aria-labelledby="experience-heading">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center gap-4 mb-8">
           {animateTitle && titleAs === 'h2' ? (

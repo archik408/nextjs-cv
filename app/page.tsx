@@ -24,7 +24,7 @@ export default function Home() {
     <>
       <StructuredData data={createPersonSchema()} />
       <StructuredData data={createWebsiteSchema()} />
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+      <div className="min-h-screen bg-linear-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
         <DownloadResume />
         {/* Theme and Language Switchers */}
         <div className="fixed top-4 right-4 z-50 flex gap-2">

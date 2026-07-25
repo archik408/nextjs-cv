@@ -94,7 +94,7 @@ export function FunActivitiesSection() {
   };
 
   return (
-    <section className="py-10 md:py-20 bg-gray-100/50 dark:bg-gray-800/50 relative">
+    <section className="py-10 md:py-16 bg-gray-100/50 dark:bg-gray-800/50 relative">
       {/* Title */}
       <div className="max-w-5xl mx-auto px-4 md:px-8 mb-12 text-center">
         <AnimatedSectionTitle

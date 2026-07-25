@@ -14,7 +14,7 @@ type Props = {
 export function GardenSectionClient({ notes }: Props) {
   const { t } = useLanguage();
   return (
-    <section className="py-10 md:py-20 px-4 md:px-8">
+    <section className="py-10 md:py-16 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
         <AnimatedSectionTitle
           text={t.garden}
