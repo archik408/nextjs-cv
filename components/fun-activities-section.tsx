@@ -5,13 +5,29 @@ import { Palette, Users, Bike, Mail, ChevronLeft, ChevronRight, Car } from 'luci
 import { useLanguage } from '@/lib/hooks/use-language';
 import { useState, useRef } from 'react';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
+import { ERaceVehicle } from '@/constants/enums';
+
+const RACE_VEHICLE_SRC: Record<ERaceVehicle, string> = {
+  [ERaceVehicle.Batmobile]: '/batmobile.webp',
+  [ERaceVehicle.Cyclist]: '/cyclist.webp',
+};
+
+const RACE_VEHICLE_SIZE_CLASS: Record<ERaceVehicle, string> = {
+  [ERaceVehicle.Batmobile]: 'w-56 md:w-64',
+  [ERaceVehicle.Cyclist]: 'w-18 md:w-24',
+};
 
 export function FunActivitiesSection() {
   const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [carRunKey, setCarRunKey] = useState<number>(0);
-  const [isCarRunning, setIsCarRunning] = useState(false);
+  const [raceRunKey, setRaceRunKey] = useState(0);
+  const [racingVehicle, setRacingVehicle] = useState<ERaceVehicle | null>(null);
+
+  const startRace = (vehicle: ERaceVehicle) => {
+    setRaceRunKey(Date.now());
+    setRacingVehicle(vehicle);
+  };
 
   const activities = [
     {
@@ -107,23 +123,23 @@ export function FunActivitiesSection() {
         </p>
       </div>
 
-      {/* Racing car overlay */}
+      {/* Racing vehicle overlay (batmobile / cyclist) */}
       <div
         className="pointer-events-none absolute inset-0 top-2.5 overflow-hidden"
         aria-hidden="true"
       >
-        {isCarRunning && (
-          // key forces reflow so animation can retrigger on each hover
+        {racingVehicle && (
+          // key forces reflow so animation can retrigger on each click
           <div
-            key={carRunKey}
+            key={raceRunKey}
             className="absolute bottom-8 animate-race-left"
             style={{ left: '50%', bottom: '-20px' }}
-            onAnimationEnd={() => setIsCarRunning(false)}
+            onAnimationEnd={() => setRacingVehicle(null)}
           >
             <img
-              src="/batmobile.webp"
+              src={RACE_VEHICLE_SRC[racingVehicle]}
               alt=""
-              className="w-56 md:w-64 h-auto"
+              className={`${RACE_VEHICLE_SIZE_CLASS[racingVehicle]} h-auto`}
               style={{
                 transform: 'translateX(-50%)',
                 filter: 'drop-shadow(0 6px 10px rgba(0,0,0,0.35))',
@@ -162,12 +178,31 @@ export function FunActivitiesSection() {
             const IconComponent = activity.icon;
             const CardContent = (
               <div
-                className="h-[480px] md:h-[520px] w-full bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden snap-center group"
+                className={`h-[480px] md:h-[520px] w-full bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden snap-center group${
+                  activity.id === 'batmobiles' || activity.id === 'cycling' ? ' cursor-pointer' : ''
+                }`}
                 onClick={
                   activity.id === 'batmobiles'
-                    ? () => {
-                        setCarRunKey(Date.now());
-                        setIsCarRunning(true);
+                    ? () => startRace(ERaceVehicle.Batmobile)
+                    : activity.id === 'cycling'
+                      ? () => startRace(ERaceVehicle.Cyclist)
+                      : undefined
+                }
+                role={
+                  activity.id === 'batmobiles' || activity.id === 'cycling' ? 'button' : undefined
+                }
+                tabIndex={activity.id === 'batmobiles' || activity.id === 'cycling' ? 0 : undefined}
+                onKeyDown={
+                  activity.id === 'batmobiles' || activity.id === 'cycling'
+                    ? (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          startRace(
+                            activity.id === 'batmobiles'
+                              ? ERaceVehicle.Batmobile
+                              : ERaceVehicle.Cyclist
+                          );
+                        }
                       }
                     : undefined
                 }

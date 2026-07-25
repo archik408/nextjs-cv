@@ -59,6 +59,6 @@ tags: [career, programming, experience, seedling]
 
 ### Связанные заметки
 
-- [[15 лет в коммерческой разработке. Что я понял? Что я ничего не понял.](/garden/15-years-in-dev)]
 - [[Почему пустой GitHub — это нормально](/garden/github)]
+- [[Оценка задач: почему вы всё равно ошибаетесь (и что с этим делать)](/garden/estimation)]
 - [[TypeScript — самая большая ошибка в мире фронтенда!](/garden/typescript)]

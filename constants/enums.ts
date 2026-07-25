@@ -7,3 +7,8 @@ export enum ETheme {
   dark = 'dark',
   light = 'light',
 }
+
+export enum ERaceVehicle {
+  Batmobile = 'batmobile',
+  Cyclist = 'cyclist',
+}
