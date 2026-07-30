@@ -96,14 +96,34 @@ const COMMAND_LINE_SUFFIX = '\n';
 const TEXT_COMMAND_PREFIX = `${MicrobitCommandKind.Text}:`;
 const ICON_COMMAND_PREFIX = `${MicrobitCommandKind.Icon}:`;
 
-/** Пример прошивки MakeCode: слушатель UART-команд (одна строка = одна команда). */
+/**
+ * Пример прошивки MakeCode: одна строка = одна команда.
+ * USB → serial.onDataReceived; Web Bluetooth → bluetooth.onUartDataReceived.
+ */
 export const MICROBIT_MAKECODE_FIRMWARE_EXAMPLE = `bluetooth.startUartService()
-serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
-  let cmd = serial.readUntil(serial.delimiters(Delimiters.NewLine))
+
+function handleCommand(cmd: string) {
   if (cmd == "SMILE") { basic.showIcon(IconNames.Happy) }
-  else if (cmd == "LOGO") { basic.showIcon(IconNames.Yes) }
+  else if (cmd == "SAD") { basic.showIcon(IconNames.Sad) }
   else if (cmd == "CLEAR") { basic.clearScreen() }
+  else if (cmd == "HEART") { basic.showIcon(IconNames.Heart) }
+  else if (cmd == "YES" || cmd == "LOGO") { basic.showIcon(IconNames.Yes) }
+  else if (cmd == "NO") { basic.showIcon(IconNames.No) }
+  // Короткий тон в фоне: длинная мелодия / UntilDone рвёт BLE-стек на v2
+  else if (cmd == "BEEP") {
+    music.play(music.tonePlayable(Note.C, 100), music.PlaybackMode.InBackground)
+  }
   else if (cmd.substr(0, 5) == "TEXT:") { basic.showString(cmd.substr(5)) }
+}
+
+// USB (Web Serial) — то, что уже работает у вас
+serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+  handleCommand(serial.readUntil(serial.delimiters(Delimiters.NewLine)))
+})
+
+// Web Bluetooth UART — без этого блока BLE-команды не доходят
+bluetooth.onUartDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+  handleCommand(bluetooth.uartReadUntil(serial.delimiters(Delimiters.NewLine)))
 })`;
 
 export const QUICK_SIMPLE_COMMANDS: MicrobitSimpleCommand[] = [
