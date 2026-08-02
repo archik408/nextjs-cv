@@ -98,3 +98,4 @@ basic.forever(function () {
 ### Связанные заметки
 
 - [[Умная елочная игрушка на micro:bit](/garden/umnya-elka-microbit)]
+- [[Алиса командует micro:bit — пишу вместе с сыном кастомные голосовые навыки](/garden/alice-microbit)]
