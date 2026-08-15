@@ -85,13 +85,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     }));
 
-  // Digital Garden notes
-  const gardenNotes = listGardenNotes().map((note) => ({
-    url: `${baseUrl}/garden/${note.slug}`,
-    lastModified: note.frontmatter.date ? new Date(note.frontmatter.date) : new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
+  // Digital Garden notes (RU + EN). Paired translations declare honest hreflang alternates.
+  const gardenNotes = listGardenNotes().map((note) => {
+    const entry: MetadataRoute.Sitemap[number] = {
+      url: `${baseUrl}/garden/${note.slug}`,
+      lastModified: note.frontmatter.date ? new Date(note.frontmatter.date) : new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    };
+    if (note.translationSlug) {
+      entry.alternates = {
+        languages: {
+          [note.locale]: `${baseUrl}/garden/${note.slug}`,
+          [note.locale === 'en' ? 'ru' : 'en']: `${baseUrl}/garden/${note.translationSlug}`,
+        },
+      };
+    }
+    return entry;
+  });
 
   return [...staticPages, ...blogPages, ...gardenNotes];
 }

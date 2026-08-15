@@ -28,7 +28,7 @@ export const translations = {
     accessibilityLimitationsText: [
       'Some dynamic visualizations may have reduced screen reader verbosity.',
       'Some images may not contain very detailed alt texts.',
-      'Some pages of the site are localized for only one language - my native Russian (for example, Digital Garden notes are only in Russian)',
+      'Some Digital Garden notes are Russian-only; selected evergreen notes also have English translations (slug suffix _en)',
       'This website has not been tested with screen readers other than VoiceOver, so there is no guarantee that it will work with JAWS, NVDA, Narrator, Orca, etc.',
       'After closing the dialog box with the enlarged image, the focus is lost on the original content.',
       'I am working on adding improved labels and descriptions.',
@@ -1161,7 +1161,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     accessibilityLimitationsText: [
       'Некоторые динамические визуализации могут давать сокращённые описания для экранных дикторов.',
       'Некоторые изображения могут содержать не дотошно подробные alt-тексты',
-      'Некоторые страницы сайта имею локализацию только для одного языка - моего нативного русского (к примеру, заметки Digital Garden только на русском)',
+      'Некоторые страницы сайта имеют локализацию только для одного языка — моего нативного русского (часть заметок Digital Garden пока только на русском; у избранных evergreen-заметок есть английский перевод с суффиксом _en)',
       'Веб-сайт не тестировался с другими скринридерами кроме как с VoiceOver, поэтому нет гарантий стабильной работы с JAWS, NVDA, Narrator, Orca и т.д.',
       'После закрытия диалогового окна с увеличенным изображением идет потеря фокуса в оригинальном контенте',
       'Ведётся работа по улучшению меток и описаний.',

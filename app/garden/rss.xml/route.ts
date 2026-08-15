@@ -13,7 +13,7 @@ function escapeXml(value: string): string {
 }
 
 export async function GET() {
-  const notes = listGardenNotes();
+  const notes = listGardenNotes({ locale: 'ru' });
 
   const latestDate =
     notes.reduce<Date | null>((latest, note) => {

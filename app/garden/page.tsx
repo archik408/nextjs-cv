@@ -7,7 +7,7 @@ import { GardenPageClient } from '@/components/garden-page-client';
 export const dynamic = 'force-static';
 
 function GardenListFallback() {
-  const notes = listGardenNotes();
+  const notes = listGardenNotes({ locale: 'ru' });
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 lg:flex-row lg:gap-12">
       <aside className="order-2 shrink-0 lg:order-1 lg:w-56" aria-hidden="true">
@@ -39,7 +39,7 @@ function GardenListFallback() {
 }
 
 export default function GardenIndexPage() {
-  const notes = listGardenNotes();
+  const notes = listGardenNotes({ locale: 'ru' });
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
       <div className="mx-auto max-w-6xl px-4 pt-4">
@@ -64,5 +64,9 @@ export function generateMetadata() {
     keywords: 'Digital Garden, заметки, фронтенд, идеи, черновики, веб-разработка, Artur Basak',
     path: '/garden',
     locale: 'ru',
+    languages: {
+      ru: '/garden',
+      'x-default': '/garden',
+    },
   });
 }

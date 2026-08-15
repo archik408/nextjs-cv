@@ -6,13 +6,17 @@ import type { GardenNote } from '@/lib/garden';
 import { formatDate } from '@/utils/date';
 import { Sprout, ExternalLink } from 'lucide-react';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
+import { ELanguage } from '@/constants/enums';
 
 type Props = {
-  notes: GardenNote[];
+  ruNotes: GardenNote[];
+  enNotes: GardenNote[];
 };
 
-export function GardenSectionClient({ notes }: Props) {
-  const { t } = useLanguage();
+export function GardenSectionClient({ ruNotes, enNotes }: Props) {
+  const { t, language } = useLanguage();
+  const notes = language === ELanguage.en ? enNotes : ruNotes;
+
   return (
     <section className="py-10 md:py-16 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
@@ -27,6 +31,8 @@ export function GardenSectionClient({ notes }: Props) {
               key={n.slug}
               href={`/garden/${n.slug}`}
               className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-sm dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              hrefLang={n.locale}
+              lang={n.locale}
             >
               <h3 className="font-semibold text-lg mb-1 flex items-start gap-2">
                 <Sprout className="w-6 h-6 min-w-6 text-green-600 dark:text-green-400" />

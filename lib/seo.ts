@@ -11,6 +11,12 @@ interface SEOConfig {
   modifiedTime?: string;
   author?: string;
   locale?: 'en' | 'ru';
+  /**
+   * Honest hreflang map: absolute or site-relative paths keyed by BCP 47 tags.
+   * When omitted, only the current locale is advertised (no fake ?lang= pairs).
+   * Pass e.g. { ru: '/garden/foo', en: '/garden/foo_en' } for translated notes.
+   */
+  languages?: Partial<Record<'en' | 'ru' | 'x-default', string>>;
 }
 
 const baseUrl = 'https://arturbasak.dev';
@@ -28,10 +34,29 @@ export function generateMetadata(config: SEOConfig): Metadata {
     modifiedTime,
     author = 'Artur Basak',
     locale = 'en',
+    languages,
   } = config;
 
   const url = `${baseUrl}${path}`;
   const fullTitle = path ? `${title} | Artur Basak` : title;
+
+  const toAbsolute = (href: string) => (href.startsWith('http') ? href : `${baseUrl}${href}`);
+
+  const languageAlternates: Record<string, string> = languages
+    ? Object.fromEntries(
+        Object.entries(languages)
+          .filter(
+            (entry): entry is [string, string] =>
+              typeof entry[1] === 'string' && entry[1].length > 0
+          )
+          .map(([hreflang, href]) => [hreflang, toAbsolute(href)])
+      )
+    : { [locale]: url };
+
+  const hasRuAlternate = Boolean(languageAlternates.ru);
+  const hasEnAlternate = Boolean(languageAlternates.en);
+  const ogAlternateLocale =
+    locale === 'en' ? (hasRuAlternate ? 'ru_RU' : undefined) : hasEnAlternate ? 'en_US' : undefined;
 
   const metadata: Metadata = {
     title: fullTitle,
@@ -43,10 +68,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: url,
-      languages: {
-        en: locale === 'en' ? url : `${url}?lang=en`,
-        ru: locale === 'ru' ? url : `${url}?lang=ru`,
-      },
+      languages: languageAlternates,
     },
     openGraph: {
       title: fullTitle,
@@ -62,7 +84,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
         },
       ],
       locale: locale === 'en' ? 'en_US' : 'ru_RU',
-      alternateLocale: locale === 'en' ? 'ru_RU' : 'en_US',
+      ...(ogAlternateLocale ? { alternateLocale: ogAlternateLocale } : {}),
       type,
       ...(type === 'article' && {
         publishedTime,
