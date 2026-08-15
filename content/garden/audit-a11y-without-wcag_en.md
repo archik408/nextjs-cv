@@ -25,7 +25,7 @@ If a person cannot use your product, that is a product failure. Bad UX, an audie
 
 ## The five-step quick audit
 
-### 1. Markers of good manners
+### 1. Culture markers
 
 These are a fast read on how much a team actually cares. When they are present, the rest of the site is usually in reasonable shape too.
 
