@@ -1,6 +1,6 @@
 ---
 title: "Accessibility: a developer's field guide"
-description: A practical accessibility stack for web engineers — WCAG, ARIA, APG, WAI, UI kits, testing, audits, linters, CI/CD, E2E, and AI agents.
+description: A working accessibility stack for web engineers — WCAG, ARIA, APG, WAI, UI kits, manual testing, audit tools, linters, CI/CD, E2E, and AI agents.
 date: 2026-05-27
 tags: [a11y, accessibility, wcag, programming, quality-gates, tools]
 ---
@@ -11,17 +11,17 @@ tags: [a11y, accessibility, wcag, programming, quality-gates, tools]
 
 ### WCAG
 
-The main shared bar for accessible web apps is still the [W3C Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/wcag).
+The reference point for accessible web apps is still the [W3C Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/wcag).
 
-WCAG criteria are grouped into three conformance levels:
+Its success criteria come in three conformance levels:
 
-- **Level A** — the floor; basic barriers only;
-- **Level AA** — the level that covers most common, high-impact issues;
-- **Level AAA** — advanced / specialized requirements.
+- **Level A** — the floor: basic, easy-to-meet requirements;
+- **Level AA** — enough accessibility for the majority of people with disabilities;
+- **Level AAA** — advanced and often specialized requirements.
 
-Treat **Level AA** as the shipping baseline. It is what most policies, RFPs, and lawsuits effectively expect.
+**Level AA is the baseline you ship.** It covers the largest share of critical, commonly encountered barriers, and it is the bar most policies and procurement checklists assume.
 
-Handy maps for navigating criteria by level:
+Maps that make it easier to navigate specific criteria per level:
 
 - [WCAG in Plain English — Code](https://aaardvarkaccessibility.com/wcag-responsibility/code/)
 - [WCAG Map](https://www.andrewhick.com/accessibility/wcag-map/)
@@ -29,22 +29,22 @@ Handy maps for navigating criteria by level:
 
 ### ARIA
 
-[ARIA](https://www.w3.org/TR/wai-aria) extends HTML semantics so assistive technologies can understand custom UI. Used well, it fills gaps. Used casually, it creates new ones.
+ARIA attributes are a semantic extension of HTML markup that makes your UI legible to assistive technology. The reasoning behind them lives in [its own specification](https://www.w3.org/TR/wai-aria).
 
-The [first rules of ARIA](https://www.w3.org/TR/using-aria) still win most debates:
+Working with ARIA comes down to [four rules](https://www.w3.org/TR/using-aria):
 
-1. **Don’t use ARIA if you can use a native element.** Prefer `<button>`, `<a>`, `<label>`, real headings, lists, and tables. Visually hidden text (for example `.visually-hidden`) usually beats a clever `aria-*` attribute.
-2. **Don’t override native semantics** unless you have no other option.
+1. **If you can avoid ARIA, avoid it.** Proper semantic markup wins. Native `<button>`, `<a>`, `<label>`, real headings, lists, tables, and visually hidden text (a `.visually-hidden` class, for example) work far better with assistive technology than a pile of `aria-*` attributes.
+2. **Do not override native semantics** unless you genuinely have no alternative.
 3. **Every interactive ARIA control must be keyboard-operable.**
 4. **Never put `role="presentation"` or `aria-hidden="true"` on a focusable element.**
 
 ### APG patterns
 
-For complex widgets — menus, tabs, dialogs, accordions, carousels, comboboxes, sliders — follow the [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns). Reinventing keyboard behavior from scratch is how focus traps and “mystery meat” controls ship.
+For complex widgets — menus, tabs, dialogs, accordions, carousels, comboboxes, sliders, and friends — follow the established [markup and keyboard patterns from the ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns).
 
 ### WAI tutorials
 
-For concrete components, start with official W3C Web Accessibility Initiative (WAI) tutorials:
+When you are building a specific component, go to the official material from the W3C Web Accessibility Initiative (WAI), the part of the W3C dedicated to accessibility:
 
 - [Images](https://www.w3.org/WAI/tutorials/images)
 - [Menus](https://www.w3.org/WAI/tutorials/menus)
@@ -53,57 +53,68 @@ For concrete components, start with official W3C Web Accessibility Initiative (W
 - [Forms](https://www.w3.org/WAI/tutorials/forms)
 - [Carousels](https://www.w3.org/WAI/tutorials/carousels)
 
-Practical WAI shortcuts:
+Practical WAI guides:
 
-- [Tips for developing](https://www.w3.org/WAI/tips/developing)
-- [Easy / preliminary checks](https://www.w3.org/WAI/test-evaluate/preliminary)
+- General development advice: [WAI Tips](https://www.w3.org/WAI/tips/developing)
+- Quick manual checks: [Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary)
 
 ### Component libraries and UI kits
 
-The highest-leverage advice is often boring: use a mature component library that already did the ARIA, focus, and screen-reader work.
+The best accessibility advice is usually the least glamorous: reach for a mature component library that has already worked through the ARIA, focus, and screen reader details.
 
-Examples with strong accessibility defaults:
+Popular UI kits with accessibility out of the box:
 
 - [Chakra UI](https://chakra-ui.com)
 - [Radix UI](https://www.radix-ui.com)
 - [Material UI](https://mui.com)
 
-These kits usually ship focus management ([focus-lock](https://www.npmjs.com/package/focus-lock) / [focus-trap](https://www.npmjs.com/package/focus-trap) patterns), sane semantics, and battle-tested ARIA. Build your own design-system primitives only if you are ready to own that same testing burden.
+These libraries typically handle focus management for you ([focus-lock](https://www.npmjs.com/package/focus-lock) / [focus-trap](https://www.npmjs.com/package/focus-trap)), get the semantics and ARIA right, and have been tested against the mainstream screen readers. Roll your own components and you own all of that — the mechanics, the rules, and the screen reader testing.
 
-Many also expose accessibility helpers — for example Chakra’s [SkipNavLink](https://chakra-ui.com/docs/components/skip-nav) and [VisuallyHidden](https://chakra-ui.com/docs/components/visually-hidden).
+Many of these kits also ship dedicated accessibility helpers. Chakra UI, for instance, has [SkipNavLink](https://chakra-ui.com/docs/components/skip-nav) for skipping navigation and [VisuallyHidden](https://chakra-ui.com/docs/components/visually-hidden) for hiding text visually while keeping it available to screen readers.
 
 ## Testing and debugging
 
-Scanners catch only [about 30–60% of accessibility issues](https://dev.to/chris_devto/your-accessibility-score-is-lying-to-you-5fh2). Manual testing with assistive technology is not optional if you care about real outcomes.
+Automated scanners find only [30% to 60% of accessibility issues](https://dev.to/chris_devto/your-accessibility-score-is-lying-to-you-5fh2) in an application, so manual testing and debugging are unavoidable.
 
-> axe-core can automatically detect about 57% of WCAG issues on average. Source: [deque/axe-core](https://github.com/dequelabs/axe-core)
+> axe-core automatically detects an average of 57% of WCAG issues. Source: [dequelabs/axe-core](https://github.com/dequelabs/axe-core)
 
-Always exercise the product with screen readers:
+Checking accessibility by hand with real assistive technology is critical — it is the only way to judge the actual experience of users with disabilities.
 
-- **Mobile:** TalkBack (Android), VoiceOver (iOS)
-- **Desktop:** NVDA (Windows, free and popular with testers), JAWS (Windows, common in enterprise), VoiceOver (macOS)
-- **Also useful:** Orca (Linux), Narrator (Windows)
+Test with screen readers, without exception:
 
-See current popularity in the [WebAIM Screen Reader User Survey](https://webaim.org/projects/screenreadersurvey10/).
+- Mobile:
+  - Android: TalkBack (preinstalled)
+  - iOS: VoiceOver (preinstalled)
+- Desktop:
+  - NVDA (Windows) — free, and the most popular option among testers
+  - JAWS (Windows) — commercial, widespread in enterprise environments
+  - VoiceOver (macOS) — built into the system
+- Less common, but still worth a pass:
+  - Orca (Ubuntu / Linux)
+  - Narrator (Windows) — the built-in basic reader
+
+For current usage numbers, see the [WebAIM Screen Reader User Survey](https://webaim.org/projects/screenreadersurvey10/).
 
 ### Audit tools
 
-My default audit stack starts with **Deque axe** as a [DevTools extension](https://www.deque.com/axe/devtools).
+The best accessibility audit tool on the market is _Deque axe_, available as a [DevTools extension](https://www.deque.com/axe/devtools).
 
 Useful companions:
 
-- [WAVE](https://wave.webaim.org) (WebAIM) — structure, semantics, tab order, contrast
-- [Colour Contrast Analyser (CCA)](https://vispero.com/lp/color-contrast-checker) (Vispero / TPGi) — desktop contrast checks across the UI
-- [Sim Daltonism](https://apps.apple.com/us/app/sim-daltonism/id693112260?mt=12) — color-vision simulation on macOS (system alternative: [Settings → Accessibility → Display & Text Size → Color Filters](https://support.apple.com/en-us/111773))
+- _[WAVE](https://wave.webaim.org)_ by WebAIM — an online service for checking semantics, content structure, tab order, and contrast
+- _[Colour Contrast Analyser (CCA)](https://vispero.com/lp/color-contrast-checker)_ by Vispero/TPGi — a desktop app that makes it easy to sample contrast anywhere on screen
+- _[Sim Daltonism](https://apps.apple.com/us/app/sim-daltonism/id693112260?mt=12)_ — a macOS app for reviewing color and contrast through various color vision deficiencies (built-in alternative on iOS/macOS: [Settings → Accessibility → Display & Text Size → Color Filters](https://support.apple.com/en-us/111773))
 
-Other common scanners:
+Other popular accessibility scanners:
 
-- [Lighthouse Accessibility](https://developer.chrome.com/docs/lighthouse/accessibility/scoring) in Chrome DevTools
-- [WebHint accessibility hints](https://webhint.io/docs/user-guide/hints/accessibility/) (axe under the hood)
+- _[Lighthouse](https://developer.chrome.com/docs/lighthouse/accessibility/scoring)_ (Accessibility section) — built into Chrome DevTools
+- _[WebHint](https://webhint.io/docs/user-guide/hints/accessibility/)_ (Accessibility hints, running the same Deque axe engine under the hood)
 
 ## Static analysis
 
-The cheapest quality gate is linting. Most modern JS/TS linters can stop the obvious failures — missing `alt`, clickable `div`s without roles, and similar footguns — before code review.
+The cheapest way to automate accessibility checks at the code level is static analysis. Nearly every popular linter offers a solid set of baseline accessibility rules. At the very least you reach a state where no image ships without `alt` text and no `div` or `span` sneaks through with an `onClick` handler and no matching semantic role.
+
+The most common linters and their accessibility rule sets:
 
 - ESLint — [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 - Oxlint — [jsx-a11y settings](https://oxc.rs/docs/guide/usage/linter/config-file-reference.html#settings-jsx-a11y)
@@ -113,18 +124,20 @@ The cheapest quality gate is linting. Most modern JS/TS linters can stop the obv
 
 ### CI/CD
 
-Heavier, but valuable: fail the pipeline when pages regress.
+A pricier, more resource-hungry option is auditing pages directly in your CI/CD pipeline. Both Deque axe and Lighthouse plug in there:
 
 - [@axe-core/cli](https://www.npmjs.com/package/@axe-core/cli)
 - [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
 
 ### Runtime
 
-In local or staging environments you can run [axe-core](https://github.com/dequelabs/axe-core) inside the app and dump findings to the console via [@axe-core/react](https://www.npmjs.com/package/@axe-core/react):
+In a test environment or during local development you can run [axe-core](https://github.com/dequelabs/axe-core) programmatically and print audit results straight to the console:
+
+- [@axe-core/react](https://www.npmjs.com/package/@axe-core/react)
 
 ```javascript
 if (isDevEnv() || isStageEnv()) {
-  // Give the UI time to settle after re-renders to cut false positives
+  // Let the app settle after re-renders so axe reports fewer false positives
   const AXE_DEBOUNCE_MS = 6000;
   void Promise.all([import('@axe-core/react'), import('react-dom')]).then(([axe, ReactDOM]) => {
     axe.default(React, ReactDOM, AXE_DEBOUNCE_MS);
@@ -134,48 +147,67 @@ if (isDevEnv() || isStageEnv()) {
 
 ### End-to-end tests
 
-A pragmatic middle ground is accessibility assertions inside the suite you already run:
+The more pragmatic move is to put accessibility checks inside the automated tests you already run — almost every popular framework exposes an API for it:
 
-- Playwright — [built-in guidance](https://playwright.dev/docs/accessibility-testing#example-accessibility-tests), [@axe-core/playwright](https://www.npmjs.com/package/@axe-core/playwright)
-- Cypress — [docs](https://docs.cypress.io/app/guides/accessibility-testing), [cypress-axe](https://www.npmjs.com/package/cypress-axe), [wick-a11y](https://www.npmjs.com/package/wick-a11y)
-- WebdriverIO — [docs](https://webdriver.io/docs/accessibility-testing/axe-core), [@axe-core/webdriverio](https://www.npmjs.com/package/@axe-core/webdriverio)
+- Playwright
+  - [Accessibility testing guide](https://playwright.dev/docs/accessibility-testing#example-accessibility-tests)
+  - [@axe-core/playwright](https://www.npmjs.com/package/@axe-core/playwright)
+- Cypress
+  - [Accessibility testing guide](https://docs.cypress.io/app/guides/accessibility-testing)
+  - [cypress-axe](https://www.npmjs.com/package/cypress-axe)
+  - [wick-a11y](https://www.npmjs.com/package/wick-a11y)
+- WebdriverIO
+  - [Accessibility testing guide](https://webdriver.io/docs/accessibility-testing/axe-core)
+  - [@axe-core/webdriverio](https://www.npmjs.com/package/@axe-core/webdriverio)
 
 ### Unit tests
 
-Prefer [Testing Library](https://testing-library.com). Its query API is accessibility-first: `getByRole`, `getByLabelText`, and `getByAltText` surface inaccessible markup as a side effect of ordinary unit tests.
+Whatever runner you configure your JavaScript unit tests with, reach for [Testing Library](https://testing-library.com) — it is built accessibility-first.
+
+Its API nudges you toward correct semantics and markup on its own: queries like `getByLabelText`, `getByRole`, and `getByAltText` test the component and, as a side effect, its accessibility.
 
 - [Accessibility API](https://testing-library.com/docs/dom-testing-library/api-accessibility/)
 - [Query priority](https://testing-library.com/docs/queries/about/#priority)
 
-## AI agents
+## AI integration and agents
 
 ### AGENTS.md
 
-If AI agents write or edit UI code, put accessibility rules in writing. Models train on the public web — and a large share of that web is inaccessible. Look at real [AGENTS.md examples that mention accessibility](https://github.com/search?q=path%3AAGENTS.md+NOT+is%3Afork+NOT+is%3Aarchived+accessibility&type=code&p=2), or turn the sections above into project rules.
+If AI agents touch your UI code, spell out your accessibility coding rules explicitly.
+
+Most LLMs are trained on the open web, and a large share of that web has serious accessibility problems. For inspiration, look at how [open source projects](https://github.com/search?q=path%3AAGENTS.md+NOT+is%3Afork+NOT+is%3Aarchived+accessibility&type=code&p=2) write these sections in their [AGENTS.md](https://agents.md/).
+
+Every section of this guide above also makes a decent starting point for drafting those rules.
 
 ### Agent skills
 
-[Agent skills](https://agentskills.io/) can encode both implementation guidance and audit workflows. One example: [Intopia’s accessibility skill](https://github.com/Intopia/intopia-web-accessibility-skill).
+[Skills](https://agentskills.io/) can be a powerful tool in their own right — both for building accessibility into new code and for auditing an existing codebase.
 
-At Google I/O 2026, Chrome announced [Modern Web Guidance](https://developer.chrome.com/docs/modern-web-guidance) — open guides plus a skill pack for AI agents, including accessibility. Install with:
+Example skills:
+
+- [Intopia Accessibility Skill](https://github.com/Intopia/intopia-web-accessibility-skill)
+
+At Google I/O 2026, Chrome announced [Modern Web Guidance](https://developer.chrome.com/docs/modern-web-guidance) — open guides plus a skill pack for AI agents, accessibility guide included. One command to install:
 
 ```bash
 npx modern-web-guidance@latest install
 ```
 
-It works with common agent stacks (Vercel AI SDK, Claude Code, Copilot CLI, and others). In Cursor you can also install it from the marketplace.
+It works with the popular agents: Vercel AI SDK, Claude Code, Copilot CLI, Antigravity CLI, and others. In Cursor you can pull it in as a plugin from the marketplace.
+
+Here is what using it looks like:
 
 ```bash
 npx modern-web-guidance@latest search "create a dialog modal backdrop"
 ```
 
-Example result:
+Output:
 
 ```bash
 [{"id":"accessibility","description":"Actionable coding guidelines for building accessible web applications, covering semantic HTML, focus management, forms, media, and testing. Use this skill when auditing or implementing accessibility features, keyboard navigation, or ARIA.","category":"accessibility","tokenCount":7129,"similarity":0.5102}]
 ```
 
-Then retrieve the guide:
+Then pull the guide itself:
 
 ```bash
 npx modern-web-guidance@latest retrieve "accessibility"
@@ -185,7 +217,7 @@ npx modern-web-guidance@latest retrieve "accessibility"
 
 ### Related notes
 
-- [A practical web accessibility audit in five steps](/garden/audit-a11y-without-wcag_en)
+- [A practical web accessibility audit in five steps (no dogma)](/garden/audit-a11y-without-wcag_en)
 - [Accessibility audit of Priorbank’s web app](/garden/audit-priorbank-a11y)
 - [Wildberries accessibility audit. Can a blind user buy the Batmobile?](/garden/audit-wildberries-a11y_en)
 - [Skip links — a quiet mark of good craft](/garden/skip-links)
