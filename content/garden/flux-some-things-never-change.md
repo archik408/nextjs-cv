@@ -1,5 +1,5 @@
 ---
-title: 'Flux: Some things never change'
+title: "Flux: Some things never change"
 description: The English translation of an old note about MVC, Flux, Redux, and why unidirectional data flow is not as new as it seems.
 date: 2018-02-14
 tags: [javascript, react, redux, flux, architecture, seedling]
