@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+export type GardenLocale = 'ru' | 'en';
+
 export type GardenNoteFrontmatter = {
   // ISO date string, e.g. 2025-09-23
   date?: string;
@@ -13,9 +15,13 @@ export type GardenNote = {
   slug: string;
   content: string;
   frontmatter: GardenNoteFrontmatter;
+  locale: GardenLocale;
+  /** Slug of the paired translation, if it exists on disk */
+  translationSlug: string | null;
 };
 
 const GARDEN_DIR = path.join(process.cwd(), 'content', 'garden');
+const EN_SLUG_SUFFIX = '_en';
 
 function ensureGardenDirExists(): void {
   if (!fs.existsSync(GARDEN_DIR)) {
@@ -76,7 +82,54 @@ function parseFrontmatter(raw: string): { frontmatter: GardenNoteFrontmatter; bo
   return { frontmatter: result, body };
 }
 
-export function listGardenNotes(): GardenNote[] {
+export function getGardenLocaleFromSlug(slug: string): GardenLocale {
+  return slug.endsWith(EN_SLUG_SUFFIX) ? 'en' : 'ru';
+}
+
+export function getGardenBaseSlug(slug: string): string {
+  return slug.endsWith(EN_SLUG_SUFFIX) ? slug.slice(0, -EN_SLUG_SUFFIX.length) : slug;
+}
+
+export function getGardenPairedSlug(slug: string): string {
+  return getGardenLocaleFromSlug(slug) === 'en'
+    ? getGardenBaseSlug(slug)
+    : `${slug}${EN_SLUG_SUFFIX}`;
+}
+
+function noteFileExists(slug: string): boolean {
+  return (
+    fs.existsSync(path.join(GARDEN_DIR, `${slug}.md`)) ||
+    fs.existsSync(path.join(GARDEN_DIR, `${slug}.mdx`))
+  );
+}
+
+function toGardenNote(slug: string, frontmatter: GardenNoteFrontmatter, body: string): GardenNote {
+  const pairedSlug = getGardenPairedSlug(slug);
+  return {
+    slug,
+    content: body,
+    frontmatter,
+    locale: getGardenLocaleFromSlug(slug),
+    translationSlug: noteFileExists(pairedSlug) ? pairedSlug : null,
+  };
+}
+
+function sortNotesByDateDesc(notes: GardenNote[]): GardenNote[] {
+  return notes.sort((a, b) => {
+    const aDate = a.frontmatter.date ? Date.parse(a.frontmatter.date) : 0;
+    const bDate = b.frontmatter.date ? Date.parse(b.frontmatter.date) : 0;
+    if (aDate !== bDate) return bDate - aDate;
+    return a.frontmatter.title.localeCompare(b.frontmatter.title);
+  });
+}
+
+export type ListGardenNotesOptions = {
+  /** Default: all locales (RU + EN). Use for sitemap and static params. */
+  locale?: GardenLocale | 'all';
+};
+
+export function listGardenNotes(options: ListGardenNotesOptions = {}): GardenNote[] {
+  const { locale = 'all' } = options;
   ensureGardenDirExists();
   const files = fs
     .readdirSync(GARDEN_DIR, { withFileTypes: true })
@@ -86,19 +139,11 @@ export function listGardenNotes(): GardenNote[] {
     const absolutePath = path.join(GARDEN_DIR, file);
     const content = readFileAsString(absolutePath);
     const { frontmatter, body } = parseFrontmatter(content);
-    return {
-      slug: file.replace(/\.(md|mdx)$/i, ''),
-      content: body,
-      frontmatter,
-    };
+    const slug = file.replace(/\.(md|mdx)$/i, '');
+    return toGardenNote(slug, frontmatter, body);
   });
-  // Sort by date desc if present, otherwise by title
-  return notes.sort((a, b) => {
-    const aDate = a.frontmatter.date ? Date.parse(a.frontmatter.date) : 0;
-    const bDate = b.frontmatter.date ? Date.parse(b.frontmatter.date) : 0;
-    if (aDate !== bDate) return bDate - aDate;
-    return a.frontmatter.title.localeCompare(b.frontmatter.title);
-  });
+  const filtered = locale === 'all' ? notes : notes.filter((note) => note.locale === locale);
+  return sortNotesByDateDesc(filtered);
 }
 
 export function getGardenNoteBySlug(slug: string): GardenNote | null {
@@ -108,7 +153,7 @@ export function getGardenNoteBySlug(slug: string): GardenNote | null {
     if (fs.existsSync(candidate)) {
       const raw = readFileAsString(candidate);
       const { frontmatter, body } = parseFrontmatter(raw);
-      return { slug, content: body, frontmatter };
+      return toGardenNote(slug, frontmatter, body);
     }
   }
   return null;

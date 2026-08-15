@@ -84,9 +84,22 @@ export function GardenPageClient({ notes, title, description }: Props) {
             >
               <h2 className="flex flex-row-reverse items-start justify-between gap-2 text-left text-xl font-semibold md:flex-row md:justify-start">
                 <Sprout className="min-w-6 w-6 shrink-0 text-green-600 dark:text-green-400" />
-                <Link href={`/garden/${note.slug}`} className="hover:underline">
-                  {note.frontmatter.title}
-                </Link>
+                <span className="min-w-0 flex-1">
+                  <Link href={`/garden/${note.slug}`} className="hover:underline" lang="ru">
+                    {note.frontmatter.title}
+                  </Link>
+                  {note.translationSlug && (
+                    <Link
+                      href={`/garden/${note.translationSlug}`}
+                      className="ml-2 inline-flex align-middle text-xs font-medium text-blue-700 hover:underline dark:text-blue-400"
+                      hrefLang="en"
+                      lang="en"
+                      translate="no"
+                    >
+                      EN
+                    </Link>
+                  )}
+                </span>
               </h2>
               <div className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                 {note.frontmatter.date &&

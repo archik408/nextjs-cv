@@ -78,7 +78,10 @@
     padding: 1rem;
     border-radius: 0.5rem;
     overflow: auto;
+    /* Always dark: highlight.js github-dark-dimmed tokens need this surface */
+    color-scheme: dark;
     background: #0b1220;
+    color: #adbac7;
   }
   code {
     font-family:
@@ -88,6 +91,8 @@
   }
   pre code {
     font-size: 0.9rem;
+    background: transparent;
+    color: inherit;
   }
   table {
     border-collapse: collapse;
@@ -161,12 +166,22 @@
   border-left-color: rgba(107, 114, 128, 0.3);
 }
 
+/* Fenced/hljs blocks stay dark in both themes for token contrast (WCAG) */
 .prose-garden pre {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  color-scheme: dark;
+  background: #0b1220;
+  border: 1px solid #1e293b;
+  color: #adbac7;
 }
 
-.prose-garden code {
+.prose-garden pre code,
+.prose-garden pre .hljs {
+  background: transparent;
+  color: inherit;
+}
+
+/* Inline code only — do not restyle highlighted blocks */
+.prose-garden :not(pre) > code {
   background: #f1f5f9;
   color: #1e293b;
 }
@@ -183,9 +198,10 @@
 
 .dark .prose-garden pre {
   background: #0b1220;
+  border-color: #1e293b;
 }
 
-.dark .prose-garden code {
+.dark .prose-garden :not(pre) > code {
   background: #1e293b;
   color: #e2e8f0;
 }
