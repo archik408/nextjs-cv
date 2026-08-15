@@ -295,8 +295,8 @@ export function YandexAliceChat() {
                             onClick={() => startSession(skill.slug)}
                             className={`rounded-xl border p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 ${skillStyles.option}`}
                           >
-                            <span className="block font-semibold">{skill.title}</span>
-                            <span className="mt-1 block text-sm">{skill.description}</span>
+                            <span className="mb-4 block font-semibold">{skill.title}</span>
+                            <span className="block text-sm">{skill.description}</span>
                           </button>
                         );
                       })}
