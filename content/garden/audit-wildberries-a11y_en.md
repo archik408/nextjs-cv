@@ -1,47 +1,51 @@
 ---
-title: Wildberries accessibility audit. Can a blind user buy the Batmobile?
-description: A practical accessibility audit of the Wildberries marketplace using the 5-step approach.
+title: Wildberries accessibility audit: can a blind shopper buy the Batmobile?
+description: A public five-step accessibility audit of Wildberries — a major CIS marketplace — from keyboard and screen reader to checkout.
 date: 2026-01-24
 tags: [a11y, accessibility, audit, wildberries, retail]
 ---
 
-> **TL;DR:** Wildberries scores 90% in Lighthouse, but a blind user cannot complete a purchase. Main issues: invisible focus, inaccessible filters, and silent notifications.
+> **TL;DR:** Wildberries scores about **90%** in Lighthouse Accessibility, yet a blind user still cannot complete a purchase. The blockers are invisible focus, broken filters, and notifications that never get announced.
 
-After [Priorbank](/garden/audit-priorbank-a11y), I wondered who to take on next for a short public audit. The holidays had just passed, and something told me plenty of people had been shopping online for gifts. That season is peak traffic for these apps: they make a lot of money then, and the infrastructure load is enormous.
+After my [Priorbank audit](/garden/audit-priorbank-a11y) (a large Belarusian online bank), I wanted another high-traffic consumer product. Holiday shopping season had just ended — peak revenue, peak load, peak “everyone uses this app” energy.
 
-My personal favorite among the major online marketplaces is [Wildberries](https://www.wildberries.by) — a major CIS e-commerce marketplace. I like the service and use it a lot. That alone felt like a good reason to see how accessible it is for people with various disabilities. It is hugely popular across the CIS, which of course does not mean it is 100% accessible.
+I picked [Wildberries](https://www.wildberries.by), one of the largest e-commerce marketplaces in the CIS (roughly the Amazon / Walmart class of player for that region). I use it myself. Popularity is not the same thing as accessibility.
 
-A quick caveat: I am not trying to highlight some fatal flaw in the platform. Every product has its own business priorities, and accessibility (when it is not legally required) is each business's call. My own product does not meet every accessibility criterion either, nor did many others I have worked on. Last year's analytics showed that 20% of my user base changes font size for readability — but that does not mean even one person uses the product as a fully blind screen-reader user (I would guess there is none).
+A caveat up front: this is not a hit piece. Every product has priorities, and when accessibility is not legally mandatory it often loses to conversion and delivery speed. Products I have shipped — including my own — fail criteria too. In one product last year, about 20% of users increased font size; that still does not mean anyone completes the core flow as a fully blind, screen-reader-only user.
 
-Interest in this topic often comes more from law firms. Spotting gaps in the rules, they find a "victim" — a company that falls short — then find people with disabilities in whose name they file multimillion-dollar suits and collect fees. The people with disabilities themselves may never have used those products.
+Accessibility attention sometimes arrives via litigation more than via product craft: firms find a non-compliant company, recruit plaintiffs, and file expensive suits. That dynamic is real, especially under ADA-style regimes. It is also not the same as building a usable storefront for disabled customers.
 
-Still, Wildberries reaches a multimillion audience and sells nearly any everyday goods. It is a giant platform, and it is simply interesting to see where it stands on accessibility today.
+Still, Wildberries serves millions of people and sells almost anything for the household. The question is simple: what does “accessibility” look like there today?
 
-## Audit methodology
+## Method
 
-As before, there are only [five check stages](/garden/audit-a11y-without-wcag_en). The test task is deliberately simple: search for a huge, cool Batmobile, add it to the cart, and place the order. We will walk the path from the first click to the final "Order" using only the keyboard and a screen reader.
+Same [five-step approach](/garden/audit-a11y-without-wcag_en) as before. The user story is intentionally concrete:
 
-Let's begin.
+1. Search for a ridiculous Batmobile toy.
+2. Add it to the cart.
+3. Place the order.
+
+Keyboard and screen reader only — no mouse.
 
 ## 1. Accessibility statement and skip links
 
-**Result:** Both markers are missing.
+**Result:** both missing.
 
-There are no [skip links](/garden/skip-links) (quick links to jump to main content past the header). That violates [WCAG 2.4.1 Bypass Blocks](https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html). Navigation starts in the header, so a screen-reader user has to hear dozens of links every time before reaching the products.
+There are no [skip links](/garden/skip-links), which fails [WCAG 2.4.1 Bypass Blocks](https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html). Navigation starts in the header, so a screen reader user must hear dozens of chrome links before product content.
 
-There is also no [accessibility statement](https://www.w3.org/WAI/planning/statements/). Finding the footer with informational links is a problem in itself. I could not on the first try: almost every page uses infinite catalog scroll as you move down. Only in the cart did I see the footer links. It turns out there is a shortcut button at the bottom to open it — more on that later.
+There is also no [accessibility statement](https://www.w3.org/WAI/planning/statements/). Even finding the footer is hard: most pages keep infinite-scrolling the catalog. I only saw informational footer links reliably in the cart. There is a floating shortcut that opens the footer — more on that later.
 
-![Site footer with no link to an Accessibility Statement](/audit/wildberries/1.webp)
+![Site footer with no Accessibility Statement link](/audit/wildberries/1.webp)
 
-**Takeaway:** First impression — the platform was not designed with assistive-technology navigation in mind from the start, and there is no clear public information about its accessibility status.
+**Takeaway:** assistive-tech navigation was not designed in from day one, and there is no public status page for accessibility either.
 
 ## 2. Keyboard navigation
 
-**Result:** A classic seen in many products: `:focus { outline: none }` across the whole app. It is unclear where you are moving with the keyboard — focus is invisible. That is a direct violation of [WCAG 2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html).
+**Result:** the classic anti-pattern — `:focus { outline: none }` across the app. Focus is invisible. That violates [WCAG 2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html).
 
-![Source snippet that explicitly sets :focus { outline: none }](/audit/wildberries/3.webp)
+![Source that sets :focus { outline: none }](/audit/wildberries/3.webp)
 
-The modern approach is to use `:focus-visible` so the focus indicator appears for keyboard navigation without bothering mouse users:
+Prefer `:focus-visible` so keyboard users get a ring without punishing pointer users:
 
 ```css
 :focus {
@@ -52,113 +56,108 @@ The modern approach is to use `:focus-visible` so the focus indicator appears fo
 }
 ```
 
-![The "Careers at WB" link has focus but no visible highlight](/audit/wildberries/2.webp)
+![“Careers at WB” has focus but no visible indicator](/audit/wildberries/2.webp)
 
-Side menu: A header button with `aria-label="Site navigation"` opens the side menu. Odd detail: even though the menu is visually hidden until you press the button, the keyboard still tabs through every item — they remain in the tab order while invisible. That is confusing.
+**Side menu:** a header control with `aria-label="Site navigation"` opens a drawer. While the drawer is visually closed, its items remain in the tab order. You tab through invisible links. Confusing and exhausting.
 
-![Portal side menu in the open state](/audit/wildberries/4.webp)
+![Side menu open](/audit/wildberries/4.webp)
 
-Filters — a complete failure: The "All filters" sidebar opens from the keyboard, but focus trapping is broken. The panel slides out, focus never moves into it, and you keep tabbing across the dimmed backdrop hoping to reach the filters eventually. Filters like "By popularity," "Color," "Category," and "Brand" are dropdowns that appear only on hover. You cannot open them with Space or Enter from the keyboard. They are fully inaccessible.
+**Filters — hard fail:** “All filters” can open from the keyboard, but focus never moves into the panel. You keep tabbing on the dimmed page underneath. Dropdowns such as popularity, color, category, and brand appear on hover only — Space/Enter do nothing. They are effectively mouse-only.
 
-![Filters are open, but keyboard navigation continues under the overlay](/audit/wildberries/5.webp)
+![Filters open while keyboard focus stays under the overlay](/audit/wildberries/5.webp)
 
-**Takeaway:** Without a mouse, filtering products and using the menu properly is nearly impossible. That blocks an entire category of users.
+**Takeaway:** without a mouse, filtering and menu use are basically broken.
 
 ## 3. Color contrast
 
-**Result:** Overall, a quick look shows bright, saturated colors. Two places look dubious.
+**Result:** many colors look bold at a glance; two patterns fail closer inspection.
 
-White text on a light-gray background (secondary caption on a product card).
+White text on light gray (secondary caption on product cards):
 
-![White text on a light-gray background (secondary caption on a product card)](/audit/wildberries/7.webp)
+![White text on light-gray product caption](/audit/wildberries/7.webp)
 
-And the main color problem: lilac on purple in the header for the key menu items "Orders," "Favorites," "Profile," and "Cart" — the main entry points.
+Lilac-on-purple in the primary header actions — Orders, Favorites, Profile, Cart:
 
-![Menu items "Orders," "Favorites," "Profile," "Cart"](/audit/wildberries/8.webp)
+![Header actions with weak contrast](/audit/wildberries/8.webp)
 
-**Intuition was right:** this fails [WCAG 1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) Level AA. Contrast ratios here are 2.7:1 and 4.4:1 against the required minimum of 4.5:1 for normal text. For global navigation on a marketplace of this scale, that is a serious miss.
+Measured ratios were about **2.7:1** and **4.4:1** against the **4.5:1** minimum for normal text under [WCAG 1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) Level AA. For global navigation on a marketplace of this scale, that is a serious miss.
 
-## 4. Screen reader and keyboard
+## 4. Screen reader + keyboard
 
-We switch to a low-vision setup and turn on VoiceOver. We eventually reach a product. This is where it gets interesting — how will the information be announced?
+Low-vision simulation plus VoiceOver. Reaching a product is possible; understanding it is harder.
 
-![Focus on a product card in the catalog under a low-vision setup](/audit/wildberries/6.webp)
+![Product card focus under a low-vision setup](/audit/wildberries/6.webp)
 
-**Prices:** Yes, they are announced, but with no explanation of the discount. What is visually clear as the current discounted price and the original (struck-through) price is read simply as different amounts. You cannot tell which is which.
+**Prices:** announced as bare numbers. Visually you see a discounted price and a struck-through original; aurally they are just two amounts with no relationship.
 
-![VoiceOver announces the product price](/audit/wildberries/9.webp)
+![VoiceOver announcing price](/audit/wildberries/9.webp)
 
-**Add-to-cart button:** It is labeled "Day after tomorrow." Wildberries uses the delivery date as the add-to-cart button text. Figuring out that pressing it adds the item to the cart is no small task. This is not a button — it is a riddle.
+**Add to cart:** the control is labeled with a delivery promise — “Day after tomorrow.” That is the delivery ETA reused as the button name. From a screen reader, it is a riddle, not an action.
 
-![VoiceOver announces the add-to-cart button as "Day after tomorrow"](/audit/wildberries/10.webp)
+![Add-to-cart announced as “Day after tomorrow”](/audit/wildberries/10.webp)
 
-**Add-to-cart notification:** Suppose I take the risk and press it. Disappointment. The "added to cart" notification is not announced. It is incorrectly marked up with ARIA attributes. Result: silence. The card status does not change for the screen reader either: the "Day after tomorrow" button simply disappears, replaced by two unlabeled "buttons" with a number in the middle (actually a quantity counter). A low-vision user never learns that.
+**Confirmation:** after activating it, the “added to cart” toast is silent — broken live-region / ARIA wiring. On the card, the labeled control disappears and is replaced by two unlabeled controls around a quantity number. A low-vision user gets no confirmation that anything worked.
 
-![Add-to-cart notification ignored by VoiceOver](/audit/wildberries/12.webp)
+![Toast ignored by VoiceOver](/audit/wildberries/12.webp)
 
-![Unlabeled "buttons" with a number in the middle — product quantity counter](/audit/wildberries/11.webp)
+![Unlabeled quantity controls](/audit/wildberries/11.webp)
 
-**Cart and checkout failure:** There is no quick jump to the cart. You have to return to the header, find the indicator, check it, and only then navigate. Suppose I manage that. I select the item and press "Order." And… nothing happens. Just silence.
+**Checkout collapse:** there is no quick path to the cart. After finding it and pressing **Order**, nothing useful is announced. The app wants a delivery address, but keyboard + screen reader get no error, no focus move — only a purple outline on screen. I stopped at ~90% of the happy path with no way to finish.
 
-![Pressing "Order" in the cart — VoiceOver stays silent](/audit/wildberries/13.webp)
+![Order button produces silence](/audit/wildberries/13.webp)
 
-**The core problem:** The app requires choosing an address in a separate section, but with keyboard + screen reader we never learn that. No errors, no focus on the field — only a visual hint, a purple outline. End result: failure. I could not place the order after completing 90% of the path.
+## 5. Automated scans
 
-## 5. Tool scanning
+**axe:** 29 issues. One critical: the footer shortcut has no accessible name. Twenty-eight serious findings, mostly contrast. Even the primary add-to-cart controls fail — purple-on-white lands at **4.49:1**, a hundredth under the 4.5:1 bar. It feels like someone rounded in their favor.
 
-**Deque Axe:** Found 29 issues. One critical — that footer shortcut button has no screen-reader label (`aria-label`). 28 serious — mostly color and contrast. Surprisingly, the add-to-cart buttons (the main conversion buttons!) fail contrast. Oddly, they miss the 4.5:1 bar by only 0.01 — purple on white yields 4.49:1. It feels as if someone checked and rounded in their favor.
+![axe results](/audit/wildberries/14.webp)
 
-![Deque Axe scan results](/audit/wildberries/14.webp)
+![axe results](/audit/wildberries/15.webp)
 
-![Deque Axe scan results](/audit/wildberries/15.webp)
+**Lighthouse:** ~90% Accessibility, largely overlapping axe. That is the punchline: a strong automated score and a failed purchase. Automation still covers only a fraction of WCAG and almost none of real task completion.
 
-**Lighthouse:** Reported 90% accessibility and the same issues as Axe. Funny, right? 90% accessibility, and I still could not place an order. That shows why automated tools cover only ~30% of WCAG criteria — they cannot verify interaction logic and user flows. Do not rely on tool scores alone; sometimes they are not even a half-measure.
+**WAVE:** no `h1`; only `h2`s. The first heading in the header is… “Currency.” Semantic structure was never designed.
 
-**WAVE:** The interesting bit — heading hierarchy. There is no `h1` at all, only `h2`. There is no real hierarchy, and the first heading in the header is… "Currency." What does that say? The page's semantic structure was never designed.
-
-![WAVE scan results](/audit/wildberries/16.webp)
+![WAVE results](/audit/wildberries/16.webp)
 
 ## Recommendations
 
-If the Wildberries team wanted to improve accessibility, here is a prioritized list:
+If Wildberries wanted a pragmatic remediation backlog:
 
-**Critical (blocks usage):**
+**Critical (blocks the task):**
 
-1. Add a visible focus indicator via `:focus-visible`
-2. Fix focus trapping in modals (filters, menus)
-3. Make filters keyboard-accessible (open with Enter/Space)
-4. Announce notifications with `aria-live="polite"`, or even `"assertive"`
-5. Fix checkout form validation — report errors to the screen reader
+1. Restore a visible `:focus-visible` indicator.
+2. Trap focus correctly in filters and menus.
+3. Make filters operable with Enter/Space (not hover-only).
+4. Announce cart notifications with `aria-live` (`polite` or `assertive` as appropriate).
+5. Surface checkout validation errors to assistive tech and move focus to the problem.
 
-**High priority:**
+**High:**
 
-1. Add a skip link to main content
-2. Fix contrast in the header (menu) and on add-to-cart buttons
-3. Rename the "Day after tomorrow" button → "Add to cart (delivery day after tomorrow)"
-4. Add price semantics: "Discounted price: X", "Original price: Y"
+1. Add a skip link to main content.
+2. Fix header and add-to-cart contrast.
+3. Rename the control to something like “Add to cart (delivery day after tomorrow).”
+4. Expose price semantics (“Sale price”, “Original price”).
 
-**Medium priority:**
+**Medium:**
 
-1. Establish a heading hierarchy (add an `h1`)
-2. Remove the side menu from the tab order when closed (`inert` or `tabindex="-1"`)
-3. Add an Accessibility Statement to the footer
+1. Add a real `h1` and a coherent heading outline.
+2. Remove closed drawers from the tab order (`inert` or `tabindex="-1"`).
+3. Publish an accessibility statement in the footer.
 
-## Bottom line: Accessibility as a luxury, not a necessity
+## Bottom line
 
-Wildberries is a powerful, convenient, popular service. From an accessibility perspective, though, it looks like a typical high-traffic product where the topic was never treated systematically.
+Wildberries is fast, popular, and commercially successful. Accessibility looks like an afterthought on a high-throughput retail stack: some ARIA (often wrong), a flattering automated score, decent image alts — and no reliable way to complete the core purchase without sight.
 
-**What exists:** Minimal basic work with some ARIA attributes (often incorrect), 90% on automated checks, and decent image alt text.
-**What is missing:** Thoughtful keyboard navigation, semantic markup, accessible interaction patterns, contrast on key elements, and — most importantly — the ability to complete the core flow without sight.
-
-This is not malice; it is priorities. Until accessibility is a KPI on par with conversion or load speed, little will change. That is a shame, because a multimillion audience includes people who cannot simply click with a mouse. For them the super-portal remains a beautiful but closed storefront.
+That is usually priorities, not malice. Until accessibility is a KPI next to conversion and performance, little changes. Millions of customers include people who cannot “just click.” For them the storefront stays beautiful and closed.
 
 ### P.S.
 
-The Batmobile was never ordered. I hope Batman has other supply channels.
+The Batmobile was never ordered. Hopefully Batman has better suppliers.
 
 ### Related notes
 
-- [[Accessibility audit of Priorbank's web app](/garden/audit-priorbank-a11y)]
-- [[Skip Links — an invisible marker of good taste](/garden/skip-links)]
-- [[Practical web accessibility audit: 5 steps without the dogma](/garden/audit-a11y-without-wcag_en)]
-- [[Web accessibility is not hype — it is responsibility](/garden/a11y-my-task-crafting)]
+- [Accessibility audit of Priorbank’s web app](/garden/audit-priorbank-a11y)
+- [Skip links — a quiet mark of good craft](/garden/skip-links)
+- [A practical web accessibility audit in five steps](/garden/audit-a11y-without-wcag_en)
+- [Web accessibility is not hype — it is responsibility](/garden/a11y-my-task-crafting)

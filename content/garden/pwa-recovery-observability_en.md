@@ -1,27 +1,30 @@
 ---
-title: Recovery and Observability for PWA/WebView After a Failed Load
-description: What to do when code splitting and a Service Worker meet a new deploy — a static fallback before React, careful reload on broken chunks, and early offline-shell diagnostics
+title: PWA/WebView recovery and observability after a failed load
+description: What to do when code splitting meets a new deploy — a static fallback before React, careful reload on missing chunks, and early offline-shell diagnostics.
 date: 2026-07-05
 tags: [pwa, service-worker, offline, vite, observability, recovery, webview, mobile]
 ---
 
-The worst failure in a PWA with lazy loading is not a crash inside React. It is a blank screen before the app can say anything at all. The entry script never arrived, a dynamic `import()` got a 404 for an old hash, the Service Worker served a stale `index.html` — and the user stares at emptiness. Sentry stays quiet: your `ErrorBoundary` never ran.
+The worst failure in a lazy-loaded PWA is not a React render crash. It is a **blank screen before the app can speak**. The entry script never arrives, a dynamic `import()` 404s on an old hashed chunk, the Service Worker serves a stale `index.html` — and the user stares at nothing. Sentry is quiet, because your `ErrorBoundary` never mounted.
 
-With code splitting and hashed chunks, this is not rare after a release — it is an expected scenario. Especially in a WebView, where a tab can live for days. Below are three layers I put around such an app:
+With code splitting and content-hashed assets, this is not exotic after a release. It is expected — especially in a mobile WebView where a tab can live for days. I wrap these apps in three layers:
 
-- A fallback that works without the bundle;
-- A mechanism that catches version skew once the app is running;
-- Telemetry and Service Worker diagnostics, without which recovery turns into guesswork.
+1. a fallback that works **without** the JS bundle;
+2. runtime recovery that catches **version skew** after React is up;
+3. Service Worker telemetry, without which recovery is superstition.
 
-## First — a page that can fail gracefully
+## First: a page that can fail gracefully
 
-Until the JS bundle loads, nothing in your React stack can help. So the minimum lifeline lives in `index.html`: inline styles, plain text, and a tiny dependency-free script.
+Until the bundle loads, React cannot help. Put the lifeline in `index.html`: inline CSS, plain copy, and a tiny dependency-free script.
 
-Two handlers are usually enough. The first is `onerror` on the entry `<script type="module">`: offline, network, VPN, CDN, or a broken URL.
+Two hooks are usually enough:
 
-The second is a short timer (empirically about three seconds for me) on an empty `#root`. If React has not mounted by then, treat boot as failed. I deliberately skip a global `window.onerror` on every script: WebViews produce too much unrelated noise.
+- `onerror` on the entry `<script type="module">` (offline, flaky VPN/CDN, bad URL);
+- a short timer on an empty `#root` (about three seconds in my apps). If React never mounts, treat boot as failed.
 
-Behavior is simple. Retry with a normal `reload` a few times. If the limit is exhausted, show a static screen with clear copy and a “close / retry” action. Store the attempt counter in `sessionStorage` under a neutral key such as `boot-retry-count`, and **reuse that same key** in the JS recovery path below. Otherwise HTML and the bundle will reload independently, and the user gets a refresh carousel instead of one coherent cycle.
+I deliberately skip a global `window.onerror` for every script — WebViews generate too much unrelated noise.
+
+Behavior: soft-reload a few times; if the budget is spent, show a static screen with clear copy and Close / Retry. Keep the attempt counter in `sessionStorage` under a neutral key such as `boot-retry-count`, and **reuse the same key** in the in-app recovery path. Otherwise HTML and JS fight each other and the user gets a refresh carousel.
 
 ```html
 <main id="boot-fallback" hidden aria-live="polite">
@@ -66,7 +69,7 @@ Behavior is simple. Retry with a normal `reload` a few times. If the limit is ex
     if (root && !root.firstChild) fail();
   }, WAIT_MS);
 
-  // Successful mount — clear the counter so the next visit starts clean
+  // Successful mount — reset so the next visit starts clean
   const root = document.getElementById('root');
   if (root && 'MutationObserver' in window) {
     const observer = new MutationObserver(() => {
@@ -82,19 +85,19 @@ Behavior is simple. Retry with a normal `reload` a few times. If the limit is ex
 })();
 ```
 
-In a mobile WebView, the “Close” button usually maps to a host-app deeplink. The exact scheme depends on the container — no need to spell it out here. What matters is that the action also lives in HTML, not in the bundle that failed to load.
+In a host WebView, Close usually maps to a container deeplink. The exact scheme is product-specific; what matters is that the action lives in HTML, not in the bundle that failed to load.
 
-## Then — recovery when React is up but a chunk is gone
+## Then: recovery when React is up but a chunk is gone
 
-The classic post-deploy case: the shell boots, the user opens a lazy route, and `chunks/Feature-abcd.js` is already gone from the CDN. Vite fires `vite:preloadError`, the `import()` promise rejects with something like `Failed to fetch dynamically imported module`, and sometimes preload CSS fails too.
+Classic post-deploy failure: the shell boots, the user opens a lazy route, and `chunks/Feature-abcd.js` is already gone from the CDN. Vite emits `vite:preloadError`, `import()` rejects with something like `Failed to fetch dynamically imported module`, and CSS preload can fail too.
 
-Here you can work from the bundle. Same idea as the static fallback, but smarter:
+Now you can recover from inside the bundle — same idea as the static fallback, with more judgment:
 
-1. First attempt — a soft `location.reload()`. Often enough when it is just a cache race.
-2. If that fails, check whether the origin / CDN is actually reachable (do not trust `navigator.onLine` alone — probe the network), and only then cache-bust: force a fresh document with a query param such as `?fresh=timestamp`.
-3. If there is no network — soft reload again and **no** mass wipe of `CacheStorage`. Clearing caches “just in case” is the fastest way to break offline for someone who already has a weak signal.
+1. First try a soft `location.reload()`. Often enough for a cache race.
+2. If that fails, probe whether the origin/CDN is actually reachable (do **not** trust `navigator.onLine` alone). Only then cache-bust the document, e.g. `?fresh=<timestamp>`.
+3. If the network is dead: soft reload again and **do not** mass-clear `CacheStorage`. “Nuke caches just in case” is how you destroy offline for users who already have a weak signal.
 
-One detail: Firefox once exposed a [forceget](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload#forceget) flag on `location.reload()` for cache-busting, but nothing else supports it. `location.replace()` with a query param is the portable approach.
+Firefox once exposed a [`forceGet`](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload#forceget) flag on `reload()` for cache-busting; nothing else supports it. `location.replace()` with a query param is the portable approach.
 
 ```ts
 const RETRY_KEY = 'boot-retry-count';
@@ -132,6 +135,20 @@ async function originLooksReachable(): Promise<boolean> {
   }
 }
 
+function tries(): number {
+  try {
+    return Number(sessionStorage.getItem(RETRY_KEY) || 0);
+  } catch {
+    return 0;
+  }
+}
+
+function bumpTries(next: number): void {
+  try {
+    sessionStorage.setItem(RETRY_KEY, String(next));
+  } catch {}
+}
+
 function reloadWithFreshShell(): void {
   const url = new URL(location.href);
   url.searchParams.set(FRESH_PARAM, String(Date.now()));
@@ -154,36 +171,35 @@ async function recover(): Promise<boolean> {
 }
 ```
 
-Two lessons I learned the hard way.
+Two lessons from production:
 
-First: on [`vite:preloadError`](https://vite.dev/guide/build#load-error-handling), do **not** call `preventDefault`. In Vite that leads to secondary failures like “cannot read property `default` of undefined” — the module looks swallowed, but consumers still expect an export. Let the error stand; recovery should only trigger a reload.
+**Do not `preventDefault` on [`vite:preloadError`](https://vite.dev/guide/build#load-error-handling).** In Vite that can cascade into “cannot read property `default` of undefined” — the module looks swallowed, but importers still expect an export. Let the error stand; recovery should trigger a reload.
 
-Second: the Service Worker must understand your cache-bust parameter. If the navigate handler always serves precached `index.html`, `?fresh=…` refreshes nothing. Exclude the param both from `ignoreURLParametersMatching` (so precache does not collapse it into the normal URL) and from the SPA-fallback navigate route:
+**Teach the Service Worker about `fresh`.** If navigate always returns precached `index.html`, `?fresh=…` refreshes nothing. Exclude the param from precache URL matching **and** from the SPA navigate fallback:
 
 ```js
 precacheAndRoute(self.__WB_MANIFEST, {
-  // any query except fresh — as usual; fresh must change the match key
+  // treat every query except fresh as usual; fresh must change the match key
   ignoreURLParametersMatching: [/^(?!fresh$).+/],
 });
 
 registerRoute(({ request, url }) => {
   if (request.mode !== 'navigate') return false;
-  if (url.searchParams.has('fresh')) return false; // hit the network for a new shell
+  if (url.searchParams.has('fresh')) return false; // go to network for a new shell
   return true;
 }, createHandlerBoundToURL('/index.html'));
 ```
 
-Prefer a dedicated NetworkOnly route in the SW for the origin/CDN probe: a short path like `/__connectivity-check__`, uncached. Keep `navigator.onLine` only as a guardrail (“definitely offline — do not get aggressive”).
+Expose the connectivity probe as a NetworkOnly route (for example `/__connectivity-check__`). Keep `navigator.onLine` as a cheap “definitely offline” guard only.
 
-While recovery runs, show a loader in `ErrorBoundary`, not an error screen, and do not report it to Sentry as a crash: reload. Otherwise every deploy floods the dashboard with false failures.
+While recovery runs, show a loader in `ErrorBoundary` — not a crash screen — and do not file it in Sentry as an application exception. Otherwise every deploy floods the dashboard with false crashes.
 
-## Separately — so you can see whether the SW is even there
+## Observability: is the Service Worker even there?
 
-Recovery without observability treats symptoms you never notice. The most useful sensor I add after SW registration: a few seconds after start (not immediately — cold starts cause false positives), check two things.
+Recovery without sensors only treats symptoms you never see. A few seconds after start (not immediately — cold starts cause false alarms), check:
 
-Is there a `navigator.serviceWorker.controller`? If this is not the first visit and there is still no controller, the user is likely living without an offline shell even if it “looks like a PWA.”
-
-Is the shell document in Cache Storage, for example `/index.html`? Precache may never have installed, the manifest may have been filtered, or quota eviction may have dropped the entry.
+1. Is there a `navigator.serviceWorker.controller`? On a returning visit with no controller, the user is likely living without an offline shell even if the app “looks like a PWA.”
+2. Is the shell document in Cache Storage (for example `/index.html`)? Precache may never have installed, the manifest may have been filtered, or quota eviction may have dropped it.
 
 ```ts
 window.setTimeout(async () => {
@@ -206,24 +222,26 @@ window.setTimeout(async () => {
 }, 5_000);
 ```
 
-For lazy-route warmup errors and SW registration failures, attach the same context: whether a controller exists, whether the device is online, which pathname, which recovery attempt. Logs then distinguish “network is dead,” “SW has not claimed the page yet,” and “CDN already has another version.”
+Attach the same context to lazy-route warmup failures and SW registration failures: controller present?, online?, pathname, recovery attempt. Logs then separate “network is dead,” “SW has not claimed the page yet,” and “CDN already serves another version.”
 
-Worth noting: the five-second timeout is empirical — tuned from real users — and scales with what you put in precache. If the manifest includes the whole app and every chunk, the SW may take ten or fifteen seconds to control the page.
+The five-second delay is empirical and scales with precache size. If the manifest includes the whole app, claiming can take 10–15 seconds.
 
-I wrap SW registration in a small retry with exponential backoff and log only the final failure. Intermediate attempts are normal mobile-network life, not an incident.
+I wrap SW registration in a small exponential retry and log only the final failure. Intermediate attempts are normal mobile-network weather, not incidents.
 
-## How it fits together
+## How the layers fit
 
-First the entry fails or hangs — HTML answers, still before React. Then the app runs but trips on a missing chunk after a release — runtime recovery answers with a careful shell cache-bust. In parallel, once per session you check whether the Service Worker “fell off” and whether the offline shell vanished from cache.
+1. Entry fails or hangs → HTML answers before React.
+2. App runs but a post-deploy chunk is missing → runtime recovery with a careful shell cache-bust.
+3. Once per session → verify the Service Worker and offline shell still exist.
 
-None of these layers replaces caching critical chunks from the [note on offline vs lazy loading](/garden/offline-vs-lazy-loading). They cover something else: what happens when the ideal path already broke. Without them, a PWA looks solid in a demo and fragile the day after a ship.
+None of this replaces caching critical chunks from the note on [offline support vs lazy loading](/garden/offline-vs-lazy-loading). These layers cover the other half: what happens when the happy path already broke. Without them, a PWA looks solid in a demo and fragile the day after ship.
 
 ---
 
 ### Related notes
 
-- [[When offline functionality conflicts with lazy loading](/garden/offline-vs-lazy-loading)]
-- [[Configuring Workbox Background Sync for iOS and Android WebView Compatibility](/garden/workbox-background-sync_en)]
-- [[Deep linking from the web](/garden/deeplink-web)]
-- [[Computing the visible portion of the viewport](/garden/viewport)]
-- [[View Transitions in React — a production tool already shipping for a year](/garden/view-transitions)]
+- [When offline support collides with lazy loading](/garden/offline-vs-lazy-loading)
+- [Workbox Background Sync that survives iOS Safari and Android WebView](/garden/workbox-background-sync_en)
+- [Deep linking from the web](/garden/deeplink-web)
+- [Measuring the visible viewport](/garden/viewport)
+- [View Transitions in React — already a year in production](/garden/view-transitions)

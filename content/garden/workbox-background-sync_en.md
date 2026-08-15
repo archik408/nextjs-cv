@@ -1,23 +1,30 @@
 ---
-title: Configuring Workbox Background Sync for iOS and Android WebView Compatibility
-description: A practical guide to reliably retrying offline requests on iOS/Safari and Android WebView — working around Service Worker and IndexedDB constraints.
+title: Workbox Background Sync that survives iOS Safari and Android WebView
+description: How to reliably replay offline mutating requests when Sync Manager is missing or disabled — extending Workbox instead of reinventing the queue.
 date: 2025-06-05
 tags: [pwa, service-worker, workbox, offline, ios, android, seedling]
 ---
 
-Reliable offline request handling is hard to overstate — especially for apps that must keep working when the network is gone. [Workbox](https://developer.chrome.com/docs/workbox?hl=ru) is a strong toolkit for managing [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) in the browser, and its Background Sync plugin is built for exactly this case. Support for the [Background Sync API](https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API) is not universal, though. In this note I show how to extend Workbox so Background Sync still works on iOS/Safari (which has no Sync Manager) and on older Android WebView builds (Chromium).
+If your PWA must keep working offline, failed POST/PUT/PATCH/DELETE requests cannot simply vanish. [Workbox](https://developer.chrome.com/docs/workbox) is still one of the best toolkits for [Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) caching and replay — and its Background Sync plugin is the right starting point. The catch: the underlying [Background Sync API](https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API) is not universal.
 
-## Understanding native Background Sync API limits
+This note shows how I extend Workbox so offline replay still works on **iOS/Safari** (no Sync Manager) and on **older Android WebViews** where Background Sync may be disabled.
 
-The Background Sync API lets apps finish network work that was interrupted offline as soon as the device reconnects, via a [SyncEvent](https://caniuse.com/mdn-api_syncevent). Two hard limits matter in practice: Safari does not support the API, and Android WebView can disable it (for example via browser settings — the client then sees _UnknownError: Background Sync is disabled_). So we need another way to drive the same work.
+## Native Background Sync limits
 
-## Using Workbox Background Sync
+Background Sync lets the browser finish deferred network work after connectivity returns, typically via a [SyncEvent](https://caniuse.com/mdn-api_syncevent). Two production constraints matter:
 
-Workbox ships a Background Sync plugin you can wire up for different request-handling scenarios. My approach extends that plugin rather than reinventing it, so Background Sync becomes cross-browser while we keep the plugin’s interfaces and its IndexedDB queue for storing request copies.
+1. **Safari / iOS** does not implement Sync Manager.
+2. **Android WebView** can disable Background Sync (for example via browser/WebView settings). Clients then see errors like `UnknownError: Background Sync is disabled`.
+
+So you need a fallback trigger that does not depend on Sync Manager.
+
+## Extend Workbox instead of rewriting it
+
+I keep Workbox’s queue, IndexedDB persistence, and plugin surfaces, then add a cross-platform driver on top. Reinventing the queue from scratch is rarely worth it.
 
 > “Talk is cheap. Show me the code.” — Linus Torvalds
 
-Below is the Service Worker initialization of the background synchronizer with its parameters, plus the Workbox Background Sync extension that retries requests on an interval and grows that interval exponentially on failure ([exponential backoff](https://advancedweb.hu/how-to-implement-an-exponential-backoff-retry-strategy-in-javascript/)):
+Initialization in the Service Worker, plus a retry loop with [exponential backoff](https://advancedweb.hu/how-to-implement-an-exponential-backoff-retry-strategy-in-javascript/):
 
 ### service-worker.js
 
@@ -25,9 +32,9 @@ Below is the Service Worker initialization of the background synchronizer with i
 // service-worker.js
 
 backgroundSyncInit(self, {
-  queueName: 'OfflineRequests', // Queue name for requests stored in IndexedDB
-  maxRetentionTime: 24 * 60, // Max time to keep requests in the queue (24 hours)
-  urls: SYNC_URLS, // URL patterns to sync
+  queueName: 'OfflineRequests', // IndexedDB queue name
+  maxRetentionTime: 24 * 60, // keep entries for 24 hours
+  urls: SYNC_URLS, // URL substrings / patterns to intercept
 });
 ```
 
@@ -38,22 +45,22 @@ backgroundSyncInit(self, {
 
 import { updateAccessToken } from './accessToken';
 import { FALLBACK_SYNC_EVENT, REFRESH_TOKEN_EVENT } from './events';
-import initBackgroundSyncQueue from './initBackgroundSyncQueue';
+import createQueue from './createQueue';
 
-// We only care about mutating requests that would otherwise be lost,
-// so read-only methods (GET, OPTIONS, etc.) are excluded
+// Only mutating traffic belongs in the offline queue.
+// GET/OPTIONS/etc. should not be replayed as side-effecting work.
 const HTTP_CHANGE_VERBS = ['POST', 'PUT', 'PATCH', 'DELETE'];
 
 interface IParams {
   queueName: string;
   maxRetentionTime?: number;
-  urls: Array<string>;
-  statuses: Array<number>;
+  urls: string[];
+  statuses?: number[];
 }
 
 const backgroundSyncInit = (
   self,
-  { queueName, maxRetentionTime, urls, excludeUrls, statuses = [] }: IParams
+  { queueName, maxRetentionTime, urls, statuses = [] }: IParams
 ) => {
   const { queue, onQueueSync, handleRequest } = createQueue(self, {
     queueName,
@@ -88,7 +95,7 @@ export default backgroundSyncInit;
 
 ### createQueue.ts
 
-Core logic with a mutex so the queue is not processed concurrently, status checks, and exponential backoff:
+Core ideas: a mutex so the queue is not flushed twice in parallel, status-aware retries, and exponential backoff:
 
 ```typescript
 const MIN_BACKOFF_DEPTH = 4;
@@ -104,9 +111,9 @@ const hasBadStatusAndShouldBeRepeated = (response, badStatuses = [], metadata?) 
 };
 ```
 
-### Triggering via `online` — a SyncManager alternative
+### Fallback trigger: the `online` event
 
-Instead of SyncManager, an older, more widely supported signal can start the queue: the app is back online.
+When Sync Manager is missing or disabled, use a boring, widely supported signal — the page is online again — and ask the Service Worker to flush:
 
 ```javascript
 window.addEventListener('online', () => {
@@ -116,7 +123,7 @@ window.addEventListener('online', () => {
 });
 ```
 
-### Intercepting mutating requests in the SW
+### Intercept mutating requests
 
 ```javascript
 self.addEventListener('fetch', (event) => {
@@ -126,29 +133,29 @@ self.addEventListener('fetch', (event) => {
 });
 ```
 
-## Implementation highlights
+## What matters in the design
 
-- A custom **FALLBACK_SYNC_EVENT** effectively replaces the native SyncEvent.
-- **handleRequest** clones the request and retries it against the server.
-- **hasBadStatusAndShouldBeRepeated** inspects the response status and decides whether to retry or re-enqueue.
-- Request metadata stores the next retry interval and whether the entry arrived after a failed retry or is new to the queue.
+- **`FALLBACK_SYNC_EVENT`** stands in for native `SyncEvent` on platforms that lack it.
+- **`handleRequest`** clones the request and owns replay against the network.
+- **`hasBadStatusAndShouldBeRepeated`** decides whether a response should be retried or re-queued.
+- Request metadata tracks backoff depth / next attempt timing and whether the entry is new or a failed retry.
 
 ## Practical tips
 
-- Do not enqueue GET/OPTIONS — they do not change state.
-- Refresh the access token before a batch flush to avoid 401/403 responses.
-- Log failure reasons (5xx / 429 / network) and retry metrics.
+- Do not enqueue GET/OPTIONS — they are not state changes.
+- Refresh the access token before a batch flush to avoid cascading 401/403 failures.
+- Log why retries happen (5xx, 429, network) and how often they succeed.
 
 ## Takeaways
 
-Extending Workbox Background Sync for every platform — including iOS and partial Android WebView implementations — takes a fair amount of code. That code stays scalable, handles non-standard errors and platform limits, and keeps flexibility. Most importantly, we stay on Workbox: if Background Synchronization API support becomes broad enough later, we can fall back to the stock plugin without our custom layer.
+Cross-platform Background Sync on top of Workbox takes real code — especially for iOS and quirky WebViews — but the result stays maintainable and close to the upstream plugin model. If native Background Sync ever becomes reliable enough everywhere you ship, you can thin this layer and fall back toward stock Workbox behavior.
 
 ---
 
 ### Related notes
 
-- [[View Transitions in React — a production tool already shipping for a year](/garden/view-transitions)]
-- [[Computing the visible portion of the viewport](/garden/viewport)]
-- [[Deep linking from the web](/garden/deeplink-web)]
-- [[When offline functionality conflicts with lazy loading](/garden/offline-vs-lazy-loading)]
-- [[Improving image viewing](/garden/zoom)]
+- [View Transitions in React — already a year in production](/garden/view-transitions)
+- [Measuring the visible viewport](/garden/viewport)
+- [Deep linking from the web](/garden/deeplink-web)
+- [When offline support collides with lazy loading](/garden/offline-vs-lazy-loading)
+- [Better image viewing](/garden/zoom)
