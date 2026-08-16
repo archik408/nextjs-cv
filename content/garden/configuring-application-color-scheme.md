@@ -11,7 +11,7 @@ _Photo by Author_
 
 Updated: In my article at [Smashing Magazine](https://www.smashingmagazine.com/2020/08/application-color-schemes-css-custom-properties/), I go into more detail about the approach, as well as live code examples that you can play with on CodePen.
 
-I already wrote about the UI Kit, its development environment and [integration with designer tools](/garden/ui-kit-design-system-designops_en). But let’s talk a little about colors. This is very associated with my current and past tasks on projects, and I want to share my vision of the approach to organizing and configuring the color scheme of the UI Kit and the entire web application in this part as a whole. Why we should bother and complicate this part? Below are a few reasons why this may be necessary.
+I already wrote about the UI Kit, its development environment and [integration with designer tools](/garden/ui-kit-design-system-designops). But let’s talk a little about colors. This is very associated with my current and past tasks on projects, and I want to share my vision of the approach to organizing and configuring the color scheme of the UI Kit and the entire web application in this part as a whole. Why we should bother and complicate this part? Below are a few reasons why this may be necessary.
 
 **Rebranding (Brand Refresh)** is the process of changing the appearance of an application, from the logo and color scheme to typography and visual presentation of certain UI components. No one of the products is static in terms of its own style or brand, always with some periodicity, the style is refreshed — globally or not.
 
