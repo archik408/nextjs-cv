@@ -14,7 +14,7 @@ Which is funny, because Pascal was my first language 🤔. The absurdity of the 
 
 Today the exact same gesture gets repeated almost word for word: real programmers don't lean on AI. It's for startups in a hurry to ship an MVP on the cheap, full of security holes and spaghetti. And behind it you can hear the old refrain from the layman, the founder and the businessman: "well, that's it, coders aren't needed any more." History has been beating that prediction up for decades — not with rhetoric, just with numbers.
 
-![Comic: "I'm a programmer" — "Which languages?" — "Claude" — followed by a fight in the lift](/garden/real-programmers-dont-use-ai/claude-elevator.webp)
+![Comic: "I'm a programmer" — "Which languages?" — "Claude" — followed by a fight in the lift](/garden/real-programmers-dont-use-ai/claude-elevator-en.webp)
 
 ## Shamans tending room-sized machines
 
