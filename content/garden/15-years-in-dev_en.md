@@ -60,5 +60,6 @@ And yes. I'm still here. I still love it.
 ### Related notes
 
 - [Why an empty GitHub profile is perfectly fine](/garden/github_en)
+- [A practical web accessibility audit in five steps (no dogma)](/garden/audit-a11y-without-wcag_en)
 - [Estimating work: why you're still wrong (and what to do about it)](/garden/estimation)
 - [TypeScript is the biggest mistake in frontend](/garden/typescript)
