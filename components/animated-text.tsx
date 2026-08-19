@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAnimationPreferences } from '@/lib/use-animation-preferences';
 
 interface AnimatedTextProps {

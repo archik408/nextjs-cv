@@ -69,12 +69,12 @@ export const translations = {
       'The content and text on the site were refined, with more information and external links to articles, publications, and social networks added.',
     timeMachine2025Description:
       'Complete overhaul of the website to Next.js with server-side rendering and migration to Vercel. The goal was not only to present content with comprehensive information about me as a specialist, but also to demonstrate my skills as a designer and frontend engineer right here. The website also became a sandbox to work with an AI assistant. Beyond the portfolio, the site now features a digital garden, career timeline, and numerous experiments in the form of online tools.',
-    role: 'Web Engineer & Architect | 15+ Yrs',
-    roleMobile: 'Web Engineer & Architect',
+    role: 'UI/UX Engineer & Frontend Architect | 15+ Yrs',
+    roleMobile: 'UI/UX Engineer & Frontend Architect',
     subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
     about: 'About Me',
     resumeAbout:
-      "Product-minded Web Engineer & Architect with 15+ years across the full web stack — UI architecture, BFF/API layers, Node.js services, HTTP/caching, and offline-capable clients. I specialize in accessible, high-performance PWAs and scalable web systems grounded in strong UI/UX practice—without dark patterns. Recently leading hybrid WebView/PWA delivery at X5 Tech (20M+ MAU), with prior work for Daimler, SAP, Kohl's, and startups including Lition. Published in Smashing Magazine; deep focus on WCAG, design systems, Core Web Vitals, and pragmatic full-stack delivery.",
+      "Product-minded UI/UX Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API layers, Node.js services, HTTP/caching, and offline-capable clients. I specialize in accessible, high-performance PWAs and scalable web systems grounded in strong UI/UX practice—without dark patterns. Recently leading hybrid WebView/PWA delivery at X5 Tech (20M+ MAU), with prior work for Daimler, SAP, Kohl's, and startups including Lition. Published in Smashing Magazine; deep focus on WCAG, design systems, Core Web Vitals, and pragmatic full-stack delivery.",
     aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and school Computer Science teacher, and then fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
 My journey is <span class="text-double-underline">a bridge<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> between computing eras. It began with structured programming in <em>Pascal</em>, <em>C++</em> and <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, where I learned the core principles of memory management and algorithms. I then built powerful desktop and early web applications for the enterprise world using <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> and <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, and gained a critical eye for quality and process through test automation with <em>Selenium RC</em> and later <em>WebDriver</em>, <em>Cypress</em> and <em>Playwright</em>.<br/><br/>
 I was on the front lines of the web's transformation, crafting dynamic applications with its first-generation tools: <em><abbr title="Asynchronous Javascript and XML ">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em>, and <em>Ember.js</em>. This deep historical context is my greatest asset. It allows me to architect modern <em>React</em>, <em>Web Components</em> and <em>TypeScript</em> applications with a profound understanding of the problems they solve, ensuring they are not just trendy but <span class="text-single-underline">truly well-engineered<img aria-hidden="true" src="/single-underline.webp" alt="" class="single-underline"></span>, scalable, and built to last.<br/><br/>
@@ -686,7 +686,11 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Algorithms Page
     algorithmsTitle: 'Algorithms & Data Structures',
     algorithmsDescription:
-      'Collection of algorithm implementations and data structure solutions from competitive programming practice.',
+      'Algorithm categories, focused implementations, and interactive visualizations for learning by example.',
+    algorithmsHubDescription:
+      'Choose a topic and explore algorithms through focused pages with explanations, code, and interactive visualizations.',
+    algorithmsHubIntro:
+      'Each category leads to dedicated pages with concrete implementations and interactive explanations.',
     algorithmCategories: {
       sorting: 'Sorting Algorithms',
       trees: 'Tree Algorithms',
@@ -694,6 +698,149 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       linkedList: 'Linked List',
       eulerProject: 'Project Euler Solutions',
     },
+    algorithmsCategorySortingDesc:
+      'Visual explanations and interactive demos for sorting arrays step by step.',
+    algorithmsCategoryGraphsDesc:
+      'Traversal, shortest paths, and graph thinking with visual representations.',
+    algorithmsCategoryLinkedListDesc:
+      'Node-based data structures with insert, delete, and traversal examples.',
+    algorithmsCategoryTreesDesc:
+      'Binary trees, traversals, and search operations with progressive examples.',
+    algorithmsBrowseAlgorithms: 'Browse algorithm categories',
+    algorithmsOpenCategory: 'Open category',
+    algorithmsReady: 'Available',
+    algorithmsComingSoon: 'Coming soon',
+    algorithmsMoreSoon: 'More examples soon',
+    algorithmsBreadcrumbs: 'Breadcrumbs',
+    algorithmsSortingTitle: 'Sorting Algorithms',
+    algorithmsSortingDescription:
+      'Start with a simple comparison sort and watch how adjacent elements gradually move into ascending order.',
+    algorithmsSortingIntro:
+      'This section will grow over time. For now, Bubble Sort and Quick Sort are available as the first interactive demos.',
+    algorithmsSortingBubbleSortDesc:
+      'A step-by-step visualization of Bubble Sort with code, controls, and a clear explanation of the core idea.',
+    algorithmsSortingQuickSortDesc:
+      'A divide-and-conquer visualization that shows how the array is partitioned around a pivot.',
+    algorithmsSortingInsertionSortDesc:
+      'A visualization of how each new element is inserted into an already sorted prefix.',
+    algorithmsSortingSelectionSortDesc:
+      'A visualization of how the smallest remaining element is selected and moved into place.',
+    algorithmsSortingMergeSortDesc:
+      'A divide-and-conquer visualization showing how smaller sorted fragments are merged into a final result.',
+    algorithmsSortingShellSortDesc:
+      'A gap-based visualization that improves insertion sort by moving distant elements earlier.',
+    algorithmsSortingHeapSortDesc:
+      'A visualization of heap construction and repeated extraction of the largest element.',
+    algorithmsBubbleSortTitle: 'Bubble Sort',
+    algorithmsBubbleSortDescription:
+      'Bubble Sort repeatedly compares neighboring elements and swaps them whenever they are in the wrong order.',
+    algorithmsBubbleSortConceptTitle: 'Core idea',
+    algorithmsBubbleSortConcept:
+      'The algorithm walks through the array many times. On each pass, it compares adjacent values and swaps them if the left value is greater than the right one.',
+    algorithmsBubbleSortHowItWorks:
+      'Large values gradually “bubble” to the right edge, so after every pass the last unsorted position becomes fixed.',
+    algorithmsBubbleSortWhySlow:
+      'Bubble Sort is easy to understand, but inefficient on large inputs, which makes it a good teaching example rather than a practical production sort.',
+    algorithmsBubbleSortVisualizationDescription:
+      'Shuffle the bars, then watch Bubble Sort compare adjacent values and move the largest items to the end.',
+    algorithmsQuickSortTitle: 'Quick Sort',
+    algorithmsQuickSortDescription:
+      'Quick Sort picks a pivot, partitions the array around it, and then recursively sorts the left and right parts.',
+    algorithmsQuickSortConcept:
+      'Quick Sort chooses a pivot element and rearranges the array so that smaller values go to the left and larger values go to the right.',
+    algorithmsQuickSortHowItWorks:
+      'After partitioning, it repeats the same process recursively for both halves, which makes the algorithm dramatically faster than Bubble Sort on average.',
+    algorithmsQuickSortWhyUseful:
+      'It is one of the classic divide-and-conquer algorithms: elegant, fast in practice, and useful for understanding recursion and partitioning.',
+    algorithmsQuickSortImplementationDescription:
+      'This implementation uses the last element as a pivot and recursively sorts the subarrays around it.',
+    algorithmsQuickSortVisualizationDescription:
+      'Shuffle the bars and watch how Quick Sort partitions the array around a pivot before recursively sorting both sides.',
+    algorithmsInsertionSortTitle: 'Insertion Sort',
+    algorithmsInsertionSortDescription:
+      'Insertion Sort grows a sorted prefix and inserts each new element into its correct position.',
+    algorithmsInsertionSortConcept:
+      'The algorithm moves from left to right and treats the beginning of the array as an already sorted segment.',
+    algorithmsInsertionSortHowItWorks:
+      'Each new element is compared with previous values and shifted left until it reaches the correct insertion point.',
+    algorithmsInsertionSortWhyUseful:
+      'It is simple, stable, and especially effective on nearly sorted or very small inputs.',
+    algorithmsInsertionSortImplementationDescription:
+      'This implementation swaps the current value backward until it lands in the correct place inside the sorted prefix.',
+    algorithmsInsertionSortVisualizationDescription:
+      'Shuffle the bars and watch each new element move left until the sorted prefix is restored.',
+    algorithmsSelectionSortTitle: 'Selection Sort',
+    algorithmsSelectionSortDescription:
+      'Selection Sort repeatedly searches for the smallest remaining value and places it at the next sorted position.',
+    algorithmsSelectionSortConcept:
+      'The algorithm divides the array into a sorted prefix and an unsorted suffix.',
+    algorithmsSelectionSortHowItWorks:
+      'On every pass, it scans the unsorted part, finds the minimum element, and swaps it into the next position of the sorted prefix.',
+    algorithmsSelectionSortWhyUseful:
+      'It is easy to reason about and performs a predictable number of comparisons, which makes it a useful teaching algorithm.',
+    algorithmsSelectionSortImplementationDescription:
+      'This implementation tracks the current minimum index and swaps once at the end of each pass.',
+    algorithmsSelectionSortVisualizationDescription:
+      'Shuffle the bars and watch Selection Sort scan the unsorted area to pull the next minimum into place.',
+    algorithmsMergeSortTitle: 'Merge Sort',
+    algorithmsMergeSortDescription:
+      'Merge Sort recursively splits the array into halves and then merges those halves back together in sorted order.',
+    algorithmsMergeSortConcept:
+      'Merge Sort follows the divide-and-conquer pattern: split the problem into smaller parts, solve them, then combine the results.',
+    algorithmsMergeSortHowItWorks:
+      'It repeatedly cuts the array into halves until single-element arrays remain, then merges them back while preserving order.',
+    algorithmsMergeSortWhyUseful:
+      'It guarantees O(n log n) performance and is especially important for understanding recursion and stable sorting.',
+    algorithmsMergeSortImplementationDescription:
+      'This implementation recursively splits the array and uses a dedicated merge function to combine sorted halves.',
+    algorithmsMergeSortVisualizationDescription:
+      'Shuffle the bars and watch Merge Sort rebuild the array by merging smaller sorted fragments into larger ones.',
+    algorithmsShellSortTitle: 'Shell Sort',
+    algorithmsShellSortDescription:
+      'Shell Sort improves insertion sort by comparing elements that are far apart before finishing with local insertions.',
+    algorithmsShellSortConcept:
+      'Shell Sort starts with large gaps between compared elements and gradually reduces those gaps to 1.',
+    algorithmsShellSortHowItWorks:
+      'Each pass performs an insertion-like sort over elements that belong to the same gap sequence.',
+    algorithmsShellSortWhyUseful:
+      'It is a classic optimization over insertion sort and a good example of how preprocessing can reduce later work.',
+    algorithmsShellSortImplementationDescription:
+      'This implementation halves the gap on every pass and performs insertion-style swaps within each gap group.',
+    algorithmsShellSortVisualizationDescription:
+      'Shuffle the bars and watch Shell Sort first move distant elements, then refine the order with smaller and smaller gaps.',
+    algorithmsHeapSortTitle: 'Heap Sort',
+    algorithmsHeapSortDescription:
+      'Heap Sort builds a max-heap, repeatedly moves the largest value to the end, and restores the heap for the remaining items.',
+    algorithmsHeapSortConcept:
+      'Heap Sort first arranges the array into a binary heap where the maximum value sits at the root.',
+    algorithmsHeapSortHowItWorks:
+      'It then swaps that root with the last unsorted element, shrinks the heap, and heapifies again.',
+    algorithmsHeapSortWhyUseful:
+      'It guarantees O(n log n) time and is a good way to understand the connection between arrays and tree-shaped data.',
+    algorithmsHeapSortImplementationDescription:
+      'This implementation builds a max-heap in place and repeatedly restores heap order after moving the maximum to the end.',
+    algorithmsHeapSortVisualizationDescription:
+      'Shuffle the bars and watch Heap Sort build a heap, extract the maximum, and grow a sorted suffix on the right.',
+    algorithmsImplementationTitle: 'Implementation',
+    algorithmsImplementationDescription:
+      'A concise implementation that matches the behavior shown in the interactive demo.',
+    algorithmsRepoLinkLabel: 'Repository link',
+    algorithmsVisualizationTitle: 'Interactive visualization',
+    algorithmsVisualizationDescription:
+      'Shuffle the bars, then watch Bubble Sort compare adjacent values and move the largest items to the end.',
+    algorithmsReducedMotionHint:
+      'Reduced motion is enabled, so transitions are minimized to make the demo more comfortable.',
+    algorithmsBarsLabel: 'Vertical bars representing array values',
+    algorithmsCurrentArray: 'Current array',
+    algorithmsBarValue: 'Value',
+    algorithmsStart: 'Start',
+    algorithmsStop: 'Stop',
+    algorithmsResume: 'Continue',
+    algorithmsShuffle: 'Shuffle',
+    algorithmsSortingIdle: 'Press Start to begin sorting.',
+    algorithmsSortingInProgress: 'Sorting in progress.',
+    algorithmsSortingPaused: 'Sorting paused.',
+    algorithmsSortingComplete: 'Sorting complete.',
     viewOnGitHub: 'View on GitHub',
     algorithmsRepository: 'Algorithms Repository',
     // SVG Optimization Page
@@ -1202,12 +1349,12 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Был проработан контент и текст на сайте, появилось больше информации и внешние ссылки на статьи, публикации и социальные сети.',
     timeMachine2025Description:
       'Полная переработка веб-сайта на Next.js с серверным рендерингом и переезд на Vercel. Задача была не только оформить контент с полной информацией обо мне как о специалисте, но также продемонстрировать свои навыки дизайнера и фронтенд инженера прямо тут. При этом веб-сайт стал песочницей, чтобы поработать с ИИ ассистентом. На сайте помимо портфолио появился цифровой сад, таймлайн карьеры и множество экспериментов в виде онлайн инструментов.',
-    role: 'Web Engineer & Architect | 15+ Yrs',
-    roleMobile: 'Web Engineer & Architect',
+    role: 'UI/UX Engineer & Frontend Architect | 15+ Yrs',
+    roleMobile: 'UI/UX Engineer & Frontend Architect',
     subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
     about: 'Обо мне',
     resumeAbout:
-      "Web Engineer & Architect с продуктовым мышлением и 15+ годами практики по полному web-стеку — UI-архитектура, слои BFF/API, сервисы на Node.js, HTTP/кэширование и offline-capable клиенты. Специализируюсь на доступных высокопроизводительных PWA и масштабируемых веб-системах, опираясь на сильные UI/UX-практики — без dark patterns. В последнее время веду hybrid WebView/PWA поставку в X5 Tech (20M+ MAU); ранее — Daimler, SAP, Kohl's и стартапы, включая Lition. Публикации в Smashing Magazine; глубокий фокус на WCAG, дизайн-системах, Core Web Vitals и pragmatic full-stack delivery.",
+      "UI/UX Engineer & Frontend Architect с продуктовым мышлением и 15+ годами практики по полному web-стеку — UI-архитектура, слои BFF/API, сервисы на Node.js, HTTP/кэширование и offline-capable клиенты. Специализируюсь на доступных высокопроизводительных PWA и масштабируемых веб-системах, опираясь на сильные UI/UX-практики — без dark patterns. В последнее время веду hybrid WebView/PWA поставку в X5 Tech (20M+ MAU); ранее — Daimler, SAP, Kohl's и стартапы, включая Lition. Публикации в Smashing Magazine; глубокий фокус на WCAG, дизайн-системах, Core Web Vitals и pragmatic full-stack delivery.",
     aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
 Мой путь — это <span class="text-double-underline">мост между эпохами<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> вычислительной техники. Он начался со структурного программирования на <em>Pascal</em>, <em>C++</em> и <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, где я изучил основные принципы управления памятью и базовые алгоритмы. Затем я создавал мощные десктопные и ранние веб-приложения для корпоративного мира, используя <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> и <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, а также развил критический взгляд на качество и процессы тестирования через автоматизацию тестов с <em>Selenium RC</em>, а позже с <em>WebDriver</em>, <em>Cypress</em> и <em>Playwright</em>.<br/><br/>
 Я был на передовой трансформации веб-технологий, создавая динамические приложения с помощью инструментов первого поколения: <em><abbr title="Asynchronous Javascript and XML">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em> и <em>Ember.js</em>. Этот глубокий исторический контекст — мое наибольшее преимущество. Он позволяет мне проектировать современные приложения на <em>React</em>, <em>Web Components</em> и <em>TypeScript</em> с глубоким пониманием проблем, которые они решают, гарантируя, что они не просто модные, а <span class="text-single-underline">действительно хорошо<img aria-hidden="true" src="/single-underline.webp" alt="" class="single-underline"></span> спроектированные, масштабируемые и созданные на долгий срок.<br/><br/>
@@ -1823,7 +1970,11 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     // Algorithms Page
     algorithmsTitle: 'Алгоритмы и Структуры Данных',
     algorithmsDescription:
-      'Коллекция реализаций алгоритмов и решений структур данных из практики соревновательного программирования.',
+      'Категории алгоритмов, отдельные реализации и интерактивные визуализации для обучения на примерах.',
+    algorithmsHubDescription:
+      'Выберите тему и изучайте алгоритмы через отдельные страницы с объяснениями, кодом и интерактивными визуализациями.',
+    algorithmsHubIntro:
+      'Каждая категория ведёт на отдельные страницы с конкретными реализациями и наглядными объяснениями.',
     algorithmCategories: {
       sorting: 'Алгоритмы Сортировки',
       trees: 'Алгоритмы Деревьев',
@@ -1831,6 +1982,149 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       linkedList: 'Связанные Списки',
       eulerProject: 'Решения Project Euler',
     },
+    algorithmsCategorySortingDesc:
+      'Наглядные объяснения и интерактивные демо сортировки массивов шаг за шагом.',
+    algorithmsCategoryGraphsDesc:
+      'Обходы, кратчайшие пути и мышление графами с визуальными представлениями.',
+    algorithmsCategoryLinkedListDesc:
+      'Узловые структуры данных с примерами вставки, удаления и обхода.',
+    algorithmsCategoryTreesDesc:
+      'Бинарные деревья, обходы и операции поиска с постепенным усложнением.',
+    algorithmsBrowseAlgorithms: 'Выберите категорию алгоритмов',
+    algorithmsOpenCategory: 'Открыть категорию',
+    algorithmsReady: 'Доступно',
+    algorithmsComingSoon: 'Скоро',
+    algorithmsMoreSoon: 'Скоро появятся новые примеры',
+    algorithmsBreadcrumbs: 'Хлебные крошки',
+    algorithmsSortingTitle: 'Алгоритмы Сортировки',
+    algorithmsSortingDescription:
+      'Начните с простой сортировки сравнением и посмотрите, как соседние элементы постепенно выстраиваются по возрастанию.',
+    algorithmsSortingIntro:
+      'Этот раздел будет расти. Сейчас здесь доступны Bubble Sort и Quick Sort как первые интерактивные демонстрации.',
+    algorithmsSortingBubbleSortDesc:
+      'Пошаговая визуализация Bubble Sort с кодом, управлением и понятным объяснением основной идеи.',
+    algorithmsSortingQuickSortDesc:
+      'Визуализация divide-and-conquer подхода, которая показывает, как массив разбивается относительно опорного элемента.',
+    algorithmsSortingInsertionSortDesc:
+      'Визуализация того, как каждый новый элемент вставляется в уже отсортированный префикс.',
+    algorithmsSortingSelectionSortDesc:
+      'Визуализация того, как минимальный оставшийся элемент выбирается и ставится на своё место.',
+    algorithmsSortingMergeSortDesc:
+      'Визуализация divide-and-conquer подхода, где маленькие отсортированные фрагменты сливаются в итоговый результат.',
+    algorithmsSortingShellSortDesc:
+      'Визуализация с шагами по gap, которая улучшает insertion sort за счёт раннего перемещения удалённых элементов.',
+    algorithmsSortingHeapSortDesc:
+      'Визуализация построения кучи и повторного извлечения максимального элемента.',
+    algorithmsBubbleSortTitle: 'Сортировка пузырьком',
+    algorithmsBubbleSortDescription:
+      'Bubble Sort многократно сравнивает соседние элементы и меняет их местами, если они стоят в неправильном порядке.',
+    algorithmsBubbleSortConceptTitle: 'Основная идея',
+    algorithmsBubbleSortConcept:
+      'Алгоритм много раз проходит по массиву. На каждом проходе он сравнивает соседние значения и меняет их местами, если левое значение больше правого.',
+    algorithmsBubbleSortHowItWorks:
+      'Большие значения постепенно “всплывают” к правому краю, поэтому после каждого прохода последняя неотсортированная позиция становится фиксированной.',
+    algorithmsBubbleSortWhySlow:
+      'Bubble Sort легко понять, но она неэффективна на больших входных данных, поэтому хорошо подходит для обучения, а не для production-сортировки.',
+    algorithmsBubbleSortVisualizationDescription:
+      'Перемешайте столбцы, затем наблюдайте, как Bubble Sort сравнивает соседние значения и переносит самые большие элементы в конец.',
+    algorithmsQuickSortTitle: 'Быстрая сортировка',
+    algorithmsQuickSortDescription:
+      'Quick Sort выбирает опорный элемент, разбивает массив относительно него, а затем рекурсивно сортирует левую и правую части.',
+    algorithmsQuickSortConcept:
+      'Quick Sort выбирает pivot и переставляет массив так, чтобы меньшие значения оказались слева, а большие — справа.',
+    algorithmsQuickSortHowItWorks:
+      'После разбиения алгоритм повторяет тот же процесс рекурсивно для обеих частей, поэтому на практике работает заметно быстрее Bubble Sort.',
+    algorithmsQuickSortWhyUseful:
+      'Это один из классических divide-and-conquer алгоритмов: элегантный, быстрый на практике и полезный для понимания рекурсии и partitioning.',
+    algorithmsQuickSortImplementationDescription:
+      'В этой реализации в качестве pivot используется последний элемент, а затем рекурсивно сортируются подмассивы по обе стороны от него.',
+    algorithmsQuickSortVisualizationDescription:
+      'Перемешайте столбцы и наблюдайте, как Quick Sort разбивает массив вокруг pivot, а затем рекурсивно сортирует обе стороны.',
+    algorithmsInsertionSortTitle: 'Сортировка вставками',
+    algorithmsInsertionSortDescription:
+      'Insertion Sort постепенно расширяет отсортированный префикс и вставляет каждый новый элемент на правильную позицию.',
+    algorithmsInsertionSortConcept:
+      'Алгоритм идёт слева направо и рассматривает начало массива как уже отсортированный сегмент.',
+    algorithmsInsertionSortHowItWorks:
+      'Каждый новый элемент сравнивается с предыдущими значениями и сдвигается влево, пока не окажется в правильной точке вставки.',
+    algorithmsInsertionSortWhyUseful:
+      'Алгоритм прост, стабилен и особенно хорошо работает на почти отсортированных или очень маленьких наборах данных.',
+    algorithmsInsertionSortImplementationDescription:
+      'В этой реализации текущее значение шаг за шагом меняется местами назад, пока не попадёт в нужную позицию внутри отсортированного префикса.',
+    algorithmsInsertionSortVisualizationDescription:
+      'Перемешайте столбцы и наблюдайте, как каждый новый элемент смещается влево, пока отсортированный префикс не восстановится.',
+    algorithmsSelectionSortTitle: 'Сортировка выбором',
+    algorithmsSelectionSortDescription:
+      'Selection Sort на каждом проходе ищет минимальное оставшееся значение и ставит его на следующую отсортированную позицию.',
+    algorithmsSelectionSortConcept:
+      'Алгоритм делит массив на отсортированный префикс и неотсортированный хвост.',
+    algorithmsSelectionSortHowItWorks:
+      'На каждом проходе он просматривает неотсортированную часть, находит минимальный элемент и меняет его местами со следующим элементом отсортированного префикса.',
+    algorithmsSelectionSortWhyUseful:
+      'Его легко понимать, а количество сравнений предсказуемо, поэтому это удобный алгоритм для обучения.',
+    algorithmsSelectionSortImplementationDescription:
+      'В этой реализации отслеживается индекс текущего минимума, а обмен выполняется один раз в конце каждого прохода.',
+    algorithmsSelectionSortVisualizationDescription:
+      'Перемешайте столбцы и наблюдайте, как Selection Sort сканирует неотсортированную область и подтягивает следующий минимум на своё место.',
+    algorithmsMergeSortTitle: 'Сортировка слиянием',
+    algorithmsMergeSortDescription:
+      'Merge Sort рекурсивно разбивает массив на половины, а затем сливает эти половины обратно в отсортированном виде.',
+    algorithmsMergeSortConcept:
+      'Merge Sort следует паттерну divide-and-conquer: разбить задачу на меньшие части, решить их, затем объединить результат.',
+    algorithmsMergeSortHowItWorks:
+      'Алгоритм многократно делит массив пополам, пока не останутся одноэлементные массивы, а затем сливает их обратно с сохранением порядка.',
+    algorithmsMergeSortWhyUseful:
+      'Он гарантирует производительность O(n log n) и особенно важен для понимания рекурсии и стабильной сортировки.',
+    algorithmsMergeSortImplementationDescription:
+      'В этой реализации массив рекурсивно разбивается, а затем отдельная функция merge объединяет уже отсортированные половины.',
+    algorithmsMergeSortVisualizationDescription:
+      'Перемешайте столбцы и наблюдайте, как Merge Sort собирает массив заново, сливая всё более крупные отсортированные фрагменты.',
+    algorithmsShellSortTitle: 'Сортировка Шелла',
+    algorithmsShellSortDescription:
+      'Shell Sort улучшает insertion sort за счёт сравнений элементов на большом расстоянии, а затем завершает работу локальными вставками.',
+    algorithmsShellSortConcept:
+      'Shell Sort начинает с больших промежутков между сравниваемыми элементами и постепенно уменьшает их до 1.',
+    algorithmsShellSortHowItWorks:
+      'Каждый проход выполняет insertion-подобную сортировку для элементов, принадлежащих одной gap-последовательности.',
+    algorithmsShellSortWhyUseful:
+      'Это классическая оптимизация insertion sort и хороший пример того, как предварительная работа уменьшает объём последующих перестановок.',
+    algorithmsShellSortImplementationDescription:
+      'В этой реализации gap уменьшается вдвое на каждом проходе, а внутри каждой группы выполняются обмены в стиле insertion sort.',
+    algorithmsShellSortVisualizationDescription:
+      'Перемешайте столбцы и наблюдайте, как Shell Sort сначала перемещает удалённые элементы, а затем уточняет порядок на всё меньших промежутках.',
+    algorithmsHeapSortTitle: 'Пирамидальная сортировка',
+    algorithmsHeapSortDescription:
+      'Heap Sort строит max-heap, многократно переносит максимальное значение в конец и восстанавливает кучу для оставшихся элементов.',
+    algorithmsHeapSortConcept:
+      'Heap Sort сначала организует массив в бинарную кучу, где максимальное значение находится в корне.',
+    algorithmsHeapSortHowItWorks:
+      'Затем алгоритм меняет корень с последним неотсортированным элементом, уменьшает размер кучи и снова выполняет heapify.',
+    algorithmsHeapSortWhyUseful:
+      'Он гарантирует O(n log n) и хорошо показывает связь между массивами и древовидными структурами данных.',
+    algorithmsHeapSortImplementationDescription:
+      'В этой реализации max-heap строится прямо в массиве, а затем heap-order восстанавливается после каждого переноса максимума в конец.',
+    algorithmsHeapSortVisualizationDescription:
+      'Перемешайте столбцы и наблюдайте, как Heap Sort строит кучу, извлекает максимум и наращивает отсортированный хвост справа.',
+    algorithmsImplementationTitle: 'Реализация',
+    algorithmsImplementationDescription:
+      'Короткая реализация, соответствующая поведению, которое показано в интерактивной демонстрации.',
+    algorithmsRepoLinkLabel: 'Ссылка на репозиторий',
+    algorithmsVisualizationTitle: 'Интерактивная визуализация',
+    algorithmsVisualizationDescription:
+      'Перемешайте столбцы, затем наблюдайте, как Bubble Sort сравнивает соседние значения и переносит самые большие элементы в конец.',
+    algorithmsReducedMotionHint:
+      'У вас включено уменьшение движения, поэтому анимация упрощена и не использует лишние переходы.',
+    algorithmsBarsLabel: 'Вертикальные столбцы, представляющие значения массива',
+    algorithmsCurrentArray: 'Текущий массив',
+    algorithmsBarValue: 'Значение',
+    algorithmsStart: 'Начать',
+    algorithmsStop: 'Остановить',
+    algorithmsResume: 'Продолжить',
+    algorithmsShuffle: 'Перемешать',
+    algorithmsSortingIdle: 'Нажмите «Начать», чтобы запустить сортировку.',
+    algorithmsSortingInProgress: 'Сортировка выполняется.',
+    algorithmsSortingPaused: 'Сортировка остановлена.',
+    algorithmsSortingComplete: 'Сортировка завершена.',
     viewOnGitHub: 'Посмотреть на GitHub',
     algorithmsRepository: 'Репозиторий Алгоритмов',
     // SVG Optimization Page

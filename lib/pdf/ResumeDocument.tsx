@@ -1,4 +1,3 @@
-import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Link, Image, Font } from '@react-pdf/renderer';
 import { translations } from '@/lib/translations';
 import { ELanguage } from '@/constants/enums';
@@ -19,6 +18,8 @@ Font.register({
     },
   ],
 });
+
+Font.registerHyphenationCallback((word) => [word]);
 
 const styles = StyleSheet.create({
   page: {

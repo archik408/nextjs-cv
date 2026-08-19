@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useAnimationPreferences } from '@/lib/use-animation-preferences';
 
 interface TypingRotateProps {

@@ -12,26 +12,25 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window === 'undefined') {
-      return ELanguage.en;
-    }
+  const [language, setLanguage] = useState<Language>(ELanguage.en);
+  const [hydrated, setHydrated] = useState(false);
 
+  useEffect(() => {
     try {
       const stored = window.localStorage.getItem('language') as Language | null;
       if (stored === ELanguage.en || stored === ELanguage.ru) {
-        return stored;
+        setLanguage(stored);
       }
     } catch {
       // Ignore storage errors and fall back to default
+    } finally {
+      setHydrated(true);
     }
-
-    return ELanguage.en;
-  });
+  }, []);
 
   // Keep <html lang> in sync with current language for better a11y and SEO
   useEffect(() => {
-    if (typeof document === 'undefined') return;
+    if (typeof document === 'undefined' || !hydrated) return;
 
     const langCode = language === ELanguage.ru ? 'ru' : 'en';
     document.documentElement.lang = langCode;
@@ -41,7 +40,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     } catch {
       // Ignore storage errors
     }
-  }, [language]);
+  }, [hydrated, language]);
 
   const contextValue: LanguageContextType = {
     language,

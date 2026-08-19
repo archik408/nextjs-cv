@@ -21,9 +21,9 @@ const jetbrainsMonoFont = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Artur Basak - Web Engineer & Architect | 15+ Yrs',
+  title: 'Artur Basak - UI/UX Engineer & Frontend Architect | 15+ Yrs',
   description:
-    'Web Engineer & Architect with 15+ years across the full web stack — UI architecture, BFF/API, Node.js, HTTP/caching, accessible PWAs, and scalable web systems.',
+    'UI/UX Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API, Node.js, HTTP/caching, accessible PWAs, and scalable web systems.',
   keywords:
     'Web Engineer, Web Architect, Frontend Architecture, Full Stack, React, Next.js, TypeScript, Node.js, BFF, PWA, Accessibility, WCAG, Design Systems',
   authors: [{ name: 'Artur Basak', url: 'https://github.com/archik408' }],
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Artur Basak - Web Engineer & Architect | 15+ Yrs',
+    title: 'Artur Basak - UI/UX Engineer & Frontend Architect | 15+ Yrs',
     description:
-      'Web Engineer & Architect — full web stack from UI architecture to BFF, Node.js, HTTP/caching, and accessible PWAs.',
+      'UI/UX Engineer & Frontend Architect — full web stack from UI architecture to BFF, Node.js, HTTP/caching, and accessible PWAs.',
     url: 'https://arturbasak.dev',
     siteName: 'Artur Basak Portfolio',
     images: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
         url: '/ogp.jpg',
         width: 1200,
         height: 630,
-        alt: 'Artur Basak - Web Engineer & Architect | 15+ Yrs',
+        alt: 'Artur Basak - UI/UX Engineer & Frontend Architect | 15+ Yrs',
       },
     ],
     locale: 'en_US',
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Artur Basak - Web Engineer & Architect | 15+ Yrs',
+    title: 'Artur Basak - UI/UX Engineer & Frontend Architect | 15+ Yrs',
     description:
-      'Web Engineer & Architect — full web stack from UI architecture to BFF, Node.js, HTTP/caching, and accessible PWAs.',
+      'UI/UX Engineer & Frontend Architect — full web stack from UI architecture to BFF, Node.js, HTTP/caching, and accessible PWAs.',
     images: ['/ogp.jpg'],
     site: '@archik408',
   },
@@ -89,7 +89,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Artur Basak',
-    jobTitle: 'Web Engineer & Architect',
+    jobTitle: 'UI/UX Engineer & Frontend Architect',
     url: 'https://arturbasak.dev',
     image: 'https://arturbasak.dev/ogp.jpg',
     sameAs: [

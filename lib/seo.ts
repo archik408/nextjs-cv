@@ -119,9 +119,9 @@ export function generateMetadata(config: SEOConfig): Metadata {
 // Предустановленные конфигурации для основных страниц
 export const seoConfigs = {
   home: {
-    title: 'Artur Basak - Web Engineer & Architect | 15+ Yrs',
+    title: 'Artur Basak - UI/UX Engineer & Frontend Architect | 15+ Yrs',
     description:
-      'Web Engineer & Architect with 15+ years across the full web stack — UI architecture, BFF/API, Node.js, HTTP/caching, accessible PWAs, and scalable web systems.',
+      'UI/UX Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API, Node.js, HTTP/caching, accessible PWAs, and scalable web systems.',
     keywords:
       'Web Engineer, Web Architect, Frontend Architecture, Full Stack, React, Next.js, TypeScript, Node.js, BFF, PWA, Accessibility, WCAG, Design Systems',
   },
@@ -152,9 +152,9 @@ export const seoConfigs = {
   algorithms: {
     title: 'Algorithms & Data Structures Implementation',
     description:
-      'Collection of algorithm implementations and data structure solutions from competitive programming practice. Examples include sorting algorithms, tree algorithms, and graph algorithms.',
+      'An algorithm learning hub with category pages, focused implementations, and interactive visualizations. Start with sorting algorithms and Bubble Sort.',
     keywords:
-      'Algorithms, Data Structures, Programming, Competitive Programming, Sorting, Trees, Graphs, JavaScript',
+      'Algorithms, Data Structures, Bubble Sort, Sorting Algorithms, Graphs, Trees, Interactive Visualization, JavaScript',
     path: '/algorithms',
   },
   ocr: {

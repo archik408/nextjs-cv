@@ -13,6 +13,7 @@ export function HeroSection() {
   const { t, language } = useLanguage();
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const heroRole = t.role.replace(/\s*\|\s*15\+\s*Yrs$/, '');
 
   // Простой автоматический flip через 1 секунду после загрузки компонента
   useEffect(() => {
@@ -86,7 +87,7 @@ export function HeroSection() {
         <ArticleTitle text={'Artur Basak'} />
         <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 md:mb-2">
           <span className="md:hidden">{t.roleMobile}</span>
-          <span className="hidden md:inline">{t.role}</span>
+          <span className="hidden md:inline">{heroRole}</span>
         </h2>
         <div className="mb-8 min-h-[5.5rem] md:min-h-[2.5rem] flex items-center justify-center relative">
           <p

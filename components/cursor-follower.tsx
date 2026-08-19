@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 
 const useCursorFollower = () => {
   const elementRef = useRef<HTMLDivElement>(null);
