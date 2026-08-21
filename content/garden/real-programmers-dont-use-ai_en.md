@@ -141,6 +141,12 @@ Delivery tells the same story. Drones, autonomous vehicles and delivery robots h
 
 ![Delivery robots handle part of the job without cancelling the real delivery market](/garden/real-programmers-dont-use-ai/delivery-robot.webp)
 
+Richard Campbell [tells an interesting story](https://habr.com/ru/articles/1072298/) in a talk close in spirit to this essay. Long before ChatGPT went public, corporations were already deep into AI work. At the origins stood Geoffrey Hinton — a British scientist and professor who worked in Canada at the University of Toronto. He later founded a company that Google acquired, and that acquisition became the foundation of Google Brain. He worked intensively on image recognition.
+
+Image recognition moved into medicine — MRI, X-rays and other scans. In **2016** Hinton declared that the radiologist's profession was effectively doomed and that computers would take over the work in time. American regulators have since certified more than a thousand AI models for medical image recognition. Was Hinton right? Not even close. The opposite happened: demand for radiologists shot up, because demand for medical imaging shot up with it.
+
+When a radiologist needed six weeks to read a scan, doctors simply didn't order that study — nobody wants to wait months for a diagnosis. Once new software arrived and radiologists' throughput jumped, demand for imaging grew faster than the capacity to meet it. Throughput rose, but the radiologist still can't keep up with the rising flood. The number of radiologists is growing too — but training people takes time.
+
 The physical world is especially hard. I have a `Dreame D9 Max` and a semi-automatic `H15 Pro` at home, and between them they still can't clean a flat the way an ordinary vacuum cleaner in human hands does. The paradox is that technological progress has so far led not to the disappearance of the vacuum cleaner from my life but to **an increase in the number of vacuum cleaners in the house**. Yes, in some places I'm doing less of the cleaning myself. But I'm still doing it. In the physical world, automation usually adds a new layer of tooling alongside the human rather than erasing the human from the process.
 
 ## So why the mass layoffs? They aren't about AI
