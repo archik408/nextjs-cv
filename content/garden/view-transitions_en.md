@@ -17,7 +17,7 @@ The **View Transitions API** offers [an elegant model](https://developer.chrome.
 
 ## Wiring it into an SPA: the idea matters more than the listing
 
-The core is a hook that sits between your code and `navigate` from React Router. It gives you a fallback when the API is missing, protection against double clicks, a short pause after navigation so React can paint the new screen before the "new" state is captured, and `skipTransition()` when a lazily loaded route fails.
+The core is a hook that sits between your code and `navigate` from React Router: a fallback when the API is missing, protection against double clicks, a short pause after navigation so React can paint the new screen before the "new" state is captured, and rejecting the Promise when navigation throws (lazy route load, throw inside `navigate`).
 
 ```typescript
 export const useTransitionNavigate = () => {
@@ -43,37 +43,40 @@ export const useTransitionNavigate = () => {
 
       isTransitioningRef.current = true;
 
-      const transition = document.startViewTransition(async () => {
-        try {
-          // Give the router and React time to paint the "new" DOM
-          await new Promise<void>((resolve) => {
-            navigate(to as To);
-            setTimeout(resolve, 100);
-          });
-        } catch (err) {
-          transition.skipTransition();
-          throw err;
-        }
-      });
+      const transition = document.startViewTransition(
+        () =>
+          new Promise<void>((resolve, reject) => {
+            try {
+              navigate(to as To);
+              // Give the router and React time to paint the "new" DOM
+              // Don't use React flushSync — it forces instant commits and kills the animation
+              // Don't use requestAnimationFrame to wait for a paint iteration — on WebKit it breaks playback and transitions feel laggy
+              window.setTimeout(resolve, 100);
+            } catch (error) {
+              reject(error);
+            }
+          })
+      );
 
-      transition.ready.catch(() => {
-        isTransitioningRef.current = false;
-      });
+      transition.ready.catch((error) => console.error('Transition ready error', error));
 
-      transition.finished.finally(() => {
-        if (isMountedRef.current) isTransitioningRef.current = false;
-      });
+      transition.finished
+        .catch((error) => console.error('Transition finishing error', error))
+        .finally(() => {
+          isTransitioningRef.current = false;
+        });
     },
     [navigate]
   );
 };
 ```
 
-Three things about this are worth calling out, because they are what production taught me:
+What to watch in production:
 
-- **`isTransitioning` and `isMounted` live in refs**, not in state that feeds `useCallback` dependencies. Put them in state and you invite either a stale closure or a callback that is recreated on every flag flip.
-- **The `setTimeout` after `navigate` is a technique, not a contract.** There is no API here that says "the new screen is ready." Without the delay, the snapshot of the new state routinely catches an empty page or a skeleton.
-- **Progressive enhancement is the whole safety story.** With no `startViewTransition`, you get an ordinary navigation. Old WebViews lose the animation and nothing else.
+- **VT lock/unlock** — a mutex via `isTransitioning` / `isMounted` so a new transition cannot start until the current animation finishes and incorrect snapshots are not stacked on top of each other.
+- **`isTransitioning` / `isMounted` in refs**, not state in `useCallback` dependencies — avoids stale closures and unnecessary callback recreation.
+- **`setTimeout` after `navigate`** — a practical technique, not a platform contract. Without it the new snapshot often catches an empty or skeleton screen.
+- **Progressive enhancement** — without `startViewTransition`, ordinary navigation. Old WebViews lose the animation but nothing breaks.
 
 On top of the hook sits a link that stays a real `<a href>` — which matters for SEO and for assistive technology — while the click is handed to our navigation:
 

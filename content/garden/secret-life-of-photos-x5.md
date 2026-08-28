@@ -13,6 +13,8 @@ _MoscowJS 70, 30.04.2026 — Артур Басак, X5 Tech_
 
 Страница доклада: [moscowjs.org](https://moscowjs.org/talks/sekretnaya-zhizn-fotografij-v-klube-tajnyh-pokupatelej-x5/)
 
+Презентация: [Секретная жизнь фотографий в Клубе Тайных Покупателей X5 (PDF)](/docs/mystery-shopper-offline-x5.pdf)
+
 ## Видео доклада
 
 [![Обложка видео: Секретная жизнь фотографий в Клубе Тайных Покупателей X5](/garden/secret-life-of-photos-x5/talk-cover.webp)](https://www.youtube.com/watch?v=TZMgDKF_7oU)

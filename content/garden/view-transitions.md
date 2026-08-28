@@ -17,7 +17,7 @@ tags: [pwa, mobile, ssr, react, animation]
 
 ## Интеграция в SPA: идея важнее листинга
 
-В основе — хук-прослойка между вашим кодом и `navigate` из React Router: фоллбэк без API, защита от повторных кликов, короткая пауза после навигации (чтобы React успел отрисовать новый экран до снимка «нового» состояния), `skipTransition()` при ошибке ленивой загрузки роута.
+В основе — хук-прослойка между вашим кодом и `navigate` из React Router: фоллбэк без API, защита от повторных кликов, короткая пауза после навигации (чтобы React успел отрисовать новый экран до снимка «нового» состояния), `reject` в Promise при ошибке навигации (ленивая загрузка роута, throw в `navigate`).
 
 ```typescript
 export const useTransitionNavigate = () => {
@@ -43,26 +43,28 @@ export const useTransitionNavigate = () => {
 
       isTransitioningRef.current = true;
 
-      const transition = document.startViewTransition(async () => {
-        try {
-          // Даём роутеру и React время отрисовать «новый» DOM
-          await new Promise<void>((resolve) => {
-            navigate(to as To);
-            setTimeout(resolve, 100);
-          });
-        } catch (err) {
-          transition.skipTransition();
-          throw err;
-        }
-      });
+      const transition = document.startViewTransition(
+        () =>
+          new Promise<void>((resolve, reject) => {
+            try {
+              navigate(to as To);
+              // Даём роутеру и React время отрисовать «новый» DOM
+              // Не используем React flushSync он делает мгновенные переходы и убивает анимацию
+              // Не используем requestAnimationFrame, чтобы дождаться paint итерации, он не проигрывает анимацию, а переходы лаггают
+              window.setTimeout(resolve, 100);
+            } catch (error) {
+              reject(error);
+            }
+          })
+      );
 
-      transition.ready.catch(() => {
-        isTransitioningRef.current = false;
-      });
+      transition.ready.catch((error) => console.error('Transition ready error', error));
 
-      transition.finished.finally(() => {
-        if (isMountedRef.current) isTransitioningRef.current = false;
-      });
+      transition.finished
+        .catch((error) => console.error('Transition finishing error', error))
+        .finally(() => {
+          isTransitioningRef.current = false;
+        });
     },
     [navigate]
   );
@@ -71,6 +73,7 @@ export const useTransitionNavigate = () => {
 
 На что смотреть в проде:
 
+- **VT lock/unlock** — это Mutex через `isTransitioning` / `isMounted`, чтобы, пока анимация перехода не доиграет, новая анимация ее не перебила и снимки некорректных экранов не наложились друг на друга.
 - **`isTransitioning` / `isMounted` через `ref`**, а не через state в зависимостях `useCallback` — иначе легко поймать устаревшее замыкание или лишние пересоздания колбэка.
 - **`setTimeout` после `navigate`** — рабочий приём, а не «правильное API». Без него снимок нового состояния часто ловит пустой или скелетонный экран.
 - **Прогрессивное улучшение** — без `startViewTransition` просто обычный переход. В старом WebView анимации нет, но и ничего не ломается.
