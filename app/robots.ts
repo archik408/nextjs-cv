@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/llms-txt';
+import { SITE_URL } from '@/lib/site';
 
 /**
  * Crawl policy for search engines and AI agents.
