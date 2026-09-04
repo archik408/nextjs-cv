@@ -42,6 +42,15 @@ export function Footer() {
         >
           Sitemap
         </a>
+        <span aria-hidden="true" className="text-gray-400 dark:text-gray-500">
+          •
+        </span>
+        <a
+          className="underline hover:no-underline text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
+          href="/llms.txt"
+        >
+          llms.txt
+        </a>
       </p>
     </footer>
   );

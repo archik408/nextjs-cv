@@ -90,12 +90,27 @@ export const createWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Artur Basak Portfolio',
-  description: 'UI/UX Engineer & Frontend Architect portfolio and publications',
+  description:
+    'UI/UX Engineer & Frontend Architect portfolio, digital garden, publications, and browser tools',
   url: 'https://arturbasak.dev',
+  inLanguage: ['en', 'ru'],
   author: {
     '@type': 'Person',
     name: 'Artur Basak',
+    url: 'https://arturbasak.dev',
   },
+  about: {
+    '@type': 'Person',
+    name: 'Artur Basak',
+    url: 'https://arturbasak.dev',
+  },
+  hasPart: [
+    { '@type': 'WebPage', name: 'Digital Garden', url: 'https://arturbasak.dev/garden' },
+    { '@type': 'WebPage', name: 'Publications', url: 'https://arturbasak.dev/blog' },
+    { '@type': 'WebPage', name: 'Experience', url: 'https://arturbasak.dev/experience' },
+    { '@type': 'WebPage', name: 'Tools', url: 'https://arturbasak.dev/tools' },
+    { '@type': 'WebPage', name: 'llms.txt', url: 'https://arturbasak.dev/llms.txt' },
+  ],
   potentialAction: {
     '@type': 'SearchAction',
     target: {
