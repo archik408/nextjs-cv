@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
   // Security headers
   async headers() {
     return [
+      // Help agents discover the curated AI index (llmstxt.org)
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Link',
+            value: '</llms.txt>; rel="describedby"',
+          },
+        ],
+      },
       {
         source: '/(.*)',
         headers: [
@@ -30,7 +40,8 @@ const nextConfig: NextConfig = {
               "img-src 'self' data: https: blob:",
               "font-src 'self' data:",
               "connect-src 'self' https: data: wss: wss://*.pusher.com wss://ws-*.pusher.com https://*.pusher.com https://sockjs-*.pusher.com",
-              "media-src 'self' https:",
+              // blob: for getUserMedia / MediaStream consumers
+              "media-src 'self' https: blob:",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
@@ -58,12 +69,12 @@ const nextConfig: NextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
-          // Permissions Policy
+          // Permissions Policy — camera/mic enabled for same-origin Edge AI tools only
           {
             key: 'Permissions-Policy',
             value: [
-              'camera=()',
-              'microphone=()',
+              'camera=(self)',
+              'microphone=(self)',
               'geolocation=()',
               'interest-cohort=()',
               'payment=()',
@@ -127,6 +138,16 @@ const nextConfig: NextConfig = {
 
   // Ensure serverless functions don't bundle these modules so their data files are available at runtime
   serverExternalPackages: ['svgo', 'css-tree', 'csso'],
+
+  // TensorFlow.js and face-api ship ESM that needs transpilation in the Next bundle
+  transpilePackages: [
+    '@tensorflow/tfjs-core',
+    '@tensorflow/tfjs-converter',
+    '@tensorflow/tfjs-backend-webgl',
+    '@tensorflow/tfjs-backend-webgpu',
+    '@tensorflow-models/pose-detection',
+    '@vladmandic/face-api',
+  ],
 };
 
 export default nextConfig;

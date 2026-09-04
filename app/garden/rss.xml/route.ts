@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { listGardenNotes } from '@/lib/garden';
 
-const SITE_URL = 'https://arturbasak.dev';
+import { SITE_URL } from '@/lib/site';
 
 function escapeXml(value: string): string {
   return value
