@@ -7,7 +7,7 @@ import { AnimatedSectionTitle } from '@/components/animated-section-title';
 const tools = [
   'MacOS',
   'M4 Pro',
-  'Keychron B6',
+  'RedDragon EISA Pro',
   'ERGO M575S',
   'Thunderobot Mini LED',
   'Barner Eyewear',
