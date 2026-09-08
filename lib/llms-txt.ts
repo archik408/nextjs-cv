@@ -12,7 +12,7 @@ const ABOUT: LlmsLink[] = [
   {
     title: 'Home / Portfolio',
     path: '/',
-    note: 'Overview of Artur Basak — UI/UX Engineer & Frontend Architect with 15+ years experience',
+    note: 'Overview of Artur Basak — Web Engineer & Frontend Architect with 15+ years experience',
   },
   {
     title: 'Experience',
@@ -127,7 +127,7 @@ export function buildLlmsTxt(): string {
   const sections: string[] = [
     '# Artur Basak',
     '',
-    '> UI/UX Engineer & Frontend Architect (Belarus). Portfolio, digital garden, publications, and browser tools at arturbasak.dev. Focus: React/Next.js, TypeScript, accessibility (WCAG), PWAs, design systems, Edge AI demos, and web performance.',
+    '> Web Engineer & Frontend Architect (Belarus). Portfolio, digital garden, publications, and browser tools at arturbasak.dev. Focus: React/Next.js, TypeScript, accessibility (WCAG), PWAs, design systems, Edge AI demos, and web performance.',
     '',
     'This site is bilingual (English and Russian). Prefer English URLs ending with `_en` for garden notes when available. Structured data uses schema.org Person / WebSite / Article / Blog. Canonical host: https://arturbasak.dev. Full crawl map: https://arturbasak.dev/sitemap.xml. Crawl rules: https://arturbasak.dev/robots.txt.',
     '',

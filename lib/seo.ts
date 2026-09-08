@@ -119,9 +119,9 @@ export function generateMetadata(config: SEOConfig): Metadata {
 // Предустановленные конфигурации для основных страниц
 export const seoConfigs = {
   home: {
-    title: 'Artur Basak - UI/UX Engineer & Frontend Architect | 15+ Yrs',
+    title: 'Artur Basak - Web Engineer & Frontend Architect | 15+ Yrs',
     description:
-      'UI/UX Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API, Node.js, HTTP/caching, accessible PWAs, and scalable web systems.',
+      'Web Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API, Node.js, HTTP/caching, accessible PWAs, and scalable web systems.',
     keywords:
       'Web Engineer, Web Architect, Frontend Architecture, Full Stack, React, Next.js, TypeScript, Node.js, BFF, PWA, Accessibility, WCAG, Design Systems',
   },

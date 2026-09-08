@@ -6,7 +6,7 @@ describe('buildLlmsTxt', () => {
     const text = buildLlmsTxt();
 
     expect(text.startsWith('# Artur Basak\n')).toBe(true);
-    expect(text).toContain(`> UI/UX Engineer`);
+    expect(text).toContain(`> Web Engineer`);
     expect(text).toContain('## About');
     expect(text).toContain('## Tools & demos');
     expect(text).toContain('## External publications');
