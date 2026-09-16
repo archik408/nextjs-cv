@@ -4,7 +4,7 @@
 
 ---
 
-## Обязательные проверки (перед merge / PR)
+## Обязательные проверки после выполнения работы
 
 1. Линтинг и форматирование
    - `npm run lint:check`
@@ -150,6 +150,7 @@ import type { Metadata } from 'next';
 - Языки (EN/RU) и переводы — централизованно через `LanguageProvider` и `translations.ts` (без параллельных источников правды).
 - Тема (dark/light) — с одним источником правды через `ThemeProvider` и класс `dark` на `html/body`.
 - SEO: контент должен быть индексируемым, с корректными metadata/structured data и стабильными URL.
+- **Не путай CDN-статику и serverless-бандл.** Файлы из `public/` уже отдаются как статика. Серверный `process.cwd()` + `fs` с «плавающим» путём заставляет Output File Tracing (NFT/Turbopack) тащить тяжёлые ассеты (mp4, pdf, wasm и т.п.) **внутрь каждой Vercel Function** — квота Functions Storage растёт как размер × число route’ов × retained deployments. Filesystem на сервере — только узко и явно; тяжёлое остаётся в CDN; `outputFileTracingExcludes` / `Includes` в `next.config.ts` — страховка. Смотри Usage по **Functions Storage**, не только по «месту на диске».
 
 ---
 
@@ -288,6 +289,18 @@ import type { Metadata } from 'next';
 
 - Для значимых изображений используем `next/image` с корректными `sizes` и конфигом `images` в `next.config.ts`.
 - Следим за размером и форматом ассетов в `public/` (SVG, PNG, JPG); по возможности используем оптимизированные версии и кэширование.
+
+# Vercel Functions Storage / Output File Tracing
+
+- **Тезис:** CDN-статика ≠ содержимое serverless Function. Не смешивай их через широкий `fs` на сервере.
+- Серверный доступ к диску (`fs` + `process.cwd()`):
+  - путь должен быть статически узким (например `content/garden`, `public/image-placeholders`), а не «весь `public/`» или весь репозиторий;
+  - для динамических путей в Turbopack используй `/*turbopackIgnore: true*/` там, где tracing иначе захватит весь проект;
+  - не читай видео/PDF/WASM с диска в API route — отдавай их как статику/`next/image`/CDN.
+- При изменении серверного `fs` или добавлении крупных файлов в `public/`:
+  - проверяй/обновляй `outputFileTracingExcludes` и `outputFileTracingIncludes` в `next.config.ts`;
+  - после `next build` смотри размеры `.nft.json` (цель: единицы MB на route, без mp4/pdf/wasm в Function-трейсе).
+- Квота Vercel **Functions Storage** считает бандлы по retained deployments: после уменьшения бандлов удаляй старые деплои / настраивай Deployment Retention, иначе старые 100+ MB слепки продолжают занимать лимит.
 
 # Микрооптимизации React
 
