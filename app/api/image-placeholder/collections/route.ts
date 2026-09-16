@@ -2,25 +2,27 @@ import { NextResponse } from 'next/server';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 
+/** Keep NFT traces scoped to placeholders only (see next.config outputFileTracing*). */
+const PLACEHOLDERS_DIR = path.join(process.cwd(), 'public', 'image-placeholders');
+
 export async function GET() {
   try {
-    const base = path.join(process.cwd(), 'public', 'image-placeholders');
-    const dirents = await fs.readdir(base, { withFileTypes: true });
+    const dirents = await fs.readdir(/*turbopackIgnore: true*/ PLACEHOLDERS_DIR, {
+      withFileTypes: true,
+    });
     const directories = dirents.filter((d) => d.isDirectory()).map((d) => d.name);
     const imagesRegex = /\.(png|jpe?g|webp|gif|avif|svg)$/i;
 
-    // Keep only directories that contain at least one image
     const valid: string[] = [];
     for (const name of directories) {
       try {
-        const files = await fs.readdir(path.join(base, name));
+        const files = await fs.readdir(/*turbopackIgnore: true*/ path.join(PLACEHOLDERS_DIR, name));
         if (files.some((f) => imagesRegex.test(f))) valid.push(name);
       } catch {
-        // ignore
+        // ignore unreadable collection dirs
       }
     }
 
-    // Map to display names for known collections
     const displayNameMap: Record<string, string> = {
       belarus: 'Belarus',
       world: 'World',

@@ -2,27 +2,67 @@ import { NextResponse } from 'next/server';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 
+/** Only this directory is read at runtime — keep NFT traces off the rest of public/. */
+const PLACEHOLDERS_DIR = path.join(process.cwd(), 'public', 'image-placeholders');
+
+const IMAGE_EXT = /\.(png|jpe?g|webp|gif|avif|svg)$/i;
+
+const CONTENT_TYPES: Record<string, string> = {
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.gif': 'image/gif',
+  '.avif': 'image/avif',
+  '.svg': 'image/svg+xml',
+};
+
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value));
 }
 
-async function pickRandomImage(dirRelative?: string): Promise<string | null> {
+function resolveUnderPlaceholders(...segments: string[]): string | null {
+  const resolvedBase = path.resolve(PLACEHOLDERS_DIR);
+  const candidate = path.resolve(path.join(PLACEHOLDERS_DIR, ...segments));
+  if (candidate !== resolvedBase && !candidate.startsWith(resolvedBase + path.sep)) {
+    return null;
+  }
+  return candidate;
+}
+
+function grayBoxSvg(w: number, h: number, label: string): string {
+  const bg = '#e5e7eb';
+  const fg = '#374151';
+  const fontSize = Math.max(12, Math.round(Math.min(w, h) / 8));
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+  <rect width="100%" height="100%" fill="${bg}"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="${fontSize}" fill="${fg}">${label}</text>
+</svg>`;
+}
+
+async function pickRandomImage(
+  dirRelative?: string
+): Promise<{ urlPath: string; absolutePath: string } | null> {
   try {
-    const base = path.join(process.cwd(), 'public', 'image-placeholders');
-    // Allow only safe directory names (defense-in-depth in case caller forgets to sanitize)
     const safeSegment = dirRelative && /^[a-z0-9_-]+$/i.test(dirRelative) ? dirRelative : '';
-    const dir = safeSegment ? path.join(base, safeSegment) : base;
-    const resolvedBase = path.resolve(base);
-    const resolvedDir = path.resolve(dir);
-    if (resolvedDir !== resolvedBase && !resolvedDir.startsWith(resolvedBase + path.sep)) {
-      return null;
-    }
-    const files = await fs.readdir(resolvedDir);
-    const candidates = files.filter((f) => /\.(png|jpe?g|webp|gif|avif|svg)$/i.test(f));
+    const dir = resolveUnderPlaceholders(...(safeSegment ? [safeSegment] : []));
+    if (!dir) return null;
+
+    // Scoped under public/image-placeholders; ignore keeps NFT off the rest of public/
+    const files = await fs.readdir(/*turbopackIgnore: true*/ dir);
+    const candidates = files.filter((f) => IMAGE_EXT.test(f));
     if (!candidates.length) return null;
+
     const file = candidates[Math.floor(Math.random() * candidates.length)];
+    const absolutePath = resolveUnderPlaceholders(...(safeSegment ? [safeSegment, file] : [file]));
+    if (!absolutePath) return null;
+
     const rel = safeSegment ? `${encodeURIComponent(safeSegment)}/` : '';
-    return `/image-placeholders/${rel}${encodeURIComponent(file)}`;
+    return {
+      urlPath: `/image-placeholders/${rel}${encodeURIComponent(file)}`,
+      absolutePath,
+    };
   } catch {
     return null;
   }
@@ -36,47 +76,20 @@ export async function GET(request: Request) {
     String(searchParams.get('illustration') ?? '1')
   );
   const rawCollection = String(searchParams.get('collection') ?? '').trim();
-  // sanitize collection path: allow letters, numbers, dash and underscore only
   const collection = rawCollection && /^[a-z0-9_-]+$/i.test(rawCollection) ? rawCollection : '';
   const useOriginal = /^(1|true|yes|on)$/i.test(String(searchParams.get('original') ?? '0'));
 
-  // Build SVG content
   let svg: string;
   if (!showIllustration) {
-    // Gray box with size text
-    const bg = '#e5e7eb'; // gray-200
-    const fg = '#374151'; // gray-700
-    const fontSize = Math.max(12, Math.round(Math.min(w, h) / 8));
-    svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-  <rect width="100%" height="100%" fill="${bg}"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="${fontSize}" fill="${fg}">${w}×${h}</text>
-</svg>`;
+    svg = grayBoxSvg(w, h, `${w}×${h}`);
   } else {
-    const src = (await pickRandomImage(collection || undefined)) ?? '';
-    // If original requested and we have an image, stream the file directly (avoid redirect/CORP issues)
-    if (useOriginal && src) {
+    const picked = await pickRandomImage(collection || undefined);
+
+    if (useOriginal && picked) {
       try {
-        const publicDir = path.join(process.cwd(), 'public');
-        const filePathUnsafe = path.join(publicDir, src.replace(/^\//, ''));
-        const filePath = path.resolve(filePathUnsafe);
-        const resolvedPublic = path.resolve(publicDir);
-        if (!filePath.startsWith(resolvedPublic + path.sep)) {
-          throw new Error('Path traversal detected');
-        }
-        const data = await fs.readFile(filePath);
-        const ext = path.extname(filePath).toLowerCase();
-        const typeMap: Record<string, string> = {
-          '.png': 'image/png',
-          '.jpg': 'image/jpeg',
-          '.jpeg': 'image/jpeg',
-          '.webp': 'image/webp',
-          '.gif': 'image/gif',
-          '.avif': 'image/avif',
-          '.svg': 'image/svg+xml',
-        };
-        const contentType = typeMap[ext] || 'application/octet-stream';
-        // Copy Buffer into a new ArrayBuffer (avoids SharedArrayBuffer typing issues)
+        const data = await fs.readFile(/*turbopackIgnore: true*/ picked.absolutePath);
+        const ext = path.extname(picked.absolutePath).toLowerCase();
+        const contentType = CONTENT_TYPES[ext] || 'application/octet-stream';
         const arrayBuffer = new ArrayBuffer(data.byteLength);
         new Uint8Array(arrayBuffer).set(data);
         return new NextResponse(arrayBuffer, {
@@ -84,9 +97,7 @@ export async function GET(request: Request) {
           headers: {
             'Content-Type': contentType,
             'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=600',
-            // Allow embedding this resource across origins (overrides global CORP same-origin)
             'Cross-Origin-Resource-Policy': 'cross-origin',
-            // Basic CORS for image fetches
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, OPTIONS',
           },
@@ -95,40 +106,15 @@ export async function GET(request: Request) {
         // fall through to gray box if reading failed
       }
     }
-    // If no images found, fallback to gray box text
-    if (!src) {
-      const bg = '#e5e7eb';
-      const fg = '#374151';
-      const fontSize = Math.max(12, Math.round(Math.min(w, h) / 8));
-      svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-  <rect width="100%" height="100%" fill="${bg}"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="${fontSize}" fill="${fg}">No images</text>
-</svg>`;
+
+    if (!picked) {
+      svg = grayBoxSvg(w, h, 'No images');
     } else {
-      // Embed image as data URI to avoid CSP issues with external image references
       try {
-        const publicDir = path.join(process.cwd(), 'public');
-        const filePathUnsafe = path.join(publicDir, src.replace(/^\//, ''));
-        const filePath = path.resolve(filePathUnsafe);
-        const resolvedPublic = path.resolve(publicDir);
-        if (!filePath.startsWith(resolvedPublic + path.sep)) {
-          throw new Error('Path traversal detected');
-        }
-        const data = await fs.readFile(filePath);
-        const ext = path.extname(filePath).toLowerCase();
-        const typeMap: Record<string, string> = {
-          '.png': 'image/png',
-          '.jpg': 'image/jpeg',
-          '.jpeg': 'image/jpeg',
-          '.webp': 'image/webp',
-          '.gif': 'image/gif',
-          '.avif': 'image/avif',
-          '.svg': 'image/svg+xml',
-        };
-        const contentType = typeMap[ext] || 'application/octet-stream';
-        const base64 = data.toString('base64');
-        const dataUri = `data:${contentType};base64,${base64}`;
+        const data = await fs.readFile(/*turbopackIgnore: true*/ picked.absolutePath);
+        const ext = path.extname(picked.absolutePath).toLowerCase();
+        const contentType = CONTENT_TYPES[ext] || 'application/octet-stream';
+        const dataUri = `data:${contentType};base64,${data.toString('base64')}`;
 
         svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
@@ -138,15 +124,7 @@ export async function GET(request: Request) {
   <image href="${dataUri}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip)"/>
 </svg>`;
       } catch {
-        // Fallback to gray box if image loading fails
-        const bg = '#e5e7eb';
-        const fg = '#374151';
-        const fontSize = Math.max(12, Math.round(Math.min(w, h) / 8));
-        svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-  <rect width="100%" height="100%" fill="${bg}"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="${fontSize}" fill="${fg}">Image load failed</text>
-</svg>`;
+        svg = grayBoxSvg(w, h, 'Image load failed');
       }
     }
   }

@@ -20,17 +20,19 @@ export type GardenNote = {
   translationSlug: string | null;
 };
 
+// Statically scoped under content/garden so Turbopack/NFT do not trace the whole repo.
 const GARDEN_DIR = path.join(process.cwd(), 'content', 'garden');
 const EN_SLUG_SUFFIX = '_en';
 
 function ensureGardenDirExists(): void {
-  if (!fs.existsSync(GARDEN_DIR)) {
-    fs.mkdirSync(GARDEN_DIR, { recursive: true });
+  // turbopackIgnore: mkdir is only for local first-run; never needed in production deploys
+  if (!fs.existsSync(/*turbopackIgnore: true*/ GARDEN_DIR)) {
+    fs.mkdirSync(/*turbopackIgnore: true*/ GARDEN_DIR, { recursive: true });
   }
 }
 
 function readFileAsString(absolutePath: string): string {
-  return fs.readFileSync(absolutePath, 'utf8');
+  return fs.readFileSync(/*turbopackIgnore: true*/ absolutePath, 'utf8');
 }
 
 function parseFrontmatter(raw: string): { frontmatter: GardenNoteFrontmatter; body: string } {
@@ -98,8 +100,8 @@ export function getGardenPairedSlug(slug: string): string {
 
 function noteFileExists(slug: string): boolean {
   return (
-    fs.existsSync(path.join(GARDEN_DIR, `${slug}.md`)) ||
-    fs.existsSync(path.join(GARDEN_DIR, `${slug}.mdx`))
+    fs.existsSync(/*turbopackIgnore: true*/ path.join(GARDEN_DIR, `${slug}.md`)) ||
+    fs.existsSync(/*turbopackIgnore: true*/ path.join(GARDEN_DIR, `${slug}.mdx`))
   );
 }
 
@@ -132,7 +134,7 @@ export function listGardenNotes(options: ListGardenNotesOptions = {}): GardenNot
   const { locale = 'all' } = options;
   ensureGardenDirExists();
   const files = fs
-    .readdirSync(GARDEN_DIR, { withFileTypes: true })
+    .readdirSync(/*turbopackIgnore: true*/ GARDEN_DIR, { withFileTypes: true })
     .filter((d) => d.isFile() && (d.name.endsWith('.md') || d.name.endsWith('.mdx')))
     .map((d) => d.name);
   const notes: GardenNote[] = files.map((file) => {
@@ -150,7 +152,7 @@ export function getGardenNoteBySlug(slug: string): GardenNote | null {
   ensureGardenDirExists();
   const candidates = [path.join(GARDEN_DIR, `${slug}.md`), path.join(GARDEN_DIR, `${slug}.mdx`)];
   for (const candidate of candidates) {
-    if (fs.existsSync(candidate)) {
+    if (fs.existsSync(/*turbopackIgnore: true*/ candidate)) {
       const raw = readFileAsString(candidate);
       const { frontmatter, body } = parseFrontmatter(raw);
       return toGardenNote(slug, frontmatter, body);

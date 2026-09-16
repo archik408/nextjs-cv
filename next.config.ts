@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // MoveNet-only edge AI does not need @mediapipe/pose; stub it so Turbopack
+  // does not fail on that package's non-ESM browser bundle.
+  turbopack: {
+    resolveAlias: {
+      '@mediapipe/pose': './lib/edge-ai/mediapipe-pose-stub.ts',
+    },
+  },
+
   // Turbopack has built-in WebAssembly support, no webpack config needed
   // For production builds, WebAssembly is handled automatically
 
@@ -148,6 +156,37 @@ const nextConfig: NextConfig = {
     '@tensorflow-models/pose-detection',
     '@vladmandic/face-api',
   ],
+
+  // process.cwd() + fs in garden / image-placeholder over-traces public/ (~120 MB of
+  // videos, PDFs, WASM) into every serverless Function. Keep those as CDN static only.
+  // Note: excludes run after includes — do not glob-exclude all of public/ or
+  // image-placeholders Includes would be removed again.
+  outputFileTracingExcludes: {
+    '/*': [
+      './public/garden/**/*',
+      './public/docs/**/*',
+      './public/wasm/**/*',
+      './public/audit/**/*',
+      './public/timeline/**/*',
+      './public/certificates/**/*',
+      './coverage/**/*',
+      './TESTING.md',
+      './tsconfig.tsbuildinfo',
+      './package-lock.json',
+    ],
+  },
+
+  // Narrow includes for routes that intentionally read from disk at runtime
+  outputFileTracingIncludes: {
+    '/': ['./content/garden/**/*'],
+    '/garden': ['./content/garden/**/*'],
+    '/garden/*': ['./content/garden/**/*'],
+    '/sitemap.xml': ['./content/garden/**/*'],
+    '/garden/rss.xml': ['./content/garden/**/*'],
+    '/llms.txt': ['./content/garden/**/*'],
+    '/api/image-placeholder': ['./public/image-placeholders/**/*'],
+    '/api/image-placeholder/collections': ['./public/image-placeholders/**/*'],
+  },
 };
 
 export default nextConfig;

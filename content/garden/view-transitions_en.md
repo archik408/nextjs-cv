@@ -15,6 +15,15 @@ The app I work on is a hybrid PWA/SPA — React 18 with React Router, running in
 
 The **View Transitions API** offers [an elegant model](https://developer.chrome.com/docs/web-platform/view-transitions): you tell the browser "here is the current DOM, here is the new one, animate between them." The browser does the heavy lifting — it captures frames, stacks them, and animates on the GPU. Your job is narrower: call `document.startViewTransition` at the right moment, wait for a meaningful new frame, and refuse to animate the things that are supposed to stay still.
 
+## What it looks like in production
+
+Tab-to-tab navigation, this is different pages / routes — all from the same WebView PWA:
+
+<video controls playsinline preload="metadata">
+  <source src="/garden/view-transitions/transitions-demo.mp4" type="video/mp4">
+  Your browser does not support video playback.
+</video>
+
 ## Wiring it into an SPA: the idea matters more than the listing
 
 The core is a hook that sits between your code and `navigate` from React Router: a fallback when the API is missing, protection against double clicks, a short pause after navigation so React can paint the new screen before the "new" state is captured, and rejecting the Promise when navigation throws (lazy route load, throw inside `navigate`).
