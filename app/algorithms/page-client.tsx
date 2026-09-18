@@ -90,7 +90,7 @@ export function AlgorithmsPageClient() {
             </div>
           </section>
 
-          <section aria-labelledby="algorithm-categories-title">
+          <section role="region" aria-labelledby="algorithm-categories-title">
             <div className="mb-6 flex items-center justify-between gap-4">
               <div>
                 <h2 id="algorithm-categories-title" className="text-2xl font-semibold sm:text-3xl">

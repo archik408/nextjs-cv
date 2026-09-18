@@ -83,7 +83,10 @@ export function HeroSection() {
           </div>
         </div>
         <ArticleTitle text={'Artur Basak'} />
-        <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 min-h-[2rem] flex items-center justify-center">
+        <h2
+          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 min-h-[2rem] flex items-center justify-center"
+          aria-label={t.subtitle}
+        >
           <TypingRotate
             texts={[t.subtitle]}
             periodMs={2000}

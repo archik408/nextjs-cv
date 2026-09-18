@@ -261,6 +261,7 @@ export function SpeechRecognitionPageClient() {
           </div>
 
           <section
+            role="region"
             className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 md:p-5 text-sm text-gray-600 dark:text-gray-400"
             aria-labelledby="speech-privacy-title"
           >

@@ -41,6 +41,7 @@ export function EdgeAiCapabilityPanel({
 }: EdgeAiCapabilityPanelProps) {
   return (
     <section
+      role="region"
       className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 md:p-5 mb-6"
       aria-labelledby="edge-ai-caps-title"
     >

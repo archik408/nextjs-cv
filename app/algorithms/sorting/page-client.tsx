@@ -45,7 +45,7 @@ export function SortingAlgorithmsPageClient() {
             </div>
           </section>
 
-          <section aria-labelledby="sorting-list-title">
+          <section role="region" aria-labelledby="sorting-list-title">
             <div className="mb-6">
               <h2 id="sorting-list-title" className="text-2xl font-semibold">
                 {t.algorithmsBrowseAlgorithms || 'Browse algorithm categories'}
