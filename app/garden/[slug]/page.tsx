@@ -6,7 +6,6 @@ import { generateMetadata as buildMetadata } from '@/lib/seo';
 import NavigationButtons from '@/components/navigation-buttons';
 import { SharePanel } from '@/components/share-panel';
 import { GardenArticle } from '@/components/garden-article';
-import { GardenTagLink } from '@/components/garden-tag-link';
 import { GardenTranslationLink } from '@/components/garden-translation-link';
 
 export const dynamic = 'force-static';
@@ -24,7 +23,7 @@ export default async function GardenNotePage({ params }: PageParams) {
   if (!note) return notFound();
   const dateLocale = note.locale === 'en' ? 'en-US' : 'ru-RU';
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 dark:from-gray-900 dark:to-gray-800 dark:text-white">
       <main className="mx-auto max-w-3xl px-4 py-12" lang={note.locale} translate="yes">
         <NavigationButtons
           levelUp="garden"
@@ -48,7 +47,12 @@ export default async function GardenNotePage({ params }: PageParams) {
         {note.frontmatter.tags && note.frontmatter.tags.length > 0 && (
           <div className="mb-6 flex flex-wrap gap-2">
             {note.frontmatter.tags.map((tag) => (
-              <GardenTagLink key={tag} tag={tag} variant="badge" />
+              <span
+                key={tag}
+                className="inline-block rounded bg-neutral-100 px-2 py-0.5 text-xs text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+              >
+                #{tag}
+              </span>
             ))}
           </div>
         )}
@@ -69,29 +73,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const note = getGardenNoteBySlug(slug);
   if (!note) return {};
-
-  const languages: Partial<Record<'en' | 'ru' | 'x-default', string>> = {
-    [note.locale]: `/garden/${note.slug}`,
-  };
-  if (note.translationSlug) {
-    const otherLocale = note.locale === 'en' ? 'ru' : 'en';
-    languages[otherLocale] = `/garden/${note.translationSlug}`;
-    languages['x-default'] =
-      note.locale === 'ru' ? `/garden/${note.slug}` : `/garden/${note.translationSlug}`;
-  } else {
-    languages['x-default'] = `/garden/${note.slug}`;
-  }
-
   return buildMetadata({
     title: note.frontmatter.title,
-    description:
-      note.frontmatter.description ||
-      (note.locale === 'en' ? 'A note from the Digital Garden' : 'Заметка из Digital Garden'),
-    path: `/garden/${slug}`,
-    type: 'article',
-    publishedTime: note.frontmatter.date,
-    modifiedTime: note.frontmatter.date,
-    locale: note.locale,
-    languages,
+    description: note.frontmatter.description || note.frontmatter.title,
+    path: `/garden/${note.slug}`,
   });
 }

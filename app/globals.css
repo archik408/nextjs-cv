@@ -368,8 +368,6 @@
   --border: #475569;
   --primary-color: #3b82f6;
 
-  --glare-x: 50%;
-  --glare-y: 0%;
   --glare-o: 0;
   --glare-rot: 45deg;
 }
@@ -586,6 +584,39 @@ img {
   }
 }
 
+/* Hero scroll-down mouse indicator */
+.hero-scroll-mouse {
+  display: block;
+  width: 1.5rem;
+  height: 2.5rem;
+  border: 2px solid currentColor;
+  border-radius: 9999px;
+  position: relative;
+}
+
+.hero-scroll-wheel {
+  position: absolute;
+  top: 0.4rem;
+  left: 50%;
+  width: 0.2rem;
+  height: 0.45rem;
+  margin-left: -0.1rem;
+  border-radius: 9999px;
+  background-color: currentColor;
+  animation: hero-scroll-wheel 1.6s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-wheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
 .animate-wobble:hover svg {
   animation: wobble 1s ease-in-out;
 }
@@ -618,22 +649,13 @@ img {
 }
 
 .tilt-glare {
-  z-index: 1;
+  z-index: 30;
   mix-blend-mode: screen;
-  background:
-    /* cursor hotspot */
-    radial-gradient(
-      150px 120px at var(--glare-x) var(--glare-y),
-      rgba(255, 255, 255, var(--glare-o)) 0%,
-      rgba(255, 255, 255, calc(var(--glare-o) * 0.8)) 20%,
-      rgba(255, 255, 255, 0) 60%
-    ),
-    /* elongated streak */
-    linear-gradient(
-        var(--glare-rot),
-        rgba(255, 255, 255, calc(var(--glare-o) * 0.35)) 0%,
-        rgba(255, 255, 255, 0) 60%
-      );
+  background: linear-gradient(
+    var(--glare-rot),
+    rgba(255, 255, 255, calc(var(--glare-o) * 0.55)) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
   transition: opacity 120ms ease-out;
 }
 

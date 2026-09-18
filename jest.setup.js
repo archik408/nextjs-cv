@@ -137,7 +137,7 @@ jest.mock('@/lib/use-language', () => ({
     t: {
       name: 'Artur Basak',
       role: 'Senior Frontend Engineer • UI/UX Specialist',
-      subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
+      subtitle: 'Making the web work for people',
       garden: 'Digital Garden',
       switchLangToRu: 'Switch language to Russian',
       switchLangToEn: 'Switch language to English',
@@ -258,6 +258,7 @@ jest.mock('@/lib/use-language', () => ({
       yandexAliceGenericError: 'Could not get a response. Please try again.',
       yandexAliceUnknownResponse: 'The server returned a response in an unknown format.',
       heroAvatarFlipCard: 'Avatar flip card',
+      heroScrollDown: 'Scroll down to content',
       heroGitHubProfile: 'GitHub Profile',
       heroLinkedInProfile: 'LinkedIn Profile',
       heroSendEmail: 'Send Email',

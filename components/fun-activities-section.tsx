@@ -66,7 +66,7 @@ export function FunActivitiesSection() {
       description: t.kidsDesc,
       icon: Users,
       color: 'text-orange-400',
-      href: '/garden?tag=дети',
+      href: '/garden?shelf=kids',
       isExternal: false,
       images: [{ src: '/scratch.webp', alt: 'Kids Programming' }],
     },
@@ -118,7 +118,7 @@ export function FunActivitiesSection() {
           className="justify-center"
           wrapperClassName="text-center"
         />
-        <p className="mt-4 max-w-3xl mx-auto text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="mt-4 max-w-3xl mx-auto text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-line">
           {t.funActivitiesIntro}
         </p>
       </div>
@@ -154,7 +154,7 @@ export function FunActivitiesSection() {
         {/* Navigation Buttons */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           aria-label={`${t.previous} ${t.activity}`}
         >
           <ChevronLeft className="w-6 h-6" />
@@ -162,7 +162,7 @@ export function FunActivitiesSection() {
 
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           aria-label={`${t.next} ${t.activity}`}
         >
           <ChevronRight className="w-6 h-6" />
@@ -171,7 +171,7 @@ export function FunActivitiesSection() {
         {/* Carousel */}
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-8 py-3"
+          className="relative z-0 flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-8 py-3"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {activities.map((activity) => {
@@ -271,7 +271,7 @@ export function FunActivitiesSection() {
                 href={activity.href}
                 target={activity.isExternal ? '_blank' : '_self'}
                 rel={activity.isExternal ? 'noopener noreferrer' : undefined}
-                className={`${itemClassName} hover:z-10 hover:scale-[1.02]`}
+                className={`${itemClassName} relative z-0 hover:scale-[1.02]`}
               >
                 {CardContent}
               </a>

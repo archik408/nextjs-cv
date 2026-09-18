@@ -21,7 +21,7 @@ type ExperienceSectionProps = {
   animateTitle?: boolean;
   /** Render page-level heading (h1) instead of section heading (h2). */
   titleAs?: 'h1' | 'h2';
-  /** Show a centered link to /experience after the list. */
+  /** Show a centered link to /cv after the list. */
   showViewAllLink?: boolean;
 };
 
@@ -262,7 +262,7 @@ export function ExperienceSection({
         {showViewAllLink && (
           <div className="mt-10 flex justify-center">
             <Link
-              href="/experience"
+              href="/cv"
               className="group inline-flex items-center gap-2 text-base md:text-lg font-medium text-blue-700 dark:text-blue-400 hover:underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-400 rounded-sm"
             >
               {t.viewAllExperience}

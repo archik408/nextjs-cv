@@ -69,65 +69,56 @@ export const translations = {
       'The content and text on the site were refined, with more information and external links to articles, publications, and social networks added.',
     timeMachine2025Description:
       'Complete overhaul of the website to Next.js with server-side rendering and migration to Vercel. The goal was not only to present content with comprehensive information about me as a specialist, but also to demonstrate my skills as a designer and frontend engineer right here. The website also became a sandbox to work with an AI assistant. Beyond the portfolio, the site now features a digital garden, career timeline, and numerous experiments in the form of online tools.',
+    timeMachine2026Description:
+      'A light redesign of the site’s look and information architecture to make it more authentic and less like a résumé or a productized service. It is an attempt to shed professional deformation after years in outsourcing and outstaffing, where the main self-presentation skill is a résumé with a formal list of what you can do and what you have done. The goal is not a résumé-site, but a message-site — one that answers more cleanly who I am and what I do.',
     role: 'Web Engineer & Frontend Architect | 15+ Yrs',
     roleMobile: 'Web Engineer & Frontend Architect',
-    subtitle: 'Building the Web of Tomorrow, Grounded in the Engineering of the Past.',
+    subtitle: 'Making the web for people',
+    heroCtaExperience: 'Experience',
+    heroCtaWriting: 'Selected writing',
+    heroCtaContact: 'Contact',
     about: 'About Me',
     resumeAbout:
       "Product-minded Web Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API layers, Node.js services, HTTP/caching, and offline-capable clients. I specialize in accessible, high-performance PWAs and scalable web systems grounded in strong UI/UX practice—without dark patterns. Recently leading hybrid WebView/PWA delivery at X5 Tech (20M+ MAU), with prior work for Daimler, SAP, Kohl's, and startups including Lition. Published in Smashing Magazine; deep focus on WCAG, design systems, Core Web Vitals, and pragmatic full-stack delivery.",
-    aboutText: `Hello! I'm Artur, a second-generation software programmer. My passion for computers is a family legacy, ignited by my godfather and school Computer Science teacher, and then fueled by over a decade of hands-on experience across the entire spectrum of software development.<br><br>
-My journey is <span class="text-double-underline">a bridge<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> between computing eras. It began with structured programming in <em>Pascal</em>, <em>C++</em> and <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, where I learned the core principles of memory management and algorithms. I then built powerful desktop and early web applications for the enterprise world using <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> and <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, and gained a critical eye for quality and process through test automation with <em>Selenium RC</em> and later <em>WebDriver</em>, <em>Cypress</em> and <em>Playwright</em>.<br/><br/>
-I was on the front lines of the web's transformation, crafting dynamic applications with its first-generation tools: <em><abbr title="Asynchronous Javascript and XML ">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em>, and <em>Ember.js</em>. This deep historical context is my greatest asset. It allows me to architect modern <em>React</em>, <em>Web Components</em> and <em>TypeScript</em> applications with a profound understanding of the problems they solve, ensuring they are not just trendy but <span class="text-single-underline">truly well-engineered<img aria-hidden="true" src="/single-underline.webp" alt="" class="single-underline"></span>, scalable, and built to last.<br/><br/>
-Today, I focus on creating accessible, user-centric, offline and mobile-first <em>Progressive Web Apps (<abbr>PWA</abbr>)</em> and robust frontend architectures based on modern tools like <em>Webpack</em>, <em>Vite</em>, <em>Next.js</em>, <em>MobX</em>, <em>React-Router</em>, <em>Material UI</em>, <em>Tailwind CSS</em>, <em>Rust/WebAssembly</em>, etc.<br/>
-I've been trusted to deliver solutions for industry giants like Daimler and SAP, retailers like X5 Group and Kohl's, tech innovators like Croc, startups like TrueImpact, Lition, Tispr/Indy and chemical leaders like Sibur and Evonik.<br/><br/>
-Now, I've come full circle: I'm passing on the logic and joy of creation to the next generation by teaching my children to code in <em>Scratch</em>, <em>MakeCode</em> and <em>Blockly</em>.`,
+    aboutText: `Hi! My name is Artur, and I am a second-generation application developer. My passion for computers is a family legacy—sparked by my godfather and school computer science teacher, and later fueled by years of hands-on experience across the entire spectrum of software development.<br/><br/>
+My career path <span class="text-double-underline">bridges<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> different eras of technology. I started out building graphical desktop interfaces using <em>Pascal</em> and <em>C++</em>, alongside the <em>Win32 API</em> and <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>.<br/><br/>
+Later, I shifted to early client-server applications for the corporate world, working with <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em>, and <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, while ensuring quality through test automation with <em>Selenium RC</em> and <em>WebDriver</em>.<br/><br/>
+I was at the forefront of the web technology transformation, building dynamic applications using first-generation tools like <em><abbr title="Asynchronous Javascript and XML">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em>, and <em>Ember.js</em>.<br/><br/>
+I consider this deep historical context my greatest asset. It allows me to design modern applications using <em>React</em>, <em><abbr title="WebAssembly">WASM</abbr></em>, <em>Web Components</em>, and <em>TypeScript</em> with a profound understanding of the problems they solve—ensuring that these tools aren't just trendy, but <span class="text-single-underline">truly well-designed<img aria-hidden="true" src="/single-underline.webp" alt="" class="single-underline"></span>, scalable, and built to last.<br/><br/>
+Today, I focus on creating accessible, user-centric, scalable, and offline-capable web products that run on a wide range of devices for millions of X5 Group retail customers.<br/><br/>
+I've also come full circle: I'm passing on my experience and the joy of creation to the next generation by teaching my children how to program using <em>Scratch</em>, <em>MakeCode</em>, and <em>Blockly</em>.`,
+    interestsIntro: "I'm interested in",
     cleanCode: 'Clean Code',
     cleanCodeDesc:
-      'Writing maintainable and scalable code based on <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr>, <abbr title="Easy to Change">ETC</abbr> and <abbr title="Don\'t Repeat Yourself">DRY</abbr> principles',
+      'Building clear and maintainable engineering systems based on <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr>, <abbr title="Easy to Change">ETC</abbr>, and <abbr title="Don\'t Repeat Yourself">DRY</abbr> principles',
     components: 'Components',
-    componentsDesc: 'Building reusable, accessible, responsive and user-friendly UI components',
+    componentsDesc:
+      'Creating convenient, beautiful, accessible, responsive, and user-friendly interfaces for people',
     bestPractices: 'Best Practices',
-    bestPracticesDesc: 'Following industry standards with modern frontend frameworks and tools',
+    bestPracticesDesc:
+      'Keeping up with the latest technologies, understanding them, and adapting them for practical application',
     learning: 'Learning',
     learningDesc:
-      'Continuous improvement and learning through practice and <abbr title="Massive Open Online Courses">MOOC</abbr> platforms (Frontend Masters, Coursera, edX)',
-    skills: 'Core Expertise (USP)',
-    skillsDescription:
-      'Deep expertise across the full spectrum of modern web development, from architecture to team leadership',
-    expertise: [
-      {
-        title: 'Frontend Architecture & Technical Strategy',
-        description:
-          'Designing scalable web systems, micro-frontends, and long-term tech vision for enterprise applications',
-      },
-      {
-        title: 'Design Systems & UI Engineering Leadership',
-        description:
-          'Building and governing component libraries, bridging the design–development workflow, and ensuring consistency at scale',
-      },
-      {
-        title: 'Web Performance & Platform Excellence',
-        description:
-          'Optimizing Core Web Vitals, PWA/offline capabilities, web accessibility (WCAG), web security (OWASP), and cross-platform compatibility with RWD/mobile-first approaches',
-      },
-      {
-        title: 'Modern React & Web Standards Evolution',
-        description:
-          'Architecting with the React/Next.js ecosystem while advancing the web platform through Lit/Web Components and Rust/WASM',
-      },
-      {
-        title: 'Web Accessibility Consulting & Audits',
-        description:
-          'Providing accessibility consultations and conducting accessibility audits—a topic I am deeply immersed in. I also run a Telegram channel on accessibility: <a href="https://t.me/proa11y" target="_blank" rel="noopener noreferrer">@proa11y</a>',
-      },
-      {
-        title: 'Full-Stack JavaScript & Platform Engineering',
-        description:
-          'Architecting end-to-end web solutions across BFF/API layers, Node.js/Deno/Bun services, HTTP caching and networking, Rust/WASM, and cloud-native deployment',
-      },
-    ],
+      'Continuing to learn through everyday practice and <abbr title="Massive Open Online Courses">MOOC</abbr> platforms',
     mySetup: 'My Setup',
     mySetupDescription: 'Essential development tools I use daily',
+    thinking: 'Digital Garden',
+    thinkingDescription: '',
+    talks: 'Talks',
+    talksDescription: 'Conference talks with video and slides',
+    talksWatchVideo: 'Watch talk on YouTube',
+    talksViewSlides: 'View presentation (PDF)',
+    talksReadArticle: 'Read the article',
+    gardenShelvesLabel: 'Garden sections',
+    gardenShelfProduction: 'Продакшен',
+    gardenShelfThinking: 'Мысли',
+    gardenShelfKids: 'Детская лаборатория',
+    gardenShelfArchive: 'Архив',
+    gardenShelfProductionDesc: 'Engineering cases and platform incidents',
+    gardenShelfThinkingDesc: 'Essays and book notes',
+    gardenShelfKidsDesc: 'Kids coding and micro:bit lab',
+    gardenShelfArchiveDesc: 'Earlier how-tos and evergreen tutorials',
+    gardenNoNotesInShelf: 'No notes in this section yet.',
     experience: 'Experience',
     experiences: [
       {
@@ -308,19 +299,17 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     funActivities: 'Fun Activities',
     funActivitiesIntro:
-      'Hobbies on a professional site may look out of place — as if no one cares. In reality, they shape how I work. Illustration keeps my visual sense sharp for frontend and design. Collecting teaches order, a systematic approach, and meticulous attention to detail. Cycling resets my mind and gives my eyes a break. Teaching kids to code shows I still enjoy programming as a hobby, keep a childlike curiosity about the craft, and know how to share knowledge with others.',
+      'Hobbies on a professional site may seem unnecessary, but in reality it is the opposite. All my hobbies complement my love of programming and computers.\n\nIllustration helps balance visual skills in frontend and design. Collecting teaches order, a systematic approach, meticulousness, and attention to detail. Cycling resets the mind and gives the eyes a break now and then. And teaching kids to code shows that I still enjoy programming as a hobby, keep a childlike curiosity about the craft, and know how to teach others.',
     artTitle: 'Art & Illustration',
-    artDesc:
-      'Creating digital art and classical illustrations based on mythological creatures, as well as exhibitions in museums and castles, creating printed books with my illustrations. You can view the illustrations in my ArtStation profile via the link.',
+    artDesc: 'Creating digital art and classical illustrations',
     kidsTitle: 'Kids Programming',
     kidsDesc:
-      'Teaching children programming basics with Scratch, MakeCode and Blockly using Micro:bit and MakeyMakey boards',
+      'Teaching children the basics of programming with Scratch and MakeCode, using Micro:bit, Arduino, and MakeyMakey boards',
     cycleTitle: 'Cycling',
     cycleDesc:
       'Enjoying long-distance cycling and city rides — it helps me reset my mind and find elegant solutions to complex engineering problems.',
     stampsTitle: 'Stamp Collecting',
-    stampsDesc:
-      'Collecting stamps and postal items featuring bison themes. This hobby is surprisingly close to frontend development — it helps me study various layouts, typography, and design patterns from different eras.',
+    stampsDesc: 'I collect stamps and postal items featuring bison.',
     batmobileTitle: 'Batmobiles Collection',
     batmobileDesc:
       'As a DC Comics fan, I collect Batmobile models from different eras — from classic TV-series to modern cinematic universes.',
@@ -402,7 +391,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     college: 'Technological College Educational Institution GRSU • 2011',
     contact: 'Get In Touch',
     contactText:
-      "I'm always open to new opportunities and interesting projects. <br>Feel free to reach out if you'd like to collaborate!<br> Let's build something remarkable together.",
+      "I'm always open to discussing interesting projects.<br>If you have something for me, feel free to reach out.",
     contactButton: 'Contact Me',
     followOnLinkedIn: 'Follow on LinkedIn',
     followOnTelegram: 'Telegram Channel',
@@ -427,10 +416,12 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     activity: 'activity',
     // Hero ARIA labels
     heroAvatarFlipCard: 'Avatar flip card',
+    heroScrollDown: 'Scroll down to content',
     heroGitHubProfile: 'GitHub Profile',
     heroLinkedInProfile: 'LinkedIn Profile',
     heroSendEmail: 'Send Email',
     heroTelegram: 'Telegram',
+    footerSiteNav: 'Site sections',
     testimonialsTitle: 'Testimonials',
     blog: 'Publications',
     readArticle: 'Read article',
@@ -498,10 +489,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     showMore: 'Show more',
     viewAllExperience: 'View full experience',
     timelineLink: 'Timeline',
+    cvPageTitle: 'CV',
+    cvPageDescription: 'Full work history, testimonials, education, and certificates.',
     experiencePageDescription:
       'Full work history of Artur Basak — web engineering roles across X5 Tech, IntexSoft, Godel, Indy, and earlier enterprise engagements.',
-    enableMotion: 'Enable motion effects',
-    motionActive: 'Motion tracking active',
     copyright: `© ${new Date().getFullYear()} Artur Basak. All rights reserved.`,
     // OCR Page
     ocrTitle: 'Image Text Recognition',
@@ -1280,6 +1271,79 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     qrGenDownload: 'Download PNG',
     qrGenErrorInvalidType: 'Failed to generate code. Check barcode type and input.',
     qrGenErrorDownload: 'Failed to download image.',
+    // Shared Edge AI
+    edgeAiCapsTitle: 'Browser AI capabilities',
+    edgeAiCapWebgpu: 'WebGPU',
+    edgeAiCapWebnn: 'WebNN',
+    edgeAiCapCamera: 'Camera (getUserMedia)',
+    edgeAiCapMicrophone: 'Microphone (getUserMedia)',
+    edgeAiCapSpeech: 'Speech Recognition API',
+    edgeAiLoadingModel: 'Loading model…',
+    edgeAiBackendLabel: 'TF.js backend',
+    edgeAiPrivacyTitle: 'Privacy',
+    edgeAiErrorCamera: 'Camera is not available in this browser.',
+    edgeAiErrorPermission: 'Camera permission was denied. Allow access and try again.',
+    edgeAiErrorMicPermission: 'Microphone permission was denied. Allow access and try again.',
+    // Skeleton Detection
+    skeletonDetectionTitle: 'Skeleton Detection',
+    skeletonDetectionDesc:
+      'Real-time human pose estimation from your camera using MoveNet on the client (WebGPU / WebNN).',
+    skeletonDetectionStart: 'Start camera',
+    skeletonDetectionStop: 'Stop',
+    skeletonDetectionVideoLabel: 'Live camera feed for pose detection',
+    skeletonDetectionUnsupported:
+      'This tool needs WebGPU or WebNN plus camera access. Update your browser or enable these APIs.',
+    skeletonDetectionErrorStart:
+      'Could not start pose detection. Check camera access and try again.',
+    skeletonDetectionPrivacy:
+      'Video stays in your browser. Frames are processed locally with TensorFlow.js and are not uploaded.',
+    skeletonDetectionToolTitle: 'Skeleton Detection',
+    skeletonDetectionToolDesc:
+      'Live pose landmarks and skeleton overlay from your webcam — on-device Edge AI.',
+    // Emotion Analysis
+    emotionAnalysisTitle: 'Emotion Analysis',
+    emotionAnalysisDesc:
+      'Detect facial expressions in real time from your camera using on-device models (WebGPU / WebNN).',
+    emotionAnalysisStart: 'Start camera',
+    emotionAnalysisStop: 'Stop',
+    emotionAnalysisVideoLabel: 'Live camera feed for emotion analysis',
+    emotionAnalysisResult: 'Detected emotion',
+    emotionAnalysisUnsupported:
+      'This tool needs WebGPU or WebNN plus camera access. Update your browser or enable these APIs.',
+    emotionAnalysisErrorStart:
+      'Could not start emotion analysis. Check camera access and try again.',
+    emotionAnalysisPrivacy:
+      'Video stays in your browser. Face analysis runs locally and is not uploaded to a server.',
+    emotionAnalysisToolTitle: 'Emotion Analysis',
+    emotionAnalysisToolDesc:
+      'Real-time facial emotion recognition from your webcam — fully client-side.',
+    emotionLabelNeutral: 'Neutral',
+    emotionLabelHappy: 'Happy',
+    emotionLabelSad: 'Sad',
+    emotionLabelAngry: 'Angry',
+    emotionLabelFearful: 'Fearful',
+    emotionLabelDisgusted: 'Disgusted',
+    emotionLabelSurprised: 'Surprised',
+    // Speech Recognition
+    speechRecognitionTitle: 'Speech Recognition',
+    speechRecognitionDesc:
+      'Stream speech from your microphone to live text on the page using the browser Speech Recognition API.',
+    speechRecognitionStart: 'Start listening',
+    speechRecognitionStop: 'Stop',
+    speechRecognitionClear: 'Clear',
+    speechRecognitionListening: 'Listening…',
+    speechRecognitionPlaceholder: 'Transcript will appear here…',
+    speechRecognitionUnsupported:
+      'Speech Recognition or microphone access is not available in this browser.',
+    speechRecognitionError: 'Speech recognition failed. Check microphone access and try again.',
+    speechRecognitionPrivacy:
+      'Audio is processed by the browser Speech Recognition engine. Availability and whether audio leaves the device depend on your browser (e.g. Chrome may use a cloud service).',
+    speechRecognitionToolTitle: 'Speech Recognition',
+    speechRecognitionToolDesc:
+      'Live speech-to-text from your microphone — streamed onto the page as you talk.',
+    vydokhToolTitle: 'Vydokh — Breathing App',
+    vydokhToolDesc:
+      'Mindful breathing sessions with a pulsing orb, multiple techniques, and light/dark themes. Installable PWA.',
   },
   [ELanguage.ru]: {
     skipLinkMain: 'Перейти к основному содержимому',
@@ -1349,66 +1413,56 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       'Был проработан контент и текст на сайте, появилось больше информации и внешние ссылки на статьи, публикации и социальные сети.',
     timeMachine2025Description:
       'Полная переработка веб-сайта на Next.js с серверным рендерингом и переезд на Vercel. Задача была не только оформить контент с полной информацией обо мне как о специалисте, но также продемонстрировать свои навыки дизайнера и фронтенд инженера прямо тут. При этом веб-сайт стал песочницей, чтобы поработать с ИИ ассистентом. На сайте помимо портфолио появился цифровой сад, таймлайн карьеры и множество экспериментов в виде онлайн инструментов.',
+    timeMachine2026Description:
+      'Лёгкая переработка дизайна и информационной структуры сайта, чтобы сделать его более аутентичным и менее похожим на резюме или сервис. Это попытка избавиться от профдеформации после многих лет работы в аутсорсинге и аутстаффинге, где основной навык презентации себя — резюме с формальным описанием того, что умею и что делал. Цель — сделать не сайт-резюме, а сайт-сообщение, которое чище отвечает на вопрос, кто я и что делаю.',
     role: 'Web Engineer & Frontend Architect | 15+ Yrs',
     roleMobile: 'Web Engineer & Frontend Architect',
-    subtitle: 'Создаю веб будущего, опираясь на инженерное наследие прошлого.',
+    subtitle: 'Делаю веб для людей',
+    heroCtaExperience: 'Опыт',
+    heroCtaWriting: 'Избранные тексты',
+    heroCtaContact: 'Контакт',
     about: 'Обо мне',
     resumeAbout:
       "Web Engineer & Frontend Architect с продуктовым мышлением и 15+ годами практики по полному web-стеку — UI-архитектура, слои BFF/API, сервисы на Node.js, HTTP/кэширование и offline-capable клиенты. Специализируюсь на доступных высокопроизводительных PWA и масштабируемых веб-системах, опираясь на сильные UI/UX-практики — без dark patterns. В последнее время веду hybrid WebView/PWA поставку в X5 Tech (20M+ MAU); ранее — Daimler, SAP, Kohl's и стартапы, включая Lition. Публикации в Smashing Magazine; глубокий фокус на WCAG, дизайн-системах, Core Web Vitals и pragmatic full-stack delivery.",
-    aboutText: `Привет! Я Артур, программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное более чем десятилетним практическим опытом во всем спектре разработки программного обеспечения.<br/><br/>
-Мой путь — это <span class="text-double-underline">мост между эпохами<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> вычислительной техники. Он начался со структурного программирования на <em>Pascal</em>, <em>C++</em> и <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>, где я изучил основные принципы управления памятью и базовые алгоритмы. Затем я создавал мощные десктопные и ранние веб-приложения для корпоративного мира, используя <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> и <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, а также развил критический взгляд на качество и процессы тестирования через автоматизацию тестов с <em>Selenium RC</em>, а позже с <em>WebDriver</em>, <em>Cypress</em> и <em>Playwright</em>.<br/><br/>
-Я был на передовой трансформации веб-технологий, создавая динамические приложения с помощью инструментов первого поколения: <em><abbr title="Asynchronous Javascript and XML">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em> и <em>Ember.js</em>. Этот глубокий исторический контекст — мое наибольшее преимущество. Он позволяет мне проектировать современные приложения на <em>React</em>, <em>Web Components</em> и <em>TypeScript</em> с глубоким пониманием проблем, которые они решают, гарантируя, что они не просто модные, а <span class="text-single-underline">действительно хорошо<img aria-hidden="true" src="/single-underline.webp" alt="" class="single-underline"></span> спроектированные, масштабируемые и созданные на долгий срок.<br/><br/>
-Сегодня я сосредоточен на создании доступных, ориентированных на пользователя, офлайн- и mobile-first <em>Progressive Web Apps (<abbr>PWA</abbr>)</em> и надежных фронтенд-архитектурах на основе современных инструментов: <em>Webpack</em>, <em>Vite</em>, <em>Next.js</em>, <em>MobX</em>, <em>React-Router</em>, <em>Material UI</em>, <em>Tailwind CSS</em>, <em>Rust/WebAssembly</em> и др.
-Мне доверяли создание решений для таких отраслевых гигантов, как Daimler и SAP, ритейлеров, таких как X5 Group и Kohl's, технологических новаторов, как КРОК, стартапов, таких как TrueImpact, Lition, Tispr/Indy, и лидеров химической промышленности, таких как СИБУР и Evonik.<br/><br/>
-Теперь я замкнул круг: передаю опыт и радость творчества следующему поколению, обучая своих детей программированию на <em>Scratch</em>, <em>MakeCode</em> и <em>Blockly</em>.`,
+    aboutText: `Привет! Меня зовут Артур и я прикладной программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное многолетним практическим опытом во всем спектре разработки ПО.<br/><br/>
+Мой путь — это <span class="text-double-underline">мост между эпохами<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span>. Я начинал строить графические десктопные интерфейсы еще на <em>Pascal</em> и <em>C++</em> вместе с <em>Win32 API</em> и <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>.<br/><br/>
+Позже я переключился на ранние клиент-серверные приложения для корпоративного мира, работая с <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> и <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, обеспечивая качество через автоматизацию тестов с <em>Selenium RC</em> и <em>WebDriver</em>.<br/><br/>
+Я был на передовой трансформации веб-технологий, создавая динамические приложения с помощью инструментов первого поколения: <em><abbr title="Asynchronous Javascript and XML">AJAX</abbr></em>, <em>jQuery UI</em>, <em>ExtJS</em>, <em>Angular.js</em> и <em>Ember.js</em>.<br/><br/>
+Я считаю этот глубокий исторический контекст — моим наибольшим преимуществом. Он позволяет мне проектировать современные приложения на <em>React</em>, <em><abbr title="WebAssembly">WASM</abbr></em>, <em>Web Components</em> и <em>TypeScript</em> с глубоким пониманием проблем, которые они решают, гарантируя, что эти инструменты не просто модные и современные, а действительно <span class="text-single-underline">хорошо спроектированные<img aria-hidden="true" src="/single-underline.webp" alt="" class="single-underline"></span>, масштабируемые и созданные на долгий срок.<br/><br/>
+Сегодня я сосредоточен на создании доступных, ориентированных на пользователя, масштабируемых и устойчивых к оффлайн веб продуктах, работающих на широком спектре девайсов и гаджетов для миллионов пользователей торговых сетей Х5 Group.<br/><br/>
+А еще я замкнул круг: передаю опыт и радость творчества следующему поколению, обучая своих детей программированию на <em>Scratch</em>, <em>MakeCode</em> и <em>Blockly</em>.`,
+    interestsIntro: 'Мне интересно',
     cleanCode: 'Чистый код',
     cleanCodeDesc:
-      'Написание поддерживаемого и масштабируемого кода на основе принципов <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr>, <abbr title="Easy to Change">ETC</abbr> и <abbr title="Don\'t Repeat Yourself">DRY</abbr>',
+      'Делать понятные и поддерживаемые инженерные системы на основе принципов <abbr title="single responsibility, open–closed, Liskov substitution, interface segregation, dependency inversion">SOLID</abbr>, <abbr title="Keep It Simple, Stupid">KISS</abbr>, <abbr title="You Aren\'t Gonna Need It">YAGNI</abbr>, <abbr title="Easy to Change">ETC</abbr> и <abbr title="Don\'t Repeat Yourself">DRY</abbr>',
     components: 'Компоненты',
-    componentsDesc: 'Создание переиспользуемых, доступных и адаптивных UI компонентов',
+    componentsDesc:
+      'Создавать красивые, долговечные, доступные, отзывчивые и удобные интерфейсы для людей',
     bestPractices: 'Лучшие практики',
     bestPracticesDesc:
-      'Следование отраслевым стандартам вместе с современными фреймворками и инструментами',
+      'Следить за последними технологиями, разбираться в них и адаптировать для прикладного применения',
     learning: 'Обучение',
     learningDesc:
-      'Непрерывное совершенствование и обучение через практику и <abbr title="Massive Open Online Courses">MOOC</abbr> платформы (Frontend Masters, Coursera, edX)',
-    skills: 'Основная Экспертиза (УТП)',
-    skillsDescription:
-      'Глубокая экспертиза во всем спектре современной веб-разработки, от архитектуры до лидерства команд',
-    expertise: [
-      {
-        title: 'Фронтенд-архитектура и техническая стратегия',
-        description:
-          'Проектирование масштабируемых веб-систем, микрофронтендов и долгосрочного технического видения для корпоративных приложений',
-      },
-      {
-        title: 'Дизайн-системы и лидерство в UI-инженерии',
-        description:
-          'Создание и управление библиотеками компонентов, выстраивание связки design–development и обеспечение согласованности в масштабе',
-      },
-      {
-        title: 'Веб-производительность и платформенное качество',
-        description:
-          'Оптимизация Core Web Vitals, PWA/офлайн-возможности, веб-доступность (WCAG), веб-безопасность (OWASP) и кроссплатформенная совместимость с RWD/mobile-first подходами',
-      },
-      {
-        title: 'Современный React и эволюция веб-стандартов',
-        description:
-          'Архитектура на экосистеме React/Next.js при развитии веб-платформы через Lit/Web Components и Rust/WASM',
-      },
-      {
-        title: 'Консультации и аудиты по веб-доступности',
-        description:
-          'Консультации по доступности и проведение accessibility-аудитов — тема, в которую я глубоко погружён. Также веду Telegram-канал об accessibility: <a href="https://t.me/proa11y" target="_blank" rel="noopener noreferrer">@proa11y</a>',
-      },
-      {
-        title: 'Full-Stack JavaScript и платформенная инженерия',
-        description:
-          'End-to-end веб-решения: слои BFF/API, сервисы на Node.js/Deno/Bun, HTTP-кэширование и сеть, Rust/WASM и cloud-native развёртывание',
-      },
-    ],
+      'Продолжать учиться через каждодневную практику и <abbr title="Massive Open Online Courses">MOOC</abbr> платформы',
     mySetup: 'Моя Настройка',
     mySetupDescription: 'Основные инструменты разработки, которые я использую ежедневно',
+    thinking: 'Digital Garden',
+    thinkingDescription: '',
+    talks: 'Выступления',
+    talksDescription: 'Доклады с конференций — видео и презентации',
+    talksWatchVideo: 'Смотреть доклад на YouTube',
+    talksViewSlides: 'Смотреть презентацию (PDF)',
+    talksReadArticle: 'Читать статью',
+    gardenShelvesLabel: 'Разделы сада',
+    gardenShelfProduction: 'Продакшен',
+    gardenShelfThinking: 'Мысли',
+    gardenShelfKids: 'Детская лаборатория',
+    gardenShelfArchive: 'Архив',
+    gardenShelfProductionDesc: 'Инженерные кейсы и платформенные инциденты',
+    gardenShelfThinkingDesc: 'Эссе и книжные заметки',
+    gardenShelfKidsDesc: 'Детское программирование и micro:bit lab',
+    gardenShelfArchiveDesc: 'Ранние how-to и evergreen-туториалы',
+    gardenNoNotesInShelf: 'В этом разделе пока нет заметок.',
     experience: 'Опыт работы',
     experiences: [
       {
@@ -1591,19 +1645,17 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     ],
     funActivities: 'Увлечения',
     funActivitiesIntro:
-      'Увлечения на профессиональном сайте могут казаться лишними — будто это никому не интересно. На самом деле всё наоборот. Иллюстрация помогает балансировать визуальные навыки во фронтенде и дизайне. Коллекционирование учит порядку, системному подходу, скрупулёзности и дотошности. Велосипед перезагружает менталку и даёт глазам хотя бы иногда отдохнуть. А занятия программированием с детьми показывают, что я по-прежнему получаю удовольствие от кода как от хобби, сохраняю детское любопытство к профессии и умею учить других.',
+      'Увлечения на профессиональном сайте могут казаться лишними, но на самом деле всё наоборот. Все мои хобби гармонично дополняют любовь к программированию и компьютерам.\n\nИллюстрация помогает балансировать визуальные навыки во фронтенде и дизайне. Коллекционирование учит порядку, системному подходу, скрупулёзности и дотошности. Велосипед перезагружает менталку и даёт глазам хотя бы иногда отдохнуть. А занятия программированием с детьми показывают, что я по-прежнему получаю удовольствие от кода как от хобби, сохраняю детское любопытство к профессии и умею учить других.',
     artTitle: 'Арт и Иллюстрация',
-    artDesc:
-      'Создание цифрового искусства и классических иллюстраций на основе мифологических существ, а также выставки в музеях и замках, создание печатных книг с моими иллюстрациями. Иллюстрации можно посмотреть в профиле ArtStation по ссылке.',
+    artDesc: 'Создание цифрового искусства и классических иллюстраций',
     kidsTitle: 'Обучение Детей',
     kidsDesc:
-      'Обучение детей основам программирования в Scratch, MakeCode и Blockly используя платы Micro:bit и MakeyMakey',
+      'Обучение детей основам программирования в Scratch и MakeCode, используя платы Micro:bit, Arduino и MakeyMakey',
     cycleTitle: 'Велосипед',
     cycleDesc:
       'Дальние и городские велопоездки — это помогает перезагрузиться и находить изящные решения сложных задач',
     stampsTitle: 'Коллекционирование марок',
-    stampsDesc:
-      'Собираю марки и почтовые предметы с изображением зубров. Это хобби удивительно близко к фронтенд-разработке — помогает изучать различные лейауты, типографику и дизайнерские паттерны разных эпох.',
+    stampsDesc: 'Собираю марки и почтовые предметы с изображением зубров.',
     batmobileTitle: 'Коллекция Бэтмобилей',
     batmobileDesc:
       'Как поклонник DC Comics, коллекционирую модели Бэтмобилей разных эпох — от классических сериалов до современных кино-вселенных.',
@@ -1685,7 +1737,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     college: 'Технологический колледж ГрГУ им. Янки Купалы • 2011',
     contact: 'Связаться',
     contactText:
-      'Я всегда открыт для новых возможностей и интересных проектов. <br>Свяжитесь со мной, если хотите сотрудничать! <br/> Давайте создадим что-то выдающееся вместе.',
+      'Я всегда открыт к тому, чтобы обсудить интересные проекты.<br>Если у вас есть что-то для меня, то смело пишите.',
     contactButton: 'Написать',
     followOnLinkedIn: 'Подписаться в LinkedIn',
     followOnTelegram: 'Канал в Telegram',
@@ -1710,10 +1762,12 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     activity: 'активности',
     // Hero ARIA labels
     heroAvatarFlipCard: 'Переворот карточки аватара',
+    heroScrollDown: 'Прокрутить вниз к содержимому',
     heroGitHubProfile: 'Профиль GitHub',
     heroLinkedInProfile: 'Профиль LinkedIn',
     heroSendEmail: 'Отправить письмо',
     heroTelegram: 'Телеграм',
+    footerSiteNav: 'Разделы сайта',
     testimonialsTitle: 'Отзывы',
     blog: 'Публикации',
     readArticle: 'Читать статью',
@@ -1730,7 +1784,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       },
       {
         name: 'Дмитрий Полуян',
-        role: 'Старщий Фронтенд Инженер',
+        role: 'Старший Фронтенд Инженер',
         content:
           'Артур — высококвалифицированный разработчик с отличными лидерскими качествами. Он настоящий мастер своего дела. Он обладает гибким мышлением и постоянно совершенствует свои профессиональные навыки.',
       },
@@ -1760,7 +1814,7 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
       },
       {
         name: 'Дмитрий Полуян',
-        role: 'Старщий Фронтенд Инженер',
+        role: 'Старший Фронтенд Инженер',
         content:
           'Артур увлечен всем, что связано с веб-технологиями и не только. Он пишет качественный и безопасный код, всегда использует современные подходы и передовые технологии, открыт для работы с новыми инструментами.',
       },
@@ -1781,10 +1835,10 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     showMore: 'Показать больше',
     viewAllExperience: 'Смотреть весь опыт',
     timelineLink: 'Хронология',
+    cvPageTitle: 'CV',
+    cvPageDescription: 'Полная история работы, отзывы, образование и сертификаты.',
     experiencePageDescription:
       'Полная история работы Артура Басака — веб-инженерия в X5 Tech, IntexSoft, Godel, Indy и более ранние enterprise-проекты.',
-    enableMotion: 'Включить motion эффекты',
-    motionActive: 'Motion отслеживание активно',
     copyright: `© ${new Date().getFullYear()} Artur Basak. Все права защищены.`,
     // OCR Page
     ocrTitle: 'Распознавание текста на изображениях',
@@ -2568,6 +2622,80 @@ Now, I've come full circle: I'm passing on the logic and joy of creation to the 
     qrGenDownload: 'Скачать PNG',
     qrGenErrorInvalidType: 'Не удалось сгенерировать код. Проверьте тип и ввод.',
     qrGenErrorDownload: 'Не удалось скачать изображение.',
+    // Shared Edge AI
+    edgeAiCapsTitle: 'Возможности браузера для AI',
+    edgeAiCapWebgpu: 'WebGPU',
+    edgeAiCapWebnn: 'WebNN',
+    edgeAiCapCamera: 'Камера (getUserMedia)',
+    edgeAiCapMicrophone: 'Микрофон (getUserMedia)',
+    edgeAiCapSpeech: 'Speech Recognition API',
+    edgeAiLoadingModel: 'Загрузка модели…',
+    edgeAiBackendLabel: 'Бэкенд TF.js',
+    edgeAiPrivacyTitle: 'Конфиденциальность',
+    edgeAiErrorCamera: 'Камера недоступна в этом браузере.',
+    edgeAiErrorPermission: 'Доступ к камере запрещён. Разрешите доступ и попробуйте снова.',
+    edgeAiErrorMicPermission: 'Доступ к микрофону запрещён. Разрешите доступ и попробуйте снова.',
+    // Skeleton Detection
+    skeletonDetectionTitle: 'Детекция скелета',
+    skeletonDetectionDesc:
+      'Распознавание позы человека в реальном времени с камеры на клиенте (MoveNet, WebGPU / WebNN).',
+    skeletonDetectionStart: 'Включить камеру',
+    skeletonDetectionStop: 'Стоп',
+    skeletonDetectionVideoLabel: 'Видео с камеры для детекции позы',
+    skeletonDetectionUnsupported:
+      'Нужны WebGPU или WebNN и доступ к камере. Обновите браузер или включите эти API.',
+    skeletonDetectionErrorStart:
+      'Не удалось запустить детекцию позы. Проверьте доступ к камере и попробуйте снова.',
+    skeletonDetectionPrivacy:
+      'Видео остаётся в браузере. Кадры обрабатываются локально через TensorFlow.js и не загружаются на сервер.',
+    skeletonDetectionToolTitle: 'Детекция скелета',
+    skeletonDetectionToolDesc:
+      'Опорные точки и скелет поверх изображения с веб-камеры — Edge AI на устройстве.',
+    // Emotion Analysis
+    emotionAnalysisTitle: 'Анализ эмоций',
+    emotionAnalysisDesc:
+      'Распознавание мимики в реальном времени с камеры с помощью локальных моделей (WebGPU / WebNN).',
+    emotionAnalysisStart: 'Включить камеру',
+    emotionAnalysisStop: 'Стоп',
+    emotionAnalysisVideoLabel: 'Видео с камеры для анализа эмоций',
+    emotionAnalysisResult: 'Эмоция',
+    emotionAnalysisUnsupported:
+      'Нужны WebGPU или WebNN и доступ к камере. Обновите браузер или включите эти API.',
+    emotionAnalysisErrorStart:
+      'Не удалось запустить анализ эмоций. Проверьте доступ к камере и попробуйте снова.',
+    emotionAnalysisPrivacy:
+      'Видео остаётся в браузере. Анализ лица выполняется локально и не отправляется на сервер.',
+    emotionAnalysisToolTitle: 'Анализ эмоций',
+    emotionAnalysisToolDesc:
+      'Эмоции по лицу с веб-камеры в реальном времени — полностью на клиенте.',
+    emotionLabelNeutral: 'Нейтрально',
+    emotionLabelHappy: 'Радость',
+    emotionLabelSad: 'Грусть',
+    emotionLabelAngry: 'Гнев',
+    emotionLabelFearful: 'Страх',
+    emotionLabelDisgusted: 'Отвращение',
+    emotionLabelSurprised: 'Удивление',
+    // Speech Recognition
+    speechRecognitionTitle: 'Распознавание речи',
+    speechRecognitionDesc:
+      'Потоковое преобразование речи с микрофона в текст на странице через Speech Recognition API браузера.',
+    speechRecognitionStart: 'Начать запись',
+    speechRecognitionStop: 'Стоп',
+    speechRecognitionClear: 'Очистить',
+    speechRecognitionListening: 'Слушаю…',
+    speechRecognitionPlaceholder: 'Здесь появится расшифровка…',
+    speechRecognitionUnsupported:
+      'Speech Recognition или доступ к микрофону недоступны в этом браузере.',
+    speechRecognitionError:
+      'Ошибка распознавания речи. Проверьте доступ к микрофону и попробуйте снова.',
+    speechRecognitionPrivacy:
+      'Аудио обрабатывает движок Speech Recognition браузера. Доступность и то, уходит ли звук с устройства, зависят от браузера (например, Chrome может использовать облачный сервис).',
+    speechRecognitionToolTitle: 'Распознавание речи',
+    speechRecognitionToolDesc:
+      'Живой speech-to-text с микрофона — текст появляется на странице по мере речи.',
+    vydokhToolTitle: 'Vydokh — приложение для дыхания',
+    vydokhToolDesc:
+      'Сессии осознанного дыхания с пульсирующим кругом, несколько техник, светлая и тёмная тема. PWA для установки на телефон.',
   },
 } as const;
 

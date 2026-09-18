@@ -29,5 +29,5 @@ tags: [testing, programming, mental-model, seedling]
 
 ### Связанные заметки
 
-- [[Стратегия автоматического тестирования на JavaScript [Видео]](/garden/legacy-testing-strategy)]
+- [Стратегия автоматического тестирования на JavaScript (видео)](/#talks)
 - [[Тесты, которые должен писать разработчик](/garden/tests-developer-should-write)]

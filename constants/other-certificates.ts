@@ -60,16 +60,4 @@ export const OTHER_CERTIFICATES: readonly OtherCertificate[] = [
     id: 'geekle-architecture',
     src: '/certificates/other/geekle-software-architecture-summit-22.webp',
   },
-  {
-    id: 'coursera-scratch',
-    src: '/certificates/other/coursera-scratch-game-development.webp',
-  },
-  {
-    id: 'frontend-masters-scratch-kids',
-    src: '/certificates/other/frontend-masters-scratch-kids-coding.webp',
-  },
-  {
-    id: 'makey-makey-101',
-    src: '/certificates/other/makey-makey-101.webp',
-  },
 ] as const;

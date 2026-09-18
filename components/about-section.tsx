@@ -1,11 +1,13 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect, useRef, useState } from 'react';
-import { Code2, Boxes, Trophy, BookOpen } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Layers, AppWindow, Radar, GraduationCap } from 'lucide-react';
 import { useLanguage } from '@/lib/hooks/use-language';
+import { useTheme } from '@/lib/use-theme';
 import { AnimatedSectionTitle } from '@/components/animated-section-title';
 import { AnimatedAboutText } from '@/components/animated-about-text';
+import { ETheme } from '@/constants/enums';
 
 const Player = dynamic(() => import('@/components/lottie-player'), {
   ssr: false,
@@ -13,11 +15,41 @@ const Player = dynamic(() => import('@/components/lottie-player'), {
 
 export function AboutSection() {
   const { t } = useLanguage();
+  const { theme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
   const lottieContainerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [isDesktop, setIsDesktop] = useState(false);
   const isDesktopRef = useRef(false);
+
+  const interestsIntroStyles = useMemo(
+    () =>
+      theme === ETheme.dark
+        ? {
+            lineHeight: '1.25',
+            backgroundImage:
+              'linear-gradient(-90deg, #395171 0, #35c3ff 30%, #a07cfb 50%, #b179bc 70%, #cc7fe0 90%, #fbadc6 100%)',
+            backgroundSize: '100%',
+            backgroundRepeat: 'repeat',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            MozBackgroundClip: 'text',
+            filter: 'drop-shadow(0 0 2rem #000)',
+            textShadow: 'none',
+          }
+        : {
+            lineHeight: '1.25',
+            backgroundImage:
+              'linear-gradient(-90deg,rgb(176, 194, 218) 0, #007cb1 30%, #55389e 50%, #752884 70%, #4e1f5b 90%, #492530 100%)',
+            backgroundSize: '100%',
+            backgroundRepeat: 'repeat',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            MozBackgroundClip: 'text',
+            textShadow: 'none',
+          },
+    [theme]
+  );
 
   useEffect(() => {
     // Check current viewport width to determine if we should apply scroll-based scaling
@@ -65,39 +97,41 @@ export function AboutSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-10 md:py-16 px-4 md:px-8">
-      <div className="max-w-5xl mx-auto">
+    <section ref={sectionRef} className="px-4 py-10 md:px-8 md:py-16">
+      <div className="mx-auto max-w-5xl">
         <AnimatedSectionTitle
           text={t.about}
           id="main-content"
           className="justify-center md:justify-start"
           wrapperClassName="text-center md:text-left"
         />
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid items-start gap-8 md:grid-cols-2">
           <AnimatedAboutText html={t.aboutText} />
           <div>
-            <div className="grid grid-rows-[16rem_16rem] md:grid-rows-[12.5rem_12.5rem] grid-cols-2 gap-4 mb-10 md:mb-15">
-              <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">
-                <Code2 className="w-8 h-8 mb-2 text-blue-400" />
-                <h3 className="font-semibold mb-1">{t.cleanCode}</h3>
+            <p
+              className="mb-4 text-center text-lg font-semibold transition-all ease-in md:text-left md:text-xl"
+              style={interestsIntroStyles}
+            >
+              {t.interestsIntro}
+            </p>
+            <div className="mb-10 grid grid-cols-2 gap-4 md:mb-15">
+              <div className="shimmer-card group relative overflow-hidden rounded-lg bg-white p-4 md:p-8 shadow-md dark:bg-gray-800 dark:shadow-none">
+                <Layers className="mb-4 h-8 w-8 text-blue-400" aria-hidden="true" />
                 <p
                   className="text-sm text-gray-600 dark:text-gray-400"
                   dangerouslySetInnerHTML={{ __html: t.cleanCodeDesc }}
                 />
               </div>
-              <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">
-                <Boxes className="w-8 h-8 mb-2 text-green-400" />
-                <h3 className="font-semibold mb-1">{t.components}</h3>
+              <div className="shimmer-card group relative overflow-hidden rounded-lg bg-white p-4 md:p-8 shadow-md dark:bg-gray-800 dark:shadow-none">
+                <AppWindow className="mb-4 h-8 w-8 text-green-400" aria-hidden="true" />
                 <p className="text-sm text-gray-600 dark:text-gray-400">{t.componentsDesc}</p>
               </div>
-              <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">
-                <Trophy className="w-8 h-8 mb-2 text-yellow-400" />
-                <h3 className="font-semibold mb-1">{t.bestPractices}</h3>
+              <div className="shimmer-card group relative overflow-hidden rounded-lg bg-white p-4 md:p-8 shadow-md dark:bg-gray-800 dark:shadow-none">
+                <Radar className="mb-4 h-8 w-8 text-yellow-400" aria-hidden="true" />
                 <p className="text-sm text-gray-600 dark:text-gray-400">{t.bestPracticesDesc}</p>
               </div>
-              <div className="shimmer-card bg-white dark:bg-gray-800 shadow-md dark:shadow-none p-4 rounded-lg relative overflow-hidden group">
-                <BookOpen className="w-8 h-8 mb-2 text-purple-400" />
-                <h3 className="font-semibold mb-1">{t.learning}</h3>
+              <div className="shimmer-card group relative overflow-hidden rounded-lg bg-white p-4 md:p-8 shadow-md dark:bg-gray-800 dark:shadow-none">
+                <GraduationCap className="mb-4 h-8 w-8 text-purple-400" aria-hidden="true" />
                 <p
                   className="text-sm text-gray-600 dark:text-gray-400"
                   dangerouslySetInnerHTML={{ __html: t.learningDesc }}

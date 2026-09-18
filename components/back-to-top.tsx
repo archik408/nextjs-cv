@@ -20,14 +20,10 @@ export function BackToTop() {
   }, [onScroll]);
 
   const scrollToTop = () => {
-    try {
-      // Use View Transitions if available for nicer effect
-      if (document.startViewTransition) {
-        document.startViewTransition(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
-        return;
-      }
-    } catch {}
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const reduceMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   };
 
   return (

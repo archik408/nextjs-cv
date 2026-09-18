@@ -1,14 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import type { ComponentType } from 'react';
 import { useLanguage } from '@/lib/hooks/use-language';
 import {
   ScanText,
-  Palette,
   QrCode,
   Image as ImageIcon,
   FileImage,
-  Code,
   Zap,
   ArrowRight,
   Binary,
@@ -20,13 +19,218 @@ import {
   Hash as HashIcon,
   Smile,
   Cpu,
+  PersonStanding,
+  Mic,
+  HeartPulse,
+  Wind,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
+import ArticleTitle from '@/components/article-title';
+
+type ToolItem = {
+  id: string;
+  title: string;
+  description: string;
+  icon: ComponentType<{ className?: string; 'data-disabled'?: boolean }>;
+  href: string;
+  status: string;
+  color: string;
+  isExternal: boolean;
+};
+
+function getStatusBadge(status: string) {
+  switch (status) {
+    case 'ready':
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+          Ready
+        </span>
+      );
+    case 'coming-soon':
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
+          Coming Soon
+        </span>
+      );
+    case 'prototype':
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
+          Prototype
+        </span>
+      );
+    default:
+      return null;
+  }
+}
+
+function getColorClasses(color: string, isReady: boolean) {
+  const baseClasses = isReady ? 'hover:shadow-lg transform hover:-translate-y-1' : 'opacity-75';
+
+  switch (color) {
+    case 'blue':
+      return `${baseClasses} ${isReady ? 'hover:border-blue-300 dark:hover:border-blue-600' : ''}`;
+    case 'purple':
+      return `${baseClasses} ${isReady ? 'hover:border-purple-300 dark:hover:border-purple-600' : ''}`;
+    case 'green':
+      return `${baseClasses} ${isReady ? 'hover:border-green-300 dark:hover:border-green-600' : ''}`;
+    case 'indigo':
+      return `${baseClasses} ${isReady ? 'hover:border-indigo-300 dark:hover:border-indigo-600' : ''}`;
+    case 'pink':
+      return `${baseClasses} ${isReady ? 'hover:border-pink-300 dark:hover:border-pink-600' : ''}`;
+    case 'yellow':
+      return `${baseClasses} ${isReady ? 'hover:border-yellow-300 dark:hover:border-yellow-600' : ''}`;
+    case 'red':
+      return `${baseClasses} ${isReady ? 'hover:border-red-300 dark:hover:border-red-600' : ''}`;
+    case 'cyan':
+      return `${baseClasses} ${isReady ? 'hover:border-cyan-300 dark:hover:border-cyan-600' : ''}`;
+    case 'orange':
+      return `${baseClasses} ${isReady ? 'hover:border-orange-300 dark:hover:border-orange-600' : ''}`;
+    default:
+      return baseClasses;
+  }
+}
+
+function getIconColorClasses(color: string) {
+  switch (color) {
+    case 'blue':
+      return 'text-blue-600 dark:text-blue-400';
+    case 'purple':
+      return 'text-purple-600 dark:text-purple-400';
+    case 'green':
+      return 'text-green-600 dark:text-green-400';
+    case 'indigo':
+      return 'text-indigo-600 dark:text-indigo-400';
+    case 'pink':
+      return 'text-pink-600 dark:text-pink-400';
+    case 'yellow':
+      return 'text-yellow-600 dark:text-yellow-400';
+    case 'red':
+      return 'text-red-600 dark:text-red-400';
+    case 'cyan':
+      return 'text-cyan-600 dark:text-cyan-400';
+    case 'orange':
+      return 'text-orange-600 dark:text-orange-400';
+    default:
+      return 'text-gray-600 dark:text-gray-400';
+  }
+}
+
+function ToolCard({ tool }: { tool: ToolItem }) {
+  const Icon = tool.icon;
+  const isReady = tool.status === 'ready';
+  const cardClassName = `relative bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-all duration-200 ${getColorClasses(tool.color, isReady)}`;
+
+  const cardContent = (
+    <>
+      <div data-disabled={!isReady} className="flex items-start justify-between mb-4">
+        <div
+          data-disabled={!isReady}
+          className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-900 ${getIconColorClasses(tool.color)}`}
+        >
+          <Icon data-disabled={!isReady} className="w-6 h-6" />
+        </div>
+        <div data-disabled={!isReady} className="flex items-center gap-2">
+          {getStatusBadge(tool.status)}
+          {isReady && (
+            <ArrowRight
+              data-disabled={!isReady}
+              className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors"
+            />
+          )}
+        </div>
+      </div>
+
+      <h3
+        data-disabled={!isReady}
+        className="text-lg font-semibold text-gray-900 dark:text-white mb-2"
+      >
+        {tool.title}
+      </h3>
+
+      <p data-disabled={!isReady} className="text-gray-600 dark:text-gray-400 text-sm">
+        {tool.description}
+      </p>
+    </>
+  );
+
+  if (!isReady) {
+    return <div className={cardClassName}>{cardContent}</div>;
+  }
+
+  if (tool.isExternal) {
+    return (
+      <a href={tool.href} target="_blank" rel="noopener noreferrer" className={cardClassName}>
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={tool.href} className={cardClassName}>
+      {cardContent}
+    </Link>
+  );
+}
 
 export function ToolsPageClient() {
   const { t } = useLanguage();
 
-  const tools = [
+  const specialtyTools: ToolItem[] = [
+    {
+      id: 'vydokh',
+      title: t.vydokhToolTitle,
+      description: t.vydokhToolDesc,
+      icon: Wind,
+      href: 'https://vydokh.vercel.app/',
+      status: 'ready',
+      color: 'green',
+      isExternal: true,
+    },
+    {
+      id: 'skeleton-detection',
+      title: t.skeletonDetectionToolTitle,
+      description: t.skeletonDetectionToolDesc,
+      icon: PersonStanding,
+      href: '/skeleton-detection',
+      status: 'ready',
+      color: 'cyan',
+      isExternal: false,
+    },
+    {
+      id: 'emotion-analysis',
+      title: t.emotionAnalysisToolTitle,
+      description: t.emotionAnalysisToolDesc,
+      icon: HeartPulse,
+      href: '/emotion-analysis',
+      status: 'ready',
+      color: 'purple',
+      isExternal: false,
+    },
+    {
+      id: 'speech-recognition',
+      title: t.speechRecognitionToolTitle,
+      description: t.speechRecognitionToolDesc,
+      icon: Mic,
+      href: '/speech-recognition',
+      status: 'ready',
+      color: 'green',
+      isExternal: false,
+    },
+    {
+      id: 'braille-converter',
+      title: t.brailleConverterTitle || 'Braille Converter',
+      description:
+        t.brailleConverterToolDesc ||
+        'Convert text to Braille and back. Russian, Belarusian, English.',
+      icon: BookOpen,
+      href: '/braille-converter',
+      status: 'ready',
+      color: 'indigo',
+      isExternal: false,
+    },
+  ];
+
+  const commodityTools: ToolItem[] = [
     {
       id: 'hash-generator',
       title: t.hashGenToolTitle || 'Hash Generator',
@@ -49,18 +253,6 @@ export function ToolsPageClient() {
       href: '/image-to-base64',
       status: 'ready',
       color: 'orange',
-      isExternal: false,
-    },
-    {
-      id: 'code-review-emojis',
-      title: t.codeReviewEmojiToolTitle || 'Code Review Emoji Picker',
-      description:
-        t.codeReviewEmojiToolDesc ||
-        'Useful emoji for code review comments with quick copy for GitHub, GitLab, and other tools.',
-      icon: Smile,
-      href: '/code-review-emojis',
-      status: 'ready',
-      color: 'indigo',
       isExternal: false,
     },
     {
@@ -108,28 +300,6 @@ export function ToolsPageClient() {
       isExternal: false,
     },
     {
-      id: 'braille-converter',
-      title: t.brailleConverterTitle || 'Braille Converter',
-      description:
-        t.brailleConverterToolDesc ||
-        'Convert text to Braille and back. Russian, Belarusian, English.',
-      icon: BookOpen,
-      href: '/braille-converter',
-      status: 'ready',
-      color: 'indigo',
-      isExternal: false,
-    },
-    {
-      id: 'color-picker',
-      title: 'Color Picker & Palette Generator',
-      description: 'Extract colors from images and generate beautiful palettes',
-      icon: Palette,
-      href: '#',
-      status: 'coming-soon',
-      color: 'purple',
-      isExternal: false,
-    },
-    {
       id: 'qr-generator',
       title: t.qrGeneratorToolTitle || 'QR / Barcode Generator',
       description:
@@ -142,38 +312,22 @@ export function ToolsPageClient() {
       isExternal: false,
     },
     {
-      id: 'code-formatter',
-      title: 'Code Formatter',
-      description: 'Format and beautify code in multiple languages',
-      icon: Code,
-      href: '#',
-      status: 'coming-soon',
-      color: 'yellow',
+      id: 'code-review-emojis',
+      title: t.codeReviewEmojiToolTitle || 'Code Review Emoji Picker',
+      description:
+        t.codeReviewEmojiToolDesc ||
+        'Useful emoji for code review comments with quick copy for GitHub, GitLab, and other tools.',
+      icon: Smile,
+      href: '/code-review-emojis',
+      status: 'ready',
+      color: 'indigo',
       isExternal: false,
     },
   ];
 
-  const experiments = [
-    {
-      id: 'microbit-connector',
-      title: t.microbitConnectorToolTitle,
-      description: t.microbitConnectorToolDescription,
-      icon: Cpu,
-      href: '/microbit-connector',
-      status: 'ready',
-      color: 'cyan',
-      isExternal: false,
-    },
-    {
-      id: 'yandex-alice-skills',
-      title: t.yandexAliceSkillsTitle,
-      description: t.yandexAliceSkillsToolDescription,
-      icon: Bot,
-      href: '/yandex-alice-skills',
-      status: 'ready',
-      color: 'blue',
-      isExternal: false,
-    },
+  const tools = [...specialtyTools, ...commodityTools];
+
+  const experiments: ToolItem[] = [
     {
       id: 'event-loop',
       title: t.eventLoopTitle || 'JavaScript Event Loop',
@@ -210,149 +364,38 @@ export function ToolsPageClient() {
       isExternal: false,
     },
     {
-      id: 'webgl-demo',
-      title: 'WebGL Experiments',
-      description: 'Interactive 3D graphics and shaders',
-      icon: Zap,
-      href: '#',
-      status: 'prototype',
-      color: 'red',
-      isExternal: false,
-    },
-    {
       id: 'ai-assistant',
       title: t.aiAssistantTitle || 'AI Assistant',
       description:
         t.aiAssistantDesc ||
         'Chat with an AI assistant powered by free AI models. Ask questions, get help, or have a conversation.',
       icon: Bot,
-      href: '#',
-      status: 'coming-soon',
+      href: '/ai-assistant',
+      status: 'ready',
       color: 'purple',
       isExternal: false,
     },
+    {
+      id: 'microbit-connector',
+      title: t.microbitConnectorToolTitle,
+      description: t.microbitConnectorToolDescription,
+      icon: Cpu,
+      href: '/microbit-connector',
+      status: 'ready',
+      color: 'cyan',
+      isExternal: false,
+    },
+    {
+      id: 'yandex-alice-skills',
+      title: t.yandexAliceSkillsTitle,
+      description: t.yandexAliceSkillsToolDescription,
+      icon: Bot,
+      href: '/yandex-alice-skills',
+      status: 'ready',
+      color: 'blue',
+      isExternal: false,
+    },
   ];
-
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'ready':
-        return (
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
-            Ready
-          </span>
-        );
-      case 'coming-soon':
-        return (
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
-            Coming Soon
-          </span>
-        );
-      case 'prototype':
-        return (
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
-            Prototype
-          </span>
-        );
-      default:
-        return null;
-    }
-  };
-
-  const getColorClasses = (color: string, isReady: boolean) => {
-    const baseClasses = isReady ? 'hover:shadow-lg transform hover:-translate-y-1' : 'opacity-75';
-
-    switch (color) {
-      case 'blue':
-        return `${baseClasses} ${isReady ? 'hover:border-blue-300 dark:hover:border-blue-600' : ''}`;
-      case 'purple':
-        return `${baseClasses} ${isReady ? 'hover:border-purple-300 dark:hover:border-purple-600' : ''}`;
-      case 'green':
-        return `${baseClasses} ${isReady ? 'hover:border-green-300 dark:hover:border-green-600' : ''}`;
-      case 'indigo':
-        return `${baseClasses} ${isReady ? 'hover:border-indigo-300 dark:hover:border-indigo-600' : ''}`;
-      case 'pink':
-        return `${baseClasses} ${isReady ? 'hover:border-pink-300 dark:hover:border-pink-600' : ''}`;
-      case 'yellow':
-        return `${baseClasses} ${isReady ? 'hover:border-yellow-300 dark:hover:border-yellow-600' : ''}`;
-      case 'red':
-        return `${baseClasses} ${isReady ? 'hover:border-red-300 dark:hover:border-red-600' : ''}`;
-      case 'cyan':
-        return `${baseClasses} ${isReady ? 'hover:border-cyan-300 dark:hover:border-cyan-600' : ''}`;
-      case 'orange':
-        return `${baseClasses} ${isReady ? 'hover:border-orange-300 dark:hover:border-orange-600' : ''}`;
-      default:
-        return baseClasses;
-    }
-  };
-
-  const getIconColorClasses = (color: string) => {
-    switch (color) {
-      case 'blue':
-        return 'text-blue-600 dark:text-blue-400';
-      case 'purple':
-        return 'text-purple-600 dark:text-purple-400';
-      case 'green':
-        return 'text-green-600 dark:text-green-400';
-      case 'indigo':
-        return 'text-indigo-600 dark:text-indigo-400';
-      case 'pink':
-        return 'text-pink-600 dark:text-pink-400';
-      case 'yellow':
-        return 'text-yellow-600 dark:text-yellow-400';
-      case 'red':
-        return 'text-red-600 dark:text-red-400';
-      case 'cyan':
-        return 'text-cyan-600 dark:text-cyan-400';
-      case 'orange':
-        return 'text-orange-600 dark:text-orange-400';
-      default:
-        return 'text-gray-600 dark:text-gray-400';
-    }
-  };
-
-  const ToolCard = ({ tool }: { tool: (typeof tools)[0] }) => {
-    const Icon = tool.icon;
-    const isReady = tool.status === 'ready';
-    const Component = isReady ? Link : 'div';
-    const props = isReady ? { href: tool.href } : { 'data-disabled': !isReady };
-
-    return (
-      // @ts-expect-error
-      <Component
-        {...props}
-        className={`relative bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-all duration-200 ${getColorClasses(tool.color, isReady)}`}
-      >
-        <div data-disabled={!isReady} className="flex items-start justify-between mb-4">
-          <div
-            data-disabled={!isReady}
-            className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-900 ${getIconColorClasses(tool.color)}`}
-          >
-            <Icon data-disabled={!isReady} className="w-6 h-6" />
-          </div>
-          <div data-disabled={!isReady} className="flex items-center gap-2">
-            {getStatusBadge(tool.status)}
-            {isReady && (
-              <ArrowRight
-                data-disabled={!isReady}
-                className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors"
-              />
-            )}
-          </div>
-        </div>
-
-        <h3
-          data-disabled={!isReady}
-          className="text-lg font-semibold text-gray-900 dark:text-white mb-2"
-        >
-          {tool.title}
-        </h3>
-
-        <p data-disabled={!isReady} className="text-gray-600 dark:text-gray-400 text-sm">
-          {tool.description}
-        </p>
-      </Component>
-    );
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
@@ -360,12 +403,9 @@ export function ToolsPageClient() {
 
       <div className="container mx-auto px-4 md:py-8 py-14">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">
-              {t.toolsAndExperiments || 'Tools & Experiments'}
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <div className="mb-12 text-center">
+            <ArticleTitle text={t.toolsAndExperiments || 'Tools & Experiments'} />
+            <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
               {t.toolsDescription ||
                 "A collection of useful tools and experimental features I've built for various purposes. Some are ready to use, others are still in development."}
             </p>

@@ -25,7 +25,7 @@ describe('ExperienceSection', () => {
     expect(screen.queryByText('Indy')).not.toBeInTheDocument();
     expect(screen.getByRole('link', { name: /View full experience/i })).toHaveAttribute(
       'href',
-      '/experience'
+      '/cv'
     );
   });
 

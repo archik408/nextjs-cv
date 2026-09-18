@@ -9,7 +9,10 @@ export function ContactSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="pt-20 pb-4 px-4 md:px-8 bg-gray-400/50 dark:bg-gray-900/50">
+    <section
+      id="contact"
+      className="scroll-mt-20 pt-20 pb-4 px-4 md:px-8 bg-gray-400/50 dark:bg-gray-900/50"
+    >
       <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-10 items-center">
         <div className="text-center md:text-left">
           <AnimatedSectionTitle
@@ -34,7 +37,7 @@ export function ContactSection() {
               rel="noopener noreferrer"
               className="shadow-lg inline-flex items-center justify-center px-6 py-3 bg-[#0077b5] hover:bg-[#005885] rounded-lg transition-colors transform hover:scale-105 duration-200 font-medium text-white"
             >
-              {t.followOnLinkedIn} <Linkedin className="w-4 h-4 ml-2" />
+              <Linkedin className="w-4 h-4" />
             </a>
             <a
               href="https://t.me/proa11y"
@@ -42,7 +45,7 @@ export function ContactSection() {
               rel="noopener noreferrer"
               className="shadow-lg inline-flex items-center justify-center px-6 py-3 bg-[#229ED9] hover:bg-[#1b8bc0] rounded-lg transition-colors transform hover:scale-105 duration-200 font-medium text-white"
             >
-              {t.followOnTelegram} <Send className="w-4 h-4 ml-2" />
+              <Send className="w-4 h-4" />
             </a>
           </div>
         </div>

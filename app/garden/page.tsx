@@ -9,11 +9,8 @@ export const dynamic = 'force-static';
 function GardenListFallback() {
   const notes = listGardenNotes({ locale: 'ru' });
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 lg:flex-row lg:gap-12">
-      <aside className="order-2 shrink-0 lg:order-1 lg:w-56" aria-hidden="true">
-        <div className="sticky top-4 h-48 animate-pulse rounded-lg border border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800" />
-      </aside>
-      <main className="min-w-0 flex-1 lg:order-2">
+    <div className="mx-auto max-w-6xl px-4 py-12">
+      <main className="min-w-0">
         <div
           className="mb-4 h-10 w-64 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700"
           aria-hidden="true"
@@ -58,10 +55,11 @@ export default function GardenIndexPage() {
 
 export function generateMetadata() {
   return buildMetadata({
-    title: 'Digital Garden — заметки и идеи',
+    title: 'Digital Garden — Production, Thinking, Kids Lab, Archive',
     description:
-      'Живой набор заметок, идей и черновиков по фронтенду, дизайну и разработке. Часто обновляется.',
-    keywords: 'Digital Garden, заметки, фронтенд, идеи, черновики, веб-разработка, Artur Basak',
+      'Живой набор заметок по полкам: Production (кейсы), Thinking (эссе и книги), Kids Lab, Archive.',
+    keywords:
+      'Digital Garden, Production, Thinking, Kids Lab, Archive, PWA, product engineering, Artur Basak',
     path: '/garden',
     locale: 'ru',
     languages: {

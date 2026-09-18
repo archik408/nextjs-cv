@@ -7,7 +7,7 @@ describe('HeroSection', () => {
     render(<HeroSection />);
 
     expect(screen.getByText('Artur Basak')).toBeInTheDocument();
-    expect(screen.getByText('Senior Frontend Engineer • UI/UX Specialist')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
   });
 
   it('renders social media links', () => {

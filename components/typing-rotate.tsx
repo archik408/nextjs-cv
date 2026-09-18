@@ -110,9 +110,7 @@ export default function TypingRotate({
   if (detectionComplete && !shouldAnimate) {
     return (
       <span className={className} aria-live="polite">
-        <span className="txt-rotate">
-          <span style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>{toRotate[0]}</span>
-        </span>
+        <span className="txt-rotate">{toRotate[0]}</span>
       </span>
     );
   }
@@ -120,10 +118,7 @@ export default function TypingRotate({
   return (
     <span className={className} aria-live="polite">
       <span className="txt-rotate">
-        <span
-          className={`wrap transition-opacity ${txt?.length ? 'opacity-100' : 'opacity-0'}`}
-          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
-        >
+        <span className={`wrap transition-opacity ${txt?.length ? 'opacity-100' : 'opacity-0'}`}>
           {txt}
         </span>
       </span>

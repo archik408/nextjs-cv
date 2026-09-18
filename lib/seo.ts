@@ -139,7 +139,15 @@ export const seoConfigs = {
       'Full work history of Artur Basak — web engineering roles across X5 Tech, IntexSoft, Godel, Indy, and earlier enterprise engagements.',
     keywords:
       'Work Experience, Web Engineer, Career, X5 Tech, React, Next.js, PWA, Accessibility, Frontend Architecture',
-    path: '/experience',
+    path: '/cv',
+  },
+  cv: {
+    title: 'CV - Experience, Testimonials & Certificates',
+    description:
+      'Curriculum vitae of Artur Basak — full work history, testimonials, education, and certificates.',
+    keywords:
+      'CV, Resume, Work Experience, Testimonials, Certificates, Education, Web Engineer, Artur Basak',
+    path: '/cv',
   },
   tools: {
     title: 'Tools & Experiments - Developer Utilities',
@@ -209,5 +217,28 @@ export const seoConfigs = {
     keywords:
       'AI Assistant, Chatbot, AI Chat, Conversational AI, Free AI, Streaming AI, Hugging Face, Groq',
     path: '/ai-assistant',
+  },
+  skeletonDetection: {
+    title: 'Skeleton Detection - On-device Pose Estimation',
+    description:
+      'Real-time human pose and skeleton overlay from your webcam using MoveNet and WebGPU in the browser.',
+    keywords:
+      'Skeleton Detection, Pose Estimation, MoveNet, WebGPU, WebNN, Edge AI, TensorFlow.js, Camera',
+    path: '/skeleton-detection',
+  },
+  emotionAnalysis: {
+    title: 'Emotion Analysis - On-device Facial Expressions',
+    description:
+      'Detect facial expressions from your camera entirely on-device with face-api.js — no video leaves the browser.',
+    keywords: 'Emotion Analysis, Facial Expressions, face-api.js, WebGPU, Edge AI, Camera, Privacy',
+    path: '/emotion-analysis',
+  },
+  speechRecognition: {
+    title: 'Speech Recognition - Live Speech-to-Text',
+    description:
+      'Convert speech to text in the browser using the Web Speech API with live interim results.',
+    keywords:
+      'Speech Recognition, Speech-to-Text, Web Speech API, Microphone, Edge AI, Accessibility',
+    path: '/speech-recognition',
   },
 } as const;

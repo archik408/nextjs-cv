@@ -29,5 +29,5 @@ Further reading on the topic (including the “ice cream cone” anti-pattern):
 
 ### Related notes
 
-- [JavaScript test automation strategy for a legacy system (video, RU)](/garden/legacy-testing-strategy)
+- [JavaScript test automation strategy for a legacy system (video)](/#talks)
 - [A Visual Tutorial on Every Type of Test You Can Write](/garden/tests-developer-should-write_en)

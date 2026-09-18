@@ -107,7 +107,7 @@ export const createWebsiteSchema = () => ({
   hasPart: [
     { '@type': 'WebPage', name: 'Digital Garden', url: 'https://arturbasak.dev/garden' },
     { '@type': 'WebPage', name: 'Publications', url: 'https://arturbasak.dev/blog' },
-    { '@type': 'WebPage', name: 'Experience', url: 'https://arturbasak.dev/experience' },
+    { '@type': 'WebPage', name: 'CV', url: 'https://arturbasak.dev/cv' },
     { '@type': 'WebPage', name: 'Tools', url: 'https://arturbasak.dev/tools' },
     { '@type': 'WebPage', name: 'llms.txt', url: 'https://arturbasak.dev/llms.txt' },
   ],

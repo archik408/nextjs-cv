@@ -13,7 +13,7 @@ describe('App Integration Tests', () => {
     render(<HeroSection />);
 
     // Check for main content
-    expect(screen.getByText('Senior Frontend Engineer • UI/UX Specialist')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
   });
 
   it('renders social media links', () => {

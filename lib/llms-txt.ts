@@ -15,9 +15,9 @@ const ABOUT: LlmsLink[] = [
     note: 'Overview of Artur Basak — Web Engineer & Frontend Architect with 15+ years experience',
   },
   {
-    title: 'Experience',
-    path: '/experience',
-    note: 'Full work history across X5 Tech, IntexSoft, Godel, Indy, and earlier roles',
+    title: 'CV',
+    path: '/cv',
+    note: 'Full work history, testimonials, education, and certificates',
   },
   {
     title: 'Digital Garden',

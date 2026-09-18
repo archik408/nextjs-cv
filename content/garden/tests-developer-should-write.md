@@ -384,7 +384,7 @@ describe('Project page', () => {
 
 ### Связанные заметки
 
-- [[Стратегия автоматического тестирования на JavaScript [Видео]](/garden/legacy-testing-strategy)]
+- [Стратегия автоматического тестирования на JavaScript (видео)](/#talks)
 - [[Пирамида тестирования](/garden/testing-pyramid)]
 - [[TypeScript — самая большая ошибка в мире фронтенда!](/garden/typescript)]
 - [[15 лет в коммерческой разработке. Что я понял? Что я ничего не понял.](/garden/15-years-in-dev)]

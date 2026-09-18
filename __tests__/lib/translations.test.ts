@@ -9,13 +9,13 @@ describe('Translations', () => {
       expect(enTranslations).toHaveProperty('role');
       expect(enTranslations).toHaveProperty('subtitle');
       expect(enTranslations).toHaveProperty('experience');
-      expect(enTranslations).toHaveProperty('skills');
+      expect(enTranslations).toHaveProperty('garden');
       expect(enTranslations).toHaveProperty('certificates');
     });
 
-    it('has skills as string', () => {
-      expect(typeof enTranslations.skills).toBe('string');
-      expect(enTranslations.skills.length).toBeGreaterThan(0);
+    it('has garden as string', () => {
+      expect(typeof enTranslations.garden).toBe('string');
+      expect(enTranslations.garden.length).toBeGreaterThan(0);
     });
 
     it('has certificates as string', () => {
@@ -31,13 +31,13 @@ describe('Translations', () => {
       expect(ruTranslations).toHaveProperty('role');
       expect(ruTranslations).toHaveProperty('subtitle');
       expect(ruTranslations).toHaveProperty('experience');
-      expect(ruTranslations).toHaveProperty('skills');
+      expect(ruTranslations).toHaveProperty('garden');
       expect(ruTranslations).toHaveProperty('certificates');
     });
 
-    it('has skills as string', () => {
-      expect(typeof ruTranslations.skills).toBe('string');
-      expect(ruTranslations.skills.length).toBeGreaterThan(0);
+    it('has garden as string', () => {
+      expect(typeof ruTranslations.garden).toBe('string');
+      expect(ruTranslations.garden.length).toBeGreaterThan(0);
     });
 
     it('has certificates as string', () => {

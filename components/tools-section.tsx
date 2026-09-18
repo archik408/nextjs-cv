@@ -40,18 +40,20 @@ export function ToolsSection() {
   };
 
   return (
-    <section className="py-10 md:py-16 px-4 md:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
+    <section className="relative overflow-hidden bg-linear-to-br from-slate-50 via-blue-50 to-indigo-100 px-4 py-10 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 md:px-8 md:py-16">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.2),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.2),transparent_50%)]" />
+
+      <div className="relative z-10 mx-auto max-w-4xl">
+        <div className="mb-8 text-center">
           <AnimatedSectionTitle
             text={t.mySetup}
             className="justify-center"
-            wrapperClassName="text-gray-900 dark:text-white text-center"
+            wrapperClassName="text-center text-gray-900 dark:text-white"
           />
           <p className="text-base text-gray-600 dark:text-gray-300">{t.mySetupDescription}</p>
         </div>
 
-        {/* Minimalist tool grid */}
         <div
           className="flex flex-wrap justify-center gap-3"
           role="list"
@@ -61,14 +63,14 @@ export function ToolsSection() {
             <button
               key={tool}
               onClick={() => handleToolClick(tool)}
-              className="group flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all duration-200"
+              className="group flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 transition-all duration-200 hover:border-blue-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-600"
               aria-label={`${t.searchFor} ${tool} ${t.onGoogle}`}
               role="listitem"
             >
-              <div className="w-5 h-5 flex-shrink-0" aria-hidden="true">
+              <div className="h-5 w-5 shrink-0" aria-hidden="true">
                 <TechIcon name={tool} size={20} />
               </div>
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+              <span className="text-sm font-medium text-gray-700 transition-colors duration-200 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-blue-400">
                 {tool}
               </span>
             </button>

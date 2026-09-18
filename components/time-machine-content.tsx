@@ -15,7 +15,7 @@ interface TimeMachineSnapshot {
 
 export function TimeMachineContent() {
   const { t } = useLanguage();
-  const [selectedYear, setSelectedYear] = useState<number>(2025);
+  const [selectedYear, setSelectedYear] = useState<number>(2026);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
@@ -50,6 +50,11 @@ export function TimeMachineContent() {
       year: 2025,
       image: '/time-machine/2025.webp',
       description: t.timeMachine2025Description,
+    },
+    {
+      year: 2026,
+      image: '/time-machine/2026.webp',
+      description: t.timeMachine2026Description,
     },
   ];
 
@@ -173,7 +178,7 @@ export function TimeMachineContent() {
                       isImageLoading ? 'opacity-0' : 'opacity-100'
                     }`}
                     onLoad={handleImageLoad}
-                    priority={selectedYear === 2025}
+                    priority={selectedYear === 2026}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                   />
                 </div>

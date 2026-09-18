@@ -354,7 +354,7 @@ Asserts is a set of functions that allow you to compare the results of two or mo
 
 ### Related notes
 
-- [JavaScript test automation strategy for a legacy system (video, RU)](/garden/legacy-testing-strategy)
+- [JavaScript test automation strategy for a legacy system (video)](/#talks)
 - [The Testing Pyramid](/garden/testing-pyramid_en)
 - [TypeScript is the biggest mistake in frontend](/garden/typescript)
 - [15 years in commercial development — what I learned is how little I know](/garden/15-years-in-dev_en)

@@ -1,127 +1,65 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 import { posts } from '@/constants/blog';
 import { listGardenNotes } from '@/lib/garden';
+import { SITE_URL } from '@/lib/site';
 
-const baseUrl = 'https://arturbasak.dev';
+const baseUrl = SITE_URL;
+
+type StaticPage = {
+  path: string;
+  changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'];
+  priority: number;
+};
+
+const staticPageDefs: StaticPage[] = [
+  { path: '/', changeFrequency: 'monthly', priority: 1 },
+  { path: '/garden', changeFrequency: 'weekly', priority: 0.9 },
+  { path: '/blog', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/cv', changeFrequency: 'monthly', priority: 0.85 },
+  { path: '/timeline', changeFrequency: 'monthly', priority: 0.75 },
+  { path: '/tools', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/algorithms', changeFrequency: 'monthly', priority: 0.5 },
+  { path: '/algorithms/sorting', changeFrequency: 'monthly', priority: 0.5 },
+  { path: '/algorithms/sorting/bubble-sort', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/algorithms/sorting/quick-sort', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/algorithms/sorting/insertion-sort', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/algorithms/sorting/selection-sort', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/algorithms/sorting/merge-sort', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/algorithms/sorting/shell-sort', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/algorithms/sorting/heap-sort', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/event-loop', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/react-fiber', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/microbit-connector', changeFrequency: 'monthly', priority: 0.6 },
+  { path: '/yandex-alice-skills', changeFrequency: 'monthly', priority: 0.5 },
+  { path: '/yandex-hub', changeFrequency: 'yearly', priority: 0.4 },
+  { path: '/yandex-witcher', changeFrequency: 'yearly', priority: 0.4 },
+  { path: '/ocr', changeFrequency: 'monthly', priority: 0.5 },
+  { path: '/braille-converter', changeFrequency: 'monthly', priority: 0.5 },
+  { path: '/svg-optimizer', changeFrequency: 'monthly', priority: 0.5 },
+  { path: '/image-optimizer', changeFrequency: 'monthly', priority: 0.5 },
+  { path: '/image-to-base64', changeFrequency: 'monthly', priority: 0.45 },
+  { path: '/image-placeholder', changeFrequency: 'monthly', priority: 0.45 },
+  { path: '/hash-generator', changeFrequency: 'monthly', priority: 0.45 },
+  { path: '/qr-code-generator', changeFrequency: 'monthly', priority: 0.45 },
+  { path: '/code-review-emojis', changeFrequency: 'monthly', priority: 0.4 },
+  { path: '/ai-assistant', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/skeleton-detection', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/emotion-analysis', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/speech-recognition', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/accessibility', changeFrequency: 'yearly', priority: 0.4 },
+  { path: '/privacy', changeFrequency: 'yearly', priority: 0.4 },
+  { path: '/time-machine', changeFrequency: 'yearly', priority: 0.35 },
+  { path: '/llms.txt', changeFrequency: 'monthly', priority: 0.7 },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Static pages
-  const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/garden`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/experience`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/tools`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/algorithms`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/algorithms/sorting`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/algorithms/sorting/bubble-sort`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.55,
-    },
-    {
-      url: `${baseUrl}/algorithms/sorting/quick-sort`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.55,
-    },
-    {
-      url: `${baseUrl}/algorithms/sorting/insertion-sort`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.55,
-    },
-    {
-      url: `${baseUrl}/algorithms/sorting/selection-sort`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.55,
-    },
-    {
-      url: `${baseUrl}/algorithms/sorting/merge-sort`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.55,
-    },
-    {
-      url: `${baseUrl}/algorithms/sorting/shell-sort`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.55,
-    },
-    {
-      url: `${baseUrl}/algorithms/sorting/heap-sort`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.55,
-    },
-    {
-      url: `${baseUrl}/event-loop`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/microbit-connector`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/yandex-alice-skills`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/ocr`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/braille-converter`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-  ];
+  const now = new Date();
+  const staticPages = staticPageDefs.map((page) => ({
+    url: page.path === '/' ? baseUrl : `${baseUrl}${page.path}`,
+    lastModified: now,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }));
 
   // Blog posts
   const blogPages = posts

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { resolveGardenShelf, type GardenShelf } from '@/constants/garden-shelves';
 
 export type GardenLocale = 'ru' | 'en';
 
@@ -9,6 +10,8 @@ export type GardenNoteFrontmatter = {
   title: string;
   description?: string;
   tags?: string[];
+  /** Optional override from YAML; resolved via resolveGardenShelf */
+  shelf?: string;
 };
 
 export type GardenNote = {
@@ -18,6 +21,7 @@ export type GardenNote = {
   locale: GardenLocale;
   /** Slug of the paired translation, if it exists on disk */
   translationSlug: string | null;
+  shelf: GardenShelf;
 };
 
 // Statically scoped under content/garden so Turbopack/NFT do not trace the whole repo.
@@ -71,6 +75,8 @@ function parseFrontmatter(raw: string): { frontmatter: GardenNoteFrontmatter; bo
       frontmatter[key] = rawValue.replace(/^"|"$/g, '');
     }
   }
+  const shelfRaw =
+    typeof frontmatter.shelf === 'string' ? (frontmatter.shelf as string).trim() : undefined;
   const result: GardenNoteFrontmatter = {
     title:
       typeof frontmatter.title === 'string' && frontmatter.title
@@ -80,6 +86,7 @@ function parseFrontmatter(raw: string): { frontmatter: GardenNoteFrontmatter; bo
       typeof frontmatter.description === 'string' ? (frontmatter.description as string) : undefined,
     date: typeof frontmatter.date === 'string' ? (frontmatter.date as string) : undefined,
     tags: Array.isArray(frontmatter.tags) ? (frontmatter.tags as string[]) : undefined,
+    shelf: shelfRaw,
   };
   return { frontmatter: result, body };
 }
@@ -107,12 +114,15 @@ function noteFileExists(slug: string): boolean {
 
 function toGardenNote(slug: string, frontmatter: GardenNoteFrontmatter, body: string): GardenNote {
   const pairedSlug = getGardenPairedSlug(slug);
+  const baseSlug = getGardenBaseSlug(slug);
+  const shelf = resolveGardenShelf(baseSlug, frontmatter.shelf);
   return {
     slug,
     content: body,
-    frontmatter,
+    frontmatter: { ...frontmatter, shelf },
     locale: getGardenLocaleFromSlug(slug),
     translationSlug: noteFileExists(pairedSlug) ? pairedSlug : null,
+    shelf,
   };
 }
 
@@ -161,4 +171,33 @@ export function getGardenNoteBySlug(slug: string): GardenNote | null {
   return null;
 }
 
-export { getAllTagsFromNotes, filterNotesByTag } from './garden-utils';
+export function getLatestGardenNotes(
+  preferredLocale: GardenLocale,
+  limit = 6,
+  shelf: GardenShelf = 'production'
+): GardenNote[] {
+  const all = listGardenNotes({ locale: 'all' }).filter((note) => note.shelf === shelf);
+  const byBase = new Map<string, GardenNote[]>();
+  for (const note of all) {
+    const base = getGardenBaseSlug(note.slug);
+    const group = byBase.get(base);
+    if (group) {
+      group.push(note);
+    } else {
+      byBase.set(base, [note]);
+    }
+  }
+
+  const picked = Array.from(byBase.values()).map(
+    (candidates) =>
+      candidates.find((note) => note.locale === preferredLocale) ??
+      candidates.find((note) => note.locale === 'ru') ??
+      candidates[0]
+  );
+
+  return sortNotesByDateDesc(picked).slice(0, limit);
+}
+
+export { filterNotesByShelf } from './garden-utils';
+export type { GardenShelf } from '@/constants/garden-shelves';
+export { GARDEN_SHELVES, DEFAULT_GARDEN_SHELF, isGardenShelf } from '@/constants/garden-shelves';

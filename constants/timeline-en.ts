@@ -421,6 +421,13 @@ export const timelineDataEn = [
     category: 'career' as const,
     image: '/timeline/moscowjs.webp',
   },
+  {
+    year: 2026,
+    title: 'X5 Group Mystery Shopper Club Product Day',
+    description: 'Team meetup with users, a short talk about the product and plans',
+    category: 'career' as const,
+    image: '/timeline/product-day-x5.webp',
+  },
 
   // Technology milestones (right side)
   {
@@ -875,5 +882,21 @@ export const timelineDataEn = [
     description: 'OpenAI released own web browser with AI assistant based on ChatGPT and Chromium',
     category: 'technology' as const,
     image: '/timeline/openai.webp',
+  },
+  {
+    year: 2025,
+    title: 'Claude acquired Bun',
+    description:
+      'Anthropic (Claude) acquired Bun and made it the internal JS engine for LLM responses',
+    category: 'technology' as const,
+    image: '/timeline/bun.webp',
+  },
+  {
+    year: 2026,
+    title: 'End of Programming',
+    description:
+      'Bun was rewritten from Zig to Rust with Claude LLM — a moment dubbed End of Programming',
+    category: 'technology' as const,
+    image: '/timeline/claude.webp',
   },
 ];

@@ -420,6 +420,13 @@ export const timelineDataRu = [
     category: 'career' as const,
     image: '/timeline/moscowjs.webp',
   },
+  {
+    year: 2026,
+    title: 'День продукта Клуб тайных покупателей X5 Group',
+    description: 'Встреча команды с пользователями, небольшой рассказ про продукт и планы',
+    category: 'career' as const,
+    image: '/timeline/product-day-x5.webp',
+  },
   // Technology milestones (right side)
   {
     year: 1993,
@@ -878,5 +885,20 @@ export const timelineDataRu = [
       'OpenAI выпустил собственный браузер со встроенным ИИ ассистентом ChatGPT на базе Chromium',
     category: 'technology' as const,
     image: '/timeline/openai.webp',
+  },
+  {
+    year: 2025,
+    title: 'Claude купил Bun',
+    description: 'Anthropic (Claude) купил Bun и сделал его внутренним JS-движком для ответов LLM',
+    category: 'technology' as const,
+    image: '/timeline/bun.webp',
+  },
+  {
+    year: 2026,
+    title: 'End of Programming',
+    description:
+      'Bun переписали с Zig на Rust с помощью LLM Claude — момент, который окрестили End of Programming',
+    category: 'technology' as const,
+    image: '/timeline/claude.webp',
   },
 ];
