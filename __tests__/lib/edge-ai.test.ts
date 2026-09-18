@@ -69,6 +69,24 @@ describe('detectEdgeAiCapabilities', () => {
     expect(caps.canRunVision).toBe(true);
   });
 
+  it('enables vision when only WebGL is available', () => {
+    delete (Navigator.prototype as { gpu?: unknown }).gpu;
+    delete (Navigator.prototype as { ml?: unknown }).ml;
+    Object.defineProperty(Navigator.prototype, 'mediaDevices', {
+      configurable: true,
+      get: () => ({ getUserMedia: jest.fn() }),
+    });
+
+    const getContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = jest.fn(() => ({})) as unknown as typeof getContext;
+
+    const caps = detectEdgeAiCapabilities();
+    expect(caps.webgl).toBe(true);
+    expect(caps.canRunVision).toBe(true);
+
+    HTMLCanvasElement.prototype.getContext = getContext;
+  });
+
   it('enables speech when SpeechRecognition and mediaDevices exist', () => {
     Object.defineProperty(Navigator.prototype, 'mediaDevices', {
       configurable: true,

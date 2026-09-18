@@ -159,6 +159,7 @@ export function SpeechRecognitionPageClient() {
     unsupported: t.speechRecognitionUnsupported,
     webgpu: t.edgeAiCapWebgpu,
     webnn: t.edgeAiCapWebnn,
+    webgl: t.edgeAiCapWebgl,
     camera: t.edgeAiCapCamera,
     microphone: t.edgeAiCapMicrophone,
     speechRecognition: t.edgeAiCapSpeech,
@@ -181,7 +182,7 @@ export function SpeechRecognitionPageClient() {
             <EdgeAiCapabilityPanel
               capabilities={caps}
               labels={capabilityLabels}
-              keys={['speechRecognition', 'microphone', 'webgpu', 'webnn']}
+              keys={['speechRecognition', 'microphone']}
               canRun={caps.canRunSpeech}
             />
           )}

@@ -1,10 +1,11 @@
 export type EdgeAiCapabilities = {
   webgpu: boolean;
   webnn: boolean;
+  webgl: boolean;
   camera: boolean;
   microphone: boolean;
   speechRecognition: boolean;
-  /** Vision tools (pose / emotion) require WebGPU or WebNN. */
+  /** Vision tools (pose / emotion) can run on WebGPU, WebNN, or WebGL. */
   canRunVision: boolean;
   /** Speech tool requires SpeechRecognition + microphone APIs. */
   canRunSpeech: boolean;
@@ -24,11 +25,22 @@ function hasMediaDevices(): boolean {
   return typeof navigator !== 'undefined' && !!navigator.mediaDevices?.getUserMedia;
 }
 
+function detectWebGl(): boolean {
+  if (typeof document === 'undefined') return false;
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(canvas.getContext('webgl2') || canvas.getContext('webgl'));
+  } catch {
+    return false;
+  }
+}
+
 export function detectEdgeAiCapabilities(): EdgeAiCapabilities {
   if (typeof window === 'undefined' || typeof navigator === 'undefined') {
     return {
       webgpu: false,
       webnn: false,
+      webgl: false,
       camera: false,
       microphone: false,
       speechRecognition: false,
@@ -42,6 +54,7 @@ export function detectEdgeAiCapabilities(): EdgeAiCapabilities {
 
   const webgpu = typeof nav.gpu?.requestAdapter === 'function';
   const webnn = 'ml' in nav && nav.ml != null;
+  const webgl = detectWebGl();
   const media = hasMediaDevices();
   const speechRecognition =
     typeof win.SpeechRecognition === 'function' ||
@@ -50,10 +63,11 @@ export function detectEdgeAiCapabilities(): EdgeAiCapabilities {
   return {
     webgpu,
     webnn,
+    webgl,
     camera: media,
     microphone: media,
     speechRecognition,
-    canRunVision: webgpu || webnn,
+    canRunVision: webgpu || webnn || webgl,
     canRunSpeech: speechRecognition && media,
   };
 }

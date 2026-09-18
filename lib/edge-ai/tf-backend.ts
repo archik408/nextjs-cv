@@ -5,9 +5,8 @@ import '@tensorflow/tfjs-backend-webgl';
 export type TfBackendId = 'webgpu' | 'webgl';
 
 /**
- * Prefer WebGPU for Edge AI acceleration; fall back to WebGL only when probing fails
- * after WebGPU was advertised (rare adapter issues). Callers that require WebGPU
- * should gate UI with detectEdgeAiCapabilities().canRunVision first.
+ * Prefer WebGPU for Edge AI acceleration; fall back to WebGL when WebGPU is
+ * unavailable or fails to initialize.
  */
 export async function initTfBackend(prefer: TfBackendId = 'webgpu'): Promise<TfBackendId> {
   const order: TfBackendId[] = prefer === 'webgpu' ? ['webgpu', 'webgl'] : ['webgl', 'webgpu'];

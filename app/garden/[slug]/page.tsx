@@ -24,7 +24,12 @@ export default async function GardenNotePage({ params }: PageParams) {
   const dateLocale = note.locale === 'en' ? 'en-US' : 'ru-RU';
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 dark:from-gray-900 dark:to-gray-800 dark:text-white">
-      <main className="mx-auto max-w-3xl px-4 py-12" lang={note.locale} translate="yes">
+      <main
+        id="main-content"
+        className="mx-auto max-w-3xl px-4 py-12"
+        lang={note.locale}
+        translate="yes"
+      >
         <NavigationButtons
           levelUp="garden"
           locale={note.locale}
@@ -73,9 +78,29 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const note = getGardenNoteBySlug(slug);
   if (!note) return {};
+
+  const languages: Partial<Record<'en' | 'ru' | 'x-default', string>> = {
+    [note.locale]: `/garden/${note.slug}`,
+  };
+  if (note.translationSlug) {
+    const otherLocale = note.locale === 'en' ? 'ru' : 'en';
+    languages[otherLocale] = `/garden/${note.translationSlug}`;
+    languages['x-default'] =
+      note.locale === 'ru' ? `/garden/${note.slug}` : `/garden/${note.translationSlug}`;
+  } else {
+    languages['x-default'] = `/garden/${note.slug}`;
+  }
+
   return buildMetadata({
     title: note.frontmatter.title,
-    description: note.frontmatter.description || note.frontmatter.title,
+    description:
+      note.frontmatter.description ||
+      (note.locale === 'en' ? 'A note from the Digital Garden' : 'Заметка из Digital Garden'),
     path: `/garden/${note.slug}`,
+    type: 'article',
+    publishedTime: note.frontmatter.date,
+    modifiedTime: note.frontmatter.date,
+    locale: note.locale,
+    languages,
   });
 }

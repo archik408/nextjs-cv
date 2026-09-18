@@ -144,6 +144,26 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
+  async redirects() {
+    return [
+      {
+        source: '/garden/legacy-testing-strategy',
+        destination: '/docs/legacy-testing-strategy-grocon19.pdf',
+        permanent: true,
+      },
+      {
+        source: '/garden/secret-life-of-photos-x5',
+        destination: 'https://youtu.be/7Yingac_9zI',
+        permanent: true,
+      },
+      {
+        source: '/garden/web-accessibility-talk',
+        destination: '/docs/web-accessibility-talk.pdf',
+        permanent: true,
+      },
+    ];
+  },
+
   // Ensure serverless functions don't bundle these modules so their data files are available at runtime
   serverExternalPackages: ['svgo', 'css-tree', 'csso'],
 

@@ -3,13 +3,14 @@
 import type { EdgeAiCapabilities } from '@/lib/edge-ai/capabilities';
 import { AlertCircle, CheckCircle2, XCircle } from 'lucide-react';
 
-type CapabilityKey = 'webgpu' | 'webnn' | 'camera' | 'microphone' | 'speechRecognition';
+type CapabilityKey = 'webgpu' | 'webnn' | 'webgl' | 'camera' | 'microphone' | 'speechRecognition';
 
 type Labels = {
   title: string;
   unsupported: string;
   webgpu: string;
   webnn: string;
+  webgl: string;
   camera: string;
   microphone: string;
   speechRecognition: string;

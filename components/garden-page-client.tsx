@@ -97,7 +97,7 @@ export function GardenPageClient({ notes, title, description }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <main className="min-w-0">
+      <main id="main-content" className="min-w-0">
         {title && <ArticleTitle text={title} />}
         {description && (
           <p className="mb-4 text-neutral-600 dark:text-neutral-300">{description}</p>

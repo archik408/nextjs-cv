@@ -32,8 +32,12 @@ export function BackToTop() {
       onClick={scrollToTop}
       aria-label={t?.toTop || 'To the top'}
       title={t?.toTop || 'To the top'}
+      tabIndex={visible ? 0 : -1}
+      aria-hidden={!visible}
       className={`fixed bottom-6 right-6 z-40 inline-flex items-center justify-center w-11 h-11 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 active:scale-95 transition-all duration-300 ease-in-out ${
-        visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+        visible
+          ? 'translate-y-0 opacity-100 pointer-events-auto'
+          : 'translate-y-full opacity-0 pointer-events-none'
       }`}
     >
       <ArrowUp className="w-5 h-5" />

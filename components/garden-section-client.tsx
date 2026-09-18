@@ -22,7 +22,7 @@ export function GardenSectionClient({ ruNotes, enNotes }: Props) {
   const notes = language === ELanguage.en ? enNotes : ruNotes;
 
   return (
-    <section id="thinking" className="scroll-mt-20 px-4 py-10 md:px-8 md:py-16">
+    <section id="garden" className="scroll-mt-20 px-4 py-10 md:px-8 md:py-16">
       <div className="mx-auto max-w-5xl">
         <AnimatedSectionTitle
           text={t.garden}

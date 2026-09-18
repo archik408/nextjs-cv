@@ -10,7 +10,7 @@ function GardenListFallback() {
   const notes = listGardenNotes({ locale: 'ru' });
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <main className="min-w-0">
+      <main id="main-content" className="min-w-0">
         <div
           className="mb-4 h-10 w-64 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700"
           aria-hidden="true"
@@ -55,11 +55,11 @@ export default function GardenIndexPage() {
 
 export function generateMetadata() {
   return buildMetadata({
-    title: 'Digital Garden — Production, Thinking, Kids Lab, Archive',
+    title: 'Digital Garden — Продакшен, Мышление, Детская лаборатория, Архив',
     description:
-      'Живой набор заметок по полкам: Production (кейсы), Thinking (эссе и книги), Kids Lab, Archive.',
+      'Живой набор заметок по полкам: Продакшен (кейсы), Мышление (эссе и книги), Детская лаборатория, Архив.',
     keywords:
-      'Digital Garden, Production, Thinking, Kids Lab, Archive, PWA, product engineering, Artur Basak',
+      'Digital Garden, Продакшен, Мышление, Детская лаборатория, Архив, PWA, product engineering, Artur Basak',
     path: '/garden',
     locale: 'ru',
     languages: {

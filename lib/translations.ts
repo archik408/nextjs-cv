@@ -1275,6 +1275,7 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     edgeAiCapsTitle: 'Browser AI capabilities',
     edgeAiCapWebgpu: 'WebGPU',
     edgeAiCapWebnn: 'WebNN',
+    edgeAiCapWebgl: 'WebGL',
     edgeAiCapCamera: 'Camera (getUserMedia)',
     edgeAiCapMicrophone: 'Microphone (getUserMedia)',
     edgeAiCapSpeech: 'Speech Recognition API',
@@ -1287,12 +1288,12 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     // Skeleton Detection
     skeletonDetectionTitle: 'Skeleton Detection',
     skeletonDetectionDesc:
-      'Real-time human pose estimation from your camera using MoveNet on the client (WebGPU / WebNN).',
+      'Real-time human pose estimation from your camera using MoveNet on the client (WebGPU, WebNN, or WebGL).',
     skeletonDetectionStart: 'Start camera',
     skeletonDetectionStop: 'Stop',
     skeletonDetectionVideoLabel: 'Live camera feed for pose detection',
     skeletonDetectionUnsupported:
-      'This tool needs WebGPU or WebNN plus camera access. Update your browser or enable these APIs.',
+      'This tool needs WebGPU, WebNN, or WebGL plus camera access. Update your browser or enable these APIs.',
     skeletonDetectionErrorStart:
       'Could not start pose detection. Check camera access and try again.',
     skeletonDetectionPrivacy:
@@ -1303,13 +1304,13 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     // Emotion Analysis
     emotionAnalysisTitle: 'Emotion Analysis',
     emotionAnalysisDesc:
-      'Detect facial expressions in real time from your camera using on-device models (WebGPU / WebNN).',
+      'Detect facial expressions in real time from your camera using on-device models (WebGPU, WebNN, or WebGL).',
     emotionAnalysisStart: 'Start camera',
     emotionAnalysisStop: 'Stop',
     emotionAnalysisVideoLabel: 'Live camera feed for emotion analysis',
     emotionAnalysisResult: 'Detected emotion',
     emotionAnalysisUnsupported:
-      'This tool needs WebGPU or WebNN plus camera access. Update your browser or enable these APIs.',
+      'This tool needs WebGPU, WebNN, or WebGL plus camera access. Update your browser or enable these APIs.',
     emotionAnalysisErrorStart:
       'Could not start emotion analysis. Check camera access and try again.',
     emotionAnalysisPrivacy:
@@ -2626,6 +2627,7 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     edgeAiCapsTitle: 'Возможности браузера для AI',
     edgeAiCapWebgpu: 'WebGPU',
     edgeAiCapWebnn: 'WebNN',
+    edgeAiCapWebgl: 'WebGL',
     edgeAiCapCamera: 'Камера (getUserMedia)',
     edgeAiCapMicrophone: 'Микрофон (getUserMedia)',
     edgeAiCapSpeech: 'Speech Recognition API',
@@ -2638,12 +2640,12 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     // Skeleton Detection
     skeletonDetectionTitle: 'Детекция скелета',
     skeletonDetectionDesc:
-      'Распознавание позы человека в реальном времени с камеры на клиенте (MoveNet, WebGPU / WebNN).',
+      'Распознавание позы человека в реальном времени с камеры на клиенте (MoveNet, WebGPU / WebNN / WebGL).',
     skeletonDetectionStart: 'Включить камеру',
     skeletonDetectionStop: 'Стоп',
     skeletonDetectionVideoLabel: 'Видео с камеры для детекции позы',
     skeletonDetectionUnsupported:
-      'Нужны WebGPU или WebNN и доступ к камере. Обновите браузер или включите эти API.',
+      'Нужны WebGPU, WebNN или WebGL и доступ к камере. Обновите браузер или включите эти API.',
     skeletonDetectionErrorStart:
       'Не удалось запустить детекцию позы. Проверьте доступ к камере и попробуйте снова.',
     skeletonDetectionPrivacy:
@@ -2654,13 +2656,13 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     // Emotion Analysis
     emotionAnalysisTitle: 'Анализ эмоций',
     emotionAnalysisDesc:
-      'Распознавание мимики в реальном времени с камеры с помощью локальных моделей (WebGPU / WebNN).',
+      'Распознавание мимики в реальном времени с камеры с помощью локальных моделей (WebGPU / WebNN / WebGL).',
     emotionAnalysisStart: 'Включить камеру',
     emotionAnalysisStop: 'Стоп',
     emotionAnalysisVideoLabel: 'Видео с камеры для анализа эмоций',
     emotionAnalysisResult: 'Эмоция',
     emotionAnalysisUnsupported:
-      'Нужны WebGPU или WebNN и доступ к камере. Обновите браузер или включите эти API.',
+      'Нужны WebGPU, WebNN или WebGL и доступ к камере. Обновите браузер или включите эти API.',
     emotionAnalysisErrorStart:
       'Не удалось запустить анализ эмоций. Проверьте доступ к камере и попробуйте снова.',
     emotionAnalysisPrivacy:

@@ -144,12 +144,9 @@ export function EmotionAnalysisPageClient() {
     setIsLoading(true);
 
     try {
-      const { initTfBackend, tf } = await import('@/lib/edge-ai/tf-backend');
+      const { initTfBackend } = await import('@/lib/edge-ai/tf-backend');
       const active = await initTfBackend(caps.webgpu ? 'webgpu' : 'webgl');
-      if (caps.webgpu && active !== 'webgpu') {
-        throw new Error('WebGpuInitFailed');
-      }
-      setBackend(tf.getBackend());
+      setBackend(active);
 
       const faceapi = await import('@vladmandic/face-api');
       if (!modelsReadyRef.current) {
@@ -192,6 +189,7 @@ export function EmotionAnalysisPageClient() {
     unsupported: t.emotionAnalysisUnsupported,
     webgpu: t.edgeAiCapWebgpu,
     webnn: t.edgeAiCapWebnn,
+    webgl: t.edgeAiCapWebgl,
     camera: t.edgeAiCapCamera,
     microphone: t.edgeAiCapMicrophone,
     speechRecognition: t.edgeAiCapSpeech,
@@ -212,7 +210,7 @@ export function EmotionAnalysisPageClient() {
             <EdgeAiCapabilityPanel
               capabilities={caps}
               labels={capabilityLabels}
-              keys={['webgpu', 'webnn', 'camera']}
+              keys={['webgpu', 'webnn', 'webgl', 'camera']}
               canRun={caps.canRunVision && caps.camera}
             />
           )}

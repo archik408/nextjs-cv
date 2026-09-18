@@ -133,14 +133,6 @@ export const seoConfigs = {
       'Frontend Publications, React Articles, TypeScript Tutorials, Web Development, JavaScript, Technical Writing',
     path: '/blog',
   },
-  experience: {
-    title: 'Experience - Full Work History',
-    description:
-      'Full work history of Artur Basak — web engineering roles across X5 Tech, IntexSoft, Godel, Indy, and earlier enterprise engagements.',
-    keywords:
-      'Work Experience, Web Engineer, Career, X5 Tech, React, Next.js, PWA, Accessibility, Frontend Architecture',
-    path: '/cv',
-  },
   cv: {
     title: 'CV - Experience, Testimonials & Certificates',
     description:
@@ -221,24 +213,24 @@ export const seoConfigs = {
   skeletonDetection: {
     title: 'Skeleton Detection - On-device Pose Estimation',
     description:
-      'Real-time human pose and skeleton overlay from your webcam using MoveNet and WebGPU in the browser.',
+      'Real-time human pose and skeleton overlay from your webcam using MoveNet with WebGPU, WebNN, or WebGL in the browser.',
     keywords:
-      'Skeleton Detection, Pose Estimation, MoveNet, WebGPU, WebNN, Edge AI, TensorFlow.js, Camera',
+      'Skeleton Detection, Pose Estimation, MoveNet, WebGPU, WebNN, WebGL, Edge AI, TensorFlow.js, Camera',
     path: '/skeleton-detection',
   },
   emotionAnalysis: {
     title: 'Emotion Analysis - On-device Facial Expressions',
     description:
       'Detect facial expressions from your camera entirely on-device with face-api.js — no video leaves the browser.',
-    keywords: 'Emotion Analysis, Facial Expressions, face-api.js, WebGPU, Edge AI, Camera, Privacy',
+    keywords:
+      'Emotion Analysis, Facial Expressions, face-api.js, WebGPU, WebNN, WebGL, Edge AI, Camera, Privacy',
     path: '/emotion-analysis',
   },
   speechRecognition: {
     title: 'Speech Recognition - Live Speech-to-Text',
     description:
-      'Convert speech to text in the browser using the Web Speech API with live interim results.',
-    keywords:
-      'Speech Recognition, Speech-to-Text, Web Speech API, Microphone, Edge AI, Accessibility',
+      'Convert speech to text in the browser using the Web Speech API with live interim results. Processing may use a cloud service depending on the browser.',
+    keywords: 'Speech Recognition, Speech-to-Text, Web Speech API, Microphone, Accessibility',
     path: '/speech-recognition',
   },
 } as const;

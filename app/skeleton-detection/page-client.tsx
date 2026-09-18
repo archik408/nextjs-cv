@@ -106,12 +106,9 @@ export function SkeletonDetectionPageClient() {
     setIsLoading(true);
 
     try {
-      const { initTfBackend, tf } = await import('@/lib/edge-ai/tf-backend');
+      const { initTfBackend } = await import('@/lib/edge-ai/tf-backend');
       const activeBackend = await initTfBackend(caps.webgpu ? 'webgpu' : 'webgl');
-      if (caps.webgpu && activeBackend !== 'webgpu') {
-        throw new Error('WebGpuInitFailed');
-      }
-      setBackend(tf.getBackend());
+      setBackend(activeBackend);
 
       const poseDetection = await import('@tensorflow-models/pose-detection');
       const detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, {
@@ -151,6 +148,7 @@ export function SkeletonDetectionPageClient() {
     unsupported: t.skeletonDetectionUnsupported,
     webgpu: t.edgeAiCapWebgpu,
     webnn: t.edgeAiCapWebnn,
+    webgl: t.edgeAiCapWebgl,
     camera: t.edgeAiCapCamera,
     microphone: t.edgeAiCapMicrophone,
     speechRecognition: t.edgeAiCapSpeech,
@@ -171,7 +169,7 @@ export function SkeletonDetectionPageClient() {
             <EdgeAiCapabilityPanel
               capabilities={caps}
               labels={capabilityLabels}
-              keys={['webgpu', 'webnn', 'camera']}
+              keys={['webgpu', 'webnn', 'webgl', 'camera']}
               canRun={caps.canRunVision && caps.camera}
             />
           )}
