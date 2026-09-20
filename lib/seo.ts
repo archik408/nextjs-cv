@@ -132,9 +132,9 @@ export const seoConfigs = {
     path: '/blog',
   },
   cv: {
-    title: 'CV — Web Engineer & Frontend Architect',
+    title: 'CV — Lead Web Engineer | Product-Minded',
     description:
-      'Curriculum vitae of Artur Basak, Web Engineer & Frontend Architect with 15+ years across React, Next.js, TypeScript, Node.js, BFF/API, accessible PWAs, design systems, and scalable web systems. Full work history, testimonials, education, and certificates.',
+      'Curriculum vitae of Artur Basak, Lead Web Engineer | Product-Minded with 15+ years across React, Next.js, TypeScript, Node.js, BFF/API, accessible PWAs, design systems, and scalable web systems. Full work history, testimonials, education, and certificates.',
     keywords:
       'CV, Resume, Web Engineer, Frontend Architect, React, Next.js, TypeScript, Node.js, PWA, WCAG, Work Experience, Testimonials, Certificates, Artur Basak',
     path: '/cv',

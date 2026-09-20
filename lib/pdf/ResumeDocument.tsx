@@ -252,7 +252,8 @@ export function ResumeDocument({ lang }: Props) {
               alt="Artur Basak"
             />
             <Text style={styles.name}>Artur Basak</Text>
-            <Text style={styles.role}>{t.roleMobile || t.role}</Text>
+            <Text style={styles.role}>{t.role}</Text>
+            <Text style={styles.role}>{t.roleMobile}</Text>
             <Text style={styles.tagline}>{t.resumeTagline}</Text>
           </View>
 

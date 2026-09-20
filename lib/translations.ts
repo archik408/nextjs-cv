@@ -71,8 +71,8 @@ export const translations = {
       'Complete overhaul of the website to Next.js with server-side rendering and migration to Vercel. The goal was not only to present content with comprehensive information about me as a specialist, but also to demonstrate my skills as a designer and frontend engineer right here. The website also became a sandbox to work with an AI assistant. Beyond the portfolio, the site now features a digital garden, career timeline, and numerous experiments in the form of online tools.',
     timeMachine2026Description:
       'A light redesign of the site’s look and information architecture to make it more authentic and less like a résumé or a productized service. It is an attempt to shed professional deformation after years in outsourcing and outstaffing, where the main self-presentation skill is a résumé with a formal list of what you can do and what you have done. The goal is not a résumé-site, but a message-site — one that answers more cleanly who I am and what I do.',
-    role: 'Web Engineer & Frontend Architect',
-    roleMobile: 'Web Engineer & Frontend Architect',
+    role: 'Lead Web Engineer',
+    roleMobile: 'Product-Minded',
     resumeTagline: 'Making the web for people. With love for computers since childhood!',
     subtitle: 'Making the web for people',
     heroTypingPrefix: 'Making the web for ',
@@ -83,7 +83,7 @@ export const translations = {
     heroCtaContact: 'Contact',
     about: 'About Me',
     resumeAbout:
-      "I make the web for people — with love for computers since childhood. Web Engineer & Frontend Architect with 15+ years across UI architecture, BFF/API, Node.js, HTTP/caching, and offline-capable clients. I build accessible, high-performance PWAs and human-centered systems — no dark patterns. Recently leading hybrid WebView/PWA delivery at X5 Tech (20M+ MAU); earlier work with Daimler, SAP, Kohl's, and startups including Lition. Writing in Smashing Magazine; hands-on with React, Next.js, TypeScript, WCAG, design systems, and Core Web Vitals.",
+      "Software Web Engineer with 15+ years of experience in product and outsourcing: UI architecture, BFF/API server, Node.js/Bun, HTTP/caching and offline-capable clients. I build affordable, high-performance PWAs and humane systems - without dark patterns. In recent years, I have worked closely with hybrid mobile (WebView/PWA) at X5 Tech (20M+ MAU); previously - 20+ projects (Daimler, SAP, Kohl's and startups, including Lition Energy). Focus on convenience, availability, scalability and performance.",
     aboutText: `Hi! My name is Artur, and I am a second-generation application developer. My passion for computers is a family legacy—sparked by my godfather and school computer science teacher, and later fueled by years of hands-on experience across the entire spectrum of software development.<br/><br/>
 My career path <span class="text-double-underline">bridges<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> different eras of technology. I started out building graphical desktop interfaces using <em>Pascal</em> and <em>C++</em>, alongside the <em>Win32 API</em> and <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>.<br/><br/>
 Later, I shifted to early client-server applications for the corporate world, working with <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em>, and <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, while ensuring quality through test automation with <em>Selenium RC</em> and <em>WebDriver</em>.<br/><br/>
@@ -1422,8 +1422,8 @@ I've also come full circle: I'm passing on my experience and the joy of creation
       'Полная переработка веб-сайта на Next.js с серверным рендерингом и переезд на Vercel. Задача была не только оформить контент с полной информацией обо мне как о специалисте, но также продемонстрировать свои навыки дизайнера и фронтенд инженера прямо тут. При этом веб-сайт стал песочницей, чтобы поработать с ИИ ассистентом. На сайте помимо портфолио появился цифровой сад, таймлайн карьеры и множество экспериментов в виде онлайн инструментов.',
     timeMachine2026Description:
       'Лёгкая переработка дизайна и информационной структуры сайта, чтобы сделать его более аутентичным и менее похожим на резюме или сервис. Это попытка избавиться от профдеформации после многих лет работы в аутсорсинге и аутстаффинге, где основной навык презентации себя — резюме с формальным описанием того, что умею и что делал. Цель — сделать не сайт-резюме, а сайт-сообщение, которое чище отвечает на вопрос, кто я и что делаю.',
-    role: 'Web Engineer & Frontend Architect',
-    roleMobile: 'Web Engineer & Frontend Architect',
+    role: 'Lead Web Engineer',
+    roleMobile: 'Product-Minded',
     resumeTagline: 'Делаю веб для людей. С любовью к компьютерам с детства!',
     subtitle: 'Делаю веб для людей',
     heroTypingPrefix: 'Делаю веб для ',
@@ -1434,7 +1434,7 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     heroCtaContact: 'Контакт',
     about: 'Обо мне',
     resumeAbout:
-      "Делаю веб для людей — с любовью к компьютерам с детства. Web Engineer & Frontend Architect с 15+ годами практики: UI-архитектура, BFF/API, Node.js, HTTP/кэширование и offline-capable клиенты. Строю доступные высокопроизводительные PWA и человечные системы — без dark patterns. Сейчас веду hybrid WebView/PWA поставку в X5 Tech (20M+ MAU); ранее — Daimler, SAP, Kohl's и стартапы, включая Lition. Пишу в Smashing Magazine; работаю с React, Next.js, TypeScript, WCAG, дизайн-системами и Core Web Vitals.",
+      "Software Web Engineer с 15+ годами практики в продукте и аутсорсинге: UI-архитектура, сервер BFF/API, Node.js/Bun, HTTP/кэширование и offline-capable клиенты. Строю доступные высокопроизводительные PWA и человечные системы — без dark patterns. Последние годы плотно работал с hybrid mobile (WebView/PWA) в X5 Tech (20M+ MAU); ранее — 20+ проектов (Daimler, SAP, Kohl's и стартапы, включая Lition Energy). Фокус на удобстве, доступности, масштабируемости и производительности.",
     aboutText: `Привет! Меня зовут Артур и я прикладной программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное многолетним практическим опытом во всем спектре разработки ПО.<br/><br/>
 Мой путь — это <span class="text-double-underline">мост между эпохами<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span>. Я начинал строить графические десктопные интерфейсы еще на <em>Pascal</em> и <em>C++</em> вместе с <em>Win32 API</em> и <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>.<br/><br/>
 Позже я переключился на ранние клиент-серверные приложения для корпоративного мира, работая с <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> и <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, обеспечивая качество через автоматизацию тестов с <em>Selenium RC</em> и <em>WebDriver</em>.<br/><br/>
