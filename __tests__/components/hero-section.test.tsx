@@ -53,4 +53,15 @@ describe('HeroSection', () => {
 
     expect(defaultAvatar).toBeInTheDocument();
   });
+
+  it('shows handwritten love caption after flipping to the back side', async () => {
+    const user = userEvent.setup();
+    render(<HeroSection />);
+
+    await user.click(screen.getByRole('button', { name: 'Avatar flip card' }));
+
+    expect(
+      await screen.findByLabelText('With love for computers since childhood!')
+    ).toBeInTheDocument();
+  });
 });

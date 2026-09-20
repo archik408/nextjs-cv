@@ -71,15 +71,19 @@ export const translations = {
       'Complete overhaul of the website to Next.js with server-side rendering and migration to Vercel. The goal was not only to present content with comprehensive information about me as a specialist, but also to demonstrate my skills as a designer and frontend engineer right here. The website also became a sandbox to work with an AI assistant. Beyond the portfolio, the site now features a digital garden, career timeline, and numerous experiments in the form of online tools.',
     timeMachine2026Description:
       'A light redesign of the site’s look and information architecture to make it more authentic and less like a résumé or a productized service. It is an attempt to shed professional deformation after years in outsourcing and outstaffing, where the main self-presentation skill is a résumé with a formal list of what you can do and what you have done. The goal is not a résumé-site, but a message-site — one that answers more cleanly who I am and what I do.',
-    role: 'Web Engineer & Frontend Architect | 15+ Yrs',
+    role: 'Web Engineer & Frontend Architect',
     roleMobile: 'Web Engineer & Frontend Architect',
+    resumeTagline: 'Making the web for people. With love for computers since childhood!',
     subtitle: 'Making the web for people',
+    heroTypingPrefix: 'Making the web for ',
+    heroTypingWrongWord: 'machines',
+    heroTypingFinalWord: 'people',
     heroCtaExperience: 'Experience',
     heroCtaWriting: 'Selected writing',
     heroCtaContact: 'Contact',
     about: 'About Me',
     resumeAbout:
-      "Product-minded Web Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API layers, Node.js services, HTTP/caching, and offline-capable clients. I specialize in accessible, high-performance PWAs and scalable web systems grounded in strong UI/UX practice—without dark patterns. Recently leading hybrid WebView/PWA delivery at X5 Tech (20M+ MAU), with prior work for Daimler, SAP, Kohl's, and startups including Lition. Published in Smashing Magazine; deep focus on WCAG, design systems, Core Web Vitals, and pragmatic full-stack delivery.",
+      "I make the web for people — with love for computers since childhood. Web Engineer & Frontend Architect with 15+ years across UI architecture, BFF/API, Node.js, HTTP/caching, and offline-capable clients. I build accessible, high-performance PWAs and human-centered systems — no dark patterns. Recently leading hybrid WebView/PWA delivery at X5 Tech (20M+ MAU); earlier work with Daimler, SAP, Kohl's, and startups including Lition. Writing in Smashing Magazine; hands-on with React, Next.js, TypeScript, WCAG, design systems, and Core Web Vitals.",
     aboutText: `Hi! My name is Artur, and I am a second-generation application developer. My passion for computers is a family legacy—sparked by my godfather and school computer science teacher, and later fueled by years of hands-on experience across the entire spectrum of software development.<br/><br/>
 My career path <span class="text-double-underline">bridges<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span> different eras of technology. I started out building graphical desktop interfaces using <em>Pascal</em> and <em>C++</em>, alongside the <em>Win32 API</em> and <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>.<br/><br/>
 Later, I shifted to early client-server applications for the corporate world, working with <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em>, and <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, while ensuring quality through test automation with <em>Selenium RC</em> and <em>WebDriver</em>.<br/><br/>
@@ -391,7 +395,7 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     college: 'Technological College Educational Institution GRSU • 2011',
     contact: 'Get In Touch',
     contactText:
-      "I'm always open to discussing interesting projects.<br>If you have something for me, feel free to reach out.",
+      'I\'m always open to discussing interesting projects.<br class="hidden md:block">If you have something for me, feel free to reach out.',
     contactButton: 'Contact Me',
     followOnLinkedIn: 'Follow on LinkedIn',
     followOnTelegram: 'Telegram Channel',
@@ -416,6 +420,7 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     activity: 'activity',
     // Hero ARIA labels
     heroAvatarFlipCard: 'Avatar flip card',
+    heroLoveComputers: 'With love\nfor computers since childhood!',
     heroScrollDown: 'Scroll down to content',
     heroGitHubProfile: 'GitHub Profile',
     heroLinkedInProfile: 'LinkedIn Profile',
@@ -490,7 +495,8 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     viewAllExperience: 'View full experience',
     timelineLink: 'Timeline',
     cvPageTitle: 'CV',
-    cvPageDescription: 'Full work history, testimonials, education, and certificates.',
+    cvPageDescription:
+      'Formal résumé: full work history, tech stack, testimonials, education, and certificates.',
     experiencePageDescription:
       'Full work history of Artur Basak — web engineering roles across X5 Tech, IntexSoft, Godel, Indy, and earlier enterprise engagements.',
     copyright: `© ${new Date().getFullYear()} Artur Basak. All rights reserved.`,
@@ -1416,15 +1422,19 @@ I've also come full circle: I'm passing on my experience and the joy of creation
       'Полная переработка веб-сайта на Next.js с серверным рендерингом и переезд на Vercel. Задача была не только оформить контент с полной информацией обо мне как о специалисте, но также продемонстрировать свои навыки дизайнера и фронтенд инженера прямо тут. При этом веб-сайт стал песочницей, чтобы поработать с ИИ ассистентом. На сайте помимо портфолио появился цифровой сад, таймлайн карьеры и множество экспериментов в виде онлайн инструментов.',
     timeMachine2026Description:
       'Лёгкая переработка дизайна и информационной структуры сайта, чтобы сделать его более аутентичным и менее похожим на резюме или сервис. Это попытка избавиться от профдеформации после многих лет работы в аутсорсинге и аутстаффинге, где основной навык презентации себя — резюме с формальным описанием того, что умею и что делал. Цель — сделать не сайт-резюме, а сайт-сообщение, которое чище отвечает на вопрос, кто я и что делаю.',
-    role: 'Web Engineer & Frontend Architect | 15+ Yrs',
+    role: 'Web Engineer & Frontend Architect',
     roleMobile: 'Web Engineer & Frontend Architect',
+    resumeTagline: 'Делаю веб для людей. С любовью к компьютерам с детства!',
     subtitle: 'Делаю веб для людей',
+    heroTypingPrefix: 'Делаю веб для ',
+    heroTypingWrongWord: 'машин',
+    heroTypingFinalWord: 'людей',
     heroCtaExperience: 'Опыт',
     heroCtaWriting: 'Избранные тексты',
     heroCtaContact: 'Контакт',
     about: 'Обо мне',
     resumeAbout:
-      "Web Engineer & Frontend Architect с продуктовым мышлением и 15+ годами практики по полному web-стеку — UI-архитектура, слои BFF/API, сервисы на Node.js, HTTP/кэширование и offline-capable клиенты. Специализируюсь на доступных высокопроизводительных PWA и масштабируемых веб-системах, опираясь на сильные UI/UX-практики — без dark patterns. В последнее время веду hybrid WebView/PWA поставку в X5 Tech (20M+ MAU); ранее — Daimler, SAP, Kohl's и стартапы, включая Lition. Публикации в Smashing Magazine; глубокий фокус на WCAG, дизайн-системах, Core Web Vitals и pragmatic full-stack delivery.",
+      "Делаю веб для людей — с любовью к компьютерам с детства. Web Engineer & Frontend Architect с 15+ годами практики: UI-архитектура, BFF/API, Node.js, HTTP/кэширование и offline-capable клиенты. Строю доступные высокопроизводительные PWA и человечные системы — без dark patterns. Сейчас веду hybrid WebView/PWA поставку в X5 Tech (20M+ MAU); ранее — Daimler, SAP, Kohl's и стартапы, включая Lition. Пишу в Smashing Magazine; работаю с React, Next.js, TypeScript, WCAG, дизайн-системами и Core Web Vitals.",
     aboutText: `Привет! Меня зовут Артур и я прикладной программист во втором поколении. Моя страсть к компьютерам — это семейное наследие, зажженное моим крестным отцом и школьным учителем информатики, а позже подпитанное многолетним практическим опытом во всем спектре разработки ПО.<br/><br/>
 Мой путь — это <span class="text-double-underline">мост между эпохами<img aria-hidden="true" src="/double-underline.webp" alt="" class="double-underline"></span>. Я начинал строить графические десктопные интерфейсы еще на <em>Pascal</em> и <em>C++</em> вместе с <em>Win32 API</em> и <em>Borland <abbr title="Visual Component Library">VCL</abbr></em>.<br/><br/>
 Позже я переключился на ранние клиент-серверные приложения для корпоративного мира, работая с <em>Java</em>, <em><abbr title="Java Server Pages/JavaServer Faces">JSP/JSF</abbr></em>, <em>Eclipse <abbr title="Rich Client Platform/Remote Application Platform">RCP/RAP</abbr></em> и <em><abbr title="Standard Widget Toolkit">SWT</abbr></em>, обеспечивая качество через автоматизацию тестов с <em>Selenium RC</em> и <em>WebDriver</em>.<br/><br/>
@@ -1738,7 +1748,7 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     college: 'Технологический колледж ГрГУ им. Янки Купалы • 2011',
     contact: 'Связаться',
     contactText:
-      'Я всегда открыт к тому, чтобы обсудить интересные проекты.<br>Если у вас есть что-то для меня, то смело пишите.',
+      'Я всегда открыт к тому, чтобы обсудить интересные проекты.<br class="hidden md:block">Если у вас есть что-то для меня, то смело пишите.',
     contactButton: 'Написать',
     followOnLinkedIn: 'Подписаться в LinkedIn',
     followOnTelegram: 'Канал в Telegram',
@@ -1763,6 +1773,7 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     activity: 'активности',
     // Hero ARIA labels
     heroAvatarFlipCard: 'Переворот карточки аватара',
+    heroLoveComputers: 'С любовью\nк компьютерам с детства!',
     heroScrollDown: 'Прокрутить вниз к содержимому',
     heroGitHubProfile: 'Профиль GitHub',
     heroLinkedInProfile: 'Профиль LinkedIn',
@@ -1837,7 +1848,8 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     viewAllExperience: 'Смотреть весь опыт',
     timelineLink: 'Хронология',
     cvPageTitle: 'CV',
-    cvPageDescription: 'Полная история работы, отзывы, образование и сертификаты.',
+    cvPageDescription:
+      'Формальное резюме: полная история работы, стек, отзывы, образование и сертификаты.',
     experiencePageDescription:
       'Полная история работы Артура Басака — веб-инженерия в X5 Tech, IntexSoft, Godel, Indy и более ранние enterprise-проекты.',
     copyright: `© ${new Date().getFullYear()} Artur Basak. Все права защищены.`,

@@ -13,7 +13,7 @@ export function ContactSection() {
       id="contact"
       className="scroll-mt-20 pt-20 pb-4 px-4 md:px-8 bg-gray-400/50 dark:bg-gray-900/50"
     >
-      <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+      <div className="mx-auto max-w-6xl grid md:grid-cols-2 md:gap-10 items-center">
         <div className="text-center md:text-left">
           <AnimatedSectionTitle
             text={t.contact}
@@ -24,7 +24,7 @@ export function ContactSection() {
             className="text-gray-700 dark:text-gray-300 mb-8"
             dangerouslySetInnerHTML={{ __html: t.contactText }}
           />
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center md:justify-start">
+          <div className="flex flex-row flex-wrap gap-2 md:gap-4 justify-center md:justify-start">
             <a
               href="mailto:artur.basak.devingrodno@gmail.com"
               className="shadow-lg inline-flex items-center justify-center px-6 py-3 bg-blue-100 dark:bg-blue-800 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors transform hover:scale-105 duration-200 font-medium text-blue-900 dark:text-white"

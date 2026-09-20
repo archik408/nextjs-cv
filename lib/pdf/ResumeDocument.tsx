@@ -68,6 +68,14 @@ const styles = StyleSheet.create({
     color: '#957bef',
     textAlign: 'left',
   },
+  tagline: {
+    fontSize: 11,
+    fontWeight: 500,
+    color: '#64748b',
+    textAlign: 'left',
+    marginTop: 6,
+    lineHeight: 1.35,
+  },
   // Contact Section
   contactSection: {
     marginBottom: 20,
@@ -245,6 +253,7 @@ export function ResumeDocument({ lang }: Props) {
             />
             <Text style={styles.name}>Artur Basak</Text>
             <Text style={styles.role}>{t.roleMobile || t.role}</Text>
+            <Text style={styles.tagline}>{t.resumeTagline}</Text>
           </View>
 
           {/* Contact Information */}

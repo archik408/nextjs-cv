@@ -1,6 +1,6 @@
 import { posts } from '@/constants/blog';
 import { listGardenNotes } from '@/lib/garden';
-import { SITE_URL } from '@/lib/site';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/site';
 
 type LlmsLink = {
   title: string;
@@ -12,12 +12,12 @@ const ABOUT: LlmsLink[] = [
   {
     title: 'Home / Portfolio',
     path: '/',
-    note: 'Overview of Artur Basak — Web Engineer & Frontend Architect with 15+ years experience',
+    note: 'Making the web for people — with love for computers since childhood',
   },
   {
     title: 'CV',
     path: '/cv',
-    note: 'Full work history, testimonials, education, and certificates',
+    note: 'Formal résumé: work history, tech stack, testimonials, education, and certificates',
   },
   {
     title: 'Digital Garden',
@@ -127,9 +127,13 @@ export function buildLlmsTxt(): string {
   const sections: string[] = [
     '# Artur Basak',
     '',
-    '> Web Engineer & Frontend Architect (Belarus). Portfolio, digital garden, publications, and browser tools at arturbasak.dev. Focus: React/Next.js, TypeScript, accessibility (WCAG), PWAs, design systems, Edge AI demos, and web performance.',
+    `> ${SITE_TITLE}`,
+    '',
+    SITE_DESCRIPTION,
     '',
     'This site is bilingual (English and Russian). Prefer English URLs ending with `_en` for garden notes when available. Structured data uses schema.org Person / WebSite / Article / Blog. Canonical host: https://arturbasak.dev. Full crawl map: https://arturbasak.dev/sitemap.xml. Crawl rules: https://arturbasak.dev/robots.txt.',
+    '',
+    'For a formal résumé with tech stack, languages, and experience details, see the CV page and downloadable PDF.',
     '',
     '## About',
     ...ABOUT.map(formatLink),

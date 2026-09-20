@@ -11,8 +11,23 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function applyThemeToDocument(theme: ETheme) {
+  const root = document.documentElement;
+  const meta = document.querySelector('meta[name="color-scheme"]');
+
+  if (theme === ETheme.dark) {
+    root.classList.add(ETheme.dark);
+    root.style.backgroundColor = '#0f172a';
+    meta?.setAttribute('content', 'dark');
+  } else {
+    root.classList.remove(ETheme.dark);
+    root.style.backgroundColor = '#ffffff';
+    meta?.setAttribute('content', 'light');
+  }
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  // Initialize theme from localStorage or default to dark
+  // Manual theme only: localStorage override or dark default. Never follows OS.
   const [theme, setTheme] = useState<ETheme>(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -26,30 +41,26 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    // Only run this effect once on mount to sync with any changes
-    if (typeof window !== 'undefined') {
-      try {
-        const savedTheme = localStorage.getItem('theme') as ETheme | null;
-        if (savedTheme === ETheme.light || savedTheme === ETheme.dark) {
-          if (savedTheme !== theme) {
-            setTheme(savedTheme);
-          }
+    try {
+      const savedTheme = localStorage.getItem('theme') as ETheme | null;
+      if (savedTheme === ETheme.light || savedTheme === ETheme.dark) {
+        if (savedTheme !== theme) {
+          setTheme(savedTheme);
         }
-      } catch {
-        // Handle localStorage errors gracefully
       }
+    } catch {
+      // Handle localStorage errors gracefully
     }
-  }, []); // Remove theme dependency to avoid infinite loops
+    // Mount-only: restore saved manual choice; never subscribe to prefers-color-scheme.
+  }, []);
 
   useEffect(() => {
-    if (theme === ETheme.dark) {
-      document.documentElement.classList.add(ETheme.dark);
-      document.documentElement.style.backgroundColor = '#0f172a';
-    } else {
-      document.documentElement.classList.remove(ETheme.dark);
-      document.documentElement.style.backgroundColor = '#ffffff';
+    applyThemeToDocument(theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      // Ignore storage errors
     }
-    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

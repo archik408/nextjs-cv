@@ -1,37 +1,99 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Github, Linkedin, Mail, Send } from 'lucide-react';
 import { useLanguage } from '@/lib/hooks/use-language';
+import { useAnimationPreferences } from '@/lib/use-animation-preferences';
 import ArticleTitle from '@/components/article-title';
 import { AVATAR_PLACEHOLDER } from '@/lib/avatar-placeholder';
-import TypingRotate from '@/components/typing-rotate';
+import TypingReplaceOnce from '@/components/typing-replace-once';
+
+const FLIP_DURATION_MS = 700;
+const AUTO_FLIP_HOLD_MS = 4200;
+const AUTO_FLIP_DELAY_AFTER_TYPING_MS = 400;
+
+function renderHandwrittenLines(text: string, shouldAnimate: boolean) {
+  const lines = text.split('\n');
+  let charOffset = 0;
+
+  return lines.map((line, lineIndex) => {
+    const chars = line.split('').map((char, index) => {
+      const globalIndex = charOffset + index;
+      return (
+        <span
+          key={`${lineIndex}-${index}`}
+          className="hero-handwritten-love__char"
+          style={shouldAnimate ? { animationDelay: `${globalIndex * 48}ms` } : undefined}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      );
+    });
+    charOffset += line.length;
+    return (
+      <span key={`line-${lineIndex}`} className="hero-handwritten-love__line">
+        {chars}
+      </span>
+    );
+  });
+}
 
 export function HeroSection() {
   const { t } = useLanguage();
+  const { shouldAnimate } = useAnimationPreferences();
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [showLoveCaption, setShowLoveCaption] = useState(false);
+  const [typingComplete, setTypingComplete] = useState(false);
+  const hasAutoFlippedRef = useRef(false);
 
-  // Простой автоматический flip через 1 секунду после загрузки компонента
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsFlipped(true);
+  const showBack = isFlipped || isHovered;
 
-      setTimeout(() => {
-        setIsFlipped(false);
-      }, 2000);
-    }, 1000);
-
-    return () => clearTimeout(timer);
+  const handleTypingComplete = useCallback(() => {
+    setTypingComplete(true);
   }, []);
 
-  // Обработчики hover
+  // Auto flip once after the hero typing sequence finishes "people" / "людей"
+  useEffect(() => {
+    if (!typingComplete || hasAutoFlippedRef.current) return;
+
+    const flipTimer = setTimeout(() => {
+      hasAutoFlippedRef.current = true;
+      setIsFlipped(true);
+    }, AUTO_FLIP_DELAY_AFTER_TYPING_MS);
+    const flipBackTimer = setTimeout(
+      () => setIsFlipped(false),
+      AUTO_FLIP_DELAY_AFTER_TYPING_MS + AUTO_FLIP_HOLD_MS
+    );
+
+    return () => {
+      clearTimeout(flipTimer);
+      clearTimeout(flipBackTimer);
+    };
+  }, [typingComplete]);
+
+  // Reveal handwritten caption after flip to back-bg (auto, hover, or click)
+  useEffect(() => {
+    if (!showBack) {
+      setShowLoveCaption(false);
+      return;
+    }
+
+    const delay = shouldAnimate ? FLIP_DURATION_MS : 0;
+    const timer = setTimeout(() => setShowLoveCaption(true), delay);
+    return () => clearTimeout(timer);
+  }, [showBack, shouldAnimate]);
+
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
+  const toggleFlip = () => {
+    setIsFlipped((prev) => !prev);
+  };
+
   return (
-    <header className="hero-section relative h-screen flex items-center justify-center">
+    <header className="hero-section relative flex h-screen items-center justify-center">
       <div className="absolute inset-0">
         <Image
           src="/background.avif"
@@ -43,20 +105,27 @@ export function HeroSection() {
         />
       </div>
       <div className="relative z-10 mx-auto w-full max-w-full px-4 text-center md:w-[400px]">
-        <div className="mb-8 flex justify-center">
+        <div className="mb-8 flex justify-center overflow-visible">
           <div
             className="group relative w-40 h-40 md:w-55 md:h-55 [perspective:1000px]"
-            onClick={() => setIsFlipped((prev) => !prev)}
+            onClick={toggleFlip}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             aria-label={t.heroAvatarFlipCard}
             role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleFlip();
+              }
+            }}
           >
             <div
               className={`relative size-full transition-transform duration-700 [transform-style:preserve-3d] 
               custom-gradient-before before:absolute before:-z-10 before:w-full before:h-full before:[left:-50%] before:transform before:translate-x-1/2 before:scale-105 before:rounded-full`}
               style={{
-                transform: isFlipped || isHovered ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                transform: showBack ? 'rotateY(180deg)' : 'rotateY(0deg)',
               }}
             >
               <Image
@@ -80,6 +149,18 @@ export function HeroSection() {
                 blurDataURL={AVATAR_PLACEHOLDER}
               />
             </div>
+            {showLoveCaption ? (
+              <p
+                key={t.heroLoveComputers}
+                className={`hero-handwritten-love pointer-events-none absolute z-20 select-none ${
+                  shouldAnimate ? 'hero-handwritten-love--writing' : 'hero-handwritten-love--static'
+                }`}
+                aria-label={t.heroLoveComputers.replace(/\n/g, ' ')}
+                aria-live="polite"
+              >
+                {renderHandwrittenLines(t.heroLoveComputers, shouldAnimate)}
+              </p>
+            ) : null}
           </div>
         </div>
         <ArticleTitle text={'Artur Basak'} />
@@ -87,13 +168,14 @@ export function HeroSection() {
           className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 min-h-[2rem] flex items-center justify-center"
           aria-label={t.subtitle}
         >
-          <TypingRotate
-            texts={[t.subtitle]}
-            periodMs={2000}
+          <TypingReplaceOnce
+            prefix={t.heroTypingPrefix}
+            wrongWord={t.heroTypingWrongWord}
+            finalWord={t.heroTypingFinalWord}
             typingSpeedMs={110}
             deletingSpeedMs={55}
-            pauseAfterDeleteMs={2000}
-            pauseAfterCompleteMs={3000}
+            pauseAfterMistakeMs={900}
+            onComplete={handleTypingComplete}
           />
         </h2>
         <div className="flex justify-center gap-6">

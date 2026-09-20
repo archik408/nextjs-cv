@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE, SITE_URL } from '@/lib/site';
 
 interface SEOConfig {
   title: string;
@@ -19,7 +20,6 @@ interface SEOConfig {
   languages?: Partial<Record<'en' | 'ru' | 'x-default', string>>;
 }
 
-const baseUrl = 'https://arturbasak.dev';
 const defaultImage = '/ogp.jpg';
 
 export function generateMetadata(config: SEOConfig): Metadata {
@@ -37,10 +37,10 @@ export function generateMetadata(config: SEOConfig): Metadata {
     languages,
   } = config;
 
-  const url = `${baseUrl}${path}`;
+  const url = `${SITE_URL}${path}`;
   const fullTitle = path ? `${title} | Artur Basak` : title;
 
-  const toAbsolute = (href: string) => (href.startsWith('http') ? href : `${baseUrl}${href}`);
+  const toAbsolute = (href: string) => (href.startsWith('http') ? href : `${SITE_URL}${href}`);
 
   const languageAlternates: Record<string, string> = languages
     ? Object.fromEntries(
@@ -65,7 +65,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
     authors: [{ name: author, url: 'https://github.com/archik408' }],
     creator: author,
     publisher: author,
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: url,
       languages: languageAlternates,
@@ -74,7 +74,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       title: fullTitle,
       description,
       url,
-      siteName: 'Artur Basak Portfolio',
+      siteName: 'Artur Basak',
       images: [
         {
           url: image,
@@ -119,11 +119,9 @@ export function generateMetadata(config: SEOConfig): Metadata {
 // Предустановленные конфигурации для основных страниц
 export const seoConfigs = {
   home: {
-    title: 'Artur Basak - Web Engineer & Frontend Architect | 15+ Yrs',
-    description:
-      'Web Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API, Node.js, HTTP/caching, accessible PWAs, and scalable web systems.',
-    keywords:
-      'Web Engineer, Web Architect, Frontend Architecture, Full Stack, React, Next.js, TypeScript, Node.js, BFF, PWA, Accessibility, WCAG, Design Systems',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    keywords: SITE_KEYWORDS,
   },
   blog: {
     title: 'Publications - Articles about Frontend Development',
@@ -134,11 +132,11 @@ export const seoConfigs = {
     path: '/blog',
   },
   cv: {
-    title: 'CV - Experience, Testimonials & Certificates',
+    title: 'CV — Web Engineer & Frontend Architect',
     description:
-      'Curriculum vitae of Artur Basak — full work history, testimonials, education, and certificates.',
+      'Curriculum vitae of Artur Basak, Web Engineer & Frontend Architect with 15+ years across React, Next.js, TypeScript, Node.js, BFF/API, accessible PWAs, design systems, and scalable web systems. Full work history, testimonials, education, and certificates.',
     keywords:
-      'CV, Resume, Work Experience, Testimonials, Certificates, Education, Web Engineer, Artur Basak',
+      'CV, Resume, Web Engineer, Frontend Architect, React, Next.js, TypeScript, Node.js, PWA, WCAG, Work Experience, Testimonials, Certificates, Artur Basak',
     path: '/cv',
   },
   tools: {

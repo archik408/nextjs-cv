@@ -309,6 +309,72 @@
   view-transition-name: hero;
 }
 
+.hero-handwritten-love {
+  display: none;
+  top: 0%;
+  left: calc(100% + 5rem);
+  width: max-content;
+  transform: rotate(-20deg);
+  transform-origin: left center;
+  font-family: var(--font-caveat), cursive;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #b794f6;
+  text-shadow: 0 1px 0 rgb(183 148 246 / 25%);
+  text-align: left;
+}
+
+.dark .hero-handwritten-love {
+  color: #d8b4fe;
+  text-shadow: 0 1px 8px rgb(216 180 254 / 35%);
+}
+
+.hero-handwritten-love__line {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero-handwritten-love__char {
+  display: inline-block;
+}
+
+.hero-handwritten-love--writing .hero-handwritten-love__char {
+  opacity: 0;
+  animation: hero-handwrite-char 0.08s ease-out forwards;
+}
+
+.hero-handwritten-love--static .hero-handwritten-love__char {
+  opacity: 1;
+}
+
+@keyframes hero-handwrite-char {
+  from {
+    opacity: 0;
+    transform: translateY(0.15em) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-handwritten-love {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-handwritten-love--writing .hero-handwritten-love__char {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
 ::view-transition-old(hero),
 ::view-transition-new(hero) {
   animation-duration: 0.4s;
@@ -348,8 +414,10 @@
 }
 
 :root {
-  /* Light theme (default) */
-  --background: #0f172a;
+  /* Light tokens — applied only when .dark is removed by the manual toggle.
+     Do NOT use prefers-color-scheme / light-dark() here: theme is manual-only. */
+  color-scheme: light;
+  --background: #ffffff;
   --foreground: #0f172a;
   --card-bg: #f8fafc;
   --card-bg-secondary: #e2e8f0;
@@ -359,7 +427,8 @@
 }
 
 .dark {
-  /* Dark theme */
+  /* Site default theme (also set via <html class="dark"> + meta color-scheme) */
+  color-scheme: dark;
   --background: #0f172a;
   --foreground: #dedeff;
   --card-bg: #1e293b;
@@ -581,6 +650,13 @@ img {
   50%,
   100% {
     opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .txt-rotate > .wrap::after {
+    animation: none;
+    opacity: 1;
   }
 }
 

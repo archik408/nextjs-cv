@@ -12,6 +12,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
+  // Default English; only localStorage (manual switcher) may override — never navigator.language.
   const [language, setLanguage] = useState<Language>(ELanguage.en);
   const [hydrated, setHydrated] = useState(false);
 
@@ -22,7 +23,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         setLanguage(stored);
       }
     } catch {
-      // Ignore storage errors and fall back to default
+      // Ignore storage errors and fall back to default English
     } finally {
       setHydrated(true);
     }

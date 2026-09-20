@@ -1,3 +1,5 @@
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/site';
+
 interface StructuredDataProps {
   data: Record<string, unknown>;
 }
@@ -8,14 +10,14 @@ export function StructuredData({ data }: StructuredDataProps) {
   );
 }
 
-// Предустановленные схемы
+/** Site-wide Person — brand voice. Formal stack/experience belongs on /cv and the PDF resume. */
 export const createPersonSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Artur Basak',
-  jobTitle: 'Web Engineer & Frontend Architect',
-  url: 'https://arturbasak.dev',
-  image: 'https://arturbasak.dev/ogp.jpg',
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  image: `${SITE_URL}/ogp.jpg`,
   sameAs: [
     'https://github.com/archik408',
     'https://www.linkedin.com/in/arturbasak',
@@ -26,31 +28,11 @@ export const createPersonSchema = () => ({
     '@type': 'Organization',
     name: 'X5 Tech',
   },
-  knowsAbout: [
-    'React',
-    'HTML',
-    'CSS',
-    'TypeScript',
-    'JavaScript',
-    'Next.js',
-    'Node.js',
-    'BFF',
-    'Web Accessibility',
-    'Web Security',
-    'Web Development',
-    'Frontend Architecture',
-    'Full Stack Web',
-    'HTTP Caching',
-    'UI/UX Design',
-    'PWA',
-    'Web Performance',
-  ],
   alumniOf: {
     '@type': 'CollegeOrUniversity',
     name: 'Technological College Educational Institution GRSU',
   },
   nationality: 'Belarus',
-  speaksLanguage: ['English', 'Russian', 'Belarusian'],
 });
 
 export const createArticleSchema = (article: {
@@ -72,14 +54,14 @@ export const createArticleSchema = (article: {
   author: {
     '@type': 'Person',
     name: article.author || 'Artur Basak',
-    url: 'https://arturbasak.dev',
+    url: SITE_URL,
   },
   publisher: {
     '@type': 'Person',
     name: 'Artur Basak',
-    url: 'https://arturbasak.dev',
+    url: SITE_URL,
   },
-  image: article.image || 'https://arturbasak.dev/ogp.jpg',
+  image: article.image || `${SITE_URL}/ogp.jpg`,
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': article.url,
@@ -89,33 +71,33 @@ export const createArticleSchema = (article: {
 export const createWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Artur Basak Portfolio',
-  description:
-    'Web Engineer & Frontend Architect portfolio, digital garden, publications, and browser tools',
-  url: 'https://arturbasak.dev',
+  name: 'Artur Basak',
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
   inLanguage: ['en', 'ru'],
   author: {
     '@type': 'Person',
     name: 'Artur Basak',
-    url: 'https://arturbasak.dev',
+    url: SITE_URL,
   },
   about: {
     '@type': 'Person',
     name: 'Artur Basak',
-    url: 'https://arturbasak.dev',
+    description: SITE_TITLE,
+    url: SITE_URL,
   },
   hasPart: [
-    { '@type': 'WebPage', name: 'Digital Garden', url: 'https://arturbasak.dev/garden' },
-    { '@type': 'WebPage', name: 'Publications', url: 'https://arturbasak.dev/blog' },
-    { '@type': 'WebPage', name: 'CV', url: 'https://arturbasak.dev/cv' },
-    { '@type': 'WebPage', name: 'Tools', url: 'https://arturbasak.dev/tools' },
-    { '@type': 'WebPage', name: 'llms.txt', url: 'https://arturbasak.dev/llms.txt' },
+    { '@type': 'WebPage', name: 'Digital Garden', url: `${SITE_URL}/garden` },
+    { '@type': 'WebPage', name: 'Publications', url: `${SITE_URL}/blog` },
+    { '@type': 'WebPage', name: 'CV', url: `${SITE_URL}/cv` },
+    { '@type': 'WebPage', name: 'Tools', url: `${SITE_URL}/tools` },
+    { '@type': 'WebPage', name: 'llms.txt', url: `${SITE_URL}/llms.txt` },
   ],
   potentialAction: {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://arturbasak.dev/blog?q={search_term_string}',
+      urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
     },
     'query-input': 'required name=search_term_string',
   },
@@ -127,15 +109,15 @@ export const createBlogSchema = () => ({
   name: 'Artur Basak Publications',
   description:
     'Technical articles about frontend development, React, TypeScript, and web technologies',
-  url: 'https://arturbasak.dev/blog',
+  url: `${SITE_URL}/blog`,
   author: {
     '@type': 'Person',
     name: 'Artur Basak',
-    url: 'https://arturbasak.dev',
+    url: SITE_URL,
   },
   publisher: {
     '@type': 'Person',
     name: 'Artur Basak',
-    url: 'https://arturbasak.dev',
+    url: SITE_URL,
   },
 });

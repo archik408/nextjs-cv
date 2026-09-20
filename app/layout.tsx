@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
-import { Rubik, JetBrains_Mono } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Rubik, JetBrains_Mono, Caveat } from 'next/font/google';
 import { LanguageProvider } from '@/lib/use-language';
 import { ThemeProvider } from '@/lib/use-theme';
 import './globals.css';
@@ -10,6 +10,8 @@ import { Footer } from '@/components/footer';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import SkipLink from '@/components/skip-link';
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE, SITE_URL } from '@/lib/site';
+import { createPersonSchema } from '@/components/structured-data';
 
 const rubikFont = Rubik({
   subsets: ['latin'],
@@ -20,15 +22,24 @@ const jetbrainsMonoFont = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 });
 
+const caveatFont = Caveat({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-caveat',
+  display: 'swap',
+});
+
+// Default to dark; never follow OS prefers-color-scheme. Manual toggle only.
+export const viewport: Viewport = {
+  colorScheme: 'dark',
+};
+
 export const metadata: Metadata = {
-  title: 'Artur Basak - Web Engineer & Frontend Architect | 15+ Yrs',
-  description:
-    'Web Engineer & Frontend Architect with 15+ years across the full web stack — UI architecture, BFF/API, Node.js, HTTP/caching, accessible PWAs, and scalable web systems.',
-  keywords:
-    'Web Engineer, Web Architect, Frontend Architecture, Full Stack, React, Next.js, TypeScript, Node.js, BFF, PWA, Accessibility, WCAG, Design Systems',
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
   authors: [{ name: 'Artur Basak', url: 'https://github.com/archik408' }],
   creator: 'Artur Basak',
-  metadataBase: new URL('https://arturbasak.dev'),
+  metadataBase: new URL(SITE_URL),
   icons: {
     icon: '/macbook.svg',
     shortcut: '/macbook.svg',
@@ -42,17 +53,16 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Artur Basak - Web Engineer & Frontend Architect | 15+ Yrs',
-    description:
-      'Web Engineer & Frontend Architect — full web stack from UI architecture to BFF, Node.js, HTTP/caching, and accessible PWAs.',
-    url: 'https://arturbasak.dev',
-    siteName: 'Artur Basak Portfolio',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: 'Artur Basak',
     images: [
       {
         url: '/ogp.jpg',
         width: 1200,
         height: 630,
-        alt: 'Artur Basak - Web Engineer & Frontend Architect | 15+ Yrs',
+        alt: SITE_TITLE,
       },
     ],
     locale: 'en_US',
@@ -61,9 +71,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Artur Basak - Web Engineer & Frontend Architect | 15+ Yrs',
-    description:
-      'Web Engineer & Frontend Architect — full web stack from UI architecture to BFF, Node.js, HTTP/caching, and accessible PWAs.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ['/ogp.jpg'],
     site: '@archik408',
   },
@@ -85,85 +94,55 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Artur Basak',
-    jobTitle: 'Web Engineer & Frontend Architect',
-    url: 'https://arturbasak.dev',
-    image: 'https://arturbasak.dev/ogp.jpg',
-    sameAs: [
-      'https://github.com/archik408',
-      'https://www.linkedin.com/in/arturbasak',
-      'https://www.smashingmagazine.com/author/artur-basak',
-      'https://arturbasak.artstation.com',
-    ],
-    worksFor: {
-      '@type': 'Organization',
-      name: 'IntexSoft',
-    },
-    knowsAbout: [
-      'HTML',
-      'CSS',
-      'React',
-      'Svelte',
-      'Web Components',
-      'Next.js',
-      'TypeScript',
-      'JavaScript',
-      'Design Systems',
-      'Web Accessibility',
-      'Core Web Vitals',
-      'PWA',
-      'Node.js',
-      'Web Security',
-      'Web Performance',
-      'Automated Testing',
-      'CI/CD',
-      'UI/UX Design',
-    ],
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'BY',
-    },
-    alumniOf: {
-      '@type': 'CollegeOrUniversity',
-      name: 'Technological College Educational Institution GRSU',
-    },
-    nationality: 'Belarus',
-    gender: 'Male',
-    speaksLanguage: ['English', 'Belarusian', 'Russian'],
-  };
+  const jsonLd = createPersonSchema();
   return (
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" className="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
+                // Manual theme only: never read prefers-color-scheme / system preference.
+                // Default is dark + English; localStorage overrides after a manual switch.
                 try {
-                  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-                    var theme = window.localStorage ? localStorage.getItem('theme') : null;
-                    if (theme === 'dark' || !theme) {
-                      document.documentElement.classList.add('dark');
-                      document.documentElement.style.backgroundColor = '#0f172a';
-                    } else {
-                      document.documentElement.classList.remove('dark');
-                      document.documentElement.style.backgroundColor = '#ffffff';
-                    }
+                  var root = document.documentElement;
+                  var theme = null;
+                  var lang = null;
+                  try {
+                    theme = localStorage.getItem('theme');
+                    lang = localStorage.getItem('language');
+                  } catch (_) {}
+
+                  var isLight = theme === 'light';
+                  var meta = document.querySelector('meta[name="color-scheme"]');
+                  if (isLight) {
+                    root.classList.remove('dark');
+                    root.style.backgroundColor = '#ffffff';
+                    if (meta) meta.setAttribute('content', 'light');
+                  } else {
+                    root.classList.add('dark');
+                    root.style.backgroundColor = '#0f172a';
+                    if (meta) meta.setAttribute('content', 'dark');
+                  }
+
+                  if (lang === 'ru' || lang === 'en') {
+                    root.lang = lang;
+                  } else {
+                    root.lang = 'en';
                   }
                 } catch (e) {
-                  if (typeof document !== 'undefined') {
-                    document.documentElement.classList.add('dark');
-                    document.documentElement.style.backgroundColor = '#0f172a';
-                  }
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.style.backgroundColor = '#0f172a';
+                  document.documentElement.lang = 'en';
                 }
               })();
             `,
           }}
         />
       </head>
-      <body className={`${rubikFont.className} ${jetbrainsMonoFont.variable} antialiased`}>
+      <body
+        className={`${rubikFont.className} ${jetbrainsMonoFont.variable} ${caveatFont.variable} antialiased`}
+      >
         <ThemeProvider>
           <LanguageProvider>
             <SkipLink />
