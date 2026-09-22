@@ -8,6 +8,9 @@ export type GardenShelf = (typeof GARDEN_SHELVES)[number];
 
 export const DEFAULT_GARDEN_SHELF: GardenShelf = 'production';
 
+/** localStorage key for the last selected garden shelf tab */
+export const GARDEN_SHELF_STORAGE_KEY = 'garden-shelf';
+
 /** Base slug (without `_en`) → shelf */
 export const GARDEN_SHELF_BY_BASE_SLUG: Record<string, GardenShelf> = {
   // Production — engineering cases / platform
@@ -27,6 +30,7 @@ export const GARDEN_SHELF_BY_BASE_SLUG: Record<string, GardenShelf> = {
 
   // Thinking — essays + books
   'real-programmers-dont-use-ai': 'thinking',
+  'end-of-programming': 'thinking',
   '15-years-in-dev': 'thinking',
   estimation: 'thinking',
   github: 'thinking',

@@ -35,7 +35,7 @@ _Color scheme of my previous project (Lition, design from Zeplin)_
 
 _Color scheme of my current project (Tispr, design from Abstract)_
 
-## Color Tools 🖌️
+## Color Tools
 
 For a long time, preprocessors have been the main tool for configuring the color scheme in a web application. Variables are the main mechanism for setting up and organizing colors in project styles.
 
@@ -51,7 +51,7 @@ The combination of these two tools — preprocessor functions and native CSS var
 
 Hint: CSS variables [are not supported](https://caniuse.com/#feat=css-variables) by the good old Internet Explorer. In the foreseeable future, this is not a problem, however, here and now you can try to look in the direction of the corresponding polyfills like [ie11CustomProperties](https://github.com/nuxodin/ie11CustomProperties).
 
-## Color Palette 🎨
+## Color Palette
 
 The first level of configuring the colors of any web application or site is the **palette**. The whole palette should be built on just a couple of basic colors. According to [color theory](https://en.wikipedia.org/wiki/Color_theory), there are only a few schemes for creating a color palette:
 
@@ -157,7 +157,7 @@ The function also adds a color option in rgb format, so that later it will be po
 
 ![Generated palette with RGB channels on SassMeister](/garden/application-color-scheme/palette-rgb.webp)
 
-## Brand Colors or Theme [Global Scope] 🖼️
+## Brand Colors or Theme [Global Scope]
 
 The next level of application color configuration is its **theme**, corporate colors, or brand. In fact, these are variables that do not carry information about particular color value, it will be red or blue, and it is also not clear from the name of the variable in which component it will be used, which control can be configured by it.
 
@@ -227,7 +227,7 @@ Hint: Use the `-color` postfix for color variable names and `-bg-color` for back
 }
 ```
 
-## Component Colors [Local Scope] 👩‍🎨
+## Component Colors [Local Scope]
 
 The last level of color scheme configuration is the level of the UI components or just **local scope**. This approach will allow you to redefine the upper-level setting (theme colors) in some special cases when the UI element should have a color that is not part of the design system or control has several states with different colors for each. A good example of such a need would be the [white label](https://en.wikipedia.org/wiki/White-label_product) functionality in the target web application.
 
@@ -293,7 +293,7 @@ In fact, the consortium and CSS Working Groups have long been trying to implemen
 
 Hint: You should not produce too many color variables at the component level. In many cases, color can be reused or inherited by correctly applying the values `inherit`/`unset`/`revert` and `currentColor`, as well as taking into account the features of the cascading model.
 
-## Performance 🚀
+## Performance
 
 Probably any experienced developer will ask, but what about the performance of CSS variables? First, you need to understand that color change triggers only the repaint/redraw process, and as we know, this process does less performance damage than the reflow/layout process. Therefore, the variables responsible for the color and their change will be less likely to hit the rendering speed of your UI than the change of variables associated with any size, positioning, or animation.
 

@@ -198,6 +198,14 @@ export function getLatestGardenNotes(
   return sortNotesByDateDesc(picked).slice(0, limit);
 }
 
+/** Homepage Digital Garden: 3 latest from Production + 3 from Thinking. */
+export function getHomepageGardenNotes(preferredLocale: GardenLocale): GardenNote[] {
+  return [
+    ...getLatestGardenNotes(preferredLocale, 3, 'production'),
+    ...getLatestGardenNotes(preferredLocale, 3, 'thinking'),
+  ];
+}
+
 export { filterNotesByShelf } from './garden-utils';
 export type { GardenShelf } from '@/constants/garden-shelves';
 export { GARDEN_SHELVES, DEFAULT_GARDEN_SHELF, isGardenShelf } from '@/constants/garden-shelves';

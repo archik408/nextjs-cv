@@ -1,9 +1,9 @@
-import { getLatestGardenNotes } from '@/lib/garden';
+import { getHomepageGardenNotes } from '@/lib/garden';
 import GardenSectionClient from '@/components/garden-section-client';
 
 export function GardenSection() {
-  const ruNotes = getLatestGardenNotes('ru', 6);
-  const enNotes = getLatestGardenNotes('en', 6);
+  const ruNotes = getHomepageGardenNotes('ru');
+  const enNotes = getHomepageGardenNotes('en');
   return <GardenSectionClient ruNotes={ruNotes} enNotes={enNotes} />;
 }
 

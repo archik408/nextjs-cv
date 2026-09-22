@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { GardenNote } from '@/lib/garden';
 import {
@@ -10,7 +10,11 @@ import {
   isGardenShelf,
   type GardenShelf,
 } from '@/constants/garden-shelves';
-import { filterNotesByShelf } from '@/lib/garden-utils';
+import {
+  filterNotesByShelf,
+  readStoredGardenShelf,
+  writeStoredGardenShelf,
+} from '@/lib/garden-utils';
 import ArticleTitle from '@/components/article-title';
 import { Rss, Sprout } from 'lucide-react';
 import { useLanguage } from '@/lib/hooks/use-language';
@@ -41,7 +45,32 @@ export function GardenPageClient({ notes, title, description }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const shelfParam = searchParams?.get('shelf') ?? null;
-  const activeShelf: GardenShelf = isGardenShelf(shelfParam) ? shelfParam : DEFAULT_GARDEN_SHELF;
+  const urlShelf: GardenShelf | null = isGardenShelf(shelfParam) ? shelfParam : null;
+
+  // URL is source of truth when present; LS restores selection after refresh of /garden.
+  const [activeShelf, setActiveShelf] = useState<GardenShelf>(
+    () => urlShelf ?? DEFAULT_GARDEN_SHELF
+  );
+
+  useEffect(() => {
+    if (urlShelf) {
+      setActiveShelf(urlShelf);
+      writeStoredGardenShelf(urlShelf);
+      return;
+    }
+
+    const stored = readStoredGardenShelf();
+    if (!stored) {
+      writeStoredGardenShelf(DEFAULT_GARDEN_SHELF);
+      setActiveShelf(DEFAULT_GARDEN_SHELF);
+      return;
+    }
+
+    setActiveShelf(stored);
+    if (stored !== DEFAULT_GARDEN_SHELF) {
+      router.replace(buildGardenHref(stored), { scroll: false });
+    }
+  }, [urlShelf, router]);
 
   const displayedNotes = useMemo(
     () => filterNotesByShelf(notes, activeShelf),
@@ -66,6 +95,8 @@ export function GardenPageClient({ notes, title, description }: Props) {
 
   const selectShelf = useCallback(
     (shelf: GardenShelf) => {
+      writeStoredGardenShelf(shelf);
+      setActiveShelf(shelf);
       router.push(buildGardenHref(shelf), { scroll: false });
     },
     [router]

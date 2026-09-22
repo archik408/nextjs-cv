@@ -10,7 +10,7 @@ tags: [career, programming, ai, history, seedling]
 
 Clickbait headline, right? It's also a lift. In 1983, _Datamation_ ran Ed Post's essay [_Real Programmers Don't Use Pascal_](https://en.wikipedia.org/wiki/Real_Programmers_Don't_Use_Pascal) — a mean, very funny parody of the era's bestseller about Real Men who don't eat quiche. Post sketched an archetype: the Real Programmer writes FORTRAN and assembly, punch cards in hand, beer on the desk. Pascal is for softies who need structured programming and guardrails designed to prevent or minimise the usual damage from accidental mistakes in logic. Strong typing, he wrote, is for people with weak memories.
 
-Which is funny, because Pascal was my first language 🤔. The absurdity of the essay is that it was already describing a losing position when it was written. Pascal, BASIC, C/C++, Java, Python — all of it arrived, and none of it destroyed the profession. It inflated it. The "Real Programmer" of 1983 reads today like a man refusing to take the lift because real men use the stairs. The stairs are still there. There are just a thousand times more buildings, with a thousand times more floors.
+Which is funny, because Pascal was my first language. The absurdity of the essay is that it was already describing a losing position when it was written. Pascal, BASIC, C/C++, Java, Python — all of it arrived, and none of it destroyed the profession. It inflated it. The "Real Programmer" of 1983 reads today like a man refusing to take the lift because real men use the stairs. The stairs are still there. There are just a thousand times more buildings, with a thousand times more floors.
 
 Today the exact same gesture gets repeated almost word for word: real programmers don't lean on AI. It's for startups in a hurry to ship an MVP on the cheap, full of security holes and spaghetti. And behind it you can hear the old refrain from the layman, the founder and the businessman: "well, that's it, coders aren't needed any more." History has been beating that prediction up for decades — not with rhetoric, just with numbers.
 
@@ -117,7 +117,7 @@ The old law kicked in again: a new platform doesn't cancel the old work, it adds
 
 ## Blockchain and Web3
 
-Along came Web 3.0 and blockchain — same song, again. The industry needed even more programmers, to write smart contracts and to think about security and decentralisation. Part of the hype deflated; part of it settled into fintech and infrastructure. But even in its noisiest form the logic never changed: every new turn of the wheel demanded fresh blood and fresh minds (and fresh graphics cards 😂).
+Along came Web 3.0 and blockchain — same song, again. The industry needed even more programmers, to write smart contracts and to think about security and decentralisation. Part of the hype deflated; part of it settled into fintech and infrastructure. But even in its noisiest form the logic never changed: every new turn of the wheel demanded fresh blood and fresh minds (and fresh graphics cards).
 
 ![Installing MetaMask from the App Store on an iPhone](/garden/real-programmers-dont-use-ai/metamask-ios.webp)
 

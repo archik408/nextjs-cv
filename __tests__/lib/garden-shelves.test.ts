@@ -1,8 +1,10 @@
 import {
   DEFAULT_GARDEN_SHELF,
+  GARDEN_SHELF_STORAGE_KEY,
   isGardenShelf,
   resolveGardenShelf,
 } from '@/constants/garden-shelves';
+import { readStoredGardenShelf, writeStoredGardenShelf } from '@/lib/garden-utils';
 
 describe('garden shelves', () => {
   it('defaults to production', () => {
@@ -28,5 +30,26 @@ describe('garden shelves', () => {
   it('validates shelf ids', () => {
     expect(isGardenShelf('production')).toBe(true);
     expect(isGardenShelf('lab')).toBe(false);
+  });
+});
+
+describe('garden shelf localStorage', () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
+  it('returns null when nothing is stored', () => {
+    expect(readStoredGardenShelf()).toBeNull();
+  });
+
+  it('persists and reads a valid shelf', () => {
+    writeStoredGardenShelf('kids');
+    expect(window.localStorage.getItem(GARDEN_SHELF_STORAGE_KEY)).toBe('kids');
+    expect(readStoredGardenShelf()).toBe('kids');
+  });
+
+  it('ignores invalid stored values', () => {
+    window.localStorage.setItem(GARDEN_SHELF_STORAGE_KEY, 'lab');
+    expect(readStoredGardenShelf()).toBeNull();
   });
 });

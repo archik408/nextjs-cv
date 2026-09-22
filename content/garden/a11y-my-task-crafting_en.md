@@ -43,7 +43,7 @@ This is my personal _task crafting_ — job crafting in the usual sense of resha
 
 ---
 
-_That black spot in my eye is no longer just a medical fact. It is a daily reminder: "Don't forget `aria-label`, `role` and `tabIndex`" 😉_
+_That black spot in my eye is no longer just a medical fact. It is a daily reminder: "Don't forget `aria-label`, `role` and `tabIndex`"_
 
 ---
 
