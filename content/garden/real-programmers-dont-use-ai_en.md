@@ -23,7 +23,6 @@ First there were enormous, complicated computers. They filled whole rooms, cost 
 In 1945, in the United States, that job was done by [**six people**](https://spectrum.ieee.org/the-women-behind-eniac) — the ENIAC team, all of them women, as it happens. Today the figure is [**~1.7 million**](https://futurehistory.earth/timeline/15-1252). Around 1980 the US had roughly [**300,000**](http://thecomputerboys.com/?p=452) computer programmers; by **1990** it was about **565,000**. One decade of the personal computer, and the profession multiplied several times over in a single country. The Bureau of Labor Statistics kept redefining its categories along the way, so cross-era comparisons deserve caution — but the direction of travel isn't in doubt.
 
 ![ENIAC's women programmers at the patch-cable panels, 1940s](/garden/real-programmers-dont-use-ai/eniac-women.webp)
-![ENIAC's women programmers at the patch-cable panels, 1940s](/garden/real-programmers-dont-use-ai/eniac.webp)
 
 The moment affordable machines showed up — the [IBM PC](/garden/ibm) (**12 August 1981**) and the [Macintosh](/garden/apple) (**January 1984**), computers you could put on a desk in your own house — the industry needed _more_ programmers, not fewer. Hardware had suddenly gone personal, and somebody had to write software for it. Operating systems, drivers, text editors and a mountain of applications: all of that needed hands.
 
@@ -31,9 +30,7 @@ The moment affordable machines showed up — the [IBM PC](/garden/ibm) (**12 Aug
 
 The businesses built around those hands grew in step. Microsoft had roughly **5,600** employees in **1990**; by **1999** it was [over **31,000**](https://stockanalysis.com/stocks/msft/employees/). Apple was at [around **8,600**](https://tickerleague.com/companies/AAPL/employee-count) by **2000**. By **2001** Silicon Valley counted some [**26,000**](https://www.ppic.org/wp-content/uploads/content/pubs/report/R_703JZR.pdf) high-tech establishments and hundreds of thousands of tech jobs. Hardware got cheaper, and the number of people at keyboards went up.
 
-![The Microsoft.com homepage in 1996](/garden/real-programmers-dont-use-ai/microsoft-1996.webp)
-
-![The Apple.com homepage in 1996](/garden/real-programmers-dont-use-ai/apple-1996.webp)
+![Chart of Microsoft employee count: growth from the 1990s to hundreds of thousands](/garden/real-programmers-dont-use-ai/msft-employees-chart.webp)
 
 ## "Now any idiot will be able to program"
 
@@ -47,7 +44,7 @@ The symbol of the era: Borland's Turbo Pascal (**1983**) cost around **$50** —
 
 By **2000** the US was talking about roughly **700,000** programmers and software engineers. Microsoft grew to around **93,000** people by **2009**. Google, which had **284** employees in **2001**, was at about [**20,000**](https://stockanalysis.com/stocks/goog/employees/) by **2009**. That is not what "less work, thanks to convenient languages" looks like. That's an explosion of demand for people who build products in those languages.
 
-![The Google Beta homepage in 1998](/garden/real-programmers-dont-use-ai/web-google.webp)
+![Chart of Alphabet (Google) employee count: growth from the 2000s to ~190,000](/garden/real-programmers-dont-use-ai/goog-employees-chart.webp)
 
 ## The internet: "who needs software when you've got a browser?"
 
@@ -55,19 +52,13 @@ Then the internet happened. From slow, hard-to-get dial-up — where a page load
 
 The opposite happened. Yes, the shops selling install discs did disappear — but there were more programmers than ever, because on top of the desktop we now had the web.
 
-![A DVD / CD / MP3 kiosk with a display case full of discs](/garden/real-programmers-dont-use-ai/cd-dvd.webp)
-
 PHP, Perl, JavaScript, C#, Java — these were the languages that let you build sites and web applications. And everyone wanted a piece: a brochure site for a hairdresser, a portal with an online shop for car parts, a forum for fans, a dating site. Demand went vertical.
-
-![The Yahoo! homepage circa 2000](/garden/real-programmers-dont-use-ai/yahoo.webp)
 
 Even then the market was already humming the familiar tune about how "you'll be able to build sites with a mouse" and programmers would become surplus to requirements. [Macromedia Dreamweaver](https://en.wikipedia.org/wiki/Adobe_Dreamweaver) was sold almost as the tool that would kill off webmasters and the people who hand-wrote markup: look, you can make a site without any serious programming skill. The same dream was then promised in turn by FrontPage, Webflow, Framer and now Figma with Figma Make. In practice, tools like these don't kill frontend, markup or design. They lower the barrier for routine work while simultaneously raising demand for the people who can do the non-standard thing — reliably, quickly and beautifully.
 
 ![The Macromedia Dreamweaver 1.2 splash screen](/garden/real-programmers-dont-use-ai/dreamweaver.webp)
 
 How many jobs did WordPress alone create? [More than **40%**](https://w3techs.com/technologies/details/cm-wordpress) of all websites on the internet run on it, and every one of them was built by somebody. Not by the person who used to write assembly or FORTRAN.
-
-![The Amazon.com homepage from 7 October 1998](/garden/real-programmers-dont-use-ai/web-amazon.webp)
 
 ## Web 2.0: "the users will do it themselves"
 
@@ -79,11 +70,9 @@ On the Russian-speaking internet this shift is easiest to see through LiveJourna
 
 MySpace, Facebook, YouTube, Twitter — from the outside it's a "post" button; from the inside it's queues, caches, sharding, moderation, ad auctions, anti-fraud. The simpler the interface for the user, the harsher the engineering underneath it.
 
-![Thefacebook in 2004](/garden/real-programmers-dont-use-ai/web2-facebook.webp)
-
-![The YouTube homepage in 2005: Your Digital Video Repository](/garden/real-programmers-dont-use-ai/web2-youtube-2005.webp)
-
 By **2010** Google had grown to **24,000** employees; by the end of the decade Alphabet was pushing **120,000**. Apple, post-iPhone, went from roughly **47,000** in **2010** to about [**137,000**](https://businesstats.com/number-of-employees-of-apple-since-2005/) in **2019**. Microsoft over the same years went from ~**90,000** to ~**144,000**. That's total headcount, not just engineers — but the vector is the same: platforms devour people, and the software engineers among them are not a shrinking share.
+
+![Chart of Apple employee count: growth from the 1990s to ~160,000](/garden/real-programmers-dont-use-ai/aapl-employees-chart.webp)
 
 ## Mobile phones and smartphones: "desktop is dead, the web is dead"
 
@@ -95,23 +84,11 @@ This was the next milestone in computing's accessibility after the IBM PC and th
 
 ![An Android phone and an iPhone side by side, held in two hands](/garden/real-programmers-dont-use-ai/android-vs-iphone.webp)
 
-![The Microsoft.com homepage in 2008, foregrounding the mobile push](/garden/real-programmers-dont-use-ai/windows-phone-microsoft.webp)
-
 Meanwhile the internet and the web went nowhere; the browser zoo just got bigger and sites now had to be adapted for mobile as well. The developer army grew several times over — and that's with me deliberately skipping the transitional period of [Java Micro Edition](https://en.wikipedia.org/wiki/Java_Platform,_Micro_Edition) and [Opera Mini](https://en.wikipedia.org/wiki/Opera_Mini).
 
 ![Three BlackBerry Torch handsets running Opera Mini: an article, the start screen, and 89% data saving](/garden/real-programmers-dont-use-ai/opera-mini.webp)
 
 People got sick of the identikit blogs and clone pages that blogging platforms and content management systems churned out. Building sites came back into fashion — only now they had to be stylish, distinctive, one-of-a-kind landing pages. This was the dawn of the graphic designer as a profession, because it was no longer enough to lay out a page and drop typography and colour on it tastefully; you needed parallax, animation and gorgeous stock photography. Designers, photographers, videographers, illustrators, SEO specialists and copywriters all got their turn.
-
-![The Pixar website in 2000](/garden/real-programmers-dont-use-ai/pixar-2000.webp)
-
-![The Pixar website in 2006](/garden/real-programmers-dont-use-ai/pixar-2006.webp)
-
-![The Pixar website in 2008](/garden/real-programmers-dont-use-ai/pixar-2008.webp)
-
-![The Pixar website in 2012](/garden/real-programmers-dont-use-ai/pixar-2012.webp)
-
-![The Pixar website in 2013](/garden/real-programmers-dont-use-ai/pixar-2013.webp)
 
 The old law kicked in again: a new platform doesn't cancel the old work, it adds a layer. A bank needs a website _and_ an app. A retailer needs a website _and_ an app _and_ an admin panel _and_ a warehouse service _and_...
 

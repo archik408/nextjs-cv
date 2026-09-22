@@ -23,7 +23,6 @@ tags: [career, programming, ai, history, seedling]
 В 1945 году в США эту работу выполняли [**6 человек**](https://spectrum.ieee.org/the-women-behind-eniac) (команда ENIAC, все они, кстати, были женщинами). Сегодня: [**~1,7 миллиона**](https://futurehistory.earth/timeline/15-1252). В США около 1980 года насчитывалось порядка [**300 тысяч**](http://thecomputerboys.com/?p=452) computer programmers; к **1990-му** — уже около **565 тысяч**. За одно десятилетие существования ПК профессия в одной стране выросла в разы. Категории Бюро трудовой статистики со временем менялись, поэтому сравнивать эпохи нужно осторожно — но направление роста не вызывает сомнений.
 
 ![Программистки ENIAC за панелями с патч-кабелями, 1940-е](/garden/real-programmers-dont-use-ai/eniac-women.webp)
-![Программистки ENIAC за панелями с патч-кабелями, 1940-е](/garden/real-programmers-dont-use-ai/eniac.webp)
 
 Как только появились доступные [IBM PC](/garden/ibm) (**12 августа 1981**) и [Macintosh](/garden/apple) (**январь 1984**) — эти персональные машины, которые можно было поставить на стол прямо дома, — программистов понадобилось больше, а не меньше. Потому что железо вдруг стало персональным, и под него надо было писать софт. Операционные системы, драйверы, текстовые редакторы и кучу прикладных программ — всё это требовало рук.
 
@@ -31,9 +30,7 @@ tags: [career, programming, ai, history, seedling]
 
 Параллельно рос и бизнес вокруг этих рук. Microsoft в **1990** — около **5,6 тысячи** сотрудников; к **1999** — [уже больше **31 тысячи**](https://stockanalysis.com/stocks/msft/employees/). Apple к **2000** — [около **8,6 тысячи**](https://tickerleague.com/companies/AAPL/employee-count). В Кремниевой долине к **2001** в регионе насчитывалось около [**26 тысячи**](https://www.ppic.org/wp-content/uploads/content/pubs/report/R_703JZR.pdf) high-tech заведений и сотни тысяч технологических рабочих мест. Железо подешевело и людей с клавиатурой стало больше.
 
-![Главная Microsoft.com 1996 года](/garden/real-programmers-dont-use-ai/microsoft-1996.webp)
-
-![Главная Apple.com 1996 года](/garden/real-programmers-dont-use-ai/apple-1996.webp)
+![График числа сотрудников Microsoft: рост с 1990-х до сотен тысяч](/garden/real-programmers-dont-use-ai/msft-employees-chart.webp)
 
 ## «Сейчас каждый дурак сможет программировать»
 
@@ -47,7 +44,7 @@ tags: [career, programming, ai, history, seedling]
 
 К **2000** в США уже говорили о примерно **700 тысячах** программистов и software engineers. Microsoft к **2009** разрослась примерно до **93 тысяч** человек. Google, у которого в **2001** было **284** сотрудника, к **2009** насчитывал около [**20 тысяч**](https://stockanalysis.com/stocks/goog/employees/). Это не выглядит, как «меньше работы из‑за удобных языков». Это взрыв спроса на людей, которые на этих языках строят продукты.
 
-![Главная Google Beta 1998 года](/garden/real-programmers-dont-use-ai/web-google.webp)
+![График числа сотрудников Alphabet (Google): рост с нулевых до ~190 тысяч](/garden/real-programmers-dont-use-ai/goog-employees-chart.webp)
 
 ## Интернет: «зачем софт, если есть браузер»
 
@@ -55,19 +52,13 @@ tags: [career, programming, ai, history, seedling]
 
 Получилось ровно наоборот. Нет, продавцы дисков с установкой программ конечно же исчезли, а вот программистов стало ещё больше, потому что помимо десктопа пришёл веб.
 
-![Павильон DVD CD MP3 с витриной дисков](/garden/real-programmers-dont-use-ai/cd-dvd.webp)
-
 PHP, Perl, JavaScript, C#, Java — эти языки позволяли писать сайты и веб‑приложения. И каждый хотел свой кусок: сайт‑визитку для парикмахерской, портал с интернет‑магазином автозапчастей, форум для фанатов, сайт знакомств. Спрос взорвался.
-
-![Главная Yahoo! около 2000 года](/garden/real-programmers-dont-use-ai/yahoo.webp)
 
 И даже тогда рынок уже слышал знакомую песню про «сейчас сайты можно будет собирать мышкой» и программисты будут ненужны. [Macromedia Dreamweaver](https://ru.wikipedia.org/wiki/Adobe_Dreamweaver) продавался почти как инструмент, который должен был убить верстальщиков и веб‑мастеров: мол, сайт можно сделать без серьёзных навыков программирования. Потом ту же мечту по очереди обещали FrontPage, Webflow, Framer, а теперь и Figma со своим Figma Make. Но на практике такие инструменты не убивают фронтенд, вёрстку и дизайн. Они снижают порог входа для типовых задач и одновременно поднимают спрос на тех, кто может сделать нестандартно, надёжно, быстро и красиво.
 
 ![Экран запуска Macromedia Dreamweaver 1.2](/garden/real-programmers-dont-use-ai/dreamweaver.webp)
 
 Сколько рабочих мест создал только один WordPress? [Более **40%**](https://w3techs.com/technologies/details/cm-wordpress) всех веб-сайтов в сети используют его и все они были созданы кем-то. Не тем, кто когда-то писал на ассембелере или FORTRAN.
-
-![Главная Amazon.com от 7 октября 1998 года](/garden/real-programmers-dont-use-ai/web-amazon.webp)
 
 ## Web 2.0: «юзеры всё сделают сами»
 
@@ -79,11 +70,9 @@ PHP, Perl, JavaScript, C#, Java — эти языки позволяли пис�
 
 MySpace, Facebook, YouTube, Twitter — снаружи «кнопка запостить», а изнутри — очереди, кэши, шардинг, модерация, рекламные аукционы, антифрод. Чем проще интерфейс для пользователя, тем жёстче инженерия под ним.
 
-![Thefacebook в 2004 году](/garden/real-programmers-dont-use-ai/web2-facebook.webp)
-
-![Главная YouTube 2005: Your Digital Video Repository](/garden/real-programmers-dont-use-ai/web2-youtube-2005.webp)
-
 К **2010** Google вырос до **24 тысяч** сотрудников; к концу десятилетия Alphabet — уже под **120 тысяч**. Apple после iPhone с ~**47 тысяч** в **2010** выросла к **2019** примерно до [**137 тысяч**](https://businesstats.com/number-of-employees-of-apple-since-2005/). Microsoft за те же годы — с ~**90** до ~**144 тысяч**. Это штат компаний целиком, не только инженеры — но вектор один: платформы жрут людей, и инженеров-программистов среди них становится не меньше.
+
+![График числа сотрудников Apple: рост с 1990-х до ~160 тысяч](/garden/real-programmers-dont-use-ai/aapl-employees-chart.webp)
 
 ## Сотовые и смартфоны: «десктоп умер, веб умер»
 
@@ -95,23 +84,11 @@ MySpace, Facebook, YouTube, Twitter — снаружи «кнопка запос
 
 ![Android и iPhone рядом в руках](/garden/real-programmers-dont-use-ai/android-vs-iphone.webp)
 
-![Главная Microsoft.com в 2008 году с акцентом на мобильное направление](/garden/real-programmers-dont-use-ai/windows-phone-microsoft.webp)
-
 При этом интернет и веб никуда не делся, только разросся зоопарк браузеров и сайты теперь надо было адаптировать под мобильные версии. Армия разработчиков выросла в разы и это я еще сознательно опустил переходный период с [Java Micro Edition](https://ru.wikipedia.org/wiki/Java_Platform,_Micro_Edition) и [Opera Mini](https://en.wikipedia.org/wiki/Opera_Mini).
 
 ![Три BlackBerry Torch с Opera Mini: статья, стартовый экран и экономия трафика 89%](/garden/real-programmers-dont-use-ai/opera-mini.webp)
 
 Люди наелись однотипных блогов и страничек-клонов, которые генерировали блог-платформы и системы менеджмента контента (CMS). Началась мода возврата к разработке сайтов, только теперь это модные, аутентичные и не похожие друг на друга лэндинги. Это рассвет профессии графического дизайнера, ведь нужно не просто сделать верстку и наложить органично типографику с цветом, нужно добавить параллакс-эффект, анимации и крутые стоковые картинки. Дизайнеры, фотографы, видеографы, иллюстраторы, SEO-специалисты и копирайтеры в деле.
-
-![Сайт Pixar в 2000 году](/garden/real-programmers-dont-use-ai/pixar-2000.webp)
-
-![Сайт Pixar в 2006 году](/garden/real-programmers-dont-use-ai/pixar-2006.webp)
-
-![Сайт Pixar в 2008 году](/garden/real-programmers-dont-use-ai/pixar-2008.webp)
-
-![Сайт Pixar в 2012 году](/garden/real-programmers-dont-use-ai/pixar-2012.webp)
-
-![Сайт Pixar в 2013 году](/garden/real-programmers-dont-use-ai/pixar-2013.webp)
 
 Тут снова сработал старый закон: новая платформа не отменяет старую работу — она добавляет слой. Банку нужен сайт _и_ приложение. Магазину — сайт _и_ приложение _и_ админка _и_ складской сервис _и_...
 
