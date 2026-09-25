@@ -30,6 +30,11 @@ const ABOUT: LlmsLink[] = [
     note: 'Index of articles on Smashing Magazine, Habr, Medium, and Better Programming',
   },
   {
+    title: 'Talks',
+    path: '/talks',
+    note: 'Conference talks and meetup recordings with video and slides',
+  },
+  {
     title: 'Timeline',
     path: '/timeline',
     note: 'Career and web-platform timeline with milestones',

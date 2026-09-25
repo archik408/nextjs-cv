@@ -15,8 +15,16 @@ export type Talk = {
   resources?: TalkResource[];
 };
 
+/** Featured talks shown on the homepage (not the full archive). */
+export const FEATURED_TALK_IDS = [
+  'mystery-shopper-x5',
+  'legacy-testing',
+  'web-accessibility',
+  'grodnovr',
+] as const;
+
 /**
- * Homepage Talks — conference talks with video covers + slides/article links.
+ * Full Talks archive — conference talks with video covers + slides/article links.
  * Order: newest first.
  */
 export const TALKS: Talk[] = [
@@ -34,6 +42,35 @@ export const TALKS: Talk[] = [
     },
     videoUrl: 'https://youtu.be/7Yingac_9zI',
     resources: [{ url: '/docs/mystery-shopper-offline-x5.pdf', kind: 'pdf' }],
+  },
+  {
+    id: 'hybrid-request-queue',
+    title: {
+      en: 'Hybrid Mobile App Architecture: Request Queue',
+      ru: 'Архитектура гибридного мобильного приложения: Очередь запросов',
+    },
+    event: 'IntexSoft Meetup (2024)',
+    coverSrc: '/talks/hybrid-request-queue.webp',
+    coverAlt: {
+      en: 'Talk cover: Hybrid Mobile App Architecture: Request Queue',
+      ru: 'Обложка доклада: Архитектура гибридного мобильного приложения: Очередь запросов',
+    },
+    videoUrl: 'https://www.youtube.com/watch?v=hGg0_e2GWsk',
+    resources: [{ url: 'https://habr.com/ru/articles/915896/', kind: 'article' }],
+  },
+  {
+    id: 'hybrid-data-bus',
+    title: {
+      en: 'Hybrid Mobile App Architecture: Data Bus',
+      ru: 'Архитектура гибридного мобильного приложения: Шина данных',
+    },
+    event: 'IntexSoft Meetup (2024)',
+    coverSrc: '/talks/hybrid-data-bus.webp',
+    coverAlt: {
+      en: 'Talk cover: Hybrid Mobile App Architecture: Data Bus',
+      ru: 'Обложка доклада: Архитектура гибридного мобильного приложения: Шина данных',
+    },
+    videoUrl: 'https://www.youtube.com/watch?v=rtV2e3kzeek',
   },
   {
     id: 'legacy-testing',

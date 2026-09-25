@@ -99,7 +99,7 @@ export function BlogSection() {
             );
           })}
         </div>
-        <div className="mt-6 text-center md:text-left">
+        <div className="mt-10 text-center">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 text-blue-700 hover:underline dark:text-blue-400"

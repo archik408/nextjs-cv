@@ -89,6 +89,7 @@ export const createWebsiteSchema = () => ({
   hasPart: [
     { '@type': 'WebPage', name: 'Digital Garden', url: `${SITE_URL}/garden` },
     { '@type': 'WebPage', name: 'Publications', url: `${SITE_URL}/blog` },
+    { '@type': 'WebPage', name: 'Talks', url: `${SITE_URL}/talks` },
     { '@type': 'WebPage', name: 'CV', url: `${SITE_URL}/cv` },
     { '@type': 'WebPage', name: 'Tools', url: `${SITE_URL}/tools` },
     { '@type': 'WebPage', name: 'llms.txt', url: `${SITE_URL}/llms.txt` },

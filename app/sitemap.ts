@@ -15,6 +15,7 @@ const staticPageDefs: StaticPage[] = [
   { path: '/', changeFrequency: 'monthly', priority: 1 },
   { path: '/garden', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/blog', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/talks', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/cv', changeFrequency: 'monthly', priority: 0.85 },
   { path: '/timeline', changeFrequency: 'monthly', priority: 0.75 },
   { path: '/tools', changeFrequency: 'monthly', priority: 0.8 },

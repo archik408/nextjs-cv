@@ -131,6 +131,14 @@ export const seoConfigs = {
       'Frontend Publications, React Articles, TypeScript Tutorials, Web Development, JavaScript, Technical Writing',
     path: '/blog',
   },
+  talks: {
+    title: 'Talks — Conference Talks and Meetup Recordings',
+    description:
+      'Conference talks and meetup recordings by Artur Basak — video, slides, and related articles on frontend, accessibility, and web architecture.',
+    keywords:
+      'Talks, Conference Talks, Meetup, YouTube, Frontend, Accessibility, Web Architecture, Artur Basak',
+    path: '/talks',
+  },
   cv: {
     title: 'CV — Lead Web Engineer | Product-Minded',
     description:
