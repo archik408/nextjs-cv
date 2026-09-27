@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Rubik, JetBrains_Mono, Caveat } from 'next/font/google';
+import { Rubik, JetBrains_Mono, Bad_Script } from 'next/font/google';
 import { LanguageProvider } from '@/lib/use-language';
 import { ThemeProvider } from '@/lib/use-theme';
 import './globals.css';
@@ -22,9 +22,10 @@ const jetbrainsMonoFont = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 });
 
-const caveatFont = Caveat({
+const badScriptFont = Bad_Script({
+  weight: '400',
   subsets: ['latin', 'cyrillic'],
-  variable: '--font-caveat',
+  variable: '--font-bad-script',
   display: 'swap',
 });
 
@@ -141,7 +142,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${rubikFont.className} ${jetbrainsMonoFont.variable} ${caveatFont.variable} antialiased`}
+        className={`${rubikFont.className} ${jetbrainsMonoFont.variable} ${badScriptFont.variable} antialiased`}
       >
         <ThemeProvider>
           <LanguageProvider>
