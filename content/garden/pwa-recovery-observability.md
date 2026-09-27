@@ -222,6 +222,10 @@ window.setTimeout(async () => {
 }, 5_000);
 ```
 
+В Sentry это выглядит как отдельная транзакция диагностики — `Offline shell is missing in cache` и `Service worker controller missing after startup`:
+
+![Sentry: диагностика Service Worker — missing offline shell и missing controller](/garden/pwa-recovery-observability/sentry-sw-diagnostics.webp)
+
 К ошибкам warmup ленивых маршрутов и к фейлам регистрации SW полезно прикладывать тот же контекст: есть ли controller, online ли устройство, какой pathname, какая попытка recovery. Тогда в логах видно разницу между «сеть умерла», «SW ещё не перехватил страницу» и «на CDN уже другая версия».
 
 Важно дополнить, что таймаут 5 секунд это эмпирическое время полученное от ваших пользователей и оно прямопропорционально тому, что мы кладем в precache. Если в manifest будет все приложение и все чанки, то SW возьмет под контроль страницу и через 10, и через 15 секунд.

@@ -5,13 +5,17 @@ date: 2026-07-05
 tags: [pwa, service-worker, offline, vite, observability, recovery, webview, mobile]
 ---
 
-The nastiest failure in a lazy-loaded PWA is not a crash inside React. It is the blank screen that appears before the app gets to say anything at all. The entry script never arrived, a dynamic `import()` returned 404 for a hash that no longer exists, the Service Worker handed back a stale `index.html` — and the user is looking at nothing. Sentry is silent, because execution never reached your `ErrorBoundary`.
+The nastiest failure in a lazy-loaded PWA is not a crash inside React. It is the blank screen that appears before the app has even loaded. After a release the entry script never arrived, a dynamic `import()` returned 404 for a hash that no longer exists, the Service Worker handed back a stale `index.html`, or the CDN served a cached copy — and the user is looking at nothing. Sentry is silent, because execution never reached your `ErrorBoundary`.
 
-With code splitting and content-hashed chunks, this is not an exotic edge case. It is the expected state of the world right after a release, and it lasts longer than you think in a WebView, where a tab can stay alive for days. Three layers go around every app like this:
+With code splitting and content-hashed chunks, this is not an exotic edge case. It is the expected state of the world right after a release, and it lasts longer than you think in a WebView, where a tab can stay alive for days. Without a static fallback the user gets either the system WebView error `net::ERR_FAILED` or a white screen of death — the native wrapper with its tab bar is already there, but the content never arrives:
+
+![White screen and system WebView error with no static fallback](/garden/pwa-recovery-observability/white-screen-without-fallback.webp)
+
+Three layers go around every app like this:
 
 - a fallback that works with no bundle at all;
 - runtime recovery that catches version skew once the app is running;
-- telemetry for the Service Worker, without which recovery is just ritual.
+- telemetry for the Service Worker, without which recovery turns into magic.
 
 ## First, a page that knows how to fail well
 
@@ -82,11 +86,15 @@ The behavior is deliberately dumb. Try a plain `reload` a few times. Once the bu
 })();
 ```
 
-Inside a mobile WebView, the close button usually maps to a deeplink back into the host shell. The exact scheme depends on your container and isn't worth putting in an article; what matters is that this action also lives in the HTML rather than in the bundle that just failed to load.
+Inside a mobile WebView, the close button usually maps to a deeplink back into the host shell. The exact scheme depends on the app and its architecture; what matters is that this action also lives in the HTML rather than in the bundle that just failed to load. Instead of emptiness, the user gets a clear screen with retry or close:
+
+![Static fallback: general error and network error with Retry / Close actions](/garden/pwa-recovery-observability/static-fallback.webp)
+
+And I am convinced the feedback has to be direct, not veiled. Network trouble, something failed to load? Say exactly that — not the generic `ErrorBoundary` hook of "Something went wrong."
 
 ## Then, recovery for when React is alive but the chunk is not
 
-The classic post-deploy story: the shell came up fine, the user clicked into a lazy route, and `chunks/Feature-abcd.js` is no longer on the CDN. Vite dispatches `vite:preloadError`, the `import()` promise rejects with something like `Failed to fetch dynamically imported module`, and sometimes preloaded CSS fails alongside it.
+The classic post-deploy situation: the shell came up, the user clicked into a lazy route, and `chunks/Feature-abcd.js` is no longer on the CDN. Vite dispatches `vite:preloadError`, the `import()` promise rejects with something like `Failed to fetch dynamically imported module`, and sometimes preloaded CSS fails alongside it.
 
 Here you can work from inside the bundle. Same idea as the static fallback, but with more judgment:
 
@@ -203,11 +211,19 @@ Give the origin probe its own NetworkOnly route in the Service Worker: a short p
 
 While recovery is running, show a loader in your `ErrorBoundary` rather than an error screen, and don't report it to Sentry as a crash — it's a reload. Otherwise the dashboard fills with phantom failures every time you deploy.
 
+With this setup in place, Sentry shows post-release lazy-chunk errors dropping — both the secondary crashes from calling `preventDefault` on `vite:preloadError`, and the `Failed to fetch dynamically imported module` ones themselves:
+
+![Sentry: drop in vite:preloadError and secondary "Cannot read properties of undefined (reading 'default')" after a release](/garden/pwa-recovery-observability/sentry-vite-preload-errors.webp)
+
+![Sentry: drop in Chunk load error / Failed to fetch dynamically imported module](/garden/pwa-recovery-observability/sentry-chunk-load-errors.webp)
+
+**CDN configuration stays critically important here:** do not cache files like the service worker, HTML, and the manifest — give them `no-cache` and `must-revalidate`.
+
 ## And separately, proof that the Service Worker is actually there
 
 Recovery without observability treats symptoms you never see. The most useful sensor I add after SW registration runs a few seconds into the session — not immediately, or cold starts will produce false positives — and checks two things.
 
-Is `navigator.serviceWorker.controller` present? If this isn't the user's first visit and there's still no controller, they are almost certainly living without the offline shell, however much the app "looks like a PWA."
+Is `navigator.serviceWorker.controller` present? If this isn't the user's first visit and there's still no controller, they are almost certainly living without the offline shell.
 
 Is the shell document sitting in Cache Storage — say `/index.html`? Precache may have failed to install, the manifest may have filtered it out, or a quota eviction may have thrown the entry away.
 
@@ -232,17 +248,23 @@ window.setTimeout(async () => {
 }, 5_000);
 ```
 
+In Sentry this shows up as a dedicated diagnostics transaction — `Offline shell is missing in cache` and `Service worker controller missing after startup`:
+
+![Sentry: Service Worker diagnostics — missing offline shell and missing controller](/garden/pwa-recovery-observability/sentry-sw-diagnostics.webp)
+
 Attach the same context to lazy-route warmup errors and to SW registration failures: is there a controller, is the device online, what pathname, which recovery attempt. With that, your logs can tell apart "the network died," "the Service Worker hasn't claimed the page yet," and "the CDN is already serving a different version."
 
 One caveat on that five-second timeout: it's an empirical number that comes from your own users, and it scales directly with what you put in precache. If the manifest covers the entire app and every chunk, the Service Worker may take 10 or 15 seconds to take control of the page.
 
-I wrap SW registration itself in a small retry with exponential pauses and log only the final failure. Intermediate attempts are ordinary mobile-network weather, not an incident.
+I wrap SW registration itself in a small retry with exponential pauses and log only the final failure. Intermediate attempts are ordinary mobile-network weather, not an incident. After careful lazy-loading of Workbox and registration retries, errors like `Cannot destructure property 'Workbox'` go to zero:
+
+![Sentry: SW Registration / Workbox lazy loading errors flatlining after the fix](/garden/pwa-recovery-observability/sentry-workbox-lazy-loading.webp)
 
 ## How it all fits together
 
 First the entry fails or hangs, and the HTML answers before React ever runs. Then the app is alive but trips over a chunk that a release removed, and runtime recovery answers with a careful cache-bust of the shell. Running alongside both, once per session, you check whether the Service Worker has quietly gone missing and whether the offline shell is still in the cache.
 
-None of these layers replace precaching the critical chunks described in the [note on offline support and lazy loading](/garden/offline-vs-lazy-loading). They cover something else: what happens once the ideal path has already broken. Without them, a PWA looks solid in a demo and turns brittle the day after you ship.
+None of these layers replace precaching the critical chunks described in the [note on offline support and lazy loading](/garden/offline-vs-lazy-loading). They cover something else: what happens once the ideal path has already broken.
 
 ---
 
