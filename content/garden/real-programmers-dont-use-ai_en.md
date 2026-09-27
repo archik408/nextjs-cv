@@ -40,6 +40,8 @@ And you know what? That's more or less what happened — the bar dropped, in the
 
 The symbol of the era: Borland's Turbo Pascal (**1983**) cost around **$50** — the price of a textbook. The development environment stopped being a corporate luxury. And when a tool gets cheaper, the number of tasks doesn't shrink; it grows. You no longer had to work at NASA or study at MIT to feel like a real developer — a fifth-grade computing lesson with Borland Delphi did the job perfectly well.
 
+![Timeline of computing eras with IBM PC + Borland Turbo Pascal (1981–1991) highlighted](/garden/real-programmers-dont-use-ai/ibm-pascal-era.webp)
+
 ![The Turbo Pascal 7.0 IDE: blue DOS screen with the About dialog open](/garden/real-programmers-dont-use-ai/turbo-pascal.webp)
 
 By **2000** the US was talking about roughly **700,000** programmers and software engineers. Microsoft grew to around **93,000** people by **2009**. Google, which had **284** employees in **2001**, was at about [**20,000**](https://stockanalysis.com/stocks/goog/employees/) by **2009**. That is not what "less work, thanks to convenient languages" looks like. That's an explosion of demand for people who build products in those languages.

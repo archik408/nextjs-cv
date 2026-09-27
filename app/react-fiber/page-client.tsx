@@ -676,13 +676,8 @@ const element = {
                 key={`code-step-${currentStep}`}
                 language={
                   (codeTransformations[currentStep]?.language as
-                    | 'jsx'
-                    | 'javascript'
-                    | 'js'
-                    | 'typescript'
-                    | 'ts'
-                    | 'tsx'
-                    | 'xml') || 'javascript'
+                    'jsx' | 'javascript' | 'js' | 'typescript' | 'ts' | 'tsx' | 'xml') ||
+                  'javascript'
                 }
                 code={codeTransformations[currentStep]?.code || ''}
               />

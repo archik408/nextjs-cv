@@ -51,13 +51,10 @@ export type MicrobitIconCommand = {
 
 /** Команда, которую браузер кодирует и отправляет на micro:bit по UART. */
 export type MicrobitProtocolCommand =
-  | MicrobitSimpleCommand
-  | MicrobitTextCommand
-  | MicrobitIconCommand;
+  MicrobitSimpleCommand | MicrobitTextCommand | MicrobitIconCommand;
 
 export type MicrobitBoardAction =
-  | MicrobitProtocolCommand
-  | { type: MicrobitBoardActionKind.TextPrompt };
+  MicrobitProtocolCommand | { type: MicrobitBoardActionKind.TextPrompt };
 
 /**
  * GATT-сервис Nordic UART (NUS) на micro:bit.

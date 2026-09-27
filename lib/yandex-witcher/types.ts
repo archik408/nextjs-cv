@@ -103,13 +103,7 @@ export interface WitcherSessionState {
 }
 
 export type WitcherAction =
-  | 'session_start'
-  | 'help'
-  | 'goodbye'
-  | 'restart'
-  | 'choose_school'
-  | 'choose_weapon'
-  | 'unknown';
+  'session_start' | 'help' | 'goodbye' | 'restart' | 'choose_school' | 'choose_weapon' | 'unknown';
 
 export interface ParsedWitcherCommand {
   action: WitcherAction;

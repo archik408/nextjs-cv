@@ -29,9 +29,7 @@ export type MicrobitIconAliceCommand = {
 };
 
 export type MicrobitCommand =
-  | MicrobitSimpleAliceCommand
-  | MicrobitTextAliceCommand
-  | MicrobitIconAliceCommand;
+  MicrobitSimpleAliceCommand | MicrobitTextAliceCommand | MicrobitIconAliceCommand;
 
 export const MICROBIT_SIMPLE_ALICE_COMMANDS: readonly MicrobitSimpleAliceCommand[] = [
   'smile',
