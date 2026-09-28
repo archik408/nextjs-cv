@@ -105,6 +105,23 @@ Everything about scaffolding made of natural-language rules is pure alchemy, bac
 
 You need to shape rules for each concrete project. `AGENTS.md` should be balanced: not huge and not empty — only baseline info that's specific to the project. Everything else goes into `rules` — rules the agent follows for particular work. Models were trained on open sources, and in some areas they're weak or simply miss what matters unless you say it explicitly. Security, [accessibility](/garden/accessibility-tools-and-quality-gates_en) — half the internet has **accessibility** problems, the model was trained on those examples, so explicit rules in that category are mandatory.
 
+A solid principle was described by the OpenAI team in [Harness Engineering](https://openai.com/index/harness-engineering/): the core idea is progressive disclosure. You cannot dump an encyclopedic manual into the agent's context right away — context gets polluted, focus blurs, and the document rots instantly. Instead, the repository becomes a structured knowledge base with a clear hierarchy. A practical adaptation of this scheme looks like:
+
+```
+AGENTS.md           # Baseline overview, table of contents and repository map (~100 lines)
+ARCHITECTURE.md     # Architecture, layer and domain boundaries
+plans/              # OpenSpec approach, but little value for solo work; needed only with parallel agents
+rules/
+├── DESIGN.md          # Design system, tokens, and Figma integration
+├── FRONTEND.md        # Frontend stack, component conventions and rules
+├── ACCESSIBILITY.md   # Explicit accessibility requirements (a11y)
+├── PLANS.md           # Approach to decomposition and planning (/plan)
+├── PRODUCT.md         # Product business context and user scenarios
+├── QUALITY_GATES.md   # Tests, types, linters, and formatters
+├── RELIABILITY.md     # Reliability oracle, invariants, and monitoring
+└── SECURITY.md        # Security constraints, sanitization, and OWASP cheat sheets
+```
+
 Without architecture spelled out in rules and the specification, it's unclear how the agent will build the app: which libraries it picks, write its own or reuse, how to carve up **domain models (Domain-Driven Design)**. Even the simple one: Tailwind or SCSS Modules? That's technical information a person without tech understanding can't formulate.
 
 Generating a simple brochure site with restrained design and a pleasant UI is one task; building a complex web system with hundreds of separate screens on a consistent design system is another. You need a formalized design system, order in Figma, MCP links to the tracker where tasks live and to Figma where the mocks are. Formalization of the stack and libraries, plus screenshot tests.
