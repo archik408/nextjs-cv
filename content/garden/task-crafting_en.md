@@ -190,10 +190,10 @@ The last task crafting of mine I could name is animation on the web. Once a coll
 
 Simple CSS transitions of 200–300 milliseconds make an interface far more alive. I like to bring, as arguments, weighty evidence from big products plus a few numbers:
 
-- Google Material Design: recommends 200–500 ms animations for text
-- Apple HIG: prefers ease-out curves for content appearing
-- Nielsen Norman Group: micro-animations improve perception by 23%
-- Shopify: delicate animations increase engagement by 15%
+- [Google Material Design](https://m3.material.io/styles/motion/easing-and-duration/applying-easing-and-duration): recommends 200–500 ms animations for text
+- [Apple HIG](https://github.com/samber/cc-skills/blob/main/skills/frontend-design-deslop/references/motion.md): prefers ease-out curves for content appearing, and ease-in curves are reserved for content exiting or disappearing
+- [Nielsen Norman Group](https://www.nngroup.com/articles/microinteractions/): microinteractions can improve a product's user experience
+- [Shopify](https://www.shopify.com/partners/blog/css-animation): delicate animations increase engagement by up to 15% to 20%
 
 These points are enough to convince anyone to start adopting animations. Most often, designers themselves deliver static designs. Some describe in text which animation should live where, but that's extremely rare. It leaves a large field for creativity and crafting.
 

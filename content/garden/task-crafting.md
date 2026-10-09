@@ -190,10 +190,10 @@ TDD — просто ещё один подход, ничего больше. О
 
 Простые CSS-переходы на 200–300 миллисекунд делают интерфейс намного живее. Мне нравится приводить в качестве доводов весомые аргументы больших продуктов и немного цифр:
 
-- Google Material Design: рекомендует анимации 200–500 мс для текста
-- Apple HIG: предпочитает ease-out-кривые для появления контента
-- Nielsen Norman Group: микроанимации улучшают восприятие на 23%
-- Shopify: деликатные анимации увеличивают engagement на 15%
+- [Google Material Design](https://m3.material.io/styles/motion/easing-and-duration/applying-easing-and-duration): рекомендует анимации 200–500 мс для текста
+- [Apple HIG](https://github.com/samber/cc-skills/blob/main/skills/frontend-design-deslop/references/motion.md): предпочитает ease-out-кривые для появления контента, а ease-in-кривые приберегает для выхода и исчезновения контента
+- [Nielsen Norman Group](https://www.nngroup.com/articles/microinteractions/): микроанимации могут улучшить пользовательский опыт продукта
+- [Shopify](https://www.shopify.com/partners/blog/css-animation): деликатные анимации повышают engagement до 15–20%
 
 Этих пунктов достаточно, чтобы убедить кого угодно начать внедрять анимации. Чаще всего сами дизайнеры поставляют статичные дизайны. Некоторые описывают текстом метки, какая анимация и где должна быть, но это крайне редко. Остаётся большое поле для творчества и крафтинга.
 
