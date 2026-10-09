@@ -39,7 +39,7 @@ Since then, accessibility has not been a checklist item for me. It is part of th
 
 None of that is the important part, though. The important part is the habit. On any project, in any task: turn on VoiceOver and listen. Does the interface announce itself sensibly? Can you actually move through it?
 
-This is my personal _task crafting_ — job crafting in the usual sense of reshaping your role around what you care about, scaled down to the level of individual tasks and daily habits. Nobody assigned it to me and it is not in any ticket. It is there because I can no longer not think about accessibility.
+This is my personal [_task crafting_](/garden/task-crafting) — job crafting in the usual sense of reshaping your role around what you care about, scaled down to the level of individual tasks and daily habits. Nobody assigned it to me and it is not in any ticket. It is there because I can no longer not think about accessibility.
 
 ---
 
