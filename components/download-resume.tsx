@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '@/lib/hooks/use-language';
 import { ELanguage } from '@/constants/enums';
 import { Download } from 'lucide-react';
-import { SnowEffect } from '@/components/snow-effect';
-import { SantaXMasHat } from '@/components/santa-x-mas-hat';
 
 type DownloadResumeProps = {
   className?: string;
@@ -33,10 +31,8 @@ export function DownloadResume({ className = '' }: DownloadResumeProps) {
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'
       } ${className}`}
     >
-      <SantaXMasHat />
       <Download className="h-4 w-4" />
       <span className="hidden md:block">{t.resumeButton}</span>
-      <SnowEffect />
     </a>
   );
 }

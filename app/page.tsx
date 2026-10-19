@@ -14,6 +14,8 @@ import {
   createWebsiteSchema,
 } from '@/components/structured-data';
 import { SectionDivider } from '@/components/section-divider';
+import { SnowEffect } from '@/components/snow-effect';
+import { SantaXMasHat } from '@/components/santa-x-mas-hat';
 
 export default function Home() {
   return (
@@ -23,7 +25,9 @@ export default function Home() {
       <div className="min-h-screen bg-linear-to-b from-gray-50 to-gray-100 text-gray-900 dark:from-gray-900 dark:to-gray-800 dark:text-white">
         <div className="fixed top-4 right-4 z-50 flex gap-2">
           <ThemeSwitcher />
+          <SantaXMasHat />
           <LanguageSwitcher />
+          <SnowEffect />
         </div>
 
         <HeroSection />
