@@ -47,6 +47,7 @@ const staticPageDefs: StaticPage[] = [
   { path: '/skeleton-detection', changeFrequency: 'monthly', priority: 0.55 },
   { path: '/emotion-analysis', changeFrequency: 'monthly', priority: 0.55 },
   { path: '/speech-recognition', changeFrequency: 'monthly', priority: 0.55 },
+  { path: '/keep-screen-on', changeFrequency: 'monthly', priority: 0.45 },
   { path: '/accessibility', changeFrequency: 'yearly', priority: 0.4 },
   { path: '/privacy', changeFrequency: 'yearly', priority: 0.4 },
   { path: '/time-machine', changeFrequency: 'yearly', priority: 0.35 },

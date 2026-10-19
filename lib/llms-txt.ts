@@ -97,6 +97,11 @@ const TOOLS: LlmsLink[] = [
     path: '/braille-converter',
     note: 'Text ↔ Braille for Russian, Belarusian, and English',
   },
+  {
+    title: 'Keep Screen On',
+    path: '/keep-screen-on',
+    note: 'Screen Wake Lock page that keeps the display awake (with video fallback)',
+  },
 ];
 
 const POLICIES: LlmsLink[] = [

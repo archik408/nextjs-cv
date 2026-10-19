@@ -1122,6 +1122,56 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     brailleLangRussian: 'Russian',
     brailleLangBelarusian: 'Belarusian',
     brailleLangEnglish: 'English',
+    // Keep Screen On Page
+    keepScreenOnTitle: 'Keep Screen On',
+    keepScreenOnDesc:
+      'Prevent your display from dimming or going to sleep while this tab stays visible. Built for long-running sessions — for example, watching an AI agent work in loop mode.',
+    keepScreenOnToolDesc:
+      'Prevent the display from dimming or sleeping via the Screen Wake Lock API, with a video fallback for unsupported browsers.',
+    keepScreenOnStart: 'Activate',
+    keepScreenOnStop: 'Stop',
+    keepScreenOnHintIdle: 'Click to activate',
+    keepScreenOnHintActive: 'Tap again to stop, or let the timer end it',
+    keepScreenOnDuration: 'Auto-stop timer',
+    keepScreenOnNoLimit: 'No limit',
+    keepScreenOn15m: '15 min',
+    keepScreenOn30m: '30 min',
+    keepScreenOn1h: '1 hour',
+    keepScreenOn2h: '2 hours',
+    keepScreenOnCustom: 'Custom',
+    keepScreenOnCustomMinutes: 'Duration in minutes (1–1440)',
+    keepScreenOnElapsed: 'Elapsed time',
+    keepScreenOnRemaining: 'Remaining',
+    keepScreenOnStatusIdle: 'Waiting to start',
+    keepScreenOnStatusActive: 'Keeping your screen awake',
+    keepScreenOnStatusSuspended:
+      'Wake lock released — the tab was hidden. It will resume when the tab is visible again.',
+    keepScreenOnStatusTimerDone: 'Timer finished — the screen lock was released',
+    keepScreenOnMethod: 'Method',
+    keepScreenOnMethodWakeLock: 'Screen Wake Lock API',
+    keepScreenOnMethodVideo: 'Video fallback',
+    keepScreenOnUnsupported:
+      'This browser does not support the Screen Wake Lock API. A hidden silent looping video will be used as a fallback.',
+    keepScreenOnErrorRequest:
+      'The browser refused the wake lock and the video fallback. Click anywhere on the page and try again.',
+    keepScreenOnErrorAutoplay:
+      'The browser blocked autoplay of the fallback video. Click anywhere on the page and try again.',
+    keepScreenOnNoteTab:
+      'Keep this tab visible — the lock is released when the tab is hidden or minimized.',
+    keepScreenOnNoteBattery:
+      'Keeping the screen awake increases battery usage on laptops and phones.',
+    keepScreenOnNoteLock: 'Locking the screen manually always wins — a web page cannot prevent it.',
+    keepScreenOnHowTitle: 'How it works',
+    keepScreenOnHowText1:
+      'The page requests a screen wake lock via the Screen Wake Lock API: while it is held, the operating system will not dim or turn off the display. Browsers release the lock when the tab is hidden, so it is re-acquired automatically once the tab is visible again.',
+    keepScreenOnHowText2:
+      'If the browser does not support the API (for example, Firefox), a tiny silent looping video keeps the display awake instead. This is also handy when an AI agent runs long tasks in a terminal nearby and the screen must stay on.',
+    keepScreenOnNativeIntro:
+      'On a computer, native tools are more effective than a web page — they keep the display awake even with no browser open:',
+    keepScreenOnNativeMacos: 'keep the Mac awake straight from the terminal',
+    keepScreenOnNativeLinux: 'blocks system suspend while a command runs',
+    keepScreenOnNativeWindows: 'keeps the screen on without changing power settings',
+    keepScreenOnMdnLink: 'MDN: Screen Wake Lock API',
     // React Fiber Page
     reactFiberTitle: 'React Fiber & JSX Parser',
     reactFiberDescription:
@@ -2527,6 +2577,57 @@ I've also come full circle: I'm passing on my experience and the joy of creation
     brailleLangRussian: 'Русский',
     brailleLangBelarusian: 'Белорусский',
     brailleLangEnglish: 'Английский',
+    // Keep Screen On Page
+    keepScreenOnTitle: 'Не гасить экран',
+    keepScreenOnDesc:
+      'Не даёт монитору или экрану телефона погаснуть, пока вкладка остаётся видимой. Создано для долгих сессий — например, чтобы наблюдать за работой ИИ-агента в режиме loop.',
+    keepScreenOnToolDesc:
+      'Не даёт экрану погаснуть через Screen Wake Lock API; если браузер его не поддерживает — video-fallback.',
+    keepScreenOnStart: 'Включить',
+    keepScreenOnStop: 'Остановить',
+    keepScreenOnHintIdle: 'Нажмите, чтобы включить',
+    keepScreenOnHintActive: 'Нажмите ещё раз, чтобы остановить или дождитесь таймера',
+    keepScreenOnDuration: 'Таймер автоостановки',
+    keepScreenOnNoLimit: 'Без лимита',
+    keepScreenOn15m: '15 мин',
+    keepScreenOn30m: '30 мин',
+    keepScreenOn1h: '1 час',
+    keepScreenOn2h: '2 часа',
+    keepScreenOnCustom: 'Своё',
+    keepScreenOnCustomMinutes: 'Длительность в минутах (1–1440)',
+    keepScreenOnElapsed: 'Прошло времени',
+    keepScreenOnRemaining: 'Осталось',
+    keepScreenOnStatusIdle: 'Ожидание запуска',
+    keepScreenOnStatusActive: 'Держим экран включённым',
+    keepScreenOnStatusSuspended:
+      'Блокировка снята — вкладка была скрыта. Возобновится, когда вкладка снова станет видимой.',
+    keepScreenOnStatusTimerDone: 'Время вышло — блокировка снята',
+    keepScreenOnMethod: 'Способ',
+    keepScreenOnMethodWakeLock: 'Screen Wake Lock API',
+    keepScreenOnMethodVideo: 'Видео-fallback',
+    keepScreenOnUnsupported:
+      'Этот браузер не поддерживает Screen Wake Lock API. Будет использован скрытый беззвучный зацикленный видео-fallback.',
+    keepScreenOnErrorRequest:
+      'Браузер отклонил wake lock и видео-fallback. Кликните в любом месте страницы и попробуйте снова.',
+    keepScreenOnErrorAutoplay:
+      'Браузер заблокировал автозапуск fallback-видео. Кликните в любом месте страницы и попробуйте снова.',
+    keepScreenOnNoteTab:
+      'Держите вкладку видимой — блокировка снимается, когда вкладка скрыта или свёрнута.',
+    keepScreenOnNoteBattery:
+      'Экран, который не гаснет, расходует батарею ноутбука или телефона заметно быстрее.',
+    keepScreenOnNoteLock:
+      'Ручная блокировка экрана всегда приоритетнее — страница не может ей помешать.',
+    keepScreenOnHowTitle: 'Как это работает',
+    keepScreenOnHowText1:
+      'Страница запрашивает блокировку сна экрана через Screen Wake Lock API: пока она удерживается, операционная система не гасит и не выключает дисплей. Браузеры снимают блокировку у скрытой вкладки, поэтому при возвращении на вкладку она запрашивается заново автоматически.',
+    keepScreenOnHowText2:
+      'Если браузер не поддерживает API (например, Firefox), экран не даст уснуть крошечное беззвучное зацикленное видео. Это удобно и когда ИИ-агент долго выполняет задачи в соседнем терминале, а экран должен оставаться включённым.',
+    keepScreenOnNativeIntro:
+      'На компьютере эффективнее нативные инструменты, чем веб-страница, — они держат дисплей включённым даже без открытого браузера:',
+    keepScreenOnNativeMacos: 'не даёт Mac уснуть прямо из терминала',
+    keepScreenOnNativeLinux: 'блокирует уход системы в сон, пока выполняется команда',
+    keepScreenOnNativeWindows: 'держит экран включённым без изменения настроек питания',
+    keepScreenOnMdnLink: 'MDN: Screen Wake Lock API',
     // Event Loop Page
     eventLoopTitle: 'JavaScript Event Loop',
     eventLoopDescription:

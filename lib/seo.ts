@@ -239,4 +239,14 @@ export const seoConfigs = {
     keywords: 'Speech Recognition, Speech-to-Text, Web Speech API, Microphone, Accessibility',
     path: '/speech-recognition',
   },
+  keepScreenOn: {
+    title: 'Keep Screen On - Prevent Display Sleep',
+    description:
+      'Keep your monitor or phone display awake while the tab stays visible — ideal for watching an AI agent work in loop mode. Uses the Screen Wake Lock API with a video fallback.',
+    keywords:
+      'keep screen on, screen wake lock, prevent sleep, no sleep page, wake lock api, display awake, AI agent loop',
+    path: '/keep-screen-on',
+    type: 'website',
+    locale: 'en',
+  },
 } as const;

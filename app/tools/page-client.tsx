@@ -23,6 +23,7 @@ import {
   Mic,
   HeartPulse,
   Wind,
+  MonitorSmartphone,
 } from 'lucide-react';
 import NavigationButtons from '@/components/navigation-buttons';
 import ArticleTitle from '@/components/article-title';
@@ -321,6 +322,18 @@ export function ToolsPageClient() {
       href: '/code-review-emojis',
       status: 'ready',
       color: 'indigo',
+      isExternal: false,
+    },
+    {
+      id: 'keep-screen-on',
+      title: t.keepScreenOnTitle || 'Keep Screen On',
+      description:
+        t.keepScreenOnToolDesc ||
+        'Prevent the display from dimming or sleeping via the Screen Wake Lock API, with a video fallback.',
+      icon: MonitorSmartphone,
+      href: '/keep-screen-on',
+      status: 'ready',
+      color: 'blue',
       isExternal: false,
     },
   ];

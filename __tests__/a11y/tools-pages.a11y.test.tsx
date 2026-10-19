@@ -7,6 +7,7 @@ import { OCRPageClient } from '@/app/ocr/page-client';
 import { SkeletonDetectionPageClient } from '@/app/skeleton-detection/page-client';
 import { EmotionAnalysisPageClient } from '@/app/emotion-analysis/page-client';
 import { SpeechRecognitionPageClient } from '@/app/speech-recognition/page-client';
+import { KeepScreenOnPageClient } from '@/app/keep-screen-on/page-client';
 
 describe('Tools pages accessibility', () => {
   beforeAll(() => {
@@ -46,6 +47,12 @@ describe('Tools pages accessibility', () => {
 
   it('Speech Recognition has no a11y violations', async () => {
     const { container } = render(<SpeechRecognitionPageClient />);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('Keep Screen On has no a11y violations', async () => {
+    const { container } = render(<KeepScreenOnPageClient />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
