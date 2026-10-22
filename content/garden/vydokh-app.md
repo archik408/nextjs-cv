@@ -89,6 +89,7 @@ tags: [microbit, pwa, web, mobile, дети, программирование, �
 
 ### Связанные заметки
 
+- [[Акселерометр как альтернатива управлению в игре-стрелялке](/garden/microbit-striker)]
 - [[Как мы с сыном сделали датчик полива для кактуса, или Почему micro:bit — лучший первый компьютер](/garden/microbit-water-sensor)]
 - [[Умная елочная игрушка на micro:bit](/garden/umnya-elka-microbit)]
 - [[Алиса командует micro:bit — пишу вместе с сыном кастомные голосовые навыки](/garden/alice-microbit)]

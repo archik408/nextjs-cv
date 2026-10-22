@@ -15,6 +15,7 @@ describe('garden shelves', () => {
     expect(resolveGardenShelf('workbox-background-sync')).toBe('production');
     expect(resolveGardenShelf('real-programmers-dont-use-ai')).toBe('thinking');
     expect(resolveGardenShelf('alice-microbit')).toBe('kids');
+    expect(resolveGardenShelf('microbit-striker')).toBe('kids');
     expect(resolveGardenShelf('skip-links')).toBe('archive');
   });
 

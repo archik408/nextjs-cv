@@ -45,6 +45,7 @@ export const GARDEN_SHELF_BY_BASE_SLUG: Record<string, GardenShelf> = {
   'alice-microbit': 'kids',
   'microbit-water-sensor': 'kids',
   'umnya-elka-microbit': 'kids',
+  'microbit-striker': 'kids',
 
   // Archive — howto / low product stakes
   'skip-links': 'archive',

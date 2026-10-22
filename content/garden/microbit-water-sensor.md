@@ -100,5 +100,6 @@ basic.forever(function () {
 ### Связанные заметки
 
 - [[Небольшое полноценное PWA приложение от 0 к 1, как пример для детей в рамках "do your :bit"](/garden/vydokh-app)]
+- [[Акселерометр как альтернатива управлению в игре-стрелялке](/garden/microbit-striker)]
 - [[Умная елочная игрушка на micro:bit](/garden/umnya-elka-microbit)]
 - [[Алиса командует micro:bit — пишу вместе с сыном кастомные голосовые навыки](/garden/alice-microbit)]

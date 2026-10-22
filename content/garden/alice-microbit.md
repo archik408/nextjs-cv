@@ -154,5 +154,6 @@ bluetooth.onUartDataReceived(serial.delimiters(Delimiters.NewLine), function () 
 ### Связанные заметки
 
 - [[Небольшое полноценное PWA приложение от 0 к 1, как пример для детей в рамках "do your :bit"](/garden/vydokh-app)]
+- [[Акселерометр как альтернатива управлению в игре-стрелялке](/garden/microbit-striker)]
 - [[Как мы с сыном сделали датчик полива для кактуса, или Почему micro:bit — лучший первый компьютер](/garden/microbit-water-sensor)]
 - [[Умная елочная игрушка на micro:bit](/garden/umnya-elka-microbit)]
