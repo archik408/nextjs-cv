@@ -43,5 +43,8 @@ next-env.d.ts
 /.vscode
 /.idea/
 /.cursor
+/.zcode
 .cursorrules
+.zcoderules
 .cursorignore
+.zcodeignore
