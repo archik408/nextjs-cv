@@ -25,7 +25,7 @@ People with GPT Astra show off incredible 3D demo games, agents churn out clones
 
 Looking at that mess, it's easy to draw the wrong conclusion: engineers aren't needed anymore, and with the best subscription to the latest model you can build anything.
 
-In practice it can all collapse into buggy, throwaway AI slop. Rewriting a solution from one language to another is not greenfield design — and that's the key nuance. Bun had an oracle: the same **test suite**, the same **quality gates**. That was the measure of whether the LLM succeeded or failed. The trendy word for the scaffolding around an agent now is **harness**: everything we build so it delivers the expected result. Without gates, a million lines isn't a feat — it's a risk.
+In practice it can all collapse into buggy, throwaway AI slop. Rewriting a solution from one language to another is not greenfield design — and that's the key nuance. Bun had an oracle: the same **test suite**, the same **quality gates**. That was the measure of whether the LLM succeeded or failed. The trendy word for the scaffolding around an agent now is **harness**: everything we build so it delivers the expected result. Without quality gates, a million lines of code isn't a feat — it's a risk.
 
 An AI agent generates a lot of code and navigates huge context better — that's where it beats a typical "coder." Token cost and electricity still matter, but they're secondary to the real question: how do you verify that what was generated is actually what you need?
 
@@ -43,7 +43,11 @@ I have an [older note](/garden/tests-developer-should-write_en) where I sketched
 
 Things have shifted a bit: agents generate tests too, so writing and fixing them got cheaper. Test broke? Regenerate it. It starts to look like you can aim for full coverage — unit, integration, system. The upside is simple: with those gates, we're less afraid of agent non-determinism. Caveat still applies: cheap tests are not the same as useful ones. A garbage generated suite is AI slop too — just from the other side.
 
-Another false comfort move is `/multi-model-review`: let one model (or subagent) review another's output. That doesn't replace quality gates. It's the same non-determinism: a model checking a model, and what you get is probabilistic text again, not a formal check. Loops like the **Ralph loop**, which codegen sinks so much time into, are sometimes simply unjustified: agents, like machines, try to brute-force every case and edge — even when they don't need to. There's no trade-off mechanism. That used to be the human's job: owning the system's awkward corners and its imperfection. AI **drifts toward overengineering** as its idea of "perfection" and perfectionism — and without an external frame it can spin in that loop forever.
+Another false comfort move is review (`/multi-model-review` in Cursor or `subagent_type: general-purpose` in ZCode): let one model (or subagent) review another's output. That doesn't replace quality gates. It's the same non-determinism: a model checking a model, and what you get is probabilistic text again, not a formal check.
+
+Loops like the [Ralph loop](https://ghuntley.com/loop/), which codegen sinks so much time into, are sometimes simply unjustified: agents, like machines, try to brute-force every scenario and problem case — even when they don't need to. There's no trade-off mechanism.
+
+That used to be the human's job: owning the system's awkward corners and its imperfection. AI **drifts toward overengineering** as its idea of "perfection" and perfectionism — and without an external frame it can spin in that loop forever.
 
 ## The oracle — a path to determinism?
 
@@ -85,7 +89,7 @@ Simple example. An agent will happily bump a package version if "the build needs
 
 If the system doesn't exist yet and we want to build it with AI without knowing how to program, we first need to describe expectations. Preferably as tests that will later check the agent's output.
 
-That brings up the approach Kent Beck described — **Test-Driven Development**. How many years have people chewed on this topic? And yet in the wild the beast is barely seen: in 90% of teams, tests get written after the fact. I used to be a TDD advocate, hyped it — and then gave up: swimming against the current is hard. Beck didn't invent the approach, by the way: he found it in his father's engineering book. In early XP it was called **Test-First** — test first, then implementation. There's incredible pragmatism in that, and it has new colors now.
+That brings up the approach Kent Beck described — **Test-Driven Development**. How many years have people chewed on this topic? And yet in the wild the beast is barely seen: in 90% of teams, tests get written after the fact. I used to be a TDD advocate, hyped it — and then gave up: swimming against the current is hard. Beck didn't invent the approach, by the way: he found it in his father's engineering book. In early XP it was called **Test-First** — test first, then implementation. It's a very old technique, and there's incredible pragmatism in it that is now shining with new colors.
 
 All of that later morphed into **Behavior-Driven Development**: first you formulate system behavior, from that — tests, then code. I think BDD is the de facto equivalent of what's now sold as **Spec-Driven Development**. They just swapped the words. Specification-Driven is the same move into a DSL that describes behavior. We need the spec first.
 
@@ -130,7 +134,20 @@ Can you skip formulating it? Let AI decide. AI doesn't decide — it does what t
 
 Just as the endless fight with entropy used to force a developer into an inevitable meeting with refactoring, the constant rework of agent rules and the text in `rules` and `AGENTS.md` is inevitable too. You can't package a harness into a framework like React and reuse it "as is."
 
+Configuration "ages": models and tools improve while the instructions stay. Accumulated rules bloat the files, drive up token spend, and degrade the agent's work. You should [periodically audit](https://addyosmani.com/blog/audit-your-agent-files/) your configuration's quality, security, and relevance, keeping only what actually pays off. In that sense, the ongoing work with markdown files of skills and natural-language rules differs little from refactoring and design practices in formal languages.
+
 That's, by the way, one of the services of the future: people used to hire a services company to transform legacy; by the same logic they'll hire engineers to clean up the AI slop that non-programmers slapped together on the cheap to save on engineers.
+
+## The answer — constraints
+
+To somehow sum up the mess written above: what you need is [a bit of attention](https://en.wikipedia.org/wiki/Attention_Is_All_You_Need) and **constraints**.
+
+Constraints and invariants are what engineers of today and tomorrow should focus on. And that's built through clear, unambiguous rules for the AI agent, quality gates, and allowed budget thresholds for compute and economic resources. Only after passing all of these checks can a solution make it into production — to real people.
+
+An agent can propose and build anything for you. But only your constraints decide whether the AI's proposal and implementation are safe, correct, scalable, and useful enough for you and your team to give them to the world.
+
+The diagram from Addy Osmani's post ["Agentic Code Quality"](https://addyosmani.com/blog/agentic-code-quality/):
+![Diagram of constraints for an AI agent](/garden/end-of-programming/constraints-pile-combined.svg)
 
 ## What survives
 

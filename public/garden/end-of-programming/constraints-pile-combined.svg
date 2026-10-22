@@ -1,0 +1,108 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An AI agent at the center generates more code than anyone can read. It is surrounded by a ring of constraint gates, one for each dimension of quality: correctness (unit, property, mutation tests), security (SAST, dependencies, secrets), performance (perf budgets, load), accessibility (axe, contrast, keyboard), maintainability (coverage, complexity), cost efficiency (token and compute budget), and comprehensibility (review, answerability). Output that fails a gate is pushed back to regenerate, the back-pressure that resists bad work. Only output that clears every gate passes the exit gate and ships as production software.">
+  <style>
+    .ttl{font:700 30px system-ui,-apple-system,Segoe UI,sans-serif;fill:#2b2f36}
+    .cap{font:500 14px system-ui,-apple-system,sans-serif;fill:#6b7280}
+    .zone{fill:rgba(224,120,40,0.05)}
+    .ring{fill:none;stroke:#d98a44;stroke-width:2.4;stroke-dasharray:2 8;stroke-linecap:round}
+    .glabel{font:700 16px system-ui,-apple-system,sans-serif}
+    .gsub{font:500 13px system-ui,-apple-system,sans-serif;fill:#6b7280}
+    .gnode{stroke:#ffffff;stroke-width:1.8}
+    .agent{fill:rgba(224,120,40,0.14);stroke:#e07828;stroke-width:2.8}
+    .alabel{font:700 18px system-ui,-apple-system,sans-serif;fill:#b45f1e}
+    .aglyph{fill:none;stroke:#e07828;stroke-width:1.8;stroke-linecap:round}
+    .amuted{font:600 13.5px system-ui,-apple-system,sans-serif;fill:#b45f1e}
+    .flow{fill:none;stroke:#8a94a3;stroke-width:2.8}
+    .reject{fill:none;stroke:#c0554d;stroke-width:2.2}
+    .xmark{stroke:#c0554d;stroke-width:2.6;stroke-linecap:round}
+    .regen{fill:none;stroke:#b45f1e;stroke-width:2.2;stroke-dasharray:5 4}
+    .rlabel{font:700 15px system-ui,-apple-system,sans-serif;fill:#b45f1e}
+    .rsub{font:600 13px system-ui,-apple-system,sans-serif;fill:#b45f1e}
+    .exit{fill:#e07828}
+    .exitx{font:700 19px system-ui,-apple-system,sans-serif;fill:#ffffff}
+    .ship{fill:rgba(47,158,95,0.14);stroke:#2f9e5f;stroke-width:2.8}
+    .slabel{font:700 22px system-ui,-apple-system,sans-serif;fill:#248a4e}
+    .ssub{font:600 14px system-ui,-apple-system,sans-serif;fill:#2f9e5f}
+    .d-correct{fill:#e07828}.d-sec{fill:#c0554d}.d-perf{fill:#3f7fb8}
+    .d-a11y{fill:#8a63c4}.d-maint{fill:#2f9e8f}.d-cost{fill:#b98a2e}.d-comp{fill:#6f7580}
+    @media (prefers-color-scheme: dark){
+      .ttl{fill:#e8ebef}.cap{fill:#9aa0a8}
+      .zone{fill:rgba(224,120,40,0.07)}.ring{stroke:#c07d3e}
+      .gsub{fill:#9aa0a8}.gnode{stroke:#181b20}
+      .agent{fill:rgba(224,120,40,0.18);stroke:#e0925a}.alabel{fill:#e0925a}
+      .aglyph{stroke:#e0925a}.amuted{fill:#e0925a}.flow{stroke:#7d8794}
+      .regen{stroke:#e0925a}.rlabel{fill:#e0925a}.rsub{fill:#e0925a}
+      .reject{stroke:#cf6a60}.xmark{stroke:#cf6a60}
+      .ship{stroke:#3fb473}.slabel{fill:#5cc98a}.ssub{fill:#3fb473}
+      .d-correct{fill:#e0925a}.d-sec{fill:#d17168}.d-perf{fill:#6aa0d0}
+      .d-a11y{fill:#a684d8}.d-maint{fill:#45b8a8}.d-cost{fill:#d3ab52}.d-comp{fill:#9aa0a8}
+    }
+  </style>
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#8a94a3"/></marker>
+    <marker id="ahg" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2f9e5f"/></marker>
+    <marker id="ahr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#b45f1e"/></marker>
+  </defs>
+
+  <text class="ttl" x="640" y="62" text-anchor="middle">Set the constraints around your agents</text>
+
+  <circle class="zone" cx="450" cy="378" r="210"/>
+  <circle class="ring" cx="450" cy="378" r="210"/>
+
+  <!-- Correctness (N) -->
+  <circle class="gnode d-correct" cx="450" cy="168" r="10"/>
+  <text class="glabel d-correct" x="450" y="140" text-anchor="middle">Correctness</text>
+  <text class="gsub" x="450" y="157" text-anchor="middle">unit, property, mutation</text>
+  <!-- Security (NE) -->
+  <circle class="gnode d-sec" cx="598" cy="230" r="10"/>
+  <text class="glabel d-sec" x="620" y="226" text-anchor="start">Security</text>
+  <text class="gsub" x="620" y="243" text-anchor="start">SAST, deps, secrets</text>
+  <!-- Performance (SE) -->
+  <circle class="gnode d-perf" cx="598" cy="526" r="10"/>
+  <text class="glabel d-perf" x="620" y="523" text-anchor="start">Performance</text>
+  <text class="gsub" x="620" y="540" text-anchor="start">perf budget, load</text>
+  <!-- Accessibility (S) -->
+  <circle class="gnode d-a11y" cx="450" cy="588" r="10"/>
+  <text class="glabel d-a11y" x="450" y="613" text-anchor="middle">Accessibility</text>
+  <text class="gsub" x="450" y="631" text-anchor="middle">axe, contrast, keyboard</text>
+  <!-- Maintainability (SW) -->
+  <circle class="gnode d-maint" cx="302" cy="526" r="10"/>
+  <text class="glabel d-maint" x="280" y="523" text-anchor="end">Maintainability</text>
+  <text class="gsub" x="280" y="540" text-anchor="end">coverage, complexity</text>
+  <!-- Cost efficiency (W) -->
+  <circle class="gnode d-cost" cx="240" cy="378" r="10"/>
+  <text class="glabel d-cost" x="218" y="374" text-anchor="end">Cost efficiency</text>
+  <text class="gsub" x="218" y="391" text-anchor="end">token / compute budget</text>
+  <!-- Comprehensibility (NW) -->
+  <circle class="gnode d-comp" cx="302" cy="230" r="10"/>
+  <text class="glabel d-comp" x="280" y="226" text-anchor="end">Comprehensibility</text>
+  <text class="gsub" x="280" y="243" text-anchor="end">review, answerability</text>
+
+  <!-- agent core -->
+  <circle class="agent" cx="450" cy="378" r="58"/>
+  <path class="aglyph" d="M426,386 q6.5,-17 12,0 t12,0 t12,0"/>
+  <text class="alabel" x="450" y="376" text-anchor="middle">AGENT</text>
+  <text class="amuted" x="450" y="458" text-anchor="middle">more code than you can read</text>
+
+  <!-- rejected candidate + back-pressure loop -->
+  <line class="reject" x1="409" y1="337" x2="365" y2="290" marker-end="url(#ahr)"/>
+  <g class="xmark"><line x1="343" y1="268" x2="357" y2="282"/><line x1="357" y1="268" x2="343" y2="282"/></g>
+  <path class="regen" d="M350,282 C 250,308 250,372 388,372" marker-end="url(#ahr)"/>
+  <text class="rlabel" x="168" y="300" text-anchor="middle">back-pressure</text>
+  <text class="rsub" x="168" y="319" text-anchor="middle">resist bad work</text>
+
+  <!-- survivor path: agent -> exit gate -> ship -->
+  <line class="flow" x1="508" y1="378" x2="792" y2="378" marker-end="url(#ah)"/>
+  <text class="cap" x="662" y="362" text-anchor="middle">only output that clears every gate</text>
+  <rect class="exit" x="798" y="350" width="30" height="56" rx="8"/>
+  <text class="exitx" x="813" y="384" text-anchor="middle">&#10003;</text>
+  <text class="cap" x="813" y="430" text-anchor="middle">exit gate</text>
+  <line class="flow" x1="830" y1="378" x2="922" y2="378" stroke="#2f9e5f" marker-end="url(#ahg)"/>
+
+  <!-- ship node -->
+  <rect class="ship" x="928" y="336" width="312" height="88" rx="18"/>
+  <text class="slabel" x="1084" y="374" text-anchor="middle">SHIP</text>
+  <text class="ssub" x="1084" y="399" text-anchor="middle">production software, good enough to ship</text>
+
+  <text class="cap" x="640" y="686" text-anchor="middle">The constraints are deterministic checks the model can't argue with: unit, property, acceptance and mutation tests, schema contracts, token and compute budgets, quality metrics.</text>
+  <text class="cap" x="640" y="707" text-anchor="middle">Set your constraints. They decide whether the code your agents generate is good enough to ship.</text>
+</svg>

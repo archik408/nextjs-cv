@@ -191,6 +191,8 @@ And the mass layoffs of recent years are, first and foremost, about bloated COVI
 
 Economics has a name for this: the [Jevons paradox](https://en.wikipedia.org/wiki/Jevons_paradox). Improving the efficiency with which a resource is used leads not to lower consumption of it but to higher. When the steam engine became more efficient, we burned more coal, not less.
 
+![Comparison: one team of specialists around a single product (Golden IT Age) versus six isolated Product Engineers with AI copilots, each owning their own product (AI IT Age)](/garden/end-of-programming/golden-vs-ai-it-age.webp)
+
 The same applies to programmers. AI raises a single developer's productivity by a factor of two or three. For a business, that means projects which were previously uneconomic now pay for themselves. Where we couldn't previously justify automating a small shop's logistics or writing a bespoke CRM for a hairdresser, now we can.
 
 ---
