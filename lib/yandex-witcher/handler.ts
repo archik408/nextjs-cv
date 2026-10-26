@@ -1,7 +1,14 @@
 import { extractCommandText, parseWitcherCommand, resolveWeaponChoice } from './commands';
 import { createEncounter, pushRecentMonster } from './monsters';
 import { createInitialWitcherSessionState, normalizeWitcherSessionState } from './session';
-import { MAX_LIVES, WITCHER_SCHOOLS, WITCHER_SKILL_NAME, YANDEX_DIALOGS_VERSION } from './types';
+import {
+  MAX_LIVES,
+  REWARDS_HISTORY_LIMIT,
+  UNBEATABLE_MONSTER_NAME,
+  WITCHER_SCHOOLS,
+  WITCHER_SKILL_NAME,
+  YANDEX_DIALOGS_VERSION,
+} from './types';
 import type {
   ParsedWitcherCommand,
   WitcherSchool,
@@ -17,6 +24,17 @@ const VICTORY_REWARDS = [
   'ведьмачий трофей',
   'новое зелье для мутагенов',
   'карту с тайником мастера',
+  'гвинт-карта из таверны',
+  'чертёж мастерского доспеха',
+  'руна улучшения из Каэр Морхена',
+  'двимеритовая пластина',
+  'трофейная голова чудовища',
+  'флакон эликсира «Ласточка»',
+  'красный мутаген',
+  'кошель флоренов',
+  'драконья чешуя для брони',
+  'дневник старого ведьмака',
+  'бочонок сидра из Корво Бьянко',
 ];
 
 const runtimeSessionStore = new Map<string, WitcherSessionState>();
@@ -40,12 +58,31 @@ function buildWeaponButtons(options: string[]): YandexAliceButton[] {
   }));
 }
 
+function buildRewardsTally(collectedRewards: string[]): string {
+  if (collectedRewards.length === 0) {
+    return 'Пока пусто: побеждай чудовищ, чтобы собирать трофеи.';
+  }
+
+  const counts = new Map<string, number>();
+  for (const reward of collectedRewards) {
+    counts.set(reward, (counts.get(reward) ?? 0) + 1);
+  }
+
+  const parts = [...counts.entries()].map(([reward, count]) =>
+    count > 1 ? `${reward} ×${count}` : reward
+  );
+
+  return parts.join(', ');
+}
+
 function buildHelpText(): string {
   return [
     `Вы в навыке «${WITCHER_SKILL_NAME}». Давайте начнем охоту на монстров.`,
     'Сначала выберите школу ведьмаков: Кота, Волка, Змеи, Грифона, Мантикоры или Медведя.',
     'В каждом бою выбирайте одно из трёх оружий или средств против чудовища.',
+    'Можно назвать оружие полностью, частично или коротко: один, два, три.',
     `У вас ${MAX_LIVES} жизни. Ошибка в выборе оружия отнимает жизнь.`,
+    'За победы вы собираете трофеи. Скажите «статистика», чтобы посмотреть коллекцию наград.',
     'Когда жизни закончатся, скажите «заново», чтобы начать новую охоту на монстров.',
   ].join(' ');
 }
@@ -72,6 +109,14 @@ function buildEncounterText(state: WitcherSessionState): string {
     `Ты оказался ${state.encounter.locationPhrase}.`,
     `Перед тобой ${state.encounter.monsterName}: ${state.encounter.monsterDescription}`,
     `Выбери, чем сразить чудовище: ${weaponsList}.`,
+  ].join(' ');
+}
+
+function buildStatsText(state: WitcherSessionState): string {
+  return [
+    `Побед: ${state.victories}. Жизней: ${state.lives}.`,
+    `Наград собрано: ${state.collectedRewards.length}.`,
+    `Твои трофеи: ${buildRewardsTally(state.collectedRewards)}.`,
   ].join(' ');
 }
 
@@ -109,9 +154,11 @@ async function resolveCorrectAnswer(
   }
 
   const reward = randomItem(VICTORY_REWARDS);
+  const collectedRewards = [...state.collectedRewards, reward].slice(-REWARDS_HISTORY_LIMIT);
   const updatedState: WitcherSessionState = {
     ...state,
     victories: state.victories + 1,
+    collectedRewards,
     recentMonsterNames: pushRecentMonster(state.recentMonsterNames, state.encounter.monsterName),
     encounter: undefined,
   };
@@ -119,16 +166,23 @@ async function resolveCorrectAnswer(
   const nextState = await startBattle(updatedState);
   return {
     nextState,
-    text: `Отлично, ты победил существо ${state.encounter.monsterName}. Награда: ${reward}. Начинаем новый контракт. Побед: ${nextState.victories}. ${buildEncounterText(nextState)}`,
+    text: `Отлично, ты победил существо ${state.encounter.monsterName}. Награда: ${reward}. Наград собрано: ${collectedRewards.length}. Начинаем новый контракт. Побед: ${nextState.victories}. ${buildEncounterText(nextState)}`,
     buttons: nextState.encounter
       ? buildWeaponButtons(nextState.encounter.options)
       : buildSchoolButtons(),
   };
 }
 
-async function resolveWrongAnswer(
-  state: WitcherSessionState
-): Promise<{ nextState: WitcherSessionState; text: string; buttons: YandexAliceButton[] }> {
+interface FightLossOutcome {
+  nextState: WitcherSessionState;
+  text: string;
+  buttons: YandexAliceButton[];
+}
+
+async function resolveFightLoss(
+  state: WitcherSessionState,
+  lossIntro: string
+): Promise<FightLossOutcome> {
   if (!state.encounter) {
     const fallback = await startBattle(state);
     return {
@@ -154,7 +208,7 @@ async function resolveWrongAnswer(
         ...updatedState,
         phase: 'game_over',
       },
-      text: `Схватка проиграна. Тебя доставили в лазарет, но раны оказались смертельными. Поход завершён. Побед за этот забег: ${state.victories}. Скажи «заново», чтобы начать новую игру.`,
+      text: `${lossIntro} Поход завершён. Побед за этот забег: ${state.victories}. Наград собрано: ${state.collectedRewards.length}. Твои трофеи: ${buildRewardsTally(state.collectedRewards)}. Скажи «заново», чтобы начать новую игру.`,
       buttons: [{ title: 'Заново', payload: { command: 'заново' } }],
     };
   }
@@ -162,11 +216,27 @@ async function resolveWrongAnswer(
   const nextState = await startBattle(updatedState);
   return {
     nextState,
-    text: `Неверный выбор. Тебя ранили и отвезли в лазарет замка ведьмаков. Осталось жизней: ${lives}. Начинаем новый контракт. ${buildEncounterText(nextState)}`,
+    text: `${lossIntro} Осталось жизней: ${lives}. Начинаем новый контракт. ${buildEncounterText(nextState)}`,
     buttons: nextState.encounter
       ? buildWeaponButtons(nextState.encounter.options)
       : buildSchoolButtons(),
   };
+}
+
+function resolveWrongAnswer(state: WitcherSessionState): Promise<FightLossOutcome> {
+  return resolveFightLoss(
+    state,
+    'Неверный выбор. Тебя ранили и отвезли в лазарет замка ведьмаков.'
+  );
+}
+
+function resolveUnbeatableAnswer(
+  state: WitcherSessionState,
+  chosenWeapon: string
+): Promise<FightLossOutcome> {
+  const monsterName = state.encounter?.monsterName ?? UNBEATABLE_MONSTER_NAME;
+  const intro = `Ты выбрал «${chosenWeapon}», но это ${monsterName} — Властелин Зеркал. Против него бессильно любое оружие. Он лишь усмехнулся, щёлкнул пальцами — и тьма поглотила тебя.`;
+  return resolveFightLoss(state, intro);
 }
 
 async function resolveByPhase(
@@ -195,6 +265,25 @@ async function resolveByPhase(
         : buildSchoolButtons();
     return {
       text: buildHelpText(),
+      buttons,
+      nextState: state,
+      endSession: false,
+    };
+  }
+
+  if (parsed.action === 'stats') {
+    const buttons =
+      state.phase === 'choose_weapon' && state.encounter
+        ? buildWeaponButtons(state.encounter.options)
+        : state.phase === 'game_over'
+          ? [{ title: 'Заново', payload: { command: 'заново' } }]
+          : buildSchoolButtons();
+    const statsText =
+      state.phase === 'choose_weapon' && state.encounter
+        ? `${buildStatsText(state)} Возвращаемся к бою. ${buildEncounterText(state)}`
+        : buildStatsText(state);
+    return {
+      text: statsText,
       buttons,
       nextState: state,
       endSession: false,
@@ -258,9 +347,19 @@ async function resolveByPhase(
   const chosenWeapon = resolveWeaponChoice(request, commandText, state.encounter);
   if (!chosenWeapon) {
     return {
-      text: `Нужно выбрать один из трёх вариантов оружия. ${buildEncounterText(state)}`,
+      text: `Нужно выбрать один из трёх вариантов оружия: полное название, часть или номер («один», «два», «три»). ${buildEncounterText(state)}`,
       buttons: buildWeaponButtons(state.encounter.options),
       nextState: state,
+      endSession: false,
+    };
+  }
+
+  if (state.encounter.unbeatable) {
+    const resolved = await resolveUnbeatableAnswer(state, chosenWeapon);
+    return {
+      text: resolved.text,
+      buttons: resolved.buttons,
+      nextState: resolved.nextState,
       endSession: false,
     };
   }

@@ -1,5 +1,5 @@
 import monstersData from '@/data/witcher-monsters.json';
-import { RECENT_MONSTERS_WINDOW } from './types';
+import { RECENT_MONSTERS_WINDOW, UNBEATABLE_ENCOUNTER_CHANCE } from './types';
 import type { WitcherEncounter, WitcherMonster } from './types';
 
 const NEUTRAL_WEAPONS = [
@@ -13,6 +13,21 @@ const NEUTRAL_WEAPONS = [
   'Сушеная лаванда',
   'Трава вербена',
   'Корни мандрагоры',
+  'Золотая секира',
+  'Красная пика',
+  'Изумрудный эспонтон',
+  'Проклятый стилет',
+  'Лунная гвизарма',
+  'Штормовой арбалет',
+  'Морозный моргенштерн',
+  'Медвежий шестопёр',
+  'Гномья алебарда',
+  'Древний бердыш',
+  'Ведьмина боевая коса',
+  'Кровавый чекан',
+  'Ржавая сулица',
+  'Ледяной клевец',
+  'Северный протазан',
 ];
 
 const LOCATION_PHRASES: Record<string, string> = {
@@ -46,7 +61,17 @@ const LOCATION_PHRASES: Record<string, string> = {
   хижина: 'в хижине',
   лаборатория: 'в лаборатории',
   колодец: 'у колодца',
-  тундре: 'в тундре',
+  кабак: 'в кабаке',
+  таверна: 'в таверне',
+  перекресток: 'на перекрёстке',
+  шахта: 'в шахте',
+  снег: 'в снегах',
+  мельница: 'у мельницы',
+  'ночной лес': 'в ночном лесу',
+  вулкан: 'у вулкана',
+  арена: 'на арене',
+  топи: 'в топях',
+  канализация: 'в канализации',
 };
 
 let monstersPromise: Promise<WitcherMonster[]> | null = null;
@@ -69,7 +94,8 @@ function isMonsterValid(monster: unknown): monster is WitcherMonster {
     candidate.location.every((location) => typeof location === 'string') &&
     Array.isArray(candidate.weaknesses) &&
     candidate.weaknesses.length > 0 &&
-    candidate.weaknesses.every((weakness) => typeof weakness === 'string')
+    candidate.weaknesses.every((weakness) => typeof weakness === 'string') &&
+    (candidate.unbeatable === undefined || typeof candidate.unbeatable === 'boolean')
   );
 }
 
@@ -128,6 +154,10 @@ function buildIncorrectOptions(
   const pool = new Set<string>(NEUTRAL_WEAPONS);
 
   for (const candidateMonster of monsters) {
+    // Placeholder weaknesses of easter-egg monsters must not leak into real fights.
+    if (candidateMonster.unbeatable === true) {
+      continue;
+    }
     for (const weakness of candidateMonster.weaknesses) {
       const normalized = normalizeText(weakness);
       if (normalized === normalizeText(correctOption) || ownWeaknesses.has(normalized)) {
@@ -140,6 +170,22 @@ function buildIncorrectOptions(
   return shuffle([...pool]).slice(0, 2);
 }
 
+function buildUnbeatableEncounter(monster: WitcherMonster): WitcherEncounter {
+  const options = shuffle(NEUTRAL_WEAPONS).slice(0, 3);
+  const locationName = randomItem(monster.location);
+
+  return {
+    monsterName: monster.name,
+    monsterDescription: monster.description,
+    locationName,
+    locationPhrase: buildLocationPhrase(locationName),
+    options,
+    // Placeholder: no option can win, the handler short-circuits on unbeatable.
+    correctOption: options[0],
+    unbeatable: true,
+  };
+}
+
 export async function createEncounter(recentMonsterNames: string[]): Promise<WitcherEncounter> {
   const monsters = await loadWitcherMonsters();
   const recentSet = new Set(recentMonsterNames.map((name) => normalizeText(name)));
@@ -148,7 +194,17 @@ export async function createEncounter(recentMonsterNames: string[]): Promise<Wit
     (monster) => !recentSet.has(normalizeText(monster.name))
   );
   const sourcePool = eligibleMonsters.length > 0 ? eligibleMonsters : monsters;
-  const monster = randomItem(sourcePool);
+  const beatablePool = sourcePool.filter((monster) => monster.unbeatable !== true);
+
+  // Rare easter egg: no weapon from the three options can win this fight.
+  if (beatablePool.length > 0 && Math.random() < UNBEATABLE_ENCOUNTER_CHANCE) {
+    const unbeatable = monsters.find((monster) => monster.unbeatable === true);
+    if (unbeatable) {
+      return buildUnbeatableEncounter(unbeatable);
+    }
+  }
+
+  const monster = randomItem(beatablePool.length > 0 ? beatablePool : sourcePool);
 
   const locationName = randomItem(monster.location);
   const locationPhrase = buildLocationPhrase(locationName);
@@ -163,6 +219,7 @@ export async function createEncounter(recentMonsterNames: string[]): Promise<Wit
     locationPhrase,
     options,
     correctOption,
+    unbeatable: false,
   };
 }
 

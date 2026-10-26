@@ -3,6 +3,9 @@ export const YANDEX_DIALOGS_VERSION = '1.0' as const;
 export const WITCHER_SKILL_NAME = 'Ведьмак для Матвея';
 export const MAX_LIVES = 3;
 export const RECENT_MONSTERS_WINDOW = 10;
+export const REWARDS_HISTORY_LIMIT = 100;
+export const UNBEATABLE_MONSTER_NAME = "Гюнтер о'Дим";
+export const UNBEATABLE_ENCOUNTER_CHANCE = 1 / 12;
 
 export type YandexRequestType = 'SimpleUtterance' | 'ButtonPressed' | 'Show.Pull';
 
@@ -82,6 +85,7 @@ export interface WitcherMonster {
   description: string;
   location: string[];
   weaknesses: string[];
+  unbeatable?: boolean;
 }
 
 export interface WitcherEncounter {
@@ -91,6 +95,7 @@ export interface WitcherEncounter {
   locationPhrase: string;
   options: string[];
   correctOption: string;
+  unbeatable: boolean;
 }
 
 export interface WitcherSessionState {
@@ -100,10 +105,18 @@ export interface WitcherSessionState {
   selectedSchool?: WitcherSchool;
   recentMonsterNames: string[];
   encounter?: WitcherEncounter;
+  collectedRewards: string[];
 }
 
 export type WitcherAction =
-  'session_start' | 'help' | 'goodbye' | 'restart' | 'choose_school' | 'choose_weapon' | 'unknown';
+  | 'session_start'
+  | 'help'
+  | 'goodbye'
+  | 'restart'
+  | 'stats'
+  | 'choose_school'
+  | 'choose_weapon'
+  | 'unknown';
 
 export interface ParsedWitcherCommand {
   action: WitcherAction;

@@ -1,4 +1,4 @@
-import { MAX_LIVES, WITCHER_SCHOOLS } from './types';
+import { MAX_LIVES, RECENT_MONSTERS_WINDOW, REWARDS_HISTORY_LIMIT, WITCHER_SCHOOLS } from './types';
 import type { WitcherEncounter, WitcherSchool, WitcherSessionState } from './types';
 
 function normalizeSchool(value: unknown): WitcherSchool | undefined {
@@ -35,6 +35,7 @@ function normalizeEncounter(encounter: unknown): WitcherEncounter | undefined {
     locationPhrase: candidate.locationPhrase,
     options: candidate.options,
     correctOption: candidate.correctOption,
+    unbeatable: candidate.unbeatable === true,
   };
 }
 
@@ -44,6 +45,7 @@ export function createInitialWitcherSessionState(): WitcherSessionState {
     lives: MAX_LIVES,
     victories: 0,
     recentMonsterNames: [],
+    collectedRewards: [],
   };
 }
 
@@ -66,7 +68,12 @@ export function normalizeWitcherSessionState(state: unknown): WitcherSessionStat
   const recentMonsterNames = Array.isArray(candidate.recentMonsterNames)
     ? candidate.recentMonsterNames
         .filter((name): name is string => typeof name === 'string')
-        .slice(-10)
+        .slice(-RECENT_MONSTERS_WINDOW)
+    : [];
+  const collectedRewards = Array.isArray(candidate.collectedRewards)
+    ? candidate.collectedRewards
+        .filter((reward): reward is string => typeof reward === 'string')
+        .slice(-REWARDS_HISTORY_LIMIT)
     : [];
 
   const normalizedPhase =
@@ -83,5 +90,6 @@ export function normalizeWitcherSessionState(state: unknown): WitcherSessionStat
     selectedSchool: normalizeSchool(candidate.selectedSchool),
     recentMonsterNames,
     encounter: normalizeEncounter(candidate.encounter),
+    collectedRewards,
   };
 }
