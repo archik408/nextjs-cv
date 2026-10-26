@@ -226,6 +226,8 @@ Given this unprecedented monopoly on the tools, the ability to write, read, and 
 
 A highly [telling experiment](https://www.hirundo.io/blog/qwen3-coder-vulnerabilities) happened when the Chinese Qwen3 Coder model was asked to write code for US defense infrastructure: on the same test, those applications turned out to be hackable noticeably more often — 70% versus 59% when the client was on the Chinese side. And that is why code needs to be read.
 
+Economically, a full switch to models can also be unprofitable for certain businesses. [Gartner has calculated](https://www.theregister.com/ai-and-ml/2026/06/24/ai-coding-agents-could-soon-cost-more-than-the-developers-using-them/5260864) that if fixed subscriptions are replaced by per-token billing, LLM bills will exceed the average engineer's salary by 2028. [Nvidia VP Bryan Catanzaro admitted](https://cnews.ru/news/top/2026-04-27_iskusstvennyj_intellekt) that on some teams, compute costs for AI already "significantly exceed" personnel costs. And Uber's CTO exhausted the annual AI budget as early as the beginning of 2026, mostly from paying for tokens for tools like Claude Code.
+
 Kent Beck said in [his talk](https://www.youtube.com/watch?v=F8fBgDCf2Y4) at Prodacity 2026:
 
 > "If I had to choose between a system that people can read and one that they can't, I would choose the one they can."
