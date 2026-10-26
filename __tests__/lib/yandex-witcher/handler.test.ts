@@ -1,6 +1,10 @@
 import { handleYandexWitcherRequest } from '@/lib/yandex-witcher/handler';
 import { createEncounter } from '@/lib/yandex-witcher/monsters';
-import type { WitcherEncounter, YandexAliceRequest } from '@/lib/yandex-witcher/types';
+import type {
+  WitcherEncounter,
+  WitcherSessionState,
+  YandexAliceRequest,
+} from '@/lib/yandex-witcher/types';
 
 jest.mock('@/lib/yandex-witcher/monsters', () => {
   const actual = jest.requireActual('@/lib/yandex-witcher/monsters');
@@ -179,6 +183,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Кота',
             recentMonsterNames: [],
             collectedRewards: [],
+            artifactsCount: 0,
             encounter: encounterA,
           },
         },
@@ -234,6 +239,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Кота',
             recentMonsterNames: [],
             collectedRewards: [],
+            artifactsCount: 0,
             encounter: encounterA,
           },
         },
@@ -262,6 +268,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Кота',
             recentMonsterNames: [],
             collectedRewards: [],
+            artifactsCount: 0,
             encounter: ambiguousEncounter,
           },
         },
@@ -287,6 +294,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Медведя',
             recentMonsterNames: [],
             collectedRewards: ['мешочек оренов'],
+            artifactsCount: 0,
             encounter: encounterA,
           },
         },
@@ -345,6 +353,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Кота',
             recentMonsterNames: [],
             collectedRewards: ['мешочек оренов', 'ведьмачий трофей', 'мешочек оренов'],
+            artifactsCount: 7,
             encounter: encounterA,
           },
         },
@@ -354,8 +363,175 @@ describe('yandex-witcher skill handler', () => {
 
     expect(response.response.text).toContain('Побед: 3.');
     expect(response.response.text).toContain('Наград собрано: 3.');
+    expect(response.response.text).toContain('Артефактов до бонусной жизни: 3.');
     expect(response.response.text).toContain('мешочек оренов ×2');
     expect(response.session_state?.phase).toBe('choose_weapon');
+  });
+
+  it('increments artifact counter on a regular win', async () => {
+    mockedCreateEncounter.mockResolvedValueOnce(encounterB);
+
+    const response = await handleYandexWitcherRequest(
+      requestWithOverrides({
+        session: { new: false, message_id: 26 },
+        state: {
+          session: {
+            phase: 'choose_weapon',
+            lives: 3,
+            victories: 0,
+            selectedSchool: 'Кота',
+            recentMonsterNames: [],
+            collectedRewards: [],
+            artifactsCount: 4,
+            encounter: encounterA,
+          },
+        },
+        request: {
+          command: encounterA.correctOption,
+          original_utterance: encounterA.correctOption,
+        },
+      })
+    );
+
+    expect(response.session_state?.artifactsCount).toBe(5);
+    expect(response.session_state?.lives).toBe(3);
+    expect(response.response.text).not.toContain('дополнительная жизнь');
+  });
+
+  it('awards a bonus life on the tenth artifact and resets the counter', async () => {
+    mockedCreateEncounter.mockResolvedValueOnce(encounterB);
+
+    const response = await handleYandexWitcherRequest(
+      requestWithOverrides({
+        session: { new: false, message_id: 27 },
+        state: {
+          session: {
+            phase: 'choose_weapon',
+            lives: 2,
+            victories: 9,
+            selectedSchool: 'Кота',
+            recentMonsterNames: [],
+            collectedRewards: [],
+            artifactsCount: 9,
+            encounter: encounterA,
+          },
+        },
+        request: {
+          command: encounterA.correctOption,
+          original_utterance: encounterA.correctOption,
+        },
+      })
+    );
+
+    expect(response.session_state?.artifactsCount).toBe(0);
+    expect(response.session_state?.lives).toBe(3);
+    expect(response.response.text).toContain(
+      'Десять артефактов собрано — получена дополнительная жизнь!'
+    );
+    expect(response.response.text).toContain('У тебя 3 жизни.');
+  });
+
+  it('allows bonus lives above the starting maximum', async () => {
+    mockedCreateEncounter.mockResolvedValueOnce(encounterB);
+
+    const response = await handleYandexWitcherRequest(
+      requestWithOverrides({
+        session: { new: false, message_id: 28 },
+        state: {
+          session: {
+            phase: 'choose_weapon',
+            lives: 3,
+            victories: 19,
+            selectedSchool: 'Кота',
+            recentMonsterNames: [],
+            collectedRewards: [],
+            artifactsCount: 9,
+            encounter: encounterA,
+          },
+        },
+        request: {
+          command: encounterA.correctOption,
+          original_utterance: encounterA.correctOption,
+        },
+      })
+    );
+
+    expect(response.session_state?.lives).toBe(4);
+    expect(response.response.text).toContain('У тебя 4 жизни.');
+  });
+
+  it('keeps bonus lives in persisted state and pluralizes them', async () => {
+    const response = await handleYandexWitcherRequest(
+      requestWithOverrides({
+        session: { new: false, message_id: 29 },
+        state: {
+          session: {
+            phase: 'choose_weapon',
+            lives: 5,
+            victories: 40,
+            selectedSchool: 'Кота',
+            recentMonsterNames: [],
+            collectedRewards: ['мешочек оренов'],
+            artifactsCount: 2,
+            encounter: encounterA,
+          },
+        },
+        request: { command: 'статистика', original_utterance: 'статистика' },
+      })
+    );
+
+    expect(response.session_state?.lives).toBe(5);
+    expect(response.response.text).toContain('У тебя 5 жизней.');
+  });
+
+  it('treats legacy session state without artifactsCount as zero progress', async () => {
+    // Simulates a session persisted before the artifact mechanic existed.
+    const legacySessionState = {
+      phase: 'choose_weapon',
+      lives: 2,
+      victories: 1,
+      selectedSchool: 'Кота',
+      recentMonsterNames: [],
+      collectedRewards: ['мешочек оренов'],
+      encounter: encounterA,
+    } as unknown as WitcherSessionState;
+
+    const response = await handleYandexWitcherRequest(
+      requestWithOverrides({
+        session: { new: false, message_id: 30 },
+        state: { session: legacySessionState },
+        request: { command: 'статистика', original_utterance: 'статистика' },
+      })
+    );
+
+    expect(response.session_state?.artifactsCount).toBe(0);
+    expect(response.session_state?.lives).toBe(2);
+    expect(response.response.text).toContain('Артефактов до бонусной жизни: 10.');
+  });
+
+  it('sanitizes tampered lives and artifacts counters', async () => {
+    const response = await handleYandexWitcherRequest(
+      requestWithOverrides({
+        session: { new: false, message_id: 31 },
+        state: {
+          session: {
+            phase: 'choose_weapon',
+            lives: 150,
+            victories: 500,
+            selectedSchool: 'Кота',
+            recentMonsterNames: [],
+            collectedRewards: ['мешочек оренов'],
+            artifactsCount: 150,
+            encounter: encounterA,
+          },
+        },
+        request: { command: 'статистика', original_utterance: 'статистика' },
+      })
+    );
+
+    expect(response.session_state?.lives).toBe(99);
+    expect(response.session_state?.artifactsCount).toBe(9);
+    expect(response.response.text).toContain('Артефактов до бонусной жизни: 1.');
   });
 
   it('offers restart button for stats in game over phase', async () => {
@@ -370,6 +546,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Кота',
             recentMonsterNames: [],
             collectedRewards: ['мешочек оренов'],
+            artifactsCount: 0,
           },
         },
         request: { command: 'награды', original_utterance: 'награды' },
@@ -397,6 +574,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Кота',
             recentMonsterNames: [],
             collectedRewards: fullRewards,
+            artifactsCount: 0,
             encounter: encounterA,
           },
         },
@@ -426,6 +604,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Грифона',
             recentMonsterNames: [],
             collectedRewards: ['гвинт-карта из таверны'],
+            artifactsCount: 3,
             encounter: gaunterEncounter,
           },
         },
@@ -451,6 +630,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Грифона',
             recentMonsterNames: [],
             collectedRewards: ['мешочек оренов'],
+            artifactsCount: 3,
             encounter: gaunterEncounter,
           },
         },
@@ -476,6 +656,7 @@ describe('yandex-witcher skill handler', () => {
             selectedSchool: 'Грифона',
             recentMonsterNames: ['Леший'],
             collectedRewards: ['мешочек оренов'],
+            artifactsCount: 3,
           },
         },
         request: {

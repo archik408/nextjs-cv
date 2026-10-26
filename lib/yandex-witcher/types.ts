@@ -2,8 +2,11 @@ export const YANDEX_DIALOGS_VERSION = '1.0' as const;
 
 export const WITCHER_SKILL_NAME = 'Ведьмак для Матвея';
 export const MAX_LIVES = 3;
+// Bonus lives from artifact streaks may push lives above MAX_LIVES.
+export const MAX_LIVES_LIMIT = 99;
 export const RECENT_MONSTERS_WINDOW = 10;
 export const REWARDS_HISTORY_LIMIT = 100;
+export const BONUS_ARTIFACTS_REQUIRED = 10;
 export const UNBEATABLE_MONSTER_NAME = "Гюнтер о'Дим";
 export const UNBEATABLE_ENCOUNTER_CHANCE = 1 / 12;
 
@@ -106,6 +109,7 @@ export interface WitcherSessionState {
   recentMonsterNames: string[];
   encounter?: WitcherEncounter;
   collectedRewards: string[];
+  artifactsCount: number;
 }
 
 export type WitcherAction =

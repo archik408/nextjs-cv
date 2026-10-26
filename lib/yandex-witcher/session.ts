@@ -1,4 +1,11 @@
-import { MAX_LIVES, RECENT_MONSTERS_WINDOW, REWARDS_HISTORY_LIMIT, WITCHER_SCHOOLS } from './types';
+import {
+  BONUS_ARTIFACTS_REQUIRED,
+  MAX_LIVES,
+  MAX_LIVES_LIMIT,
+  RECENT_MONSTERS_WINDOW,
+  REWARDS_HISTORY_LIMIT,
+  WITCHER_SCHOOLS,
+} from './types';
 import type { WitcherEncounter, WitcherSchool, WitcherSessionState } from './types';
 
 function normalizeSchool(value: unknown): WitcherSchool | undefined {
@@ -46,6 +53,7 @@ export function createInitialWitcherSessionState(): WitcherSessionState {
     victories: 0,
     recentMonsterNames: [],
     collectedRewards: [],
+    artifactsCount: 0,
   };
 }
 
@@ -57,13 +65,20 @@ export function normalizeWitcherSessionState(state: unknown): WitcherSessionStat
   const candidate = state as Partial<WitcherSessionState>;
   const normalizedLives =
     typeof candidate.lives === 'number' && Number.isInteger(candidate.lives)
-      ? Math.min(Math.max(candidate.lives, 0), MAX_LIVES)
+      ? Math.min(Math.max(candidate.lives, 0), MAX_LIVES_LIMIT)
       : MAX_LIVES;
   const normalizedVictories =
     typeof candidate.victories === 'number' &&
     Number.isInteger(candidate.victories) &&
     candidate.victories >= 0
       ? candidate.victories
+      : 0;
+  // A full streak of 10 never persists: it converts into a bonus life immediately.
+  const normalizedArtifactsCount =
+    typeof candidate.artifactsCount === 'number' &&
+    Number.isInteger(candidate.artifactsCount) &&
+    candidate.artifactsCount >= 0
+      ? Math.min(candidate.artifactsCount, BONUS_ARTIFACTS_REQUIRED - 1)
       : 0;
   const recentMonsterNames = Array.isArray(candidate.recentMonsterNames)
     ? candidate.recentMonsterNames
@@ -91,5 +106,6 @@ export function normalizeWitcherSessionState(state: unknown): WitcherSessionStat
     recentMonsterNames,
     encounter: normalizeEncounter(candidate.encounter),
     collectedRewards,
+    artifactsCount: normalizedArtifactsCount,
   };
 }

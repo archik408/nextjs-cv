@@ -2,7 +2,9 @@ import { extractCommandText, parseWitcherCommand, resolveWeaponChoice } from './
 import { createEncounter, pushRecentMonster } from './monsters';
 import { createInitialWitcherSessionState, normalizeWitcherSessionState } from './session';
 import {
+  BONUS_ARTIFACTS_REQUIRED,
   MAX_LIVES,
+  MAX_LIVES_LIMIT,
   REWARDS_HISTORY_LIMIT,
   UNBEATABLE_MONSTER_NAME,
   WITCHER_SCHOOLS,
@@ -82,7 +84,8 @@ function buildHelpText(): string {
     'В каждом бою выбирайте одно из трёх оружий или средств против чудовища.',
     'Можно назвать оружие полностью, частично или коротко: один, два, три.',
     `У вас ${MAX_LIVES} жизни. Ошибка в выборе оружия отнимает жизнь.`,
-    'За победы вы собираете трофеи. Скажите «статистика», чтобы посмотреть коллекцию наград.',
+    'За победы вы собираете трофеи-артефакты: за каждые десять артефактов вы получаете дополнительную жизнь.',
+    'Скажите «статистика», чтобы посмотреть коллекцию наград и прогресс артефактов.',
     'Когда жизни закончатся, скажите «заново», чтобы начать новую охоту на монстров.',
   ].join(' ');
 }
@@ -105,19 +108,37 @@ function buildEncounterText(state: WitcherSessionState): string {
 
   return [
     `Ты ведьмак школы ${state.selectedSchool}.`,
-    `У тебя ${state.lives} жизни.`,
+    `У тебя ${state.lives} ${pluralizeLives(state.lives)}.`,
     `Ты оказался ${state.encounter.locationPhrase}.`,
     `Перед тобой ${state.encounter.monsterName}: ${state.encounter.monsterDescription}`,
     `Выбери, чем сразить чудовище: ${weaponsList}.`,
   ].join(' ');
 }
 
+function pluralizeLives(count: number): string {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod10 === 1 && mod100 !== 11) {
+    return 'жизнь';
+  }
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) {
+    return 'жизни';
+  }
+  return 'жизней';
+}
+
 function buildStatsText(state: WitcherSessionState): string {
-  return [
+  const parts = [
     `Побед: ${state.victories}. Жизней: ${state.lives}.`,
     `Наград собрано: ${state.collectedRewards.length}.`,
-    `Твои трофеи: ${buildRewardsTally(state.collectedRewards)}.`,
-  ].join(' ');
+  ];
+
+  if (state.phase !== 'game_over') {
+    parts.push(`Артефактов до бонусной жизни: ${BONUS_ARTIFACTS_REQUIRED - state.artifactsCount}.`);
+  }
+
+  parts.push(`Твои трофеи: ${buildRewardsTally(state.collectedRewards)}.`);
+  return parts.join(' ');
 }
 
 async function resolveSchoolSelection(
@@ -155,18 +176,27 @@ async function resolveCorrectAnswer(
 
   const reward = randomItem(VICTORY_REWARDS);
   const collectedRewards = [...state.collectedRewards, reward].slice(-REWARDS_HISTORY_LIMIT);
+  const nextArtifactsCount = state.artifactsCount + 1;
+  const bonusLifeAwarded = nextArtifactsCount >= BONUS_ARTIFACTS_REQUIRED;
   const updatedState: WitcherSessionState = {
     ...state,
+    lives: bonusLifeAwarded ? Math.min(state.lives + 1, MAX_LIVES_LIMIT) : state.lives,
     victories: state.victories + 1,
+    artifactsCount: bonusLifeAwarded ? 0 : nextArtifactsCount,
     collectedRewards,
     recentMonsterNames: pushRecentMonster(state.recentMonsterNames, state.encounter.monsterName),
     encounter: undefined,
   };
 
+  const bonusText =
+    bonusLifeAwarded && updatedState.lives > state.lives
+      ? ' Десять артефактов собрано — получена дополнительная жизнь!'
+      : '';
+
   const nextState = await startBattle(updatedState);
   return {
     nextState,
-    text: `Отлично, ты победил существо ${state.encounter.monsterName}. Награда: ${reward}. Наград собрано: ${collectedRewards.length}. Начинаем новый контракт. Побед: ${nextState.victories}. ${buildEncounterText(nextState)}`,
+    text: `Отлично, ты победил существо ${state.encounter.monsterName}. Награда: ${reward}. Наград собрано: ${collectedRewards.length}.${bonusText} Начинаем новый контракт. Побед: ${nextState.victories}. ${buildEncounterText(nextState)}`,
     buttons: nextState.encounter
       ? buildWeaponButtons(nextState.encounter.options)
       : buildSchoolButtons(),
