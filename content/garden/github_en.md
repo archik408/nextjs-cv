@@ -40,4 +40,5 @@ Private GitLab:
 ### Related notes
 
 - [15 years in commercial development — what I learned is how little I know](/garden/15-years-in-dev_en)
+- [[The Eternal TaskCraft](/garden/task-crafting_en)]
 - [TypeScript is the biggest mistake in frontend](/garden/typescript)

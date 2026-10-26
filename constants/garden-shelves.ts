@@ -31,6 +31,7 @@ export const GARDEN_SHELF_BY_BASE_SLUG: Record<string, GardenShelf> = {
   // Thinking — essays + books
   'real-programmers-dont-use-ai': 'thinking',
   'end-of-programming': 'thinking',
+  'to-read-or-not-to-read-code': 'thinking',
   '15-years-in-dev': 'thinking',
   estimation: 'thinking',
   github: 'thinking',

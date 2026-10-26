@@ -166,4 +166,5 @@ Back to Bun. A million lines in eleven days is not proof that programming is ove
 - [A Visual Tutorial on Every Type of Test You Can Write](/garden/tests-developer-should-write_en)
 - [The Testing Pyramid](/garden/testing-pyramid_en)
 - [Real programmers don't use AI](/garden/real-programmers-dont-use-ai_en)
+- [[The Eternal TaskCraft](/garden/task-crafting_en)]
 - [Accessibility: a developer's field guide](/garden/accessibility-tools-and-quality-gates_en)

@@ -205,6 +205,7 @@ The same applies to programmers. AI raises a single developer's productivity by 
 
 - [15 years in commercial development — what I learned is how little I know](/garden/15-years-in-dev_en)
 - [Why an empty GitHub profile is perfectly fine](/garden/github_en)
+- [[The Eternal TaskCraft](/garden/task-crafting_en)]
 - [A practical web accessibility audit in five steps (no dogma)](/garden/audit-a11y-without-wcag_en)
 - [Estimating work: why you're still wrong (and what to do about it)](/garden/estimation)
 - [TypeScript is the biggest mistake in frontend](/garden/typescript)

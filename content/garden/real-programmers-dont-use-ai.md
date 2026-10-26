@@ -203,6 +203,8 @@ MySpace, Facebook, YouTube, Twitter — снаружи «кнопка запос
 
 ### Связанные заметки
 
+- [[Вечный TaskCraft](/garden/task-crafting)]
+- [Читать или не читать код?](/garden/to-read-or-not-to-read-code)
 - [[15 лет в коммерческой разработке. Что я понял? Что я ничего не понял.](/garden/15-years-in-dev)]
 - [[Доступность в эпоху ИИ: для людей и машин](/garden/a11y-ai-future)]
 - [[Почему пустой GitHub — это нормально](/garden/github)]

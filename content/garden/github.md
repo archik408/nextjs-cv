@@ -42,4 +42,5 @@ tags: [opensource,career,programming,mental-model]
 ### Связанные заметки
 
 - [[15 лет в коммерческой разработке. Что я понял? Что я ничего не понял.](/garden/15-years-in-dev)]
+- [[Вечный TaskCraft](/garden/task-crafting)]
 - [[TypeScript — самая большая ошибка в мире фронтенда!](/garden/typescript)]

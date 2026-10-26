@@ -166,4 +166,6 @@ rules/
 - [[Тесты, которые должен писать разработчик](/garden/tests-developer-should-write)]
 - [[Пирамида тестирования](/garden/testing-pyramid)]
 - [[Настоящие программисты не используют ИИ](/garden/real-programmers-dont-use-ai)]
+- [Читать или не читать код?](/garden/to-read-or-not-to-read-code)
+- [[Вечный TaskCraft](/garden/task-crafting)]
 - [[Accessibility: Гайд разработчика](/garden/accessibility-tools-and-quality-gates)]

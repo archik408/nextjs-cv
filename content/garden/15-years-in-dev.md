@@ -59,6 +59,7 @@ tags: [career, programming, experience, seedling]
 
 ### Связанные заметки
 
+- [[Вечный TaskCraft](/garden/task-crafting)]
 - [[Почему пустой GitHub — это нормально](/garden/github)]
 - [[Оценка задач: почему вы всё равно ошибаетесь (и что с этим делать)](/garden/estimation)]
 - [[TypeScript — самая большая ошибка в мире фронтенда!](/garden/typescript)]
