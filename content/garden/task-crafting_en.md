@@ -144,6 +144,8 @@ And no, it's not disillusionment — it's growing up. There are plenty of brilli
 
 TDD is just another approach, nothing more. It's neither worse nor better than anything else. Tests are the norm for any large, real project with a user base, if we don't want regressions and want to ship proper quality. It's part of [quality gates](/garden/end-of-programming_en), on a par with other quality checks.
 
+> I’ve written at least three books. And all three of those books are completely obsolete and should be thrown away at this point which is an odd thing to feel towards the end of career. [Kent Beck at Prodacity 2026](https://www.youtube.com/watch?v=F8fBgDCf2Y4)
+
 Robert Martin used to appeal to the story of doctors washing their hands: sure, nobody writes tests today, but then doctors didn't used to wash their hands either. A good metaphor. And yes — when nobody around me wrote tests, it was great crafting. Now all doctors wash their hands before surgery and all engineers write tests, so this too has become routine and is no longer as interesting. No longer the thing that sets you apart.
 
 Task crafting through diving deep into tests brought me a [wampeter](https://en.wikipedia.org/wiki/Wampeter) — around which I built my projects and teams, my engineering culture, and — I'm not afraid of the word — my reputation inside my IT company.
@@ -249,6 +251,8 @@ Some go full Breaking Bad and boldly start running a [ralph loop](https://ghuntl
 
 This is, by the way, an interesting direction of development. If code and programming languages become secondary in software creation, we won't need human-readable programming languages. We'll need to create something like very low-level, optimized languages — compact and clear to machines but barely comprehensible to humans — something like assemblers for AI, only worse in syntax. Generating code and making sense of it will be the prerogative of machines, while the human controls the process at the highest level of engineering abstraction. Possibly even without typing on a keyboard — just by voice, as many already practice.
 
+Or maybe it's all the futurists' delirium, and engineering will evolve in a more balanced direction, where AI agents are just one more very cool tool. [My thoughts on this are laid out separately](/garden/to-read-or-not-to-read-code_en).
+
 This is both crafting and not: everyone is doing it en masse right now. So it's hard to guess what's next. But it seems to me that even in this brave new world of AI, the concept and approach of task and job crafting will still be relevant!
 
 ---
@@ -260,3 +264,4 @@ This is both crafting and not: everyone is doing it en masse right now. So it's 
 - [Web accessibility is not hype, it is responsibility](/garden/a11y-my-task-crafting_en)
 - [The end of programming — or a shift in focus? Harness vs AI slop](/garden/end-of-programming_en)
 - [Why an empty GitHub profile is perfectly fine](/garden/github_en)
+- [To read or not to read code?](/garden/to-read-or-not-to-read-code_en)
