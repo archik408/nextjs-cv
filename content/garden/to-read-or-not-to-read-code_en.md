@@ -122,7 +122,7 @@ Another interesting angle on reading code is expanding your competencies — or 
 
 He backed his theses with performance numbers, which are impressive — if not for the conceptual substitution of technologies: comparing web technologies and compiled system software on performance is incorrect.
 
-The talk is terrible; I wrote my opinion about it separately.
+The talk is terrible; I wrote [my opinion about it](/garden/ai-is-not-a-camera_en) separately.
 
 But nevertheless, DHH is right about one thing: without typing code, without reading code, without understanding it, you can achieve very impressive results — and that alone is a reason for discussion.
 
