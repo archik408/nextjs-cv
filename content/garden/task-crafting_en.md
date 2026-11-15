@@ -245,13 +245,13 @@ This longread needs some kind of closing — it's downright incredible that you 
 
 Being a futurist is hard, so it's extremely difficult to guess what will be relevant in the future, which crafting comes next, and where it will lead.
 
-Definitely, the biggest crafting for everyone right now is the mastery of writing prompts in natural language, composing plans in MD files for AI agents, and automating in every possible way the work engineers used to do by hand.
+Definitely, the biggest crafting for everyone right now is the mastery of writing prompts in natural language, composing plans in MD files for AI agents, and [automating through harness](/garden/end-of-programming_en) in every possible way the work engineers used to do by hand.
 
-Some go full Breaking Bad and boldly start running a [ralph loop](https://ghuntley.com/ralph) with review and continuous improvement through simultaneous editing of both requirements and code. Some still dose their AI involvement and act as the reviewer — the human in the middle of the loop who, for now, controls everything, understands what's written, and reads the logic in the code. Some boldly declare they no longer read code.
+Some go full Breaking Bad and boldly start running a [ralph loop](https://ghuntley.com/ralph) with review and continuous improvement through simultaneous editing of both requirements and code. Some still dose their AI involvement and act as the reviewer — the human in the middle of the loop who, for now, controls everything, understands what's written, and reads the logic in the code. [Some boldly declare they no longer read code.](/garden/to-read-or-not-to-read-code_en)
 
 This is, by the way, an interesting direction of development. If code and programming languages become secondary in software creation, we won't need human-readable programming languages. We'll need to create something like very low-level, optimized languages — compact and clear to machines but barely comprehensible to humans — something like assemblers for AI, only worse in syntax. Generating code and making sense of it will be the prerogative of machines, while the human controls the process at the highest level of engineering abstraction. Possibly even without typing on a keyboard — just by voice, as many already practice.
 
-Or maybe it's all the futurists' delirium, and engineering will evolve in a more balanced direction, where AI agents are just one more very cool tool. [My thoughts on this are laid out separately](/garden/to-read-or-not-to-read-code_en).
+Or maybe it's all the futurists' delirium, and engineering will evolve in a more balanced direction, where AI agents are just one more very cool tool.
 
 This is both crafting and not: everyone is doing it en masse right now. So it's hard to guess what's next. But it seems to me that even in this brave new world of AI, the concept and approach of task and job crafting will still be relevant!
 

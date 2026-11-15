@@ -36,7 +36,7 @@ You give the agent a task, thereby launching its session. Within the session you
 
 The key point of this approach is that the AI agent is already a full-fledged worker: it ships complete features and solves whole tasks instead of answering with code snippets in a chat. But it's still not very independent, and you can't give it a task and leave the computer for long. You're still the person who makes more decisions than the AI itself.
 
-> Around 2025 I started actively using this approach with Cursor, almost immediately switching to the Glow interface, where I focused on planning rather than coding, providing the agent all the context it needed — inside the codebase and outside it via the MCP protocol to the tracker, designs in Figma, and everything else — carefully surrounding the agent with ignore files, md files of working rules, sandbox settings, and keys in KeyChain.
+> Around 2025 I started actively using this approach with Cursor, almost immediately switching to the Glass interface, where I focused on planning rather than coding, providing the agent all the context it needed — inside the codebase and outside it via the MCP protocol to the tracker, designs in Figma, and everything else — carefully surrounding the agent with ignore files, md files of working rules, sandbox settings, and keys in KeyChain.
 
 ### The agent loop
 
